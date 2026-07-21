@@ -15,6 +15,9 @@ const TIER_RANK: Record<Tier, number> = {
   GALACTIC: 5,
 }
 
+/** Les paliers du plus bas au plus haut, dérivés du barème ci-dessus pour rester alignés. */
+const TIER_ORDER = (Object.keys(TIER_RANK) as Tier[]).sort((a, b) => TIER_RANK[a] - TIER_RANK[b])
+
 const STORAGE_KEY = 'droidex:progress'
 
 const emptyEntry = (): CollectionEntry => ({ tier: null, flawless: false })
@@ -93,15 +96,38 @@ export const useCollectionStore = defineStore('collection', () => {
     return entries.value[slug] ?? emptyEntry()
   }
 
-  const ownedCount = computed(() => Object.values(entries.value).filter((e) => e.tier !== null).length)
-  const totalCount = computed(() => droids.value.length)
+  /**
+   * Paliers réellement décrits pour un droid. Les Emblématiques n'en ont qu'un ; les
+   * autres en ont six, Galactique compris.
+   */
+  const tiersOf = (d: Droid) => TIER_ORDER.filter((t) => d.tiers[t])
+
+  /**
+   * Nombre de variantes possédées pour un droid.
+   *
+   * On collectionne une entrée **par palier**, pas par droid : un MOUSE Beskar vaut cinq
+   * variantes — Typique, Or, Diamant, Arc-en-ciel, Beskar — puisqu'un palier supérieur
+   * satisfait toujours les inférieurs, règle déjà portée par `satisfies()`.
+   */
+  function ownedTiersOf(d: Droid): number {
+    const owned = entry(d.slug).tier
+    if (!owned) return 0
+    return tiersOf(d).filter((t) => TIER_RANK[t] <= TIER_RANK[owned]).length
+  }
+
+  const ownedCount = computed(() =>
+    droids.value.reduce((n, d) => n + ownedTiersOf(d), 0),
+  )
+  const totalCount = computed(() =>
+    droids.value.reduce((n, d) => n + tiersOf(d).length, 0),
+  )
 
   const countByRarity = computed(() => {
     const acc = {} as Record<Rarity, { owned: number; total: number }>
     for (const r of data.rarities) acc[r] = { owned: 0, total: 0 }
     for (const d of droids.value) {
-      acc[d.rarity].total += 1
-      if (entry(d.slug).tier !== null) acc[d.rarity].owned += 1
+      acc[d.rarity].total += tiersOf(d).length
+      acc[d.rarity].owned += ownedTiersOf(d)
     }
     return acc
   })
@@ -241,10 +267,27 @@ export const useCollectionStore = defineStore('collection', () => {
     await push({ superRebirth: value, cycle: nextCycle })
   }
 
-  /** Remet tout à zéro, local compris. Utilisé par le bouton d'effacement du profil. */
-  function clear() {
+  /**
+   * Remet tout à zéro, local **et** serveur.
+   *
+   * L'effacement distant n'était pas fait : la progression revenait à la reconnexion
+   * suivante, ce qui rendait le bouton trompeur. On vide le local d'abord — l'utilisateur
+   * voit l'effet immédiatement — puis on supprime le document si une session est active.
+   */
+  async function clear() {
     apply({})
     writeLocal()
+    if (!remoteEnabled.value) return
+
+    syncing.value = true
+    syncError.value = null
+    try {
+      await ofetch('/api/progress', { method: 'DELETE' })
+    } catch (err) {
+      syncError.value = err instanceof Error ? err.message : String(err)
+    } finally {
+      syncing.value = false
+    }
   }
 
   return {

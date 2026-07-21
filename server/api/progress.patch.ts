@@ -1,9 +1,28 @@
 import { z } from 'zod'
 import droidData from '~~/app/data/droids.json'
+import shopData from '~~/app/data/nova-shop.json'
 import { TIERS } from '~~/shared/types/droid'
 
 /** Slugs connus — empêche d'écrire des entrées arbitraires dans la collection. */
 const KNOWN_SLUGS = new Set(droidData.droids.map((d) => d.slug))
+
+/**
+ * Articles connus du Nova Shop.
+ *
+ * Sans cette liste, `shopLevels` acceptait n'importe quelle clé : le document grossissait
+ * sans limite, et une clé contenant un point créait des sous-documents imbriqués via le
+ * `$set` construit plus bas — une clé commençant par `$` faisait carrément échouer Mongo.
+ */
+const KNOWN_ITEMS = new Set(shopData.sections.flatMap((s) => s.items.map((i) => i.id)))
+
+/**
+ * Bornes hautes. Elles ne visent pas la triche — la progression est déclarative et
+ * n'engage que son auteur — mais un client fautif qui enverrait `Number.MAX_SAFE_INTEGER`
+ * ou une valeur absurde stockée telle quelle.
+ */
+const MAX_NOVA = 1_000_000
+const MAX_SUPER_REBIRTH = 10_000
+const MAX_SHOP_LEVEL = 50
 
 const entrySchema = z.object({
   tier: z.enum(TIERS).nullable(),
@@ -15,10 +34,10 @@ const bodySchema = z
     collection: z.record(z.string(), entrySchema).optional(),
     // 28 rebirths par cycle (cf. exigences 27→28 documentées).
     rebirth: z.number().int().min(0).max(28).optional(),
-    superRebirth: z.number().int().min(0).optional(),
+    superRebirth: z.number().int().min(0).max(MAX_SUPER_REBIRTH).optional(),
     cycle: z.number().int().min(1).max(4).optional(),
-    novaCrystals: z.number().int().min(0).optional(),
-    shopLevels: z.record(z.string(), z.number().int().min(0)).optional(),
+    novaCrystals: z.number().int().min(0).max(MAX_NOVA).optional(),
+    shopLevels: z.record(z.string(), z.number().int().min(0).max(MAX_SHOP_LEVEL)).optional(),
   })
   .refine((b) => Object.keys(b).length > 0, { message: 'Corps de requête vide' })
 
@@ -31,12 +50,14 @@ export default defineEventHandler(async (event) => {
   const session = await requireSession(event)
   const body = await readValidatedBody(event, bodySchema.parse)
 
-  const unknown = Object.keys(body.collection ?? {}).filter((slug) => !KNOWN_SLUGS.has(slug))
-  if (unknown.length) {
-    throw createError({
-      statusCode: 400,
-      statusMessage: `Droid(s) inconnu(s) : ${unknown.join(', ')}`,
-    })
+  const unknownSlugs = Object.keys(body.collection ?? {}).filter((slug) => !KNOWN_SLUGS.has(slug))
+  if (unknownSlugs.length) {
+    throw createError({ statusCode: 400, statusMessage: 'Droid inconnu dans la collection.' })
+  }
+
+  const unknownItems = Object.keys(body.shopLevels ?? {}).filter((id) => !KNOWN_ITEMS.has(id))
+  if (unknownItems.length) {
+    throw createError({ statusCode: 400, statusMessage: 'Article de boutique inconnu.' })
   }
 
   const set: Record<string, unknown> = { updatedAt: new Date() }

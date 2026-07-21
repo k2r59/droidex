@@ -28,8 +28,29 @@ export async function useDb(): Promise<Db> {
   return c.db(useRuntimeConfig().mongodbDbName)
 }
 
+/**
+ * Index de la collection de progression, créés une seule fois par processus.
+ *
+ * L'index **unique** sur `userId` est indispensable : les routes écrivent en `upsert`, et
+ * sans contrainte d'unicité deux requêtes concurrentes du même utilisateur — deux onglets,
+ * ou un doublon de synchronisation — peuvent créer deux documents dont un seul sera
+ * ensuite relu. Il supprime au passage le balayage complet de collection à chaque lecture.
+ */
+let indexesReady: Promise<unknown> | undefined
+
 /** Collection de progression, typée. */
 export async function progressCollection() {
   const db = await useDb()
-  return db.collection<UserProgress>('progress')
+  const collection = db.collection<UserProgress>('progress')
+
+  indexesReady ??= collection
+    .createIndex({ userId: 1 }, { unique: true, name: 'userId_unique' })
+    .catch((err) => {
+      // Un échec d'index ne doit pas empêcher l'app de servir : on le signale et on continue.
+      console.error('[mongo] création de l’index userId impossible :', err)
+      indexesReady = undefined
+    })
+  await indexesReady
+
+  return collection
 }
