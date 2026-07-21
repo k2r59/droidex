@@ -1,19 +1,17 @@
 import { betterAuth } from 'better-auth'
 import { mongodbAdapter } from 'better-auth/adapters/mongodb'
 
-let instance: ReturnType<typeof betterAuth> | null = null
-
 /**
- * Instance BetterAuth, créée à la première requête (elle a besoin du runtimeConfig,
- * indisponible au moment de l'évaluation du module).
+ * Construit l'instance. Séparée de `useAuth` pour que son type de retour serve de
+ * source de vérité : `betterAuth()` infère un générique à partir des options passées,
+ * et l'annoter à la main (`ReturnType<typeof betterAuth>`) provoquerait une erreur de
+ * variance sur `$context`.
  */
-export async function useAuth() {
-  if (instance) return instance
-
+async function createAuth() {
   const config = useRuntimeConfig()
   const db = await useDb()
 
-  instance = betterAuth({
+  return betterAuth({
     database: mongodbAdapter(db),
     secret: config.betterAuthSecret,
     baseURL: config.public.baseUrl,
@@ -42,7 +40,18 @@ export async function useAuth() {
       },
     },
   })
+}
 
+type AuthInstance = Awaited<ReturnType<typeof createAuth>>
+
+let instance: AuthInstance | null = null
+
+/**
+ * Instance BetterAuth, créée à la première requête (elle a besoin du runtimeConfig,
+ * indisponible au moment de l'évaluation du module).
+ */
+export async function useAuth(): Promise<AuthInstance> {
+  instance ??= await createAuth()
   return instance
 }
 

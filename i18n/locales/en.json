@@ -10,7 +10,8 @@
     "shop": "Nova Shop",
     "updates": "What's new",
     "guide": "Guide",
-    "profile": "Profile"
+    "profile": "Profile",
+    "missions": "Missions"
   },
   "auth": {
     "signIn": "Sign in",
@@ -224,5 +225,31 @@
     "community": "All stats come from community trackers and wikis. No exhaustive official source exists. Check requirements in game before committing to a rebirth.",
     "rights": "Star Wars and Fortnite are trademarks of Epic Games and Lucasfilm. This community site is neither affiliated with nor endorsed by them.",
     "lastUpdate": "Data current as of {date}"
+  },
+  "timers": {
+    "title": "Sandcrawler timers",
+    "hint": "tap when you see a spawn",
+    "every": "every {minutes} min",
+    "sawIt": "Now",
+    "reset": "Clear",
+    "beskarPerPlayer": "Beskar spawns once per player in the lobby."
+  },
+  "advisor": {
+    "title": "Best next purchase",
+    "hint": "Ranked by income gained per credit spent.",
+    "budget": "Budget",
+    "noBudget": "unlimited",
+    "payback": "Pays back in",
+    "nothingAffordable": "Nothing affordable at this budget.",
+    "allOwned": "You already own everything with published stats."
+  },
+  "missions": {
+    "title": "Missions",
+    "subtitle": "Pads, zones and rewards",
+    "pad": "Pad {number}",
+    "unlockCost": "Unlock",
+    "rewards": "Rewards",
+    "duration": "Duration",
+    "free": "Free"
   }
 }

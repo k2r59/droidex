@@ -5,6 +5,7 @@ const store = useCollectionStore()
 const links = [
   { to: '/', key: 'droidex' },
   { to: '/rebirths', key: 'rebirths' },
+  { to: '/missions', key: 'missions' },
   { to: '/shop', key: 'shop' },
   { to: '/updates', key: 'updates' },
   { to: '/guide', key: 'guide' },

@@ -10,7 +10,8 @@
     "shop": "Nova Shop",
     "updates": "Neuigkeiten",
     "guide": "Guide",
-    "profile": "Profil"
+    "profile": "Profil",
+    "missions": "Missionen"
   },
   "auth": {
     "signIn": "Anmelden",
@@ -224,5 +225,31 @@
     "community": "Alle Werte stammen aus Community-Trackern und -Wikis. Eine vollständige offizielle Quelle gibt es nicht. Prüfe die Anforderungen im Spiel, bevor du dich auf einen Rebirth festlegst.",
     "rights": "Star Wars und Fortnite sind Marken von Epic Games und Lucasfilm. Diese Community-Seite ist weder mit ihnen verbunden noch von ihnen unterstützt.",
     "lastUpdate": "Daten auf dem Stand vom {date}"
+  },
+  "timers": {
+    "title": "Sandcrawler-Timer",
+    "hint": "tippe, wenn du einen Spawn siehst",
+    "every": "alle {minutes} Min.",
+    "sawIt": "Jetzt",
+    "reset": "Löschen",
+    "beskarPerPlayer": "Beskar erscheint einmal pro Spieler in der Lobby."
+  },
+  "advisor": {
+    "title": "Bester nächster Kauf",
+    "hint": "Sortiert nach Einkommen pro ausgegebenem Credit.",
+    "budget": "Budget",
+    "noBudget": "unbegrenzt",
+    "payback": "Amortisiert in",
+    "nothingAffordable": "Nichts mit diesem Budget erschwinglich.",
+    "allOwned": "Du besitzt bereits alles mit veröffentlichten Werten."
+  },
+  "missions": {
+    "title": "Missionen",
+    "subtitle": "Pads, Zonen und Belohnungen",
+    "pad": "Pad {number}",
+    "unlockCost": "Freischaltung",
+    "rewards": "Belohnungen",
+    "duration": "Dauer",
+    "free": "Kostenlos"
   }
 }

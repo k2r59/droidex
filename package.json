@@ -30,8 +30,11 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.1.1",
     "@vite-pwa/nuxt": "^1.1.1",
+    "sharp": "^0.35.3",
     "tailwindcss": "^4.3.3",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vue-tsc": "^3.3.7"
   }
 }

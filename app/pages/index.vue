@@ -85,6 +85,11 @@ onKeyStroke('Escape', () => {
   <div class="flex flex-col gap-5">
     <CollectionStats />
 
+    <div class="grid gap-3 lg:grid-cols-2">
+      <SandcrawlerTimers />
+      <NextPurchaseAdvisor />
+    </div>
+
     <!-- Barre de filtres collante : sur une grille de 69 cartes, la perdre au scroll
          obligerait à remonter à chaque changement de filtre. -->
     <div class="sticky top-16 z-30 -mx-4 flex flex-col gap-3 bg-void/90 px-4 py-3 backdrop-blur">

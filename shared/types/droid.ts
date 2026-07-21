@@ -21,6 +21,10 @@ export interface TierStats {
   /** Valeur de revente. */
   value: number | null
   valueLabel: string | null
+  /** Nom du fichier d'illustration propre à ce palier. */
+  image: string
+  /** `true` quand le visuel est emprunté à un autre palier (cas du Galactique). */
+  imageIsFallback: boolean
 }
 
 export interface Droid {
@@ -33,6 +37,8 @@ export interface Droid {
   type: DroidType
   /** Les Iconic génèrent un % du revenu total au lieu d'un montant fixe. */
   percentIncome: boolean
+  /** Pourcentage généré par un Iconic (15 ou 25). `null` pour les autres raretés. */
+  percentValue: number | null
   /** Clé i18n du perk, ou `null` si le droid n'en a pas / non documenté. */
   perk: string | null
   /** Chiffres extrapolés ou issus de sources secondaires — à afficher avec réserve. */

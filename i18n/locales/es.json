@@ -10,7 +10,8 @@
     "shop": "Nova Shop",
     "updates": "Novedades",
     "guide": "Guía",
-    "profile": "Perfil"
+    "profile": "Perfil",
+    "missions": "Misiones"
   },
   "auth": {
     "signIn": "Iniciar sesión",
@@ -224,5 +225,31 @@
     "community": "Todas las estadísticas proceden de trackers y wikis comunitarios. No existe ninguna fuente oficial exhaustiva. Comprueba los requisitos en el juego antes de lanzarte a un Rebirth.",
     "rights": "Star Wars y Fortnite son marcas de Epic Games y Lucasfilm. Este sitio comunitario no está afiliado ni respaldado por ellos.",
     "lastUpdate": "Datos actualizados a {date}"
+  },
+  "timers": {
+    "title": "Temporizadores del Sandcrawler",
+    "hint": "pulsa cuando veas una aparición",
+    "every": "cada {minutes} min",
+    "sawIt": "Ahora",
+    "reset": "Borrar",
+    "beskarPerPlayer": "El Beskar aparece una vez por jugador de la sala."
+  },
+  "advisor": {
+    "title": "Mejor compra siguiente",
+    "hint": "Ordenado por ingresos ganados por crédito gastado.",
+    "budget": "Presupuesto",
+    "noBudget": "ilimitado",
+    "payback": "Se amortiza en",
+    "nothingAffordable": "Nada asequible con este presupuesto.",
+    "allOwned": "Ya tienes todo lo que tiene datos publicados."
+  },
+  "missions": {
+    "title": "Misiones",
+    "subtitle": "Pads, zonas y recompensas",
+    "pad": "Pad {number}",
+    "unlockCost": "Desbloqueo",
+    "rewards": "Recompensas",
+    "duration": "Duración",
+    "free": "Gratis"
   }
 }

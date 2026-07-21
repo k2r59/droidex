@@ -10,7 +10,8 @@
     "shop": "Nova Shop",
     "updates": "Nouveautés",
     "guide": "Guide",
-    "profile": "Profil"
+    "profile": "Profil",
+    "missions": "Missions"
   },
   "auth": {
     "signIn": "Se connecter",
@@ -224,5 +225,31 @@
     "community": "Toutes les statistiques proviennent de trackers et wikis communautaires. Aucune source officielle exhaustive n'existe. Vérifie les exigences en jeu avant de t'engager sur un palier.",
     "rights": "Star Wars et Fortnite sont des marques d'Epic Games et Lucasfilm. Ce site communautaire n'est ni affilié ni approuvé par eux.",
     "lastUpdate": "Données à jour au {date}"
+  },
+  "timers": {
+    "title": "Minuteurs Sandcrawler",
+    "hint": "appuie quand tu vois une apparition",
+    "every": "toutes les {minutes} min",
+    "sawIt": "Maintenant",
+    "reset": "Effacer",
+    "beskarPerPlayer": "Le Beskar apparaît une fois par joueur du lobby."
+  },
+  "advisor": {
+    "title": "Prochain achat conseillé",
+    "hint": "Classé par revenu gagné pour un crédit dépensé.",
+    "budget": "Budget",
+    "noBudget": "illimité",
+    "payback": "Amorti en",
+    "nothingAffordable": "Rien d'accessible avec ce budget.",
+    "allOwned": "Tu possèdes déjà tout ce qui est chiffré."
+  },
+  "missions": {
+    "title": "Missions",
+    "subtitle": "Pads, zones et récompenses",
+    "pad": "Pad {number}",
+    "unlockCost": "Déblocage",
+    "rewards": "Récompenses",
+    "duration": "Durée",
+    "free": "Gratuit"
   }
 }
