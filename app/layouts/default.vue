@@ -29,7 +29,7 @@ watch(
         <button class="ml-2 underline" @click="store.enableRemote()">{{ $t('common.retry') }}</button>
       </p>
 
-      <main class="@container mx-auto w-full max-w-[1600px] flex-1 px-3 py-4 pb-24 sm:px-4 sm:py-5 md:pb-6">
+      <main class="@container mx-auto w-full max-w-[1440px] flex-1 px-3 py-4 pb-24 sm:px-4 sm:py-5 md:pb-6">
         <slot />
       </main>
 

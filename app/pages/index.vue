@@ -104,7 +104,7 @@ onKeyStroke('Escape', () => {
 
     <!-- Barre de filtres collante : sur une grille de 69 cartes, la perdre au scroll
          obligerait à remonter à chaque changement de filtre. -->
-    <div class="sticky top-[57px] z-30 -mx-4 flex flex-col gap-3 bg-void/95 px-4 py-3 backdrop-blur">
+    <div class="sticky top-[68px] z-30 -mx-4 flex flex-col gap-3 bg-void/95 px-4 py-3 backdrop-blur">
       <div class="flex flex-wrap items-center gap-2">
         <div class="relative min-w-48 flex-1">
           <input

@@ -1,0 +1,1002 @@
+Extrait de Droidex_UI_Design_System_Complet.pdf — texte brut, pour référence.
+Source de vérité des jetons et composants. Voir app/assets/css/main.css pour l'implémentation.
+
+
+===== PAGE 1 =====
+Droidex UI Design System  •  
+1
+DROIDEX
+Design System & Guide d'intégration HTML / CSS
+Spécifications complètes des maquettes - Desktop, tablette et mobile
+UI sombre
+#07101F
+Base
+Accent cyan
+#25D7FF
+Interaction
+Nova violet
+#9A5CFF
+Ressource
+Objectif : transformer les maquettes en une base front-end cohérente, maintenable, accessible et facilement 
+déclinable sur toutes les pages.
+
+===== PAGE 2 =====
+Droidex UI Design System  •  
+2
+Sommaire
+1. Principes de conception
+2. Design tokens : couleurs, espacements, rayons et ombres
+3. Typographie et hiérarchie
+4. Architecture HTML globale
+5. En-tête et navigation
+6. Mise en page, grilles et conteneurs
+7. Boutons et contrôles
+8. Cartes et panneaux
+9. Badges, raretés et états
+10. Barres de progression et statistiques
+11. Alertes et messages d'information
+12. Composants Droidex
+13. Composants Renaissances
+14. Composants Missions
+15. Composants Nova Shop
+16. Composants Nouveautés
+17. Responsive
+18. Accessibilité et états interactifs
+19. Organisation CSS recommandée
+20. Exemple de page complète
+
+===== PAGE 3 =====
+Droidex UI Design System  •  
+3
+1. Principes de conception
+
+Interface sombre, contrastée et immersive, mais avec des surfaces suffisamment différenciées pour rester lisible.
+
+Un seul accent principal : le cyan. Le violet est réservé aux Nova Crystals et aux éléments extraordinaires.
+
+Hiérarchie forte : titre de page, résumé, action principale, puis contenu détaillé.
+
+Les informations de progression et de coût doivent être visibles sans ouvrir de détail.
+
+Les illustrations servent d'ambiance et de repère, jamais de support unique à une information importante.
+
+Les effets lumineux sont subtils : glow présent sur l'état actif, pas sur toutes les cartes.
+Le style est inspiré d'une interface de jeu de science-fiction, mais les composants restent suffisamment sobres pour 
+une utilisation documentaire et communautaire.
+2. Design tokens
+Token
+Valeur
+Utilisation
+--color-bg
+#07101F
+Fond global
+--color-surface
+#101A2D
+Panneaux principaux
+--color-surface-2
+#15223A
+Cartes internes / hover
+--color-border
+#273956
+Bordures
+--color-cyan
+#25D7FF
+Accent et sélection
+--color-blue
+#459BFF
+Progression et liens
+--color-purple
+#9A5CFF
+Nova Crystal
+--color-text
+#D8E2F2
+Texte principal
+--color-muted
+#91A2BC
+Texte secondaire
+--color-success
+#22D49A
+Validation / revenu
+--color-warning
+#FFC247
+Avertissement
+--color-danger
+#FF5D6C
+Erreur / mythique
+--color-orange
+#FF8A3D
+Événement / or
+CSS - Variables globales
+:root {
+  color-scheme: dark;
+  --color-bg: #07101f;
+  --color-bg-deep: #030812;
+  --color-surface: #101a2d;
+  --color-surface-2: #15223a;
+  --color-surface-3: #1b2b47;
+  --color-border: #273956;
+  --color-border-strong: #365170;
+  --color-text: #d8e2f2;
+  --color-heading: #ffffff;
+  --color-muted: #91a2bc;
+  --color-cyan: #25d7ff;
+  --color-blue: #459bff;
+  --color-purple: #9a5cff;
+  --color-success: #22d49a;
+  --color-warning: #ffc247;
+  --color-danger: #ff5d6c;
+  --color-orange: #ff8a3d;
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --radius-sm: .5rem;
+  --radius-md: .75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+
+===== PAGE 4 =====
+Droidex UI Design System  •  
+4
+  --radius-pill: 999px;
+  --shadow-card: 0 16px 40px rgb(0 0 0 / .26);
+  --shadow-cyan: 0 0 0 1px rgb(37 215 255 / .35),
+                 0 0 24px rgb(37 215 255 / .18);
+  --container: 1440px;
+  --header-height: 68px;
+}
+3. Typographie
+Élément
+Police
+Graisse
+Taille desktop
+Titre de page
+Rajdhani
+700
+38-44 px
+Titre de section
+Rajdhani
+700
+22-28 px
+Titre de carte
+Rajdhani
+600-700
+16-20 px
+Navigation
+Inter / Rajdhani
+600
+15-16 px
+Texte courant
+Inter
+400
+14-16 px
+Valeurs / compteurs
+JetBrains Mono
+500-700
+14-28 px
+@import url('https://fonts.googleapis.com/css2?
+family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Rajdhani:wght@600;700&display=swap
+');
+html {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 16px;
+}
+h1, h2, h3, .display-title {
+  font-family: Rajdhani, Inter, sans-serif;
+  letter-spacing: .01em;
+}
+.metric, .price, .timer, .counter {
+  font-family: "JetBrains Mono", monospace;
+  font-variant-numeric: tabular-nums;
+}
+4. Architecture HTML globale
+<body class="app-shell">
+  <header class="topbar">
+    <a class="brand" href="/">Droidex</a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a class="nav-link is-active" href="/droidex">Droidex</a>
+      <a class="nav-link" href="/renaissances">Renaissances</a>
+      <a class="nav-link" href="/missions">Missions</a>
+      <a class="nav-link" href="/nova-shop">Nova Shop</a>
+      <a class="nav-link" href="/nouveautes">Nouveautés</a>
+      <a class="nav-link" href="/guide">Guide</a>
+    </nav>
+    <div class="topbar-actions">
+      <div class="collection-counter">0 / 69</div>
+      <button class="language-button">FR</button>
+      <button class="button button--primary">Se connecter</button>
+    </div>
+  </header>
+  <main class="page">
+    <div class="page-container">
+      <!-- contenu de la page -->
+    </div>
+  </main>
+</body>
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--color-bg-deep); }
+body {
+
+===== PAGE 5 =====
+Droidex UI Design System  •  
+5
+  margin: 0;
+  min-width: 320px;
+  color: var(--color-text);
+  background:
+    radial-gradient(circle at 70% 0%, rgb(35 78 140 / .18), transparent 36rem),
+    linear-gradient(180deg, var(--color-bg-deep), var(--color-bg));
+}
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; }
+img { display: block; max-width: 100%; }
+.page {
+  min-height: calc(100vh - var(--header-height));
+  padding: var(--space-6) var(--space-6) var(--space-12);
+}
+.page-container {
+  width: min(100%, var(--container));
+  margin-inline: auto;
+}
+5. En-tête et navigation
+.topbar {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 100;
+  height: var(--header-height);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-6);
+  padding-inline: max(var(--space-5), calc((100vw - var(--container)) / 2));
+  background: rgb(3 8 18 / .88);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(18px);
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  font-family: Rajdhani, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+}
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  color: var(--color-muted);
+  font-weight: 600;
+  transition: color .18s, background .18s, border-color .18s, transform .18s;
+}
+.nav-link:hover {
+  color: var(--color-heading);
+  background: rgb(69 155 255 / .08);
+}
+.nav-link.is-active {
+  color: var(--color-heading);
+  background: linear-gradient(180deg, rgb(44 73 126 / .52), rgb(20 34 59 / .62));
+  border-color: rgb(69 155 255 / .65);
+  box-shadow: var(--shadow-cyan);
+}
+.nav-link.is-active::after {
+  content: "";
+
+===== PAGE 6 =====
+Droidex UI Design System  •  
+6
+  position: absolute;
+  inset-inline: 18%;
+  inset-block-end: -1px;
+  height: 2px;
+  border-radius: var(--radius-pill);
+  background: var(--color-cyan);
+  box-shadow: 0 0 12px var(--color-cyan);
+}
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+}
+6. Mise en page et grilles
+.layout-2-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: var(--space-5);
+  align-items: start;
+}
+.grid {
+  display: grid;
+  gap: var(--space-4);
+}
+.grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+7. Boutons et contrôles
+.button {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  padding-inline: 1rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  color: var(--color-heading);
+  background: var(--color-surface-2);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .16s, filter .16s, box-shadow .16s, border-color .16s;
+}
+.button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+.button:active { transform: translateY(0); }
+.button--primary {
+  color: #00131b;
+  background: linear-gradient(180deg, #49e4ff, #19bddf);
+  border-color: #68ebff;
+  box-shadow: 0 8px 22px rgb(37 215 255 / .22);
+}
+.button--secondary {
+  background: linear-gradient(180deg, #1a2a45, #101a2d);
+}
+.button--danger {
+  background: rgb(255 93 108 / .12);
+  border-color: rgb(255 93 108 / .45);
+  color: #ffabb3;
+
+===== PAGE 7 =====
+Droidex UI Design System  •  
+7
+}
+.button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+}
+.stepper {
+  display: inline-grid;
+  grid-template-columns: 36px minmax(58px, auto) 36px;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.stepper button {
+  height: 38px;
+  border: 0;
+  color: var(--color-text);
+  background: var(--color-surface-2);
+}
+.stepper output {
+  display: grid;
+  place-items: center;
+  min-height: 38px;
+  padding-inline: .75rem;
+  background: var(--color-bg);
+  font-family: "JetBrains Mono", monospace;
+}
+8. Cartes et panneaux
+.panel {
+  position: relative;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / .025), transparent 35%),
+    var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+.panel__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-5) 0;
+}
+.panel__body { padding: var(--space-5); }
+.card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-2);
+  transition: transform .18s, border-color .18s, background .18s;
+}
+.card:hover {
+  transform: translateY(-2px);
+  border-color: rgb(37 215 255 / .42);
+  background: #182944;
+}
+.card__body { padding: var(--space-4); }
+9. Badges, raretés et états
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: .15rem .55rem;
+  border-radius: .35rem;
+
+===== PAGE 8 =====
+Droidex UI Design System  •  
+8
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.badge--typique { color: #c8d1df; background: rgb(143 159 181 / .18); }
+.badge--rare { color: #74b7ff; background: rgb(69 155 255 / .17); }
+.badge--epique { color: #d29cff; background: rgb(154 92 255 / .17); }
+.badge--legendaire { color: #ffc247; background: rgb(255 194 71 / .17); }
+.badge--mythique { color: #ff7c88; background: rgb(255 93 108 / .17); }
+.badge--emblematique { color: #39edff; background: rgb(37 215 255 / .17); }
+.status-dot {
+  width: .55rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 12px currentColor;
+}
+10. Progression et statistiques
+.progress {
+  height: 10px;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: #1e2a42;
+}
+.progress__value {
+  height: 100%;
+  width: var(--value, 0%);
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--color-blue), var(--color-cyan));
+  box-shadow: 0 0 16px rgb(37 215 255 / .34);
+}
+.segmented-progress {
+  display: flex;
+  height: 18px;
+  overflow: hidden;
+  border-radius: .55rem;
+  background: #1e2a42;
+}
+.segmented-progress > span {
+  display: grid;
+  place-items: center;
+  min-width: 2rem;
+  font-size: .68rem;
+  font-weight: 800;
+  color: #06101d;
+}
+11. Alertes
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  padding: .9rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-2);
+}
+.alert--warning {
+  color: #ffe19a;
+  border-color: rgb(255 194 71 / .35);
+  background: rgb(255 138 61 / .09);
+}
+.alert--info {
+  color: #bfeeff;
+  border-color: rgb(37 215 255 / .30);
+  background: rgb(37 215 255 / .07);
+}
+
+===== PAGE 9 =====
+Droidex UI Design System  •  
+9
+.alert--success {
+  color: #a7f6da;
+  border-color: rgb(34 212 154 / .30);
+  background: rgb(34 212 154 / .07);
+}
+12. Composants Droidex
+<article class="droid-card droid-card--rare">
+  <div class="droid-card__visual">
+    <img src="/droids/bdx-explorer.webp" alt="" />
+  </div>
+  <div class="droid-card__content">
+    <div class="droid-card__topline">
+      <h3>BDX Explorer</h3>
+      <span class="badge badge--rare">Rare</span>
+    </div>
+    <p class="droid-card__class">Ouvrier</p>
+    <strong class="metric">24 /s</strong>
+    <div class="droid-card__tiers" aria-label="Variantes disponibles">
+      <span class="tier tier--typique"></span>
+      <span class="tier tier--or"></span>
+      <span class="tier tier--diamant"></span>
+      <span class="tier tier--rainbow"></span>
+    </div>
+  </div>
+</article>
+.droid-card {
+  min-height: 154px;
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+.droid-card__visual {
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: .65rem;
+  background: radial-gradient(circle, rgb(69 155 255 / .12), transparent 70%);
+}
+.droid-card__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.droid-card__topline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem;
+}
+.droid-card h3 {
+  margin: 0;
+  color: var(--color-heading);
+}
+.droid-card__tiers {
+  display: flex;
+  gap: .35rem;
+  margin-top: .75rem;
+}
+.tier {
+  width: 18px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgb(255 255 255 / .1);
+}
+
+===== PAGE 10 =====
+Droidex UI Design System  •  
+10
+13. Composants Renaissances
+<section class="rebirth-hero panel">
+  <div class="rebirth-hero__content">
+    <span class="eyebrow">Progression</span>
+    <h1>Renaissances</h1>
+    <p>Progresse à travers les paliers et débloque de nouvelles possibilités.</p>
+    <div class="rebirth-stats">
+      <div><strong class="metric">0 / 28</strong><span>Paliers complétés</span></div>
+      <div><strong class="metric">0%</strong><span>Progression</span></div>
+      <div><strong class="metric">+0%</strong><span>Crédits par palier</span></div>
+    </div>
+  </div>
+  <img class="rebirth-hero__art" src="/assets/rebirth-banner.webp" alt="" />
+</section>
+.rebirth-hero {
+  min-height: 330px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 46%;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgb(4 13 27 / .98) 0 46%, rgb(4 13 27 / .28)),
+    url("/assets/rebirth-environment.webp") center / cover;
+}
+.rebirth-hero__content {
+  z-index: 1;
+  align-self: center;
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+}
+.rebirth-hero__art {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom right;
+}
+.rebirth-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .75rem;
+  margin-top: 1.5rem;
+}
+.rebirth-stats > div {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: rgb(7 16 31 / .64);
+}
+14. Composants Missions
+<article class="mission-tier panel">
+  <div class="mission-tier__index">3</div>
+  <div class="mission-tier__content">
+    <div class="mission-tier__header">
+      <div>
+        <h3>Diamant</h3>
+        <p>Déblocage : <strong>400k</strong> · Durée : non publiée</p>
+      </div>
+      <button class="icon-button" aria-label="Voir le détail">→</button>
+    </div>
+    <div class="segmented-progress" aria-label="Récompenses">
+      <span style="width:20%;background:#ffc247">20%</span>
+      <span style="width:70%;background:#45bfff">70%</span>
+      <span style="width:10%;background:linear-gradient(90deg,#ff6b6b,#ffd93d,#6bff95,#5fc9ff,#b36bff)">10%</span>
+    </div>
+  </div>
+</article>
+
+===== PAGE 11 =====
+Droidex UI Design System  •  
+11
+.mission-tier {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: var(--space-4);
+  padding: var(--space-4);
+}
+.mission-tier__index {
+  width: 42px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--color-heading);
+  background: var(--color-surface-3);
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 800;
+}
+.mission-tier__header {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-3);
+}
+.icon-button {
+  width: 42px;
+  aspect-ratio: 1;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  background: var(--color-surface-2);
+}
+15. Composants Nova Shop
+<article class="shop-item card">
+  <div class="shop-item__icon" aria-hidden="true">✦</div>
+  <div class="shop-item__content">
+    <div class="shop-item__title">
+      <h3>Critical Chance</h3>
+      <span class="badge badge--legendaire">À la une</span>
+    </div>
+    <p>Chance de coup critique</p>
+    <div class="shop-item__footer">
+      <div class="stepper">
+        <button aria-label="Retirer un niveau">−</button>
+        <output>0 / 5</output>
+        <button aria-label="Ajouter un niveau">+</button>
+      </div>
+      <strong class="price">✦ 60</strong>
+    </div>
+  </div>
+</article>
+.shop-item {
+  min-height: 154px;
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: var(--space-4);
+  padding: var(--space-4);
+}
+.shop-item__icon {
+  width: 64px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 1rem;
+  color: var(--color-cyan);
+  background:
+    radial-gradient(circle, rgb(37 215 255 / .25), transparent 65%),
+    var(--color-bg);
+  font-size: 2rem;
+}
+.shop-item__title,
+.shop-item__footer {
+  display: flex;
+  align-items: center;
+
+===== PAGE 12 =====
+Droidex UI Design System  •  
+12
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.shop-item__footer { margin-top: 1rem; }
+.price {
+  color: #d7b8ff;
+  font-family: "JetBrains Mono", monospace;
+}
+16. Composants Nouveautés
+<section class="timeline">
+  <article class="timeline-entry timeline-entry--update">
+    <div class="timeline-entry__marker"></div>
+    <div class="timeline-entry__card panel">
+      <header>
+        <div>
+          <span class="badge badge--rare">Mise à jour</span>
+          <span class="version">Version 1.22.1</span>
+        </div>
+        <time datetime="2026-07-15">15 juillet 2026</time>
+      </header>
+      <h2>Correctifs Double Daily Quests</h2>
+      <p>Le Double Daily Quests se réinitialise correctement après un Super Rebirth.</p>
+    </div>
+  </article>
+</section>
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-left: 1.5rem;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: .35rem;
+  width: 1px;
+  background: var(--color-border);
+}
+.timeline-entry {
+  position: relative;
+}
+.timeline-entry__marker {
+  position: absolute;
+  inset-inline-start: -1.42rem;
+  inset-block-start: 1.55rem;
+  width: .7rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--color-blue);
+  box-shadow: 0 0 14px rgb(69 155 255 / .75);
+}
+.timeline-entry--event .timeline-entry__marker {
+  background: var(--color-warning);
+  box-shadow: 0 0 14px rgb(255 194 71 / .7);
+}
+.timeline-entry__card { padding: var(--space-5); }
+.timeline-entry__card header {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  color: var(--color-muted);
+}
+
+===== PAGE 13 =====
+Droidex UI Design System  •  
+13
+17. Responsive
+@media (max-width: 1100px) {
+  .topbar {
+    grid-template-columns: auto 1fr;
+  }
+  .main-nav {
+    order: 3;
+    grid-column: 1 / -1;
+    overflow-x: auto;
+    padding-bottom: .5rem;
+  }
+  .topbar {
+    height: auto;
+    min-height: var(--header-height);
+    padding-block: .75rem;
+  }
+  .layout-2-columns {
+    grid-template-columns: 1fr;
+  }
+  .grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+  .page {
+    padding-inline: .85rem;
+  }
+  .topbar-actions .collection-counter,
+  .language-button {
+    display: none;
+  }
+  .grid--2,
+  .grid--3,
+  .grid--4 {
+    grid-template-columns: 1fr;
+  }
+  .rebirth-hero {
+    grid-template-columns: 1fr;
+  }
+  .rebirth-hero__art {
+    max-height: 260px;
+  }
+  .rebirth-stats {
+    grid-template-columns: 1fr;
+  }
+  .shop-item,
+  .droid-card {
+    grid-template-columns: 64px 1fr;
+  }
+}
+18. Accessibilité
+
+Contraste minimum 4,5:1 pour les textes courants.
+
+Ne jamais communiquer une rareté uniquement par la couleur : conserver un libellé textuel.
+
+Ajouter un focus visible sur tous les contrôles clavier.
+
+Les images décoratives utilisent alt="" ; les images porteuses d'information ont un alt descriptif.
+
+Les compteurs et prix utilisent des chiffres tabulaires.
+
+Respecter prefers-reduced-motion pour désactiver les déplacements et halos animés.
+:focus-visible {
+  outline: 3px solid rgb(37 215 255 / .85);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+
+===== PAGE 14 =====
+Droidex UI Design System  •  
+14
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+19. Organisation CSS recommandée
+src/
+├── styles/
+│   ├── reset.css
+│   ├── tokens.css
+│   ├── typography.css
+│   ├── utilities.css
+│   └── responsive.css
+├── components/
+│   ├── Topbar/
+│   │   ├── Topbar.html
+│   │   └── topbar.css
+│   ├── Button/
+│   ├── Panel/
+│   ├── Badge/
+│   ├── Progress/
+│   ├── DroidCard/
+│   ├── MissionTier/
+│   ├── ShopItem/
+│   └── Timeline/
+└── pages/
+    ├── droidex.css
+    ├── rebirth.css
+    ├── missions.css
+    ├── nova-shop.css
+    └── news.css
+Éviter un unique fichier CSS de plusieurs milliers de lignes. Chaque composant doit avoir une responsabilité claire et 
+des variantes explicites.
+20. Exemple de page complète
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Droidex - Renaissances</title>
+  <link rel="stylesheet" href="/styles/app.css" />
+</head>
+<body class="app-shell">
+  <header class="topbar">
+    <a class="brand" href="/">◇ DROIDEX</a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a class="nav-link" href="/droidex">Droidex</a>
+      <a class="nav-link is-active" href="/renaissances" aria-current="page">Renaissances</a>
+      <a class="nav-link" href="/missions">Missions</a>
+      <a class="nav-link" href="/nova-shop">Nova Shop</a>
+      <a class="nav-link" href="/nouveautes">Nouveautés</a>
+      <a class="nav-link" href="/guide">Guide</a>
+    </nav>
+    <div class="topbar-actions">
+      <div class="collection-counter metric">0 / 69</div>
+      <button class="button button--primary">Se connecter</button>
+    </div>
+  </header>
+  <main class="page">
+    <div class="page-container stack">
+      <section class="rebirth-hero panel">
+        <div class="rebirth-hero__content">
+          <span class="eyebrow">Progression</span>
+          <h1>Renaissances</h1>
+          <p>Progresse à travers les paliers et débloque de nouvelles possibilités.</p>
+          <div class="rebirth-stats">
+            <div><strong class="metric">0 / 28</strong><span>Paliers complétés</span></div>
+            <div><strong class="metric">0%</strong><span>Progression</span></div>
+            <div><strong class="metric">+0%</strong><span>Crédits par palier</span></div>
+          </div>
+        </div>
+
+===== PAGE 15 =====
+Droidex UI Design System  •  
+15
+        <img class="rebirth-hero__art" src="/assets/rebirth-banner.webp" alt="" />
+      </section>
+      <div class="alert alert--warning">
+        Les droids doivent être physiquement placés dans la base.
+      </div>
+      <div class="layout-2-columns">
+        <section class="stack">
+          <article class="panel">
+            <header class="panel__header">
+              <div>
+                <p class="eyebrow">Objectif suivant</p>
+                <h2>Prochaine renaissance - 1</h2>
+              </div>
+              <strong class="price">10k crédits requis</strong>
+            </header>
+            <div class="panel__body grid grid--3">
+              <!-- cartes de droids requis -->
+            </div>
+          </article>
+        </section>
+        <aside class="panel">
+          <div class="panel__body">
+            <h2>Super Renaissances</h2>
+            <p>Débloqué au palier 12.</p>
+            <button class="button button--primary">J'ai fait une Super Renaissance</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
+Checklist finale d'intégration
+
+Navigation collante et utilisable au clavier.
+
+Conteneur central limité à 1440 px.
+
+Grille desktop 4 colonnes, tablette 2 colonnes, mobile 1 colonne.
+
+Rayons cohérents : 8 / 12 / 16 / 20 px.
+
+États hover, active, focus, disabled et loading définis.
+
+Pas de texte directement intégré dans les illustrations.
+
+Toutes les valeurs dynamiques utilisent JetBrains Mono.
+
+Les couleurs de rareté sont centralisées dans les tokens.
+
+Les animations respectent prefers-reduced-motion.
+
+Tests à 320 px, 768 px, 1024 px, 1440 px et 1920 px.
+Fin du document - Droidex UI Design System
