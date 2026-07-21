@@ -27,7 +27,8 @@
       "google": "Google",
       "twitch": "Twitch"
     },
-    "noProvider": "No hay ningún proveedor de inicio de sesión configurado en este servidor."
+    "noProvider": "El guardado en línea llegará pronto. Mientras tanto, tu progreso se conserva en este dispositivo.",
+    "comingSoon": "Muy pronto"
   },
   "rarity": {
     "common": "Common",
@@ -74,8 +75,9 @@
     "viewTable": "Tabla",
     "markOwned": "Marcar como conseguido",
     "markMissing": "Marcar como no conseguido",
-    "tierOwned": "Tier obtenido: {tier}",
-    "notOwned": "No conseguido"
+    "notOwned": "No conseguido",
+    "tierClickToRemove": "clic para bajar un nivel",
+    "tierCount": "{count} variante(s) en el Droidex"
   },
   "droid": {
     "income": "Ingresos",

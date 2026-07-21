@@ -27,7 +27,8 @@
       "google": "Google",
       "twitch": "Twitch"
     },
-    "noProvider": "Auf diesem Server ist kein Anmeldeanbieter konfiguriert."
+    "noProvider": "Online-Speicherung kommt bald. Bis dahin bleibt dein Fortschritt auf diesem Gerät.",
+    "comingSoon": "Demnächst"
   },
   "rarity": {
     "common": "Common",
@@ -74,8 +75,9 @@
     "viewTable": "Tabelle",
     "markOwned": "Als besessen markieren",
     "markMissing": "Als nicht besessen markieren",
-    "tierOwned": "Besessene Stufe: {tier}",
-    "notOwned": "Nicht im Besitz"
+    "notOwned": "Nicht im Besitz",
+    "tierClickToRemove": "klicken, um eine Stufe zurück",
+    "tierCount": "{count} Variante(n) im Droidex"
   },
   "droid": {
     "income": "Einkommen",

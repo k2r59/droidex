@@ -27,7 +27,8 @@
       "google": "Google",
       "twitch": "Twitch"
     },
-    "noProvider": "Aucun fournisseur de connexion n'est configuré sur ce serveur."
+    "noProvider": "La sauvegarde en ligne arrive bientôt. En attendant, ta progression est conservée sur cet appareil.",
+    "comingSoon": "Bientôt"
   },
   "rarity": {
     "common": "Typique",
@@ -74,8 +75,9 @@
     "viewTable": "Tableau",
     "markOwned": "Marquer comme possédé",
     "markMissing": "Marquer comme non possédé",
-    "tierOwned": "Palier possédé : {tier}",
-    "notOwned": "Non possédé"
+    "notOwned": "Non possédé",
+    "tierClickToRemove": "cliquer pour redescendre",
+    "tierCount": "{count} variante(s) au Droidex"
   },
   "droid": {
     "income": "Revenu",

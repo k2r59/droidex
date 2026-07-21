@@ -43,8 +43,8 @@ const filtered = computed(() => {
     if (type.value !== 'all' && d.type !== type.value) return false
 
     const entry = store.entry(d.slug)
-    if (ownership.value === 'owned' && entry.tier === null) return false
-    if (ownership.value === 'missing' && entry.tier !== null) return false
+    if (ownership.value === 'owned' && !entry.tiers.length) return false
+    if (ownership.value === 'missing' && entry.tiers.length) return false
     if (ownership.value === 'flawless' && !entry.flawless) return false
     return true
   })

@@ -27,7 +27,8 @@
       "google": "Google",
       "twitch": "Twitch"
     },
-    "noProvider": "No sign-in provider is configured on this server."
+    "noProvider": "Online saving is coming soon. In the meantime, your progress is kept on this device.",
+    "comingSoon": "Coming soon"
   },
   "rarity": {
     "common": "Common",
@@ -74,8 +75,9 @@
     "viewTable": "Table",
     "markOwned": "Mark as owned",
     "markMissing": "Mark as not owned",
-    "tierOwned": "Owned tier: {tier}",
-    "notOwned": "Not owned"
+    "notOwned": "Not owned",
+    "tierClickToRemove": "click to step down",
+    "tierCount": "{count} variant(s) in the Droidex"
   },
   "droid": {
     "income": "Income",

@@ -114,7 +114,7 @@ const candidates = computed<Candidate[]>(() => {
 
     // Possédé à un palier quelconque : le droid de base n'est plus un achat, la suite
     // relève de la montée de palier, qui se paie en chips.
-    if (store.entry(droid.slug).tier) continue
+    if (store.owns(droid.slug)) continue
 
     const base = droid.tiers.DEFAULT
     if (!base?.cost || !base.income) continue

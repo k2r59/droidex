@@ -8,7 +8,7 @@ const { locale } = useI18n()
 const localePath = useLocalePath()
 
 const entry = computed(() => store.entry(props.droid.slug))
-const owned = computed(() => entry.value.tier !== null)
+const owned = computed(() => entry.value.tiers.length > 0)
 
 /** Palier survolé dans le sélecteur — prime sur le palier possédé pour l'illustration. */
 const previewTier = ref<Tier | null>(null)
@@ -17,7 +17,7 @@ const previewTier = ref<Tier | null>(null)
  * Illustration affichée : le palier survolé, sinon le palier possédé, sinon Default.
  * C'est ce qui permet de voir la version Or ou Beskar d'un droid sans le posséder.
  */
-const shownTier = computed<Tier>(() => previewTier.value ?? entry.value.tier ?? 'DEFAULT')
+const shownTier = computed<Tier>(() => previewTier.value ?? store.highestTier(props.droid.slug) ?? 'DEFAULT')
 
 const stats = computed(() => props.droid.tiers[shownTier.value])
 
@@ -43,7 +43,7 @@ const RARITY_RING: Record<string, string> = {
     <span
       v-if="owned"
       class="absolute right-2 top-2 grid size-5 place-items-center rounded-full bg-valid text-xs font-bold text-void"
-      :title="$t('droidex.tierOwned', { tier: $t(`tier.${entry.tier}`) })"
+      :title="$t('droidex.tierCount', { count: entry.tiers.length })"
       aria-hidden="true"
     >✓</span>
 
@@ -76,12 +76,18 @@ const RARITY_RING: Record<string, string> = {
       </div>
     </div>
 
-    <div class="flex items-center justify-between gap-2">
+    <!--
+      Les Iconiques n'ont ni palier ni Parfait : un seul palier existe — le sélecteur se
+      réduisait à un cercle gris sans choix — et ils ne sont pas fabricables, or le Parfait
+      s'obtient à la fabrication (le Guide compte 51 types concernés, Iconiques exclus).
+      La rangée entière disparaît donc pour eux ; la coche de possession suffit.
+    -->
+    <div v-if="!droid.percentIncome" class="flex items-center justify-between gap-2">
       <TierSelector
         :droid="droid"
-        :model-value="entry.tier"
+        :model-value="entry.tiers"
         size="sm"
-        @update:model-value="store.setTier(droid.slug, $event)"
+        @toggle="store.toggleTier(droid.slug, $event)"
         @preview="previewTier = $event"
       />
 
@@ -101,6 +107,21 @@ const RARITY_RING: Record<string, string> = {
           @click="store.toggleFlawless(droid.slug)"
         >✨</button>
       </div>
+    </div>
+
+    <!-- Iconique : la possession se bascule directement, sans passer par un palier. -->
+    <div v-else class="flex items-center justify-between gap-2">
+      <DxToggle
+        :model-value="owned"
+        :label="$t('droid.owned')"
+        @update:model-value="store.setOwned(droid.slug, $event)"
+      />
+
+      <span
+        v-if="droid.unverified"
+        class="cursor-help text-xs text-warn"
+        :title="$t('droid.unverifiedHint')"
+      >⚠</span>
     </div>
   </article>
 </template>

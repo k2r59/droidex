@@ -20,7 +20,36 @@ const TIER_ORDER = (Object.keys(TIER_RANK) as Tier[]).sort((a, b) => TIER_RANK[a
 
 const STORAGE_KEY = 'droidex:progress'
 
-const emptyEntry = (): CollectionEntry => ({ tier: null, flawless: false })
+const emptyEntry = (): CollectionEntry => ({ tiers: [], flawless: false })
+
+/** Forme héritée : un seul palier, le plus haut, les inférieurs étant sous-entendus. */
+type LegacyEntry = { tier?: Tier | null; tiers?: Tier[]; flawless?: boolean }
+
+/**
+ * Convertit une entrée de l'ancien modèle vers le nouveau.
+ *
+ * L'ancien `tier: "BESKAR"` signifiait « Beskar **et tout ce qui est en dessous** ». On
+ * développe donc la liste jusqu'à ce palier, sans quoi la migration ferait perdre à chaque
+ * joueur toutes ses variantes inférieures — et son compteur chuterait sans explication.
+ */
+function migrateEntry(raw: LegacyEntry): CollectionEntry {
+  const flawless = Boolean(raw.flawless)
+
+  if (Array.isArray(raw.tiers)) return { tiers: raw.tiers, flawless }
+  if (!raw.tier) return { tiers: [], flawless }
+
+  const plafond = TIER_RANK[raw.tier]
+  return { tiers: TIER_ORDER.filter((t) => TIER_RANK[t] <= plafond), flawless }
+}
+
+/** Migre une collection entière, quelle que soit la forme d'origine. */
+export function migrateCollection(
+  raw: Record<string, LegacyEntry> | undefined,
+): Record<string, CollectionEntry> {
+  return Object.fromEntries(
+    Object.entries(raw ?? {}).map(([slug, e]) => [slug, migrateEntry(e)]),
+  )
+}
 
 type Snapshot = Pick<
   UserProgress,
@@ -65,7 +94,7 @@ export const useCollectionStore = defineStore('collection', () => {
   }
 
   function apply(s: Partial<Snapshot>) {
-    entries.value = s.collection ?? {}
+    entries.value = migrateCollection(s.collection as never)
     rebirth.value = s.rebirth ?? 0
     superRebirth.value = s.superRebirth ?? 0
     cycle.value = s.cycle ?? 1
@@ -97,22 +126,33 @@ export const useCollectionStore = defineStore('collection', () => {
   }
 
   /**
+   * Meilleure variante consignée, ou `null`. Sert partout où il faut représenter le droid
+   * par une seule image ou un seul chiffre — vignette, revenu, illustration de carte.
+   */
+  function highestTier(slug: string): Tier | null {
+    return entry(slug).tiers
+      .reduce<Tier | null>((h, t) => (!h || TIER_RANK[t] > TIER_RANK[h] ? t : h), null)
+  }
+
+  /** `true` dès qu'au moins une variante du droid figure au journal. */
+  const owns = (slug: string) => entry(slug).tiers.length > 0
+
+  /**
    * Paliers réellement décrits pour un droid. Les Emblématiques n'en ont qu'un ; les
    * autres en ont six, Galactique compris.
    */
   const tiersOf = (d: Droid) => TIER_ORDER.filter((t) => d.tiers[t])
 
   /**
-   * Nombre de variantes possédées pour un droid.
+   * Nombre de variantes consignées pour un droid.
    *
-   * On collectionne une entrée **par palier**, pas par droid : un MOUSE Beskar vaut cinq
-   * variantes — Typique, Or, Diamant, Arc-en-ciel, Beskar — puisqu'un palier supérieur
-   * satisfait toujours les inférieurs, règle déjà portée par `satisfies()`.
+   * Chaque palier est une entrée indépendante du journal : on compte donc les paliers
+   * effectivement cochés, sans rien déduire. On restreint aux paliers que le droid possède
+   * réellement, pour qu'une donnée périmée ne puisse pas gonfler le total.
    */
   function ownedTiersOf(d: Droid): number {
-    const owned = entry(d.slug).tier
-    if (!owned) return 0
-    return tiersOf(d).filter((t) => TIER_RANK[t] <= TIER_RANK[owned]).length
+    const owned = entry(d.slug).tiers
+    return tiersOf(d).filter((t) => owned.includes(t)).length
   }
 
   const ownedCount = computed(() =>
@@ -142,7 +182,7 @@ export const useCollectionStore = defineStore('collection', () => {
     const acc = {} as Record<Tier, number>
     for (const t of data.tiers) acc[t] = 0
     for (const e of Object.values(entries.value)) {
-      if (e.tier) acc[e.tier] = (acc[e.tier] ?? 0) + 1
+      for (const t of e.tiers) acc[t] = (acc[t] ?? 0) + 1
     }
     return acc
   })
@@ -153,21 +193,29 @@ export const useCollectionStore = defineStore('collection', () => {
    */
   const totalIncome = computed(() =>
     droids.value.reduce((sum, d) => {
-      const tier = entry(d.slug).tier
-      if (!tier || d.percentIncome) return sum
-      return sum + (d.tiers[tier]?.income ?? 0)
+      if (d.percentIncome) return sum
+      // Un droid ne rapporte qu'une fois : on retient sa meilleure variante consignée,
+      // celle qu'on placerait effectivement dans la base.
+      const meilleur = highestTier(d.slug)
+      return meilleur ? sum + (d.tiers[meilleur]?.income ?? 0) : sum
     }, 0),
   )
 
-  /** Un palier possédé satisfait toute exigence d'un palier inférieur ou égal. */
+  /**
+   * Une exigence de renaissance porte sur un palier **précis**.
+   *
+   * Le modèle précédent déduisait les paliers inférieurs du plus haut, si bien qu'un
+   * Beskar satisfaisait mécaniquement une exigence d'Or. Les paliers étant désormais
+   * consignés un à un, cette déduction n'a plus lieu d'être : un joueur qui a obtenu le
+   * Beskar sans jamais avoir eu l'Or n'a pas d'Or à placer dans sa base.
+   */
   function satisfies(slug: string, required: Tier): boolean {
-    const owned = entry(slug).tier
-    return owned !== null && TIER_RANK[owned] >= TIER_RANK[required]
+    return entry(slug).tiers.includes(required)
   }
 
   const isEmpty = computed(
     () =>
-      !Object.values(entries.value).some((e) => e.tier !== null) &&
+      !Object.values(entries.value).some((e) => e.tiers.length) &&
       rebirth.value === 0 &&
       superRebirth.value === 0 &&
       novaCrystals.value === 0 &&
@@ -190,7 +238,7 @@ export const useCollectionStore = defineStore('collection', () => {
     try {
       const remote = await ofetch<UserProgress>('/api/progress')
       const remoteEmpty =
-        !Object.values(remote.collection ?? {}).some((e) => e.tier !== null) && !remote.rebirth
+        !Object.values(remote.collection ?? {}).some((e) => e.tiers?.length) && !remote.rebirth
 
       if (remoteEmpty && !isEmpty.value) {
         remoteEnabled.value = true
@@ -227,8 +275,28 @@ export const useCollectionStore = defineStore('collection', () => {
     }
   }
 
-  async function setTier(slug: string, tier: Tier | null) {
-    const next: CollectionEntry = { ...entry(slug), tier }
+  /**
+   * Ajoute ou retire un palier du journal, sans toucher aux autres.
+   *
+   * C'est tout l'objet du nouveau modèle : on peut consigner un Beskar sans avoir jamais
+   * eu l'Or, et retirer l'Or sans perdre le Beskar. La liste est maintenue triée pour que
+   * deux appareils produisent le même document et que la fusion serveur reste stable.
+   */
+  async function toggleTier(slug: string, tier: Tier) {
+    const previous = entry(slug)
+    const tiers = previous.tiers.includes(tier)
+      ? previous.tiers.filter((t) => t !== tier)
+      : [...previous.tiers, tier].sort((a, b) => TIER_RANK[a] - TIER_RANK[b])
+
+    const next: CollectionEntry = { ...previous, tiers }
+    entries.value = { ...entries.value, [slug]: next }
+    writeLocal()
+    await push({ collection: { [slug]: next } })
+  }
+
+  /** Consigne ou retire un droid en bloc — utilisé par les Iconiques, qui n'ont qu'un palier. */
+  async function setOwned(slug: string, owned: boolean, tier: Tier = 'DEFAULT') {
+    const next: CollectionEntry = { ...entry(slug), tiers: owned ? [tier] : [] }
     entries.value = { ...entries.value, [slug]: next }
     writeLocal()
     await push({ collection: { [slug]: next } })
@@ -304,6 +372,8 @@ export const useCollectionStore = defineStore('collection', () => {
     syncing,
     syncError,
     entry,
+    highestTier,
+    owns,
     ownedCount,
     totalCount,
     countByRarity,
@@ -314,7 +384,8 @@ export const useCollectionStore = defineStore('collection', () => {
     loadLocal,
     enableRemote,
     disableRemote,
-    setTier,
+    toggleTier,
+    setOwned,
     toggleFlawless,
     setShopLevel,
     setNovaCrystals,

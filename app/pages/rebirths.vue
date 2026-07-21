@@ -18,9 +18,9 @@ const levels = computed<Level[]>(() => cycles[String(store.cycle)] ?? cycles['1'
 
 const droidBySlug = computed(() => Object.fromEntries(store.droids.map((d) => [d.slug, d])))
 
-/** Une exigence sans palier précisé est satisfaite dès que le droid est possédé. */
+/** Une exigence sans palier précisé est satisfaite dès qu'une variante figure au journal. */
 function met(req: Requirement): boolean {
-  return req.tier ? store.satisfies(req.slug, req.tier) : store.entry(req.slug).tier !== null
+  return req.tier ? store.satisfies(req.slug, req.tier) : store.owns(req.slug)
 }
 
 const nextLevel = computed(() => levels.value.find((l) => l.level === store.rebirth + 1) ?? null)
@@ -50,21 +50,14 @@ const bonusLabel = computed<[string, string]>(() => {
 })
 
 /**
- * Coche ou décoche une exigence depuis la carte.
+ * Coche ou décoche l'exigence depuis la carte.
  *
- * `setTier` du store écrit dans `localStorage` puis pousse au serveur si une session est
- * active : la progression est donc enregistrée sans action supplémentaire.
- *
- * On ne redescend jamais un palier déjà possédé plus haut que l'exigence — décocher un
- * Or alors que le joueur a un Beskar effacerait une information qu'il a saisie ailleurs.
- * Dans ce cas la carte reste cochée, ce qui est la vérité : l'exigence est satisfaite.
+ * `toggleTier` n'agit que sur le palier visé et laisse les autres variantes du journal
+ * intactes — cocher l'Or exigé ne touche pas au Beskar déjà consigné. L'écriture locale
+ * puis la poussée serveur sont faites par le store, sans action supplémentaire ici.
  */
 function toggleRequirement(req: Requirement) {
-  const owned = store.entry(req.slug).tier
-  const required = req.tier ?? 'DEFAULT'
-
-  if (!met(req)) return store.setTier(req.slug, required)
-  if (owned === required) return store.setTier(req.slug, null)
+  store.toggleTier(req.slug, req.tier ?? 'DEFAULT')
 }
 
 function setLevel(value: number) {

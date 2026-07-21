@@ -24,8 +24,15 @@ const MAX_NOVA = 1_000_000
 const MAX_SUPER_REBIRTH = 10_000
 const MAX_SHOP_LEVEL = 50
 
+/**
+ * Une entrée du journal : la liste des paliers obtenus, chacun indépendant.
+ *
+ * `.nullable()` sur l'ancien champ `tier` n'est plus accepté : un client resté sur
+ * l'ancienne version verra sa requête rejetée en 400 plutôt que d'écrire une forme
+ * hétérogène en base. La migration se fait côté client, à l'hydratation.
+ */
 const entrySchema = z.object({
-  tier: z.enum(TIERS).nullable(),
+  tiers: z.array(z.enum(TIERS)).max(TIERS.length),
   flawless: z.boolean(),
 })
 

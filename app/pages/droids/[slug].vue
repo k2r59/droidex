@@ -26,7 +26,7 @@ const tiers = computed(() => Object.keys(droid.value!.tiers) as Tier[])
 
 /** Palier mis en avant dans la grande illustration. */
 const focusTier = ref<Tier>('DEFAULT')
-watchEffect(() => { focusTier.value = entry.value.tier ?? 'DEFAULT' })
+watchEffect(() => { focusTier.value = store.highestTier(slug.value) ?? 'DEFAULT' })
 
 const focusStats = computed(() => droid.value!.tiers[focusTier.value])
 
@@ -83,18 +83,18 @@ const usedInRebirths = computed(() => {
           -->
           <DxToggle
             v-if="droid.percentIncome"
-            :model-value="entry.tier !== null"
+            :model-value="entry.tiers.length > 0"
             :label="$t('droid.owned')"
-            @update:model-value="store.setTier(slug, $event ? 'DEFAULT' : null)"
+            @update:model-value="store.setOwned(slug, $event)"
           />
 
           <div v-else>
             <p class="text-xs text-ink-muted">{{ $t('droidex.filterTier') }}</p>
             <TierSelector
               :droid="droid"
-              :model-value="entry.tier"
-              @update:model-value="store.setTier(slug, $event)"
-              @preview="focusTier = $event ?? entry.tier ?? 'DEFAULT'"
+              :model-value="entry.tiers"
+              @toggle="store.toggleTier(slug, $event)"
+              @preview="focusTier = $event ?? store.highestTier(slug) ?? 'DEFAULT'"
             />
           </div>
 
@@ -119,7 +119,7 @@ const usedInRebirths = computed(() => {
             :title="$t(`tier.${tier}`)"
             @click="focusTier = tier"
           >
-            <DroidImage :droid="droid" :tier="tier" size="sm" :dimmed="!store.satisfies(slug, tier)" />
+            <DroidImage :droid="droid" :tier="tier" size="sm" :dimmed="!entry.tiers.includes(tier)" />
           </button>
         </div>
 
@@ -149,7 +149,7 @@ const usedInRebirths = computed(() => {
             v-for="tier in tiers"
             :key="tier"
             class="border-b border-edge-soft transition-colors last:border-0 hover:bg-panel-raised"
-            :class="entry.tier === tier && 'bg-panel-raised'"
+            :class="entry.tiers.includes(tier) && 'bg-panel-raised'"
           >
             <td class="px-4 py-2">
               <button type="button" class="flex items-center gap-2 hover:underline" @click="focusTier = tier">

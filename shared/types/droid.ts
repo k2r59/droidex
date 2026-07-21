@@ -57,13 +57,20 @@ export interface DroidDataset {
 }
 
 /**
- * Collection d'un utilisateur. On stocke le palier le plus haut possédé par droid
- * plutôt qu'un booléen par palier : un palier supérieur satisfait toujours les
- * exigences inférieures, la règle du jeu se traduit donc directement en modèle.
+ * Collection d'un utilisateur.
+ *
+ * Le Droidex est un **journal de collection**, à la manière d'un bestiaire : il consigne
+ * les variantes qu'on a obtenues, pas l'inventaire du moment. Chaque palier est donc une
+ * entrée indépendante — avoir obtenu un MOUSE Beskar n'implique nullement d'avoir eu son
+ * Or un jour.
+ *
+ * Le modèle précédent ne gardait que le palier le plus haut et déduisait les inférieurs.
+ * C'était plus compact, mais faux : il inventait des variantes jamais obtenues, et rendait
+ * impossible de retirer un palier sans effacer tous ceux du dessous.
  */
 export interface CollectionEntry {
-  /** Palier le plus haut possédé. `null` = droid non possédé. */
-  tier: Tier | null
+  /** Paliers obtenus. Tableau vide = droid absent du Droidex. */
+  tiers: Tier[]
   /** Version Flawless débloquée (permanente, survit au super-rebirth). */
   flawless: boolean
 }
