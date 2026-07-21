@@ -126,7 +126,15 @@
     "cycleHint": "Die Anforderungen ändern sich mit jedem Super Rebirth und wiederholen sich über 4 Zyklen.",
     "undocumented": "Für diesen Zyklus sind keine Anforderungen veröffentlicht.",
     "setLevel": "Meinen Rebirth festlegen",
-    "levelShort": "Level {level}"
+    "levelShort": "Level {level}",
+    "yourProgress": "Dein Fortschritt",
+    "tiersCompleted": "Rebirths abgeschlossen",
+    "setMyTier": "Mein Rebirth festlegen",
+    "activeBonus": "Aktiver Bonus",
+    "creditsPerTier": "Credits pro Rebirth",
+    "allTiers": "Alle Rebirths",
+    "searchTier": "Rebirth suchen…",
+    "tierLocked": "Anforderungen nicht veröffentlicht"
   },
   "superRebirth": {
     "title": "Super Rebirths",
@@ -140,7 +148,10 @@
     "crystalTable": "Kristalle je nach erreichtem Rebirth",
     "atRebirth": "Bei Rebirth {level}",
     "crystals": "{count} Kristall | {count} Kristalle",
-    "doIt": "Ich habe einen Super Rebirth gemacht"
+    "doIt": "Ich habe einen Super Rebirth gemacht",
+    "done": "Super Rebirths abgeschlossen",
+    "crystalsByTier": "Kristalle nach erreichtem Rebirth",
+    "rewardTitle": "Nova Crystals + permanente Boni"
   },
   "shop": {
     "title": "Nova Shop",

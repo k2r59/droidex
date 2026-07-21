@@ -126,7 +126,15 @@
     "cycleHint": "Les exigences changent à chaque Super Rebirth et bouclent sur 4 cycles.",
     "undocumented": "Exigences non publiées pour ce cycle.",
     "setLevel": "Définir mon palier",
-    "levelShort": "Niveau {level}"
+    "levelShort": "Niveau {level}",
+    "yourProgress": "Votre progression",
+    "tiersCompleted": "paliers complétés",
+    "setMyTier": "Définir mon palier",
+    "activeBonus": "Bonus actif",
+    "creditsPerTier": "de crédits par palier",
+    "allTiers": "Tous les paliers",
+    "searchTier": "Rechercher un palier…",
+    "tierLocked": "Exigences non publiées"
   },
   "superRebirth": {
     "title": "Super Renaissances",
@@ -140,7 +148,10 @@
     "crystalTable": "Cristaux gagnés selon le palier atteint",
     "atRebirth": "Au palier {level}",
     "crystals": "{count} cristal | {count} cristaux",
-    "doIt": "J'ai fait une Super Renaissance"
+    "doIt": "J'ai fait une Super Renaissance",
+    "done": "Super Renaissances effectuées",
+    "crystalsByTier": "Cristaux gagnés selon le palier atteint",
+    "rewardTitle": "Nova Crystals + bonus permanents"
   },
   "shop": {
     "title": "Nova Shop",

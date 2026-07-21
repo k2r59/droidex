@@ -16,9 +16,7 @@ type Level = { level: number; credits: number; droids: Requirement[]; documented
 const cycles = rebirthData.cycles as Record<string, Level[]>
 const levels = computed<Level[]>(() => cycles[String(store.cycle)] ?? cycles['1']!)
 
-const droidBySlug = computed(() =>
-  Object.fromEntries(store.droids.map((d) => [d.slug, d])),
-)
+const droidBySlug = computed(() => Object.fromEntries(store.droids.map((d) => [d.slug, d])))
 
 /** Une exigence sans palier précisé est satisfaite dès que le droid est possédé. */
 function met(req: Requirement): boolean {
@@ -26,126 +24,208 @@ function met(req: Requirement): boolean {
 }
 
 const nextLevel = computed(() => levels.value.find((l) => l.level === store.rebirth + 1) ?? null)
-
 const missingCount = computed(() =>
   nextLevel.value ? nextLevel.value.droids.filter((r) => !met(r)).length : 0,
 )
+const isReady = computed(() => Boolean(nextLevel.value?.droids.length) && missingCount.value === 0)
 
-const isReady = computed(
-  () => Boolean(nextLevel.value?.droids.length) && missingCount.value === 0,
-)
-
-const superUnlocked = computed(() => store.rebirth >= rebirthData.superRebirthUnlock.rebirth)
-
-/** Cristaux qui seraient gagnés en faisant un Super Rebirth maintenant. */
-const crystalsNow = computed(
-  () => (rebirthData.novaByRebirth as Record<string, number>)[String(store.rebirth)] ?? null,
-)
-
+const progress = computed(() => Math.round((store.rebirth / rebirthData.maxRebirth) * 100))
 const creditMultiplier = computed(() =>
   Math.round(store.rebirth * rebirthData.creditMultiplierPerLevel * 100),
 )
 
-/** Le palier courant est déplié par défaut, les autres repliés. */
-const expanded = ref<number | null>(null)
-watchEffect(() => { expanded.value = store.rebirth + 1 })
+const superUnlocked = computed(() => store.rebirth >= rebirthData.superRebirthUnlock.rebirth)
+const crystalsNow = computed(
+  () => (rebirthData.novaByRebirth as Record<string, number>)[String(store.rebirth)] ?? null,
+)
+
+/** Périmètre du cercle de progression, pour piloter le trait en dasharray. */
+const RADIUS = 42
+const CIRCUMFERENCE = 2 * Math.PI * RADIUS
+
+function setLevel(value: number) {
+  store.setRebirth(Math.min(rebirthData.maxRebirth, Math.max(0, value)))
+}
+
+const search = ref('')
+
+/**
+ * Un palier est « verrouillé » quand ses exigences ne sont pas publiées — ce qui est le
+ * cas de presque tout le cycle 2 et du cycle 3. Le cadenas dit donc « donnée manquante »
+ * et non « progression insuffisante » : mentir sur ce point induirait le joueur en erreur.
+ */
+const shown = computed(() => {
+  const q = search.value.trim()
+  return levels.value
+    .filter((l) => !q || String(l.level).includes(q) || formatNumber(l.credits, locale.value).includes(q))
+    .map((l) => ({
+      ...l,
+      locked: l.droids.length === 0,
+      done: l.level <= store.rebirth,
+      current: l.level === store.rebirth + 1,
+      superUnlock: l.level === rebirthData.superRebirthUnlock.rebirth,
+    }))
+})
 </script>
 
 <template>
-  <div class="flex flex-col gap-5">
-    <PageBanner name="renaissances">
-      <div class="flex flex-col gap-4">
-      <div class="flex flex-wrap items-end justify-between gap-4">
+  <!-- § 6 de la spécification : contenu principal + rail de 340 px. -->
+  <div class="layout-2-columns">
+    <div class="flex min-w-0 flex-col gap-5">
+      <PageBanner name="renaissances" min-height="17rem">
         <div>
-          <h1 class="text-xl font-bold">{{ $t('rebirth.title') }}</h1>
-          <p class="text-sm text-ink-muted">
-            {{ $t('rebirth.subtitle', { current: store.rebirth, max: rebirthData.maxRebirth }) }}
+          <h1 class="text-4xl lg:text-5xl">{{ $t('rebirth.title') }}</h1>
+          <p class="mt-1 max-w-md text-sm text-ink-muted">{{ $t('rebirth.cycleHint') }}</p>
+        </div>
+
+        <!-- Les trois chiffres qui décident d'une session : où j'en suis, où je me situe, ce que ça rapporte. -->
+        <div class="grid gap-4 rounded-card border border-edge bg-void/55 p-4 backdrop-blur sm:grid-cols-3">
+          <div class="flex items-center gap-4">
+            <div>
+              <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
+                {{ $t('rebirth.yourProgress') }}
+              </p>
+              <p class="font-mono text-2xl">
+                <span class="text-accent">{{ store.rebirth }}</span>
+                <span class="text-ink-muted"> / {{ rebirthData.maxRebirth }}</span>
+              </p>
+              <p class="text-xs text-ink-muted">{{ $t('rebirth.tiersCompleted') }}</p>
+            </div>
+
+            <div class="relative grid size-16 shrink-0 place-items-center">
+              <svg class="absolute inset-0 -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" :r="RADIUS" fill="none" stroke="currentColor" stroke-width="9" class="text-edge" />
+                <circle
+                  cx="50" cy="50" :r="RADIUS" fill="none" stroke="currentColor" stroke-width="9"
+                  stroke-linecap="round" class="text-accent transition-[stroke-dashoffset] duration-700"
+                  :stroke-dasharray="CIRCUMFERENCE" :stroke-dashoffset="CIRCUMFERENCE * (1 - progress / 100)"
+                />
+              </svg>
+              <span class="font-mono text-sm">{{ progress }}%</span>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
+              {{ $t('rebirth.setMyTier') }}
+            </p>
+            <div class="dx-stepper mt-2">
+              <button type="button" :aria-label="`−1 ${$t('rebirth.title')}`" @click="setLevel(store.rebirth - 1)">−</button>
+              <output>{{ store.rebirth }}</output>
+              <button type="button" :aria-label="`+1 ${$t('rebirth.title')}`" @click="setLevel(store.rebirth + 1)">+</button>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
+              {{ $t('rebirth.activeBonus') }}
+            </p>
+            <p class="font-mono text-2xl text-valid">+{{ creditMultiplier }}%</p>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="text-xs text-ink-muted">{{ $t('rebirth.creditsPerTier') }}</span>
+              <span class="dx-badge dx-badge--rare">{{ $t('rebirth.cycle', { number: store.cycle }) }}</span>
+            </div>
+          </div>
+        </div>
+      </PageBanner>
+
+      <p class="dx-alert dx-alert--warning">
+        <DxIcon name="status/warning" :size="20" class="mt-0.5 shrink-0" />
+        <span>{{ $t('rebirth.placementWarning') }}</span>
+      </p>
+
+      <!-- Prochaine renaissance : c'est l'écran qu'on ouvre en jouant. -->
+      <section v-if="nextLevel" class="panel p-5" :class="isReady && 'border-valid/60'">
+        <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+          <h2 class="flex items-center gap-2 text-lg uppercase tracking-wide">
+            <DxIcon name="resources/star" :size="20" class="text-accent" />
+            {{ $t('rebirth.next') }} — {{ nextLevel.level }}
+          </h2>
+          <p class="text-sm">
+            <span class="font-mono text-lg text-accent">{{ formatNumber(nextLevel.credits, locale) }}</span>
+            <span class="ml-1 text-ink-muted">{{ $t('rebirth.creditsRequired') }}</span>
           </p>
         </div>
 
-        <label class="flex flex-col gap-1">
-          <span class="text-xs text-ink-muted">{{ $t('rebirth.setLevel') }}</span>
-          <input
-            :value="store.rebirth"
-            type="number"
-            min="0"
-            :max="rebirthData.maxRebirth"
-            class="w-24 rounded-lg border border-edge bg-panel-raised px-2 py-1.5 text-right font-mono tabular-nums focus:border-iconic focus:outline-none"
-            @change="store.setRebirth(Math.min(rebirthData.maxRebirth, Math.max(0, Number(($event.target as HTMLInputElement).value))))"
-          >
-        </label>
-
-        <div class="text-right">
-          <p class="text-xs text-ink-muted">{{ $t('rebirth.multiplier', { value: creditMultiplier }) }}</p>
-          <p class="text-xs text-ink-muted">{{ $t('rebirth.cycle', { number: store.cycle }) }}</p>
-        </div>
-      </div>
-
-      <div class="h-2 overflow-hidden rounded-full bg-edge">
-        <div
-          class="h-full rounded-full bg-iconic transition-[width] duration-500"
-          :style="{ width: `${(store.rebirth / rebirthData.maxRebirth) * 100}%` }"
-        />
-      </div>
-
-      <p class="rounded-lg bg-panel-raised px-3 py-2 text-sm text-warn">
-        ⚠ {{ $t('rebirth.placementWarning') }}
-      </p>
-      </div>
-    </PageBanner>
-
-    <!-- Prochaine renaissance mise en avant : c'est l'écran qu'on ouvre en jouant. -->
-    <section
-      v-if="nextLevel"
-      class="rounded-card border p-4"
-      :class="isReady ? 'border-valid bg-valid/10' : 'border-edge bg-panel'"
-    >
-      <div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
-        <h2 class="font-semibold">
-          {{ $t('rebirth.next') }} — {{ nextLevel.level }}
-        </h2>
-        <p class="font-mono text-sm tabular-nums">
-          {{ formatNumber(nextLevel.credits, locale) }}
-          <span class="text-xs text-ink-muted">{{ $t('rebirth.creditsRequired') }}</span>
+        <p v-if="!nextLevel.droids.length" class="text-sm text-ink-muted">
+          {{ $t('rebirth.undocumented') }}
         </p>
-      </div>
 
-      <p v-if="!nextLevel.droids.length" class="text-sm text-ink-muted">
-        {{ $t('rebirth.undocumented') }}
-      </p>
+        <template v-else>
+          <ul class="grid gap-3 sm:grid-cols-3">
+            <li
+              v-for="req in nextLevel.droids"
+              :key="`${req.slug}-${req.tier}`"
+              class="dx-droid-card flex items-center gap-3"
+              :class="met(req) && 'border-valid/60'"
+            >
+              <DroidImage
+                v-if="droidBySlug[req.slug]"
+                :droid="droidBySlug[req.slug]!"
+                :tier="req.tier ?? 'DEFAULT'"
+                size="sm"
+                :dimmed="!met(req)"
+              />
+              <div class="min-w-0 flex-1">
+                <p class="truncate font-display font-semibold">{{ droidBySlug[req.slug]?.name ?? req.slug }}</p>
+                <span class="dx-badge dx-badge--common mt-1">
+                  {{ req.tier ? $t(`tier.${req.tier}`) : $t('rebirth.anyTier') }}
+                </span>
+              </div>
+              <DxIcon
+                :name="met(req) ? 'status/success' : 'actions/check'"
+                :size="20"
+                class="shrink-0"
+                :class="met(req) ? 'text-valid' : 'text-ink-muted opacity-40'"
+              />
+            </li>
+          </ul>
 
-      <template v-else>
-        <ul class="grid gap-2 sm:grid-cols-3">
+          <p class="dx-alert mt-4" :class="isReady ? 'dx-alert--success' : 'dx-alert--info'">
+            <DxIcon :name="isReady ? 'status/success' : 'status/info'" :size="20" class="mt-0.5 shrink-0" />
+            <span>{{ isReady ? $t('rebirth.ready') : $t('rebirth.missing', missingCount, { named: { count: missingCount } }) }}</span>
+          </p>
+        </template>
+      </section>
+
+      <!-- Table complète : utile pour planifier plusieurs paliers à l'avance. -->
+      <section class="panel p-5">
+        <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+          <h2 class="text-lg uppercase tracking-wide">{{ $t('rebirth.allTiers') }}</h2>
+          <label class="dx-search w-full sm:w-72">
+            <DxIcon name="actions/search" :size="16" class="text-ink-muted" />
+            <input v-model="search" type="search" :placeholder="$t('rebirth.searchTier')" class="border-0 bg-transparent outline-none">
+            <span />
+          </label>
+        </div>
+
+        <ul class="grid grid-cols-2 gap-2 sm:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8">
           <li
-            v-for="req in nextLevel.droids"
-            :key="`${req.slug}-${req.tier}`"
-            class="flex items-center gap-2 rounded-lg bg-panel-raised p-2"
-            :class="met(req) ? 'ring-1 ring-valid' : ''"
+            v-for="lvl in shown"
+            :key="lvl.level"
+            class="flex flex-col gap-1.5 rounded-md border p-3 transition-colors"
+            :class="[
+              lvl.current ? 'border-accent/70 bg-accent/10' : 'border-edge bg-panel-raised',
+              lvl.locked && 'opacity-45',
+            ]"
           >
-            <DroidImage
-              v-if="droidBySlug[req.slug]"
-              :droid="droidBySlug[req.slug]!"
-              :tier="req.tier ?? 'DEFAULT'"
-              size="sm"
-              :dimmed="!met(req)"
-            />
-            <div class="min-w-0 flex-1">
-              <p class="truncate text-sm font-medium">{{ droidBySlug[req.slug]?.name ?? req.slug }}</p>
-              <p class="text-xs text-ink-muted">
-                {{ req.tier ? $t(`tier.${req.tier}`) : $t('rebirth.anyTier') }}
-              </p>
+            <div class="flex items-center justify-between gap-1">
+              <span
+                class="font-mono text-sm"
+                :class="lvl.done ? 'text-valid' : lvl.current ? 'text-accent' : 'text-ink-muted'"
+              >{{ lvl.level }}</span>
+              <DxIcon v-if="lvl.superUnlock" name="resources/star" :size="14" class="text-warn" :title="$t('superRebirth.title')" />
+              <DxIcon v-else-if="lvl.locked" name="actions/lock" :size="14" class="text-ink-muted" :title="$t('rebirth.tierLocked')" />
             </div>
-            <span :class="met(req) ? 'text-valid' : 'text-ink-muted'">
-              {{ met(req) ? '✓' : '○' }}
-            </span>
+
+            <p class="flex items-center gap-1.5">
+              <DxIcon name="resources/credits" :size="14" class="shrink-0 text-nova" />
+              <span class="font-mono text-sm">{{ formatNumber(lvl.credits, locale) }}</span>
+            </p>
           </li>
         </ul>
-
-        <p class="mt-3 text-sm" :class="isReady ? 'text-valid' : 'text-ink-muted'">
-          {{ isReady ? $t('rebirth.ready') : $t('rebirth.missing', missingCount, { named: { count: missingCount } }) }}
-        </p>
-      </template>
-    </section>
+      </section>
+    </div>
 
     <SuperRebirthPanel
       :unlocked="superUnlocked"
@@ -153,58 +233,5 @@ watchEffect(() => { expanded.value = store.rebirth + 1 })
       :nova-by-rebirth="rebirthData.novaByRebirth"
       :unlock-rebirth="rebirthData.superRebirthUnlock.rebirth"
     />
-
-    <!-- Table complète : utile pour planifier plusieurs paliers à l'avance. -->
-    <section class="flex flex-col gap-2">
-      <h2 class="text-lg font-semibold">{{ $t('rebirth.title') }}</h2>
-
-      <ul class="flex flex-col gap-1">
-        <li
-          v-for="lvl in levels"
-          :key="lvl.level"
-          class="overflow-hidden rounded-lg border border-edge bg-panel"
-        >
-          <button
-            type="button"
-            class="flex w-full items-center gap-3 px-3 py-2 text-left transition-colors hover:bg-panel-raised"
-            :aria-expanded="expanded === lvl.level"
-            @click="expanded = expanded === lvl.level ? null : lvl.level"
-          >
-            <span
-              class="grid size-7 shrink-0 place-items-center rounded-full text-xs font-bold"
-              :class="lvl.level <= store.rebirth ? 'bg-valid text-void' : 'bg-panel-raised text-ink-muted'"
-            >{{ lvl.level }}</span>
-
-            <span class="flex-1 font-mono text-sm tabular-nums">{{ formatNumber(lvl.credits, locale) }}</span>
-
-            <span v-if="!lvl.droids.length" class="text-xs italic text-ink-muted">
-              {{ $t('rebirth.undocumented') }}
-            </span>
-            <span v-else class="flex -space-x-1">
-              <span
-                v-for="req in lvl.droids"
-                :key="`${req.slug}-${req.tier}`"
-                class="size-2 rounded-full"
-                :class="met(req) ? 'bg-valid' : 'bg-edge'"
-              />
-            </span>
-          </button>
-
-          <div v-if="expanded === lvl.level && lvl.droids.length" class="border-t border-edge px-3 py-2">
-            <ul class="flex flex-wrap gap-2">
-              <li
-                v-for="req in lvl.droids"
-                :key="`${req.slug}-${req.tier}`"
-                class="flex items-center gap-1.5 rounded bg-panel-raised px-2 py-1 text-xs"
-              >
-                <span :class="met(req) ? 'text-valid' : 'text-ink-muted'">{{ met(req) ? '✓' : '○' }}</span>
-                {{ droidBySlug[req.slug]?.name ?? req.slug }}
-                <span class="text-ink-muted">{{ req.tier ? $t(`tier.${req.tier}`) : $t('rebirth.anyTier') }}</span>
-              </li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-    </section>
   </div>
 </template>

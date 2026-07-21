@@ -1,4 +1,13 @@
 <script setup lang="ts">
+import background from '~/assets/images/backgrounds/sidebar-right.webp'
+
+/**
+ * Colonne de droite de la page Renaissances.
+ *
+ * Le Super Rebirth mérite son propre rail : c'est une décision irréversible qui efface
+ * la base, et les trois blocs « perdu / conservé / accordé » sont exactement ce que le
+ * joueur relit avant de s'engager.
+ */
 const props = defineProps<{
   unlocked: boolean
   /** Cristaux gagnés si le Super Rebirth est fait au palier actuel, ou `null` si non tabulé. */
@@ -19,73 +28,82 @@ const table = computed(() =>
     .map(([level, crystals]) => ({ level: Number(level), crystals }))
     .sort((a, b) => a.level - b.level),
 )
+
+/** Dans l'ordre où le joueur se pose les questions : que perds-je, que garde-je, que gagne-je. */
+const blocs = [
+  { key: 'loses', icon: 'status/error', tone: 'text-danger', title: 'rebirth.loses', body: 'superRebirth.loses' },
+  { key: 'keeps', icon: 'status/success', tone: 'text-valid', title: 'rebirth.keeps', body: 'superRebirth.keeps' },
+  { key: 'reward', icon: 'resources/nova-crystal', tone: 'text-glow', title: 'superRebirth.rewardTitle', body: 'rebirth.grantsList' },
+] as const
 </script>
 
 <template>
-  <section class="flex flex-col gap-3 rounded-card border border-edge bg-panel p-6">
-    <div class="flex flex-wrap items-baseline justify-between gap-2">
-      <h2 class="font-semibold">{{ $t('superRebirth.title') }}</h2>
-      <span
-        class="rounded px-2 py-0.5 text-xs"
-        :class="unlocked ? 'bg-valid/15 text-valid' : 'bg-panel-raised text-ink-muted'"
-      >
-        {{ unlocked ? $t('superRebirth.unlocked') : $t('superRebirth.locked') }}
-      </span>
-    </div>
-
-    <p class="text-sm text-ink-muted">
-      {{ $t('superRebirth.unlock', { rebirth: unlockRebirth }) }}
-    </p>
-
-    <div class="flex flex-wrap items-center gap-4">
-      <p class="text-sm">
-        {{ $t('superRebirth.count', store.superRebirth, { named: { count: store.superRebirth } }) }}
+  <aside class="flex flex-col gap-4">
+    <section
+      class="panel overflow-hidden bg-cover bg-center p-5"
+      :style="{ backgroundImage: `linear-gradient(rgb(7 16 31 / 0.86), rgb(7 16 31 / 0.94)), url(${background})` }"
+    >
+      <h2 class="text-xl">{{ $t('superRebirth.title') }}</h2>
+      <p class="mt-1 text-sm text-ink-muted">
+        {{ $t('superRebirth.unlock', { rebirth: unlockRebirth }) }}
       </p>
 
-      <p v-if="crystalsNow !== null" class="font-mono text-sm text-iconic">
-        ✦ {{ $t('superRebirth.crystals', crystalsNow, { named: { count: crystalsNow } }) }}
+      <!--
+        Illustration de substitution : l'icône Nova agrandie sur un halo. Elle tient lieu
+        de visuel tant que `droid-sidebar-droite.png` n'est pas déposé.
+      -->
+      <div class="relative my-5 grid place-items-center py-4">
+        <span class="absolute size-40 rounded-full bg-accent/20 blur-3xl" />
+        <DxIcon name="resources/nova-crystal" size="9rem" class="relative text-accent" />
+      </div>
+
+      <p class="flex items-center gap-2 text-sm">
+        <span class="font-mono text-lg text-ink-strong">{{ store.superRebirth }}</span>
+        <span class="text-ink-muted">{{ $t('superRebirth.done') }}</span>
       </p>
 
       <button
         type="button"
-        class="ml-auto rounded-lg bg-iconic px-3 py-1.5 text-sm font-medium text-void transition-opacity hover:opacity-90 disabled:opacity-30"
+        class="dx-button dx-button--primary dx-button--block mt-3"
         :disabled="!unlocked"
         @click="doSuperRebirth"
       >
         {{ $t('superRebirth.doIt') }}
       </button>
-    </div>
 
-    <dl class="grid gap-2 text-sm sm:grid-cols-3">
-      <div class="rounded-lg bg-panel-raised p-2">
-        <dt class="text-xs font-medium text-red-400">{{ $t('rebirth.loses') }}</dt>
-        <dd class="text-xs text-ink-muted">{{ $t('superRebirth.loses') }}</dd>
-      </div>
-      <div class="rounded-lg bg-panel-raised p-2">
-        <dt class="text-xs font-medium text-valid">{{ $t('rebirth.keeps') }}</dt>
-        <dd class="text-xs text-ink-muted">{{ $t('superRebirth.keeps') }}</dd>
-      </div>
-      <div class="rounded-lg bg-panel-raised p-2">
-        <dt class="text-xs font-medium text-iconic">{{ $t('superRebirth.reward') }}</dt>
-        <dd class="text-xs text-ink-muted">{{ $t('rebirth.grantsList') }}</dd>
-      </div>
-    </dl>
+      <p v-if="crystalsNow !== null" class="mt-2 text-center font-mono text-sm text-accent">
+        ✦ {{ $t('superRebirth.crystals', crystalsNow, { named: { count: crystalsNow } }) }}
+      </p>
+    </section>
 
-    <details class="text-sm">
-      <summary class="cursor-pointer text-ink-muted hover:text-ink">
-        {{ $t('superRebirth.crystalTable') }}
+    <section class="panel divide-y divide-edge">
+      <div v-for="bloc in blocs" :key="bloc.key" class="flex gap-3 p-4">
+        <DxIcon :name="bloc.icon" :size="22" class="mt-0.5 shrink-0" :class="bloc.tone" />
+        <div class="min-w-0">
+          <p class="font-semibold" :class="bloc.tone">{{ $t(bloc.title) }}</p>
+          <p class="mt-0.5 text-sm text-ink-muted">{{ $t(bloc.body) }}</p>
+        </div>
+      </div>
+    </section>
+
+    <details class="panel group p-4">
+      <summary class="flex cursor-pointer list-none items-center gap-2 text-sm text-ink-muted hover:text-ink">
+        <DxIcon name="resources/nova-crystal" :size="18" class="text-accent" />
+        <span class="flex-1">{{ $t('superRebirth.crystalsByTier') }}</span>
+        <DxIcon name="actions/chevron-down" :size="16" class="transition-transform group-open:rotate-180" />
       </summary>
-      <ul class="mt-2 grid grid-cols-3 gap-1 sm:grid-cols-6">
+
+      <ul class="mt-3 grid grid-cols-3 gap-1.5">
         <li
           v-for="row in table"
           :key="row.level"
-          class="rounded bg-panel-raised px-2 py-1 text-center text-xs"
-          :class="row.level === store.rebirth && 'ring-1 ring-iconic'"
+          class="rounded-sm bg-panel-raised px-2 py-1 text-center text-xs"
+          :class="row.level === store.rebirth && 'ring-1 ring-accent'"
         >
           <span class="block text-ink-muted">{{ row.level }}</span>
-          <span class="font-mono text-iconic">✦{{ row.crystals }}</span>
+          <span class="font-mono text-accent">✦{{ row.crystals }}</span>
         </li>
       </ul>
     </details>
-  </section>
+  </aside>
 </template>

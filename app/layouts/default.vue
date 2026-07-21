@@ -1,6 +1,14 @@
 <script setup lang="ts">
 const store = useCollectionStore()
 const { user } = useAuthSession()
+const route = useRoute()
+
+/*
+ * La colonne des Emblématiques n'appartient qu'au Droidex. Les autres pages ont leur
+ * propre colonne de droite — les Supers Renaissances, par exemple — et deux rails
+ * simultanés ne tiendraient pas.
+ */
+const showIconicRail = computed(() => /^index(___[a-z]{2})?$/.test(String(route.name ?? '')))
 
 onMounted(() => store.loadLocal())
 
@@ -36,7 +44,7 @@ watch(
       <AppFooter />
     </div>
 
-    <IconicPanel />
+    <IconicPanel v-if="showIconicRail" />
     <MobileNav />
   </div>
 </template>

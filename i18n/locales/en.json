@@ -126,7 +126,15 @@
     "cycleHint": "Requirements change with every Super Rebirth and loop over 4 cycles.",
     "undocumented": "Requirements not published for this cycle.",
     "setLevel": "Set my rebirth",
-    "levelShort": "Level {level}"
+    "levelShort": "Level {level}",
+    "yourProgress": "Your progress",
+    "tiersCompleted": "rebirths completed",
+    "setMyTier": "Set my rebirth",
+    "activeBonus": "Active bonus",
+    "creditsPerTier": "credits per rebirth",
+    "allTiers": "All rebirths",
+    "searchTier": "Search a rebirth…",
+    "tierLocked": "Requirements not published"
   },
   "superRebirth": {
     "title": "Super Rebirths",
@@ -140,7 +148,10 @@
     "crystalTable": "Crystals earned by rebirth reached",
     "atRebirth": "At Rebirth {level}",
     "crystals": "{count} crystal | {count} crystals",
-    "doIt": "I did a Super Rebirth"
+    "doIt": "I did a Super Rebirth",
+    "done": "Super Rebirths completed",
+    "crystalsByTier": "Crystals earned by rebirth reached",
+    "rewardTitle": "Nova Crystals + permanent bonuses"
   },
   "shop": {
     "title": "Nova Shop",
