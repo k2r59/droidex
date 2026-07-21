@@ -83,7 +83,7 @@ onKeyStroke('Escape', () => {
 
 <template>
   <div class="flex flex-col gap-5">
-    <CollectionStats />
+    <HomeHero />
 
     <div class="grid gap-3 lg:grid-cols-2">
       <!-- Horloge live : le serveur rendrait une heure différente de celle du client,
@@ -98,6 +98,8 @@ onKeyStroke('Escape', () => {
       <NextPurchaseAdvisor />
     </div>
 
+    <h2 class="text-sm font-bold uppercase tracking-wide">{{ $t('home.allDroids') }}</h2>
+
     <!-- Barre de filtres collante : sur une grille de 69 cartes, la perdre au scroll
          obligerait à remonter à chaque changement de filtre. -->
     <div class="sticky top-16 z-30 -mx-4 flex flex-col gap-3 bg-void/90 px-4 py-3 backdrop-blur">
@@ -108,22 +110,22 @@ onKeyStroke('Escape', () => {
             v-model="search"
             type="search"
             :placeholder="$t('droidex.search')"
-            class="w-full rounded-lg border border-edge bg-panel py-2 pl-9 pr-3 text-sm placeholder:text-ink-muted focus:border-iconic focus:outline-none"
+            class="w-full rounded-xl border border-edge bg-panel py-2.5 pl-9 pr-3 text-sm placeholder:text-ink-muted focus:border-accent focus:outline-none"
           >
           <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted">⌕</span>
         </div>
 
-        <select v-model="rarity" class="rounded-lg border border-edge bg-panel px-3 py-2 text-sm">
+        <select v-model="rarity" class="rounded-xl border border-edge bg-panel px-3 py-2.5 text-sm">
           <option value="all">{{ $t('droidex.filterRarity') }} — {{ $t('droidex.filterAll') }}</option>
           <option v-for="r in store.dataset.rarities" :key="r" :value="r">{{ $t(`rarity.${r}`) }}</option>
         </select>
 
-        <select v-model="type" class="rounded-lg border border-edge bg-panel px-3 py-2 text-sm">
+        <select v-model="type" class="rounded-xl border border-edge bg-panel px-3 py-2.5 text-sm">
           <option value="all">{{ $t('droidex.filterType') }} — {{ $t('droidex.filterAll') }}</option>
           <option v-for="ty in store.dataset.types" :key="ty" :value="ty">{{ $t(`type.${ty}`) }}</option>
         </select>
 
-        <select v-model="sort" class="rounded-lg border border-edge bg-panel px-3 py-2 text-sm">
+        <select v-model="sort" class="rounded-xl border border-edge bg-panel px-3 py-2.5 text-sm">
           <option v-for="s in (['rarity', 'income', 'cost', 'name'] as const)" :key="s" :value="s">
             {{ $t('droidex.sortBy') }} : {{ $t(`droidex.sort.${s}`) }}
           </option>
@@ -136,7 +138,7 @@ onKeyStroke('Escape', () => {
           :key="o"
           type="button"
           class="rounded-full px-3 py-1 text-xs font-medium transition-colors"
-          :class="ownership === o ? 'bg-iconic text-void' : 'bg-panel text-ink-muted hover:text-ink'"
+          :class="ownership === o ? 'btn-primary' : 'bg-panel text-ink-muted hover:text-ink'"
           @click="ownership = o"
         >
           {{ $t(o === 'all' ? 'droidex.filterAll' : `droidex.filter${o.charAt(0).toUpperCase()}${o.slice(1)}`) }}

@@ -11,7 +11,8 @@
     "updates": "Neuigkeiten",
     "guide": "Guide",
     "profile": "Profil",
-    "missions": "Missionen"
+    "missions": "Missionen",
+    "collection": "Sammlung"
   },
   "auth": {
     "signIn": "Anmelden",
@@ -124,7 +125,8 @@
     "cycle": "Zyklus {number}",
     "cycleHint": "Die Anforderungen ändern sich mit jedem Super Rebirth und wiederholen sich über 4 Zyklen.",
     "undocumented": "Für diesen Zyklus sind keine Anforderungen veröffentlicht.",
-    "setLevel": "Meinen Rebirth festlegen"
+    "setLevel": "Meinen Rebirth festlegen",
+    "levelShort": "Level {level}"
   },
   "superRebirth": {
     "title": "Super Rebirths",
@@ -206,7 +208,8 @@
     "byRarity": "Nach Seltenheit",
     "completion": "{percent} % abgeschlossen",
     "keeperScore": "Sammler-Score",
-    "byTier": "Nach Stufe"
+    "byTier": "Nach Stufe",
+    "income": "Einkommen"
   },
   "common": {
     "loading": "Wird geladen…",
@@ -220,7 +223,9 @@
     "syncFailed": "Speichern nicht möglich — deine Änderungen wurden nicht gesichert.",
     "language": "Sprache",
     "install": "App installieren",
-    "offline": "Offline — die angezeigten Daten können veraltet sein."
+    "offline": "Offline — die angezeigten Daten können veraltet sein.",
+    "discover": "Entdecken",
+    "joinCommunity": "Tritt der Community bei"
   },
   "disclaimer": {
     "title": "Über die Daten",
@@ -275,5 +280,16 @@
     },
     "measured": "Gemessene Zeiten bei der {tier}-Mission",
     "missionTier": "Stufe"
+  },
+  "home": {
+    "subtitle": "Deine Droiden-Sammlung",
+    "tagline": "Sammle, verbessere und steigere dein Einkommen mit jedem einzigartigen Droiden.",
+    "allDroids": "Alle Droiden"
+  },
+  "iconic": {
+    "title": "Iconic-Droiden",
+    "subtitle": "Starke Einkommens-Multiplikatoren",
+    "ofTotalIncome": "des Gesamteinkommens",
+    "seeAll": "Alle Iconic-Droiden ansehen"
   }
 }

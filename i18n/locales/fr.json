@@ -11,7 +11,8 @@
     "updates": "Nouveautés",
     "guide": "Guide",
     "profile": "Profil",
-    "missions": "Missions"
+    "missions": "Missions",
+    "collection": "Collection"
   },
   "auth": {
     "signIn": "Se connecter",
@@ -124,7 +125,8 @@
     "cycle": "Cycle {number}",
     "cycleHint": "Les exigences changent à chaque Super Rebirth et bouclent sur 4 cycles.",
     "undocumented": "Exigences non publiées pour ce cycle.",
-    "setLevel": "Définir mon palier"
+    "setLevel": "Définir mon palier",
+    "levelShort": "Niveau {level}"
   },
   "superRebirth": {
     "title": "Super Renaissances",
@@ -206,7 +208,8 @@
     "byRarity": "Par rareté",
     "completion": "{percent} % complété",
     "keeperScore": "Score de collectionneur",
-    "byTier": "Par palier"
+    "byTier": "Par palier",
+    "income": "revenus"
   },
   "common": {
     "loading": "Chargement…",
@@ -220,7 +223,9 @@
     "syncFailed": "Enregistrement impossible — tes changements n'ont pas été sauvegardés.",
     "language": "Langue",
     "install": "Installer l'application",
-    "offline": "Hors ligne — les données affichées peuvent être périmées."
+    "offline": "Hors ligne — les données affichées peuvent être périmées.",
+    "discover": "Découvrir",
+    "joinCommunity": "Rejoins la communauté"
   },
   "disclaimer": {
     "title": "À propos des données",
@@ -275,5 +280,16 @@
     },
     "measured": "Temps relevés sur la mission {tier}",
     "missionTier": "Palier"
+  },
+  "home": {
+    "subtitle": "Ta collection de droïdes",
+    "tagline": "Collectionne, améliore et augmente tes revenus avec chaque droïde unique.",
+    "allDroids": "Tous les droïdes"
+  },
+  "iconic": {
+    "title": "Droïdes emblématiques",
+    "subtitle": "Multiplicateurs de revenus puissants",
+    "ofTotalIncome": "du revenu total",
+    "seeAll": "Voir tous les emblématiques"
   }
 }

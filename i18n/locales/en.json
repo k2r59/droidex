@@ -11,7 +11,8 @@
     "updates": "What's new",
     "guide": "Guide",
     "profile": "Profile",
-    "missions": "Missions"
+    "missions": "Missions",
+    "collection": "Collection"
   },
   "auth": {
     "signIn": "Sign in",
@@ -124,7 +125,8 @@
     "cycle": "Cycle {number}",
     "cycleHint": "Requirements change with every Super Rebirth and loop over 4 cycles.",
     "undocumented": "Requirements not published for this cycle.",
-    "setLevel": "Set my rebirth"
+    "setLevel": "Set my rebirth",
+    "levelShort": "Level {level}"
   },
   "superRebirth": {
     "title": "Super Rebirths",
@@ -206,7 +208,8 @@
     "byRarity": "By rarity",
     "completion": "{percent}% complete",
     "keeperScore": "Collector score",
-    "byTier": "By tier"
+    "byTier": "By tier",
+    "income": "income"
   },
   "common": {
     "loading": "Loading…",
@@ -220,7 +223,9 @@
     "syncFailed": "Couldn't save — your changes were not stored.",
     "language": "Language",
     "install": "Install the app",
-    "offline": "Offline — the data shown may be out of date."
+    "offline": "Offline — the data shown may be out of date.",
+    "discover": "Discover",
+    "joinCommunity": "Join the community"
   },
   "disclaimer": {
     "title": "About the data",
@@ -275,5 +280,16 @@
     },
     "measured": "Measured times on the {tier} mission",
     "missionTier": "Tier"
+  },
+  "home": {
+    "subtitle": "Your droid collection",
+    "tagline": "Collect, upgrade and grow your income with every unique droid.",
+    "allDroids": "All droids"
+  },
+  "iconic": {
+    "title": "Iconic droids",
+    "subtitle": "Powerful income multipliers",
+    "ofTotalIncome": "of total income",
+    "seeAll": "See all iconic droids"
   }
 }

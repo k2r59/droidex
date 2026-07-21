@@ -11,7 +11,8 @@
     "updates": "Novedades",
     "guide": "Guía",
     "profile": "Perfil",
-    "missions": "Misiones"
+    "missions": "Misiones",
+    "collection": "Colección"
   },
   "auth": {
     "signIn": "Iniciar sesión",
@@ -124,7 +125,8 @@
     "cycle": "Ciclo {number}",
     "cycleHint": "Los requisitos cambian con cada Super Rebirth y se repiten en 4 ciclos.",
     "undocumented": "Requisitos sin publicar para este ciclo.",
-    "setLevel": "Definir mi Rebirth"
+    "setLevel": "Definir mi Rebirth",
+    "levelShort": "Nivel {level}"
   },
   "superRebirth": {
     "title": "Super Rebirths",
@@ -206,7 +208,8 @@
     "byRarity": "Por rareza",
     "completion": "{percent} % completado",
     "keeperScore": "Puntuación de coleccionista",
-    "byTier": "Por tier"
+    "byTier": "Por tier",
+    "income": "ingresos"
   },
   "common": {
     "loading": "Cargando…",
@@ -220,7 +223,9 @@
     "syncFailed": "No se ha podido guardar: tus cambios no se han registrado.",
     "language": "Idioma",
     "install": "Instalar la aplicación",
-    "offline": "Sin conexión: los datos mostrados pueden estar desactualizados."
+    "offline": "Sin conexión: los datos mostrados pueden estar desactualizados.",
+    "discover": "Descubrir",
+    "joinCommunity": "Únete a la comunidad"
   },
   "disclaimer": {
     "title": "Sobre los datos",
@@ -275,5 +280,16 @@
     },
     "measured": "Tiempos medidos en la misión {tier}",
     "missionTier": "Tier"
+  },
+  "home": {
+    "subtitle": "Tu colección de droides",
+    "tagline": "Colecciona, mejora y aumenta tus ingresos con cada droide único.",
+    "allDroids": "Todos los droides"
+  },
+  "iconic": {
+    "title": "Droides Iconic",
+    "subtitle": "Multiplicadores de ingresos potentes",
+    "ofTotalIncome": "de los ingresos totales",
+    "seeAll": "Ver todos los Iconic"
   }
 }
