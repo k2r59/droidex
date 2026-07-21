@@ -34,8 +34,15 @@ const completion = computed(() =>
   <header class="sticky top-0 z-50 border-b border-edge bg-void/85 backdrop-blur">
     <div class="flex h-[68px] items-center gap-3 px-4">
       <!-- Le logo n'apparaît ici que si la colonne de gauche est masquée. -->
-      <NuxtLink :to="localePath('/')" class="flex items-center gap-2 font-bold tracking-tight xl:hidden">
-        <img :src="mark" alt="" class="size-8">
+      <NuxtLink
+        :to="localePath('/')"
+        class="flex items-center gap-2 font-bold tracking-tight xl:hidden"
+      >
+        <img
+          :src="mark"
+          alt=""
+          class="size-8"
+        >
         <span class="hidden sm:inline">DROIDEX</span>
       </NuxtLink>
 
@@ -49,8 +56,14 @@ const completion = computed(() =>
         >
           <span class="nav-link__pill">
             <!-- Petit médaillon cyan, présent seulement sur l'onglet actif. -->
-            <span v-if="isActive(link.to)" class="nav-link__badge">
-              <DxIcon name="brands/droidex-mark" :size="14" />
+            <span
+              v-if="isActive(link.to)"
+              class="nav-link__badge"
+            >
+              <DxIcon
+                name="brands/droidex-mark"
+                :size="14"
+              />
             </span>
             {{ $t(`nav.${link.key}`) }}
           </span>
@@ -64,7 +77,11 @@ const completion = computed(() =>
           class="hidden items-center gap-2.5 rounded-nav border border-edge bg-panel px-3.5 py-2.5 transition-colors hover:border-nova/50 sm:flex"
           :title="$t('shop.balance')"
         >
-          <DxIcon name="resources/nova-crystal" :size="18" class="text-nova" />
+          <DxIcon
+            name="resources/nova-crystal"
+            :size="18"
+            class="text-nova"
+          />
           <span class="font-mono tabular-nums">{{ formatExact(store.novaCrystals, locale) }}</span>
         </NuxtLink>
 
@@ -74,7 +91,10 @@ const completion = computed(() =>
         >
           <span class="font-mono tabular-nums">
             <span v-if="store.hydrated">{{ store.ownedCount }}</span>
-            <span v-else class="inline-block w-6 animate-pulse rounded bg-panel-high align-middle">&nbsp;</span>
+            <span
+              v-else
+              class="inline-block w-6 animate-pulse rounded bg-panel-high align-middle"
+            >&nbsp;</span>
             / {{ store.totalCount }}
           </span>
           <!-- Jauge du design system : 10 px de haut, dégradé bleu vers cyan, halo léger. -->
@@ -89,7 +109,10 @@ const completion = computed(() =>
           </span>
         </div>
 
-        <span v-if="store.syncing" class="text-xs text-ink-muted">{{ $t('common.syncing') }}</span>
+        <span
+          v-if="store.syncing"
+          class="text-xs text-ink-muted"
+        >{{ $t('common.syncing') }}</span>
 
         <LocaleSwitcher />
         <AuthMenu />

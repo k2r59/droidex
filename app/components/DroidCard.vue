@@ -48,7 +48,12 @@ const RARITY_RING: Record<string, string> = {
     >✓</span>
 
     <div class="flex items-start gap-3">
-      <DroidImage :droid="droid" :tier="shownTier" size="md" :dimmed="!owned && !previewTier" />
+      <DroidImage
+        :droid="droid"
+        :tier="shownTier"
+        size="md"
+        :dimmed="!owned && !previewTier"
+      />
 
       <div class="min-w-0 flex-1">
         <NuxtLink
@@ -71,7 +76,10 @@ const RARITY_RING: Record<string, string> = {
             {{ formatIncome(stats.income, locale) }}
             <span class="ml-1 text-xs text-ink-muted">{{ $t(`tier.${shownTier}`) }}</span>
           </template>
-          <span v-else class="text-ink-muted">{{ $t('droid.noData') }}</span>
+          <span
+            v-else
+            class="text-ink-muted"
+          >{{ $t('droid.noData') }}</span>
         </p>
       </div>
     </div>
@@ -82,7 +90,10 @@ const RARITY_RING: Record<string, string> = {
       s'obtient à la fabrication (le Guide compte 51 types concernés, Iconiques exclus).
       La rangée entière disparaît donc pour eux ; la coche de possession suffit.
     -->
-    <div v-if="!droid.percentIncome" class="flex items-center justify-between gap-2">
+    <div
+      v-if="!droid.percentIncome"
+      class="flex items-center justify-between gap-2"
+    >
       <TierSelector
         :droid="droid"
         :model-value="entry.tiers"
@@ -105,12 +116,17 @@ const RARITY_RING: Record<string, string> = {
           :title="$t('droid.flawless')"
           :aria-pressed="entry.flawless"
           @click="store.toggleFlawless(droid.slug)"
-        >✨</button>
+        >
+          ✨
+        </button>
       </div>
     </div>
 
     <!-- Iconique : la possession se bascule directement, sans passer par un palier. -->
-    <div v-else class="flex items-center justify-between gap-2">
+    <div
+      v-else
+      class="flex items-center justify-between gap-2"
+    >
       <DxToggle
         :model-value="owned"
         :label="$t('droid.owned')"

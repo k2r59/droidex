@@ -31,8 +31,14 @@ async function logout() {
 </script>
 
 <template>
-  <div ref="root" class="relative">
-    <div v-if="isPending" class="size-8 animate-pulse rounded-full bg-panel" />
+  <div
+    ref="root"
+    class="relative"
+  >
+    <div
+      v-if="isPending"
+      class="size-8 animate-pulse rounded-full bg-panel"
+    />
 
     <button
       v-else-if="user"
@@ -66,8 +72,12 @@ async function logout() {
     >
       <template v-if="user">
         <div class="border-b border-edge px-3 py-2">
-          <p class="truncate text-sm font-medium">{{ user.name }}</p>
-          <p class="truncate text-xs text-ink-muted">{{ user.email }}</p>
+          <p class="truncate text-sm font-medium">
+            {{ user.name }}
+          </p>
+          <p class="truncate text-xs text-ink-muted">
+            {{ user.email }}
+          </p>
         </div>
         <NuxtLink
           :to="localePath('/profile')"
@@ -89,7 +99,10 @@ async function logout() {
         <p class="border-b border-edge px-3 py-2 text-xs text-ink-muted">
           {{ providers.length ? $t('auth.signInBenefit') : $t('auth.noProvider') }}
         </p>
-        <div v-if="providers.length" class="flex flex-col gap-1.5 p-2">
+        <div
+          v-if="providers.length"
+          class="flex flex-col gap-1.5 p-2"
+        >
           <button
             v-for="p in providers"
             :key="p"

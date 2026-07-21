@@ -251,7 +251,8 @@ for (const extra of EXTRA) {
       tiers[tier].income = baseIncome * 2 ** i
       if (i === 0) tiers[tier].cost = baseCost
     })
-  } else {
+  }
+  else {
     tiers.DEFAULT = blank('DEFAULT')
   }
 
@@ -273,8 +274,8 @@ for (const extra of EXTRA) {
 const RARITY_ORDER = ['common', 'rare', 'epic', 'legendary', 'mythic', 'iconic']
 droids.sort(
   (a, b) =>
-    RARITY_ORDER.indexOf(a.rarity) - RARITY_ORDER.indexOf(b.rarity) ||
-    (a.tiers.DEFAULT?.income ?? 0) - (b.tiers.DEFAULT?.income ?? 0),
+    RARITY_ORDER.indexOf(a.rarity) - RARITY_ORDER.indexOf(b.rarity)
+    || (a.tiers.DEFAULT?.income ?? 0) - (b.tiers.DEFAULT?.income ?? 0),
 )
 
 const out = {

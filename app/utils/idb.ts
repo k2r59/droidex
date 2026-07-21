@@ -49,7 +49,8 @@ export async function idbGet<T>(key: string): Promise<T | undefined> {
   if (!idbAvailable()) return undefined
   try {
     return await tx<T>('readonly', (s) => s.get(key) as IDBRequest<T>)
-  } catch {
+  }
+  catch {
     return undefined
   }
 }
@@ -60,7 +61,8 @@ export async function idbSet(key: string, value: unknown): Promise<void> {
     // `structuredClone` valide en amont que la valeur est stockable : sans ça, un objet
     // réactif de Vue ferait échouer la transaction avec une erreur peu parlante.
     await tx('readwrite', (s) => s.put(structuredClone(value), key))
-  } catch {
+  }
+  catch {
     // Stockage indisponible ou quota atteint : la session reste utilisable, sans persistance.
   }
 }
@@ -69,7 +71,8 @@ export async function idbDel(key: string): Promise<void> {
   if (!idbAvailable()) return
   try {
     await tx('readwrite', (s) => s.delete(key))
-  } catch {
+  }
+  catch {
     // Idem : un échec d'effacement ne doit pas interrompre l'utilisateur.
   }
 }

@@ -22,3 +22,7 @@ logs
 .env
 .env.*
 !.env.example
+
+# Sortie de build Netlify — elle sérialise le runtimeConfig résolu, donc les secrets
+# du .env local au moment du build. Ne doit jamais être versionnée.
+.netlify

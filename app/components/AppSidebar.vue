@@ -33,21 +33,38 @@ const socials = [
 
 <template>
   <aside class="sidebar-shell sticky top-0 hidden h-dvh w-60 shrink-0 flex-col gap-5 overflow-hidden border-r border-edge px-4 py-5 xl:flex">
-    <NuxtLink :to="localePath('/')" class="flex items-center gap-2.5">
-      <DxIcon name="brands/droidex-mark" :size="30" class="text-accent" />
+    <NuxtLink
+      :to="localePath('/')"
+      class="flex items-center gap-2.5"
+    >
+      <DxIcon
+        name="brands/droidex-mark"
+        :size="30"
+        class="text-accent"
+      />
       <span class="text-xl font-bold tracking-[0.06em]">DROIDEX</span>
     </NuxtLink>
 
     <!-- Filet de séparation, terminé par une flèche : il marque le passage de
          l'identité à la navigation. -->
-    <span class="-mt-2 flex items-center gap-1" aria-hidden="true">
+    <span
+      class="-mt-2 flex items-center gap-1"
+      aria-hidden="true"
+    >
       <span class="h-px flex-1 bg-gradient-to-r from-transparent via-edge to-edge-strong" />
-      <DxIcon name="actions/arrow-right" :size="11" class="text-edge-strong" />
+      <DxIcon
+        name="actions/arrow-right"
+        :size="11"
+        class="text-edge-strong"
+      />
     </span>
 
     <div class="sidebar-nav flex flex-col gap-3">
       <p class="flex items-center gap-1.5 px-2 pb-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink-muted">
-        <DxIcon name="actions/plus" :size="9" />
+        <DxIcon
+          name="actions/plus"
+          :size="9"
+        />
         {{ $t('nav.collection') }}
       </p>
 
@@ -58,11 +75,20 @@ const socials = [
         class="side-nav-item"
         active-class="nav-active"
       >
-        <DxIcon :name="link.icon" :size="20" />
+        <DxIcon
+          :name="link.icon"
+          :size="20"
+        />
         <span class="flex-1">{{ $t(`nav.${link.key}`) }}</span>
-        <span v-if="link.key === 'droidex'" class="side-nav-item__count font-mono text-xs tabular-nums">
+        <span
+          v-if="link.key === 'droidex'"
+          class="side-nav-item__count font-mono text-xs tabular-nums"
+        >
           <span v-if="store.hydrated">{{ store.ownedCount }}</span>
-          <span v-else class="inline-block w-5 animate-pulse rounded bg-panel-high align-middle">&nbsp;</span>
+          <span
+            v-else
+            class="inline-block w-5 animate-pulse rounded bg-panel-high align-middle"
+          >&nbsp;</span>
           / {{ store.totalCount }}
         </span>
       </NuxtLink>
@@ -94,7 +120,10 @@ const socials = [
       </span>
 
       <!-- Espace laissé à la planète : c'est lui qui absorbe la hauteur variable. -->
-      <span class="sidebar-planet flex-1" aria-hidden="true" />
+      <span
+        class="sidebar-planet flex-1"
+        aria-hidden="true"
+      />
 
       <span class="relative text-[0.8rem] font-semibold text-accent">
         +{{ nextBonus }} % {{ $t('stats.income') }}
@@ -106,7 +135,9 @@ const socials = [
     </NuxtLink>
 
     <div class="sidebar-social flex shrink-0 flex-col items-center gap-2">
-      <p class="text-xs text-ink-muted">{{ $t('common.joinCommunity') }}</p>
+      <p class="text-xs text-ink-muted">
+        {{ $t('common.joinCommunity') }}
+      </p>
       <div class="flex gap-2">
         <a
           v-for="s in socials"
@@ -119,7 +150,10 @@ const socials = [
           :title="s.label"
           :aria-label="s.label"
         >
-          <DxIcon :name="s.icon" :size="16" />
+          <DxIcon
+            :name="s.icon"
+            :size="16"
+          />
         </a>
       </div>
     </div>

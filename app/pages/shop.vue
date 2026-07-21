@@ -18,7 +18,7 @@ type RawItem = {
   confidence: string
   droidSlug?: string
 }
-type RawSection = { id: string; items: RawItem[] }
+type RawSection = { id: string, items: RawItem[] }
 
 /**
  * Les libellés d'article vivent maintenant dans `app/data/i18n/*.json`. On calcule une
@@ -26,7 +26,7 @@ type RawSection = { id: string; items: RawItem[] }
  * l'attache à l'objet : les gabarits n'ont plus à jongler avec deux index imbriqués.
  */
 type Item = RawItem & { path: string }
-type Section = { id: string; items: Item[] }
+type Section = { id: string, items: Item[] }
 
 const sections: Section[] = (shopData.sections as RawSection[]).map((section, s) => ({
   ...section,
@@ -87,10 +87,10 @@ const ICONS: Record<string, string> = {
 const iconOf = (id: string) => ICONS[id] ?? 'resources/nova-crystal'
 
 const CONFIDENCE_CLASS: Record<string, string> = {
-  confirmed: 'text-valid',
-  conflicting: 'text-warn',
+  'confirmed': 'text-valid',
+  'conflicting': 'text-warn',
   'single-source': 'text-warn',
-  unknown: 'text-ink-muted',
+  'unknown': 'text-ink-muted',
 }
 
 const recommended = computed(() =>
@@ -115,15 +115,25 @@ const notes = [
 <template>
   <div class="layout-2-columns">
     <div class="flex min-w-0 flex-col gap-5">
-      <PageBanner name="nova-shop" min-height="14rem">
+      <PageBanner
+        name="nova-shop"
+        min-height="14rem"
+      >
         <div class="flex flex-wrap items-end justify-between gap-6">
           <div class="flex items-start gap-3">
             <span class="grid size-11 shrink-0 place-items-center rounded-md bg-nova/15 text-nova">
-              <DxIcon name="resources/nova-crystal" :size="24" />
+              <DxIcon
+                name="resources/nova-crystal"
+                :size="24"
+              />
             </span>
             <div>
-              <h1 class="text-4xl lg:text-5xl">{{ $t('shop.title') }}</h1>
-              <p class="text-sm text-ink-muted">{{ $t('shop.subtitle') }}</p>
+              <h1 class="text-4xl lg:text-5xl">
+                {{ $t('shop.title') }}
+              </h1>
+              <p class="text-sm text-ink-muted">
+                {{ $t('shop.subtitle') }}
+              </p>
             </div>
           </div>
 
@@ -132,7 +142,11 @@ const notes = [
               {{ $t('shop.balance') }}
             </span>
             <span class="dx-search">
-              <DxIcon name="resources/nova-crystal" :size="18" class="text-nova" />
+              <DxIcon
+                name="resources/nova-crystal"
+                :size="18"
+                class="text-nova"
+              />
               <input
                 v-model.number="balanceInput"
                 type="number"
@@ -151,7 +165,11 @@ const notes = [
               </dt>
               <dd class="flex items-center gap-1.5 font-mono text-2xl">
                 {{ formatExact(totalRemaining, locale) }}
-                <DxIcon name="resources/nova-crystal" :size="18" class="text-nova" />
+                <DxIcon
+                  name="resources/nova-crystal"
+                  :size="18"
+                  class="text-nova"
+                />
               </dd>
             </div>
             <div>
@@ -160,7 +178,11 @@ const notes = [
               </dt>
               <dd class="flex items-center gap-1.5 font-mono text-2xl text-ink-muted">
                 {{ formatExact(grandTotal, locale) }}
-                <DxIcon name="resources/nova-crystal" :size="18" class="text-nova" />
+                <DxIcon
+                  name="resources/nova-crystal"
+                  :size="18"
+                  class="text-nova"
+                />
               </dd>
             </div>
           </dl>
@@ -168,7 +190,11 @@ const notes = [
       </PageBanner>
 
       <p class="dx-alert dx-alert--warning border-0 text-[0.8125rem]">
-        <DxIcon name="status/warning" :size="17" class="mt-px shrink-0" />
+        <DxIcon
+          name="status/warning"
+          :size="17"
+          class="mt-px shrink-0"
+        />
         <span>{{ $t('shop.incomplete') }}</span>
       </p>
 
@@ -178,23 +204,49 @@ const notes = [
           {{ $t('shop.recommendedOrder') }}
         </h2>
         <ol class="flex flex-wrap items-center gap-2 text-sm">
-          <li v-for="(item, i) in recommended" :key="item.id" class="flex items-center gap-2">
+          <li
+            v-for="(item, i) in recommended"
+            :key="item.id"
+            class="flex items-center gap-2"
+          >
             <span class="flex items-center gap-2 rounded-md border border-edge-soft bg-panel-raised px-2.5 py-1.5">
-              <DxIcon :name="iconOf(item.id)" :size="16" class="text-accent" />
+              <DxIcon
+                :name="iconOf(item.id)"
+                :size="16"
+                class="text-accent"
+              />
               {{ itemName(item) }}
             </span>
-            <DxIcon v-if="i < recommended.length - 1" name="actions/arrow-right" :size="14" class="text-ink-muted" />
+            <DxIcon
+              v-if="i < recommended.length - 1"
+              name="actions/arrow-right"
+              :size="14"
+              class="text-ink-muted"
+            />
           </li>
         </ol>
       </section>
 
-      <section v-for="section in upgradeSections" :key="section.id" class="flex flex-col gap-3">
-        <h2 class="text-lg uppercase tracking-wide">{{ $t(`shop.category.${section.id}`) }}</h2>
+      <section
+        v-for="section in upgradeSections"
+        :key="section.id"
+        class="flex flex-col gap-3"
+      >
+        <h2 class="text-lg uppercase tracking-wide">
+          {{ $t(`shop.category.${section.id}`) }}
+        </h2>
 
         <ul class="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-          <li v-for="item in section.items" :key="item.id" class="dx-shop-card">
+          <li
+            v-for="item in section.items"
+            :key="item.id"
+            class="dx-shop-card"
+          >
             <span class="dx-shop-card__icon">
-              <DxIcon :name="iconOf(item.id)" :size="30" />
+              <DxIcon
+                :name="iconOf(item.id)"
+                :size="30"
+              />
             </span>
 
             <div class="min-w-0">
@@ -208,20 +260,45 @@ const notes = [
                     :title="itemNote(item) || $t(`shop.confidence.${item.confidence}`)"
                   >⚠</span>
                 </h3>
-                <span v-if="item.oneTime" class="dx-badge dx-badge--epic">{{ $t('shop.oneTime') }}</span>
+                <span
+                  v-if="item.oneTime"
+                  class="dx-badge dx-badge--epic"
+                >{{ $t('shop.oneTime') }}</span>
               </div>
 
-              <p class="text-xs text-ink-muted">{{ itemEffect(item) || $t('droid.noData') }}</p>
+              <p class="text-xs text-ink-muted">
+                {{ itemEffect(item) || $t('droid.noData') }}
+              </p>
 
-              <p v-if="!item.costs.length" class="mt-3 text-sm text-ink-muted">
+              <p
+                v-if="!item.costs.length"
+                class="mt-3 text-sm text-ink-muted"
+              >
                 {{ $t('shop.unknownCost') }}
               </p>
 
-              <div v-else class="mt-3 flex flex-wrap items-center justify-between gap-3">
+              <div
+                v-else
+                class="mt-3 flex flex-wrap items-center justify-between gap-3"
+              >
                 <div class="dx-stepper">
-                  <button type="button" :disabled="level(item.id) === 0" :aria-label="`−1 ${itemName(item)}`" @click="store.setShopLevel(item.id, level(item.id) - 1)">−</button>
+                  <button
+                    type="button"
+                    :disabled="level(item.id) === 0"
+                    :aria-label="`−1 ${itemName(item)}`"
+                    @click="store.setShopLevel(item.id, level(item.id) - 1)"
+                  >
+                    −
+                  </button>
                   <output>{{ level(item.id) }} / {{ item.costs.length }}</output>
-                  <button type="button" :disabled="level(item.id) >= item.costs.length" :aria-label="`+1 ${itemName(item)}`" @click="store.setShopLevel(item.id, level(item.id) + 1)">+</button>
+                  <button
+                    type="button"
+                    :disabled="level(item.id) >= item.costs.length"
+                    :aria-label="`+1 ${itemName(item)}`"
+                    @click="store.setShopLevel(item.id, level(item.id) + 1)"
+                  >
+                    +
+                  </button>
                 </div>
 
                 <p class="text-right">
@@ -230,14 +307,20 @@ const notes = [
                       class="flex items-center gap-1.5 font-mono"
                       :class="nextCost(item)! <= store.novaCrystals ? 'text-valid' : 'text-nova'"
                     >
-                      <DxIcon name="resources/nova-crystal" :size="15" />
+                      <DxIcon
+                        name="resources/nova-crystal"
+                        :size="15"
+                      />
                       {{ formatExact(nextCost(item), locale) }}
                     </span>
                     <span class="text-[11px] text-ink-muted">
                       {{ $t('shop.remaining') }} : {{ formatExact(remainingCost(item), locale) }}
                     </span>
                   </template>
-                  <span v-else class="text-xs text-valid">{{ $t('shop.maxed') }}</span>
+                  <span
+                    v-else
+                    class="text-xs text-valid"
+                  >{{ $t('shop.maxed') }}</span>
                 </p>
               </div>
             </div>
@@ -246,18 +329,31 @@ const notes = [
       </section>
 
       <ul class="grid gap-3 md:grid-cols-3">
-        <li v-for="n in notes" :key="n.key" class="panel flex items-start gap-3 p-4 text-xs">
-          <DxIcon :name="n.icon" :size="20" class="mt-0.5 shrink-0" :class="n.tone" />
+        <li
+          v-for="n in notes"
+          :key="n.key"
+          class="panel flex items-start gap-3 p-4 text-xs"
+        >
+          <DxIcon
+            :name="n.icon"
+            :size="20"
+            class="mt-0.5 shrink-0"
+            :class="n.tone"
+          />
           <span class="text-ink-muted">{{ $t(n.key) }}</span>
         </li>
       </ul>
 
-      <p class="text-xs text-ink-muted">{{ gameText('novaShop.note') }}</p>
+      <p class="text-xs text-ink-muted">
+        {{ gameText('novaShop.note') }}
+      </p>
     </div>
 
     <aside class="flex flex-col gap-4">
       <section class="panel p-4">
-        <h2 class="mb-3 text-base uppercase tracking-wide">{{ $t('shop.category.iconic') }}</h2>
+        <h2 class="mb-3 text-base uppercase tracking-wide">
+          {{ $t('shop.category.iconic') }}
+        </h2>
 
         <ul class="flex flex-col gap-1">
           <li
@@ -272,20 +368,39 @@ const notes = [
               size="sm"
             />
             <div class="min-w-0 flex-1">
-              <p class="truncate font-display font-semibold">{{ itemName(item) }}</p>
-              <p class="truncate text-[11px] text-ink-muted">{{ $t('shop.redeemable') }}</p>
+              <p class="truncate font-display font-semibold">
+                {{ itemName(item) }}
+              </p>
+              <p class="truncate text-[11px] text-ink-muted">
+                {{ $t('shop.redeemable') }}
+              </p>
             </div>
-            <span v-if="item.costs.length" class="flex shrink-0 items-center gap-1 font-mono text-sm text-nova">
-              <DxIcon name="resources/nova-crystal" :size="14" />
+            <span
+              v-if="item.costs.length"
+              class="flex shrink-0 items-center gap-1 font-mono text-sm text-nova"
+            >
+              <DxIcon
+                name="resources/nova-crystal"
+                :size="14"
+              />
               {{ item.costs[0] }}
             </span>
-            <span v-else class="shrink-0 text-[10px] text-ink-muted">{{ $t('shop.unknownCost') }}</span>
+            <span
+              v-else
+              class="shrink-0 text-[10px] text-ink-muted"
+            >{{ $t('shop.unknownCost') }}</span>
           </li>
         </ul>
 
-        <NuxtLink :to="localePath('/')" class="dx-button dx-button--secondary dx-button--block mt-3">
+        <NuxtLink
+          :to="localePath('/')"
+          class="dx-button dx-button--secondary dx-button--block mt-3"
+        >
           {{ $t('shop.seeAllDroids') }}
-          <DxIcon name="actions/arrow-right" :size="16" />
+          <DxIcon
+            name="actions/arrow-right"
+            :size="16"
+          />
         </NuxtLink>
       </section>
     </aside>

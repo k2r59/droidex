@@ -23,7 +23,7 @@ const STORAGE_KEY = 'droidex:progress'
 const emptyEntry = (): CollectionEntry => ({ tiers: [], flawless: false })
 
 /** Forme héritée : un seul palier, le plus haut, les inférieurs étant sous-entendus. */
-type LegacyEntry = { tier?: Tier | null; tiers?: Tier[]; flawless?: boolean }
+type LegacyEntry = { tier?: Tier | null, tiers?: Tier[], flawless?: boolean }
 
 /**
  * Convertit une entrée de l'ancien modèle vers le nouveau.
@@ -133,7 +133,8 @@ export const useCollectionStore = defineStore('collection', () => {
       await idbSet(STORAGE_KEY, migre)
       localStorage.removeItem(STORAGE_KEY)
       return migre
-    } catch {
+    }
+    catch {
       return null
     }
   }
@@ -190,7 +191,7 @@ export const useCollectionStore = defineStore('collection', () => {
   )
 
   const countByRarity = computed(() => {
-    const acc = {} as Record<Rarity, { owned: number; total: number }>
+    const acc = {} as Record<Rarity, { owned: number, total: number }>
     for (const r of data.rarities) acc[r] = { owned: 0, total: 0 }
     for (const d of droids.value) {
       acc[d.rarity].total += tiersOf(d).length
@@ -243,11 +244,11 @@ export const useCollectionStore = defineStore('collection', () => {
 
   const isEmpty = computed(
     () =>
-      !Object.values(entries.value).some((e) => e.tiers.length) &&
-      rebirth.value === 0 &&
-      superRebirth.value === 0 &&
-      novaCrystals.value === 0 &&
-      !Object.keys(shopLevels.value).length,
+      !Object.values(entries.value).some((e) => e.tiers.length)
+      && rebirth.value === 0
+      && superRebirth.value === 0
+      && novaCrystals.value === 0
+      && !Object.keys(shopLevels.value).length,
   )
 
   /**
@@ -259,7 +260,8 @@ export const useCollectionStore = defineStore('collection', () => {
     try {
       const local = await readLocal()
       if (local) apply(local)
-    } finally {
+    }
+    finally {
       // Même si la lecture échoue, on est fixé : l'interface doit cesser d'attendre.
       hydrated.value = true
     }
@@ -274,20 +276,23 @@ export const useCollectionStore = defineStore('collection', () => {
     syncError.value = null
     try {
       const remote = await ofetch<UserProgress>('/api/progress')
-      const remoteEmpty =
-        !Object.values(remote.collection ?? {}).some((e) => e.tiers?.length) && !remote.rebirth
+      const remoteEmpty
+        = !Object.values(remote.collection ?? {}).some((e) => e.tiers?.length) && !remote.rebirth
 
       if (remoteEmpty && !isEmpty.value) {
         remoteEnabled.value = true
         await push(snapshot())
-      } else {
+      }
+      else {
         apply(remote)
         writeLocal()
         remoteEnabled.value = true
       }
-    } catch (err) {
+    }
+    catch (err) {
       syncError.value = err instanceof Error ? err.message : String(err)
-    } finally {
+    }
+    finally {
       loading.value = false
     }
   }
@@ -305,9 +310,11 @@ export const useCollectionStore = defineStore('collection', () => {
     syncError.value = null
     try {
       await ofetch('/api/progress', { method: 'PATCH', body: payload })
-    } catch (err) {
+    }
+    catch (err) {
       syncError.value = err instanceof Error ? err.message : String(err)
-    } finally {
+    }
+    finally {
       syncing.value = false
     }
   }
@@ -398,9 +405,11 @@ export const useCollectionStore = defineStore('collection', () => {
     syncError.value = null
     try {
       await ofetch('/api/progress', { method: 'DELETE' })
-    } catch (err) {
+    }
+    catch (err) {
       syncError.value = err instanceof Error ? err.message : String(err)
-    } finally {
+    }
+    finally {
       syncing.value = false
     }
   }

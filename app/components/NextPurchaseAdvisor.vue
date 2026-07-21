@@ -71,7 +71,7 @@ const SUFFIXES: Record<string, number> = { k: 1e3, m: 1e6, b: 1e9, t: 1e12 }
 
 /** « 1,2M » → 1200000 · « 15k » → 15000 · « 950 » → 950 · vide ou invalide → null */
 function parseBudget(raw: string): number | null {
-  const s = raw.trim().toLowerCase().replace(/\s| | /g, '').replace(',', '.')
+  const s = raw.trim().toLowerCase().replace(/[\s\u00A0\u202F]/g, '').replace(',', '.')
   if (!s) return null
   const m = s.match(/^([\d.]+)([kmbt])?$/)
   if (!m) return null
@@ -161,8 +161,12 @@ function formatPayback(seconds: number) {
   <section class="rounded-card border border-edge bg-panel p-6">
     <div class="mb-3 flex flex-wrap items-center justify-between gap-3">
       <div>
-        <h2 class="font-semibold">{{ $t('advisor.title') }}</h2>
-        <p class="text-xs text-ink-muted">{{ $t('advisor.hint') }}</p>
+        <h2 class="font-semibold">
+          {{ $t('advisor.title') }}
+        </h2>
+        <p class="text-xs text-ink-muted">
+          {{ $t('advisor.hint') }}
+        </p>
       </div>
 
       <div class="flex flex-col items-end gap-1.5">
@@ -171,7 +175,11 @@ function formatPayback(seconds: number) {
           <span
             class="flex items-center gap-2 rounded-lg border border-edge bg-panel-raised px-3 py-1.5 transition-colors focus-within:border-accent"
           >
-            <DxIcon name="resources/credits" :size="15" class="shrink-0 text-ink-muted" />
+            <DxIcon
+              name="resources/credits"
+              :size="15"
+              class="shrink-0 text-ink-muted"
+            />
             <input
               v-model="budgetText"
               type="text"
@@ -189,7 +197,10 @@ function formatPayback(seconds: number) {
               :aria-label="$t('advisor.noBudget')"
               @click="applyBudget(null)"
             >
-              <DxIcon name="actions/close" :size="13" />
+              <DxIcon
+                name="actions/close"
+                :size="13"
+              />
             </button>
           </span>
         </label>
@@ -213,15 +224,25 @@ function formatPayback(seconds: number) {
     </div>
 
     <p class="mb-3 flex items-start gap-2 text-xs text-ink-muted">
-      <DxIcon name="status/info" :size="14" class="mt-px shrink-0 text-rare" />
+      <DxIcon
+        name="status/info"
+        :size="14"
+        class="mt-px shrink-0 text-rare"
+      />
       {{ $t('advisor.creditsOnly') }}
     </p>
 
-    <p v-if="!shown.length" class="py-4 text-center text-sm text-ink-muted">
+    <p
+      v-if="!shown.length"
+      class="py-4 text-center text-sm text-ink-muted"
+    >
       {{ budget !== null ? $t('advisor.nothingAffordable') : $t('advisor.allOwned') }}
     </p>
 
-    <ol v-else class="flex flex-col gap-1.5">
+    <ol
+      v-else
+      class="flex flex-col gap-1.5"
+    >
       <li
         v-for="(c, i) in shown"
         :key="`${c.droid.slug}-${c.tier}`"
@@ -229,7 +250,11 @@ function formatPayback(seconds: number) {
       >
         <span class="w-4 shrink-0 text-center text-xs text-ink-muted">{{ i + 1 }}</span>
 
-        <DroidImage :droid="c.droid" :tier="c.tier" size="sm" />
+        <DroidImage
+          :droid="c.droid"
+          :tier="c.tier"
+          size="sm"
+        />
 
         <div class="min-w-0 flex-1">
           <NuxtLink
@@ -239,7 +264,9 @@ function formatPayback(seconds: number) {
             {{ c.droid.name }}
           </NuxtLink>
           <!-- La rareté, et non le palier : celui-ci vaut « Typique » sur toutes les lignes. -->
-          <p class="text-xs text-ink-muted">{{ $t(`rarity.${c.droid.rarity}`) }}</p>
+          <p class="text-xs text-ink-muted">
+            {{ $t(`rarity.${c.droid.rarity}`) }}
+          </p>
         </div>
 
         <div class="text-right text-xs">
@@ -252,8 +279,12 @@ function formatPayback(seconds: number) {
         </div>
 
         <div class="hidden w-20 text-right sm:block">
-          <p class="text-xs text-ink-muted">{{ $t('advisor.payback') }}</p>
-          <p class="font-mono text-xs tabular-nums">{{ formatPayback(payback(c)) }}</p>
+          <p class="text-xs text-ink-muted">
+            {{ $t('advisor.payback') }}
+          </p>
+          <p class="font-mono text-xs tabular-nums">
+            {{ formatPayback(payback(c)) }}
+          </p>
         </div>
       </li>
     </ol>

@@ -68,7 +68,8 @@ for (const file of files) {
     downloaded += 1
     if (downloaded % 25 === 0) console.log(`  ${downloaded} téléchargées…`)
     await new Promise((r) => setTimeout(r, 40))
-  } catch (err) {
+  }
+  catch (err) {
     missing.push(`${file} (${err.message})`)
   }
 }

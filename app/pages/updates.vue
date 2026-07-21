@@ -47,8 +47,12 @@ function formatDate(iso: string) {
   <div class="flex flex-col gap-5">
     <PageBanner name="nouveautes">
       <div>
-      <h1 class="text-xl font-bold">{{ $t('updates.title') }}</h1>
-      <p class="text-sm text-ink-muted">{{ $t('updates.subtitle') }}</p>
+        <h1 class="text-xl font-bold">
+          {{ $t('updates.title') }}
+        </h1>
+        <p class="text-sm text-ink-muted">
+          {{ $t('updates.subtitle') }}
+        </p>
       </div>
     </PageBanner>
 
@@ -65,27 +69,44 @@ function formatDate(iso: string) {
         />
 
         <div class="flex flex-wrap items-center gap-2">
-          <span class="rounded px-1.5 py-0.5 text-xs font-medium uppercase" :class="KIND_CLASS[entry.kind]">
+          <span
+            class="rounded px-1.5 py-0.5 text-xs font-medium uppercase"
+            :class="KIND_CLASS[entry.kind]"
+          >
             {{ $t(`updates.${entry.kind === 'event' ? 'event' : 'patch'}`) }}
           </span>
-          <span v-if="entry.version" class="font-mono text-xs text-ink-muted">
+          <span
+            v-if="entry.version"
+            class="font-mono text-xs text-ink-muted"
+          >
             {{ $t('updates.version', { version: entry.version }) }}
           </span>
-          <time :datetime="entry.date" class="ml-auto text-xs text-ink-muted">
+          <time
+            :datetime="entry.date"
+            class="ml-auto text-xs text-ink-muted"
+          >
             {{ formatDate(entry.date) }}
             <template v-if="entry.endDate"> → {{ formatDate(entry.endDate) }}</template>
           </time>
         </div>
 
-        <h2 class="mt-1.5 font-semibold">{{ gameText(`updates.entries.${entry.index}.title`) }}</h2>
-        <p class="mt-1 text-sm text-ink-muted">{{ gameText(`updates.entries.${entry.index}.body`) }}</p>
+        <h2 class="mt-1.5 font-semibold">
+          {{ gameText(`updates.entries.${entry.index}.title`) }}
+        </h2>
+        <p class="mt-1 text-sm text-ink-muted">
+          {{ gameText(`updates.entries.${entry.index}.body`) }}
+        </p>
 
         <NuxtLink
           v-if="entry.droidSlug && droidBySlug[entry.droidSlug]"
           :to="localePath(`/droids/${entry.droidSlug}`)"
           class="mt-3 inline-flex items-center gap-2 rounded-lg bg-panel-raised px-2 py-1.5 text-sm transition-colors hover:bg-edge"
         >
-          <DroidImage :droid="droidBySlug[entry.droidSlug]!" tier="DEFAULT" size="sm" />
+          <DroidImage
+            :droid="droidBySlug[entry.droidSlug]!"
+            tier="DEFAULT"
+            size="sm"
+          />
           {{ droidBySlug[entry.droidSlug]!.name }}
         </NuxtLink>
       </li>

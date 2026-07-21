@@ -41,14 +41,18 @@ const RARITY_TEXT: Record<string, string> = {
   <section class="flex flex-col gap-4 rounded-card border border-edge bg-panel p-6">
     <div class="flex flex-wrap items-baseline justify-between gap-2">
       <div>
-        <h1 class="text-xl font-bold">{{ $t('droidex.title') }}</h1>
+        <h1 class="text-xl font-bold">
+          {{ $t('droidex.title') }}
+        </h1>
         <p class="text-sm text-ink-muted">
           {{ $t('droidex.subtitle', { owned: store.ownedCount, total: store.totalCount }) }}
         </p>
       </div>
 
       <div class="text-right">
-        <p class="font-mono text-2xl font-bold tabular-nums text-iconic">{{ completion }}%</p>
+        <p class="font-mono text-2xl font-bold tabular-nums text-iconic">
+          {{ completion }}%
+        </p>
         <p class="text-xs text-ink-muted">
           {{ $t('stats.totalIncome') }} : {{ formatIncome(store.totalIncome, locale) }}
         </p>
@@ -58,7 +62,11 @@ const RARITY_TEXT: Record<string, string> = {
     <!-- Une barre par rareté plutôt qu'un total unique : c'est là que se lit la
          vraie progression, un joueur peut être à 100 % en Common et 0 % en Mythic. -->
     <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-      <div v-for="r in store.dataset.rarities" :key="r" class="flex flex-col gap-1">
+      <div
+        v-for="r in store.dataset.rarities"
+        :key="r"
+        class="flex flex-col gap-1"
+      >
         <div class="flex items-baseline justify-between text-xs">
           <span :class="RARITY_TEXT[r]">{{ $t(`rarity.${r}`) }}</span>
           <span class="font-mono tabular-nums text-ink-muted">
@@ -79,7 +87,9 @@ const RARITY_TEXT: Record<string, string> = {
          celle-ci dit à QUEL niveau ils sont montés — c'est là qu'apparaissent Beskar et
          Galactique, qui sont des paliers et non des raretés. -->
     <div>
-      <p class="mb-1.5 text-xs uppercase tracking-wide text-ink-muted">{{ $t('stats.byTier') }}</p>
+      <p class="mb-1.5 text-xs uppercase tracking-wide text-ink-muted">
+        {{ $t('stats.byTier') }}
+      </p>
       <!-- 6 colonnes seulement à partir de `xl` : en dessous, « Arc-en-ciel » et
            « Galactique » se font tronquer. -->
       <ul class="grid grid-cols-2 gap-2 sm:grid-cols-3 xl:grid-cols-6">
@@ -89,14 +99,20 @@ const RARITY_TEXT: Record<string, string> = {
           class="flex items-center gap-2 rounded-lg bg-panel-raised px-2 py-1.5"
           :class="!store.countByTier[tier] && 'opacity-45'"
         >
-          <span class="size-2.5 shrink-0 rounded-full" :class="TIER_DOT[tier]" />
+          <span
+            class="size-2.5 shrink-0 rounded-full"
+            :class="TIER_DOT[tier]"
+          />
           <span class="min-w-0 flex-1 truncate text-xs">{{ $t(`tier.${tier}`) }}</span>
           <span class="font-mono text-sm tabular-nums">{{ store.countByTier[tier] }}</span>
         </li>
       </ul>
     </div>
 
-    <p v-if="!isAuthenticated" class="rounded-lg bg-panel-raised px-3 py-2 text-sm text-ink-muted">
+    <p
+      v-if="!isAuthenticated"
+      class="rounded-lg bg-panel-raised px-3 py-2 text-sm text-ink-muted"
+    >
       {{ $t('auth.signInPrompt') }}
     </p>
   </section>

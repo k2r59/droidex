@@ -15,7 +15,11 @@ const localePath = useLocalePath()
     :to="localePath(`/droids/${droid.slug}`)"
     class="flex shrink-0 flex-col items-center gap-1.5 rounded-card p-4 text-center transition-transform hover:scale-[1.02]"
   >
-    <DroidImage :droid="droid" tier="DEFAULT" size="md" />
+    <DroidImage
+      :droid="droid"
+      tier="DEFAULT"
+      size="md"
+    />
 
     <p class="mt-1 font-bold">{{ droid.name }}</p>
 

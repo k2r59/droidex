@@ -33,6 +33,28 @@ async function createAuth() {
     )
   }
 
+  /**
+   * Refus explicite de démarrer sans secret en production.
+   *
+   * BetterAuth ne lève rien si `secret` est vide : il retombe sur une constante publiée
+   * dans son propre dépôt (`better-auth-secret-1234…`). Une variable d'environnement
+   * oubliée — nouveau site, préversion de branche qui n'hérite pas du contexte production —
+   * signerait donc les sessions avec une valeur que tout le monde connaît, et n'importe
+   * qui pourrait forger un cookie valide pour n'importe quel compte. La panne serait
+   * parfaitement silencieuse : rien, dans l'interface, ne la révélerait.
+   *
+   * Même raisonnement pour `baseUrl` : resté sur le défaut localhost, il produit des
+   * redirections OAuth hors site et peut priver les cookies de leur attribut `Secure`.
+   */
+  if (!import.meta.dev) {
+    if (!config.betterAuthSecret) {
+      throw new Error('[auth] NUXT_BETTER_AUTH_SECRET est absente. Refus de démarrer avec le secret par défaut de BetterAuth.')
+    }
+    if (config.public.baseUrl.includes('localhost')) {
+      throw new Error('[auth] NUXT_PUBLIC_BASE_URL pointe encore sur localhost en production.')
+    }
+  }
+
   return betterAuth({
     database: mongodbAdapter(db),
     secret: config.betterAuthSecret,
@@ -40,12 +62,26 @@ async function createAuth() {
     // Pas de mot de passe : l'app est communautaire, on s'appuie uniquement sur l'OAuth.
     emailAndPassword: { enabled: false },
     socialProviders,
-    // Un même joueur peut arriver par Discord puis par Google : on rattache les comptes
-    // partageant une adresse vérifiée plutôt que de créer un doublon de progression.
+    /**
+     * Un même joueur peut arriver par Discord puis par Google : on rattache les comptes
+     * partageant une adresse vérifiée plutôt que de créer un doublon de progression.
+     *
+     * `trustedProviders` est volontairement **vide**. Le nom laisse croire à une liste de
+     * fournisseurs de confiance ; il désigne en réalité ceux pour lesquels BetterAuth
+     * **saute** le contrôle `emailVerified` :
+     *
+     *   if (!isTrustedProvider && !userInfo.emailVerified || …) { refus }
+     *
+     * Les y déclarer ouvrait donc une prise de contrôle de compte : créer un compte
+     * Discord portant l'adresse d'une victime inscrite via Google, sans jamais confirmer
+     * cette adresse, suffisait à se voir rattaché à son compte — et à lire, modifier ou
+     * supprimer sa progression. Liste vide : le rattachement ne vaut que pour les adresses
+     * réellement vérifiées par le fournisseur, ce qui était l'intention depuis le début.
+     */
     account: {
       accountLinking: {
         enabled: true,
-        trustedProviders: ['discord', 'google', 'twitch'],
+        trustedProviders: [],
       },
     },
   })

@@ -28,7 +28,7 @@ useSeoMeta({
   description: () => t('missions.subtitle'),
 })
 
-type Reward = { kind: 'credits' | 'tier'; tier?: Tier; chance: number }
+type Reward = { kind: 'credits' | 'tier', tier?: Tier, chance: number }
 
 /**
  * Chaque palier de mission emprunte la couleur de la variante qu'il rapporte : la barre
@@ -91,13 +91,21 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
 
 <template>
   <div class="flex flex-col gap-5">
-    <PageBanner name="missions" min-height="16rem">
+    <PageBanner
+      name="missions"
+      min-height="16rem"
+    >
       <div class="flex items-start gap-3">
         <span class="grid size-11 shrink-0 place-items-center rounded-md bg-accent/15 text-accent">
-          <DxIcon name="navigation/missions" :size="24" />
+          <DxIcon
+            name="navigation/missions"
+            :size="24"
+          />
         </span>
         <div>
-          <h1 class="text-4xl uppercase tracking-tight lg:text-5xl">{{ $t('missions.title') }}</h1>
+          <h1 class="text-4xl uppercase tracking-tight lg:text-5xl">
+            {{ $t('missions.title') }}
+          </h1>
           <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-muted">
             {{ $t('missions.subtitle') }}
           </p>
@@ -105,8 +113,12 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
       </div>
 
       <div>
-        <h2 class="text-lg uppercase tracking-wide">{{ $t('missions.padsTitle') }}</h2>
-        <p class="mt-1 max-w-3xl text-sm text-ink-muted">{{ gameText('missions.pads.note') }}</p>
+        <h2 class="text-lg uppercase tracking-wide">
+          {{ $t('missions.padsTitle') }}
+        </h2>
+        <p class="mt-1 max-w-3xl text-sm text-ink-muted">
+          {{ gameText('missions.pads.note') }}
+        </p>
       </div>
 
       <!-- Repère de progression, commun aux pages : où j'en suis dans la collection. -->
@@ -120,16 +132,36 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
               <span class="text-accent">{{ store.ownedCount }}</span>
               <span class="text-ink-muted"> / {{ store.totalCount }}</span>
             </p>
-            <p class="text-xs text-ink-muted">{{ $t('stats.droidsCollected') }}</p>
+            <p class="text-xs text-ink-muted">
+              {{ $t('stats.droidsCollected') }}
+            </p>
           </div>
 
           <div class="relative grid size-16 shrink-0 place-items-center">
-            <svg class="absolute inset-0 -rotate-90" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" :r="RADIUS" fill="none" stroke="currentColor" stroke-width="9" class="text-edge" />
+            <svg
+              class="absolute inset-0 -rotate-90"
+              viewBox="0 0 100 100"
+            >
               <circle
-                cx="50" cy="50" :r="RADIUS" fill="none" stroke="currentColor" stroke-width="9"
-                stroke-linecap="round" class="text-accent transition-[stroke-dashoffset] duration-700"
-                :stroke-dasharray="CIRCUMFERENCE" :stroke-dashoffset="CIRCUMFERENCE * (1 - collectionPercent / 100)"
+                cx="50"
+                cy="50"
+                :r="RADIUS"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="9"
+                class="text-edge"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                :r="RADIUS"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="9"
+                stroke-linecap="round"
+                class="text-accent transition-[stroke-dashoffset] duration-700"
+                :stroke-dasharray="CIRCUMFERENCE"
+                :stroke-dashoffset="CIRCUMFERENCE * (1 - collectionPercent / 100)"
               />
             </svg>
             <span class="font-mono text-sm">{{ collectionPercent }}%</span>
@@ -140,15 +172,23 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
           <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
             {{ $t('missions.cantina') }}
           </p>
-          <p class="font-mono text-2xl text-valid">{{ missions.cantina.traders }}</p>
-          <p class="text-xs text-ink-muted">{{ $t('missions.traders') }}</p>
+          <p class="font-mono text-2xl text-valid">
+            {{ missions.cantina.traders }}
+          </p>
+          <p class="text-xs text-ink-muted">
+            {{ $t('missions.traders') }}
+          </p>
         </div>
       </div>
     </PageBanner>
 
     <!-- Les 5 paliers de mission, un par ligne : la table de butin est l'info la plus consultée. -->
     <ul class="flex flex-col gap-3">
-      <li v-for="(pad, i) in missions.pads.entries" :key="pad.pad" class="panel p-3 sm:p-4">
+      <li
+        v-for="(pad, i) in missions.pads.entries"
+        :key="pad.pad"
+        class="panel p-3 sm:p-4"
+      >
         <div class="flex items-center gap-3 sm:gap-4">
           <!-- Le numéro est cerclé de la couleur du palier, comme la maquette. -->
           <span
@@ -179,7 +219,10 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
               <div class="min-w-0">
                 <h3 class="text-lg">
                   {{ $t(`tier.${pad.missionTier}`) }}
-                  <span v-if="pad.unlockCost" class="text-ink-muted">{{ formatNumber(pad.unlockCost, locale) }}</span>
+                  <span
+                    v-if="pad.unlockCost"
+                    class="text-ink-muted"
+                  >{{ formatNumber(pad.unlockCost, locale) }}</span>
                 </h3>
                 <p class="text-xs text-ink-muted">
                   {{ pad.unlockCost ? formatNumber(pad.unlockCost, locale) : $t('droid.noData') }}
@@ -197,7 +240,10 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
                   :key="`lbl-${r.kind}-${r.tier ?? ''}`"
                   class="flex items-center gap-1.5 text-sm font-semibold"
                 >
-                  <span class="size-3 rounded-full" :class="rewardClass(r)" />
+                  <span
+                    class="size-3 rounded-full"
+                    :class="rewardClass(r)"
+                  />
                   {{ r.chance }} %
                 </span>
               </div>
@@ -223,26 +269,49 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
             :aria-haspopup="'dialog'"
             @click="selectedIndex = i"
           >
-            <DxIcon name="actions/chevron-right" :size="18" />
+            <DxIcon
+              name="actions/chevron-right"
+              :size="18"
+            />
           </button>
         </div>
 
-        <p v-if="gameText(`missions.pads.entries.${i}.note`)" class="dx-alert dx-alert--info mt-3 border-0 text-xs">
-          <DxIcon name="status/info" :size="16" class="mt-px shrink-0" />
+        <p
+          v-if="gameText(`missions.pads.entries.${i}.note`)"
+          class="dx-alert dx-alert--info mt-3 border-0 text-xs"
+        >
+          <DxIcon
+            name="status/info"
+            :size="16"
+            class="mt-px shrink-0"
+          />
           <span>{{ gameText(`missions.pads.entries.${i}.note`) }}</span>
         </p>
       </li>
     </ul>
 
     <ul class="grid gap-3 md:grid-cols-3">
-      <li v-for="r in reperes" :key="r.key" class="panel flex items-start gap-3 p-4 text-sm">
-        <DxIcon :name="r.icon" :size="22" class="mt-0.5 shrink-0" :class="r.tone" />
+      <li
+        v-for="r in reperes"
+        :key="r.key"
+        class="panel flex items-start gap-3 p-4 text-sm"
+      >
+        <DxIcon
+          :name="r.icon"
+          :size="22"
+          class="mt-0.5 shrink-0"
+          :class="r.tone"
+        />
         <span class="text-ink-muted">{{ $t(r.key) }}</span>
       </li>
     </ul>
 
     <p class="dx-alert dx-alert--warning border-0 text-[0.8125rem]">
-      <DxIcon name="status/warning" :size="17" class="mt-px shrink-0" />
+      <DxIcon
+        name="status/warning"
+        :size="17"
+        class="mt-px shrink-0"
+      />
       <span>{{ gameText('missions.pads.passiveIncomeDuringMission') }}</span>
     </p>
 
@@ -271,14 +340,18 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
       </section>
 
       <section class="panel relative overflow-hidden p-5">
-        <h2 class="text-lg uppercase tracking-wide">{{ gameText('missions.secretMission.name') }}</h2>
+        <h2 class="text-lg uppercase tracking-wide">
+          {{ gameText('missions.secretMission.name') }}
+        </h2>
         <p class="mt-2 font-mono text-lg text-nova">
           {{ formatDuration(missions.secretMission.durationSeconds) }}
           <span class="text-sm text-ink-muted">
             · {{ formatDuration(missions.secretMission.withR2D2Seconds) }} {{ $t('missions.withR2') }}
           </span>
         </p>
-        <p class="mt-3 max-w-56 text-sm text-ink-muted">{{ gameText('missions.secretMission.note') }}</p>
+        <p class="mt-3 max-w-56 text-sm text-ink-muted">
+          {{ gameText('missions.secretMission.note') }}
+        </p>
 
         <DxIcon
           name="game/droid"
@@ -291,13 +364,22 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
     <div class="grid gap-3 lg:grid-cols-2">
       <section class="panel p-5">
         <h2 class="mb-2 flex items-center gap-2 text-lg uppercase tracking-wide">
-          <DxIcon name="game/planet" :size="22" class="text-accent" />
+          <DxIcon
+            name="game/planet"
+            :size="22"
+            class="text-accent"
+          />
           {{ $t('missions.world') }}
         </h2>
-        <p class="text-sm text-ink-muted">{{ gameText('missions.worldMissions.note') }}</p>
+        <p class="text-sm text-ink-muted">
+          {{ gameText('missions.worldMissions.note') }}
+        </p>
 
         <ul class="mt-3 flex flex-wrap gap-2">
-          <li v-for="type in missions.worldMissions.types" :key="type">
+          <li
+            v-for="type in missions.worldMissions.types"
+            :key="type"
+          >
             <span class="dx-badge dx-badge--rare">{{ $t(`type.${type}`) }}</span>
           </li>
         </ul>
@@ -305,28 +387,47 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
         <dl class="mt-4 grid gap-3 sm:grid-cols-3">
           <div class="rounded-md bg-panel-raised p-3">
             <dt class="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wide text-valid">
-              <DxIcon name="resources/credits" :size="14" />{{ $t('missions.rewards') }}
+              <DxIcon
+                name="resources/credits"
+                :size="14"
+              />{{ $t('missions.rewards') }}
             </dt>
-            <dd class="mt-1 text-xs text-ink-muted">{{ gameText('missions.worldMissions.rewards') }}</dd>
+            <dd class="mt-1 text-xs text-ink-muted">
+              {{ gameText('missions.worldMissions.rewards') }}
+            </dd>
           </div>
           <div class="rounded-md bg-panel-raised p-3">
             <dt class="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wide text-glow">
-              <DxIcon name="resources/xp" :size="14" />{{ $t('missions.scaling') }}
+              <DxIcon
+                name="resources/xp"
+                :size="14"
+              />{{ $t('missions.scaling') }}
             </dt>
-            <dd class="mt-1 text-xs text-ink-muted">{{ gameText('missions.worldMissions.scaling') }}</dd>
+            <dd class="mt-1 text-xs text-ink-muted">
+              {{ gameText('missions.worldMissions.scaling') }}
+            </dd>
           </div>
           <div class="rounded-md bg-panel-raised p-3">
             <dt class="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wide text-warn">
-              <DxIcon name="resources/star" :size="14" />{{ $t('missions.bestCompanions') }}
+              <DxIcon
+                name="resources/star"
+                :size="14"
+              />{{ $t('missions.bestCompanions') }}
             </dt>
-            <dd class="mt-1 text-xs text-ink-muted">{{ gameText('missions.worldMissions.tip') }}</dd>
+            <dd class="mt-1 text-xs text-ink-muted">
+              {{ gameText('missions.worldMissions.tip') }}
+            </dd>
           </div>
         </dl>
       </section>
 
       <section class="panel p-5">
         <h2 class="mb-1 flex items-center gap-2 text-lg uppercase tracking-wide">
-          <DxIcon name="resources/timer" :size="22" class="text-nova" />
+          <DxIcon
+            name="resources/timer"
+            :size="22"
+            class="text-nova"
+          />
           {{ $t('missions.dailies') }}
         </h2>
         <p class="text-sm text-ink-muted">
@@ -341,7 +442,12 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
           >
             <span class="font-display font-semibold">{{ $t(`missions.difficulty.${tier.difficulty}`) }}</span>
             <ul class="text-xs text-ink-muted">
-              <li v-for="(ex, j) in gameTextList(`missions.dailies.tiers.${i}.examples`)" :key="j">• {{ ex }}</li>
+              <li
+                v-for="(ex, j) in gameTextList(`missions.dailies.tiers.${i}.examples`)"
+                :key="j"
+              >
+                • {{ ex }}
+              </li>
             </ul>
             <span
               class="text-right text-xs"
@@ -354,52 +460,94 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
 
     <div class="grid gap-3 lg:grid-cols-[minmax(0,1fr)_380px]">
       <section class="panel p-5">
-        <h2 class="mb-2 text-lg uppercase tracking-wide">{{ $t('missions.cantina') }}</h2>
-        <p class="text-sm text-ink-muted">{{ gameText('missions.cantina.mechanic') }}</p>
+        <h2 class="mb-2 text-lg uppercase tracking-wide">
+          {{ $t('missions.cantina') }}
+        </h2>
+        <p class="text-sm text-ink-muted">
+          {{ gameText('missions.cantina.mechanic') }}
+        </p>
 
         <div class="mt-3 grid gap-3 sm:grid-cols-3">
           <div class="rounded-md bg-panel-raised p-3">
-            <p class="text-[10px] font-semibold uppercase tracking-wide text-ink-muted">{{ $t('missions.traders') }}</p>
-            <p class="font-mono text-xl">{{ missions.cantina.traders }}</p>
+            <p class="text-[10px] font-semibold uppercase tracking-wide text-ink-muted">
+              {{ $t('missions.traders') }}
+            </p>
+            <p class="font-mono text-xl">
+              {{ missions.cantina.traders }}
+            </p>
           </div>
           <div class="rounded-md bg-panel-raised p-3">
-            <p class="text-[10px] font-semibold uppercase tracking-wide text-ink-muted">{{ $t('missions.cooldown') }}</p>
-            <p class="text-xl text-valid">{{ $t('missions.noCooldown') }}</p>
+            <p class="text-[10px] font-semibold uppercase tracking-wide text-ink-muted">
+              {{ $t('missions.cooldown') }}
+            </p>
+            <p class="text-xl text-valid">
+              {{ $t('missions.noCooldown') }}
+            </p>
           </div>
           <div class="rounded-md bg-panel-raised p-3">
-            <p class="text-[10px] font-semibold uppercase tracking-wide text-ink-muted">{{ $t('missions.rewards') }}</p>
-            <p class="mt-1 text-xs text-ink-muted">{{ gameText('missions.cantina.rewards') }}</p>
+            <p class="text-[10px] font-semibold uppercase tracking-wide text-ink-muted">
+              {{ $t('missions.rewards') }}
+            </p>
+            <p class="mt-1 text-xs text-ink-muted">
+              {{ gameText('missions.cantina.rewards') }}
+            </p>
           </div>
         </div>
 
-        <p class="mt-3 text-xs text-ink-muted">{{ gameText('missions.cantina.cooldownNote') }}</p>
+        <p class="mt-3 text-xs text-ink-muted">
+          {{ gameText('missions.cantina.cooldownNote') }}
+        </p>
         <p class="dx-alert dx-alert--info mt-3 border-0 text-[0.8125rem]">
-          <DxIcon name="status/info" :size="17" class="mt-px shrink-0" />
+          <DxIcon
+            name="status/info"
+            :size="17"
+            class="mt-px shrink-0"
+          />
           <span>{{ gameText('missions.cantina.tip') }}</span>
         </p>
       </section>
 
       <section class="panel relative overflow-hidden p-5">
         <h2 class="flex flex-wrap items-center gap-2 text-lg">
-          <DxIcon name="resources/nova-crystal" :size="22" class="text-nova" />
+          <DxIcon
+            name="resources/nova-crystal"
+            :size="22"
+            class="text-nova"
+          />
           {{ $t('missions.doubleDailyTitle') }}
           <span class="font-mono text-accent">✦ {{ missions.dailies.doubleDaily.cost }}</span>
         </h2>
-        <p class="mt-2 text-sm text-ink-muted">{{ gameText('missions.dailies.doubleDaily.effect') }}</p>
+        <p class="mt-2 text-sm text-ink-muted">
+          {{ gameText('missions.dailies.doubleDaily.effect') }}
+        </p>
         <p class="dx-alert dx-alert--warning mt-3 border-0 text-xs">
-          <DxIcon name="status/warning" :size="17" class="mt-px shrink-0" />
+          <DxIcon
+            name="status/warning"
+            :size="17"
+            class="mt-px shrink-0"
+          />
           <span>{{ gameText('missions.dailies.doubleDaily.uncertainty') }}</span>
         </p>
       </section>
     </div>
 
     <ul class="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
-      <li v-for="(s, i) in gameTextList('missions.strategies')" :key="i" class="panel p-4">
+      <li
+        v-for="(s, i) in gameTextList('missions.strategies')"
+        :key="i"
+        class="panel p-4"
+      >
         <p class="mb-1.5 flex items-center gap-2 font-display font-semibold">
-          <DxIcon name="resources/star" :size="16" class="text-accent" />
+          <DxIcon
+            name="resources/star"
+            :size="16"
+            class="text-accent"
+          />
           {{ i + 1 }}.
         </p>
-        <p class="text-xs text-ink-muted">{{ s }}</p>
+        <p class="text-xs text-ink-muted">
+          {{ s }}
+        </p>
       </li>
     </ul>
 
@@ -412,16 +560,26 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
         aria-modal="true"
         @click.self="closePad"
       >
-        <div class="absolute inset-0 bg-void-deep/70 backdrop-blur-md" @click="closePad" />
+        <div
+          class="absolute inset-0 bg-void-deep/70 backdrop-blur-md"
+          @click="closePad"
+        />
 
         <section class="dx-modal-panel panel relative z-10 w-full max-w-lg p-6">
           <div class="mb-5 flex items-start gap-4">
-            <img :src="PAD_IMAGE[selectedPad.missionTier as Tier]" alt="" class="size-20 shrink-0 object-contain">
+            <img
+              :src="PAD_IMAGE[selectedPad.missionTier as Tier]"
+              alt=""
+              class="size-20 shrink-0 object-contain"
+            >
 
             <div class="min-w-0 flex-1">
               <h2 class="text-xl">
                 {{ $t(`tier.${selectedPad.missionTier}`) }}
-                <span v-if="selectedPad.unlockCost" class="text-ink-muted">
+                <span
+                  v-if="selectedPad.unlockCost"
+                  class="text-ink-muted"
+                >
                   {{ formatNumber(selectedPad.unlockCost, locale) }}
                 </span>
               </h2>
@@ -431,8 +589,16 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
               </p>
             </div>
 
-            <button type="button" class="dx-icon-button shrink-0" :aria-label="$t('common.close')" @click="closePad">
-              <DxIcon name="actions/close" :size="18" />
+            <button
+              type="button"
+              class="dx-icon-button shrink-0"
+              :aria-label="$t('common.close')"
+              @click="closePad"
+            >
+              <DxIcon
+                name="actions/close"
+                :size="18"
+              />
             </button>
           </div>
 
@@ -447,14 +613,24 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
               :key="`d-${r.kind}-${r.tier ?? ''}`"
               class="flex items-center gap-3 rounded-md bg-void/40 px-3 py-2"
             >
-              <span class="size-3.5 shrink-0 rounded-full" :class="rewardClass(r)" />
+              <span
+                class="size-3.5 shrink-0 rounded-full"
+                :class="rewardClass(r)"
+              />
               <span class="flex-1 text-sm">{{ rewardLabel(r) }}</span>
               <span class="font-mono text-sm font-bold tabular-nums">{{ r.chance }} %</span>
             </li>
           </ul>
 
-          <p v-if="gameText(`missions.pads.entries.${selectedIndex}.note`)" class="dx-alert dx-alert--info mt-4 border-0 text-xs">
-            <DxIcon name="status/info" :size="16" class="mt-px shrink-0" />
+          <p
+            v-if="gameText(`missions.pads.entries.${selectedIndex}.note`)"
+            class="dx-alert dx-alert--info mt-4 border-0 text-xs"
+          >
+            <DxIcon
+              name="status/info"
+              :size="16"
+              class="mt-px shrink-0"
+            />
             <span>{{ gameText(`missions.pads.entries.${selectedIndex}.note`) }}</span>
           </p>
         </section>

@@ -20,13 +20,20 @@ const links = [
     class="fixed inset-x-0 bottom-0 z-50 border-t border-edge bg-void/95 pb-[env(safe-area-inset-bottom)] backdrop-blur md:hidden"
   >
     <ul class="flex">
-      <li v-for="link in links" :key="link.to" class="flex-1">
+      <li
+        v-for="link in links"
+        :key="link.to"
+        class="flex-1"
+      >
         <NuxtLink
           :to="localePath(link.to)"
           class="flex min-h-11 flex-col items-center justify-center gap-0.5 py-2 text-ink-muted transition-colors"
           active-class="!text-iconic"
         >
-          <DxIcon :name="link.icon" :size="20" />
+          <DxIcon
+            :name="link.icon"
+            :size="20"
+          />
           <span class="text-[10px] font-medium">{{ $t(`nav.${link.key}`) }}</span>
         </NuxtLink>
       </li>

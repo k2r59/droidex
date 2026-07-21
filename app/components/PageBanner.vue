@@ -49,10 +49,26 @@ const mobile = computed(() => src('mobile'))
     class="panel relative isolate overflow-hidden"
     :style="{ minHeight }"
   >
-    <picture v-if="desktop" class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-      <source v-if="mobile" :srcset="mobile" media="(max-width: 720px)">
-      <source v-if="tablet" :srcset="tablet" media="(max-width: 1200px)">
-      <img :src="desktop" alt="" class="size-full object-cover object-center">
+    <picture
+      v-if="desktop"
+      class="pointer-events-none absolute inset-0 -z-10"
+      aria-hidden="true"
+    >
+      <source
+        v-if="mobile"
+        :srcset="mobile"
+        media="(max-width: 720px)"
+      >
+      <source
+        v-if="tablet"
+        :srcset="tablet"
+        media="(max-width: 1200px)"
+      >
+      <img
+        :src="desktop"
+        alt=""
+        class="size-full object-cover object-center"
+      >
     </picture>
 
     <!--

@@ -65,7 +65,9 @@ const blocs = [
           visible entre les deux, sans voile qui l'assombrirait sur toute la hauteur.
         -->
         <div class="rounded-lg border border-edge-soft bg-void/60 p-4 backdrop-blur-sm">
-          <h2 class="text-xl font-bold uppercase tracking-[0.03em]">{{ $t('superRebirth.title') }}</h2>
+          <h2 class="text-xl font-bold uppercase tracking-[0.03em]">
+            {{ $t('superRebirth.title') }}
+          </h2>
           <p class="mt-1 text-sm text-ink-muted">
             {{ $t('superRebirth.unlock', { rebirth: unlockRebirth }) }}
             <!-- L'exigence est le mot que le joueur cherche : elle passe en doré, sur sa ligne. -->
@@ -74,7 +76,10 @@ const blocs = [
         </div>
 
         <!-- Laisse respirer le cristal : c'est cette réserve qui donne sa hauteur au bloc. -->
-        <div class="aspect-[5/4]" aria-hidden="true" />
+        <div
+          class="aspect-[5/4]"
+          aria-hidden="true"
+        />
 
         <div class="rounded-lg border border-edge-soft bg-void/60 p-4 backdrop-blur-sm">
           <p class="flex items-baseline gap-2">
@@ -91,7 +96,10 @@ const blocs = [
             {{ $t('superRebirth.doIt') }}
           </button>
 
-          <p v-if="crystalsNow !== null" class="mt-2 text-center font-mono text-sm text-accent">
+          <p
+            v-if="crystalsNow !== null"
+            class="mt-2 text-center font-mono text-sm text-accent"
+          >
             ✦ {{ $t('superRebirth.crystals', crystalsNow, { named: { count: crystalsNow } }) }}
           </p>
         </div>
@@ -99,23 +107,48 @@ const blocs = [
     </section>
 
     <section class="panel divide-y divide-edge-soft">
-      <div v-for="bloc in blocs" :key="bloc.key" class="flex gap-3.5 p-4">
+      <div
+        v-for="bloc in blocs"
+        :key="bloc.key"
+        class="flex gap-3.5 p-4"
+      >
         <!-- Médaillon rond cerclé, teinté par le ton du bloc. -->
-        <span class="grid size-11 shrink-0 place-items-center rounded-full border" :class="[bloc.ring, bloc.tone]">
-          <DxIcon :name="bloc.icon" :size="20" />
+        <span
+          class="grid size-11 shrink-0 place-items-center rounded-full border"
+          :class="[bloc.ring, bloc.tone]"
+        >
+          <DxIcon
+            :name="bloc.icon"
+            :size="20"
+          />
         </span>
         <div class="min-w-0">
-          <p class="font-semibold" :class="bloc.tone">{{ $t(bloc.title) }}</p>
-          <p class="mt-0.5 text-sm text-ink-muted">{{ $t(bloc.body) }}</p>
+          <p
+            class="font-semibold"
+            :class="bloc.tone"
+          >
+            {{ $t(bloc.title) }}
+          </p>
+          <p class="mt-0.5 text-sm text-ink-muted">
+            {{ $t(bloc.body) }}
+          </p>
         </div>
       </div>
     </section>
 
     <details class="panel group p-4">
       <summary class="flex cursor-pointer list-none items-center gap-2 text-sm text-ink-muted hover:text-ink">
-        <DxIcon name="resources/nova-crystal" :size="18" class="text-accent" />
+        <DxIcon
+          name="resources/nova-crystal"
+          :size="18"
+          class="text-accent"
+        />
         <span class="flex-1">{{ $t('superRebirth.crystalsByTier') }}</span>
-        <DxIcon name="actions/chevron-down" :size="16" class="transition-transform group-open:rotate-180" />
+        <DxIcon
+          name="actions/chevron-down"
+          :size="16"
+          class="transition-transform group-open:rotate-180"
+        />
       </summary>
 
       <ul class="mt-3 grid grid-cols-3 gap-1.5">

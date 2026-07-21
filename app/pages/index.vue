@@ -64,8 +64,8 @@ const filtered = computed(() => {
         return a.name.localeCompare(b.name, locale.value)
       default:
         return (
-          RARITY_ORDER.indexOf(a.rarity) - RARITY_ORDER.indexOf(b.rarity) ||
-          income(a) - income(b)
+          RARITY_ORDER.indexOf(a.rarity) - RARITY_ORDER.indexOf(b.rarity)
+          || income(a) - income(b)
         )
     }
   })
@@ -73,10 +73,10 @@ const filtered = computed(() => {
 
 const hasFilters = computed(
   () =>
-    Boolean(search.value) ||
-    rarity.value !== 'all' ||
-    type.value !== 'all' ||
-    ownership.value !== 'all',
+    Boolean(search.value)
+    || rarity.value !== 'all'
+    || type.value !== 'all'
+    || ownership.value !== 'all',
 )
 
 function resetFilters() {
@@ -117,7 +117,9 @@ onKeyStroke('Escape', () => {
 
     <IconicPanel variant="strip" />
 
-    <h2 class="text-sm font-bold uppercase tracking-wide">{{ $t('home.allDroids') }}</h2>
+    <h2 class="text-sm font-bold uppercase tracking-wide">
+      {{ $t('home.allDroids') }}
+    </h2>
 
     <!-- Barre de filtres collante : sur une grille de 69 cartes, la perdre au scroll
          obligerait à remonter à chaque changement de filtre. -->
@@ -134,18 +136,47 @@ onKeyStroke('Escape', () => {
           <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted">⌕</span>
         </div>
 
-        <select v-model="rarity" class="rounded-card border border-edge bg-panel px-3 py-2.5 text-sm">
-          <option value="all">{{ $t('droidex.filterRarity') }} — {{ $t('droidex.filterAll') }}</option>
-          <option v-for="r in store.dataset.rarities" :key="r" :value="r">{{ $t(`rarity.${r}`) }}</option>
+        <select
+          v-model="rarity"
+          class="rounded-card border border-edge bg-panel px-3 py-2.5 text-sm"
+        >
+          <option value="all">
+            {{ $t('droidex.filterRarity') }} — {{ $t('droidex.filterAll') }}
+          </option>
+          <option
+            v-for="r in store.dataset.rarities"
+            :key="r"
+            :value="r"
+          >
+            {{ $t(`rarity.${r}`) }}
+          </option>
         </select>
 
-        <select v-model="type" class="rounded-card border border-edge bg-panel px-3 py-2.5 text-sm">
-          <option value="all">{{ $t('droidex.filterType') }} — {{ $t('droidex.filterAll') }}</option>
-          <option v-for="ty in store.dataset.types" :key="ty" :value="ty">{{ $t(`type.${ty}`) }}</option>
+        <select
+          v-model="type"
+          class="rounded-card border border-edge bg-panel px-3 py-2.5 text-sm"
+        >
+          <option value="all">
+            {{ $t('droidex.filterType') }} — {{ $t('droidex.filterAll') }}
+          </option>
+          <option
+            v-for="ty in store.dataset.types"
+            :key="ty"
+            :value="ty"
+          >
+            {{ $t(`type.${ty}`) }}
+          </option>
         </select>
 
-        <select v-model="sort" class="rounded-card border border-edge bg-panel px-3 py-2.5 text-sm">
-          <option v-for="s in (['rarity', 'income', 'cost', 'name'] as const)" :key="s" :value="s">
+        <select
+          v-model="sort"
+          class="rounded-card border border-edge bg-panel px-3 py-2.5 text-sm"
+        >
+          <option
+            v-for="s in (['rarity', 'income', 'cost', 'name'] as const)"
+            :key="s"
+            :value="s"
+          >
             {{ $t('droidex.sortBy') }} : {{ $t(`droidex.sort.${s}`) }}
           </option>
         </select>
@@ -181,7 +212,10 @@ onKeyStroke('Escape', () => {
       </div>
     </div>
 
-    <p v-if="!filtered.length" class="py-16 text-center text-ink-muted">
+    <p
+      v-if="!filtered.length"
+      class="py-16 text-center text-ink-muted"
+    >
       {{ $t('droidex.empty') }}
     </p>
 
@@ -189,7 +223,11 @@ onKeyStroke('Escape', () => {
       v-else
       class="grid grid-cols-1 gap-3 @lg:grid-cols-2 @3xl:grid-cols-3 @6xl:grid-cols-4"
     >
-      <DroidCard v-for="droid in filtered" :key="droid.slug" :droid="droid" />
+      <DroidCard
+        v-for="droid in filtered"
+        :key="droid.slug"
+        :droid="droid"
+      />
     </div>
   </div>
 </template>

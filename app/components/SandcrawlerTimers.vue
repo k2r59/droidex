@@ -58,7 +58,11 @@ const isImminent = (s: number | null) => s !== null && s <= 30
 <template>
   <section class="rounded-card border border-edge-soft bg-panel p-5">
     <h2 class="mb-4 flex flex-wrap items-center gap-2.5">
-      <DxIcon name="resources/timer" :size="20" class="shrink-0 text-ink-strong" />
+      <DxIcon
+        name="resources/timer"
+        :size="20"
+        class="shrink-0 text-ink-strong"
+      />
       <span class="font-display text-base font-bold uppercase tracking-[0.05em] text-ink-strong">
         {{ $t('timers.title') }}
       </span>
@@ -73,7 +77,9 @@ const isImminent = (s: number | null) => s !== null && s <= 30
         <span class="size-3.5 shrink-0 rounded-full tier-beskar-bg" />
 
         <div class="min-w-0 flex-1">
-          <p class="font-semibold text-ink-strong">{{ $t('timers.beskarLabel') }}</p>
+          <p class="font-semibold text-ink-strong">
+            {{ $t('timers.beskarLabel') }}
+          </p>
           <p class="text-[0.8125rem] text-ink-muted">
             {{ $t('timers.every', { minutes: sandcrawler.beskarIntervalMinutes }) }}
           </p>
@@ -93,7 +99,11 @@ const isImminent = (s: number | null) => s !== null && s <= 30
           class="flex shrink-0 items-center gap-2.5 rounded-lg border border-edge-strong bg-panel-raised px-4 py-2.5 text-[0.8125rem] font-medium transition-colors hover:border-accent/50"
           @click="lastBeskar = Date.now()"
         >
-          <DxIcon name="game/radar" :size="18" class="text-ink-strong" />
+          <DxIcon
+            name="game/radar"
+            :size="18"
+            class="text-ink-strong"
+          />
           {{ $t('timers.sawIt') }}
         </button>
         <button
@@ -114,8 +124,12 @@ const isImminent = (s: number | null) => s !== null && s <= 30
         <span class="size-3.5 shrink-0 rounded-full bg-mythic" />
 
         <div class="min-w-0 flex-1">
-          <p class="font-semibold text-mythic">{{ $t('timers.mythicLabel') }}</p>
-          <p class="text-[0.8125rem] text-ink-muted">{{ $t('timers.mythicAuto') }}</p>
+          <p class="font-semibold text-mythic">
+            {{ $t('timers.mythicLabel') }}
+          </p>
+          <p class="text-[0.8125rem] text-ink-muted">
+            {{ $t('timers.mythicAuto') }}
+          </p>
         </div>
 
         <p class="font-mono text-2xl font-bold tabular-nums text-mythic">
@@ -125,7 +139,11 @@ const isImminent = (s: number | null) => s !== null && s <= 30
     </ul>
 
     <div class="mt-3 flex items-start gap-3 rounded-lg border border-edge-soft bg-void/40 px-4 py-3">
-      <DxIcon name="status/info" :size="18" class="mt-px shrink-0 text-rare" />
+      <DxIcon
+        name="status/info"
+        :size="18"
+        class="mt-px shrink-0 text-rare"
+      />
       <div class="text-[0.8125rem] leading-relaxed text-ink-muted">
         <p>{{ $t('timers.beskarPerPlayer') }}</p>
         <p>{{ $t('timers.rainbowRemoved') }}</p>

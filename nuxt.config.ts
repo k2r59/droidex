@@ -2,29 +2,11 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
+
+  modules: ['@pinia/nuxt', '@nuxtjs/i18n', '@vueuse/nuxt', '@vite-pwa/nuxt', '@nuxt/fonts', '@nuxt/eslint'],
   devtools: { enabled: true },
 
-  modules: ['@pinia/nuxt', '@nuxtjs/i18n', '@vueuse/nuxt', '@vite-pwa/nuxt', '@nuxt/fonts'],
-
   css: ['~/assets/css/main.css'],
-
-  /**
-   * Polices téléchargées et servies depuis notre domaine au build : pas de requête vers
-   * un tiers au chargement, et pas de saut de mise en page grâce aux métriques de repli
-   * calculées par le module.
-   */
-  fonts: {
-    families: [
-      { name: 'Rajdhani', provider: 'google', weights: [500, 600, 700] },
-      { name: 'Inter', provider: 'google', weights: [400, 500, 600] },
-      { name: 'JetBrains Mono', provider: 'google', weights: [400, 500, 700] },
-    ],
-  },
-
-  vite: {
-    plugins: [tailwindcss()],
-  },
 
   runtimeConfig: {
     mongodbUri: '', // NUXT_MONGODB_URI
@@ -43,6 +25,63 @@ export default defineNuxtConfig({
       // propriétaires Epic/Lucasfilm et ne sont pas versionnés dans ce dépôt.
       droidImageBase: '/droids', // NUXT_PUBLIC_DROID_IMAGE_BASE
     },
+  },
+  compatibilityDate: '2025-07-15',
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
+
+  /**
+   * Le module génère la configuration ESLint à plat en s'appuyant sur les conventions
+   * Nuxt : auto-imports connus, ordre des blocs de composant, règles Vue et TypeScript.
+   * `stylistic` couvre la mise en forme, ce qui évite d'ajouter Prettier — deux outils
+   * qui se disputent le formatage finissent toujours par se contredire.
+   */
+  eslint: {
+    config: {
+      stylistic: {
+        indent: 2,
+        quotes: 'single',
+        semi: false,
+        commaDangle: 'always-multiline',
+        // Le code existant écrit systématiquement `(x) => …`. On aligne l'outil sur la
+        // convention en place plutôt que de reformater 400 emplacements pour un gain nul.
+        arrowParens: true,
+      },
+    },
+  },
+
+  /**
+   * Polices téléchargées et servies depuis notre domaine au build : pas de requête vers
+   * un tiers au chargement, et pas de saut de mise en page grâce aux métriques de repli
+   * calculées par le module.
+   */
+  fonts: {
+    families: [
+      { name: 'Rajdhani', provider: 'google', weights: [500, 600, 700] },
+      { name: 'Inter', provider: 'google', weights: [400, 500, 600] },
+      { name: 'JetBrains Mono', provider: 'google', weights: [400, 500, 700] },
+    ],
+  },
+
+  i18n: {
+    defaultLocale: 'fr',
+    strategy: 'prefix_except_default',
+    // Requis pour générer des balises hreflang et canonical absolues.
+    baseUrl: process.env.NUXT_PUBLIC_BASE_URL || 'http://localhost:3000',
+    // Mémorise la langue choisie sans redirection surprise au premier chargement.
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'droidex_locale',
+      redirectOn: 'root',
+    },
+    locales: [
+      { code: 'fr', language: 'fr-FR', name: 'Français', file: 'fr.json' },
+      { code: 'en', language: 'en-US', name: 'English', file: 'en.json' },
+      { code: 'es', language: 'es-ES', name: 'Español', file: 'es.json' },
+      { code: 'de', language: 'de-DE', name: 'Deutsch', file: 'de.json' },
+    ],
   },
 
   /**
@@ -89,24 +128,5 @@ export default defineNuxtConfig({
     },
     client: { installPrompt: true },
     devOptions: { enabled: false },
-  },
-
-  i18n: {
-    defaultLocale: 'fr',
-    strategy: 'prefix_except_default',
-    // Requis pour générer des balises hreflang et canonical absolues.
-    baseUrl: process.env.NUXT_PUBLIC_BASE_URL || 'http://localhost:3000',
-    // Mémorise la langue choisie sans redirection surprise au premier chargement.
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'droidex_locale',
-      redirectOn: 'root',
-    },
-    locales: [
-      { code: 'fr', language: 'fr-FR', name: 'Français', file: 'fr.json' },
-      { code: 'en', language: 'en-US', name: 'English', file: 'en.json' },
-      { code: 'es', language: 'es-ES', name: 'Español', file: 'es.json' },
-      { code: 'de', language: 'de-DE', name: 'Deutsch', file: 'de.json' },
-    ],
   },
 })

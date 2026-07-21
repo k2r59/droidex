@@ -9,7 +9,7 @@
  * Le bouton porte lui-même le libellé : pas de `<label for>` à synchroniser, et toute la
  * surface — texte compris — devient cliquable, ce qui compte au doigt.
  */
-defineProps<{ modelValue: boolean; label?: string }>()
+defineProps<{ modelValue: boolean, label?: string }>()
 defineEmits<{ 'update:modelValue': [boolean] }>()
 </script>
 
@@ -35,7 +35,10 @@ defineEmits<{ 'update:modelValue': [boolean] }>()
       />
     </span>
 
-    <span v-if="label" :class="modelValue ? 'text-ink-strong' : 'text-ink-muted'">{{ label }}</span>
+    <span
+      v-if="label"
+      :class="modelValue ? 'text-ink-strong' : 'text-ink-muted'"
+    >{{ label }}</span>
     <slot />
   </button>
 </template>

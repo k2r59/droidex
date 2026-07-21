@@ -5,7 +5,7 @@ import { MongoClient, type Db } from 'mongodb'
  * mémorise le client sur `globalThis` pour ne pas ouvrir un pool par rechargement.
  */
 declare global {
-  // eslint-disable-next-line no-var
+
   var __droidexMongo: Promise<MongoClient> | undefined
 }
 

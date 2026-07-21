@@ -52,6 +52,13 @@ const style = computed(() => {
 </script>
 
 <template>
+  <!--
+    Le contenu vient exclusivement de `import.meta.glob` sur `app/assets/icons/**` : des
+    fichiers du dépôt, résolus au build. Aucune donnée d'utilisateur, de requête ou de
+    base ne peut atteindre cette directive. Un `<img>` éviterait la règle mais perdrait
+    `currentColor`, dont dépend la teinte par état de toutes les icônes.
+  -->
+  <!-- eslint-disable-next-line vue/no-v-html -->
   <span
     class="inline-grid shrink-0 place-items-center"
     :style="style"

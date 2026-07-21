@@ -19,7 +19,10 @@ const MODIFIER: Record<Rarity, string> = {
 </script>
 
 <template>
-  <span class="dx-badge" :class="MODIFIER[rarity]">
+  <span
+    class="dx-badge"
+    :class="MODIFIER[rarity]"
+  >
     {{ $t(`rarity.${rarity}`) }}
   </span>
 </template>

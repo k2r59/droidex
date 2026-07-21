@@ -25,13 +25,23 @@ const islandVersion = computed<string | null>(() => {
 <template>
   <footer class="mt-12 border-t border-edge-soft px-4 py-8 text-sm text-ink-muted">
     <div class="mx-auto flex max-w-7xl flex-col gap-3">
-      <p class="font-medium text-ink">{{ $t('disclaimer.title') }}</p>
+      <p class="font-medium text-ink">
+        {{ $t('disclaimer.title') }}
+      </p>
       <p>{{ $t('disclaimer.community') }}</p>
-      <p class="text-xs">{{ $t('disclaimer.rights') }}</p>
+      <p class="text-xs">
+        {{ $t('disclaimer.rights') }}
+      </p>
       <p class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs">
         <span>{{ $t('app.islandCode', { code: ISLAND_CODE }) }}</span>
-        <span v-if="islandVersion" aria-hidden="true">·</span>
-        <span v-if="islandVersion" class="rounded-md border border-edge-soft bg-panel px-2 py-0.5 font-mono text-accent">
+        <span
+          v-if="islandVersion"
+          aria-hidden="true"
+        >·</span>
+        <span
+          v-if="islandVersion"
+          class="rounded-md border border-edge-soft bg-panel px-2 py-0.5 font-mono text-accent"
+        >
           {{ $t('app.islandVersion', { version: islandVersion }) }}
         </span>
         <span aria-hidden="true">·</span>

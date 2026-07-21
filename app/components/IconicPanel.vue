@@ -9,11 +9,11 @@
  * Ils méritent un emplacement à part parce qu'ils ne se comparent pas au reste : revenu
  * exprimé en pourcentage du total, palier unique, obtention par événement.
  */
+import background from '~/assets/images/backgrounds/sidebar-right.webp'
+
 const props = withDefaults(defineProps<{ variant?: 'sidebar' | 'strip' }>(), {
   variant: 'sidebar',
 })
-
-import background from '~/assets/images/backgrounds/sidebar-right.webp'
 
 const store = useCollectionStore()
 const localePath = useLocalePath()
@@ -93,13 +93,21 @@ const peutAvancer = computed(() => index.value < shown.value.length - 1)
     :style="{ backgroundImage: `linear-gradient(rgb(7 16 31 / 0.86), rgb(7 16 31 / 0.94)), url(${background})` }"
   >
     <div>
-      <h2 class="text-sm font-bold uppercase tracking-wide">{{ $t('iconic.title') }}</h2>
-      <p class="text-xs text-ink-muted">{{ $t('iconic.subtitle') }}</p>
+      <h2 class="text-sm font-bold uppercase tracking-wide">
+        {{ $t('iconic.title') }}
+      </h2>
+      <p class="text-xs text-ink-muted">
+        {{ $t('iconic.subtitle') }}
+      </p>
     </div>
 
     <!-- `min-h-0` autorise la liste à se comprimer plutôt qu'à déborder du cadre fixe. -->
     <div class="iconic-list flex min-h-0 flex-1 flex-col gap-3">
-      <IconicCard v-for="droid in shown" :key="droid.slug" :droid="droid" />
+      <IconicCard
+        v-for="droid in shown"
+        :key="droid.slug"
+        :droid="droid"
+      />
     </div>
 
     <NuxtLink
@@ -111,15 +119,25 @@ const peutAvancer = computed(() => index.value < shown.value.length - 1)
   </aside>
 
   <!-- Bande horizontale : sous `2xl`, on défile latéralement plutôt que de tout perdre. -->
-  <section v-else class="flex flex-col gap-2 2xl:hidden">
+  <section
+    v-else
+    class="flex flex-col gap-2 2xl:hidden"
+  >
     <div class="flex items-baseline justify-between gap-3">
       <div>
-        <h2 class="text-sm font-bold uppercase tracking-wide">{{ $t('iconic.title') }}</h2>
-        <p class="text-xs text-ink-muted">{{ $t('iconic.subtitle') }}</p>
+        <h2 class="text-sm font-bold uppercase tracking-wide">
+          {{ $t('iconic.title') }}
+        </h2>
+        <p class="text-xs text-ink-muted">
+          {{ $t('iconic.subtitle') }}
+        </p>
       </div>
       <div class="flex shrink-0 items-center gap-2">
         <!-- Flèches réservées au pointeur : au doigt, on fait glisser. -->
-        <div class="hidden items-center gap-1 sm:flex">
+        <div
+          v-if="defilable"
+          class="hidden items-center gap-1 sm:flex"
+        >
           <button
             type="button"
             class="dx-icon-button size-9 disabled:opacity-30"
@@ -127,7 +145,10 @@ const peutAvancer = computed(() => index.value < shown.value.length - 1)
             :aria-label="$t('common.previous')"
             @click="versCarte(index - 1)"
           >
-            <DxIcon name="actions/chevron-left" :size="16" />
+            <DxIcon
+              name="actions/chevron-left"
+              :size="16"
+            />
           </button>
           <button
             type="button"
@@ -136,11 +157,17 @@ const peutAvancer = computed(() => index.value < shown.value.length - 1)
             :aria-label="$t('common.next')"
             @click="versCarte(index + 1)"
           >
-            <DxIcon name="actions/chevron-right" :size="16" />
+            <DxIcon
+              name="actions/chevron-right"
+              :size="16"
+            />
           </button>
         </div>
 
-        <NuxtLink :to="localePath('/?rarity=iconic')" class="text-sm text-accent hover:underline">
+        <NuxtLink
+          :to="localePath('/?rarity=iconic')"
+          class="text-sm text-accent hover:underline"
+        >
           {{ $t('iconic.seeAll') }}
         </NuxtLink>
       </div>
@@ -156,12 +183,18 @@ const peutAvancer = computed(() => index.value < shown.value.length - 1)
         :key="droid.slug"
         class="w-40 shrink-0 snap-start sm:w-44"
       >
-        <IconicCard :droid="droid" class="w-full" />
+        <IconicCard
+          :droid="droid"
+          class="w-full"
+        />
       </li>
     </ul>
 
     <!-- Repères de position : sans eux, rien n'indique qu'il reste des cartes à droite. -->
-    <div class="flex justify-center gap-1.5">
+    <div
+      v-if="defilable"
+      class="flex justify-center gap-1.5"
+    >
       <button
         v-for="(droid, i) in shown"
         :key="`p-${droid.slug}`"

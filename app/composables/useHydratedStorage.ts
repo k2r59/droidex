@@ -16,7 +16,8 @@ export function useHydratedStorage<T>(key: string, defaultValue: T) {
     try {
       const raw = localStorage.getItem(key)
       if (raw !== null) state.value = JSON.parse(raw) as T
-    } catch {
+    }
+    catch {
       // Valeur corrompue ou stockage indisponible (navigation privée) : on garde le défaut.
     }
 
@@ -25,7 +26,8 @@ export function useHydratedStorage<T>(key: string, defaultValue: T) {
       (value) => {
         try {
           localStorage.setItem(key, JSON.stringify(value))
-        } catch {
+        }
+        catch {
           // Quota dépassé ou stockage refusé — la session reste utilisable en mémoire.
         }
       },
