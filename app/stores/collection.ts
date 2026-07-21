@@ -202,15 +202,16 @@ export const useCollectionStore = defineStore('collection', () => {
   )
 
   /**
-   * Une exigence de renaissance porte sur un palier **précis**.
+   * Une exigence de renaissance est satisfaite dès qu'on détient **ce palier ou un plus
+   * haut**, conformément à la règle du jeu.
    *
-   * Le modèle précédent déduisait les paliers inférieurs du plus haut, si bien qu'un
-   * Beskar satisfaisait mécaniquement une exigence d'Or. Les paliers étant désormais
-   * consignés un à un, cette déduction n'a plus lieu d'être : un joueur qui a obtenu le
-   * Beskar sans jamais avoir eu l'Or n'a pas d'Or à placer dans sa base.
+   * À ne pas confondre avec le journal lui-même, qui reste strict : consigner un Beskar
+   * n'ajoute pas l'Or à la collection, et le compteur ne compte que les variantes
+   * réellement obtenues. La souplesse ne vaut que pour le planificateur de renaissances.
    */
   function satisfies(slug: string, required: Tier): boolean {
-    return entry(slug).tiers.includes(required)
+    const requis = TIER_RANK[required]
+    return entry(slug).tiers.some((t) => TIER_RANK[t] >= requis)
   }
 
   const isEmpty = computed(
