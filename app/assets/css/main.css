@@ -233,6 +233,45 @@ body {
   contain-intrinsic-size: auto 190px;
 }
 
+/*
+ * La barre latérale est fixe et sans défilement interne. Sur un écran peu haut, plutôt
+ * que de couper le contenu au ras du cadre, on retire les éléments par ordre inverse
+ * d'importance : d'abord l'illustration, puis les liens sociaux, puis la carte entière.
+ * La navigation, elle, reste toujours visible.
+ */
+@media (max-height: 860px) {
+  .sidebar-planet { display: none; }
+}
+
+@media (max-height: 760px) {
+  .sidebar-social { display: none; }
+}
+
+@media (max-height: 660px) {
+  .sidebar-rebirth { display: none; }
+}
+
+/*
+ * Même principe pour la colonne des Emblématiques : elle est fixe, donc une carte qui
+ * ne rentre pas serait coupée sans aucun moyen de l'atteindre. On en retire à mesure
+ * que la hauteur diminue — le lien « voir tous » reste, lui, toujours accessible.
+ *
+ * Seuils mesurés sur le rendu réel, pas estimés : une carte fait 255 px, plus 12 px de
+ * gouttière, et la colonne réserve 130 px pour son en-tête, son bouton et ses marges.
+ * D'où 1198 px pour quatre cartes, 931 pour trois, 664 pour deux.
+ */
+@media (max-height: 1197px) {
+  .iconic-list > :nth-child(4) { display: none; }
+}
+
+@media (max-height: 930px) {
+  .iconic-list > :nth-child(3) { display: none; }
+}
+
+@media (max-height: 663px) {
+  .iconic-list > :nth-child(2) { display: none; }
+}
+
 /* Teinte de nébuleuse par palier : le ciel suit la variante affichée. */
 .nebula-default { --nebula: rgba(99, 102, 241, 0.22); }
 .nebula-gold { --nebula: rgba(234, 179, 8, 0.3); }

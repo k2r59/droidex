@@ -31,7 +31,7 @@ const socials = [
 </script>
 
 <template>
-  <aside class="sticky top-0 hidden h-dvh w-60 shrink-0 flex-col gap-6 overflow-y-auto border-r border-edge bg-panel px-4 py-5 xl:flex">
+  <aside class="sticky top-0 hidden h-dvh w-60 shrink-0 flex-col gap-5 overflow-hidden border-r border-edge bg-panel px-4 py-5 xl:flex">
     <NuxtLink :to="localePath('/')" class="flex items-center gap-2.5">
       <span class="grid size-9 place-items-center rounded-xl bg-accent/15 text-lg text-accent">◈</span>
       <span class="text-xl font-extrabold tracking-tight">DROIDEX</span>
@@ -60,7 +60,7 @@ const socials = [
     <!-- Prochaine renaissance : le palier suivant est l'objectif qui structure une session. -->
     <NuxtLink
       :to="localePath('/rebirths')"
-      class="panel mt-auto flex flex-col items-center gap-2 overflow-hidden p-4 text-center transition-colors hover:border-accent/40"
+      class="sidebar-rebirth panel mt-auto flex shrink-0 flex-col items-center gap-2 overflow-hidden p-4 text-center transition-colors hover:border-accent/40"
     >
       <p class="text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-muted">
         {{ $t('rebirth.next') }}
@@ -68,7 +68,7 @@ const socials = [
       <p class="text-lg font-bold">{{ $t('rebirth.levelShort', { level: nextRebirth }) }}</p>
 
       <!-- Illustration de substitution : une planète en dégradés, sans asset externe. -->
-      <span class="relative my-1 grid size-24 place-items-center">
+      <span class="sidebar-planet relative my-1 grid size-24 place-items-center">
         <span class="absolute inset-0 rounded-full bg-accent/20 blur-xl" />
         <span
           class="relative size-20 rounded-full"
@@ -82,7 +82,7 @@ const socials = [
       </span>
     </NuxtLink>
 
-    <div class="flex flex-col items-center gap-2">
+    <div class="sidebar-social flex shrink-0 flex-col items-center gap-2">
       <p class="text-xs text-ink-muted">{{ $t('common.joinCommunity') }}</p>
       <div class="flex gap-2">
         <span

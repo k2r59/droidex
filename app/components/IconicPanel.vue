@@ -1,54 +1,74 @@
 <script setup lang="ts">
 /**
- * Colonne de droite : les droids Emblématiques.
+ * Les droids Emblématiques, sous deux formes selon la place disponible :
  *
- * Ils méritent leur propre panneau parce qu'ils ne se comparent pas au reste — revenu
- * exprimé en pourcentage du total, palier unique, obtention par événement. Les noyer dans
- * la grille générale les rendrait illisibles.
+ * - `sidebar` : colonne de droite, à partir de `2xl`.
+ * - `strip` : bande horizontale défilante, utilisée en dessous de `2xl` pour que le
+ *   contenu ne disparaisse pas purement et simplement sur les écrans plus étroits.
+ *
+ * Ils méritent un emplacement à part parce qu'ils ne se comparent pas au reste : revenu
+ * exprimé en pourcentage du total, palier unique, obtention par événement.
  */
+const props = withDefaults(defineProps<{ variant?: 'sidebar' | 'strip' }>(), {
+  variant: 'sidebar',
+})
+
 const store = useCollectionStore()
 const localePath = useLocalePath()
 
 const iconics = computed(() => store.droids.filter((d) => d.rarity === 'iconic'))
 
-/** Les plus rentables d'abord ; le panneau n'en montre que quelques-uns. */
-const featured = computed(() =>
-  [...iconics.value].sort((a, b) => (b.percentValue ?? 0) - (a.percentValue ?? 0)).slice(0, 4),
+/** Les plus rentables d'abord. La colonne en montre 4, la bande les montre tous. */
+const sorted = computed(() =>
+  [...iconics.value].sort((a, b) => (b.percentValue ?? 0) - (a.percentValue ?? 0)),
 )
+
+const shown = computed(() => (props.variant === 'sidebar' ? sorted.value.slice(0, 4) : sorted.value))
 </script>
 
 <template>
-  <aside class="sticky top-0 hidden h-dvh w-72 shrink-0 flex-col gap-3 overflow-y-auto border-l border-edge bg-panel px-4 py-5 2xl:flex">
+  <!--
+    Colonne de droite. `h-dvh` sans défilement interne : la barre latérale doit rester
+    fixe. Les cartes en trop sont donc écartées par `shown`, pas masquées par un scroll.
+  -->
+  <aside
+    v-if="variant === 'sidebar'"
+    class="sticky top-0 hidden h-dvh w-72 shrink-0 flex-col gap-3 overflow-hidden border-l border-edge bg-panel px-4 py-5 2xl:flex"
+  >
     <div>
       <h2 class="text-sm font-bold uppercase tracking-wide">{{ $t('iconic.title') }}</h2>
       <p class="text-xs text-ink-muted">{{ $t('iconic.subtitle') }}</p>
     </div>
 
-    <NuxtLink
-      v-for="droid in featured"
-      :key="droid.slug"
-      :to="localePath(`/droids/${droid.slug}`)"
-      class="iconic-card flex flex-col items-center gap-1.5 rounded-xl p-4 text-center transition-transform hover:scale-[1.02]"
-    >
-      <DroidImage :droid="droid" tier="DEFAULT" size="md" />
-
-      <p class="mt-1 font-bold">{{ droid.name }}</p>
-
-      <span class="rounded bg-accent-soft/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-accent-soft">
-        {{ $t('rarity.iconic') }}
-      </span>
-
-      <p class="text-xs text-ink-muted">{{ $t(`type.${droid.type}`) }}</p>
-
-      <p class="mt-1 text-2xl font-bold text-accent-soft">{{ droid.percentValue ?? '?' }} %</p>
-      <p class="-mt-1 text-xs text-ink-muted">{{ $t('iconic.ofTotalIncome') }}</p>
-    </NuxtLink>
+    <!-- `min-h-0` autorise la liste à se comprimer plutôt qu'à déborder du cadre fixe. -->
+    <div class="iconic-list flex min-h-0 flex-1 flex-col gap-3">
+      <IconicCard v-for="droid in shown" :key="droid.slug" :droid="droid" class="sidebar-optional" />
+    </div>
 
     <NuxtLink
       :to="localePath('/?rarity=iconic')"
-      class="btn-ghost mt-1 rounded-lg px-3 py-2.5 text-center text-sm transition-colors"
+      class="btn-ghost shrink-0 rounded-lg px-3 py-2.5 text-center text-sm transition-colors"
     >
       {{ $t('iconic.seeAll') }}
     </NuxtLink>
   </aside>
+
+  <!-- Bande horizontale : sous `2xl`, on défile latéralement plutôt que de tout perdre. -->
+  <section v-else class="flex flex-col gap-2 2xl:hidden">
+    <div class="flex items-baseline justify-between gap-3">
+      <div>
+        <h2 class="text-sm font-bold uppercase tracking-wide">{{ $t('iconic.title') }}</h2>
+        <p class="text-xs text-ink-muted">{{ $t('iconic.subtitle') }}</p>
+      </div>
+      <NuxtLink :to="localePath('/?rarity=iconic')" class="shrink-0 text-sm text-accent hover:underline">
+        {{ $t('iconic.seeAll') }}
+      </NuxtLink>
+    </div>
+
+    <ul class="-mx-4 flex snap-x gap-3 overflow-x-auto px-4 pb-2">
+      <li v-for="droid in shown" :key="droid.slug" class="w-44 snap-start">
+        <IconicCard :droid="droid" class="w-full" />
+      </li>
+    </ul>
+  </section>
 </template>

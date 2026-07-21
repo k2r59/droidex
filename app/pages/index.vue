@@ -85,7 +85,7 @@ onKeyStroke('Escape', () => {
   <div class="flex flex-col gap-5">
     <HomeHero />
 
-    <div class="grid gap-3 lg:grid-cols-2">
+    <div class="grid gap-3 @4xl:grid-cols-2">
       <!-- Horloge live : le serveur rendrait une heure différente de celle du client,
            ce qui casse l'hydratation. Aucun intérêt en SSR, donc client uniquement. -->
       <ClientOnly>
@@ -98,11 +98,13 @@ onKeyStroke('Escape', () => {
       <NextPurchaseAdvisor />
     </div>
 
+    <IconicPanel variant="strip" />
+
     <h2 class="text-sm font-bold uppercase tracking-wide">{{ $t('home.allDroids') }}</h2>
 
     <!-- Barre de filtres collante : sur une grille de 69 cartes, la perdre au scroll
          obligerait à remonter à chaque changement de filtre. -->
-    <div class="sticky top-16 z-30 -mx-4 flex flex-col gap-3 bg-void/90 px-4 py-3 backdrop-blur">
+    <div class="sticky top-[57px] z-30 -mx-4 flex flex-col gap-3 bg-void/95 px-4 py-3 backdrop-blur">
       <div class="flex flex-wrap items-center gap-2">
         <div class="relative min-w-48 flex-1">
           <input
@@ -161,7 +163,7 @@ onKeyStroke('Escape', () => {
 
     <div
       v-else
-      class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      class="grid grid-cols-1 gap-3 @lg:grid-cols-2 @3xl:grid-cols-3 @6xl:grid-cols-4"
     >
       <DroidCard v-for="droid in filtered" :key="droid.slug" :droid="droid" />
     </div>
