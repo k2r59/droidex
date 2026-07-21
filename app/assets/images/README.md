@@ -15,7 +15,8 @@ qui sont référencées par nom calculé depuis le dataset.
 
 | Fichier | Origine | Usage |
 |---|---|---|
-| `banners/<page>-<desktop\|tablet\|mobile>.webp` | Banners Pack | Bannière d'en-tête, une par page |
+| `banners/hero-droids-<bp>.webp` | Fournie par Hervé | Bannière commune à toutes les pages |
+| `banners/per-page/<page>-<bp>.webp` | Banners Pack | Bannières par page, écartées — voir ci-dessous |
 | `banners/event-*.webp` | Banners Pack | Bannières d'événement |
 | `backgrounds/<ambiance>-<bp>.webp` | Banners Pack | 7 ambiances de fond de section |
 | `backgrounds/sidebar-left.webp` · `sidebar-right.webp` | Banners Pack | Textures des colonnes latérales |
@@ -46,3 +47,12 @@ Le pack déclare ses SVG, CSS et HTML comme créations originales. Les illustrat
 elles, représentent des personnages Star Wars et restent soumises aux droits de Lucasfilm
 — même cadre d'usage que les icônes de droids décrit dans le README racine : outil
 communautaire non commercial.
+
+## Bannière commune et bannières par page
+
+`PageBanner` cherche d'abord une image au nom de la page, puis retombe sur `hero-droids`.
+Les bannières du Banners Pack sont donc simplement rangées dans `per-page/` : les
+remettre en service se fait en remontant un fichier d'un dossier, sans toucher au code.
+
+`pnpm run import:banner` importe une nouvelle bannière depuis le presse-papiers ou un
+chemin, et produit les trois largeurs attendues.

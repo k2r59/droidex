@@ -24,9 +24,19 @@ const images = import.meta.glob('~/assets/images/banners/*.webp', {
   eager: true,
 }) as Record<string, string>
 
+const FALLBACK = 'hero-droids'
+
+/**
+ * Cherche l'image de la page, puis retombe sur la bannière commune. Ce repli permet de
+ * changer d'ambiance page par page en déposant simplement un fichier au bon nom, sans
+ * toucher au code.
+ */
 const src = (bp: string) => {
-  const key = Object.keys(images).find((k) => k.endsWith(`/${props.name}-${bp}.webp`))
-  return key ? images[key] : undefined
+  for (const name of [props.name, FALLBACK]) {
+    const key = Object.keys(images).find((k) => k.endsWith(`/${name}-${bp}.webp`))
+    if (key) return images[key]
+  }
+  return undefined
 }
 
 const desktop = computed(() => src('desktop'))

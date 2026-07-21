@@ -14,7 +14,8 @@
     "fetch:images": "node scripts/fetch-droid-images.mjs",
     "typecheck": "nuxt typecheck",
     "cutout:images": "node scripts/cutout-droid-images.mjs",
-    "images": "pnpm run fetch:images && pnpm run cutout:images"
+    "images": "pnpm run fetch:images && pnpm run cutout:images",
+    "import:banner": "./scripts/import-banner.sh"
   },
   "dependencies": {
     "@nuxtjs/i18n": "^10.4.1",
