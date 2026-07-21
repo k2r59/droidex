@@ -23,6 +23,42 @@ function doSuperRebirth() {
   store.setSuperRebirth(store.superRebirth + 1, (store.cycle % 4) + 1)
 }
 
+/**
+ * Saisie directe du nombre de Super Rebirths déjà faits.
+ *
+ * Sans elle, un joueur qui découvre le site après six Super Rebirths n'avait aucun moyen de
+ * le dire : le compteur ne bougeait qu'en cliquant « Faire un Super Rebirth », geste qui
+ * fait aussi tourner le cycle d'exigences. Il fallait donc cliquer six fois et espérer
+ * retomber sur le bon cycle.
+ *
+ * Le cycle est recalculé à partir du total (`% 4`), de sorte qu'une saisie de 6 donne
+ * exactement l'état d'un joueur ayant enchaîné six fois le bouton.
+ */
+const MAX_SUPER = 10_000
+
+function setSuper(value: number) {
+  const n = Math.min(MAX_SUPER, Math.max(0, Math.floor(value || 0)))
+  store.setSuperRebirth(n, (n % 4) + 1)
+}
+
+/**
+ * Champ de cristaux Nova, avec le solde du store pour valeur initiale.
+ *
+ * On ne lie pas `v-model` directement au store : l'écriture est asynchrone (IndexedDB puis
+ * poussée serveur) et déclencher une écriture à chaque frappe enverrait « 3 », « 34 »,
+ * « 340 ». On valide donc au `change`, c'est-à-dire à la sortie du champ.
+ */
+const crystalsInput = ref(store.novaCrystals)
+watchEffect(() => { crystalsInput.value = store.novaCrystals })
+
+const MAX_NOVA = 1_000_000
+
+function commitCrystals() {
+  const n = Math.min(MAX_NOVA, Math.max(0, Math.floor(crystalsInput.value || 0)))
+  crystalsInput.value = n
+  store.setNovaCrystals(n)
+}
+
 const table = computed(() =>
   Object.entries(props.novaByRebirth)
     .map(([level, crystals]) => ({ level: Number(level), crystals }))
@@ -82,10 +118,62 @@ const blocs = [
         />
 
         <div class="rounded-lg border border-edge-soft bg-void/60 p-4 backdrop-blur-sm">
-          <p class="flex items-baseline gap-2">
-            <span class="font-mono text-2xl font-bold text-accent">{{ store.superRebirth }}</span>
-            <span class="text-sm text-ink-muted">{{ $t('superRebirth.done') }}</span>
+          <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
+            {{ $t('superRebirth.done') }}
           </p>
+          <div class="dx-stepper mt-1.5">
+            <button
+              type="button"
+              :aria-label="`−1 ${$t('superRebirth.title')}`"
+              @click="setSuper(store.superRebirth - 1)"
+            >
+              −
+            </button>
+            <!--
+              `output` seul n'était pas saisissable. Un `input` permet de taper 6 d'un coup
+              plutôt que d'appuyer six fois sur « + ».
+            -->
+            <input
+              :value="store.superRebirth"
+              type="number"
+              min="0"
+              :max="MAX_SUPER"
+              inputmode="numeric"
+              class="w-full min-w-0 border-0 bg-transparent text-center font-mono text-lg font-bold text-accent outline-none"
+              :aria-label="$t('superRebirth.done')"
+              @change="setSuper(Number(($event.target as HTMLInputElement).value))"
+            >
+            <button
+              type="button"
+              :aria-label="`+1 ${$t('superRebirth.title')}`"
+              @click="setSuper(store.superRebirth + 1)"
+            >
+              +
+            </button>
+          </div>
+
+          <label class="mt-3 block">
+            <span class="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
+              {{ $t('superRebirth.crystalBalance') }}
+            </span>
+            <span class="dx-search mt-1.5">
+              <DxIcon
+                name="resources/nova-crystal"
+                :size="18"
+                class="text-nova"
+              />
+              <input
+                v-model.number="crystalsInput"
+                type="number"
+                min="0"
+                :max="MAX_NOVA"
+                inputmode="numeric"
+                class="w-full min-w-0 border-0 bg-transparent font-mono text-lg outline-none"
+                @change="commitCrystals"
+              >
+              <span />
+            </span>
+          </label>
 
           <button
             type="button"

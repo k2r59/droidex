@@ -4565,7 +4565,7 @@
       "percentIncome": true,
       "percentValue": 15,
       "perk": "perk.bb8",
-      "unverified": false,
+      "unverified": true,
       "tiers": {
         "DEFAULT": {
           "income": null,
@@ -4588,7 +4588,7 @@
       "percentIncome": true,
       "percentValue": 15,
       "perk": "perk.misterBones",
-      "unverified": false,
+      "unverified": true,
       "tiers": {
         "DEFAULT": {
           "income": null,
@@ -4611,7 +4611,7 @@
       "percentIncome": true,
       "percentValue": 15,
       "perk": "perk.ig11",
-      "unverified": false,
+      "unverified": true,
       "tiers": {
         "DEFAULT": {
           "income": null,

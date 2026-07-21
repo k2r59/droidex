@@ -86,6 +86,10 @@ const selectedPad = computed(() =>
 )
 
 const closePad = () => { selectedIndex.value = null }
+
+/** Même confinement que sur la page Renaissances. */
+const padDialogRef = useTemplateRef<HTMLElement>('padDialogRef')
+useFocusTrap(padDialogRef, computed(() => selectedPad.value !== null))
 onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
 </script>
 
@@ -555,9 +559,12 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
     <Teleport to="body">
       <div
         v-if="selectedPad"
-        class="fixed inset-0 z-50 grid place-items-center overflow-y-auto p-4"
+        ref="padDialogRef"
+        tabindex="-1"
+        class="fixed inset-0 z-50 grid place-items-center overflow-y-auto p-4 focus:outline-none"
         role="dialog"
         aria-modal="true"
+        :aria-label="`${$t(`tier.${selectedPad.missionTier}`)} — ${$t('missions.padNumber', { number: selectedPad.pad })}`"
         @click.self="closePad"
       >
         <div

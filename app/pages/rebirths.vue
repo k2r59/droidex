@@ -11,7 +11,7 @@ useSeoMeta({
 })
 
 type Requirement = { slug: string, tier: Tier | null }
-type Level = { level: number, credits: number, droids: Requirement[], documented?: boolean }
+type Level = { level: number, credits: number, creditsAssumed?: boolean, droids: Requirement[] }
 
 const cycles = rebirthData.cycles as Record<string, Level[]>
 const levels = computed<Level[]>(() => cycles[String(store.cycle)] ?? cycles['1']!)
@@ -87,6 +87,13 @@ const selectedMissing = computed(() =>
 function closeLevel() {
   selected.value = null
 }
+
+/**
+ * Confine le focus dans la fenêtre et le rend au déclencheur à la fermeture — sans quoi
+ * `aria-modal` ci-dessous promettrait un isolement que rien ne fournit.
+ */
+const dialogRef = useTemplateRef<HTMLElement>('dialogRef')
+useFocusTrap(dialogRef, computed(() => selected.value !== null))
 
 /** Échap ferme la fenêtre : c'est le réflexe attendu, et le seul si la souris est loin. */
 onKeyStroke('Escape', () => { if (selected.value) closeLevel() })
@@ -259,6 +266,11 @@ const shown = computed(() => {
           </h2>
           <p class="text-sm">
             <span class="font-mono text-lg font-bold text-nova">{{ formatNumber(nextLevel.credits, locale) }}</span>
+            <span
+              v-if="nextLevel.creditsAssumed"
+              class="ml-1 cursor-help text-xs text-warn"
+              :title="$t('rebirth.creditsAssumed')"
+            >⚠</span>
             <span class="ml-1 text-ink-muted">{{ $t('rebirth.creditsRequired') }}</span>
           </p>
         </div>
@@ -409,6 +421,11 @@ const shown = computed(() => {
                   class="shrink-0 text-nova"
                 />
                 <span class="font-mono text-sm">{{ formatNumber(lvl.credits, locale) }}</span>
+                <span
+                  v-if="lvl.creditsAssumed"
+                  class="cursor-help text-xs text-warn"
+                  :title="$t('rebirth.creditsAssumed')"
+                >⚠</span>
               </p>
             </button>
           </li>
@@ -430,7 +447,9 @@ const shown = computed(() => {
     <Teleport to="body">
       <div
         v-if="selected"
-        class="fixed inset-0 z-50 grid place-items-center overflow-y-auto p-4"
+        ref="dialogRef"
+        tabindex="-1"
+        class="fixed inset-0 z-50 grid place-items-center overflow-y-auto p-4 focus:outline-none"
         role="dialog"
         aria-modal="true"
         :aria-label="$t('rebirth.levelShort', { level: selected.level })"
@@ -460,6 +479,11 @@ const shown = computed(() => {
                   class="shrink-0 text-nova"
                 />
                 <span class="font-mono font-bold text-nova">{{ formatNumber(selected.credits, locale) }}</span>
+                <span
+                  v-if="selected.creditsAssumed"
+                  class="cursor-help text-xs text-warn"
+                  :title="$t('rebirth.creditsAssumed')"
+                >⚠</span>
                 <span class="text-sm text-ink-muted">{{ $t('rebirth.creditsRequired') }}</span>
               </p>
             </div>

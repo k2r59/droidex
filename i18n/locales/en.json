@@ -21,14 +21,12 @@
     "signInWith": "Continue with {provider}",
     "signInPrompt": "Sign in to sync your collection and keep your progress everywhere!",
     "signInBenefit": "Your progress syncs across all your devices.",
-    "guestNotice": "You're browsing as a guest: tick droids to track your collection, but sign in to keep it.",
     "provider": {
       "discord": "Discord",
       "google": "Google",
       "twitch": "Twitch"
     },
-    "noProvider": "Online saving is coming soon. In the meantime, your progress is kept on this device.",
-    "comingSoon": "Coming soon"
+    "noProvider": "Online saving is coming soon. In the meantime, your progress is kept on this device."
   },
   "rarity": {
     "common": "Common",
@@ -59,9 +57,6 @@
     "filterType": "Type",
     "filterTier": "Owned tier",
     "filterAll": "All",
-    "filterOwned": "Owned",
-    "filterMissing": "Missing",
-    "filterFlawless": "Flawless",
     "sortBy": "Sort by",
     "sort": {
       "rarity": "Rarity",
@@ -71,17 +66,11 @@
     },
     "empty": "No droid matches these filters.",
     "resetFilters": "Reset filters",
-    "viewGrid": "Grid",
-    "viewTable": "Table",
-    "markOwned": "Mark as owned",
-    "markMissing": "Mark as not owned",
-    "notOwned": "Not owned",
     "tierClickToRemove": "click to step down",
     "tierCount": "{count} variant(s) in the Droidex"
   },
   "droid": {
     "income": "Income",
-    "incomePerSecond": "{value}/s",
     "percentIncome": "{value}% of total income",
     "cost": "Purchase cost",
     "value": "Sell value",
@@ -111,22 +100,17 @@
   "rebirth": {
     "title": "Rebirths",
     "tagline": "Progress through the tiers and unlock new possibilities.",
-    "subtitle": "Rebirth {current} of {max}",
     "current": "Current rebirth",
     "next": "Next rebirth",
     "creditsRequired": "Credits required",
     "droidsRequired": "Droids required",
-    "anyTier": "Any tier",
     "ready": "Ready to rebirth",
     "missing": "You're {count} droid short | You're {count} droids short",
     "placementWarning": "Droids must be physically placed in your base — owning them in the Droidex is not enough.",
     "keeps": "Kept",
-    "keepsList": "Droid collection, blueprints, Droidex progress",
     "loses": "Lost",
-    "losesList": "All credits, including any surplus above the threshold",
     "grants": "Granted permanently",
     "grantsList": "Credit and XP multiplier, base and lounge slots, offline credits, weapon access",
-    "multiplier": "+{value}% credits per rebirth",
     "cycle": "Cycle {number}",
     "cycleHint": "Requirements change with every Super Rebirth and loop over 4 cycles.",
     "undocumented": "Requirements not published for this cycle.",
@@ -139,38 +123,27 @@
     "creditsPerTier": "credits per rebirth",
     "allTiers": "All rebirths",
     "searchTier": "Search a rebirth…",
-    "tierLocked": "Requirements not published"
+    "tierLocked": "Requirements not published",
+    "creditsAssumed": "Cost carried over from cycle 1, not measured for this cycle."
   },
   "superRebirth": {
     "title": "Super Rebirths",
-    "count": "{count} Super Rebirth done | {count} Super Rebirths done",
     "unlock": "Unlocked at Rebirth {rebirth} with a",
     "unlockItem": "Rainbow Legendary",
-    "locked": "Still locked",
-    "unlocked": "Unlocked",
     "loses": "Base, all droids, credits, rebirth rank, pickaxe level, blueprints and Upgrade Chips",
     "keeps": "Droidex milestones, Droidsmith level, cosmetics, Flawless and Iconic unlocks",
     "reward": "Nova Crystals + permanent credit bonus",
-    "crystalTable": "Crystals earned by rebirth reached",
-    "atRebirth": "At Rebirth {level}",
     "crystals": "{count} crystal | {count} crystals",
     "doIt": "I did a Super Rebirth",
     "done": "Super Rebirths completed",
     "crystalsByTier": "Crystals earned by rebirth reached",
-    "rewardTitle": "Nova Crystals + permanent bonuses"
+    "rewardTitle": "Nova Crystals + permanent bonuses",
+    "crystalBalance": "Nova Crystals on hand"
   },
   "shop": {
     "title": "Nova Shop",
     "subtitle": "Spend your Nova Crystals",
     "balance": "My balance",
-    "setBalance": "Set my balance",
-    "cost": "{count} crystal | {count} crystals",
-    "perLevel": "per level",
-    "levels": "{count} level | {count} levels",
-    "totalCost": "Total cost",
-    "effect": "Effect",
-    "affordable": "Affordable",
-    "tooExpensive": "You're {count} crystals short",
     "category": {
       "featured": "Featured",
       "core": "Core upgrades",
@@ -219,7 +192,6 @@
     "chipsTitle": "Upgrade Chips",
     "chipsCost": "Tier upgrade cost",
     "chipsConflict": "One source gives 5 / 25 / 40 / 80",
-    "missionsTitle": "Missions",
     "sandcrawlerTitle": "Sandcrawler",
     "sandcrawlerBeskar": "Guaranteed Beskar every {minutes} minutes, one per player in the lobby",
     "currenciesTitle": "Currencies",
@@ -234,26 +206,17 @@
   "stats": {
     "collection": "Collection",
     "totalIncome": "Total income",
-    "byRarity": "By rarity",
     "completion": "{percent}% complete",
-    "keeperScore": "Collector score",
     "byTier": "By tier",
     "income": "income",
     "droidsCollected": "variants collected"
   },
   "common": {
-    "loading": "Loading…",
-    "error": "Something went wrong",
     "retry": "Try again",
-    "save": "Save",
-    "cancel": "Cancel",
     "close": "Close",
     "syncing": "Syncing…",
-    "synced": "Saved",
     "syncFailed": "Couldn't save — your changes were not stored.",
     "language": "Language",
-    "install": "Install the app",
-    "offline": "Offline — the data shown may be out of date.",
     "discover": "Discover",
     "joinCommunity": "Join the community",
     "exportJson": "Export as JSON",
@@ -263,8 +226,7 @@
   "disclaimer": {
     "title": "About the data",
     "community": "All stats come from community trackers and wikis. No exhaustive official source exists. Check requirements in game before committing to a rebirth.",
-    "rights": "Star Wars and Fortnite are trademarks of Epic Games and Lucasfilm. This community site is neither affiliated with nor endorsed by them.",
-    "lastUpdate": "Data current as of {date}"
+    "rights": "Star Wars and Fortnite are trademarks of Epic Games and Lucasfilm. This community site is neither affiliated with nor endorsed by them."
   },
   "timers": {
     "title": "Sandcrawler timers",
@@ -292,11 +254,8 @@
     "title": "Missions",
     "subtitle": "Pads, zones and rewards",
     "pad": "Pad {number}",
-    "unlockCost": "Unlock",
     "rewards": "Rewards",
     "padNumber": "Terminal {number}",
-    "duration": "Duration",
-    "free": "Free",
     "pads": "Mission pads",
     "world": "World Missions",
     "cantina": "Cantina quests",
@@ -315,11 +274,8 @@
       "hard": "Hard"
     },
     "measured": "Measured times on the {tier} mission",
-    "missionTier": "Tier",
     "padsTitle": "Mission pads",
     "bestCompanions": "Best companions",
-    "worldTypes": "Classes involved",
-    "secretTitle": "Secret mission",
     "withR2": "with R2-D2",
     "seeDetail": "View detail",
     "infoAstromech": "Only an ASTROMECH droid on the terminal shortens the mission. Anything else leaves it at base time.",
@@ -346,5 +302,33 @@
     "cancel": "Cancel",
     "importDone": "Progress imported.",
     "importFailed": "Unreadable file or unexpected format."
+  },
+  "legal": {
+    "title": "Legal notice",
+    "subtitle": "Please read before using this site.",
+    "noRights": "This site is a fan project with no rights and no standing whatsoever. It is not official, not affiliated with, not endorsed by and not supported by Epic Games, Lucasfilm, The Walt Disney Company or the island creators. Nothing here speaks on their behalf.",
+    "nonProfit": "This site exists so players can help each other, and nothing else. It earns nothing: no advertising, no subscriptions, no paid content, no donations, no data resale. Nobody makes money here — not us, not anyone.",
+    "trademarks": "Star Wars, Fortnite and every name, character and logo mentioned are trademarks of their respective owners. They appear solely to identify the game this site is about, with no claim of any kind.",
+    "images": "Droid artwork consists of captures from the game interface. It belongs to its rights holders; we hold neither the rights nor a licence. It is reproduced for identification only, in a community, strictly non-commercial context.",
+    "data": "The figures come from player measurements and community wikis that sometimes contradict each other. They are not official data: they may be wrong or out of date. Always check in game before committing a resource.",
+    "holders": "Rights holders",
+    "takedown": "Any rights holder who wants content removed may simply ask: it will be taken down, no argument.",
+    "accept": "I have read and understand"
+  },
+  "onboarding": {
+    "title": "Where are you at?",
+    "subtitle": "Three numbers so the planner starts from your save, not from scratch.",
+    "rebirth": "Rebirths completed",
+    "superRebirth": "Super Rebirths completed",
+    "crystals": "Nova Crystals on hand",
+    "editableLater": "All of this stays editable at any time from the Rebirths page and the shop.",
+    "skip": "Maybe later",
+    "start": "Let's go"
+  },
+  "install": {
+    "title": "Install Droidex",
+    "body": "Add Droidex to your home screen: instant launch, full screen, and offline access.",
+    "iosSteps": "Tap Share, then “Add to Home Screen”.",
+    "action": "Install"
   }
 }

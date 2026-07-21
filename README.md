@@ -2,8 +2,9 @@
 
 La bible communautaire de **Star Wars: Droid Tycoon** (Fortnite, île `7865-8305-9184`).
 
-Droidex complet avec suivi de collection par palier, planificateur de renaissances, catalogue
-Nova Shop, fil des nouveautés et guide des mécaniques. Multilingue, installable en PWA.
+Droidex complet avec journal de collection palier par palier, planificateur de renaissances,
+catalogue Nova Shop, fil des nouveautés et guide des mécaniques. Multilingue, installable en
+PWA, et utilisable sans compte : la progression vit dans le navigateur.
 
 ## Stack
 
@@ -12,6 +13,7 @@ Nova Shop, fil des nouveautés et guide des mécaniques. Multilingue, installabl
 | Framework | Nuxt 4 (Vue 3 + Nitro) |
 | Styles | Tailwind CSS 4 (via `@tailwindcss/vite`) |
 | État | Pinia |
+| Stockage local | IndexedDB (couche maison, `app/utils/idb.ts`) |
 | Requêtes | ofetch |
 | Base de données | MongoDB |
 | Authentification | BetterAuth — Discord, Google, Twitch |
@@ -39,7 +41,16 @@ Déclare cette URL de redirection chez chacun :
 ```
 
 Le rattachement de comptes est activé : un joueur qui arrive par Discord puis par Google
-avec la même adresse vérifiée retrouve sa progression au lieu d'un doublon.
+avec la même adresse **vérifiée** retrouve sa progression au lieu d'un doublon.
+
+`trustedProviders` est laissé **vide**, à dessein. Malgré son nom, cette option ne désigne pas
+des fournisseurs de confiance mais ceux pour lesquels BetterAuth *saute* le contrôle
+`emailVerified` — les y déclarer permettait de prendre le contrôle d'un compte en créant un
+compte Discord portant l'adresse d'une victime inscrite via Google.
+
+En production, le serveur **refuse de démarrer** si `NUXT_BETTER_AUTH_SECRET` est absente
+(BetterAuth retomberait sinon, sans rien signaler, sur une constante publiée dans son propre
+dépôt) ou si `NUXT_PUBLIC_BASE_URL` pointe encore sur localhost.
 
 ## Données
 
@@ -64,7 +75,7 @@ coquille — les deux jeux de données ne peuvent pas diverger silencieusement.
 ### Fiabilité des chiffres
 
 **Aucune source officielle exhaustive n'existe.** Tout vient de trackers et wikis
-communautaires qui se contredisent parfois. Le champ `unverified` marque les 15 droids dont
+communautaires qui se contredisent parfois. Le champ `unverified` marque les 18 droids dont
 les chiffres sont extrapolés ou issus d'une source unique ; l'UI les signale par un ⚠.
 
 Points connus à surveiller :
@@ -75,7 +86,12 @@ Points connus à surveiller :
   Legendary, ×16 Mythic). La « règle du ×2 par palier » relayée par les guides est fausse.
 - **Coûts Mythic** : les sources divergent d'un facteur ~800 selon qu'elles indiquent le
   coût de base ou celui du palier maximum.
-- **Cycles 2 et 3** : exigences de renaissance non publiées, affichées comme telles.
+- **Cycles 2 à 4** : les coûts en crédits sont **recopiés du cycle 1**, faute de relevé.
+  Le drapeau `creditsAssumed` les marque et l'UI les signale par un ⚠, pour qu'un chiffre
+  supposé ne se lise pas comme un chiffre mesuré. Les exigences de ces cycles ne sont pas
+  publiées non plus, à l'exception du palier final (droid Galactique) et de deux paliers
+  du cycle 4.
+- **`maxRebirth: 28`** : contesté. Des sources récentes annoncent 23 ou 27.
 
 ## Images
 
@@ -121,22 +137,70 @@ de fichier — les icônes Beskar sont déjà encodées en RVBA tout en étant o
 ```
 app/
   components/   DroidCard, TierSelector, DroidImage, AuthMenu…
-  composables/  useAuthSession — normalise le Ref de BetterAuth
+  components/   …, LegalGate, OnboardingGate, InstallPrompt (écrans d'ouverture)
+  composables/  useAuthSession (Ref BetterAuth), useFocusTrap (fenêtres modales),
+                useGameText (textes de jeu traduits), useHydratedStorage
+  utils/        idb (couche IndexedDB), format, auth-client
   data/         JSON générés ou maintenus à la main
   pages/        index (Droidex), droids/[slug], rebirths, shop, updates, guide, profile
   stores/       collection — collection, rebirths, niveaux de boutique
 server/
-  api/          progress (GET/PATCH), auth/[...all]
-  utils/        mongo (pool partagé), auth (instance BetterAuth)
+  api/          progress (GET/PATCH/DELETE), auth-providers, auth/[...all]
+  utils/        mongo (pool partagé, index unique), auth (instance BetterAuth),
+                username-filter (pseudos haineux et sexuels — écrit et testé,
+                pas encore branché : l'inscription passe par OAuth)
 shared/types/   types partagés client/serveur
 ```
 
 ### Modèle de collection
 
-On stocke **le palier le plus haut possédé** par droid, pas un booléen par palier. La règle
-du jeu — un palier supérieur satisfait toujours une exigence inférieure — se traduit alors
-directement en une comparaison de rang (`satisfies()`), et le planificateur de renaissances
-en découle sans logique supplémentaire.
+On stocke **la liste des paliers réellement obtenus** par droid (`{ tiers: Tier[], flawless }`),
+pas le plus haut. C'est ce que fait le Droidex du jeu : un joueur peut avoir un droid en Beskar
+sans l'avoir en Or, et veut le voir consigné tel quel. Le total se compte donc par variante —
+69 droids × paliers disponibles, soit 379 entrées.
+
+Le planificateur de renaissances reste tolérant : `satisfies(slug, palier)` est vrai dès qu'une
+variante de rang supérieur ou égal figure au journal, puisqu'en jeu un palier supérieur satisfait
+l'exigence. Cocher l'Or exigé par un palier n'efface pas le Beskar déjà consigné.
+
+Le modèle précédent — un palier unique par droid — est migré à la lecture (`migrateCollection`) :
+un ancien `tier: 'RAINBOW'` devient la liste des paliers jusqu'à Arc-en-ciel inclus, c'est-à-dire
+l'interprétation la plus proche de ce que l'ancienne UI affichait.
+
+### Stockage
+
+La progression est **locale d'abord**. Elle est écrite dans IndexedDB (`app/utils/idb.ts`, une
+couche clé-valeur d'une centaine de lignes, sans dépendance) et n'est répliquée sur le serveur
+que si un compte est connecté. Une ancienne progression en `localStorage` est reprise à la
+première lecture, puis n'est plus écrite.
+
+Le store expose `hydrated` : tant qu'il est faux, les compteurs ne s'affichent pas, sinon la page
+montrerait « 0/379 » le temps que la lecture asynchrone revienne.
+
+`idbSet` fait passer la valeur par JSON avant l'écriture. Ce n'est pas de la coquetterie :
+`structuredClone` refuse un Proxy, et un état Pinia en est un. Comme l'écriture n'est pas
+attendue par les actions et que l'erreur est rattrapée, l'échec était **totalement
+silencieux** — l'interface se mettait à jour, rien n'était écrit, le rechargement perdait
+tout.
+
+### Écrans d'ouverture
+
+Trois composants montés dans `app.vue`, déclenchés en cascade et jamais simultanément :
+
+| Composant | Quand | Retenu dans |
+|---|---|---|
+| `LegalGate` | Première visite, avant toute consultation | `droidex:legal-seen:v1` |
+| `OnboardingGate` | Avertissement accepté **et** progression vierge | `droidex:onboarded:v1` |
+| `InstallPrompt` | 20 s après l'arrivée, hors mode autonome | `droidex:install-dismissed:v1` |
+
+`OnboardingGate` attend `hydrated` avant de tester `isEmpty` : interrogé plus tôt, le store
+répond « vide » pour tout le monde et l'écran s'imposerait à des joueurs déjà renseignés.
+
+`InstallPrompt` couvre deux chemins distincts. Android/Chrome émet `beforeinstallprompt`, que
+l'on capte et neutralise pour rendre le moment au joueur. iOS/Safari n'émet rien et n'expose
+aucune API d'installation : le seul recours est d'expliquer le geste (Partager → Sur l'écran
+d'accueil), d'où la détection explicite du couple iOS + Safari — en tenant compte des iPad,
+qui se déclarent « Macintosh » depuis iPadOS 13 et se reconnaissent au tactile.
 
 ### Vers une app mobile native
 
@@ -152,6 +216,9 @@ tactiles de 44 px et les zones sûres (`env(safe-area-inset-bottom)`).
 | `pnpm dev` | Serveur de développement |
 | `pnpm build` / `pnpm preview` | Build de production |
 | `pnpm run build:data` | Régénère droids et rebirths |
+| `pnpm run build:mission-pads` | Découpe la planche de sprites des terminaux |
+| `pnpm run build:icons` | Régénère l'index des icônes |
+| `pnpm run lint` / `lint:fix` | ESLint (formatage inclus, pas de Prettier) |
 | `pnpm run images` | Télécharge puis détoure les icônes |
 | `pnpm run fetch:images` | Télécharge seulement (`--force` pour réécrire) |
 | `pnpm run cutout:images` | Détoure seulement |

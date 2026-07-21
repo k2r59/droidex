@@ -95,6 +95,26 @@ const NOVA_BY_REBIRTH = {
   19: 67, 20: 79, 21: 92, 22: 106, 23: 121, 27: 191,
 }
 
+/**
+ * Construit un cycle 2 à 4 à partir du cycle 1.
+ *
+ * Les coûts sont recopiés tels quels et marqués `creditsAssumed` ; les exigences repartent
+ * vides, sauf les deux paliers du cycle 4 publiés et le droid Galactic du palier final,
+ * connu pour les quatre cycles. Le champ `documented`, jamais lu et
+ * absent du cycle 1 alors qu'il valait `false` ailleurs, a été retiré : la page déduit déjà
+ * l'absence d'exigence de `droids.length`, et deux sources pour un même fait finissaient par
+ * diverger.
+ */
+function cycleDerive(cycle) {
+  const dernier = CYCLE_1[CYCLE_1.length - 1].level
+  return CYCLE_1.map(({ level, credits }) => {
+    const publie = cycle === 4 ? CYCLE_4_TAIL.find((t) => t.level === level) : null
+    const droids = publie?.droids
+      ?? (level === dernier ? [req(GALACTIC_FINAL[cycle], 'GALACTIC')] : [])
+    return { level, credits, creditsAssumed: true, droids }
+  })
+}
+
 const out = {
   version: 1,
   maxRebirth: 28,
@@ -103,16 +123,19 @@ const out = {
   /** Multiplicateur de crédits accordé par niveau de rebirth (relevé de 10 % à 20 %). */
   creditMultiplierPerLevel: 0.2,
   novaByRebirth: NOVA_BY_REBIRTH,
-  galacticFinal: GALACTIC_FINAL,
+  /**
+   * `creditsAssumed` distingue un coût mesuré d'un coût repris du cycle 1.
+   *
+   * Seul le cycle 1 a des coûts relevés en jeu ; les trois autres les recopient, faute de
+   * source. Sans ce drapeau, l'interface affichait « 45 000 milliards » au cycle 3 avec
+   * exactement la même autorité qu'au cycle 1 — un chiffre supposé présenté comme un fait,
+   * ce que ce projet s'interdit ailleurs.
+   */
   cycles: {
     1: CYCLE_1,
-    // Coûts repris du cycle 1 (identiques), exigences inconnues sauf exceptions publiées.
-    2: CYCLE_1.map(({ level, credits }) => ({ level, credits, droids: [], documented: false })),
-    3: CYCLE_1.map(({ level, credits }) => ({ level, credits, droids: [], documented: false })),
-    4: CYCLE_1.map(({ level, credits }) => {
-      const known = CYCLE_4_TAIL.find((t) => t.level === level)
-      return { level, credits, droids: known?.droids ?? [], documented: Boolean(known) }
-    }),
+    2: cycleDerive(2),
+    3: cycleDerive(3),
+    4: cycleDerive(4),
   },
 }
 
@@ -121,4 +144,5 @@ writeFileSync(resolve(root, 'app/data/rebirths.json'), `${JSON.stringify(out, nu
 const documented = CYCLE_1.filter((l) => l.droids.length).length
 console.log(`✅ ${CYCLE_1.length} paliers de rebirth → app/data/rebirths.json`)
 console.log(`   cycle 1 : ${documented}/${CYCLE_1.length} paliers avec exigences documentées`)
-console.log(`   cycles 2-3 : exigences non publiées · cycle 4 : ${CYCLE_4_TAIL.length} paliers connus`)
+console.log(`   cycles 2-3 : palier final seul documenté · cycle 4 : ${CYCLE_4_TAIL.length} paliers connus`)
+console.log('   cycles 2-4 : coûts recopiés du cycle 1, marqués creditsAssumed')

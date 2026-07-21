@@ -58,11 +58,17 @@ const style = computed(() => {
     base ne peut atteindre cette directive. Un `<img>` éviterait la règle mais perdrait
     `currentColor`, dont dépend la teinte par état de toutes les icônes.
   -->
-  <!-- eslint-disable-next-line vue/no-v-html -->
+  <!--
+    `disable-next-line` ne suffit pas ici : il ne couvre que la ligne du `<span`, alors que
+    la directive signalée est cinq lignes plus bas, dans les attributs. D'où la paire
+    disable / enable, qui encadre l'élément entier.
+  -->
+  <!-- eslint-disable vue/no-v-html -->
   <span
     class="inline-grid shrink-0 place-items-center"
     :style="style"
     aria-hidden="true"
     v-html="svg"
   />
+  <!-- eslint-enable vue/no-v-html -->
 </template>

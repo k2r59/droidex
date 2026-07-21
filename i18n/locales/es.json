@@ -21,14 +21,12 @@
     "signInWith": "Continuar con {provider}",
     "signInPrompt": "¡Inicia sesión para sincronizar tu colección y conservar tu progreso en todas partes!",
     "signInBenefit": "Tu progreso se sincroniza en todos tus dispositivos.",
-    "guestNotice": "Estás navegando como invitado: marca los Droids para seguir tu colección, pero inicia sesión para conservarla.",
     "provider": {
       "discord": "Discord",
       "google": "Google",
       "twitch": "Twitch"
     },
-    "noProvider": "El guardado en línea llegará pronto. Mientras tanto, tu progreso se conserva en este dispositivo.",
-    "comingSoon": "Muy pronto"
+    "noProvider": "El guardado en línea llegará pronto. Mientras tanto, tu progreso se conserva en este dispositivo."
   },
   "rarity": {
     "common": "Common",
@@ -59,9 +57,6 @@
     "filterType": "Tipo",
     "filterTier": "Tier obtenido",
     "filterAll": "Todos",
-    "filterOwned": "Conseguidos",
-    "filterMissing": "Pendientes",
-    "filterFlawless": "Flawless",
     "sortBy": "Ordenar por",
     "sort": {
       "rarity": "Rareza",
@@ -71,17 +66,11 @@
     },
     "empty": "Ningún Droid coincide con estos filtros.",
     "resetFilters": "Restablecer filtros",
-    "viewGrid": "Cuadrícula",
-    "viewTable": "Tabla",
-    "markOwned": "Marcar como conseguido",
-    "markMissing": "Marcar como no conseguido",
-    "notOwned": "No conseguido",
     "tierClickToRemove": "clic para bajar un nivel",
     "tierCount": "{count} variante(s) en el Droidex"
   },
   "droid": {
     "income": "Ingresos",
-    "incomePerSecond": "{value}/s",
     "percentIncome": "{value} % de los ingresos totales",
     "cost": "Coste de compra",
     "value": "Valor de reventa",
@@ -111,22 +100,17 @@
   "rebirth": {
     "title": "Rebirths",
     "tagline": "Avanza por los niveles y desbloquea nuevas posibilidades.",
-    "subtitle": "Rebirth {current} de {max}",
     "current": "Rebirth actual",
     "next": "Próximo Rebirth",
     "creditsRequired": "Créditos necesarios",
     "droidsRequired": "Droids necesarios",
-    "anyTier": "Cualquier tier",
     "ready": "Listo para el Rebirth",
     "missing": "Te falta {count} Droid | Te faltan {count} Droids",
     "placementWarning": "Los Droids tienen que estar colocados físicamente en tu base: tenerlos en el Droidex no basta.",
     "keeps": "Se conserva",
-    "keepsList": "Colección de Droids, Blueprints, progreso del Droidex",
     "loses": "Se pierde",
-    "losesList": "Todos los créditos, incluido el excedente por encima del umbral",
     "grants": "Se concede de forma permanente",
     "grantsList": "Multiplicador de créditos y XP, ranuras de base y de lounge, créditos sin conexión, acceso a armas",
-    "multiplier": "+{value} % de créditos por Rebirth",
     "cycle": "Ciclo {number}",
     "cycleHint": "Los requisitos cambian con cada Super Rebirth y se repiten en 4 ciclos.",
     "undocumented": "Requisitos sin publicar para este ciclo.",
@@ -139,38 +123,27 @@
     "creditsPerTier": "de créditos por rebirth",
     "allTiers": "Todos los rebirths",
     "searchTier": "Buscar un rebirth…",
-    "tierLocked": "Requisitos no publicados"
+    "tierLocked": "Requisitos no publicados",
+    "creditsAssumed": "Coste heredado del ciclo 1, no medido para este ciclo."
   },
   "superRebirth": {
     "title": "Super Rebirths",
-    "count": "{count} Super Rebirth completado | {count} Super Rebirths completados",
     "unlock": "Se desbloquea en el Rebirth {rebirth} con un",
     "unlockItem": "Legendary Rainbow",
-    "locked": "Todavía bloqueado",
-    "unlocked": "Desbloqueado",
     "loses": "Base, todos los Droids, créditos, rango de Rebirth, nivel de pico, Blueprints y Upgrade Chips",
     "keeps": "Hitos del Droidex, nivel de Droidsmith, cosméticos, desbloqueos Flawless e Iconic",
     "reward": "Nova Crystals + bonus de créditos permanente",
-    "crystalTable": "Cristales obtenidos según el Rebirth alcanzado",
-    "atRebirth": "En el Rebirth {level}",
     "crystals": "{count} cristal | {count} cristales",
     "doIt": "He hecho un Super Rebirth",
     "done": "Super Rebirths realizados",
     "crystalsByTier": "Cristales ganados según el rebirth alcanzado",
-    "rewardTitle": "Nova Crystals + bonos permanentes"
+    "rewardTitle": "Nova Crystals + bonos permanentes",
+    "crystalBalance": "Cristales Nova en tu poder"
   },
   "shop": {
     "title": "Nova Shop",
     "subtitle": "Gasta tus Nova Crystals",
     "balance": "Mi saldo",
-    "setBalance": "Definir mi saldo",
-    "cost": "{count} cristal | {count} cristales",
-    "perLevel": "por nivel",
-    "levels": "{count} nivel | {count} niveles",
-    "totalCost": "Coste total",
-    "effect": "Efecto",
-    "affordable": "A tu alcance",
-    "tooExpensive": "Te faltan {count} cristales",
     "category": {
       "featured": "Destacados",
       "core": "Mejoras principales",
@@ -219,7 +192,6 @@
     "chipsTitle": "Upgrade Chips",
     "chipsCost": "Coste de subida de tier",
     "chipsConflict": "Una fuente da 5 / 25 / 40 / 80",
-    "missionsTitle": "Misiones",
     "sandcrawlerTitle": "Sandcrawler",
     "sandcrawlerBeskar": "Beskar garantizado cada {minutes} minutos, uno por jugador de la sala",
     "currenciesTitle": "Monedas",
@@ -234,26 +206,17 @@
   "stats": {
     "collection": "Colección",
     "totalIncome": "Ingresos acumulados",
-    "byRarity": "Por rareza",
     "completion": "{percent} % completado",
-    "keeperScore": "Puntuación de coleccionista",
     "byTier": "Por tier",
     "income": "ingresos",
     "droidsCollected": "variantes recolectadas"
   },
   "common": {
-    "loading": "Cargando…",
-    "error": "Se ha producido un error",
     "retry": "Reintentar",
-    "save": "Guardar",
-    "cancel": "Cancelar",
     "close": "Cerrar",
     "syncing": "Sincronizando…",
-    "synced": "Guardado",
     "syncFailed": "No se ha podido guardar: tus cambios no se han registrado.",
     "language": "Idioma",
-    "install": "Instalar la aplicación",
-    "offline": "Sin conexión: los datos mostrados pueden estar desactualizados.",
     "discover": "Descubrir",
     "joinCommunity": "Únete a la comunidad",
     "exportJson": "Exportar en JSON",
@@ -263,8 +226,7 @@
   "disclaimer": {
     "title": "Sobre los datos",
     "community": "Todas las estadísticas proceden de trackers y wikis comunitarios. No existe ninguna fuente oficial exhaustiva. Comprueba los requisitos en el juego antes de lanzarte a un Rebirth.",
-    "rights": "Star Wars y Fortnite son marcas de Epic Games y Lucasfilm. Este sitio comunitario no está afiliado ni respaldado por ellos.",
-    "lastUpdate": "Datos actualizados a {date}"
+    "rights": "Star Wars y Fortnite son marcas de Epic Games y Lucasfilm. Este sitio comunitario no está afiliado ni respaldado por ellos."
   },
   "timers": {
     "title": "Temporizadores del Sandcrawler",
@@ -292,11 +254,8 @@
     "title": "Misiones",
     "subtitle": "Pads, zonas y recompensas",
     "pad": "Pad {number}",
-    "unlockCost": "Desbloqueo",
     "rewards": "Recompensas",
     "padNumber": "Terminal {number}",
-    "duration": "Duración",
-    "free": "Gratis",
     "pads": "Mission pads",
     "world": "World Missions",
     "cantina": "Misiones de la Cantina",
@@ -315,11 +274,8 @@
       "hard": "Difícil"
     },
     "measured": "Tiempos medidos en la misión {tier}",
-    "missionTier": "Tier",
     "padsTitle": "Mission pads",
     "bestCompanions": "Mejores compañeros",
-    "worldTypes": "Clases implicadas",
-    "secretTitle": "Misión secreta",
     "withR2": "con R2-D2",
     "seeDetail": "Ver detalle",
     "infoAstromech": "Solo un droide ASTROMECH en el terminal reduce la duración. Cualquier otro la deja en su tiempo base.",
@@ -346,5 +302,33 @@
     "cancel": "Cancelar",
     "importDone": "Progreso importado.",
     "importFailed": "Archivo ilegible o formato inesperado."
+  },
+  "legal": {
+    "title": "Aviso legal",
+    "subtitle": "Léelo antes de usar este sitio.",
+    "noRights": "Este sitio es un proyecto de fans, sin derecho ni legitimidad alguna. No es oficial, ni está afiliado, aprobado o respaldado por Epic Games, Lucasfilm, The Walt Disney Company o los creadores de la isla. Nada de lo que aquí figura habla en su nombre.",
+    "nonProfit": "Este sitio es una iniciativa de ayuda mutua entre jugadores, y nada más. No genera un céntimo: sin publicidad, sin suscripciones, sin contenido de pago, sin donaciones, sin reventa de datos. Aquí nadie gana dinero, ni nosotros ni nadie.",
+    "trademarks": "Star Wars, Fortnite y todos los nombres, personajes y logotipos citados son marcas registradas de sus respectivos titulares. Se mencionan únicamente para identificar el juego del que trata este sitio, sin reivindicación de ningún tipo.",
+    "images": "Las ilustraciones de droides son capturas de la interfaz del juego. Pertenecen a sus titulares de derechos; no poseemos ni los derechos ni una licencia. Se reproducen solo con fines de identificación, en un marco comunitario y estrictamente no comercial.",
+    "data": "Las cifras proceden de mediciones de jugadores y wikis comunitarias que a veces se contradicen. No son datos oficiales: pueden ser erróneos o estar obsoletos. Comprueba siempre en el juego antes de invertir un recurso.",
+    "holders": "Titulares de derechos",
+    "takedown": "Cualquier titular de derechos que desee la retirada de un contenido puede solicitarlo: se eliminará sin discusión.",
+    "accept": "Lo he leído y lo entiendo"
+  },
+  "onboarding": {
+    "title": "¿Por dónde vas?",
+    "subtitle": "Tres cifras para que el planificador parta de tu partida y no de cero.",
+    "rebirth": "Renacimientos completados",
+    "superRebirth": "Súper Renacimientos completados",
+    "crystals": "Cristales Nova en tu poder",
+    "editableLater": "Todo sigue siendo editable en cualquier momento desde la página Renacimientos y la tienda.",
+    "skip": "Más tarde",
+    "start": "Vamos"
+  },
+  "install": {
+    "title": "Instalar Droidex",
+    "body": "Añade Droidex a tu pantalla de inicio: apertura inmediata, pantalla completa y consulta sin conexión.",
+    "iosSteps": "Pulsa Compartir y luego «Añadir a pantalla de inicio».",
+    "action": "Instalar"
   }
 }

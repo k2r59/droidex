@@ -38,5 +38,13 @@ useHead(() => ({
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
+    <!--
+      Trois écrans qui se déclenchent l'un après l'autre, jamais ensemble : l'avertissement
+      légal d'abord, la mise en route quand il est accepté et la progression vierge, et
+      l'invite d'installation seulement après vingt secondes de navigation.
+    -->
+    <LegalGate />
+    <OnboardingGate />
+    <InstallPrompt />
   </div>
 </template>

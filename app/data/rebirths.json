@@ -21,12 +21,6 @@
     "23": 121,
     "27": 191
   },
-  "galacticFinal": {
-    "1": "proto-roller",
-    "2": "mecha-droid",
-    "3": "bb9",
-    "4": "opti-strike"
-  },
   "cycles": {
     "1": [
       {
@@ -525,472 +519,483 @@
       {
         "level": 1,
         "credits": 10000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 2,
         "credits": 150000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 3,
         "credits": 975000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 4,
         "credits": 2950000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 5,
         "credits": 5350000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 6,
         "credits": 9850000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 7,
         "credits": 14500000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 8,
         "credits": 36000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 9,
         "credits": 89000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 10,
         "credits": 220000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 11,
         "credits": 550000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 12,
         "credits": 1360000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 13,
         "credits": 3400000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 14,
         "credits": 8450000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 15,
         "credits": 21000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 16,
         "credits": 52000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 17,
         "credits": 130000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 18,
         "credits": 325000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 19,
         "credits": 810000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 20,
         "credits": 2000000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 21,
         "credits": 3000000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 22,
         "credits": 4500000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 23,
         "credits": 6000000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 24,
         "credits": 9000000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 25,
         "credits": 13500000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 26,
         "credits": 21000000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 27,
         "credits": 32000000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 28,
         "credits": 45000000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": [
+          {
+            "slug": "mecha-droid",
+            "tier": "GALACTIC"
+          }
+        ]
       }
     ],
     "3": [
       {
         "level": 1,
         "credits": 10000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 2,
         "credits": 150000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 3,
         "credits": 975000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 4,
         "credits": 2950000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 5,
         "credits": 5350000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 6,
         "credits": 9850000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 7,
         "credits": 14500000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 8,
         "credits": 36000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 9,
         "credits": 89000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 10,
         "credits": 220000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 11,
         "credits": 550000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 12,
         "credits": 1360000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 13,
         "credits": 3400000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 14,
         "credits": 8450000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 15,
         "credits": 21000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 16,
         "credits": 52000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 17,
         "credits": 130000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 18,
         "credits": 325000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 19,
         "credits": 810000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 20,
         "credits": 2000000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 21,
         "credits": 3000000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 22,
         "credits": 4500000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 23,
         "credits": 6000000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 24,
         "credits": 9000000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 25,
         "credits": 13500000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 26,
         "credits": 21000000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 27,
         "credits": 32000000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 28,
         "credits": 45000000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": [
+          {
+            "slug": "bb9",
+            "tier": "GALACTIC"
+          }
+        ]
       }
     ],
     "4": [
       {
         "level": 1,
         "credits": 10000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 2,
         "credits": 150000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 3,
         "credits": 975000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 4,
         "credits": 2950000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 5,
         "credits": 5350000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 6,
         "credits": 9850000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 7,
         "credits": 14500000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 8,
         "credits": 36000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 9,
         "credits": 89000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 10,
         "credits": 220000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 11,
         "credits": 550000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 12,
         "credits": 1360000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 13,
         "credits": 3400000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 14,
         "credits": 8450000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 15,
         "credits": 21000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 16,
         "credits": 52000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 17,
         "credits": 130000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 18,
         "credits": 325000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 19,
         "credits": 810000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 20,
         "credits": 2000000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 21,
         "credits": 3000000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 22,
         "credits": 4500000000000,
+        "creditsAssumed": true,
         "droids": [
           {
             "slug": "gunrunner",
@@ -1004,42 +1009,42 @@
             "slug": "b2-super",
             "tier": "BESKAR"
           }
-        ],
-        "documented": true
+        ]
       },
       {
         "level": 23,
         "credits": 6000000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 24,
         "credits": 9000000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 25,
         "credits": 13500000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 26,
         "credits": 21000000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 27,
         "credits": 32000000000000,
-        "droids": [],
-        "documented": false
+        "creditsAssumed": true,
+        "droids": []
       },
       {
         "level": 28,
         "credits": 45000000000000,
+        "creditsAssumed": true,
         "droids": [
           {
             "slug": "opti-strike",
@@ -1053,8 +1058,7 @@
             "slug": "kx",
             "tier": "BESKAR"
           }
-        ],
-        "documented": true
+        ]
       }
     ]
   }

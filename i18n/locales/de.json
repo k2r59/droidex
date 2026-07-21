@@ -21,14 +21,12 @@
     "signInWith": "Weiter mit {provider}",
     "signInPrompt": "Melde dich an, um deine Sammlung zu synchronisieren und deinen Fortschritt überall zu behalten!",
     "signInBenefit": "Dein Fortschritt wird auf allen deinen Geräten synchronisiert.",
-    "guestNotice": "Du bist als Gast unterwegs: Hake Droids ab, um deine Sammlung zu verfolgen, aber melde dich an, um sie zu behalten.",
     "provider": {
       "discord": "Discord",
       "google": "Google",
       "twitch": "Twitch"
     },
-    "noProvider": "Online-Speicherung kommt bald. Bis dahin bleibt dein Fortschritt auf diesem Gerät.",
-    "comingSoon": "Demnächst"
+    "noProvider": "Online-Speicherung kommt bald. Bis dahin bleibt dein Fortschritt auf diesem Gerät."
   },
   "rarity": {
     "common": "Common",
@@ -59,9 +57,6 @@
     "filterType": "Typ",
     "filterTier": "Besessene Stufe",
     "filterAll": "Alle",
-    "filterOwned": "Im Besitz",
-    "filterMissing": "Fehlend",
-    "filterFlawless": "Flawless",
     "sortBy": "Sortieren nach",
     "sort": {
       "rarity": "Seltenheit",
@@ -71,17 +66,11 @@
     },
     "empty": "Kein Droid passt zu diesen Filtern.",
     "resetFilters": "Filter zurücksetzen",
-    "viewGrid": "Raster",
-    "viewTable": "Tabelle",
-    "markOwned": "Als besessen markieren",
-    "markMissing": "Als nicht besessen markieren",
-    "notOwned": "Nicht im Besitz",
     "tierClickToRemove": "klicken, um eine Stufe zurück",
     "tierCount": "{count} Variante(n) im Droidex"
   },
   "droid": {
     "income": "Einkommen",
-    "incomePerSecond": "{value}/s",
     "percentIncome": "{value} % des Gesamteinkommens",
     "cost": "Kaufpreis",
     "value": "Verkaufswert",
@@ -111,22 +100,17 @@
   "rebirth": {
     "title": "Rebirths",
     "tagline": "Steige durch die Stufen auf und schalte neue Möglichkeiten frei.",
-    "subtitle": "Rebirth {current} von {max}",
     "current": "Aktueller Rebirth",
     "next": "Nächster Rebirth",
     "creditsRequired": "Benötigte Credits",
     "droidsRequired": "Benötigte Droids",
-    "anyTier": "Beliebige Stufe",
     "ready": "Bereit für den Rebirth",
     "missing": "Dir fehlt noch {count} Droid | Dir fehlen noch {count} Droids",
     "placementWarning": "Die Droids müssen tatsächlich in deiner Basis platziert sein — sie im Droidex zu besitzen reicht nicht.",
     "keeps": "Bleibt erhalten",
-    "keepsList": "Droid-Sammlung, Blueprints, Droidex-Fortschritt",
     "loses": "Geht verloren",
-    "losesList": "Alle Credits, auch der Überschuss oberhalb der Schwelle",
     "grants": "Dauerhaft freigeschaltet",
     "grantsList": "Credit- und XP-Multiplikator, Basis- und Lounge-Slots, Offline-Credits, Waffenzugang",
-    "multiplier": "+{value} % Credits pro Rebirth",
     "cycle": "Zyklus {number}",
     "cycleHint": "Die Anforderungen ändern sich mit jedem Super Rebirth und wiederholen sich über 4 Zyklen.",
     "undocumented": "Für diesen Zyklus sind keine Anforderungen veröffentlicht.",
@@ -139,38 +123,27 @@
     "creditsPerTier": "Credits pro Rebirth",
     "allTiers": "Alle Rebirths",
     "searchTier": "Rebirth suchen…",
-    "tierLocked": "Anforderungen nicht veröffentlicht"
+    "tierLocked": "Anforderungen nicht veröffentlicht",
+    "creditsAssumed": "Kosten aus Zyklus 1 übernommen, für diesen Zyklus nicht gemessen."
   },
   "superRebirth": {
     "title": "Super Rebirths",
-    "count": "{count} Super Rebirth gemacht | {count} Super Rebirths gemacht",
     "unlock": "Ab Rebirth {rebirth} freigeschaltet, mit einem",
     "unlockItem": "Rainbow Legendary",
-    "locked": "Noch gesperrt",
-    "unlocked": "Freigeschaltet",
     "loses": "Basis, alle Droids, Credits, Rebirth-Rang, Spitzhacken-Level, Blueprints und Upgrade Chips",
     "keeps": "Droidex-Meilensteine, Droidsmith-Level, Kosmetik, Flawless- und Iconic-Freischaltungen",
     "reward": "Nova Crystals + dauerhafter Credit-Bonus",
-    "crystalTable": "Kristalle je nach erreichtem Rebirth",
-    "atRebirth": "Bei Rebirth {level}",
     "crystals": "{count} Kristall | {count} Kristalle",
     "doIt": "Ich habe einen Super Rebirth gemacht",
     "done": "Super Rebirths abgeschlossen",
     "crystalsByTier": "Kristalle nach erreichtem Rebirth",
-    "rewardTitle": "Nova Crystals + permanente Boni"
+    "rewardTitle": "Nova Crystals + permanente Boni",
+    "crystalBalance": "Nova-Kristalle im Besitz"
   },
   "shop": {
     "title": "Nova Shop",
     "subtitle": "Gib deine Nova Crystals aus",
     "balance": "Mein Guthaben",
-    "setBalance": "Mein Guthaben festlegen",
-    "cost": "{count} Kristall | {count} Kristalle",
-    "perLevel": "pro Level",
-    "levels": "{count} Level | {count} Level",
-    "totalCost": "Gesamtkosten",
-    "effect": "Effekt",
-    "affordable": "Erschwinglich",
-    "tooExpensive": "Dir fehlen {count} Kristalle",
     "category": {
       "featured": "Empfohlen",
       "core": "Haupt-Upgrades",
@@ -219,7 +192,6 @@
     "chipsTitle": "Upgrade Chips",
     "chipsCost": "Kosten für den Stufenaufstieg",
     "chipsConflict": "Eine Quelle nennt 5 / 25 / 40 / 80",
-    "missionsTitle": "Missionen",
     "sandcrawlerTitle": "Sandcrawler",
     "sandcrawlerBeskar": "Garantiertes Beskar alle {minutes} Minuten, eines pro Spieler in der Lobby",
     "currenciesTitle": "Währungen",
@@ -234,26 +206,17 @@
   "stats": {
     "collection": "Sammlung",
     "totalIncome": "Gesamteinkommen",
-    "byRarity": "Nach Seltenheit",
     "completion": "{percent} % abgeschlossen",
-    "keeperScore": "Sammler-Score",
     "byTier": "Nach Stufe",
     "income": "Einkommen",
     "droidsCollected": "Varianten gesammelt"
   },
   "common": {
-    "loading": "Wird geladen…",
-    "error": "Es ist ein Fehler aufgetreten",
     "retry": "Erneut versuchen",
-    "save": "Speichern",
-    "cancel": "Abbrechen",
     "close": "Schließen",
     "syncing": "Wird synchronisiert…",
-    "synced": "Gespeichert",
     "syncFailed": "Speichern nicht möglich — deine Änderungen wurden nicht gesichert.",
     "language": "Sprache",
-    "install": "App installieren",
-    "offline": "Offline — die angezeigten Daten können veraltet sein.",
     "discover": "Entdecken",
     "joinCommunity": "Tritt der Community bei",
     "exportJson": "Als JSON exportieren",
@@ -263,8 +226,7 @@
   "disclaimer": {
     "title": "Über die Daten",
     "community": "Alle Werte stammen aus Community-Trackern und -Wikis. Eine vollständige offizielle Quelle gibt es nicht. Prüfe die Anforderungen im Spiel, bevor du dich auf einen Rebirth festlegst.",
-    "rights": "Star Wars und Fortnite sind Marken von Epic Games und Lucasfilm. Diese Community-Seite ist weder mit ihnen verbunden noch von ihnen unterstützt.",
-    "lastUpdate": "Daten auf dem Stand vom {date}"
+    "rights": "Star Wars und Fortnite sind Marken von Epic Games und Lucasfilm. Diese Community-Seite ist weder mit ihnen verbunden noch von ihnen unterstützt."
   },
   "timers": {
     "title": "Sandcrawler-Timer",
@@ -292,11 +254,8 @@
     "title": "Missionen",
     "subtitle": "Pads, Zonen und Belohnungen",
     "pad": "Pad {number}",
-    "unlockCost": "Freischaltung",
     "rewards": "Belohnungen",
     "padNumber": "Terminal {number}",
-    "duration": "Dauer",
-    "free": "Kostenlos",
     "pads": "Mission-Pads",
     "world": "World Missions",
     "cantina": "Cantina-Quests",
@@ -315,11 +274,8 @@
       "hard": "Schwer"
     },
     "measured": "Gemessene Zeiten bei der {tier}-Mission",
-    "missionTier": "Stufe",
     "padsTitle": "Mission-Pads",
     "bestCompanions": "Beste Begleiter",
-    "worldTypes": "Betroffene Klassen",
-    "secretTitle": "Geheime Mission",
     "withR2": "mit R2-D2",
     "seeDetail": "Details ansehen",
     "infoAstromech": "Nur ein ASTROMECH-Droide auf dem Terminal verkürzt die Mission. Alles andere lässt sie bei ihrer Basiszeit.",
@@ -346,5 +302,33 @@
     "cancel": "Abbrechen",
     "importDone": "Fortschritt importiert.",
     "importFailed": "Datei nicht lesbar oder unerwartetes Format."
+  },
+  "legal": {
+    "title": "Rechtlicher Hinweis",
+    "subtitle": "Bitte vor der Nutzung dieser Seite lesen.",
+    "noRights": "Diese Seite ist ein Fanprojekt ohne jegliche Rechte und ohne jede Legitimation. Sie ist nicht offiziell, nicht mit Epic Games, Lucasfilm, The Walt Disney Company oder den Insel-Erstellern verbunden und wird von ihnen weder genehmigt noch unterstützt. Nichts hier spricht in ihrem Namen.",
+    "nonProfit": "Diese Seite dient allein der gegenseitigen Hilfe unter Spielern, sonst nichts. Sie bringt keinen Cent ein: keine Werbung, keine Abonnements, keine kostenpflichtigen Inhalte, keine Spenden, kein Datenverkauf. Hier verdient niemand Geld — weder wir noch sonst jemand.",
+    "trademarks": "Star Wars, Fortnite sowie sämtliche genannten Namen, Figuren und Logos sind Marken ihrer jeweiligen Inhaber. Sie werden ausschließlich zur Kennzeichnung des Spiels genannt, um das es hier geht, ohne jeden Anspruch.",
+    "images": "Die Droiden-Abbildungen sind Aufnahmen aus der Spieloberfläche. Sie gehören ihren Rechteinhabern; wir besitzen weder die Rechte noch eine Lizenz. Sie werden allein zur Identifikation wiedergegeben, in einem gemeinschaftlichen und strikt nicht-kommerziellen Rahmen.",
+    "data": "Die Zahlen stammen aus Messungen von Spielern und aus Community-Wikis, die einander mitunter widersprechen. Es sind keine offiziellen Daten: Sie können falsch oder veraltet sein. Prüfe stets im Spiel, bevor du Ressourcen einsetzt.",
+    "holders": "Rechteinhaber",
+    "takedown": "Jeder Rechteinhaber, der die Entfernung eines Inhalts wünscht, kann dies verlangen: Er wird ohne Diskussion gelöscht.",
+    "accept": "Gelesen und verstanden"
+  },
+  "onboarding": {
+    "title": "Wo stehst du?",
+    "subtitle": "Drei Zahlen, damit der Planer von deinem Spielstand ausgeht und nicht bei null anfängt.",
+    "rebirth": "Abgeschlossene Wiedergeburten",
+    "superRebirth": "Abgeschlossene Super-Wiedergeburten",
+    "crystals": "Nova-Kristalle im Besitz",
+    "editableLater": "Alles bleibt jederzeit über die Seite Wiedergeburten und den Shop änderbar.",
+    "skip": "Später",
+    "start": "Los geht's"
+  },
+  "install": {
+    "title": "Droidex installieren",
+    "body": "Füge Droidex zu deinem Startbildschirm hinzu: sofortiger Start, Vollbild und Offline-Zugriff.",
+    "iosSteps": "Tippe auf Teilen und dann auf „Zum Home-Bildschirm\".",
+    "action": "Installieren"
   }
 }

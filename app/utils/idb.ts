@@ -55,12 +55,27 @@ export async function idbGet<T>(key: string): Promise<T | undefined> {
   }
 }
 
+/**
+ * Détache la valeur de Vue avant l'écriture.
+ *
+ * `structuredClone` refuse un Proxy — et un état Pinia en est un. L'appeler directement
+ * levait donc `DataCloneError` sur *chaque* écriture ; comme l'appelant ignore la promesse
+ * et que l'erreur est rattrapée ici, la panne était totalement silencieuse : l'interface
+ * se mettait à jour, la progression n'était jamais écrite, et le rechargement la perdait.
+ *
+ * Le passage par JSON déréférence les proxies à toute profondeur. C'est acceptable parce
+ * que ce magasin ne stocke que du JSON — nombres, chaînes, booléens, tableaux et objets
+ * simples. Une `Date`, une `Map` ou un `undefined` n'y survivraient pas ; il n'y en a pas,
+ * et le typage de `Snapshot` l'interdit.
+ */
+function detache(value: unknown): unknown {
+  return JSON.parse(JSON.stringify(value))
+}
+
 export async function idbSet(key: string, value: unknown): Promise<void> {
   if (!idbAvailable()) return
   try {
-    // `structuredClone` valide en amont que la valeur est stockable : sans ça, un objet
-    // réactif de Vue ferait échouer la transaction avec une erreur peu parlante.
-    await tx('readwrite', (s) => s.put(structuredClone(value), key))
+    await tx('readwrite', (s) => s.put(detache(value), key))
   }
   catch {
     // Stockage indisponible ou quota atteint : la session reste utilisable, sans persistance.

@@ -170,6 +170,19 @@ function toNumber(raw) {
   return n * mult
 }
 
+/**
+ * Le pourcentage retenu contredit-il celui que porte la source ?
+ *
+ * `incomeLabel` conserve le libellé brut (« 5%/s ») ; on en extrait le nombre pour le
+ * comparer à la table. Absence de libellé = aucune source à contredire.
+ */
+function percentContreditLaSource(name, tiers) {
+  const label = tiers?.DEFAULT?.income
+  const m = typeof label === 'string' ? label.match(/^([\d.]+)\s*%/) : null
+  if (!m) return false
+  return Number.parseFloat(m[1]) !== ICONIC_PERCENT[name]
+}
+
 /** "IMPERIAL PROBE" → "imperial-probe" (identifiant stable côté base et URL). */
 const toSlug = (name) => name.toLowerCase().replace(/\s+/g, '-')
 
@@ -198,7 +211,16 @@ for (const [name, tiers] of Object.entries(stats)) {
     percentIncome: isIconic,
     percentValue: isIconic ? (ICONIC_PERCENT[name] ?? null) : null,
     perk: ICONIC_PERKS[name] ?? null,
-    unverified: false,
+    /**
+     * Marque le droid dès que `ICONIC_PERCENT` contredit le libellé de la source.
+     *
+     * Trois Iconiques sont dans ce cas : `droidStats.json` annonce « 5%/s » quand la table
+     * ci-dessus impose 15 — deux trackers communautaires qui divergent d'un facteur 3. On
+     * ne tranche pas ici lequel a raison, mais on cesse d'afficher la valeur retenue avec
+     * l'assurance d'un fait établi : l'interface pose son ⚠ comme pour les autres données
+     * extrapolées, et le libellé d'origine reste lisible dans `incomeLabel`.
+     */
+    unverified: isIconic && percentContreditLaSource(name, tiers),
     tiers: Object.fromEntries(
       // Les Iconic n'existent qu'en palier unique ; les autres ont les 5 paliers chiffrés
       // plus GALACTIC, connu mais non chiffré.
