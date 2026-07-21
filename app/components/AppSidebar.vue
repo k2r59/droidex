@@ -1,15 +1,7 @@
 <script setup lang="ts">
 import mark from '~/assets/images/droidex-mark.svg'
 
-/*
- * L'illustration de la carte est optionnelle : tant que le fichier n'est pas déposé,
- * la carte s'affiche sans fond plutôt que de casser.
- */
-const planets = import.meta.glob('~/assets/images/planet-rebirth.webp', {
-  import: 'default',
-  eager: true,
-}) as Record<string, string>
-const planet = Object.values(planets)[0]
+import planet from '~/assets/images/planet-rebirth.svg'
 import rebirthData from '~/data/rebirths.json'
 
 /**
@@ -34,10 +26,10 @@ const nextRebirth = computed(() => Math.min(store.rebirth + 1, rebirthData.maxRe
 const nextBonus = computed(() => Math.round(rebirthData.creditMultiplierPerLevel * 100))
 
 const socials = [
-  { id: 'discord', label: 'Discord — Droid Tycoon', icon: 'brands/discord', href: 'https://discord.gg/droidtycoon', tint: 'hover:bg-[#5865F2]/20 hover:text-[#7d88ff]' },
-  { id: 'foad', label: 'X — FOAD', icon: 'brands/x', href: 'https://x.com/FoadZone', tint: 'hover:bg-white/15 hover:text-white' },
-  { id: 'blzn', label: 'X — Blzn Studios', icon: 'brands/x', href: 'https://x.com/BlznDev', tint: 'hover:bg-white/15 hover:text-white' },
-  { id: 'island', label: 'Île Fortnite', icon: 'actions/external', href: 'https://www.fortnite.com/@foad/7865-8305-9184', tint: 'hover:bg-accent/20 hover:text-accent' },
+  { id: 'discord', label: 'Discord — Droid Tycoon', icon: 'brands/discord', href: 'https://discord.gg/droidtycoon', tint: 'bg-[#5865F2]' },
+  { id: 'foad', label: 'X — FOAD', icon: 'brands/x', href: 'https://x.com/FoadZone', tint: 'bg-[#1d9bf0]' },
+  { id: 'blzn', label: 'X — Blzn Studios', icon: 'brands/x', href: 'https://x.com/BlznDev', tint: 'bg-[#e0245e]' },
+  { id: 'island', label: 'Île Fortnite', icon: 'actions/external', href: 'https://www.fortnite.com/@foad/7865-8305-9184', tint: 'bg-accent' },
 ] as const
 </script>
 
@@ -57,12 +49,12 @@ const socials = [
         v-for="link in links"
         :key="link.to"
         :to="localePath(link.to)"
-        class="flex items-center gap-3 rounded-nav border border-transparent px-3 py-2.5 text-sm text-ink-muted transition-colors hover:bg-panel-raised hover:text-ink"
+        class="side-nav-item"
         active-class="nav-active"
       >
         <DxIcon :name="link.icon" :size="18" />
         <span class="flex-1">{{ $t(`nav.${link.key}`) }}</span>
-        <span v-if="link.key === 'droidex'" class="font-mono text-xs tabular-nums">
+        <span v-if="link.key === 'droidex'" class="side-nav-item__count font-mono text-xs tabular-nums">
           {{ store.ownedCount }} / {{ store.totalCount }}
         </span>
       </NuxtLink>
@@ -75,7 +67,6 @@ const socials = [
     >
       <!-- Fond de carte : l'illustration occupe toute la surface, le contenu se pose dessus. -->
       <span
-        v-if="planet"
         class="pointer-events-none absolute inset-0 bg-cover bg-center"
         :style="{ backgroundImage: `url(${planet})` }"
         aria-hidden="true"
@@ -111,7 +102,7 @@ const socials = [
           :href="s.href"
           target="_blank"
           rel="noopener noreferrer"
-          class="grid size-9 place-items-center rounded-full bg-panel-raised text-ink-muted transition-colors"
+          class="grid size-8 place-items-center rounded-md text-white transition-transform hover:scale-110"
           :class="s.tint"
           :title="s.label"
           :aria-label="s.label"

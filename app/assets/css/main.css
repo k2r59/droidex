@@ -158,6 +158,46 @@
   box-shadow: 0 8px 22px rgb(69 155 255 / 0.28);
 }
 
+/*
+ * Élément de la colonne de gauche. L'état actif est un liseré cyan sur fond bleuté,
+ * plus sobre que le halo de la barre du haut : dans une liste verticale, un halo par
+ * élément saturerait la colonne.
+ */
+.side-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 44px;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid transparent;
+  border-radius: var(--dx-radius-md);
+  color: var(--color-ink-muted);
+  font-family: var(--font-display);
+  font-weight: 600;
+  transition: color var(--dx-fast), background var(--dx-fast), border-color var(--dx-fast);
+}
+
+.side-nav-item:hover {
+  color: var(--color-ink-strong);
+  background: rgb(69 155 255 / 0.08);
+}
+
+.side-nav-item.nav-active {
+  color: var(--color-ink-strong);
+  background: rgb(69 155 255 / 0.12);
+  border-color: rgb(37 215 255 / 0.55);
+  box-shadow: none;
+}
+
+/* Le soulignement appartient à la barre du haut, pas à la colonne. */
+.side-nav-item.nav-active::after {
+  content: none;
+}
+
+.side-nav-item.nav-active .side-nav-item__count {
+  color: var(--dx-cyan);
+}
+
 /* § 6 — contenu principal et rail latéral de 340 px. */
 .layout-2-columns {
   display: grid;
