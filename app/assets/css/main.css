@@ -84,8 +84,9 @@ body {
 }
 
 /*
- * Couche lointaine : étoiles ténues, tuile serrée, dérive lente (~1,5 px/s).
- * Assez lent pour rester un décor, assez rapide pour se voir sans fixer l'écran.
+ * Couche lointaine : étoiles ténues, tuile serrée, dérive à ~3,9 px/s. La couche
+ * proche file à ~11 px/s — c'est l'écart entre les deux qui se lit comme de la
+ * profondeur, pas la vitesse absolue.
  */
 .droid-starfield::before {
   background-size: var(--star-far) var(--star-far);
@@ -98,7 +99,7 @@ body {
     radial-gradient(1px 1px at 14% 8%, rgba(255, 255, 255, 0.5), transparent 60%),
     radial-gradient(1px 1px at 77% 72%, rgba(255, 255, 255, 0.45), transparent 60%),
     radial-gradient(1px 1px at 50% 96%, rgba(255, 255, 255, 0.4), transparent 60%);
-  animation: droid-drift-far 45s linear infinite;
+  animation: droid-drift-far 18s linear infinite;
 }
 
 /* Couche proche : étoiles marquées, tuile large, dérive plus rapide et scintillement. */
@@ -112,8 +113,8 @@ body {
     radial-gradient(1.5px 1.5px at 5% 38%, rgba(255, 255, 255, 0.55), transparent 60%),
     radial-gradient(1.5px 1.5px at 96% 44%, rgba(255, 255, 255, 0.5), transparent 60%);
   animation:
-    droid-drift-near 28s linear infinite,
-    droid-twinkle 6s ease-in-out infinite;
+    droid-drift-near 10s linear infinite,
+    droid-twinkle 4s ease-in-out infinite;
 }
 
 /* Translation d'exactement une tuile : l'état final est identique à l'état initial. */
