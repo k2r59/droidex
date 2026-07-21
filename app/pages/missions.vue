@@ -2,6 +2,23 @@
 import missions from '~/data/missions.json'
 import type { Tier } from '~~/shared/types/droid'
 
+import padBeskar from '~/assets/images/mission-pads/beskar.webp'
+import padDefault from '~/assets/images/mission-pads/default.webp'
+import padDiamond from '~/assets/images/mission-pads/diamond.webp'
+import padGalactic from '~/assets/images/mission-pads/galactic.webp'
+import padGold from '~/assets/images/mission-pads/gold.webp'
+import padRainbow from '~/assets/images/mission-pads/rainbow.webp'
+
+/** Illustration du terminal, une par palier — découpée par `scripts/build-mission-pads.mjs`. */
+const PAD_IMAGE: Record<Tier, string> = {
+  DEFAULT: padDefault,
+  GOLD: padGold,
+  DIAMOND: padDiamond,
+  RAINBOW: padRainbow,
+  BESKAR: padBeskar,
+  GALACTIC: padGalactic,
+}
+
 const store = useCollectionStore()
 const { t, locale } = useI18n()
 
@@ -23,6 +40,16 @@ const TIER_BG: Record<Tier, string> = {
   RAINBOW: 'tier-rainbow-bg',
   BESKAR: 'tier-beskar-bg',
   GALACTIC: 'tier-galactic-bg',
+}
+
+/** Cercle du numéro de terminal, teinté lui aussi par le palier. */
+const TIER_RING: Record<Tier, string> = {
+  DEFAULT: 'border-tier-default text-tier-default',
+  GOLD: 'border-tier-gold text-tier-gold',
+  DIAMOND: 'border-tier-diamond text-tier-diamond',
+  RAINBOW: 'border-tier-rainbow text-tier-rainbow',
+  BESKAR: 'border-tier-beskar text-tier-beskar',
+  GALACTIC: 'border-tier-galactic text-tier-galactic',
 }
 
 const rewardLabel = (r: Reward) => (r.kind === 'credits' ? t('missions.credits') : t(`tier.${r.tier}`))
@@ -47,6 +74,16 @@ const collectionPercent = computed(() =>
 )
 const RADIUS = 42
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS
+
+/**
+ * Terminal ouvert dans la fenêtre de détail. Le chevron de chaque ligne promettait cette
+ * vue depuis le départ mais n'avait aucun gestionnaire : cinq boutons inertes.
+ */
+type Pad = (typeof missions.pads.entries)[number]
+const selectedPad = ref<Pad | null>(null)
+
+const closePad = () => { selectedPad.value = null }
+onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
 </script>
 
 <template>
@@ -57,7 +94,7 @@ const CIRCUMFERENCE = 2 * Math.PI * RADIUS
           <DxIcon name="navigation/missions" :size="24" />
         </span>
         <div>
-          <h1 class="text-4xl lg:text-5xl">{{ $t('missions.title') }}</h1>
+          <h1 class="text-4xl uppercase tracking-tight lg:text-5xl">{{ $t('missions.title') }}</h1>
           <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-muted">
             {{ $t('missions.subtitle') }}
           </p>
@@ -70,7 +107,7 @@ const CIRCUMFERENCE = 2 * Math.PI * RADIUS
       </div>
 
       <!-- Repère de progression, commun aux pages : où j'en suis dans la collection. -->
-      <div class="flex flex-wrap items-center gap-6 rounded-card border border-edge bg-void/55 p-4 backdrop-blur">
+      <div class="flex flex-wrap items-center gap-6 rounded-card border border-edge-soft bg-void/55 p-4 backdrop-blur">
         <div class="flex items-center gap-4">
           <div>
             <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
@@ -108,63 +145,87 @@ const CIRCUMFERENCE = 2 * Math.PI * RADIUS
 
     <!-- Les 5 paliers de mission, un par ligne : la table de butin est l'info la plus consultée. -->
     <ul class="flex flex-col gap-3">
-      <li v-for="pad in missions.pads.entries" :key="pad.pad" class="panel p-4">
-        <div class="flex flex-wrap items-center gap-4">
-          <span class="grid size-8 shrink-0 place-items-center rounded-full bg-panel-high font-mono text-sm">
+      <li v-for="pad in missions.pads.entries" :key="pad.pad" class="panel p-3 sm:p-4">
+        <div class="flex items-center gap-3 sm:gap-4">
+          <!-- Le numéro est cerclé de la couleur du palier, comme la maquette. -->
+          <span
+            class="grid size-9 shrink-0 place-items-center rounded-full border-2 bg-void/40 font-mono text-sm"
+            :class="TIER_RING[pad.missionTier as Tier]"
+          >
             {{ pad.pad }}
           </span>
 
-          <span
-            class="grid size-16 shrink-0 place-items-center rounded-md border border-edge bg-panel-raised"
-            :class="pad.missionTier === 'DEFAULT' ? 'text-ink-muted' : 'text-accent'"
+          <!--
+            L'illustration du terminal porte déjà la couleur du palier et son halo.
+            Réduite sur mobile : à pleine taille elle laissait moins de 200 px au titre.
+          -->
+          <img
+            :src="PAD_IMAGE[pad.missionTier as Tier]"
+            alt=""
+            class="size-16 shrink-0 object-contain sm:size-24"
+            loading="lazy"
           >
-            <DxIcon name="game/mission-pad" :size="34" />
-          </span>
 
-          <div class="min-w-40 flex-1">
-            <h3 class="text-lg">
-              {{ $t(`tier.${pad.missionTier}`) }}
-              <span v-if="pad.unlockCost" class="text-ink-muted">{{ formatNumber(pad.unlockCost, locale) }}</span>
-            </h3>
-            <p class="text-xs text-ink-muted">
-              {{ pad.unlockCost ? formatNumber(pad.unlockCost, locale) : $t('droid.noData') }}
-              ·
-              {{ formatDuration(pad.baseDurationSeconds) }}
-            </p>
+          <!--
+            Colonne de contenu : titre et récompenses sur une ligne, barre en dessous.
+            La barre appartient à cette colonne et non à la carte entière — elle démarre
+            après le terminal et s'arrête avant le chevron, comme sur la maquette.
+          -->
+          <div class="min-w-0 flex-1">
+            <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
+              <div class="min-w-0">
+                <h3 class="text-lg">
+                  {{ $t(`tier.${pad.missionTier}`) }}
+                  <span v-if="pad.unlockCost" class="text-ink-muted">{{ formatNumber(pad.unlockCost, locale) }}</span>
+                </h3>
+                <p class="text-xs text-ink-muted">
+                  {{ pad.unlockCost ? formatNumber(pad.unlockCost, locale) : $t('droid.noData') }}
+                  ·
+                  {{ formatDuration(pad.baseDurationSeconds) }}
+                </p>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="text-[10px] font-semibold uppercase tracking-wide text-rare">
+                  {{ $t('missions.rewards') }}
+                </span>
+                <span
+                  v-for="r in (pad.rewards as Reward[])"
+                  :key="`lbl-${r.kind}-${r.tier ?? ''}`"
+                  class="flex items-center gap-1.5 text-sm font-semibold"
+                >
+                  <span class="size-3 rounded-full" :class="rewardClass(r)" />
+                  {{ r.chance }} %
+                </span>
+              </div>
+            </div>
+
+            <!-- Texte blanc ombré : lisible aussi bien sur l'or que sur le gris. -->
+            <div class="mt-2.5 flex h-6 overflow-hidden rounded-md">
+              <span
+                v-for="r in (pad.rewards as Reward[])"
+                :key="`${r.kind}-${r.tier ?? ''}`"
+                class="grid place-items-center text-[11px] font-bold text-white [text-shadow:0_1px_2px_rgb(0_0_0/0.5)]"
+                :class="rewardClass(r)"
+                :style="{ width: `${r.chance}%` }"
+                :title="`${rewardLabel(r)} — ${r.chance} %`"
+              >{{ r.chance >= 15 ? `${r.chance}%` : '' }}</span>
+            </div>
           </div>
 
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="text-[10px] font-semibold uppercase tracking-wide text-ink-muted">
-              {{ $t('missions.rewards') }}
-            </span>
-            <span
-              v-for="r in (pad.rewards as Reward[])"
-              :key="`lbl-${r.kind}-${r.tier ?? ''}`"
-              class="flex items-center gap-1.5 text-xs"
-            >
-              <span class="size-2.5 rounded-full" :class="rewardClass(r)" />
-              {{ r.chance }} %
-            </span>
-          </div>
-
-          <button type="button" class="dx-icon-button shrink-0" :aria-label="$t('missions.seeDetail')">
-            <DxIcon name="actions/arrow-right" :size="18" />
+          <button
+            type="button"
+            class="dx-icon-button shrink-0"
+            :aria-label="$t('missions.seeDetail')"
+            :aria-haspopup="'dialog'"
+            @click="selectedPad = pad"
+          >
+            <DxIcon name="actions/chevron-right" :size="18" />
           </button>
         </div>
 
-        <div class="dx-segmented-progress mt-3 flex h-6 overflow-hidden rounded-md">
-          <span
-            v-for="r in (pad.rewards as Reward[])"
-            :key="`${r.kind}-${r.tier ?? ''}`"
-            class="grid place-items-center text-[10px] font-bold text-void"
-            :class="rewardClass(r)"
-            :style="{ width: `${r.chance}%` }"
-            :title="`${rewardLabel(r)} — ${r.chance} %`"
-          >{{ r.chance >= 15 ? `${r.chance}%` : '' }}</span>
-        </div>
-
-        <p v-if="pad.note" class="dx-alert dx-alert--info mt-3 text-xs">
-          <DxIcon name="status/info" :size="16" class="mt-0.5 shrink-0" />
+        <p v-if="pad.note" class="dx-alert dx-alert--info mt-3 border-0 text-xs">
+          <DxIcon name="status/info" :size="16" class="mt-px shrink-0" />
           <span>{{ pad.note }}</span>
         </p>
       </li>
@@ -177,8 +238,8 @@ const CIRCUMFERENCE = 2 * Math.PI * RADIUS
       </li>
     </ul>
 
-    <p class="dx-alert dx-alert--warning">
-      <DxIcon name="status/warning" :size="20" class="mt-0.5 shrink-0" />
+    <p class="dx-alert dx-alert--warning border-0 text-[0.8125rem]">
+      <DxIcon name="status/warning" :size="17" class="mt-px shrink-0" />
       <span>{{ missions.pads.passiveIncomeDuringMission }}</span>
     </p>
 
@@ -309,8 +370,8 @@ const CIRCUMFERENCE = 2 * Math.PI * RADIUS
         </div>
 
         <p class="mt-3 text-xs text-ink-muted">{{ missions.cantina.cooldownNote }}</p>
-        <p class="dx-alert dx-alert--info mt-3 text-sm">
-          <DxIcon name="status/info" :size="18" class="mt-0.5 shrink-0" />
+        <p class="dx-alert dx-alert--info mt-3 border-0 text-[0.8125rem]">
+          <DxIcon name="status/info" :size="17" class="mt-px shrink-0" />
           <span>{{ missions.cantina.tip }}</span>
         </p>
       </section>
@@ -318,12 +379,12 @@ const CIRCUMFERENCE = 2 * Math.PI * RADIUS
       <section class="panel relative overflow-hidden p-5">
         <h2 class="flex flex-wrap items-center gap-2 text-lg">
           <DxIcon name="resources/nova-crystal" :size="22" class="text-nova" />
-          Double Daily Quests
+          {{ $t('missions.doubleDailyTitle') }}
           <span class="font-mono text-accent">✦ {{ missions.dailies.doubleDaily.cost }}</span>
         </h2>
         <p class="mt-2 text-sm text-ink-muted">{{ missions.dailies.doubleDaily.effect }}</p>
-        <p class="dx-alert dx-alert--warning mt-3 text-xs">
-          <DxIcon name="status/warning" :size="16" class="mt-0.5 shrink-0" />
+        <p class="dx-alert dx-alert--warning mt-3 border-0 text-xs">
+          <DxIcon name="status/warning" :size="17" class="mt-px shrink-0" />
           <span>{{ missions.dailies.doubleDaily.uncertainty }}</span>
         </p>
       </section>
@@ -338,5 +399,63 @@ const CIRCUMFERENCE = 2 * Math.PI * RADIUS
         <p class="text-xs text-ink-muted">{{ s }}</p>
       </li>
     </ul>
+
+    <!-- Détail d'un terminal. Même structure que la fenêtre des paliers de renaissance. -->
+    <Teleport to="body">
+      <div
+        v-if="selectedPad"
+        class="fixed inset-0 z-50 grid place-items-center overflow-y-auto p-4"
+        role="dialog"
+        aria-modal="true"
+        @click.self="closePad"
+      >
+        <div class="absolute inset-0 bg-void-deep/70 backdrop-blur-md" @click="closePad" />
+
+        <section class="dx-modal-panel panel relative z-10 w-full max-w-lg p-6">
+          <div class="mb-5 flex items-start gap-4">
+            <img :src="PAD_IMAGE[selectedPad.missionTier as Tier]" alt="" class="size-20 shrink-0 object-contain">
+
+            <div class="min-w-0 flex-1">
+              <h2 class="text-xl">
+                {{ $t(`tier.${selectedPad.missionTier}`) }}
+                <span v-if="selectedPad.unlockCost" class="text-ink-muted">
+                  {{ formatNumber(selectedPad.unlockCost, locale) }}
+                </span>
+              </h2>
+              <p class="mt-1 text-xs text-ink-muted">
+                {{ $t('missions.padNumber', { number: selectedPad.pad }) }}
+                · {{ formatDuration(selectedPad.baseDurationSeconds) }}
+              </p>
+            </div>
+
+            <button type="button" class="dx-icon-button shrink-0" :aria-label="$t('common.close')" @click="closePad">
+              <DxIcon name="actions/close" :size="18" />
+            </button>
+          </div>
+
+          <p class="mb-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
+            {{ $t('missions.rewards') }}
+          </p>
+
+          <!-- En liste plutôt qu'en barre : ici on lit chaque récompense, on ne compare pas. -->
+          <ul class="flex flex-col gap-1.5">
+            <li
+              v-for="r in (selectedPad.rewards as Reward[])"
+              :key="`d-${r.kind}-${r.tier ?? ''}`"
+              class="flex items-center gap-3 rounded-md bg-void/40 px-3 py-2"
+            >
+              <span class="size-3.5 shrink-0 rounded-full" :class="rewardClass(r)" />
+              <span class="flex-1 text-sm">{{ rewardLabel(r) }}</span>
+              <span class="font-mono text-sm font-bold tabular-nums">{{ r.chance }} %</span>
+            </li>
+          </ul>
+
+          <p v-if="selectedPad.note" class="dx-alert dx-alert--info mt-4 border-0 text-xs">
+            <DxIcon name="status/info" :size="16" class="mt-px shrink-0" />
+            <span>{{ selectedPad.note }}</span>
+          </p>
+        </section>
+      </div>
+    </Teleport>
   </div>
 </template>

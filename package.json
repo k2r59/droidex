@@ -10,6 +10,8 @@
     "postinstall": "nuxt prepare",
     "build:droids": "node scripts/build-droids.mjs",
     "build:rebirths": "node scripts/build-rebirths.mjs",
+    "build:mission-pads": "node scripts/build-mission-pads.mjs",
+    "build:icons": "node scripts/build-icons.mjs",
     "build:data": "pnpm run build:droids && pnpm run build:rebirths",
     "fetch:images": "node scripts/fetch-droid-images.mjs",
     "typecheck": "nuxt typecheck",
