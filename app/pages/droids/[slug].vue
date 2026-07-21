@@ -50,32 +50,16 @@ const usedInRebirths = computed(() => {
       ← {{ $t('droid.backToDroidex') }}
     </NuxtLink>
 
-    <section class="flex flex-col gap-5 rounded-card border border-edge bg-panel p-5 md:flex-row">
-      <div class="flex flex-col items-center gap-3">
+    <section class="panel flex flex-col gap-5 p-5 md:flex-row">
+      <div class="flex shrink-0 flex-col items-center gap-2">
         <DroidImage :droid="droid" :tier="focusTier" size="lg" />
-
-        <!-- Galerie des paliers : chaque palier a sa propre illustration. -->
-        <div class="flex flex-wrap justify-center gap-1.5">
-          <button
-            v-for="tier in tiers"
-            :key="tier"
-            type="button"
-            class="rounded-lg border p-1 transition-colors"
-            :class="focusTier === tier ? 'border-iconic bg-panel-raised' : 'border-edge hover:border-ink-muted'"
-            :title="$t(`tier.${tier}`)"
-            @click="focusTier = tier"
-          >
-            <DroidImage :droid="droid" :tier="tier" size="sm" :dimmed="!store.satisfies(slug, tier)" />
-          </button>
-        </div>
-
         <p class="text-xs text-ink-muted">{{ $t(`tier.${focusTier}`) }}</p>
         <p v-if="focusStats?.imageIsFallback" class="max-w-40 text-center text-xs text-tier-galactic">
           {{ $t('droid.imageFallback') }}
         </p>
       </div>
 
-      <div class="flex-1">
+      <div class="min-w-0 flex-1">
         <div class="flex flex-wrap items-center gap-2">
           <h1 class="text-2xl font-bold">{{ droid.name }}</h1>
           <RarityBadge :rarity="droid.rarity" />
@@ -92,8 +76,19 @@ const usedInRebirths = computed(() => {
           {{ $t(droid.perk) }}
         </p>
 
-        <div class="mt-4 flex flex-wrap items-center gap-4">
-          <div>
+        <div class="mt-4 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <!--
+            Les Emblématiques n'ont qu'un palier : le sélecteur se réduirait à un cercle
+            unique, qui n'offre aucun choix. On le remplace par une bascule « possédé ».
+          -->
+          <DxToggle
+            v-if="droid.percentIncome"
+            :model-value="entry.tier !== null"
+            :label="$t('droid.owned')"
+            @update:model-value="store.setTier(slug, $event ? 'DEFAULT' : null)"
+          />
+
+          <div v-else>
             <p class="text-xs text-ink-muted">{{ $t('droidex.filterTier') }}</p>
             <TierSelector
               :droid="droid"
@@ -103,15 +98,29 @@ const usedInRebirths = computed(() => {
             />
           </div>
 
-          <label class="flex cursor-pointer items-center gap-2 text-sm">
-            <input
-              type="checkbox"
-              :checked="entry.flawless"
-              class="size-4 accent-iconic"
-              @change="store.toggleFlawless(slug)"
-            >
-            ✨ {{ $t('droid.flawless') }}
-          </label>
+          <DxToggle
+            :model-value="entry.flawless"
+            :label="$t('droid.flawless')"
+            @update:model-value="store.toggleFlawless(slug)"
+          />
+        </div>
+
+        <!--
+          Galerie des paliers, déplacée sous le texte : empilée sous l'illustration, elle
+          allongeait la carte alors que la colonne de droite avait de la place en largeur.
+        -->
+        <div v-if="!droid.percentIncome" class="mt-4 flex flex-wrap gap-1.5">
+          <button
+            v-for="tier in tiers"
+            :key="tier"
+            type="button"
+            class="rounded-lg border p-1 transition-colors"
+            :class="focusTier === tier ? 'border-iconic bg-panel-raised' : 'border-edge-soft hover:border-edge-strong'"
+            :title="$t(`tier.${tier}`)"
+            @click="focusTier = tier"
+          >
+            <DroidImage :droid="droid" :tier="tier" size="sm" :dimmed="!store.satisfies(slug, tier)" />
+          </button>
         </div>
 
         <p class="mt-1 text-xs text-ink-muted">{{ $t('droid.flawlessHint') }}</p>
@@ -123,11 +132,11 @@ const usedInRebirths = computed(() => {
       </div>
     </section>
 
-    <section v-if="!droid.percentIncome" class="overflow-x-auto rounded-card border border-edge bg-panel">
+    <section v-if="!droid.percentIncome" class="panel overflow-x-auto">
       <h2 class="px-4 pt-4 font-semibold">{{ $t('droid.tierTable') }}</h2>
 
       <table class="mt-3 w-full text-sm">
-        <thead class="border-b border-edge text-left text-xs uppercase text-ink-muted">
+        <thead class="border-b border-edge-soft text-left text-xs uppercase text-ink-muted">
           <tr>
             <th class="px-4 py-2 font-medium">{{ $t('droidex.filterTier') }}</th>
             <th class="px-4 py-2 text-right font-medium">{{ $t('droid.income') }}</th>
@@ -139,7 +148,7 @@ const usedInRebirths = computed(() => {
           <tr
             v-for="tier in tiers"
             :key="tier"
-            class="border-b border-edge/50 transition-colors last:border-0 hover:bg-panel-raised"
+            class="border-b border-edge-soft transition-colors last:border-0 hover:bg-panel-raised"
             :class="entry.tier === tier && 'bg-panel-raised'"
           >
             <td class="px-4 py-2">
@@ -164,7 +173,7 @@ const usedInRebirths = computed(() => {
       <p class="px-4 py-3 text-xs text-ink-muted">{{ $t('droid.galacticNoData') }}</p>
     </section>
 
-    <section v-if="usedInRebirths.length" class="rounded-card border border-edge bg-panel p-4">
+    <section v-if="usedInRebirths.length" class="panel p-4">
       <h2 class="mb-2 font-semibold">{{ $t('droid.usedInRebirths') }}</h2>
       <ul class="flex flex-wrap gap-2 text-sm">
         <li
@@ -175,7 +184,9 @@ const usedInRebirths = computed(() => {
           <span class="text-xs text-ink-muted">{{ $t('rebirth.cycle', { number: use.cycle }) }} ·</span>
           {{ use.level }}
           <span class="text-xs text-ink-muted">
-            {{ use.tier ? $t(`tier.${use.tier}`) : $t('rebirth.anyTier') }}
+            <!-- Même règle que sur la page Renaissances : une exigence sans palier
+                 équivaut à « Typique », puisque tout palier possédé la satisfait. -->
+            {{ $t(`tier.${use.tier ?? 'DEFAULT'}`) }}
           </span>
         </li>
       </ul>

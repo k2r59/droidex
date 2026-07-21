@@ -153,8 +153,8 @@ const notes = [
         </div>
       </PageBanner>
 
-      <p class="dx-alert dx-alert--warning">
-        <DxIcon name="status/warning" :size="20" class="mt-0.5 shrink-0" />
+      <p class="dx-alert dx-alert--warning border-0 text-[0.8125rem]">
+        <DxIcon name="status/warning" :size="17" class="mt-px shrink-0" />
         <span>{{ $t('shop.incomplete') }}</span>
       </p>
 
@@ -165,7 +165,7 @@ const notes = [
         </h2>
         <ol class="flex flex-wrap items-center gap-2 text-sm">
           <li v-for="(item, i) in recommended" :key="item.id" class="flex items-center gap-2">
-            <span class="flex items-center gap-2 rounded-md border border-edge bg-panel-raised px-2.5 py-1.5">
+            <span class="flex items-center gap-2 rounded-md border border-edge-soft bg-panel-raised px-2.5 py-1.5">
               <DxIcon :name="iconOf(item.id)" :size="16" class="text-accent" />
               {{ item.name }}
             </span>
@@ -242,24 +242,6 @@ const notes = [
     </div>
 
     <aside class="flex flex-col gap-4">
-      <!-- Panier : la sélection n'est pas encore implémentée, l'état vide est donc le seul. -->
-      <section class="panel p-5 text-center">
-        <h2 class="flex items-center justify-center gap-2 text-base uppercase tracking-wide">
-          <DxIcon name="game/crate" :size="20" class="text-accent" />
-          {{ $t('shop.cart') }}
-        </h2>
-        <p class="mt-1 text-xs text-ink-muted">{{ $t('shop.cartEmpty') }}</p>
-
-        <div class="relative my-4 grid place-items-center py-2">
-          <span class="absolute size-28 rounded-full bg-accent/15 blur-2xl" />
-          <DxIcon name="game/crate" size="6rem" class="relative text-accent/70" />
-        </div>
-
-        <span class="dx-button dx-button--secondary dx-button--block opacity-60">
-          {{ $t('shop.addItems') }}
-        </span>
-      </section>
-
       <section class="panel p-4">
         <h2 class="mb-3 text-base uppercase tracking-wide">{{ $t('shop.category.iconic') }}</h2>
 

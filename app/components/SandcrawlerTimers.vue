@@ -56,74 +56,80 @@ const isImminent = (s: number | null) => s !== null && s <= 30
 </script>
 
 <template>
-  <section class="rounded-card border border-edge bg-panel p-6">
-    <h2 class="mb-3 flex flex-wrap items-baseline gap-2 font-semibold">
-      {{ $t('timers.title') }}
-      <span class="text-xs font-normal text-ink-muted">{{ $t('timers.hint') }}</span>
+  <section class="rounded-card border border-edge-soft bg-panel p-5">
+    <h2 class="mb-4 flex flex-wrap items-center gap-2.5">
+      <DxIcon name="resources/timer" :size="20" class="shrink-0 text-ink-strong" />
+      <span class="font-display text-base font-bold uppercase tracking-[0.05em] text-ink-strong">
+        {{ $t('timers.title') }}
+      </span>
+      <span class="text-[0.8125rem] font-normal text-ink-muted">{{ $t('timers.hint') }}</span>
     </h2>
 
-    <ul class="flex flex-col gap-2">
+    <ul class="flex flex-col gap-3">
       <li
-        class="flex items-center gap-3 rounded-lg bg-panel-raised p-3 transition-colors"
-        :class="isImminent(beskarRemaining) && 'ring-1 ring-warn'"
+        class="flex items-center gap-3 rounded-lg border border-edge-soft bg-void/40 px-4 py-3 transition-colors"
+        :class="isImminent(beskarRemaining) && 'border-warn/60'"
       >
-        <span class="size-3 shrink-0 rounded-full tier-beskar-bg" />
+        <span class="size-3.5 shrink-0 rounded-full tier-beskar-bg" />
 
         <div class="min-w-0 flex-1">
-          <p class="text-sm font-medium">{{ $t('timers.beskarLabel') }}</p>
-          <p class="text-xs text-ink-muted">
+          <p class="font-semibold text-ink-strong">{{ $t('timers.beskarLabel') }}</p>
+          <p class="text-[0.8125rem] text-ink-muted">
             {{ $t('timers.every', { minutes: sandcrawler.beskarIntervalMinutes }) }}
           </p>
         </div>
 
+        <!-- Tant que le joueur n'a rien signalé, il n'y a pas de compte à rebours à montrer. -->
         <p
-          class="font-mono text-xl tabular-nums"
-          :class="isImminent(beskarRemaining) ? 'text-warn' : 'text-ink'"
+          v-if="beskarRemaining !== null"
+          class="font-mono text-2xl font-bold tabular-nums"
+          :class="isImminent(beskarRemaining) ? 'text-warn' : 'text-ink-strong'"
         >
-          {{ beskarRemaining !== null ? format(beskarRemaining) : '—:—' }}
+          {{ format(beskarRemaining) }}
         </p>
 
-        <div class="flex flex-col gap-1">
-          <button
-            type="button"
-            class="rounded bg-panel px-2 py-1 text-xs transition-colors hover:bg-edge"
-            @click="lastBeskar = Date.now()"
-          >
-            {{ $t('timers.sawIt') }}
-          </button>
-          <button
-            v-if="lastBeskar"
-            type="button"
-            class="rounded px-2 py-0.5 text-xs text-ink-muted transition-colors hover:text-ink"
-            @click="lastBeskar = null"
-          >
-            {{ $t('timers.reset') }}
-          </button>
-        </div>
+        <button
+          type="button"
+          class="flex shrink-0 items-center gap-2.5 rounded-lg border border-edge-strong bg-panel-raised px-4 py-2.5 text-[0.8125rem] font-medium transition-colors hover:border-accent/50"
+          @click="lastBeskar = Date.now()"
+        >
+          <DxIcon name="game/radar" :size="18" class="text-ink-strong" />
+          {{ $t('timers.sawIt') }}
+        </button>
+        <button
+          v-if="lastBeskar"
+          type="button"
+          class="shrink-0 rounded px-2 py-0.5 text-xs text-ink-muted transition-colors hover:text-ink"
+          @click="lastBeskar = null"
+        >
+          {{ $t('timers.reset') }}
+        </button>
       </li>
 
-      <!-- Mythic : calé sur l'horloge, donc toujours affiché, sans bouton. -->
-      <li
-        class="flex items-center gap-3 rounded-lg bg-panel-raised p-3 transition-colors"
-        :class="isImminent(mythicRemaining) && 'ring-1 ring-warn'"
-      >
-        <span class="size-3 shrink-0 rounded-full bg-mythic" />
+      <!--
+        Mythic : calé sur l'horloge, donc toujours affiché, sans bouton. La teinte rouge
+        est permanente et non réservée à l'imminence — c'est le repère visuel du palier.
+      -->
+      <li class="flex items-center gap-3 rounded-lg border border-mythic/45 bg-mythic/10 px-4 py-3">
+        <span class="size-3.5 shrink-0 rounded-full bg-mythic" />
 
         <div class="min-w-0 flex-1">
-          <p class="text-sm font-medium">{{ $t('timers.mythicLabel') }}</p>
-          <p class="text-xs text-ink-muted">{{ $t('timers.mythicAuto') }}</p>
+          <p class="font-semibold text-mythic">{{ $t('timers.mythicLabel') }}</p>
+          <p class="text-[0.8125rem] text-ink-muted">{{ $t('timers.mythicAuto') }}</p>
         </div>
 
-        <p
-          class="font-mono text-xl tabular-nums"
-          :class="isImminent(mythicRemaining) ? 'text-warn' : 'text-ink'"
-        >
+        <p class="font-mono text-2xl font-bold tabular-nums text-mythic">
           {{ format(mythicRemaining) }}
         </p>
       </li>
     </ul>
 
-    <p class="mt-2 text-xs text-ink-muted">{{ $t('timers.beskarPerPlayer') }}</p>
-    <p class="mt-1 text-xs text-ink-muted">{{ $t('timers.rainbowRemoved') }}</p>
+    <div class="mt-3 flex items-start gap-3 rounded-lg border border-edge-soft bg-void/40 px-4 py-3">
+      <DxIcon name="status/info" :size="18" class="mt-px shrink-0 text-rare" />
+      <div class="text-[0.8125rem] leading-relaxed text-ink-muted">
+        <p>{{ $t('timers.beskarPerPlayer') }}</p>
+        <p>{{ $t('timers.rainbowRemoved') }}</p>
+      </div>
+    </div>
   </section>
 </template>

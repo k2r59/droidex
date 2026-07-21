@@ -28,6 +28,20 @@ const RARITY_TEXT: Record<string, string> = {
   mythic: 'text-mythic',
   iconic: 'text-iconic',
 }
+
+/**
+ * Pastille de rareté : contour teinté et lavis dégradé qui s'éteint vers la droite, pour
+ * que le compteur reste lisible par-dessus l'illustration. Les classes sont écrites en
+ * toutes lettres — Tailwind ne génère que ce qu'il trouve littéralement dans les sources.
+ */
+const RARITY_CHIP: Record<string, string> = {
+  common: 'border-common/45 from-common/12',
+  rare: 'border-rare/45 from-rare/20',
+  epic: 'border-epic/45 from-epic/20',
+  legendary: 'border-legendary/45 from-legendary/22',
+  mythic: 'border-mythic/45 from-mythic/22',
+  iconic: 'border-iconic/45 from-iconic/20',
+}
 </script>
 
 <template>
@@ -44,21 +58,24 @@ const RARITY_TEXT: Record<string, string> = {
       <div class="flex shrink-0 flex-col items-center gap-1">
         <div class="relative grid size-32 place-items-center">
           <svg class="absolute inset-0 -rotate-90" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" :r="RADIUS" fill="none" stroke="currentColor" stroke-width="7" class="text-edge" />
+            <!-- Disque plein : il détache le chiffre de l'illustration, qui est claire. -->
+            <circle cx="50" cy="50" :r="RADIUS - 4" class="fill-void/70" />
+            <circle cx="50" cy="50" :r="RADIUS" fill="none" stroke="currentColor" stroke-width="9" class="text-edge/70" />
             <circle
               cx="50"
               cy="50"
               :r="RADIUS"
               fill="none"
               stroke="currentColor"
-              stroke-width="7"
+              stroke-width="9"
               stroke-linecap="round"
-              class="text-accent transition-[stroke-dashoffset] duration-700"
+              class="text-accent drop-shadow-[0_0_6px_rgba(37,215,255,0.55)] transition-[stroke-dashoffset] duration-700"
               :stroke-dasharray="CIRCUMFERENCE"
               :stroke-dashoffset="CIRCUMFERENCE * (1 - completion / 100)"
             />
           </svg>
-          <span class="text-3xl font-bold">{{ completion }}%</span>
+          <!-- `relative` obligatoire : le SVG est positionné, il passerait sinon par-dessus. -->
+          <span class="relative font-mono text-3xl font-bold tabular-nums text-ink-strong">{{ completion }}%</span>
         </div>
         <p class="text-xs text-ink-muted">{{ $t('stats.totalIncome') }}</p>
         <p class="font-mono text-lg tabular-nums text-accent">{{ formatIncome(store.totalIncome, locale) }}</p>
@@ -69,20 +86,22 @@ const RARITY_TEXT: Record<string, string> = {
       <div
         v-for="r in store.dataset.rarities"
         :key="r"
-        class="flex items-center gap-2 rounded-lg border border-edge bg-void/50 px-3 py-2 backdrop-blur"
+        class="flex min-w-[9rem] items-center justify-between gap-4 rounded-md border bg-gradient-to-r to-transparent bg-void/55 px-3.5 py-1.5 backdrop-blur"
+        :class="RARITY_CHIP[r]"
       >
-        <span class="text-xs font-semibold" :class="RARITY_TEXT[r]">{{ $t(`rarity.${r}`) }}</span>
-        <span class="font-mono text-xs tabular-nums text-ink-muted">
-          {{ store.countByRarity[r].owned }} / {{ store.countByRarity[r].total }}
+        <span class="text-[0.8125rem] font-semibold" :class="RARITY_TEXT[r]">{{ $t(`rarity.${r}`) }}</span>
+        <!-- Compteur dans la couleur de la rareté, comme le libellé. -->
+        <span class="font-mono text-[0.8125rem] font-bold tabular-nums" :class="RARITY_TEXT[r]">
+          {{ store.countByRarity[r].owned }}/{{ store.countByRarity[r].total }}
         </span>
       </div>
     </div>
 
     <p
       v-if="!isAuthenticated"
-      class="flex items-center gap-2 rounded-card border border-edge bg-void/60 px-4 py-3 text-sm text-ink-muted backdrop-blur"
+      class="flex items-center gap-2 rounded-md border border-edge bg-void/60 px-4 py-2.5 text-[0.8125rem] text-ink-muted backdrop-blur"
     >
-      <span aria-hidden="true">🔒</span>
+      <DxIcon name="status/locked" :size="15" class="shrink-0" />
       {{ $t('auth.signInPrompt') }}
     </p>
   </PageBanner>

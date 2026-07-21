@@ -43,11 +43,60 @@ const crystalsNow = computed(
 const RADIUS = 42
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS
 
+/** « BONUS ACTIF » → ['BONUS', 'ACTIF'], pour teinter les deux mots différemment. */
+const bonusLabel = computed<[string, string]>(() => {
+  const words = t('rebirth.activeBonus').split(' ')
+  return [words[0] ?? '', words.slice(1).join(' ')]
+})
+
+/**
+ * Coche ou décoche une exigence depuis la carte.
+ *
+ * `setTier` du store écrit dans `localStorage` puis pousse au serveur si une session est
+ * active : la progression est donc enregistrée sans action supplémentaire.
+ *
+ * On ne redescend jamais un palier déjà possédé plus haut que l'exigence — décocher un
+ * Or alors que le joueur a un Beskar effacerait une information qu'il a saisie ailleurs.
+ * Dans ce cas la carte reste cochée, ce qui est la vérité : l'exigence est satisfaite.
+ */
+function toggleRequirement(req: Requirement) {
+  const owned = store.entry(req.slug).tier
+  const required = req.tier ?? 'DEFAULT'
+
+  if (!met(req)) return store.setTier(req.slug, required)
+  if (owned === required) return store.setTier(req.slug, null)
+}
+
 function setLevel(value: number) {
   store.setRebirth(Math.min(rebirthData.maxRebirth, Math.max(0, value)))
 }
 
 const search = ref('')
+
+/**
+ * Palier ouvert dans la fenêtre de détail. Cliquer une tuile n'change plus directement la
+ * progression : on montre d'abord ce que le palier demande, et le joueur décide ensuite —
+ * un clic de survol ne doit pas réécrire sa progression sans qu'il ait rien vu.
+ */
+const selected = ref<Level | null>(null)
+
+/** Cristaux Nova accordés à ce palier, ou `null` si la table ne le documente pas. */
+const selectedCrystals = computed(() =>
+  selected.value
+    ? (rebirthData.novaByRebirth as Record<string, number>)[String(selected.value.level)] ?? null
+    : null,
+)
+
+const selectedMissing = computed(() =>
+  selected.value ? selected.value.droids.filter((r) => !met(r)).length : 0,
+)
+
+function closeLevel() {
+  selected.value = null
+}
+
+/** Échap ferme la fenêtre : c'est le réflexe attendu, et le seul si la souris est loin. */
+onKeyStroke('Escape', () => { if (selected.value) closeLevel() })
 
 /**
  * Un palier est « verrouillé » quand ses exigences ne sont pas publiées — ce qui est le
@@ -74,38 +123,46 @@ const shown = computed(() => {
     <div class="flex min-w-0 flex-col gap-5">
       <PageBanner name="renaissances" min-height="17rem">
         <div>
-          <h1 class="text-4xl lg:text-5xl">{{ $t('rebirth.title') }}</h1>
-          <p class="mt-1 max-w-md text-sm text-ink-muted">{{ $t('rebirth.cycleHint') }}</p>
+          <h1 class="text-4xl uppercase tracking-tight lg:text-5xl">{{ $t('rebirth.title') }}</h1>
+          <p class="mt-1 max-w-md text-sm text-ink-muted">{{ $t('rebirth.tagline') }}</p>
         </div>
 
         <!-- Les trois chiffres qui décident d'une session : où j'en suis, où je me situe, ce que ça rapporte. -->
-        <div class="grid gap-4 rounded-card border border-edge bg-void/55 p-4 backdrop-blur sm:grid-cols-3">
-          <div class="flex items-center gap-4">
-            <div>
-              <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
+        <!--
+          Trois colonnes séparées par un filet vertical, comme la maquette. La barre
+          s'arrête avant les droids de l'illustration : au-delà, le texte passerait sur
+          le corps clair de R2-D2.
+        -->
+        <div class="grid max-w-4xl rounded-card border border-edge-soft bg-void/55 backdrop-blur sm:grid-cols-3 sm:divide-x sm:divide-edge">
+          <div class="flex items-center gap-5 p-4">
+            <div class="min-w-0">
+              <p class="whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
                 {{ $t('rebirth.yourProgress') }}
               </p>
-              <p class="font-mono text-2xl">
+              <p class="mt-1 whitespace-nowrap font-mono text-3xl font-bold">
                 <span class="text-accent">{{ store.rebirth }}</span>
-                <span class="text-ink-muted"> / {{ rebirthData.maxRebirth }}</span>
+                <span class="text-ink-strong">&#32;/&#32;{{ rebirthData.maxRebirth }}</span>
               </p>
-              <p class="text-xs text-ink-muted">{{ $t('rebirth.tiersCompleted') }}</p>
+              <p class="whitespace-nowrap text-xs text-ink-muted">{{ $t('rebirth.tiersCompleted') }}</p>
             </div>
 
-            <div class="relative grid size-16 shrink-0 place-items-center">
+            <div class="relative grid size-24 shrink-0 place-items-center">
               <svg class="absolute inset-0 -rotate-90" viewBox="0 0 100 100">
-                <circle cx="50" cy="50" :r="RADIUS" fill="none" stroke="currentColor" stroke-width="9" class="text-edge" />
+                <!-- Disque plein : il détache le pourcentage de l'illustration. -->
+                <circle cx="50" cy="50" :r="RADIUS - 5" class="fill-void/60" />
+                <circle cx="50" cy="50" :r="RADIUS" fill="none" stroke="currentColor" stroke-width="8" class="text-edge/80" />
                 <circle
-                  cx="50" cy="50" :r="RADIUS" fill="none" stroke="currentColor" stroke-width="9"
-                  stroke-linecap="round" class="text-accent transition-[stroke-dashoffset] duration-700"
+                  cx="50" cy="50" :r="RADIUS" fill="none" stroke="currentColor" stroke-width="8"
+                  stroke-linecap="round"
+                  class="text-accent drop-shadow-[0_0_6px_rgba(37,215,255,0.6)] transition-[stroke-dashoffset] duration-700"
                   :stroke-dasharray="CIRCUMFERENCE" :stroke-dashoffset="CIRCUMFERENCE * (1 - progress / 100)"
                 />
               </svg>
-              <span class="font-mono text-sm">{{ progress }}%</span>
+              <span class="relative font-mono text-xl font-bold text-ink-strong">{{ progress }}%</span>
             </div>
           </div>
 
-          <div>
+          <div class="p-4">
             <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
               {{ $t('rebirth.setMyTier') }}
             </p>
@@ -116,21 +173,30 @@ const shown = computed(() => {
             </div>
           </div>
 
-          <div>
-            <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
-              {{ $t('rebirth.activeBonus') }}
+          <div class="p-4">
+            <!--
+              Deux tons sur le libellé, comme la maquette. L'écart est porté par une marge
+              et non par une espace : Vue condense les blancs de bord dans les templates,
+              ce qui collait les deux mots.
+            -->
+            <p class="whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.14em]">
+              <span class="text-ink-strong">{{ bonusLabel[0] }}</span>
+              <span class="ml-1 text-ink-muted">{{ bonusLabel[1] }}</span>
             </p>
-            <p class="font-mono text-2xl text-valid">+{{ creditMultiplier }}%</p>
-            <div class="flex flex-wrap items-center gap-2">
+            <p class="mt-1 font-mono text-3xl font-bold text-accent">+{{ creditMultiplier }}%</p>
+            <div class="mt-1 flex flex-wrap items-center gap-2">
               <span class="text-xs text-ink-muted">{{ $t('rebirth.creditsPerTier') }}</span>
-              <span class="dx-badge dx-badge--rare">{{ $t('rebirth.cycle', { number: store.cycle }) }}</span>
+              <span class="rounded-md border border-edge-soft bg-void/60 px-2 py-0.5 text-xs text-ink">
+                {{ $t('rebirth.cycle', { number: store.cycle }) }}
+              </span>
             </div>
           </div>
         </div>
       </PageBanner>
 
-      <p class="dx-alert dx-alert--warning">
-        <DxIcon name="status/warning" :size="20" class="mt-0.5 shrink-0" />
+      <!-- Sans contour et en petit corps : c'est un rappel, pas une alerte bloquante. -->
+      <p class="dx-alert dx-alert--warning border-0 text-[0.8125rem]">
+        <DxIcon name="status/warning" :size="17" class="mt-px shrink-0" />
         <span>{{ $t('rebirth.placementWarning') }}</span>
       </p>
 
@@ -142,7 +208,7 @@ const shown = computed(() => {
             {{ $t('rebirth.next') }} — {{ nextLevel.level }}
           </h2>
           <p class="text-sm">
-            <span class="font-mono text-lg text-accent">{{ formatNumber(nextLevel.credits, locale) }}</span>
+            <span class="font-mono text-lg font-bold text-nova">{{ formatNumber(nextLevel.credits, locale) }}</span>
             <span class="ml-1 text-ink-muted">{{ $t('rebirth.creditsRequired') }}</span>
           </p>
         </div>
@@ -153,36 +219,48 @@ const shown = computed(() => {
 
         <template v-else>
           <ul class="grid gap-3 sm:grid-cols-3">
-            <li
-              v-for="req in nextLevel.droids"
-              :key="`${req.slug}-${req.tier}`"
-              class="dx-droid-card flex items-center gap-3"
-              :class="met(req) && 'border-valid/60'"
-            >
+            <li v-for="req in nextLevel.droids" :key="`${req.slug}-${req.tier}`">
+              <button
+                type="button"
+                class="rebirth-req flex min-h-[5.5rem] w-full items-center gap-4 rounded-lg border px-5 py-4 text-left transition-colors hover:border-accent"
+                :class="met(req) ? 'border-valid/60' : 'border-edge-soft'"
+                :aria-pressed="met(req)"
+                @click="toggleRequirement(req)"
+              >
+              <!-- Illustration jamais désaturée : la maquette montre les droids en couleur,
+                   qu'ils soient déjà possédés ou non. Le cercle vide porte l'information. -->
               <DroidImage
                 v-if="droidBySlug[req.slug]"
                 :droid="droidBySlug[req.slug]!"
                 :tier="req.tier ?? 'DEFAULT'"
                 size="sm"
-                :dimmed="!met(req)"
               />
               <div class="min-w-0 flex-1">
-                <p class="truncate font-display font-semibold">{{ droidBySlug[req.slug]?.name ?? req.slug }}</p>
-                <span class="dx-badge dx-badge--common mt-1">
-                  {{ req.tier ? $t(`tier.${req.tier}`) : $t('rebirth.anyTier') }}
+                <p class="truncate font-display text-base font-bold">{{ droidBySlug[req.slug]?.name ?? req.slug }}</p>
+                <!--
+                  Le palier est un badge sur la maquette, pas un simple libellé.
+
+                  Une exigence sans palier vaut exactement une exigence « Typique » :
+                  `satisfies()` compare des rangs, et DEFAULT valant 0, tout palier possédé
+                  la remplit. On affiche donc le palier réel plutôt qu'un « tout palier »
+                  qui désignait la même chose sans le dire.
+                -->
+                <span class="dx-badge dx-badge--common mt-1.5">
+                  {{ $t(`tier.${req.tier ?? 'DEFAULT'}`) }}
                 </span>
               </div>
-              <DxIcon
-                :name="met(req) ? 'status/success' : 'actions/check'"
-                :size="20"
-                class="shrink-0"
-                :class="met(req) ? 'text-valid' : 'text-ink-muted opacity-40'"
-              />
+              <!--
+                Exigence non satisfaite : un cercle vide, comme la maquette. Une coche
+                grisée se lit trop facilement comme « déjà validé ».
+              -->
+                <DxIcon v-if="met(req)" name="status/success" :size="20" class="shrink-0 text-valid" />
+                <span v-else class="size-5 shrink-0 rounded-full border-2 border-edge-strong" aria-hidden="true" />
+              </button>
             </li>
           </ul>
 
-          <p class="dx-alert mt-4" :class="isReady ? 'dx-alert--success' : 'dx-alert--info'">
-            <DxIcon :name="isReady ? 'status/success' : 'status/info'" :size="20" class="mt-0.5 shrink-0" />
+          <p class="dx-alert mt-4 border-0 text-[0.8125rem]" :class="isReady ? 'dx-alert--success' : 'dx-alert--info'">
+            <DxIcon :name="isReady ? 'status/success' : 'status/info'" :size="17" class="mt-px shrink-0" />
             <span>{{ isReady ? $t('rebirth.ready') : $t('rebirth.missing', missingCount, { named: { count: missingCount } }) }}</span>
           </p>
         </template>
@@ -190,7 +268,8 @@ const shown = computed(() => {
 
       <!-- Table complète : utile pour planifier plusieurs paliers à l'avance. -->
       <section class="panel p-5">
-        <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <!-- Titre puis recherche, accolés à gauche : la maquette ne les sépare pas. -->
+        <div class="mb-4 flex flex-wrap items-center gap-4">
           <h2 class="text-lg uppercase tracking-wide">{{ $t('rebirth.allTiers') }}</h2>
           <label class="dx-search w-full sm:w-72">
             <DxIcon name="actions/search" :size="16" class="text-ink-muted" />
@@ -200,28 +279,34 @@ const shown = computed(() => {
         </div>
 
         <ul class="grid grid-cols-2 gap-2 sm:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8">
-          <li
-            v-for="lvl in shown"
-            :key="lvl.level"
-            class="flex flex-col gap-1.5 rounded-md border p-3 transition-colors"
-            :class="[
-              lvl.current ? 'border-accent/70 bg-accent/10' : 'border-edge bg-panel-raised',
-              lvl.locked && 'opacity-45',
-            ]"
-          >
+          <li v-for="lvl in shown" :key="lvl.level">
+            <!-- Cliquer une tuile ouvre le détail du palier ; la progression se règle depuis là. -->
+            <button
+              type="button"
+              class="flex w-full flex-col gap-1.5 rounded-md border p-3 transition-colors hover:border-accent"
+              :class="[
+                lvl.current ? 'border-accent bg-accent/10' : 'rebirth-tile border-edge-soft',
+                lvl.locked && 'opacity-45',
+              ]"
+              :aria-current="lvl.current ? 'step' : undefined"
+              :aria-haspopup="'dialog'"
+              @click="selected = lvl"
+            >
             <div class="flex items-center justify-between gap-1">
+              <!-- Numéro dans une pastille sombre, centré, comme la maquette. -->
               <span
-                class="font-mono text-sm"
-                :class="lvl.done ? 'text-valid' : lvl.current ? 'text-accent' : 'text-ink-muted'"
+                class="mx-auto rounded-full bg-void/55 px-2.5 py-0.5 font-mono text-sm"
+                :class="lvl.done ? 'text-valid' : lvl.current ? 'text-accent' : 'text-ink'"
               >{{ lvl.level }}</span>
               <DxIcon v-if="lvl.superUnlock" name="resources/star" :size="14" class="text-warn" :title="$t('superRebirth.title')" />
               <DxIcon v-else-if="lvl.locked" name="status/locked" :size="14" class="text-ink-muted" :title="$t('rebirth.tierLocked')" />
             </div>
 
-            <p class="flex items-center gap-1.5">
-              <DxIcon name="resources/credits" :size="14" class="shrink-0 text-nova" />
-              <span class="font-mono text-sm">{{ formatNumber(lvl.credits, locale) }}</span>
-            </p>
+              <p class="flex items-center gap-1.5">
+                <DxIcon name="resources/diamond" :size="14" class="shrink-0 text-nova" />
+                <span class="font-mono text-sm">{{ formatNumber(lvl.credits, locale) }}</span>
+              </p>
+            </button>
           </li>
         </ul>
       </section>
@@ -233,5 +318,119 @@ const shown = computed(() => {
       :nova-by-rebirth="rebirthData.novaByRebirth"
       :unlock-rebirth="rebirthData.superRebirthUnlock.rebirth"
     />
+
+    <!--
+      Détail d'un palier. Téléporté au `body` : la page est en grille à deux colonnes et
+      un overlay laissé dans le flux hériterait de ses contraintes de largeur.
+    -->
+    <Teleport to="body">
+    <div
+      v-if="selected"
+        class="fixed inset-0 z-50 grid place-items-center overflow-y-auto p-4"
+        role="dialog"
+        aria-modal="true"
+        :aria-label="$t('rebirth.levelShort', { level: selected.level })"
+        @click.self="closeLevel"
+      >
+        <!-- Le flou porte sur tout ce qui est dessous, pas seulement un assombrissement. -->
+        <div class="absolute inset-0 bg-void-deep/70 backdrop-blur-md" @click="closeLevel" />
+
+        <section class="dx-modal-panel panel relative z-10 w-full max-w-xl p-6">
+          <div class="mb-5 flex items-start justify-between gap-4">
+            <div>
+              <h2 class="flex items-center gap-2 text-xl uppercase tracking-wide">
+                <DxIcon name="resources/star" :size="20" class="text-accent" />
+                {{ $t('rebirth.levelShort', { level: selected.level }) }}
+              </h2>
+              <p class="mt-1 flex items-center gap-1.5">
+                <DxIcon name="resources/diamond" :size="15" class="shrink-0 text-nova" />
+                <span class="font-mono font-bold text-nova">{{ formatNumber(selected.credits, locale) }}</span>
+                <span class="text-sm text-ink-muted">{{ $t('rebirth.creditsRequired') }}</span>
+              </p>
+            </div>
+
+            <button
+              type="button"
+              class="dx-icon-button shrink-0"
+              :aria-label="$t('common.close')"
+              @click="closeLevel"
+            >
+              <DxIcon name="actions/close" :size="18" />
+            </button>
+          </div>
+
+          <!-- Repères propres à ce palier : récompense Nova et déblocage du Super Rebirth. -->
+          <ul class="mb-5 flex flex-wrap gap-2">
+            <li v-if="selectedCrystals !== null" class="dx-badge dx-badge--emblematic">
+              ✦ {{ $t('superRebirth.crystals', selectedCrystals, { named: { count: selectedCrystals } }) }}
+            </li>
+            <li
+              v-if="selected.level === rebirthData.superRebirthUnlock.rebirth"
+              class="dx-badge dx-badge--legendary"
+            >
+              {{ $t('superRebirth.title') }}
+            </li>
+          </ul>
+
+          <p v-if="!selected.droids.length" class="dx-alert dx-alert--warning border-0 text-[0.8125rem]">
+            <DxIcon name="status/locked" :size="17" class="mt-px shrink-0" />
+            <span>{{ $t('rebirth.undocumented') }}</span>
+          </p>
+
+          <template v-else>
+            <p class="mb-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
+              {{ $t('rebirth.droidsRequired') }}
+            </p>
+
+            <ul class="flex flex-col gap-2">
+              <li v-for="req in selected.droids" :key="`${req.slug}-${req.tier}`">
+                <button
+                  type="button"
+                  class="rebirth-req flex w-full items-center gap-4 rounded-lg border px-4 py-3 text-left transition-colors hover:border-accent"
+                  :class="met(req) ? 'border-valid/60' : 'border-edge-soft'"
+                  :aria-pressed="met(req)"
+                  @click="toggleRequirement(req)"
+                >
+                  <DroidImage
+                    v-if="droidBySlug[req.slug]"
+                    :droid="droidBySlug[req.slug]!"
+                    :tier="req.tier ?? 'DEFAULT'"
+                    size="sm"
+                  />
+                  <div class="min-w-0 flex-1">
+                    <p class="truncate font-display font-bold">{{ droidBySlug[req.slug]?.name ?? req.slug }}</p>
+                    <span class="dx-badge dx-badge--common mt-1">{{ $t(`tier.${req.tier ?? 'DEFAULT'}`) }}</span>
+                  </div>
+                  <DxIcon v-if="met(req)" name="status/success" :size="20" class="shrink-0 text-valid" />
+                  <span v-else class="size-5 shrink-0 rounded-full border-2 border-edge-strong" aria-hidden="true" />
+                </button>
+              </li>
+            </ul>
+
+            <p
+              class="dx-alert mt-4 border-0 text-[0.8125rem]"
+              :class="selectedMissing === 0 ? 'dx-alert--success' : 'dx-alert--info'"
+            >
+              <DxIcon :name="selectedMissing === 0 ? 'status/success' : 'status/info'" :size="17" class="mt-px shrink-0" />
+              <span>
+                {{ selectedMissing === 0
+                  ? $t('rebirth.ready')
+                  : $t('rebirth.missing', selectedMissing, { named: { count: selectedMissing } }) }}
+              </span>
+            </p>
+          </template>
+
+          <!-- L'action qu'occupait le clic sur la tuile, désormais explicite. -->
+          <button
+            type="button"
+            class="dx-button dx-button--primary dx-button--block mt-5"
+            :disabled="selected.level - 1 === store.rebirth"
+            @click="setLevel(selected.level - 1); closeLevel()"
+          >
+            {{ $t('rebirth.setLevel') }}
+          </button>
+      </section>
+    </div>
+    </Teleport>
   </div>
 </template>

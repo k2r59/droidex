@@ -70,7 +70,8 @@ function exportProgress() {
         class="rounded-lg bg-panel-raised px-3 py-2 text-sm transition-colors hover:bg-edge"
         @click="exportProgress"
       >
-        ⬇ Export JSON
+        <DxIcon name="actions/download" :size="15" />
+        {{ $t('common.exportJson') }}
       </button>
     </section>
   </div>
