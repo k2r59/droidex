@@ -8,7 +8,7 @@ const localePath = useLocalePath()
 const links = [
   { to: '/', key: 'droidex', icon: 'navigation/droidex' },
   { to: '/rebirths', key: 'rebirths', icon: 'navigation/renaissances' },
-  { to: '/missions', key: 'missions', icon: 'game/shield' },
+  { to: '/missions', key: 'missions', icon: 'navigation/missions' },
   { to: '/shop', key: 'shop', icon: 'navigation/nova-shop' },
   { to: '/updates', key: 'updates', icon: 'ui/notification' },
   { to: '/guide', key: 'guide', icon: 'navigation/guide' },

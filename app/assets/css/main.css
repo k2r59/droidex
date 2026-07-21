@@ -40,6 +40,12 @@
   --color-panel-high: #1b2b47; /* --dx-surface-750 */
   --color-edge: #273956; /* --color-border */
   --color-edge-strong: #365170; /* --color-border-strong */
+  /*
+   * Contour discret des surfaces. Sur les maquettes, les panneaux et les cartes ne sont
+   * pas cernés d'un trait franc : ils se détachent par un liseré à peine perceptible.
+   * Un seul jeton pour tous ces contours, plutôt qu'une opacité choisie au cas par cas.
+   */
+  --color-edge-soft: #ffffff0f;
   --color-ink: #d8e2f2; /* --color-text */
   --color-ink-strong: #ffffff; /* --color-heading */
   --color-ink-muted: #91a2bc; /* --color-muted */
@@ -167,11 +173,11 @@
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  min-height: 40px;
+  min-height: 44px;
   padding: 0.5rem 0.8rem;
   border: 1px solid transparent;
   border-radius: 0.4rem;
-  color: var(--color-ink-muted);
+  color: var(--color-ink);
   font-family: var(--font-sans);
   font-size: 0.9375rem;
   font-weight: 500;
@@ -204,6 +210,84 @@
 
 .side-nav-item.nav-active .side-nav-item__count {
   color: var(--dx-cyan);
+}
+
+/*
+ * Surface de panneau, utilisée par les sections de contenu des pages Renaissances,
+ * Missions et Nova Shop, ainsi que par `PageBanner` et `SuperRebirthPanel`.
+ *
+ * Elle était employée à 19 endroits sans avoir jamais été définie : le jeton de couleur
+ * `--color-panel` existe bien — d'où l'utilitaire `bg-panel` — mais la classe nue `panel`
+ * n'était produite ni par Tailwind ni par le kit. Ces sections s'affichaient donc sans
+ * fond ni contour.
+ *
+ * Le rendu reprend `dx-side-panel`, moins le `padding` : les appelants posent le leur
+ * (`p-4`, `p-5`), et l'imposer ici les écraserait.
+ */
+.panel {
+  border: 1px solid var(--color-edge-soft);
+  border-radius: var(--radius-card);
+  /*
+   * Surface profonde et non `--color-panel` : les panneaux doivent se détacher à peine du
+   * fond de page. Le voile blanc qu'on trouve sur `dx-side-panel` est écarté ici — il
+   * éclaircissait l'ensemble, en particulier le rail de droite.
+   */
+  background: var(--color-panel-deep);
+  box-shadow: var(--dx-shadow-card);
+}
+
+/*
+ * Carte d'exigence de renaissance. Lavis bleu en diagonale qui s'éteint à mi-course, sur
+ * fond de surface — c'est le dégradé transparent de la maquette. On ne réutilise pas
+ * `dx-droid-card` : celle-ci vise la grille du Droidex, avec 170 px de hauteur minimale
+ * et une colonne d'image de 104 px, ce qui donnait ici des lignes deux fois trop hautes.
+ */
+.rebirth-req {
+  background:
+    linear-gradient(135deg, rgb(69 155 255 / 0.09), transparent 55%),
+    var(--color-panel-raised);
+}
+
+/* Tuile de palier : même principe, en plus discret. */
+.rebirth-tile {
+  background:
+    linear-gradient(160deg, rgb(69 155 255 / 0.07), transparent 60%),
+    var(--color-panel-raised);
+}
+
+/*
+ * Ouverture des fenêtres modales.
+ *
+ * Une `animation` et non une `<Transition>` Vue : la transition de sortie conditionne le
+ * retrait de l'élément du DOM, et si ses classes se désynchronisent — ce qui arrive avec
+ * `Teleport` — la fenêtre reste en place à opacité nulle et bloque toute la page. Une
+ * animation d'entrée est purement décorative : elle ne peut rien retenir.
+ */
+@keyframes dx-modal-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+.dx-modal-panel {
+  animation: dx-modal-in var(--dx-normal) var(--dx-ease) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dx-modal-panel { animation: none; }
+}
+
+/*
+ * Carrousel des Emblématiques : la barre de défilement native est masquée, la position
+ * étant déjà donnée par les pastilles sous le rail. Le défilement lui-même reste natif —
+ * c'est lui qui porte l'inertie tactile et l'accroche CSS.
+ */
+.dx-carousel {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.dx-carousel::-webkit-scrollbar {
+  display: none;
 }
 
 /* § 6 — contenu principal et rail latéral de 340 px. */
@@ -434,8 +518,46 @@
  * d'importance : d'abord l'illustration, puis les liens sociaux, puis la carte entière.
  * La navigation, elle, reste toujours visible.
  */
-@media (max-height: 860px) {
-  .sidebar-planet { display: none; }
+/*
+ * Fond de la colonne : dégradé vertical, du bleu nuit presque noir en haut vers un bleu
+ * plus soutenu en bas. C'est lui qui fait remonter la carte de renaissance et les liens
+ * communautaires, posés dans la partie basse.
+ */
+.sidebar-shell {
+  background: linear-gradient(180deg, #070e1c 0%, #091428 48%, #0d1c3e 100%);
+}
+
+/*
+ * Proportion de la maquette (4/5). L'illustration est un portrait dont le haut et le bas
+ * sont sombres : ce sont ces zones qui portent le titre et le bouton. Le ratio est tenu à
+ * toutes les hauteurs — le resserrer déplaçait le cadrage et faisait passer la planète
+ * derrière le texte. Sous 660 px la carte disparaît entièrement (règle plus bas).
+ */
+/*
+ * Ratio de la maquette. L'illustration est un portrait (0,70) dont le haut et le bas sont
+ * sombres : ce sont ces zones qui portent le titre puis le bouton. Le `cover` ne recadre
+ * donc que très légèrement, et la planète garde la taille qu'elle a sur la maquette.
+ */
+.sidebar-rebirth {
+  aspect-ratio: 4 / 5;
+  /* Pas de contour : l'illustration va jusqu'au bord. */
+  border: 0;
+}
+
+/* Bouton de la carte : contour bleu franc et fond bleu, comme la maquette. */
+.sidebar-rebirth .dx-button {
+  border-color: rgb(88 166 255 / 0.75);
+  background: linear-gradient(180deg, #17325e, #0d1c38);
+}
+
+/*
+ * L'aération de la maquette suppose une colonne haute. Sous 900 px, on resserre la
+ * navigation au lieu de laisser la carte et les liens sociaux se faire rogner par
+ * l'`overflow-hidden` de la colonne — resserrer se voit beaucoup moins que tronquer.
+ */
+@media (max-height: 900px) {
+  .sidebar-nav { gap: 0.375rem; }
+  .side-nav-item { min-height: 40px; }
 }
 
 @media (max-height: 760px) {

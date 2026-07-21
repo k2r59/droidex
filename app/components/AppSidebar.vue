@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import mark from '~/assets/images/droidex-mark.svg'
-
 import planet from '~/assets/images/planet-rebirth.webp'
 import rebirthData from '~/data/rebirths.json'
 
@@ -14,7 +12,7 @@ const localePath = useLocalePath()
 const links = [
   { to: '/', key: 'droidex', icon: 'navigation/droidex' },
   { to: '/rebirths', key: 'rebirths', icon: 'navigation/renaissances' },
-  { to: '/missions', key: 'missions', icon: 'game/shield' },
+  { to: '/missions', key: 'missions', icon: 'navigation/missions' },
   { to: '/shop', key: 'shop', icon: 'navigation/nova-shop' },
   { to: '/updates', key: 'updates', icon: 'ui/notification' },
   { to: '/guide', key: 'guide', icon: 'navigation/guide' },
@@ -26,17 +24,17 @@ const nextRebirth = computed(() => Math.min(store.rebirth + 1, rebirthData.maxRe
 const nextBonus = computed(() => Math.round(rebirthData.creditMultiplierPerLevel * 100))
 
 const socials = [
-  { id: 'discord', label: 'Discord — Droid Tycoon', icon: 'brands/discord', href: 'https://discord.gg/droidtycoon', tint: 'bg-[#5865F2]' },
-  { id: 'foad', label: 'X — FOAD', icon: 'brands/x', href: 'https://x.com/FoadZone', tint: 'bg-[#1d9bf0]' },
-  { id: 'blzn', label: 'X — Blzn Studios', icon: 'brands/x', href: 'https://x.com/BlznDev', tint: 'bg-[#e0245e]' },
-  { id: 'island', label: 'Île Fortnite', icon: 'actions/external-link', href: 'https://www.fortnite.com/@foad/7865-8305-9184', tint: 'bg-accent' },
+  { id: 'discord', label: 'Discord — Droid Tycoon', icon: 'brands/discord', href: 'https://discord.gg/droidtycoon', tint: 'text-[#5865F2]' },
+  { id: 'foad', label: 'X — FOAD', icon: 'brands/x', href: 'https://x.com/FoadZone', tint: 'text-[#1d9bf0]' },
+  { id: 'blzn', label: 'X — Blzn Studios', icon: 'brands/x', href: 'https://x.com/BlznDev', tint: 'text-[#e0245e]' },
+  { id: 'island', label: 'Île Fortnite', icon: 'actions/external-link', href: 'https://www.fortnite.com/@foad/7865-8305-9184', tint: 'text-accent' },
 ] as const
 </script>
 
 <template>
-  <aside class="sticky top-0 hidden h-dvh w-60 shrink-0 flex-col gap-5 overflow-hidden border-r border-edge bg-panel px-4 py-5 xl:flex">
+  <aside class="sidebar-shell sticky top-0 hidden h-dvh w-60 shrink-0 flex-col gap-5 overflow-hidden border-r border-edge px-4 py-5 xl:flex">
     <NuxtLink :to="localePath('/')" class="flex items-center gap-2.5">
-      <img :src="mark" alt="" class="size-9">
+      <DxIcon name="brands/droidex-mark" :size="30" class="text-accent" />
       <span class="text-xl font-bold tracking-[0.06em]">DROIDEX</span>
     </NuxtLink>
 
@@ -47,7 +45,7 @@ const socials = [
       <DxIcon name="actions/arrow-right" :size="11" class="text-edge-strong" />
     </span>
 
-    <div class="flex flex-col gap-1.5">
+    <div class="sidebar-nav flex flex-col gap-3">
       <p class="flex items-center gap-1.5 px-2 pb-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink-muted">
         <DxIcon name="actions/plus" :size="9" />
         {{ $t('nav.collection') }}
@@ -60,7 +58,7 @@ const socials = [
         class="side-nav-item"
         active-class="nav-active"
       >
-        <DxIcon :name="link.icon" :size="18" />
+        <DxIcon :name="link.icon" :size="20" />
         <span class="flex-1">{{ $t(`nav.${link.key}`) }}</span>
         <span v-if="link.key === 'droidex'" class="side-nav-item__count font-mono text-xs tabular-nums">
           {{ store.ownedCount }} / {{ store.totalCount }}
@@ -71,12 +69,11 @@ const socials = [
     <!-- Prochaine renaissance : le palier suivant est l'objectif qui structure une session. -->
     <NuxtLink
       :to="localePath('/rebirths')"
-      class="sidebar-rebirth dx-side-panel relative mt-auto flex shrink-0 flex-col items-center overflow-hidden !p-0 text-center transition-colors hover:border-accent/40"
-      style="aspect-ratio: 3 / 4"
+      class="sidebar-rebirth dx-side-panel relative mt-auto flex shrink-0 flex-col items-center overflow-hidden !p-0 text-center"
     >
       <!-- Fond de carte : l'illustration occupe toute la surface, le contenu se pose dessus. -->
       <span
-        class="pointer-events-none absolute inset-0 bg-[length:100%_auto] bg-center bg-no-repeat"
+        class="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
         :style="{ backgroundImage: `url(${planet})` }"
         aria-hidden="true"
       />
@@ -115,7 +112,7 @@ const socials = [
           :href="s.href"
           target="_blank"
           rel="noopener noreferrer"
-          class="grid size-8 place-items-center rounded-md text-white transition-transform hover:scale-110"
+          class="grid size-8 place-items-center rounded-md opacity-80 transition hover:scale-110 hover:opacity-100"
           :class="s.tint"
           :title="s.label"
           :aria-label="s.label"
