@@ -35,48 +35,131 @@ body {
 }
 
 /**
- * Champ d'étoiles derrière les illustrations de droids.
+ * Champ d'étoiles animé derrière les illustrations de droids.
  *
  * Entièrement en dégradés CSS : une grille peut afficher 69 vignettes, et autant
  * d'éléments DOM par étoile — ou une image de fond par carte — coûterait bien plus cher
  * qu'un seul `background-image` composé, que le navigateur peint sur le GPU.
  *
- * Les positions sont fixes et non aléatoires : le même droid doit avoir le même ciel à
- * chaque rendu, sinon l'illustration « scintille » à chaque re-render de Vue.
+ * Le mouvement passe par `transform` sur deux pseudo-éléments, et non par
+ * `background-position` : seul le premier est composité par le GPU. Sur 69 vignettes
+ * animées en continu, la différence n'est pas cosmétique.
  *
- * `--nebula` est surchargée par palier pour teinter la nébuleuse ; sa valeur par défaut
- * reste neutre.
+ * **Bouclage sans raccord** : les étoiles sont une tuile répétée, et chaque couche est
+ * translatée d'exactement une tuile sur un cycle. À la fin de l'animation, l'image est
+ * pixel pour pixel identique au début — la boucle est donc invisible.
+ *
+ * Les deux couches dérivent à des vitesses et dans des directions différentes : c'est ce
+ * décalage qui crée la parallaxe, donc la sensation de profondeur.
+ *
+ * `--nebula` est surchargée par palier pour teinter la nébuleuse, qui reste fixe : la
+ * faire dériver avec les étoiles donnerait l'impression que le droid glisse.
  */
 .droid-starfield {
   --nebula: rgba(139, 92, 246, 0.3);
+  --star-far: 70px;
+  --star-near: 110px;
 
+  position: relative;
   background-color: #05060f;
   background-image:
     /* Nébuleuse teintée par le palier, décentrée pour éviter l'effet « cible ». */
     radial-gradient(70% 60% at 72% 28%, var(--nebula), transparent 70%),
     radial-gradient(50% 45% at 25% 75%, var(--nebula), transparent 75%),
     /* Voile bleuté constant : sans lui, les paliers ternes rendent un fond gris terne. */
-    radial-gradient(90% 80% at 50% 50%, rgba(56, 89, 168, 0.22), transparent 75%),
-    /* Étoiles brillantes. */
-    radial-gradient(2px 2px at 18% 24%, rgba(255, 255, 255, 0.95), transparent 60%),
-    radial-gradient(2px 2px at 82% 68%, rgba(255, 255, 255, 0.9), transparent 60%),
-    radial-gradient(2px 2px at 46% 12%, rgba(255, 255, 255, 0.85), transparent 60%),
-    /* Étoiles secondaires, plus ténues, pour donner de la profondeur. */
+    radial-gradient(90% 80% at 50% 50%, rgba(56, 89, 168, 0.22), transparent 75%);
+}
+
+/*
+ * Les couches débordent de 50 % de chaque côté : pendant la translation, le bord de la
+ * couche ne doit jamais entrer dans le cadre. Le conteneur porte `overflow-hidden`.
+ */
+.droid-starfield::before,
+.droid-starfield::after {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  pointer-events: none;
+  background-repeat: repeat;
+}
+
+/*
+ * Couche lointaine : étoiles ténues, tuile serrée, dérive lente (~1,5 px/s).
+ * Assez lent pour rester un décor, assez rapide pour se voir sans fixer l'écran.
+ */
+.droid-starfield::before {
+  background-size: var(--star-far) var(--star-far);
+  background-image:
     radial-gradient(1px 1px at 8% 62%, rgba(255, 255, 255, 0.6), transparent 60%),
     radial-gradient(1px 1px at 34% 84%, rgba(255, 255, 255, 0.55), transparent 60%),
     radial-gradient(1px 1px at 62% 44%, rgba(255, 255, 255, 0.5), transparent 60%),
     radial-gradient(1px 1px at 92% 18%, rgba(255, 255, 255, 0.6), transparent 60%),
-    radial-gradient(1px 1px at 71% 91%, rgba(255, 255, 255, 0.45), transparent 60%),
     radial-gradient(1px 1px at 26% 48%, rgba(255, 255, 255, 0.4), transparent 60%),
-    radial-gradient(1px 1px at 55% 66%, rgba(255, 255, 255, 0.35), transparent 60%),
     radial-gradient(1px 1px at 14% 8%, rgba(255, 255, 255, 0.5), transparent 60%),
-    radial-gradient(1px 1px at 88% 52%, rgba(255, 255, 255, 0.5), transparent 60%),
-    radial-gradient(1px 1px at 41% 33%, rgba(255, 255, 255, 0.45), transparent 60%),
-    radial-gradient(1px 1px at 77% 8%, rgba(255, 255, 255, 0.5), transparent 60%),
-    radial-gradient(1px 1px at 5% 38%, rgba(255, 255, 255, 0.4), transparent 60%),
-    radial-gradient(1px 1px at 96% 78%, rgba(255, 255, 255, 0.45), transparent 60%),
-    radial-gradient(1px 1px at 50% 96%, rgba(255, 255, 255, 0.4), transparent 60%),
-    radial-gradient(1px 1px at 21% 68%, rgba(255, 255, 255, 0.35), transparent 60%);
+    radial-gradient(1px 1px at 77% 72%, rgba(255, 255, 255, 0.45), transparent 60%),
+    radial-gradient(1px 1px at 50% 96%, rgba(255, 255, 255, 0.4), transparent 60%);
+  animation: droid-drift-far 45s linear infinite;
+}
+
+/* Couche proche : étoiles marquées, tuile large, dérive plus rapide et scintillement. */
+.droid-starfield::after {
+  background-size: var(--star-near) var(--star-near);
+  background-image:
+    radial-gradient(2px 2px at 18% 24%, rgba(255, 255, 255, 0.95), transparent 60%),
+    radial-gradient(2px 2px at 82% 68%, rgba(255, 255, 255, 0.9), transparent 60%),
+    radial-gradient(2px 2px at 46% 12%, rgba(255, 255, 255, 0.85), transparent 60%),
+    radial-gradient(1.5px 1.5px at 71% 91%, rgba(255, 255, 255, 0.6), transparent 60%),
+    radial-gradient(1.5px 1.5px at 5% 38%, rgba(255, 255, 255, 0.55), transparent 60%),
+    radial-gradient(1.5px 1.5px at 96% 44%, rgba(255, 255, 255, 0.5), transparent 60%);
+  animation:
+    droid-drift-near 28s linear infinite,
+    droid-twinkle 6s ease-in-out infinite;
+}
+
+/* Translation d'exactement une tuile : l'état final est identique à l'état initial. */
+@keyframes droid-drift-far {
+  to { transform: translate3d(calc(var(--star-far) * -1), calc(var(--star-far) * -1), 0); }
+}
+
+/* Direction opposée en horizontal : les deux couches ne défilent pas « en bloc ». */
+@keyframes droid-drift-near {
+  to { transform: translate3d(var(--star-near), calc(var(--star-near) * -1), 0); }
+}
+
+/* Scintillement par l'opacité, elle aussi compositée — jamais par la couleur. */
+@keyframes droid-twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+/* L'illustration doit rester au-dessus des deux couches d'étoiles. */
+.droid-starfield > img {
+  position: relative;
+  z-index: 1;
+}
+
+/*
+ * Mouvement réduit : on garde le ciel, on coupe la dérive et le scintillement. Un décor
+ * qui bouge en permanence est exactement ce que ce réglage système cherche à éviter.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .droid-starfield::before,
+  .droid-starfield::after {
+    animation: none;
+  }
+}
+
+/*
+ * Les cartes hors écran ne sont ni peintes ni animées. Sur une grille de 69 vignettes
+ * qui animent chacune deux couches en continu, seules celles réellement visibles
+ * consomment du temps GPU.
+ *
+ * `contain-intrinsic-size` réserve la hauteur d'une carte non rendue : sans elle, la
+ * barre de défilement sauterait au fur et à mesure de l'apparition des cartes.
+ */
+.droid-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 190px;
 }
 
 /* Teinte de nébuleuse par palier : le ciel suit la variante affichée. */

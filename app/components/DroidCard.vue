@@ -33,7 +33,7 @@ const RARITY_RING: Record<string, string> = {
 
 <template>
   <article
-    class="group relative flex flex-col gap-3 rounded-xl border bg-panel p-3 transition-colors"
+    class="droid-card group relative flex flex-col gap-3 rounded-xl border bg-panel p-3 transition-colors"
     :class="[
       RARITY_RING[droid.rarity],
       owned ? 'bg-panel-raised' : 'hover:bg-panel-raised',
