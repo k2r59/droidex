@@ -1,17 +1,30 @@
 <script setup lang="ts">
 import mark from '~/assets/images/droidex-mark.svg'
+
 const localePath = useLocalePath()
 const store = useCollectionStore()
 const { locale } = useI18n()
+const route = useRoute()
 
+/** L'icône n'apparaît que sur l'onglet actif, comme sur la maquette. */
 const links = [
-  { to: '/', key: 'droidex' },
-  { to: '/rebirths', key: 'rebirths' },
-  { to: '/missions', key: 'missions' },
-  { to: '/shop', key: 'shop' },
-  { to: '/updates', key: 'updates' },
-  { to: '/guide', key: 'guide' },
+  { to: '/', key: 'droidex', icon: 'navigation/droidex' },
+  { to: '/rebirths', key: 'rebirths', icon: 'navigation/rebirth' },
+  { to: '/missions', key: 'missions', icon: 'navigation/missions' },
+  { to: '/shop', key: 'shop', icon: 'navigation/shop' },
+  { to: '/updates', key: 'updates', icon: 'navigation/news' },
+  { to: '/guide', key: 'guide', icon: 'navigation/guide' },
 ] as const
+
+/**
+ * `NuxtLink` n'expose pas son état actif au contenu du slot ; on le recalcule donc
+ * ici. L'accueil demande une comparaison exacte, sinon toutes les routes en
+ * découleraient comme actives.
+ */
+function isActive(to: string) {
+  const target = localePath(to)
+  return to === '/' ? route.path === target : route.path.startsWith(target)
+}
 
 const completion = computed(() =>
   store.totalCount ? Math.round((store.ownedCount / store.totalCount) * 100) : 0,
@@ -23,43 +36,48 @@ const completion = computed(() =>
     <div class="flex h-[68px] items-center gap-3 px-4">
       <!-- Le logo n'apparaît ici que si la colonne de gauche est masquée. -->
       <NuxtLink :to="localePath('/')" class="flex items-center gap-2 font-bold tracking-tight xl:hidden">
-        <img :src="mark" alt="" class="size-8" >
+        <img :src="mark" alt="" class="size-8">
         <span class="hidden sm:inline">DROIDEX</span>
       </NuxtLink>
 
-      <nav class="hidden items-center gap-1 md:flex">
+      <nav class="hidden min-w-0 items-center gap-1 overflow-x-auto md:flex">
         <NuxtLink
           v-for="link in links"
           :key="link.to"
           :to="localePath(link.to)"
-          class="rounded-nav border border-transparent px-3.5 py-2 text-sm text-ink-muted transition-colors hover:bg-panel hover:text-ink"
+          class="flex shrink-0 items-center gap-2 whitespace-nowrap rounded-nav border border-transparent px-3.5 py-2 text-sm text-ink-muted transition-colors hover:bg-panel hover:text-ink"
           active-class="nav-active"
         >
+          <DxIcon v-if="isActive(link.to)" :name="link.icon" :size="16" />
           {{ $t(`nav.${link.key}`) }}
         </NuxtLink>
       </nav>
 
-      <div class="ml-auto flex items-center gap-2">
+      <div class="ml-auto flex shrink-0 items-center gap-2">
         <!-- Solde de cristaux : monnaie du Nova Shop, donc raccourci vers la boutique. -->
         <NuxtLink
           :to="localePath('/shop')"
-          class="hidden items-center gap-2 rounded-nav border border-edge bg-panel px-3 py-2 text-sm transition-colors hover:border-accent/40 sm:flex"
+          class="hidden items-center gap-2.5 rounded-nav border border-edge bg-panel px-3.5 py-2.5 transition-colors hover:border-nova/50 sm:flex"
           :title="$t('shop.balance')"
         >
-          <DxIcon name="resources/nova-crystal" :size="16" class="text-nova" />
+          <DxIcon name="resources/nova-crystal" :size="18" class="text-nova" />
           <span class="font-mono tabular-nums">{{ formatExact(store.novaCrystals, locale) }}</span>
         </NuxtLink>
 
         <div
-          class="hidden items-center gap-2 rounded-card border border-edge bg-panel px-3 py-2 text-sm sm:flex"
+          class="hidden items-center gap-2.5 rounded-nav border border-edge bg-panel px-3.5 py-2.5 sm:flex"
           :title="$t('stats.completion', { percent: completion })"
         >
           <span class="font-mono tabular-nums">{{ store.ownedCount }} / {{ store.totalCount }}</span>
-          <span class="h-1.5 w-14 overflow-hidden rounded-full bg-edge">
-            <span
-              class="block h-full rounded-full bg-accent transition-[width] duration-500"
-              :style="{ width: `${completion}%` }"
-            />
+          <!-- Jauge du design system : 10 px de haut, dégradé bleu vers cyan, halo léger. -->
+          <span
+            class="dx-progress w-16"
+            role="progressbar"
+            :aria-valuenow="completion"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          >
+            <span :style="{ '--value': `${completion}%` }" />
           </span>
         </div>
 

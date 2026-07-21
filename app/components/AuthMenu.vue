@@ -54,7 +54,7 @@ async function logout() {
     <button
       v-else
       type="button"
-      class="dx-button dx-button--primary"
+      class="dx-button dx-button--blue"
       @click="open = !open"
     >
       {{ $t('auth.signIn') }}

@@ -143,6 +143,21 @@
   --ease: var(--dx-normal) var(--dx-ease);
 }
 
+/*
+ * Variante bleue du bouton principal, telle qu'elle apparaît sur la barre de menu.
+ * La primaire du kit reste cyan : elle sert ailleurs, notamment au Super Rebirth.
+ */
+.dx-button {
+  white-space: nowrap;
+}
+
+.dx-button--blue {
+  color: #fff;
+  border-color: #4f8ef7;
+  background: linear-gradient(180deg, #3b82f6, #2563eb);
+  box-shadow: 0 8px 22px rgb(69 155 255 / 0.28);
+}
+
 /* § 6 — contenu principal et rail latéral de 340 px. */
 .layout-2-columns {
   display: grid;
