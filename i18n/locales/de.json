@@ -195,9 +195,9 @@
     "chipsCost": "Kosten für den Stufenaufstieg",
     "missionsTitle": "Missionen",
     "sandcrawlerTitle": "Sandcrawler",
-    "sandcrawlerRainbow": "Garantierter Rainbow alle 5 Minuten",
-    "sandcrawlerBeskar": "Garantierter Beskar alle 20 Minuten, einer pro Spieler in der Lobby",
-    "currenciesTitle": "Währungen"
+    "sandcrawlerBeskar": "Garantiertes Beskar alle {minutes} Minuten, eines pro Spieler in der Lobby",
+    "currenciesTitle": "Währungen",
+    "sandcrawlerMythic": "Garantierter Mythic-Blueprint jede Stunde um XX:{minute}, einer pro Spieler"
   },
   "stats": {
     "collection": "Sammlung",
@@ -232,7 +232,11 @@
     "every": "alle {minutes} Min.",
     "sawIt": "Jetzt",
     "reset": "Löschen",
-    "beskarPerPlayer": "Beskar erscheint einmal pro Spieler in der Lobby."
+    "beskarPerPlayer": "Beskar erscheint einmal pro Spieler in der Lobby.",
+    "beskarLabel": "Beskar-Blueprint",
+    "mythicLabel": "Mythic-Blueprint",
+    "mythicAuto": "um XX:55, automatisch",
+    "rainbowRemoved": "Der 5-Minuten-Rainbow-Timer wurde in v1.22 entfernt."
   },
   "advisor": {
     "title": "Bester nächster Kauf",
@@ -250,6 +254,22 @@
     "unlockCost": "Freischaltung",
     "rewards": "Belohnungen",
     "duration": "Dauer",
-    "free": "Kostenlos"
+    "free": "Kostenlos",
+    "pads": "Mission-Pads",
+    "world": "World Missions",
+    "cantina": "Cantina-Quests",
+    "dailies": "Tägliche Quests",
+    "strategies": "Farm-Strategien",
+    "credits": "Credits",
+    "traders": "Händler",
+    "cooldown": "Abklingzeit",
+    "noCooldown": "Keine",
+    "scaling": "Skalierung",
+    "dailyReset": "{count} Quests pro Tag, Reset alle {hours} Std.",
+    "difficulty": {
+      "easy": "Leicht",
+      "medium": "Mittel",
+      "hard": "Schwer"
+    }
   }
 }

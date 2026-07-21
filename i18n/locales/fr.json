@@ -195,9 +195,9 @@
     "chipsCost": "Coût de montée de palier",
     "missionsTitle": "Missions",
     "sandcrawlerTitle": "Sandcrawler",
-    "sandcrawlerRainbow": "Arc-en-ciel garanti toutes les 5 minutes",
-    "sandcrawlerBeskar": "Beskar garanti toutes les 20 minutes, un par joueur du lobby",
-    "currenciesTitle": "Monnaies"
+    "sandcrawlerBeskar": "Beskar garanti toutes les {minutes} minutes, un par joueur du lobby",
+    "currenciesTitle": "Monnaies",
+    "sandcrawlerMythic": "Blueprint Mythique garanti chaque heure à XX:{minute}, un par joueur"
   },
   "stats": {
     "collection": "Collection",
@@ -232,7 +232,11 @@
     "every": "toutes les {minutes} min",
     "sawIt": "Maintenant",
     "reset": "Effacer",
-    "beskarPerPlayer": "Le Beskar apparaît une fois par joueur du lobby."
+    "beskarPerPlayer": "Le Beskar apparaît une fois par joueur du lobby.",
+    "beskarLabel": "Blueprint Beskar",
+    "mythicLabel": "Blueprint Mythique",
+    "mythicAuto": "à XX:55, automatique",
+    "rainbowRemoved": "Le timer Arc-en-ciel de 5 minutes a été supprimé en v1.22."
   },
   "advisor": {
     "title": "Prochain achat conseillé",
@@ -250,6 +254,22 @@
     "unlockCost": "Déblocage",
     "rewards": "Récompenses",
     "duration": "Durée",
-    "free": "Gratuit"
+    "free": "Gratuit",
+    "pads": "Mission pads",
+    "world": "World Missions",
+    "cantina": "Quêtes de la Cantina",
+    "dailies": "Quêtes journalières",
+    "strategies": "Stratégies de farm",
+    "credits": "Crédits",
+    "traders": "Traders",
+    "cooldown": "Recharge",
+    "noCooldown": "Aucune",
+    "scaling": "Mise à l'échelle",
+    "dailyReset": "{count} quêtes par jour, réinitialisées toutes les {hours} h",
+    "difficulty": {
+      "easy": "Facile",
+      "medium": "Moyenne",
+      "hard": "Difficile"
+    }
   }
 }

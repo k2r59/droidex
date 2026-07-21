@@ -53,11 +53,25 @@
       "endDate": "2026-06-04"
     },
     {
+      "date": "2026-05-30",
+      "kind": "patch",
+      "version": "1.13",
+      "title": "Trois paliers de renaissance supplémentaires",
+      "body": "Ajout du Changing Booth. Les quêtes de la Cantina donnent plus de crédits, ne donnent plus de droids et n'ont plus de temps de recharge. Les Upgrade Chips conservent le statut Flawless. Compagnons astromech renforcés."
+    },
+    {
       "date": "2026-06-01",
       "kind": "patch",
       "version": "1.11",
       "title": "Arrivée des droids Flawless",
       "body": "Introduction des variantes Flawless. Ajout du Gunrunner à la boutique du Sandcrawler. Corrections de localisation et optimisations."
+    },
+    {
+      "date": "2026-06-01",
+      "kind": "patch",
+      "version": "1.14",
+      "title": "Le pad 5 devient la mission Beskar",
+      "body": "La mission Astromech « Upgrade Chip » devient la mission « Beskar » : 80 % crédits, 15 % Rainbow, 5 % Beskar, 12 minutes de base. Les récompenses de droid sont des blueprints. Réinitialisation des quêtes journalières ramenée à 22 h, et le blueprint offert est pondéré selon les besoins de renaissance."
     },
     {
       "date": "2026-06-06",
@@ -80,18 +94,11 @@
       "droidSlug": "dj-r3x"
     },
     {
-      "date": "2026-06-15",
-      "kind": "patch",
-      "version": "1.13",
-      "title": "Trois paliers de renaissance supplémentaires",
-      "body": "Ajout du Changing Booth. Récompenses astromech et journalières plus variées. Les Upgrade Chips conservent désormais le statut Flawless. Compagnons astromech légèrement renforcés. Quêtes de la Cantina : plus de crédits, plus de droids, plus de temps de recharge."
-    },
-    {
       "date": "2026-06-23",
       "kind": "patch",
       "version": "1.18",
-      "title": "Mise à jour 1.18",
-      "body": "Existence confirmée, notes détaillées non indexées."
+      "title": "Les World Missions passent à la rareté",
+      "body": "Les récompenses des World Missions dépendent désormais de la rareté du compagnon et non de son palier, ce qui rend les Emblématiques meilleurs sur ces missions. Rééquilibrage des quêtes journalières : fabriquer 75 → 40 droids, vendre 50 → 40, éliminer 5 → 3 joueurs."
     },
     {
       "date": "2026-06-27",
@@ -107,11 +114,25 @@
       "body": "Les droids Emblématiques passent au-dessus des Légendaires Beskar pour les missions. Gains Beskar augmentés. Notifications de renaissance plus intelligentes. Quatre slots de lounge ajoutés aux récompenses des paliers 17 à 20. Le multiplicateur de crédits par palier passe de 10 % à 20 %."
     },
     {
+      "date": "2026-07-05",
+      "kind": "patch",
+      "version": "1.21",
+      "title": "Beskar en quête journalière",
+      "body": "Les droids Beskar peuvent désormais tomber via les quêtes journalières."
+    },
+    {
       "date": "2026-07-10",
       "kind": "event",
       "title": "Événement C-3PO",
       "body": "Débloque C-3P0, ensuite disponible à la Nova Shop.",
       "droidSlug": "c-3p0"
+    },
+    {
+      "date": "2026-07-15",
+      "kind": "patch",
+      "version": "1.22.1",
+      "title": "Correctifs Double Daily Quests",
+      "body": "Le Double Daily Quests se réinitialise correctement après un Super Rebirth."
     }
   ]
 }

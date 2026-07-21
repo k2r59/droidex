@@ -195,9 +195,9 @@
     "chipsCost": "Tier upgrade cost",
     "missionsTitle": "Missions",
     "sandcrawlerTitle": "Sandcrawler",
-    "sandcrawlerRainbow": "Guaranteed Rainbow every 5 minutes",
-    "sandcrawlerBeskar": "Guaranteed Beskar every 20 minutes, one per player in the lobby",
-    "currenciesTitle": "Currencies"
+    "sandcrawlerBeskar": "Guaranteed Beskar every {minutes} minutes, one per player in the lobby",
+    "currenciesTitle": "Currencies",
+    "sandcrawlerMythic": "Guaranteed Mythic blueprint every hour at XX:{minute}, one per player"
   },
   "stats": {
     "collection": "Collection",
@@ -232,7 +232,11 @@
     "every": "every {minutes} min",
     "sawIt": "Now",
     "reset": "Clear",
-    "beskarPerPlayer": "Beskar spawns once per player in the lobby."
+    "beskarPerPlayer": "Beskar spawns once per player in the lobby.",
+    "beskarLabel": "Beskar blueprint",
+    "mythicLabel": "Mythic blueprint",
+    "mythicAuto": "at XX:55, automatic",
+    "rainbowRemoved": "The 5-minute Rainbow timer was removed in v1.22."
   },
   "advisor": {
     "title": "Best next purchase",
@@ -250,6 +254,22 @@
     "unlockCost": "Unlock",
     "rewards": "Rewards",
     "duration": "Duration",
-    "free": "Free"
+    "free": "Free",
+    "pads": "Mission pads",
+    "world": "World Missions",
+    "cantina": "Cantina quests",
+    "dailies": "Daily quests",
+    "strategies": "Farming strategies",
+    "credits": "Credits",
+    "traders": "Traders",
+    "cooldown": "Cooldown",
+    "noCooldown": "None",
+    "scaling": "Scaling",
+    "dailyReset": "{count} quests per day, reset every {hours} h",
+    "difficulty": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    }
   }
 }

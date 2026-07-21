@@ -2,7 +2,11 @@
   "version": 1,
   "base": {
     "totalSlots": 25,
-    "slotsByType": { "worker": 11, "astromech": 9, "battle": 5 },
+    "slotsByType": {
+      "worker": 11,
+      "astromech": 9,
+      "battle": 5
+    },
     "specialtyBonus": 0.1,
     "collectionBonus": 0.25,
     "realisticIncomeCap": 585700,
@@ -10,46 +14,132 @@
     "maxPlayers": 6
   },
   "flawlessRates": [
-    { "tier": "DEFAULT", "odds": 1000 },
-    { "tier": "GOLD", "odds": 500 },
-    { "tier": "DIAMOND", "odds": 250 },
-    { "tier": "RAINBOW", "odds": 125 },
-    { "tier": "BESKAR", "odds": 100 },
-    { "tier": "GALACTIC", "odds": null }
+    {
+      "tier": "DEFAULT",
+      "odds": 1000
+    },
+    {
+      "tier": "GOLD",
+      "odds": 500
+    },
+    {
+      "tier": "DIAMOND",
+      "odds": 250
+    },
+    {
+      "tier": "RAINBOW",
+      "odds": 125
+    },
+    {
+      "tier": "BESKAR",
+      "odds": 100
+    },
+    {
+      "tier": "GALACTIC",
+      "odds": null
+    }
   ],
   "flawlessBonusPerType": 0.01,
   "flawlessCraftableTypes": 51,
   "chipCosts": [
-    { "rarity": "common", "gold": 5, "diamond": 10, "rainbow": 15, "beskar": 80, "conflicting": true },
-    { "rarity": "rare", "gold": 30, "diamond": 50, "rainbow": 75, "beskar": 250 },
-    { "rarity": "epic", "gold": 120, "diamond": 180, "rainbow": 240, "beskar": 5000 },
-    { "rarity": "legendary", "gold": 400, "diamond": 1200, "rainbow": 4000, "beskar": 12000 },
-    { "rarity": "mythic", "gold": 6000, "diamond": 13000, "rainbow": 30000, "beskar": 75000 }
+    {
+      "rarity": "common",
+      "gold": 5,
+      "diamond": 10,
+      "rainbow": 15,
+      "beskar": 80,
+      "conflicting": true
+    },
+    {
+      "rarity": "rare",
+      "gold": 30,
+      "diamond": 50,
+      "rainbow": 75,
+      "beskar": 250
+    },
+    {
+      "rarity": "epic",
+      "gold": 120,
+      "diamond": 180,
+      "rainbow": 240,
+      "beskar": 5000
+    },
+    {
+      "rarity": "legendary",
+      "gold": 400,
+      "diamond": 1200,
+      "rainbow": 4000,
+      "beskar": 12000
+    },
+    {
+      "rarity": "mythic",
+      "gold": 6000,
+      "diamond": 13000,
+      "rainbow": 30000,
+      "beskar": 75000
+    }
   ],
   "tierMultipliers": [
-    { "rarity": "common", "gold": 2, "diamond": 4, "rainbow": 8, "beskar": 12 },
-    { "rarity": "rare", "gold": 2, "diamond": 4, "rainbow": 8, "beskar": 12 },
-    { "rarity": "epic", "gold": 2, "diamond": 4, "rainbow": 8, "beskar": 34 },
-    { "rarity": "legendary", "gold": 2, "diamond": 4, "rainbow": 8, "beskar": 24 },
-    { "rarity": "mythic", "gold": 2, "diamond": 4, "rainbow": 8, "beskar": 16 }
-  ],
-  "missions": [
-    { "pad": 1, "unlockCost": 0, "rewards": "50 % crédits · 40 % droid Typique · 10 % Or" },
-    { "pad": 2, "unlockCost": 15000, "rewards": null },
-    { "pad": 3, "unlockCost": 400000, "rewards": null },
-    { "pad": 4, "unlockCost": 8000000, "rewards": "environ 80 % Arc-en-ciel" },
-    { "pad": 5, "unlockCost": 10000000000, "rewards": "80 % crédits · 15 % Arc-en-ciel · 5 % Beskar — seule source de Beskar en mission" }
+    {
+      "rarity": "common",
+      "gold": 2,
+      "diamond": 4,
+      "rainbow": 8,
+      "beskar": 12
+    },
+    {
+      "rarity": "rare",
+      "gold": 2,
+      "diamond": 4,
+      "rainbow": 8,
+      "beskar": 12
+    },
+    {
+      "rarity": "epic",
+      "gold": 2,
+      "diamond": 4,
+      "rainbow": 8,
+      "beskar": 34
+    },
+    {
+      "rarity": "legendary",
+      "gold": 2,
+      "diamond": 4,
+      "rainbow": 8,
+      "beskar": 24
+    },
+    {
+      "rarity": "mythic",
+      "gold": 2,
+      "diamond": 4,
+      "rainbow": 8,
+      "beskar": 16
+    }
   ],
   "sandcrawler": {
-    "rainbowIntervalMinutes": 5,
-    "beskarIntervalMinutes": 20,
+    "beskarIntervalMinutes": 15,
     "beskarPerPlayer": true,
-    "notes": "Pendant les Beskar Events, un drop garanti supplémentaire toutes les 5 minutes, soit environ 5× le taux normal. Les variantes Beskar ne s'achètent que sur la trade row."
+    "mythicHourlyMinute": 55,
+    "mythicPerPlayer": true,
+    "rainbowRemoved": true,
+    "notes": "Timers à jour en v1.22 : le Beskar est passé de 20 à 15 minutes et le timer Rainbow de 5 minutes a été supprimé. Un blueprint Mythic garanti a été ajouté en v1.20, chaque heure à XX:55, un par joueur. Pendant les Beskar Events, un drop garanti supplémentaire toutes les 5 minutes. Les variantes Beskar ne s'achètent que sur la trade row."
   },
   "currencies": [
-    { "id": "credits", "sources": "Revenu passif, ventes, missions, quêtes de la Cantina", "uses": "Blueprints, renaissances" },
-    { "id": "chips", "sources": "Vente de droids Or et plus, pickups (1 à 3)", "uses": "Montée de palier" },
-    { "id": "nova", "sources": "Super Rebirth (11 à 191), 1 par jour en quête difficile", "uses": "Nova Shop, droids Emblématiques" }
+    {
+      "id": "credits",
+      "sources": "Revenu passif, ventes, missions, quêtes de la Cantina",
+      "uses": "Blueprints, renaissances"
+    },
+    {
+      "id": "chips",
+      "sources": "Vente de droids Or et plus, pickups (1 à 3)",
+      "uses": "Montée de palier"
+    },
+    {
+      "id": "nova",
+      "sources": "Super Rebirth (11 à 191), 1 par jour en quête difficile",
+      "uses": "Nova Shop, droids Emblématiques"
+    }
   ],
   "tips": [
     "Équiper BB-8 comme compagnon double les Upgrade Chips obtenus à la vente d'un droid.",

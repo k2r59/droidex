@@ -2,6 +2,7 @@
 import mechanics from '~/data/mechanics.json'
 
 const { t, locale } = useI18n()
+const localePath = useLocalePath()
 
 useSeoMeta({
   title: () => t('guide.title'),
@@ -82,28 +83,22 @@ const base = mechanics.base
       </table>
     </section>
 
-    <section class="overflow-x-auto rounded-xl border border-edge bg-panel p-4">
-      <h2 class="mb-3 font-semibold">{{ $t('guide.missionsTitle') }}</h2>
-      <ul class="flex flex-col gap-2">
-        <li
-          v-for="m in mechanics.missions"
-          :key="m.pad"
-          class="flex items-baseline gap-3 rounded-lg bg-panel-raised px-3 py-2 text-sm"
-        >
-          <span class="grid size-6 shrink-0 place-items-center rounded-full bg-panel text-xs font-bold">{{ m.pad }}</span>
-          <span class="font-mono tabular-nums text-ink-muted">
-            {{ m.unlockCost ? formatNumber(m.unlockCost, locale) : '—' }}
-          </span>
-          <span class="flex-1">{{ m.rewards ?? $t('droid.noData') }}</span>
-        </li>
-      </ul>
-    </section>
+    <NuxtLink
+      :to="localePath('/missions')"
+      class="flex items-center justify-between rounded-xl border border-edge bg-panel p-4 transition-colors hover:bg-panel-raised"
+    >
+      <span>
+        <span class="block font-semibold">{{ $t('missions.title') }}</span>
+        <span class="block text-sm text-ink-muted">{{ $t('missions.subtitle') }}</span>
+      </span>
+      <span class="text-ink-muted" aria-hidden="true">→</span>
+    </NuxtLink>
 
     <section class="rounded-xl border border-edge bg-panel p-4">
       <h2 class="mb-3 font-semibold">{{ $t('guide.sandcrawlerTitle') }}</h2>
       <ul class="flex flex-col gap-1 text-sm text-ink-muted">
-        <li>• {{ $t('guide.sandcrawlerRainbow') }}</li>
-        <li>• {{ $t('guide.sandcrawlerBeskar') }}</li>
+        <li>• {{ $t('guide.sandcrawlerBeskar', { minutes: mechanics.sandcrawler.beskarIntervalMinutes }) }}</li>
+        <li>• {{ $t('guide.sandcrawlerMythic', { minute: mechanics.sandcrawler.mythicHourlyMinute }) }}</li>
       </ul>
       <p class="mt-2 text-sm text-ink-muted">{{ mechanics.sandcrawler.notes }}</p>
     </section>

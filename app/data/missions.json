@@ -1,0 +1,208 @@
+{
+  "version": 1,
+  "generatedFrom": "Fortnite Wiki (Fandom), update log communautaire et patch notes du dev (@FoadZone), juillet 2026 — état v1.22.1",
+  "pads": {
+    "note": "Les « mission pads » du Shipyard et les « Astromech Missions » des patch notes sont le même système. Un droid astromech par pad, 5 pads au maximum, soit 5 missions simultanées.",
+    "slotLocks": true,
+    "passiveIncomeDuringMission": null,
+    "entries": [
+      {
+        "pad": 1,
+        "unlockCost": 0,
+        "baseDurationSeconds": 60,
+        "rewards": [
+          {
+            "kind": "credits",
+            "chance": 50
+          },
+          {
+            "kind": "tier",
+            "tier": "DEFAULT",
+            "chance": 40
+          },
+          {
+            "kind": "tier",
+            "tier": "GOLD",
+            "chance": 10
+          }
+        ],
+        "note": "Un wiki communautaire annonce « 1 chance sur 3 » de crédits, là où les tables de loot donnent 50 %. Divergence non tranchée."
+      },
+      {
+        "pad": 2,
+        "unlockCost": 15000,
+        "baseDurationSeconds": null,
+        "rewards": [
+          {
+            "kind": "tier",
+            "tier": "DEFAULT",
+            "chance": 20
+          },
+          {
+            "kind": "tier",
+            "tier": "GOLD",
+            "chance": 70
+          },
+          {
+            "kind": "tier",
+            "tier": "DIAMOND",
+            "chance": 10
+          }
+        ]
+      },
+      {
+        "pad": 3,
+        "unlockCost": 400000,
+        "baseDurationSeconds": null,
+        "rewards": [
+          {
+            "kind": "tier",
+            "tier": "GOLD",
+            "chance": 20
+          },
+          {
+            "kind": "tier",
+            "tier": "DIAMOND",
+            "chance": 70
+          },
+          {
+            "kind": "tier",
+            "tier": "RAINBOW",
+            "chance": 10
+          }
+        ]
+      },
+      {
+        "pad": 4,
+        "unlockCost": 8000000,
+        "baseDurationSeconds": null,
+        "rewards": [
+          {
+            "kind": "tier",
+            "tier": "DIAMOND",
+            "chance": 20
+          },
+          {
+            "kind": "tier",
+            "tier": "RAINBOW",
+            "chance": 80
+          }
+        ]
+      },
+      {
+        "pad": 5,
+        "unlockCost": 10000000000,
+        "baseDurationSeconds": 720,
+        "rewards": [
+          {
+            "kind": "credits",
+            "chance": 80
+          },
+          {
+            "kind": "tier",
+            "tier": "RAINBOW",
+            "chance": 15
+          },
+          {
+            "kind": "tier",
+            "tier": "BESKAR",
+            "chance": 5
+          }
+        ],
+        "note": "Seule source de Beskar en mission. Les récompenses de droid sont des blueprints, pas des droids finis. Crédits augmentés d'environ 30 % en v1.16.1. La durée de 12 minutes vient des patch notes du dev ; un wiki communautaire annonce 6:00 — c'est vraisemblablement le temps observé avec un bon droid, pas le temps de base."
+      }
+    ],
+    "durationNote": "Chaque pad envoie vers une planète différente : la durée varie selon la destination tirée, ce qui explique l'absence de valeurs fixes publiées pour les pads 2 à 4. Envoyer un droid de meilleure rareté raccourcit la mission — un R7 Beskar boucle le pad 5 en 6:00 contre 12:00 de base — mais aucune formule n'a été publiée.",
+    "measured": [
+      {
+        "label": "Pad 5, base",
+        "seconds": 720
+      },
+      {
+        "label": "Pad 5, R7 Beskar",
+        "seconds": 360
+      },
+      {
+        "label": "Pad 5, droid moindre",
+        "seconds": 400
+      },
+      {
+        "label": "Mission la plus courte",
+        "seconds": 60
+      }
+    ],
+    "bestCompanion": "Depuis la v1.17.1, les droids Emblématiques dépassent les Légendaires Beskar sur les missions astromech : BB-8 est le meilleur droid à envoyer.",
+    "scalingNote": "Pour les mission pads, la rareté ET le palier comptent. Pour les World Missions, seule la rareté compte depuis la v1.18 — les deux systèmes ne suivent pas la même règle."
+  },
+  "worldMissions": {
+    "note": "Objectifs répartis sur Tatooine, distincts des mission pads. Il faut amener un droid de la bonne classe pour les déclencher.",
+    "types": [
+      "worker",
+      "astromech",
+      "battle"
+    ],
+    "rewards": "Crédits ou Upgrade Chips, via des caisses de récompense",
+    "scaling": "Depuis la v1.18, les récompenses dépendent de la RARETÉ du compagnon et non de son palier — les droids Emblématiques sont donc les meilleurs compagnons pour ces missions.",
+    "examples": [
+      "Réparer des évaporateurs d'humidité (nécessite des droids précis)",
+      "Nettoyer des Stormtroopers hostiles (faisable au blaster seul)",
+      "Réparer des droids"
+    ],
+    "cooldown": null,
+    "tip": "Les world missions Worker sont les plus rapides pour farmer les chips ; celles d'Astromech sont les plus longues."
+  },
+  "cantina": {
+    "traders": 2,
+    "cooldown": 0,
+    "cooldownNote": "Le temps de recharge a été supprimé en v1.13 — à vider systématiquement à chaque passage.",
+    "rewards": "Beaucoup de crédits et des Upgrade Chips. Ne donnent plus de droids depuis la v1.13.",
+    "mechanic": "Chaque trader demande un droid précis, ou une version de rareté supérieure de ce droid. Un palier supérieur satisfait une demande de palier inférieur.",
+    "tip": "Les traders demandent souvent des droids Typiques : c'est un farm très accessible."
+  },
+  "dailies": {
+    "perDay": 3,
+    "resetHours": 22,
+    "tiers": [
+      {
+        "difficulty": "easy",
+        "reward": "Blueprint aléatoire + Upgrade Chips",
+        "examples": [
+          "Assigner 5 droids d'une classe au travail",
+          "Se faire éliminer par un joueur"
+        ]
+      },
+      {
+        "difficulty": "medium",
+        "reward": "Blueprint aléatoire + Upgrade Chips",
+        "examples": [
+          "Fabriquer 15 Typiques",
+          "Fabriquer 10 Rares",
+          "Fabriquer 2 Diamants",
+          "Vendre un blueprint Diamant"
+        ]
+      },
+      {
+        "difficulty": "hard",
+        "reward": "Blueprint aléatoire + 1 Nova Crystal",
+        "examples": [
+          "Fabriquer 15 Or",
+          "Fabriquer 10 Diamants",
+          "Dépasser 100 M de crédits"
+        ]
+      }
+    ],
+    "blueprintWeighting": "Le blueprint offert est pondéré selon tes besoins de renaissance en cours.",
+    "doubleDaily": {
+      "cost": 75,
+      "effect": "Après avoir terminé les 3 quêtes du jour, 3 quêtes supplémentaires apparaissent — soit 6 par jour, et non un doublement des récompenses.",
+      "uncertainty": "Rien ne confirme que la seconde série contienne une quête difficile. Si c'est le cas, le perk vaut 2 Nova Crystals par jour au lieu d'1."
+    }
+  },
+  "strategies": [
+    "Farm crédits : enchaîner la mission d'1 minute du pad 1 sur les 5 pads est plus rentable que les missions Beskar de 6 minutes. Occupe le temps d'attente avec des world missions.",
+    "Farm chips : les Upgrade Chips ne viennent plus des missions depuis la v1.14. La boucle actuelle passe par les world missions Worker, les plus rapides, et par la fabrication puis revente de droids — avec BB-8 en compagnon, qui double les chips à la vente.",
+    "Endgame : garder le pad 5 actif en permanence — chaque complétion donne soit des crédits, soit un droid haute variante revendable, et c'est l'unique source de Beskar.",
+    "Compagnon : ton astromech de plus haute rareté pour les pads ; un Emblématique pour les world missions depuis la v1.18 ; DJ-R3X si tu farmes les world quests, il en double les récompenses.",
+    "Les événements du week-end donnent double crédits, double chips et double chance de Flawless : c'est la fenêtre à privilégier pour tout farm de missions."
+  ]
+}
