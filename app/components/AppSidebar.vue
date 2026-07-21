@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import mark from '~/assets/images/droidex-mark.svg'
 import rebirthData from '~/data/rebirths.json'
 
 /**
@@ -9,12 +10,12 @@ const store = useCollectionStore()
 const localePath = useLocalePath()
 
 const links = [
-  { to: '/', key: 'droidex', icon: '◈' },
-  { to: '/rebirths', key: 'rebirths', icon: '↻' },
-  { to: '/missions', key: 'missions', icon: '➤' },
-  { to: '/shop', key: 'shop', icon: '✦' },
-  { to: '/updates', key: 'updates', icon: '⚡' },
-  { to: '/guide', key: 'guide', icon: '☰' },
+  { to: '/', key: 'droidex', icon: 'navigation/droidex' },
+  { to: '/rebirths', key: 'rebirths', icon: 'navigation/rebirth' },
+  { to: '/missions', key: 'missions', icon: 'navigation/missions' },
+  { to: '/shop', key: 'shop', icon: 'navigation/shop' },
+  { to: '/updates', key: 'updates', icon: 'navigation/news' },
+  { to: '/guide', key: 'guide', icon: 'navigation/guide' },
 ] as const
 
 const nextRebirth = computed(() => Math.min(store.rebirth + 1, rebirthData.maxRebirth))
@@ -33,7 +34,7 @@ const socials = [
 <template>
   <aside class="sticky top-0 hidden h-dvh w-60 shrink-0 flex-col gap-5 overflow-hidden border-r border-edge bg-panel px-4 py-5 xl:flex">
     <NuxtLink :to="localePath('/')" class="flex items-center gap-2.5">
-      <span class="grid size-9 place-items-center rounded-card bg-accent/15 text-lg text-accent">◈</span>
+      <img :src="mark" alt="" class="size-9">
       <span class="text-xl font-bold tracking-tight">DROIDEX</span>
     </NuxtLink>
 
@@ -49,7 +50,7 @@ const socials = [
         class="flex items-center gap-3 rounded-nav border border-transparent px-3 py-2.5 text-sm text-ink-muted transition-colors hover:bg-panel-raised hover:text-ink"
         active-class="nav-active"
       >
-        <span class="w-4 text-center" aria-hidden="true">{{ link.icon }}</span>
+        <DxIcon :name="link.icon" :size="18" />
         <span class="flex-1">{{ $t(`nav.${link.key}`) }}</span>
         <span v-if="link.key === 'droidex'" class="font-mono text-xs tabular-nums">
           {{ store.ownedCount }} / {{ store.totalCount }}

@@ -2,10 +2,16 @@
 /**
  * Bannière d'accueil : titre, anneau de complétion et répartition par rareté.
  *
- * L'illustration est un décor de substitution en dégradés CSS — dunes, soleils et champ
- * d'étoiles — plutôt qu'une image : je n'ai pas d'asset libre de droits pour cette scène,
- * et un placeholder gris aurait mal rendu la maquette.
+ * L'illustration vient du pack d'assets. Elle est servie en trois largeurs via `srcset` :
+ * la scène est claire et détaillée, un seul fichier obligerait soit à sur-servir le
+ * mobile, soit à dégrader le desktop.
+ *
+ * Le dégradé de lecture est presque opaque à gauche puis s'ouvre vers la droite — c'est
+ * ce qui garde le texte lisible sur une image aussi lumineuse.
  */
+import heroLarge from '~/assets/images/hero-tatooine-1686.webp'
+import heroMedium from '~/assets/images/hero-tatooine-1280.webp'
+import heroSmall from '~/assets/images/hero-tatooine-860.webp'
 const store = useCollectionStore()
 const { locale } = useI18n()
 const { isAuthenticated } = useAuthSession()
@@ -30,15 +36,21 @@ const RARITY_TEXT: Record<string, string> = {
 
 <template>
   <section class="hero-gradient relative overflow-hidden rounded-card border border-edge">
-    <!-- Décor de substitution, purement décoratif. -->
+    <!-- Illustration de fond, purement décorative : `alt` vide et retirée de l'ordre de lecture. -->
     <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-      <div class="droid-starfield nebula-default absolute inset-0 opacity-60" />
+      <img
+        :src="heroLarge"
+        :srcset="`${heroSmall} 860w, ${heroMedium} 1280w, ${heroLarge} 1686w`"
+        sizes="(max-width: 900px) 100vw, 1440px"
+        alt=""
+        class="size-full object-cover object-center"
+        loading="eager"
+        fetchpriority="high"
+      >
       <div
-        class="absolute inset-x-0 bottom-0 h-1/2"
-        style="background: linear-gradient(180deg, transparent, rgb(20 12 8 / 0.55)), radial-gradient(120% 80% at 50% 100%, #3a2a1e 0%, transparent 70%)"
+        class="absolute inset-0"
+        style="background: linear-gradient(90deg, rgb(4 13 27 / 0.97) 0%, rgb(4 13 27 / 0.86) 42%, rgb(4 13 27 / 0.35) 100%)"
       />
-      <div class="absolute right-[18%] top-8 size-16 rounded-full bg-amber-200/25 blur-2xl" />
-      <div class="absolute right-[26%] top-14 size-10 rounded-full bg-orange-300/20 blur-xl" />
     </div>
 
     <div class="relative flex flex-col gap-5 p-6 lg:flex-row lg:items-center lg:p-8">

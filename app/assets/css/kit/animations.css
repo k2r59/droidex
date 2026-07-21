@@ -1,0 +1,9 @@
+@keyframes dx-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes dx-pulse{0%,100%{opacity:.65;filter:brightness(1)}50%{opacity:1;filter:brightness(1.25)}}
+@keyframes dx-shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes dx-spin{to{transform:rotate(360deg)}}
+@keyframes dx-slide-up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.dx-animate-float{animation:dx-float 4s ease-in-out infinite}
+.dx-animate-pulse{animation:dx-pulse 2s ease-in-out infinite}
+.dx-animate-spin{animation:dx-spin 1s linear infinite}
+.dx-animate-in{animation:dx-slide-up .45s ease both}

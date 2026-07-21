@@ -6,12 +6,12 @@ const localePath = useLocalePath()
  * sont calquées sur une navigation native — c'est le socle du futur portage mobile.
  */
 const links = [
-  { to: '/', key: 'droidex', icon: '◈' },
-  { to: '/rebirths', key: 'rebirths', icon: '↻' },
-  { to: '/missions', key: 'missions', icon: '➤' },
-  { to: '/shop', key: 'shop', icon: '✦' },
-  { to: '/updates', key: 'updates', icon: '⚡' },
-  { to: '/guide', key: 'guide', icon: '☰' },
+  { to: '/', key: 'droidex', icon: 'navigation/droidex' },
+  { to: '/rebirths', key: 'rebirths', icon: 'navigation/rebirth' },
+  { to: '/missions', key: 'missions', icon: 'navigation/missions' },
+  { to: '/shop', key: 'shop', icon: 'navigation/shop' },
+  { to: '/updates', key: 'updates', icon: 'navigation/news' },
+  { to: '/guide', key: 'guide', icon: 'navigation/guide' },
 ] as const
 </script>
 
@@ -26,7 +26,7 @@ const links = [
           class="flex min-h-11 flex-col items-center justify-center gap-0.5 py-2 text-ink-muted transition-colors"
           active-class="!text-iconic"
         >
-          <span class="text-lg leading-none" aria-hidden="true">{{ link.icon }}</span>
+          <DxIcon :name="link.icon" :size="20" />
           <span class="text-[10px] font-medium">{{ $t(`nav.${link.key}`) }}</span>
         </NuxtLink>
       </li>

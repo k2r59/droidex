@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import mark from '~/assets/images/droidex-mark.svg'
 const localePath = useLocalePath()
 const store = useCollectionStore()
 const { locale } = useI18n()
@@ -22,7 +23,7 @@ const completion = computed(() =>
     <div class="flex h-[68px] items-center gap-3 px-4">
       <!-- Le logo n'apparaît ici que si la colonne de gauche est masquée. -->
       <NuxtLink :to="localePath('/')" class="flex items-center gap-2 font-bold tracking-tight xl:hidden">
-        <span class="grid size-8 place-items-center rounded-lg bg-accent/15 text-accent">◈</span>
+        <img :src="mark" alt="" class="size-8" >
         <span class="hidden sm:inline">DROIDEX</span>
       </NuxtLink>
 
@@ -45,7 +46,7 @@ const completion = computed(() =>
           class="hidden items-center gap-2 rounded-nav border border-edge bg-panel px-3 py-2 text-sm transition-colors hover:border-accent/40 sm:flex"
           :title="$t('shop.balance')"
         >
-          <span class="text-nova">✦</span>
+          <DxIcon name="resources/nova-crystal" :size="16" class="text-nova" />
           <span class="font-mono tabular-nums">{{ formatExact(store.novaCrystals, locale) }}</span>
         </NuxtLink>
 
