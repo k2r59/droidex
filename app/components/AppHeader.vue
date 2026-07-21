@@ -122,7 +122,7 @@ const completion = computed(() =>
         >{{ $t('common.syncing') }}</span>
 
         <LocaleSwitcher />
-        <AuthMenu />
+        <ResetButton />
       </div>
     </div>
   </header>

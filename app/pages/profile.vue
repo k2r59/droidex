@@ -95,18 +95,6 @@ async function clearAll() {
       </div>
     </section>
 
-    <p
-      v-else
-      class="dx-alert dx-alert--info border-0 text-[0.8125rem]"
-    >
-      <DxIcon
-        name="status/locked"
-        :size="17"
-        class="mt-px shrink-0"
-      />
-      <span>{{ $t('auth.signInPrompt') }}</span>
-    </p>
-
     <section class="grid gap-3 sm:grid-cols-3">
       <div class="panel p-6">
         <p class="text-xs text-ink-muted">

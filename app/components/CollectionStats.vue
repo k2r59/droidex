@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const store = useCollectionStore()
 const { locale } = useI18n()
-const { isAuthenticated } = useAuthSession()
 
 const completion = computed(() =>
   store.totalCount ? Math.round((store.ownedCount / store.totalCount) * 100) : 0,
@@ -108,12 +107,5 @@ const RARITY_TEXT: Record<string, string> = {
         </li>
       </ul>
     </div>
-
-    <p
-      v-if="!isAuthenticated"
-      class="rounded-lg bg-panel-raised px-3 py-2 text-sm text-ink-muted"
-    >
-      {{ $t('auth.signInPrompt') }}
-    </p>
   </section>
 </template>

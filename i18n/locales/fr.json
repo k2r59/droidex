@@ -19,7 +19,6 @@
     "signIn": "Se connecter",
     "signOut": "Se déconnecter",
     "signInWith": "Continuer avec {provider}",
-    "signInPrompt": "Connecte-toi pour synchroniser ta collection et retrouver tes progrès partout !",
     "signInBenefit": "Ta progression est synchronisée sur tous tes appareils.",
     "provider": {
       "discord": "Discord",
@@ -225,7 +224,8 @@
     "joinCommunity": "Rejoins la communauté",
     "exportJson": "Exporter en JSON",
     "previous": "Précédent",
-    "next": "Suivant"
+    "next": "Suivant",
+    "cancel": "Annuler"
   },
   "disclaimer": {
     "title": "À propos des données",
@@ -334,5 +334,18 @@
     "body": "Ajoute Droidex à ton écran d'accueil : ouverture immédiate, plein écran, et consultation hors ligne.",
     "iosSteps": "Appuie sur Partager, puis sur « Sur l'écran d'accueil ».",
     "action": "Installer"
+  },
+  "reset": {
+    "action": "Effacer",
+    "title": "Effacer ma progression",
+    "intro": "Ta progression n'existe que dans ce navigateur. Aucun compte ne la conserve, aucune corbeille ne la récupère : cet effacement est définitif.",
+    "variants": "Variantes consignées",
+    "droids": "Droids possédés",
+    "exportHint": "Tu peux d'abord exporter ta progression depuis la page Profil, puis la réimporter plus tard.",
+    "continue": "Continuer",
+    "lastCallTitle": "Dernière confirmation",
+    "lastCall": "Tout sera effacé immédiatement, sans possibilité de revenir en arrière.",
+    "keep": "Non, garder ma progression",
+    "confirm": "Oui, tout effacer"
   }
 }

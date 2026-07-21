@@ -10,7 +10,6 @@
 
 const store = useCollectionStore()
 const { locale } = useI18n()
-const { isAuthenticated } = useAuthSession()
 
 const completion = computed(() =>
   store.totalCount ? Math.round((store.ownedCount / store.totalCount) * 100) : 0,
@@ -134,17 +133,5 @@ const RARITY_CHIP: Record<string, string> = {
         </span>
       </div>
     </div>
-
-    <p
-      v-if="!isAuthenticated"
-      class="flex items-center gap-2 rounded-md border border-edge bg-void/60 px-4 py-2.5 text-[0.8125rem] text-ink-muted backdrop-blur"
-    >
-      <DxIcon
-        name="status/locked"
-        :size="15"
-        class="shrink-0"
-      />
-      {{ $t('auth.signInPrompt') }}
-    </p>
   </PageBanner>
 </template>

@@ -16,7 +16,7 @@ PWA, et utilisable sans compte : la progression vit dans le navigateur.
 | Stockage local | IndexedDB (couche maison, `app/utils/idb.ts`) |
 | Requêtes | ofetch |
 | Base de données | MongoDB |
-| Authentification | BetterAuth — Discord, Google, Twitch |
+| Authentification | BetterAuth — Discord, Google, Twitch (côté serveur seulement, voir plus bas) |
 | i18n | `@nuxtjs/i18n` — fr, en, es, de |
 | PWA | `@vite-pwa/nuxt` |
 
@@ -146,7 +146,8 @@ de fichier — les icônes Beskar sont déjà encodées en RVBA tout en étant o
 ```
 app/
   components/   DroidCard, TierSelector, DroidImage, AuthMenu…
-  components/   …, LegalGate, OnboardingGate, InstallPrompt (écrans d'ouverture)
+  components/   …, LegalGate, OnboardingGate, InstallPrompt (écrans d'ouverture),
+                ResetButton (effacement à double confirmation)
   composables/  useAuthSession (Ref BetterAuth), useFocusTrap (fenêtres modales),
                 useGameText (textes de jeu traduits), useHydratedStorage
   utils/        idb (couche IndexedDB), format, auth-client
@@ -204,6 +205,22 @@ Trois composants montés dans `app.vue`, déclenchés en cascade et jamais simul
 
 `OnboardingGate` attend `hydrated` avant de tester `isEmpty` : interrogé plus tôt, le store
 répond « vide » pour tout le monde et l'écran s'imposerait à des joueurs déjà renseignés.
+
+### Connexion retirée de l'interface
+
+Le bouton « Se connecter » a été retiré de la barre du haut, ainsi que les trois invites
+à se connecter qui n'auraient plus mené nulle part. Le site est donc **entièrement local** :
+la progression vit dans IndexedDB et n'en sort que par l'export manuel de la page Profil.
+
+Les routes serveur (`/api/auth/*`, `/api/progress`), le store BetterAuth et la
+synchronisation restent en place et fonctionnels — seul le point d'entrée a disparu.
+Remettre `<AuthMenu />` dans `AppHeader` suffirait à tout réactiver, à ceci près que le
+composant a été supprimé et serait à reprendre dans l'historique (`git show 4ce2896`).
+
+`ResetButton` remplace le bouton de connexion. L'effacement demande **deux confirmations
+dissemblables** : la première montre ce qui va disparaître, chiffres à l'appui ; la seconde
+ne demande plus qu'un oui, et inverse l'ordre des boutons pour qu'un enchaînement machinal
+de clics au même endroit ne suffise pas. Le bouton disparaît quand il n'y a rien à effacer.
 
 `InstallPrompt` couvre deux chemins distincts. Android/Chrome émet `beforeinstallprompt`, que
 l'on capte et neutralise pour rendre le moment au joueur. iOS/Safari n'émet rien et n'expose

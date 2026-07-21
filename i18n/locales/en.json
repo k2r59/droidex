@@ -19,7 +19,6 @@
     "signIn": "Sign in",
     "signOut": "Sign out",
     "signInWith": "Continue with {provider}",
-    "signInPrompt": "Sign in to sync your collection and keep your progress everywhere!",
     "signInBenefit": "Your progress syncs across all your devices.",
     "provider": {
       "discord": "Discord",
@@ -225,7 +224,8 @@
     "joinCommunity": "Join the community",
     "exportJson": "Export as JSON",
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "cancel": "Cancel"
   },
   "disclaimer": {
     "title": "About the data",
@@ -334,5 +334,18 @@
     "body": "Add Droidex to your home screen: instant launch, full screen, and offline access.",
     "iosSteps": "Tap Share, then “Add to Home Screen”.",
     "action": "Install"
+  },
+  "reset": {
+    "action": "Reset",
+    "title": "Erase my progress",
+    "intro": "Your progress exists only in this browser. No account keeps it, no bin recovers it: this erasure is permanent.",
+    "variants": "Variants recorded",
+    "droids": "Droids owned",
+    "exportHint": "You can export your progress from the Profile page first, then import it back later.",
+    "continue": "Continue",
+    "lastCallTitle": "Final confirmation",
+    "lastCall": "Everything will be erased immediately, with no way back.",
+    "keep": "No, keep my progress",
+    "confirm": "Yes, erase everything"
   }
 }

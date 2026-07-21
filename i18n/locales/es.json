@@ -19,7 +19,6 @@
     "signIn": "Iniciar sesión",
     "signOut": "Cerrar sesión",
     "signInWith": "Continuar con {provider}",
-    "signInPrompt": "¡Inicia sesión para sincronizar tu colección y conservar tu progreso en todas partes!",
     "signInBenefit": "Tu progreso se sincroniza en todos tus dispositivos.",
     "provider": {
       "discord": "Discord",
@@ -225,7 +224,8 @@
     "joinCommunity": "Únete a la comunidad",
     "exportJson": "Exportar en JSON",
     "previous": "Anterior",
-    "next": "Siguiente"
+    "next": "Siguiente",
+    "cancel": "Cancelar"
   },
   "disclaimer": {
     "title": "Sobre los datos",
@@ -334,5 +334,18 @@
     "body": "Añade Droidex a tu pantalla de inicio: apertura inmediata, pantalla completa y consulta sin conexión.",
     "iosSteps": "Pulsa Compartir y luego «Añadir a pantalla de inicio».",
     "action": "Instalar"
+  },
+  "reset": {
+    "action": "Borrar",
+    "title": "Borrar mi progreso",
+    "intro": "Tu progreso solo existe en este navegador. Ninguna cuenta lo conserva, ninguna papelera lo recupera: este borrado es definitivo.",
+    "variants": "Variantes registradas",
+    "droids": "Droides conseguidos",
+    "exportHint": "Puedes exportar tu progreso desde la página Perfil y volver a importarlo más tarde.",
+    "continue": "Continuar",
+    "lastCallTitle": "Confirmación final",
+    "lastCall": "Todo se borrará de inmediato, sin vuelta atrás.",
+    "keep": "No, conservar mi progreso",
+    "confirm": "Sí, borrarlo todo"
   }
 }

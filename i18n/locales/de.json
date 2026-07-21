@@ -19,7 +19,6 @@
     "signIn": "Anmelden",
     "signOut": "Abmelden",
     "signInWith": "Weiter mit {provider}",
-    "signInPrompt": "Melde dich an, um deine Sammlung zu synchronisieren und deinen Fortschritt überall zu behalten!",
     "signInBenefit": "Dein Fortschritt wird auf allen deinen Geräten synchronisiert.",
     "provider": {
       "discord": "Discord",
@@ -225,7 +224,8 @@
     "joinCommunity": "Tritt der Community bei",
     "exportJson": "Als JSON exportieren",
     "previous": "Zurück",
-    "next": "Weiter"
+    "next": "Weiter",
+    "cancel": "Abbrechen"
   },
   "disclaimer": {
     "title": "Über die Daten",
@@ -334,5 +334,18 @@
     "body": "Füge Droidex zu deinem Startbildschirm hinzu: sofortiger Start, Vollbild und Offline-Zugriff.",
     "iosSteps": "Tippe auf Teilen und dann auf „Zum Home-Bildschirm\".",
     "action": "Installieren"
+  },
+  "reset": {
+    "action": "Löschen",
+    "title": "Meinen Fortschritt löschen",
+    "intro": "Dein Fortschritt existiert nur in diesem Browser. Kein Konto bewahrt ihn auf, kein Papierkorb stellt ihn wieder her: Diese Löschung ist endgültig.",
+    "variants": "Erfasste Varianten",
+    "droids": "Besessene Droiden",
+    "exportHint": "Du kannst deinen Fortschritt zuerst auf der Profilseite exportieren und später wieder importieren.",
+    "continue": "Weiter",
+    "lastCallTitle": "Letzte Bestätigung",
+    "lastCall": "Alles wird sofort gelöscht, ohne Weg zurück.",
+    "keep": "Nein, Fortschritt behalten",
+    "confirm": "Ja, alles löschen"
   }
 }
