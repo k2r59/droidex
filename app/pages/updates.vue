@@ -39,10 +39,12 @@ function formatDate(iso: string) {
 
 <template>
   <div class="flex flex-col gap-5">
-    <header>
+    <PageBanner name="nouveautes">
+      <div>
       <h1 class="text-xl font-bold">{{ $t('updates.title') }}</h1>
       <p class="text-sm text-ink-muted">{{ $t('updates.subtitle') }}</p>
-    </header>
+      </div>
+    </PageBanner>
 
     <!-- Fil chronologique inversé : la nouveauté est ce qu'on vient vérifier. -->
     <ol class="relative flex flex-col gap-3 border-l border-edge pl-5">

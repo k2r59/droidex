@@ -53,7 +53,8 @@ watchEffect(() => { expanded.value = store.rebirth + 1 })
 
 <template>
   <div class="flex flex-col gap-5">
-    <section class="flex flex-col gap-4 rounded-card border border-edge bg-panel p-6">
+    <PageBanner name="renaissances">
+      <div class="flex flex-col gap-4">
       <div class="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 class="text-xl font-bold">{{ $t('rebirth.title') }}</h1>
@@ -90,7 +91,8 @@ watchEffect(() => { expanded.value = store.rebirth + 1 })
       <p class="rounded-lg bg-panel-raised px-3 py-2 text-sm text-warn">
         ⚠ {{ $t('rebirth.placementWarning') }}
       </p>
-    </section>
+      </div>
+    </PageBanner>
 
     <!-- Prochaine renaissance mise en avant : c'est l'écran qu'on ouvre en jouant. -->
     <section

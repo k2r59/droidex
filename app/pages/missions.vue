@@ -33,10 +33,12 @@ function formatDuration(seconds: number | null) {
 
 <template>
   <div class="flex flex-col gap-5">
-    <header>
+    <PageBanner name="missions">
+      <div>
       <h1 class="text-xl font-bold">{{ $t('missions.title') }}</h1>
       <p class="text-sm text-ink-muted">{{ $t('missions.subtitle') }}</p>
-    </header>
+      </div>
+    </PageBanner>
 
     <!-- Mission pads : la table de récompenses est l'information la plus consultée,
          donc rendue en barre proportionnelle plutôt qu'en liste de pourcentages. -->

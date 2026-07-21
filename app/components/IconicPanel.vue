@@ -13,6 +13,8 @@ const props = withDefaults(defineProps<{ variant?: 'sidebar' | 'strip' }>(), {
   variant: 'sidebar',
 })
 
+import background from '~/assets/images/backgrounds/sidebar-right.webp'
+
 const store = useCollectionStore()
 const localePath = useLocalePath()
 
@@ -33,7 +35,8 @@ const shown = computed(() => (props.variant === 'sidebar' ? sorted.value.slice(0
   -->
   <aside
     v-if="variant === 'sidebar'"
-    class="sticky top-0 hidden h-dvh w-72 shrink-0 flex-col gap-3 overflow-hidden border-l border-edge bg-panel px-4 py-5 2xl:flex"
+    class="sticky top-0 hidden h-dvh w-72 shrink-0 flex-col gap-3 overflow-hidden border-l border-edge bg-panel bg-cover bg-center px-4 py-5 2xl:flex"
+    :style="{ backgroundImage: `linear-gradient(rgb(7 16 31 / 0.86), rgb(7 16 31 / 0.94)), url(${background})` }"
   >
     <div>
       <h2 class="text-sm font-bold uppercase tracking-wide">{{ $t('iconic.title') }}</h2>

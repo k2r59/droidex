@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import mark from '~/assets/images/droidex-mark.svg'
+import background from '~/assets/images/backgrounds/sidebar-left.webp'
 import rebirthData from '~/data/rebirths.json'
 
 /**
@@ -32,7 +33,8 @@ const socials = [
 </script>
 
 <template>
-  <aside class="sticky top-0 hidden h-dvh w-60 shrink-0 flex-col gap-5 overflow-hidden border-r border-edge bg-panel px-4 py-5 xl:flex">
+  <aside class="sticky top-0 hidden h-dvh w-60 shrink-0 flex-col gap-5 overflow-hidden border-r border-edge bg-panel bg-cover bg-center px-4 py-5 xl:flex"
+    :style="{ backgroundImage: `linear-gradient(rgb(7 16 31 / 0.88), rgb(7 16 31 / 0.94)), url(${background})` }">
     <NuxtLink :to="localePath('/')" class="flex items-center gap-2.5">
       <img :src="mark" alt="" class="size-9">
       <span class="text-xl font-bold tracking-tight">DROIDEX</span>

@@ -2,16 +2,12 @@
 /**
  * Bannière d'accueil : titre, anneau de complétion et répartition par rareté.
  *
- * L'illustration vient du pack d'assets. Elle est servie en trois largeurs via `srcset` :
- * la scène est claire et détaillée, un seul fichier obligerait soit à sur-servir le
- * mobile, soit à dégrader le desktop.
- *
- * Le dégradé de lecture est presque opaque à gauche puis s'ouvre vers la droite — c'est
- * ce qui garde le texte lisible sur une image aussi lumineuse.
+ * L'illustration et le voile de lecture sont pris en charge par `PageBanner`, qui gère
+ * les trois cadrages du pack. On avait d'abord la scène cinématique de Tatooine, mais
+ * elle est si lumineuse qu'il fallait la masquer à 97 % pour lire le titre — autant
+ * utiliser la bannière prévue pour cette page, sombre et sans texte.
  */
-import heroLarge from '~/assets/images/hero-tatooine-1686.webp'
-import heroMedium from '~/assets/images/hero-tatooine-1280.webp'
-import heroSmall from '~/assets/images/hero-tatooine-860.webp'
+
 const store = useCollectionStore()
 const { locale } = useI18n()
 const { isAuthenticated } = useAuthSession()
@@ -35,25 +31,8 @@ const RARITY_TEXT: Record<string, string> = {
 </script>
 
 <template>
-  <section class="hero-gradient relative overflow-hidden rounded-card border border-edge">
-    <!-- Illustration de fond, purement décorative : `alt` vide et retirée de l'ordre de lecture. -->
-    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-      <img
-        :src="heroLarge"
-        :srcset="`${heroSmall} 860w, ${heroMedium} 1280w, ${heroLarge} 1686w`"
-        sizes="(max-width: 900px) 100vw, 1440px"
-        alt=""
-        class="size-full object-cover object-center"
-        loading="eager"
-        fetchpriority="high"
-      >
-      <div
-        class="absolute inset-0"
-        style="background: linear-gradient(90deg, rgb(4 13 27 / 0.97) 0%, rgb(4 13 27 / 0.86) 42%, rgb(4 13 27 / 0.35) 100%)"
-      />
-    </div>
-
-    <div class="relative flex flex-col gap-5 p-6 lg:flex-row lg:items-center lg:p-8">
+  <PageBanner name="droidex" min-height="15rem">
+    <div class="flex flex-col gap-5 lg:flex-row lg:items-center">
       <div class="flex-1">
         <h1 class="text-4xl font-bold tracking-tight lg:text-5xl">DROIDEX</h1>
         <!-- Sous-titre traité comme un titre : Rajdhani, pas Inter. -->
@@ -86,7 +65,7 @@ const RARITY_TEXT: Record<string, string> = {
       </div>
     </div>
 
-    <div class="relative flex flex-wrap gap-2 px-6 pb-4 lg:px-8">
+    <div class="flex flex-wrap gap-2">
       <div
         v-for="r in store.dataset.rarities"
         :key="r"
@@ -101,10 +80,10 @@ const RARITY_TEXT: Record<string, string> = {
 
     <p
       v-if="!isAuthenticated"
-      class="relative mx-6 mb-6 flex items-center gap-2 rounded-card border border-edge bg-void/60 px-4 py-3 text-sm text-ink-muted backdrop-blur lg:mx-8"
+      class="flex items-center gap-2 rounded-card border border-edge bg-void/60 px-4 py-3 text-sm text-ink-muted backdrop-blur"
     >
       <span aria-hidden="true">🔒</span>
       {{ $t('auth.signInPrompt') }}
     </p>
-  </section>
+  </PageBanner>
 </template>

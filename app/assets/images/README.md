@@ -15,18 +15,30 @@ qui sont référencées par nom calculé depuis le dataset.
 
 | Fichier | Origine | Usage |
 |---|---|---|
-| `hero-tatooine-1686.webp` | Complete Asset Pack, bannière cinématique | Fond de la bannière d'accueil |
-| `hero-tatooine-1280.webp` | idem | Écrans intermédiaires |
-| `hero-tatooine-860.webp` | idem | Mobile et tablette |
+| `banners/<page>-<desktop\|tablet\|mobile>.webp` | Banners Pack | Bannière d'en-tête, une par page |
+| `banners/event-*.webp` | Banners Pack | Bannières d'événement |
+| `backgrounds/<ambiance>-<bp>.webp` | Banners Pack | 7 ambiances de fond de section |
+| `backgrounds/sidebar-left.webp` · `sidebar-right.webp` | Banners Pack | Textures des colonnes latérales |
+| `hero-tatooine-*.webp` | Complete Asset Pack | Scène cinématique — non utilisée, voir ci-dessous |
 | `droidex-mark.svg` | Complete Asset Pack | Logo compact |
 | `droidex-logo-horizontal.svg` | Complete Asset Pack | Logo complet |
 | `dots.svg` `grid.svg` `hex.svg` `scanlines.svg` | Complete Asset Pack | Motifs de fond |
 | `nebula-cyan.svg` `stars-deep.svg` | Complete Asset Pack | Décors spatiaux |
 | `droid-sidebar-droite.png` | — | ⏳ à déposer |
 
-La bannière d'origine fait 2,3 Mo en PNG pour 1686 px de large. Elle est réencodée en WebP
-à trois largeurs, sans jamais agrandir au-delà de la source : un « 1920 » n'aurait ajouté
-que du poids pour des pixels interpolés.
+## Bannières de page
+
+Le pack fournit un cadrage par palier de largeur, et non un simple redimensionnement :
+le mobile est en portrait (720×960) là où le desktop est un bandeau (1920×480). C'est
+pourquoi `PageBanner` utilise `<picture>` avec des `media`, et non un simple `srcset`.
+
+Les 42 PNG passent de 2,11 Mo à 0,83 Mo en WebP, soit 61 % de gain.
+
+## Sur `hero-tatooine-*`
+
+La scène cinématique du Complete Asset Pack est conservée mais inutilisée. Elle est si
+lumineuse qu'il fallait la masquer à 97 % pour lire le titre par-dessus — autant prendre
+la bannière que le Banners Pack prévoit pour cette page, sombre et sans texte.
 
 ## Droits
 

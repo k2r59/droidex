@@ -65,7 +65,8 @@ watchEffect(() => { balanceInput.value = store.novaCrystals })
 
 <template>
   <div class="flex flex-col gap-5">
-    <section class="flex flex-wrap items-end justify-between gap-4 rounded-card border border-edge bg-panel p-6">
+    <PageBanner name="nova-shop">
+      <div class="flex flex-wrap items-end justify-between gap-4">
       <div>
         <h1 class="text-xl font-bold">{{ $t('shop.title') }}</h1>
         <p class="text-sm text-ink-muted">{{ $t('shop.subtitle') }}</p>
@@ -95,7 +96,8 @@ watchEffect(() => { balanceInput.value = store.novaCrystals })
           <dd class="font-mono text-lg tabular-nums text-ink-muted">{{ formatExact(grandTotal, locale) }}</dd>
         </div>
       </dl>
-    </section>
+      </div>
+    </PageBanner>
 
     <p class="rounded-lg border border-warn/30 bg-warn/10 px-3 py-2 text-sm text-warn">
       {{ $t('shop.incomplete') }}
