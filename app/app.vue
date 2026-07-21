@@ -18,12 +18,17 @@ useHead(() => ({
   ],
   meta: head.value.meta as never,
   /**
-   * Sur les pages internes, le nom du site suffit en suffixe. Sur l'accueil, où le titre
-   * de page est vide, on déroule l'accroche : c'est ce libellé qui s'affiche dans un
-   * onglet, un favori et un résultat de recherche.
+   * Sur les pages internes, le nom du site suffit en suffixe. Sur l'accueil, on déroule
+   * l'accroche : c'est ce libellé qui s'affiche dans un onglet, un favori et un résultat
+   * de recherche.
+   *
+   * Le titre de l'accueil vaut déjà « Droidex » — sans ce cas particulier, le gabarit
+   * produisait « Droidex — Droidex ».
    */
   titleTemplate: (title?: string) =>
-    title ? `${title} — ${t('app.name')}` : `${t('app.name')} — ${t('app.tagline')}`,
+    !title || title === t('app.name')
+      ? `${t('app.name')} — ${t('app.tagline')}`
+      : `${title} — ${t('app.name')}`,
 }))
 </script>
 
