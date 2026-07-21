@@ -71,32 +71,37 @@ const socials = [
     <!-- Prochaine renaissance : le palier suivant est l'objectif qui structure une session. -->
     <NuxtLink
       :to="localePath('/rebirths')"
-      class="sidebar-rebirth dx-side-panel relative mt-auto flex shrink-0 flex-col items-center gap-2 overflow-hidden p-4 text-center transition-colors hover:border-accent/40"
+      class="sidebar-rebirth dx-side-panel relative mt-auto flex shrink-0 flex-col items-center overflow-hidden !p-0 text-center transition-colors hover:border-accent/40"
+      style="aspect-ratio: 3 / 4"
     >
       <!-- Fond de carte : l'illustration occupe toute la surface, le contenu se pose dessus. -->
       <span
-        class="pointer-events-none absolute inset-0 bg-cover bg-center"
+        class="pointer-events-none absolute inset-0 bg-[length:100%_auto] bg-center bg-no-repeat"
         :style="{ backgroundImage: `url(${planet})` }"
         aria-hidden="true"
       />
       <span
         class="pointer-events-none absolute inset-0"
-        style="background: linear-gradient(180deg, rgb(7 16 31 / 0.92) 0%, rgb(7 16 31 / 0.25) 34%, rgb(7 16 31 / 0.35) 62%, rgb(7 16 31 / 0.94) 100%)"
+        style="background: linear-gradient(180deg, rgb(7 16 31 / 0.92) 0%, rgb(7 16 31 / 0.30) 30%, rgb(7 16 31 / 0.34) 60%, rgb(7 16 31 / 0.93) 88%)"
         aria-hidden="true"
       />
 
-      <span class="relative text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-muted">
+      <span class="relative mt-[8.5%] whitespace-nowrap text-[0.58rem] font-semibold uppercase tracking-[0.1em] text-ink-muted">
         {{ $t('rebirth.next') }}
       </span>
-      <span class="relative text-lg font-bold">{{ $t('rebirth.levelShort', { level: nextRebirth }) }}</span>
 
-      <!-- Espace réservé à la planète : c'est lui qui donne sa hauteur à la carte. -->
-      <span class="sidebar-planet block h-28" aria-hidden="true" />
+      <span class="relative mt-[5.4%] text-[1.05rem] font-bold leading-tight">
+        {{ $t('rebirth.levelShort', { level: nextRebirth }) }}
+      </span>
 
-      <span class="relative text-sm font-semibold text-accent">
+      <!-- Espace laissé à la planète : c'est lui qui absorbe la hauteur variable. -->
+      <span class="sidebar-planet flex-1" aria-hidden="true" />
+
+      <span class="relative text-[0.8rem] font-semibold text-accent">
         +{{ nextBonus }} % {{ $t('stats.income') }}
       </span>
-      <span class="dx-button dx-button--secondary dx-button--block relative mt-1">
+
+      <span class="dx-button dx-button--secondary relative mx-[6%] mb-[4.5%] mt-[3.5%] w-[88%] !min-h-0 py-[0.45rem] text-[0.8rem]">
         {{ $t('common.discover') }}
       </span>
     </NuxtLink>
