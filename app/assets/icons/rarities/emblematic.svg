@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" >
-  <defs><filter id="g"><feGaussianBlur stdDeviation="1.8"/></filter></defs>
-  <path d="M32 5 54 18v28L32 59 10 46V18z" fill="currentColor" opacity=".18"/>
-  <path d="M32 5 54 18v28L32 59 10 46V18z" stroke="currentColor" stroke-width="3"/>
-  <path d="m32 15 6 11 13 2-9 9 2 13-12-6-12 6 2-13-9-9 13-2z" fill="currentColor"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 21 7v10l-9 5-9-5V7zM12 5 9 10l3 2 3-2zM12 12v7"/></svg>

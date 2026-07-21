@@ -215,7 +215,7 @@ const shown = computed(() => {
                 :class="lvl.done ? 'text-valid' : lvl.current ? 'text-accent' : 'text-ink-muted'"
               >{{ lvl.level }}</span>
               <DxIcon v-if="lvl.superUnlock" name="resources/star" :size="14" class="text-warn" :title="$t('superRebirth.title')" />
-              <DxIcon v-else-if="lvl.locked" name="actions/lock" :size="14" class="text-ink-muted" :title="$t('rebirth.tierLocked')" />
+              <DxIcon v-else-if="lvl.locked" name="status/locked" :size="14" class="text-ink-muted" :title="$t('rebirth.tierLocked')" />
             </div>
 
             <p class="flex items-center gap-1.5">

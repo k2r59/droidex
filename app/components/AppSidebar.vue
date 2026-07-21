@@ -13,10 +13,10 @@ const localePath = useLocalePath()
 
 const links = [
   { to: '/', key: 'droidex', icon: 'navigation/droidex' },
-  { to: '/rebirths', key: 'rebirths', icon: 'navigation/rebirth' },
-  { to: '/missions', key: 'missions', icon: 'navigation/missions' },
-  { to: '/shop', key: 'shop', icon: 'navigation/shop' },
-  { to: '/updates', key: 'updates', icon: 'navigation/news' },
+  { to: '/rebirths', key: 'rebirths', icon: 'navigation/renaissances' },
+  { to: '/missions', key: 'missions', icon: 'game/shield' },
+  { to: '/shop', key: 'shop', icon: 'navigation/nova-shop' },
+  { to: '/updates', key: 'updates', icon: 'ui/notification' },
   { to: '/guide', key: 'guide', icon: 'navigation/guide' },
 ] as const
 
@@ -29,7 +29,7 @@ const socials = [
   { id: 'discord', label: 'Discord — Droid Tycoon', icon: 'brands/discord', href: 'https://discord.gg/droidtycoon', tint: 'bg-[#5865F2]' },
   { id: 'foad', label: 'X — FOAD', icon: 'brands/x', href: 'https://x.com/FoadZone', tint: 'bg-[#1d9bf0]' },
   { id: 'blzn', label: 'X — Blzn Studios', icon: 'brands/x', href: 'https://x.com/BlznDev', tint: 'bg-[#e0245e]' },
-  { id: 'island', label: 'Île Fortnite', icon: 'actions/external', href: 'https://www.fortnite.com/@foad/7865-8305-9184', tint: 'bg-accent' },
+  { id: 'island', label: 'Île Fortnite', icon: 'actions/external-link', href: 'https://www.fortnite.com/@foad/7865-8305-9184', tint: 'bg-accent' },
 ] as const
 </script>
 
@@ -47,7 +47,7 @@ const socials = [
       <DxIcon name="actions/arrow-right" :size="11" class="text-edge-strong" />
     </span>
 
-    <div class="flex flex-col gap-1">
+    <div class="flex flex-col gap-1.5">
       <p class="flex items-center gap-1.5 px-2 pb-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink-muted">
         <DxIcon name="actions/plus" :size="9" />
         {{ $t('nav.collection') }}
