@@ -183,7 +183,15 @@
       "conflicting": "Les sources divergent sur ce prix.",
       "single-source": "Prix mentionné par une seule source.",
       "unknown": "Prix inconnu."
-    }
+    },
+    "cart": "Votre panier",
+    "cartEmpty": "Aucun objet sélectionné",
+    "addItems": "Ajouter des objets",
+    "seeAllDroids": "Voir tous les droids",
+    "redeemable": "Droid Emblématique rachetable",
+    "noteLevels": "Les coûts sont PAR NIVEAU et non cumulatifs : passer du niveau 2 au niveau 5 coûte la somme des niveaux 3, 4 et 5.",
+    "noteOneTime": "Les éléments avec le badge ACHAT UNIQUE ne peuvent être achetés qu'une seule fois.",
+    "noteUnverified": "Certaines valeurs (gratuit, < 15k) qui circulent sont non vérifiées ou issues d'estimations."
   },
   "updates": {
     "title": "Nouveautés",
@@ -220,7 +228,8 @@
     "completion": "{percent} % complété",
     "keeperScore": "Score de collectionneur",
     "byTier": "Par palier",
-    "income": "revenus"
+    "income": "revenus",
+    "droidsCollected": "droids collectés"
   },
   "common": {
     "loading": "Chargement…",
@@ -290,7 +299,16 @@
       "hard": "Difficile"
     },
     "measured": "Temps relevés sur la mission {tier}",
-    "missionTier": "Palier"
+    "missionTier": "Palier",
+    "padsTitle": "Mission pads",
+    "bestCompanions": "Les meilleurs compagnons",
+    "worldTypes": "Classes concernées",
+    "secretTitle": "Mission secrète",
+    "withR2": "avec R2-D2",
+    "seeDetail": "Voir le détail",
+    "infoAstromech": "Seul un droid ASTROMECH placé sur le terminal réduit la durée. Y mettre autre chose laisse la mission à son temps de base.",
+    "infoScaling": "Pour les mission pads, la rareté ET le palier comptent. Pour les World Missions, seule la rareté compte depuis la v1.18.",
+    "infoTwoSystems": "Les deux systèmes ne suivent pas la même règle."
   },
   "home": {
     "subtitle": "Ta collection de droïdes",

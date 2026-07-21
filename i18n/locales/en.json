@@ -183,7 +183,15 @@
       "conflicting": "Sources disagree on this price.",
       "single-source": "Price reported by a single source.",
       "unknown": "Price unknown."
-    }
+    },
+    "cart": "Your cart",
+    "cartEmpty": "No item selected",
+    "addItems": "Add items",
+    "seeAllDroids": "See all droids",
+    "redeemable": "Redeemable Iconic droid",
+    "noteLevels": "Costs are PER LEVEL, not cumulative: going from level 2 to level 5 costs the sum of levels 3, 4 and 5.",
+    "noteOneTime": "Items with the ONE-TIME badge can only be bought once.",
+    "noteUnverified": "Some circulating values (free, < 15k) are unverified or estimated."
   },
   "updates": {
     "title": "What's new",
@@ -220,7 +228,8 @@
     "completion": "{percent}% complete",
     "keeperScore": "Collector score",
     "byTier": "By tier",
-    "income": "income"
+    "income": "income",
+    "droidsCollected": "droids collected"
   },
   "common": {
     "loading": "Loading…",
@@ -290,7 +299,16 @@
       "hard": "Hard"
     },
     "measured": "Measured times on the {tier} mission",
-    "missionTier": "Tier"
+    "missionTier": "Tier",
+    "padsTitle": "Mission pads",
+    "bestCompanions": "Best companions",
+    "worldTypes": "Classes involved",
+    "secretTitle": "Secret mission",
+    "withR2": "with R2-D2",
+    "seeDetail": "View detail",
+    "infoAstromech": "Only an ASTROMECH droid on the terminal shortens the mission. Anything else leaves it at base time.",
+    "infoScaling": "For mission pads, both rarity AND tier count. For World Missions, only rarity counts since v1.18.",
+    "infoTwoSystems": "The two systems follow different rules."
   },
   "home": {
     "subtitle": "Your droid collection",

@@ -183,7 +183,15 @@
       "conflicting": "Las fuentes discrepan sobre este precio.",
       "single-source": "Precio mencionado por una sola fuente.",
       "unknown": "Precio desconocido."
-    }
+    },
+    "cart": "Tu carrito",
+    "cartEmpty": "Ningún objeto seleccionado",
+    "addItems": "Añadir objetos",
+    "seeAllDroids": "Ver todos los droides",
+    "redeemable": "Droide Iconic canjeable",
+    "noteLevels": "Los costes son POR NIVEL y no acumulativos: pasar del nivel 2 al 5 cuesta la suma de los niveles 3, 4 y 5.",
+    "noteOneTime": "Los elementos con la insignia COMPRA ÚNICA solo pueden comprarse una vez.",
+    "noteUnverified": "Algunos valores que circulan (gratis, < 15k) no están verificados o son estimaciones."
   },
   "updates": {
     "title": "Novedades",
@@ -220,7 +228,8 @@
     "completion": "{percent} % completado",
     "keeperScore": "Puntuación de coleccionista",
     "byTier": "Por tier",
-    "income": "ingresos"
+    "income": "ingresos",
+    "droidsCollected": "droides recolectados"
   },
   "common": {
     "loading": "Cargando…",
@@ -290,7 +299,16 @@
       "hard": "Difícil"
     },
     "measured": "Tiempos medidos en la misión {tier}",
-    "missionTier": "Tier"
+    "missionTier": "Tier",
+    "padsTitle": "Mission pads",
+    "bestCompanions": "Mejores compañeros",
+    "worldTypes": "Clases implicadas",
+    "secretTitle": "Misión secreta",
+    "withR2": "con R2-D2",
+    "seeDetail": "Ver detalle",
+    "infoAstromech": "Solo un droide ASTROMECH en el terminal reduce la duración. Cualquier otro la deja en su tiempo base.",
+    "infoScaling": "Para los mission pads cuentan la rareza Y el tier. Para las World Missions solo cuenta la rareza desde la v1.18.",
+    "infoTwoSystems": "Los dos sistemas no siguen la misma regla."
   },
   "home": {
     "subtitle": "Tu colección de droides",

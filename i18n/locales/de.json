@@ -183,7 +183,15 @@
       "conflicting": "Die Quellen widersprechen sich bei diesem Preis.",
       "single-source": "Preis nur von einer Quelle genannt.",
       "unknown": "Preis unbekannt."
-    }
+    },
+    "cart": "Dein Warenkorb",
+    "cartEmpty": "Kein Objekt ausgewählt",
+    "addItems": "Objekte hinzufügen",
+    "seeAllDroids": "Alle Droiden ansehen",
+    "redeemable": "Einlösbarer Iconic-Droide",
+    "noteLevels": "Die Kosten gelten PRO STUFE und sind nicht kumulativ: von Stufe 2 auf 5 kostet die Summe der Stufen 3, 4 und 5.",
+    "noteOneTime": "Elemente mit dem Abzeichen EINMALKAUF können nur einmal gekauft werden.",
+    "noteUnverified": "Einige kursierende Werte (kostenlos, < 15k) sind unbestätigt oder geschätzt."
   },
   "updates": {
     "title": "Neuigkeiten",
@@ -220,7 +228,8 @@
     "completion": "{percent} % abgeschlossen",
     "keeperScore": "Sammler-Score",
     "byTier": "Nach Stufe",
-    "income": "Einkommen"
+    "income": "Einkommen",
+    "droidsCollected": "Droiden gesammelt"
   },
   "common": {
     "loading": "Wird geladen…",
@@ -290,7 +299,16 @@
       "hard": "Schwer"
     },
     "measured": "Gemessene Zeiten bei der {tier}-Mission",
-    "missionTier": "Stufe"
+    "missionTier": "Stufe",
+    "padsTitle": "Mission-Pads",
+    "bestCompanions": "Beste Begleiter",
+    "worldTypes": "Betroffene Klassen",
+    "secretTitle": "Geheime Mission",
+    "withR2": "mit R2-D2",
+    "seeDetail": "Details ansehen",
+    "infoAstromech": "Nur ein ASTROMECH-Droide auf dem Terminal verkürzt die Mission. Alles andere lässt sie bei ihrer Basiszeit.",
+    "infoScaling": "Bei Mission-Pads zählen Seltenheit UND Stufe. Bei World Missions zählt seit v1.18 nur die Seltenheit.",
+    "infoTwoSystems": "Die beiden Systeme folgen unterschiedlichen Regeln."
   },
   "home": {
     "subtitle": "Deine Droiden-Sammlung",
