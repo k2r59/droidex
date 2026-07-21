@@ -174,26 +174,66 @@
 }
 
 /*
- * Onglet actif. Le kit stylise `.dx-nav__link[aria-current=page]`, mais Vue Router
- * applique une CLASSE sur le lien actif, pas un attribut. On reprend donc les mêmes
- * déclarations sous un nom de classe, plutôt que de forcer `aria-current` à la main
- * sur chaque lien.
+ * Navigation de l'en-tête.
+ *
+ * Le lien occupe toute la hauteur de la barre et la puce est un enfant centré : c'est
+ * ce qui permet au soulignement de se poser sur la bordure basse de l'en-tête plutôt
+ * que de flotter juste sous la puce.
+ *
+ * Le kit stylise `.dx-nav__link[aria-current=page]`, mais Vue Router applique une
+ * CLASSE et non un attribut — d'où ces sélecteurs propres à l'app.
  */
-.nav-active {
+.nav-link {
   position: relative;
-  background: linear-gradient(180deg, rgb(44 73 126 / 0.52), rgb(20 34 59 / 0.62));
-  border-color: rgb(69 155 255 / 0.66);
-  color: var(--color-ink-strong);
-  box-shadow: var(--dx-shadow-cyan);
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  padding-inline: 0.25rem;
 }
 
-.nav-active::after {
+.nav-link__pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  padding: 0.6rem 0.95rem;
+  border-radius: var(--dx-radius-md);
+  color: var(--color-ink-muted);
+  font-family: var(--font-display);
+  font-weight: 600;
+  transition: color var(--dx-fast), background var(--dx-fast);
+}
+
+.nav-link:hover .nav-link__pill {
+  color: var(--color-ink-strong);
+  background: rgb(69 155 255 / 0.08);
+}
+
+.nav-link--active .nav-link__pill {
+  color: var(--color-ink-strong);
+  font-weight: 700;
+  background: rgb(69 155 255 / 0.12);
+}
+
+/* Médaillon de l'onglet actif : un carré arrondi teinté, pas une icône nue. */
+.nav-link__badge {
+  display: grid;
+  place-items: center;
+  width: 1.55rem;
+  aspect-ratio: 1;
+  border-radius: 0.5rem;
+  color: var(--dx-cyan);
+  background: rgb(37 215 255 / 0.16);
+}
+
+/* Trait lumineux, sur toute la largeur de l'onglet et calé sur le bas de la barre. */
+.nav-link--active::after {
   content: '';
   position: absolute;
-  inset-inline: 18%;
-  inset-block-end: -1px;
-  height: 2px;
-  border-radius: var(--dx-radius-pill);
+  inset-inline: 0.25rem;
+  inset-block-end: 0;
+  height: 3px;
+  border-radius: var(--dx-radius-pill) var(--dx-radius-pill) 0 0;
   background: var(--dx-cyan);
   box-shadow: 0 0 12px var(--dx-cyan);
 }

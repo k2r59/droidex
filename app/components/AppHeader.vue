@@ -40,16 +40,21 @@ const completion = computed(() =>
         <span class="hidden sm:inline">DROIDEX</span>
       </NuxtLink>
 
-      <nav class="hidden min-w-0 items-center gap-1 overflow-x-auto md:flex">
+      <nav class="hidden h-full min-w-0 items-stretch gap-1 overflow-x-auto md:flex">
         <NuxtLink
           v-for="link in links"
           :key="link.to"
           :to="localePath(link.to)"
-          class="flex shrink-0 items-center gap-2 whitespace-nowrap rounded-nav border border-transparent px-3.5 py-2 text-sm text-ink-muted transition-colors hover:bg-panel hover:text-ink"
-          active-class="nav-active"
+          class="nav-link"
+          active-class="nav-link--active"
         >
-          <DxIcon v-if="isActive(link.to)" :name="link.icon" :size="16" />
-          {{ $t(`nav.${link.key}`) }}
+          <span class="nav-link__pill">
+            <!-- Petit médaillon cyan, présent seulement sur l'onglet actif. -->
+            <span v-if="isActive(link.to)" class="nav-link__badge">
+              <DxIcon :name="link.icon" :size="14" />
+            </span>
+            {{ $t(`nav.${link.key}`) }}
+          </span>
         </NuxtLink>
       </nav>
 
