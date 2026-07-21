@@ -185,7 +185,7 @@ function formatPayback(seconds: number) {
               type="text"
               inputmode="decimal"
               :placeholder="$t('advisor.noBudget')"
-              class="w-24 bg-transparent text-right font-mono tabular-nums placeholder:text-ink-muted focus:outline-none"
+              class="w-24 bg-transparent text-right font-mono tabular-nums placeholder:text-ink-muted focus:outline-none pointer-coarse:h-11"
               @focus="focusBudget"
               @blur="commitBudget"
               @keydown.enter="($event.target as HTMLInputElement).blur()"
@@ -193,7 +193,7 @@ function formatPayback(seconds: number) {
             <button
               v-if="budget !== null"
               type="button"
-              class="shrink-0 text-ink-muted transition-colors hover:text-ink"
+              class="grid shrink-0 place-items-center text-ink-muted transition-colors hover:text-ink pointer-coarse:size-11"
               :aria-label="$t('advisor.noBudget')"
               @click="applyBudget(null)"
             >
@@ -205,13 +205,18 @@ function formatPayback(seconds: number) {
           </span>
         </label>
 
-        <!-- Raccourcis : les montants du jeu sont trop longs pour être tapés à la main. -->
+        <!--
+          Raccourcis : les montants du jeu sont trop longs pour être tapés à la main.
+          `min-h-11` au doigt seulement — `pointer: coarse` ne vise que les écrans tactiles,
+          là où 23 px de haut se ratent une fois sur deux. À la souris, la pastille garde sa
+          taille compacte : rien ne justifierait d'étirer une rangée de raccourcis.
+        -->
         <div class="flex flex-wrap justify-end gap-1">
           <button
             v-for="p in PRESETS"
             :key="p"
             type="button"
-            class="rounded-md border px-2 py-0.5 font-mono text-[0.7rem] tabular-nums transition-colors"
+            class="rounded-md border px-2 py-0.5 font-mono text-[0.7rem] tabular-nums transition-colors pointer-coarse:min-h-11 pointer-coarse:px-3"
             :class="budget === p
               ? 'border-accent bg-accent/10 text-accent'
               : 'border-edge text-ink-muted hover:border-edge-strong hover:text-ink'"
@@ -246,7 +251,7 @@ function formatPayback(seconds: number) {
       <li
         v-for="(c, i) in shown"
         :key="`${c.droid.slug}-${c.tier}`"
-        class="flex items-center gap-3 rounded-lg bg-panel-raised p-2"
+        class="relative flex items-center gap-3 rounded-lg bg-panel-raised p-2 transition-colors hover:bg-panel-raised/70"
       >
         <span class="w-4 shrink-0 text-center text-xs text-ink-muted">{{ i + 1 }}</span>
 
@@ -257,9 +262,15 @@ function formatPayback(seconds: number) {
         />
 
         <div class="min-w-0 flex-1">
+          <!--
+            `after:absolute after:inset-0` étend la zone cliquable à toute la rangée.
+            Le nom seul faisait 20 px de haut : au doigt, on visait une ligne de texte
+            alors que la rangée en fait plus de quarante et qu'aucun autre élément n'y
+            est interactif. La rangée porte `relative` pour borner cette extension.
+          -->
           <NuxtLink
             :to="localePath(`/droids/${c.droid.slug}`)"
-            class="block truncate text-sm font-medium hover:underline"
+            class="block truncate text-sm font-medium after:absolute after:inset-0 hover:underline"
           >
             {{ c.droid.name }}
           </NuxtLink>

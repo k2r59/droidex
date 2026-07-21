@@ -42,7 +42,12 @@ watch(
         </button>
       </p>
 
-      <main class="@container mx-auto w-full max-w-[1440px] flex-1 px-3 py-4 pb-24 sm:px-4 sm:py-5 md:pb-6">
+      <!--
+        `pb-24` réserve la hauteur de `MobileNav`, fixée en bas. Sa levée doit suivre le
+        point de bascule de cette nav (`lg`) : calée sur `md`, elle laissait le dernier
+        bloc passer sous la barre entre 768 et 1024 px.
+      -->
+      <main class="@container mx-auto w-full max-w-[1440px] flex-1 px-3 py-4 pb-24 sm:px-4 sm:py-5 lg:pb-6">
         <slot />
       </main>
 

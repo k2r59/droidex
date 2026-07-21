@@ -57,6 +57,9 @@
     "filterType": "Typ",
     "filterTier": "Besessene Stufe",
     "filterAll": "Alle",
+    "filterOwned": "Im Besitz",
+    "filterMissing": "Fehlend",
+    "filterFlawless": "Flawless",
     "sortBy": "Sortieren nach",
     "sort": {
       "rarity": "Seltenheit",

@@ -57,6 +57,9 @@
     "filterType": "Type",
     "filterTier": "Owned tier",
     "filterAll": "All",
+    "filterOwned": "Owned",
+    "filterMissing": "Missing",
+    "filterFlawless": "Flawless",
     "sortBy": "Sort by",
     "sort": {
       "rarity": "Rarity",

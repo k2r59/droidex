@@ -109,9 +109,14 @@ const RARITY_RING: Record<string, string> = {
           :title="$t('droid.unverifiedHint')"
         >⚠</span>
 
+        <!--
+          L'étoile fait 18 px : lisible, mais impossible à viser au doigt à côté de la
+          case de palier. La zone tactile passe à 44 px sur écran tactile, absorbée par
+          une marge négative pour ne pas déformer l'en-tête de la carte.
+        -->
         <button
           type="button"
-          class="text-sm transition-transform hover:scale-125"
+          class="grid place-items-center text-sm transition-transform hover:scale-125 pointer-coarse:-m-3 pointer-coarse:size-11"
           :class="entry.flawless ? 'opacity-100' : 'opacity-25 hover:opacity-60'"
           :title="$t('droid.flawless')"
           :aria-pressed="entry.flawless"

@@ -17,7 +17,7 @@ const links = [
 
 <template>
   <nav
-    class="fixed inset-x-0 bottom-0 z-50 border-t border-edge bg-void/95 pb-[env(safe-area-inset-bottom)] backdrop-blur md:hidden"
+    class="fixed inset-x-0 bottom-0 z-50 border-t border-edge bg-void/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden"
   >
     <ul class="flex">
       <li

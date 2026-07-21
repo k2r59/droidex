@@ -57,6 +57,9 @@
     "filterType": "Type",
     "filterTier": "Palier possédé",
     "filterAll": "Tous",
+    "filterOwned": "Possédés",
+    "filterMissing": "Manquants",
+    "filterFlawless": "Parfait",
     "sortBy": "Trier par",
     "sort": {
       "rarity": "Rareté",

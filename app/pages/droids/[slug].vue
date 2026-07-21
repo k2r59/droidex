@@ -49,9 +49,13 @@ const usedInRebirths = computed(() => {
     v-if="droid"
     class="flex flex-col gap-5"
   >
+    <!--
+      `self-start` autant que la hauteur : le lien occupait toute la largeur de la page,
+      si bien qu'un appui n'importe où sur cette bande renvoyait à l'accueil.
+    -->
     <NuxtLink
       :to="localePath('/')"
-      class="text-sm text-ink-muted hover:text-ink"
+      class="-ml-2 inline-flex h-11 items-center self-start rounded-md px-2 text-sm text-ink-muted transition-colors hover:text-ink"
     >
       ← {{ $t('droid.backToDroidex') }}
     </NuxtLink>

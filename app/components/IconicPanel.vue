@@ -166,16 +166,26 @@ const peutAvancer = computed(() => index.value < shown.value.length - 1)
 
         <NuxtLink
           :to="localePath('/?rarity=iconic')"
-          class="text-sm text-accent hover:underline"
+          class="inline-flex items-center text-sm text-accent hover:underline pointer-coarse:min-h-11"
         >
           {{ $t('iconic.seeAll') }}
         </NuxtLink>
       </div>
     </div>
 
+    <!--
+      La marge négative fait courir le rail sous le padding de la page, pour que la première
+      carte affleure le bord. Deux pièges s'y cachent :
+
+      — une marge négative n'agrandit pas la boîte : sans largeur explicite, l'élément gardait
+        celle du parent et débordait, faisant défiler toute la page horizontalement ;
+      — la valeur doit suivre le padding réel du conteneur, `px-3` puis `px-4` à partir de
+        `sm` (voir `layouts/default.vue`). Calée sur 4 partout, elle mordait de 4 px hors de
+        l'écran sur mobile — le même défilement horizontal, en plus discret.
+    -->
     <ul
       ref="rail"
-      class="dx-carousel -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth px-4 pb-2"
+      class="dx-carousel -mx-3 flex w-[calc(100%_+_1.5rem)] snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth px-3 pb-2 sm:-mx-4 sm:w-[calc(100%_+_2rem)] sm:px-4"
       @scroll.passive="majIndex"
     >
       <li
@@ -195,16 +205,26 @@ const peutAvancer = computed(() => index.value < shown.value.length - 1)
       v-if="defilable"
       class="flex justify-center gap-1.5"
     >
+      <!--
+        La puce mesure 6 px : c'est la bonne taille à l'œil et une cible impossible au
+        doigt. Le bouton porte donc une zone tactile de 44 px sur écran tactile — même
+        séparation que dans `TierSelector` — et la puce reste un `span` à l'intérieur.
+        Les marges négatives absorbent cette zone pour que la rangée garde sa hauteur.
+      -->
       <button
         v-for="(droid, i) in shown"
         :key="`p-${droid.slug}`"
         type="button"
-        class="h-1.5 rounded-full transition-all"
-        :class="i === index ? 'w-5 bg-accent' : 'w-1.5 bg-edge-strong hover:bg-ink-muted'"
+        class="grid place-items-center rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-ink pointer-coarse:-my-5 pointer-coarse:size-11"
         :aria-label="droid.name"
         :aria-current="i === index ? 'true' : undefined"
         @click="versCarte(i)"
-      />
+      >
+        <span
+          class="h-1.5 rounded-full transition-all"
+          :class="i === index ? 'w-5 bg-accent' : 'w-1.5 bg-edge-strong group-hover:bg-ink-muted'"
+        />
+      </button>
     </div>
   </section>
 </template>

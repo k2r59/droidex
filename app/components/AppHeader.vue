@@ -46,7 +46,14 @@ const completion = computed(() =>
         <span class="hidden sm:inline">DROIDEX</span>
       </NuxtLink>
 
-      <nav class="hidden h-full min-w-0 items-stretch gap-1 overflow-x-auto md:flex">
+      <!--
+        Bascule à `lg` et non `md` : à 768 px, la navigation partageait la barre avec les
+        compteurs, la langue et le bouton de connexion, si bien que « Renaissances » était
+        coupé en deux et que les onglets suivants sortaient de l'écran. Le rail défilait
+        bien, mais rien ne l'indiquait — une tablette en portrait n'avait donc plus de
+        navigation visible. En dessous de `lg`, c'est `MobileNav` qui prend le relais.
+      -->
+      <nav class="hidden h-full min-w-0 items-stretch gap-1 overflow-x-auto lg:flex">
         <NuxtLink
           v-for="link in links"
           :key="link.to"

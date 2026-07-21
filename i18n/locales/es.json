@@ -57,6 +57,9 @@
     "filterType": "Tipo",
     "filterTier": "Tier obtenido",
     "filterAll": "Todos",
+    "filterOwned": "Conseguidos",
+    "filterMissing": "Pendientes",
+    "filterFlawless": "Flawless",
     "sortBy": "Ordenar por",
     "sort": {
       "rarity": "Rareza",
