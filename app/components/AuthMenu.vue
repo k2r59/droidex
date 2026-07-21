@@ -54,7 +54,7 @@ async function logout() {
     <button
       v-else
       type="button"
-      class="rounded-lg bg-iconic px-3 py-1.5 text-sm font-medium text-void transition-opacity hover:opacity-90"
+      class="dx-button dx-button--primary"
       @click="open = !open"
     >
       {{ $t('auth.signIn') }}

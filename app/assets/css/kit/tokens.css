@@ -1,0 +1,26 @@
+/*
+ * Jetons du UI Kit Droidex — copié depuis Droidex_UI_Kit_Ultra_Detaille.zip.
+ * Ne pas modifier à la main : remplacer le fichier lors d'une nouvelle livraison du kit.
+ */
+:root {
+  color-scheme: dark;
+  --dx-bg-950:#020711; --dx-bg-900:#07101f;
+  --dx-surface-900:#0c1628; --dx-surface-850:#101a2d;
+  --dx-surface-800:#15223a; --dx-surface-750:#1b2b47;
+  --dx-border:#273956; --dx-border-strong:#365170;
+  --dx-heading:#fff; --dx-text:#d8e2f2; --dx-muted:#91a2bc;
+  --dx-cyan:#25d7ff; --dx-blue:#459bff; --dx-purple:#9a5cff;
+  --dx-success:#22d49a; --dx-warning:#ffc247; --dx-danger:#ff5d6c;
+  --dx-font-display:"Rajdhani",Inter,sans-serif;
+  --dx-font-body:Inter,system-ui,sans-serif;
+  --dx-font-mono:"JetBrains Mono",monospace;
+  --dx-space-1:.25rem; --dx-space-2:.5rem; --dx-space-3:.75rem;
+  --dx-space-4:1rem; --dx-space-5:1.25rem; --dx-space-6:1.5rem;
+  --dx-space-8:2rem; --dx-space-10:2.5rem; --dx-space-12:3rem;
+  --dx-radius-sm:.5rem; --dx-radius-md:.75rem; --dx-radius-lg:1rem;
+  --dx-radius-xl:1.25rem; --dx-radius-pill:999px;
+  --dx-fast:140ms; --dx-normal:220ms; --dx-slow:420ms;
+  --dx-ease:cubic-bezier(.2,.8,.2,1);
+  --dx-shadow-card:0 16px 42px rgb(0 0 0/.28);
+  --dx-shadow-cyan:0 0 0 1px rgb(37 215 255/.35),0 0 22px rgb(37 215 255/.17);
+}

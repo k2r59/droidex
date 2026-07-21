@@ -47,7 +47,7 @@ const shown = computed(() => (props.variant === 'sidebar' ? sorted.value.slice(0
 
     <NuxtLink
       :to="localePath('/?rarity=iconic')"
-      class="btn-ghost shrink-0 rounded-lg px-3 py-2.5 text-center text-sm transition-colors"
+      class="dx-button dx-button--secondary dx-button--block shrink-0"
     >
       {{ $t('iconic.seeAll') }}
     </NuxtLink>

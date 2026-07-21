@@ -140,7 +140,7 @@ onKeyStroke('Escape', () => {
           :key="o"
           type="button"
           class="rounded-full px-3 py-1 text-xs font-medium transition-colors"
-          :class="ownership === o ? 'btn-primary' : 'bg-panel text-ink-muted hover:text-ink'"
+          :class="ownership === o ? 'dx-button dx-button--primary' : 'bg-panel text-ink-muted hover:text-ink'"
           @click="ownership = o"
         >
           {{ $t(o === 'all' ? 'droidex.filterAll' : `droidex.filter${o.charAt(0).toUpperCase()}${o.slice(1)}`) }}

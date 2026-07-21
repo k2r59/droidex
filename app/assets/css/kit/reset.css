@@ -1,0 +1,10 @@
+/*
+ * Reset du UI Kit Droidex, repris tel quel à une exception près : l'import Google
+ * Fonts a été retiré, les polices étant self-hostées par @nuxt/fonts.
+ */
+*,*::before,*::after{box-sizing:border-box} html{min-width:320px;background:var(--dx-bg-950)}
+body{margin:0;min-height:100vh;color:var(--dx-text);font-family:var(--dx-font-body);line-height:1.5;background:radial-gradient(circle at 72% -12%,rgb(40 88 160/.20),transparent 38rem),linear-gradient(180deg,var(--dx-bg-950),var(--dx-bg-900))}
+a{color:inherit;text-decoration:none} button,input,select,textarea{font:inherit} img,svg{display:block;max-width:100%}
+h1,h2,h3,h4{font-family:var(--dx-font-display);color:var(--dx-heading);line-height:1.08}
+:focus-visible{outline:3px solid rgb(37 215 255/.88);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}

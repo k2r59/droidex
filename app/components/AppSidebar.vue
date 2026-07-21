@@ -60,7 +60,7 @@ const socials = [
     <!-- Prochaine renaissance : le palier suivant est l'objectif qui structure une session. -->
     <NuxtLink
       :to="localePath('/rebirths')"
-      class="sidebar-rebirth panel mt-auto flex shrink-0 flex-col items-center gap-2 overflow-hidden p-4 text-center transition-colors hover:border-accent/40"
+      class="sidebar-rebirth dx-side-panel mt-auto flex shrink-0 flex-col items-center gap-2 overflow-hidden p-4 text-center transition-colors hover:border-accent/40"
     >
       <p class="text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-muted">
         {{ $t('rebirth.next') }}
@@ -77,7 +77,7 @@ const socials = [
       </span>
 
       <p class="text-sm font-semibold text-accent">+{{ nextBonus }} % {{ $t('stats.income') }}</p>
-      <span class="btn-ghost mt-1 w-full rounded-lg px-3 py-2 text-sm transition-colors">
+      <span class="dx-button dx-button--secondary dx-button--block mt-1">
         {{ $t('common.discover') }}
       </span>
     </NuxtLink>
