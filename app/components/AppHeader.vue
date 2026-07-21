@@ -6,14 +6,13 @@ const store = useCollectionStore()
 const { locale } = useI18n()
 const route = useRoute()
 
-/** L'icône n'apparaît que sur l'onglet actif, comme sur la maquette. */
 const links = [
-  { to: '/', key: 'droidex', icon: 'navigation/droidex' },
-  { to: '/rebirths', key: 'rebirths', icon: 'navigation/rebirth' },
-  { to: '/missions', key: 'missions', icon: 'navigation/missions' },
-  { to: '/shop', key: 'shop', icon: 'navigation/shop' },
-  { to: '/updates', key: 'updates', icon: 'navigation/news' },
-  { to: '/guide', key: 'guide', icon: 'navigation/guide' },
+  { to: '/', key: 'droidex' },
+  { to: '/rebirths', key: 'rebirths' },
+  { to: '/missions', key: 'missions' },
+  { to: '/shop', key: 'shop' },
+  { to: '/updates', key: 'updates' },
+  { to: '/guide', key: 'guide' },
 ] as const
 
 /**
@@ -51,7 +50,7 @@ const completion = computed(() =>
           <span class="nav-link__pill">
             <!-- Petit médaillon cyan, présent seulement sur l'onglet actif. -->
             <span v-if="isActive(link.to)" class="nav-link__badge">
-              <DxIcon :name="link.icon" :size="14" />
+              <DxIcon name="brands/droidex-mark" :size="14" />
             </span>
             {{ $t(`nav.${link.key}`) }}
           </span>

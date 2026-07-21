@@ -188,7 +188,7 @@
   display: flex;
   flex-shrink: 0;
   align-items: center;
-  padding-inline: 0.25rem;
+  padding-inline: 0.4rem;
 }
 
 .nav-link__pill {
@@ -230,7 +230,7 @@
 .nav-link--active::after {
   content: '';
   position: absolute;
-  inset-inline: 0.25rem;
+  inset-inline: 0.4rem;
   inset-block-end: 0;
   height: 3px;
   border-radius: var(--dx-radius-pill) var(--dx-radius-pill) 0 0;
