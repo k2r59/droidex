@@ -13,7 +13,7 @@ const localePath = useLocalePath()
 <template>
   <NuxtLink
     :to="localePath(`/droids/${droid.slug}`)"
-    class="iconic-card flex shrink-0 flex-col items-center gap-1.5 rounded-card p-4 text-center transition-transform hover:scale-[1.02]"
+    class="flex shrink-0 flex-col items-center gap-1.5 rounded-card p-4 text-center transition-transform hover:scale-[1.02]"
   >
     <DroidImage :droid="droid" tier="DEFAULT" size="md" />
 

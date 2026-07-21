@@ -26,6 +26,60 @@ const sorted = computed(() =>
 )
 
 const shown = computed(() => (props.variant === 'sidebar' ? sorted.value.slice(0, 4) : sorted.value))
+
+/**
+ * Carrousel de la bande horizontale.
+ *
+ * Le défilement natif fait tout le travail — accroche CSS, inertie tactile, molette —
+ * et l'index n'en est qu'une lecture. Piloter la position en JavaScript à la place
+ * casserait le geste tactile, qui est précisément l'usage visé ici.
+ */
+const rail = useTemplateRef<HTMLUListElement>('rail')
+const index = ref(0)
+
+/**
+ * Le rail déborde-t-il assez pour mériter des commandes ?
+ *
+ * En dessous d'une carte de débordement, les flèches et les pastilles ne servent à rien
+ * et forment du bruit : tout est déjà visible. On les masque alors.
+ */
+const debordement = ref(0)
+const defilable = computed(() => debordement.value > 40)
+
+function mesurer() {
+  const el = rail.value
+  if (el) debordement.value = el.scrollWidth - el.clientWidth
+}
+
+onMounted(() => {
+  mesurer()
+  useEventListener(window, 'resize', mesurer)
+})
+
+function majIndex() {
+  const el = rail.value
+  if (!el) return
+  const carte = el.firstElementChild as HTMLElement | null
+  if (!carte) return
+  // Largeur d'une carte plus la gouttière : c'est le pas d'une position à l'autre.
+  const pas = carte.offsetWidth + 12
+  index.value = Math.round(el.scrollLeft / pas)
+}
+
+/**
+ * On pilote `scrollLeft` plutôt que d'appeler `scrollIntoView` : celui-ci ne fait rien
+ * quand la carte visée est déjà partiellement visible — ce qui est le cas dès que le
+ * débordement est faible — et il peut au passage faire défiler la page entière.
+ */
+function versCarte(i: number) {
+  const el = rail.value
+  const carte = el?.children[i] as HTMLElement | undefined
+  if (!el || !carte) return
+  el.scrollTo({ left: carte.offsetLeft - el.offsetLeft, behavior: 'smooth' })
+}
+
+const peutReculer = computed(() => index.value > 0)
+const peutAvancer = computed(() => index.value < shown.value.length - 1)
 </script>
 
 <template>
@@ -45,7 +99,7 @@ const shown = computed(() => (props.variant === 'sidebar' ? sorted.value.slice(0
 
     <!-- `min-h-0` autorise la liste à se comprimer plutôt qu'à déborder du cadre fixe. -->
     <div class="iconic-list flex min-h-0 flex-1 flex-col gap-3">
-      <IconicCard v-for="droid in shown" :key="droid.slug" :droid="droid" class="sidebar-optional" />
+      <IconicCard v-for="droid in shown" :key="droid.slug" :droid="droid" />
     </div>
 
     <NuxtLink
@@ -63,15 +117,61 @@ const shown = computed(() => (props.variant === 'sidebar' ? sorted.value.slice(0
         <h2 class="text-sm font-bold uppercase tracking-wide">{{ $t('iconic.title') }}</h2>
         <p class="text-xs text-ink-muted">{{ $t('iconic.subtitle') }}</p>
       </div>
-      <NuxtLink :to="localePath('/?rarity=iconic')" class="shrink-0 text-sm text-accent hover:underline">
-        {{ $t('iconic.seeAll') }}
-      </NuxtLink>
+      <div class="flex shrink-0 items-center gap-2">
+        <!-- Flèches réservées au pointeur : au doigt, on fait glisser. -->
+        <div class="hidden items-center gap-1 sm:flex">
+          <button
+            type="button"
+            class="dx-icon-button size-9 disabled:opacity-30"
+            :disabled="!peutReculer"
+            :aria-label="$t('common.previous')"
+            @click="versCarte(index - 1)"
+          >
+            <DxIcon name="actions/chevron-left" :size="16" />
+          </button>
+          <button
+            type="button"
+            class="dx-icon-button size-9 disabled:opacity-30"
+            :disabled="!peutAvancer"
+            :aria-label="$t('common.next')"
+            @click="versCarte(index + 1)"
+          >
+            <DxIcon name="actions/chevron-right" :size="16" />
+          </button>
+        </div>
+
+        <NuxtLink :to="localePath('/?rarity=iconic')" class="text-sm text-accent hover:underline">
+          {{ $t('iconic.seeAll') }}
+        </NuxtLink>
+      </div>
     </div>
 
-    <ul class="-mx-4 flex snap-x gap-3 overflow-x-auto px-4 pb-2">
-      <li v-for="droid in shown" :key="droid.slug" class="w-44 snap-start">
+    <ul
+      ref="rail"
+      class="dx-carousel -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth px-4 pb-2"
+      @scroll.passive="majIndex"
+    >
+      <li
+        v-for="droid in shown"
+        :key="droid.slug"
+        class="w-40 shrink-0 snap-start sm:w-44"
+      >
         <IconicCard :droid="droid" class="w-full" />
       </li>
     </ul>
+
+    <!-- Repères de position : sans eux, rien n'indique qu'il reste des cartes à droite. -->
+    <div class="flex justify-center gap-1.5">
+      <button
+        v-for="(droid, i) in shown"
+        :key="`p-${droid.slug}`"
+        type="button"
+        class="h-1.5 rounded-full transition-all"
+        :class="i === index ? 'w-5 bg-accent' : 'w-1.5 bg-edge-strong hover:bg-ink-muted'"
+        :aria-label="droid.name"
+        :aria-current="i === index ? 'true' : undefined"
+        @click="versCarte(i)"
+      />
+    </div>
   </section>
 </template>

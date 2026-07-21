@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { DroidType, Rarity } from '~~/shared/types/droid'
+import type { Droid, DroidType, Rarity } from '~~/shared/types/droid'
 
 const store = useCollectionStore()
 const { t, locale } = useI18n()
@@ -18,6 +18,22 @@ const sort = useHydratedStorage<'rarity' | 'income' | 'cost' | 'name'>('droidex:
 
 const RARITY_ORDER = store.dataset.rarities
 
+/**
+ * Un filtre passé en URL (`/?rarity=iconic`) l'emporte au chargement sur le filtre
+ * mémorisé. Sans ça, les liens « voir tous les Emblématiques » du rail n'avaient aucun
+ * effet : la page se rouvrait sur le dernier filtre stocké, quel qu'il soit.
+ *
+ * Appliqué après le montage, pour ne pas entrer en conflit avec `useHydratedStorage`,
+ * qui adopte la valeur du stockage à ce moment-là.
+ */
+const route = useRoute()
+onMounted(() => {
+  const demande = route.query.rarity
+  if (typeof demande === 'string' && (RARITY_ORDER as readonly string[]).includes(demande)) {
+    rarity.value = demande as Rarity
+  }
+})
+
 const filtered = computed(() => {
   const q = search.value.trim().toLowerCase()
 
@@ -34,8 +50,9 @@ const filtered = computed(() => {
   })
 
   // Le revenu de base sert de départage : à rareté égale, le classement du jeu suit le CPS.
-  const income = (slug: string) =>
-    store.droids.find((d) => d.slug === slug)?.tiers.DEFAULT?.income ?? 0
+  // On le lit sur le droid déjà en main : le chercher par slug relançait un parcours
+  // linéaire deux fois par comparaison, soit un tri en O(n² log n) pour rien.
+  const income = (d: Droid) => d.tiers.DEFAULT?.income ?? 0
 
   return [...list].sort((a, b) => {
     switch (sort.value) {
@@ -48,7 +65,7 @@ const filtered = computed(() => {
       default:
         return (
           RARITY_ORDER.indexOf(a.rarity) - RARITY_ORDER.indexOf(b.rarity) ||
-          income(a.slug) - income(b.slug)
+          income(a) - income(b)
         )
     }
   })
@@ -134,13 +151,20 @@ onKeyStroke('Escape', () => {
         </select>
       </div>
 
+      <!--
+        Le style des pastilles est écrit ici plutôt qu'emprunté à `dx-button` : celui-ci
+        impose une hauteur minimale de 42 px, qui gonflait la pastille active en ovale à
+        côté des autres, hautes de 26 px.
+      -->
       <div class="flex flex-wrap items-center gap-2">
         <button
           v-for="o in (['all', 'owned', 'missing', 'flawless'] as const)"
           :key="o"
           type="button"
-          class="rounded-full px-3 py-1 text-xs font-medium transition-colors"
-          :class="ownership === o ? 'dx-button dx-button--primary' : 'bg-panel text-ink-muted hover:text-ink'"
+          class="rounded-full border px-3 py-1 text-xs font-medium transition-colors"
+          :class="ownership === o
+            ? 'border-[#69ecff] bg-gradient-to-b from-[#54e7ff] to-[#17badc] text-[#00131b]'
+            : 'border-transparent bg-panel text-ink-muted hover:text-ink'"
           @click="ownership = o"
         >
           {{ $t(o === 'all' ? 'droidex.filterAll' : `droidex.filter${o.charAt(0).toUpperCase()}${o.slice(1)}`) }}

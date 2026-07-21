@@ -81,7 +81,7 @@ export default defineNuxtConfig({
         },
         {
           // La progression doit rester fraîche, mais rester lisible hors ligne.
-          urlPattern: ({ url }) => url.pathname.startsWith('/api/v1/progress'),
+          urlPattern: ({ url }) => url.pathname.startsWith('/api/progress'),
           handler: 'NetworkFirst',
           options: { cacheName: 'progress', networkTimeoutSeconds: 5 },
         },
