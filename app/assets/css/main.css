@@ -172,8 +172,9 @@
   border: 1px solid transparent;
   border-radius: var(--dx-radius-md);
   color: var(--color-ink-muted);
-  font-family: var(--font-display);
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
   transition: color var(--dx-fast), background var(--dx-fast), border-color var(--dx-fast);
 }
 
@@ -184,6 +185,7 @@
 
 .side-nav-item.nav-active {
   color: var(--color-ink-strong);
+  font-weight: 600;
   background: rgb(69 155 255 / 0.12);
   border-color: rgb(37 215 255 / 0.55);
   box-shadow: none;

@@ -37,11 +37,19 @@ const socials = [
   <aside class="sticky top-0 hidden h-dvh w-60 shrink-0 flex-col gap-5 overflow-hidden border-r border-edge bg-panel px-4 py-5 xl:flex">
     <NuxtLink :to="localePath('/')" class="flex items-center gap-2.5">
       <img :src="mark" alt="" class="size-9">
-      <span class="text-xl font-bold tracking-tight">DROIDEX</span>
+      <span class="text-xl font-bold tracking-[0.06em]">DROIDEX</span>
     </NuxtLink>
 
+    <!-- Filet de séparation, terminé par une flèche : il marque le passage de
+         l'identité à la navigation. -->
+    <span class="-mt-2 flex items-center gap-1" aria-hidden="true">
+      <span class="h-px flex-1 bg-gradient-to-r from-transparent via-edge to-edge-strong" />
+      <DxIcon name="actions/arrow-right" :size="11" class="text-edge-strong" />
+    </span>
+
     <div class="flex flex-col gap-1">
-      <p class="px-2 pb-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink-muted">
+      <p class="flex items-center gap-1.5 px-2 pb-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink-muted">
+        <DxIcon name="actions/plus" :size="9" />
         {{ $t('nav.collection') }}
       </p>
 
