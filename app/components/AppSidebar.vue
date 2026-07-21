@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import mark from '~/assets/images/droidex-mark.svg'
-import background from '~/assets/images/backgrounds/sidebar-left.webp'
 import rebirthData from '~/data/rebirths.json'
 
 /**
@@ -25,16 +24,15 @@ const nextRebirth = computed(() => Math.min(store.rebirth + 1, rebirthData.maxRe
 const nextBonus = computed(() => Math.round(rebirthData.creditMultiplierPerLevel * 100))
 
 const socials = [
-  { id: 'discord', label: 'Discord', icon: '◉' },
-  { id: 'bluesky', label: 'Bluesky', icon: '❋' },
-  { id: 'youtube', label: 'YouTube', icon: '▶' },
-  { id: 'twitter', label: 'X', icon: '✕' },
+  { id: 'discord', label: 'Discord — Droid Tycoon', icon: 'brands/discord', href: 'https://discord.gg/droidtycoon' },
+  { id: 'foad', label: 'X — FOAD', icon: 'brands/x', href: 'https://x.com/FoadZone' },
+  { id: 'blzn', label: 'X — Blzn Studios', icon: 'brands/x', href: 'https://x.com/BlznDev' },
+  { id: 'island', label: 'Île Fortnite', icon: 'actions/external', href: 'https://www.fortnite.com/@foad/7865-8305-9184' },
 ] as const
 </script>
 
 <template>
-  <aside class="sticky top-0 hidden h-dvh w-60 shrink-0 flex-col gap-5 overflow-hidden border-r border-edge bg-panel bg-cover bg-center px-4 py-5 xl:flex"
-    :style="{ backgroundImage: `linear-gradient(rgb(7 16 31 / 0.88), rgb(7 16 31 / 0.94)), url(${background})` }">
+  <aside class="sticky top-0 hidden h-dvh w-60 shrink-0 flex-col gap-5 overflow-hidden border-r border-edge bg-panel px-4 py-5 xl:flex">
     <NuxtLink :to="localePath('/')" class="flex items-center gap-2.5">
       <img :src="mark" alt="" class="size-9">
       <span class="text-xl font-bold tracking-tight">DROIDEX</span>
@@ -88,12 +86,18 @@ const socials = [
     <div class="sidebar-social flex shrink-0 flex-col items-center gap-2">
       <p class="text-xs text-ink-muted">{{ $t('common.joinCommunity') }}</p>
       <div class="flex gap-2">
-        <span
+        <a
           v-for="s in socials"
           :key="s.id"
-          class="grid size-8 cursor-default place-items-center rounded-lg bg-panel-raised text-sm text-ink-muted"
+          :href="s.href"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="grid size-9 place-items-center rounded-full bg-panel-raised text-ink-muted transition-colors hover:bg-accent/15 hover:text-accent"
           :title="s.label"
-        >{{ s.icon }}</span>
+          :aria-label="s.label"
+        >
+          <DxIcon :name="s.icon" :size="16" />
+        </a>
       </div>
     </div>
   </aside>
