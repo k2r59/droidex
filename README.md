@@ -86,11 +86,20 @@ Points connus à surveiller :
   Legendary, ×16 Mythic). La « règle du ×2 par palier » relayée par les guides est fausse.
 - **Coûts Mythic** : les sources divergent d'un facteur ~800 selon qu'elles indiquent le
   coût de base ou celui du palier maximum.
-- **Cycles 2 à 4** : les coûts en crédits sont **recopiés du cycle 1**, faute de relevé.
-  Le drapeau `creditsAssumed` les marque et l'UI les signale par un ⚠, pour qu'un chiffre
-  supposé ne se lise pas comme un chiffre mesuré. Les exigences de ces cycles ne sont pas
-  publiées non plus, à l'exception du palier final (droid Galactique) et de deux paliers
-  du cycle 4.
+- **Les quatre cycles viennent d'une source unique**, `tycoon-tools.com`. Aucune
+  corroboration indépendante n'existe : les autres sites communautaires consultés semblent
+  dériver du même tracker amont. Le cycle 1 y correspond à 26 paliers sur 28 aux données
+  que nous tenions d'ailleurs — ce qui a motivé la confiance, mais indique aussi que nos
+  données d'origine venaient de là, donc que le recoupement n'en est pas un. Toutes les
+  exigences portent `sourceUnique` et la page l'affiche.
+- **Coûts en crédits identiques sur les quatre cycles** : la source l'énonce, et la courbe
+  le corrobore (×2,5 par palier du 8 au 20, ×1,5 jusqu'au 28 — une régularité qui décrit
+  une propriété du palier, pas du cycle).
+- **Blocs dupliqués entre cycles** : les cycles 2 et 3 sont identiques aux paliers 13-20,
+  les cycles 3 et 4 aux paliers 4-13. Des cycles dont la raison d'être est d'exiger des
+  droids différents ne devraient pas l'être, et le motif contigu est la signature d'un
+  copier-coller côté source. Le champ `identiqueAuxCycles` est **calculé** par le
+  générateur, pas codé en dur : si la source se corrige, le signalement disparaît seul.
 - **`maxRebirth: 28`** : contesté. Des sources récentes annoncent 23 ou 27.
 
 ## Images

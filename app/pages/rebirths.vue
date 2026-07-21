@@ -11,7 +11,7 @@ useSeoMeta({
 })
 
 type Requirement = { slug: string, tier: Tier | null }
-type Level = { level: number, credits: number, creditsAssumed?: boolean, droids: Requirement[] }
+type Level = { level: number, credits: number, droids: Requirement[], sourceUnique?: boolean, identiqueAuxCycles?: number[] }
 
 const cycles = rebirthData.cycles as Record<string, Level[]>
 const levels = computed<Level[]>(() => cycles[String(store.cycle)] ?? cycles['1']!)
@@ -266,11 +266,6 @@ const shown = computed(() => {
           </h2>
           <p class="text-sm">
             <span class="font-mono text-lg font-bold text-nova">{{ formatNumber(nextLevel.credits, locale) }}</span>
-            <span
-              v-if="nextLevel.creditsAssumed"
-              class="ml-1 cursor-help text-xs text-warn"
-              :title="$t('rebirth.creditsAssumed')"
-            >⚠</span>
             <span class="ml-1 text-ink-muted">{{ $t('rebirth.creditsRequired') }}</span>
           </p>
         </div>
@@ -375,6 +370,20 @@ const shown = computed(() => {
           </label>
         </div>
 
+        <!--
+          La provenance est dite une fois pour toute la grille plutôt que répétée sur
+          chaque tuile : elle vaut pour l'ensemble des exigences des quatre cycles, et un
+          avertissement répété cent douze fois cesse d'être lu.
+        -->
+        <p class="dx-alert dx-alert--warning mb-3 border-0 text-[0.8125rem]">
+          <DxIcon
+            name="status/info"
+            :size="17"
+            class="mt-px shrink-0"
+          />
+          <span>{{ $t('rebirth.singleSource') }}</span>
+        </p>
+
         <ul class="grid grid-cols-2 gap-2 sm:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8">
           <li
             v-for="lvl in shown"
@@ -422,9 +431,9 @@ const shown = computed(() => {
                 />
                 <span class="font-mono text-sm">{{ formatNumber(lvl.credits, locale) }}</span>
                 <span
-                  v-if="lvl.creditsAssumed"
+                  v-if="lvl.identiqueAuxCycles"
                   class="cursor-help text-xs text-warn"
-                  :title="$t('rebirth.creditsAssumed')"
+                  :title="$t('rebirth.sameAsCycles', { cycles: lvl.identiqueAuxCycles.join(', ') })"
                 >⚠</span>
               </p>
             </button>
@@ -479,11 +488,6 @@ const shown = computed(() => {
                   class="shrink-0 text-nova"
                 />
                 <span class="font-mono font-bold text-nova">{{ formatNumber(selected.credits, locale) }}</span>
-                <span
-                  v-if="selected.creditsAssumed"
-                  class="cursor-help text-xs text-warn"
-                  :title="$t('rebirth.creditsAssumed')"
-                >⚠</span>
                 <span class="text-sm text-ink-muted">{{ $t('rebirth.creditsRequired') }}</span>
               </p>
             </div>
@@ -530,6 +534,22 @@ const shown = computed(() => {
           </p>
 
           <template v-else>
+            <!--
+              Deux réserves distinctes, et il faut les distinguer : la provenance vaut pour
+              toutes les exigences, la duplication ne concerne que certains paliers.
+            -->
+            <p
+              v-if="selected.identiqueAuxCycles"
+              class="dx-alert dx-alert--warning mb-3 border-0 text-[0.8125rem]"
+            >
+              <DxIcon
+                name="status/warning"
+                :size="17"
+                class="mt-px shrink-0"
+              />
+              <span>{{ $t('rebirth.sameAsCycles', { cycles: selected.identiqueAuxCycles.join(', ') }) }}</span>
+            </p>
+
             <p class="mb-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
               {{ $t('rebirth.droidsRequired') }}
             </p>

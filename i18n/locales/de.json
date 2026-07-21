@@ -127,7 +127,8 @@
     "allTiers": "Alle Rebirths",
     "searchTier": "Rebirth suchen…",
     "tierLocked": "Anforderungen nicht veröffentlicht",
-    "creditsAssumed": "Kosten aus Zyklus 1 übernommen, für diesen Zyklus nicht gemessen."
+    "sameAsCycles": "Anforderungen identisch mit Zyklus {cycles} — vermutlich ein Kopierfehler der Quelle, im Spiel prüfen.",
+    "singleSource": "Die Anforderungen aller vier Zyklen stammen aus einer einzigen Community-Quelle, ohne unabhängige Bestätigung. Vor dem Einsatz von Ressourcen im Spiel prüfen."
   },
   "superRebirth": {
     "title": "Super Rebirths",

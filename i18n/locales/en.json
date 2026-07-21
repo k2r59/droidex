@@ -127,7 +127,8 @@
     "allTiers": "All rebirths",
     "searchTier": "Search a rebirth…",
     "tierLocked": "Requirements not published",
-    "creditsAssumed": "Cost carried over from cycle 1, not measured for this cycle."
+    "sameAsCycles": "Requirements identical to cycle {cycles} — likely a copy error in the source, check in game.",
+    "singleSource": "The requirements for all four cycles come from a single community source, with no independent corroboration. Check in game before committing resources."
   },
   "superRebirth": {
     "title": "Super Rebirths",
