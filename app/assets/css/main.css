@@ -167,10 +167,10 @@
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  min-height: 48px;
-  padding: 0.7rem 0.8rem;
+  min-height: 40px;
+  padding: 0.5rem 0.8rem;
   border: 1px solid transparent;
-  border-radius: var(--dx-radius-md);
+  border-radius: 0.4rem;
   color: var(--color-ink-muted);
   font-family: var(--font-sans);
   font-size: 0.9375rem;
@@ -183,12 +183,18 @@
   background: rgb(69 155 255 / 0.08);
 }
 
+/*
+ * État actif. Mesuré au pixel sur le gros plan : ce n'est pas un liseré cyan complet
+ * mais une BARRE VERTICALE à gauche, le reste du contour étant à peine perceptible.
+ * Le profil de couleurs le montre sans ambiguïté — bord gauche à 215 de bleu, bords
+ * haut et bas à 46, soit le niveau du fond.
+ */
 .side-nav-item.nav-active {
   color: var(--color-ink-strong);
   font-weight: 600;
-  background: rgb(69 155 255 / 0.12);
-  border-color: rgb(37 215 255 / 0.55);
-  box-shadow: none;
+  background: rgb(37 215 255 / 0.07);
+  border-color: rgb(37 215 255 / 0.16);
+  box-shadow: inset 2px 0 0 0 var(--dx-cyan);
 }
 
 /* Le soulignement appartient à la barre du haut, pas à la colonne. */
