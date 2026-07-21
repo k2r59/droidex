@@ -26,7 +26,7 @@ qui sont référencées par nom calculé depuis le dataset.
 | `dots.svg` `grid.svg` `hex.svg` `scanlines.svg` | Complete Asset Pack | Motifs de fond |
 | `nebula-cyan.svg` `stars-deep.svg` | Complete Asset Pack | Décors spatiaux |
 | `nova-crystal-hero.webp` | Complete Asset Pack | Illustration du rail Supers Renaissances |
-| `planet-rebirth.svg` | Composition maison | Fond de la carte « prochaine renaissance » |
+| `planet-rebirth.webp` | Extrait de la maquette | Fond de la carte « prochaine renaissance » |
 
 ## Bannières de page
 
@@ -58,9 +58,11 @@ remettre en service se fait en remontant un fichier d'un dossier, sans toucher a
 `pnpm run import:banner` importe une nouvelle bannière depuis le presse-papiers ou un
 chemin, et produit les trois largeurs attendues.
 
-## Sur `planet-rebirth.svg`
+## Sur `planet-rebirth.webp`
 
-Composition de substitution, en SVG plutôt qu'en bitmap : nette à toute taille pour 2 Ko,
-là où l'illustration d'origine n'a pas pu être récupérée. Pour la remplacer, déposer le
-fichier et changer l'import dans `AppSidebar.vue` — la carte l'utilise déjà en fond
-plein cadre, aucune autre adaptation n'est nécessaire.
+Recadrée depuis la maquette de la carte, dans la bande centrale qui ne porte aucun texte
+— les libellés occupent le haut et le bas. 420 px de large pour une carte de 207 px, soit
+le double nécessaire aux écrans à densité double ; la source ne permet pas mieux.
+
+Si l'illustration d'origine en pleine résolution devient disponible, la remplacer au même
+nom suffit.

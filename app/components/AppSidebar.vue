@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import mark from '~/assets/images/droidex-mark.svg'
 
-import planet from '~/assets/images/planet-rebirth.svg'
+import planet from '~/assets/images/planet-rebirth.webp'
 import rebirthData from '~/data/rebirths.json'
 
 /**
