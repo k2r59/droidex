@@ -1,0 +1,4721 @@
+{
+  "version": 1,
+  "generatedFrom": "erikpeik/droidex@2026-06-02 + guides communautaires juillet 2026",
+  "tiers": [
+    "DEFAULT",
+    "GOLD",
+    "DIAMOND",
+    "RAINBOW",
+    "BESKAR",
+    "GALACTIC"
+  ],
+  "quantifiedTiers": [
+    "DEFAULT",
+    "GOLD",
+    "DIAMOND",
+    "RAINBOW",
+    "BESKAR"
+  ],
+  "rarities": [
+    "common",
+    "rare",
+    "epic",
+    "legendary",
+    "mythic",
+    "iconic"
+  ],
+  "types": [
+    "worker",
+    "astromech",
+    "battle"
+  ],
+  "droids": [
+    {
+      "slug": "mouse",
+      "name": "MOUSE",
+      "assetKey": "MOUSE",
+      "rarity": "common",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 2,
+          "incomeLabel": "2/s",
+          "cost": 950,
+          "costLabel": "950",
+          "value": 665,
+          "valueLabel": "665",
+          "image": "MOUSE_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 4,
+          "incomeLabel": "4/s",
+          "cost": 3800,
+          "costLabel": "3.8k",
+          "value": 2660,
+          "valueLabel": "2.66k",
+          "image": "MOUSE_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 8,
+          "incomeLabel": "8/s",
+          "cost": 7600,
+          "costLabel": "7.6k",
+          "value": 5320,
+          "valueLabel": "5.32k",
+          "image": "MOUSE_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 16,
+          "incomeLabel": "16/s",
+          "cost": 15200,
+          "costLabel": "15.20k",
+          "value": 10640,
+          "valueLabel": "10.64k",
+          "image": "MOUSE_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 24,
+          "incomeLabel": "24/s",
+          "cost": 15200,
+          "costLabel": "15.20k",
+          "value": 10640,
+          "valueLabel": "10.64k",
+          "image": "MOUSE_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "MOUSE_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "pit",
+      "name": "PIT",
+      "assetKey": "PIT",
+      "rarity": "common",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 2,
+          "incomeLabel": "2/s",
+          "cost": 1100,
+          "costLabel": "1.1k",
+          "value": 770,
+          "valueLabel": "770",
+          "image": "PIT_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 4,
+          "incomeLabel": "4/s",
+          "cost": 4400,
+          "costLabel": "4.4k",
+          "value": 3080,
+          "valueLabel": "3.08k",
+          "image": "PIT_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 8,
+          "incomeLabel": "8/s",
+          "cost": 8800,
+          "costLabel": "8.8k",
+          "value": 6160,
+          "valueLabel": "6.16k",
+          "image": "PIT_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 16,
+          "incomeLabel": "16/s",
+          "cost": 17600,
+          "costLabel": "17.60k",
+          "value": 12320,
+          "valueLabel": "12.32k",
+          "image": "PIT_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 24,
+          "incomeLabel": "24/s",
+          "cost": 17600,
+          "costLabel": "17.60k",
+          "value": 12320,
+          "valueLabel": "12.32k",
+          "image": "PIT_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "PIT_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "cb",
+      "name": "CB",
+      "assetKey": "CB",
+      "rarity": "common",
+      "type": "astromech",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 3,
+          "incomeLabel": "3/s",
+          "cost": 2000,
+          "costLabel": "2k",
+          "value": 1400,
+          "valueLabel": "1.40k",
+          "image": "CB_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 6,
+          "incomeLabel": "6/s",
+          "cost": 8000,
+          "costLabel": "8k",
+          "value": 5600,
+          "valueLabel": "5.60k",
+          "image": "CB_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 12,
+          "incomeLabel": "12/s",
+          "cost": 16000,
+          "costLabel": "16k",
+          "value": 11200,
+          "valueLabel": "11.20k",
+          "image": "CB_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 24,
+          "incomeLabel": "24/s",
+          "cost": 32000,
+          "costLabel": "32k",
+          "value": 22400,
+          "valueLabel": "22.40k",
+          "image": "CB_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 36,
+          "incomeLabel": "36/s",
+          "cost": 32000,
+          "costLabel": "32k",
+          "value": 22400,
+          "valueLabel": "22.40k",
+          "image": "CB_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "CB_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "r3",
+      "name": "R3",
+      "assetKey": "R3",
+      "rarity": "common",
+      "type": "astromech",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 3,
+          "incomeLabel": "3/s",
+          "cost": 2000,
+          "costLabel": "2k",
+          "value": 1400,
+          "valueLabel": "1.40k",
+          "image": "R3_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 6,
+          "incomeLabel": "6/s",
+          "cost": 8000,
+          "costLabel": "8k",
+          "value": 5600,
+          "valueLabel": "5.60k",
+          "image": "R3_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 12,
+          "incomeLabel": "12/s",
+          "cost": 16000,
+          "costLabel": "16k",
+          "value": 11200,
+          "valueLabel": "11.20k",
+          "image": "R3_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 24,
+          "incomeLabel": "24/s",
+          "cost": 32000,
+          "costLabel": "32k",
+          "value": 22400,
+          "valueLabel": "22.40k",
+          "image": "R3_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 36,
+          "incomeLabel": "36/s",
+          "cost": 32000,
+          "costLabel": "32k",
+          "value": 22400,
+          "valueLabel": "22.40k",
+          "image": "R3_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "R3_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "r5",
+      "name": "R5",
+      "assetKey": "R5",
+      "rarity": "common",
+      "type": "astromech",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 3,
+          "incomeLabel": "3/s",
+          "cost": 2000,
+          "costLabel": "2k",
+          "value": 1400,
+          "valueLabel": "1.40k",
+          "image": "R5_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 6,
+          "incomeLabel": "6/s",
+          "cost": 8000,
+          "costLabel": "8k",
+          "value": 5600,
+          "valueLabel": "5.60k",
+          "image": "R5_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 12,
+          "incomeLabel": "12/s",
+          "cost": 16000,
+          "costLabel": "16k",
+          "value": 11200,
+          "valueLabel": "11.20k",
+          "image": "R5_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 24,
+          "incomeLabel": "24/s",
+          "cost": 32000,
+          "costLabel": "32k",
+          "value": 22400,
+          "valueLabel": "22.40k",
+          "image": "R5_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 36,
+          "incomeLabel": "36/s",
+          "cost": 32000,
+          "costLabel": "32k",
+          "value": 22400,
+          "valueLabel": "22.40k",
+          "image": "R5_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "R5_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "drk-1-probe",
+      "name": "DRK-1 PROBE",
+      "assetKey": "DRK-1_PROBE",
+      "rarity": "common",
+      "type": "battle",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 3,
+          "incomeLabel": "3/s",
+          "cost": 3000,
+          "costLabel": "3k",
+          "value": 2100,
+          "valueLabel": "2.10k",
+          "image": "DRK-1_PROBE_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 6,
+          "incomeLabel": "6/s",
+          "cost": 12000,
+          "costLabel": "12k",
+          "value": 8400,
+          "valueLabel": "8.40k",
+          "image": "DRK-1_PROBE_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 12,
+          "incomeLabel": "12/s",
+          "cost": 24000,
+          "costLabel": "24k",
+          "value": 16800,
+          "valueLabel": "16.80k",
+          "image": "DRK-1_PROBE_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 24,
+          "incomeLabel": "24/s",
+          "cost": 48000,
+          "costLabel": "48k",
+          "value": 33600,
+          "valueLabel": "33.60k",
+          "image": "DRK-1_PROBE_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 36,
+          "incomeLabel": "36/s",
+          "cost": 48000,
+          "costLabel": "48k",
+          "value": 33600,
+          "valueLabel": "33.60k",
+          "image": "DRK-1_PROBE_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "DRK-1_PROBE_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "gonk",
+      "name": "GONK",
+      "assetKey": "GONK",
+      "rarity": "common",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 4,
+          "incomeLabel": "4/s",
+          "cost": 3000,
+          "costLabel": "3k",
+          "value": 2100,
+          "valueLabel": "2.10k",
+          "image": "GONK_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 8,
+          "incomeLabel": "8/s",
+          "cost": 12000,
+          "costLabel": "12k",
+          "value": 8400,
+          "valueLabel": "8.40k",
+          "image": "GONK_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 16,
+          "incomeLabel": "16/s",
+          "cost": 24000,
+          "costLabel": "24k",
+          "value": 16800,
+          "valueLabel": "16.80k",
+          "image": "GONK_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 32,
+          "incomeLabel": "32/s",
+          "cost": 48000,
+          "costLabel": "48k",
+          "value": 33600,
+          "valueLabel": "33.60k",
+          "image": "GONK_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 48,
+          "incomeLabel": "48/s",
+          "cost": 48000,
+          "costLabel": "48k",
+          "value": 33600,
+          "valueLabel": "33.60k",
+          "image": "GONK_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "GONK_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "r8",
+      "name": "R8",
+      "assetKey": "R8",
+      "rarity": "common",
+      "type": "astromech",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 4,
+          "incomeLabel": "4/s",
+          "cost": 3000,
+          "costLabel": "3k",
+          "value": 2100,
+          "valueLabel": "2.10k",
+          "image": "R8_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 8,
+          "incomeLabel": "8/s",
+          "cost": 12000,
+          "costLabel": "12k",
+          "value": 8400,
+          "valueLabel": "8.40k",
+          "image": "R8_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 16,
+          "incomeLabel": "16/s",
+          "cost": 24000,
+          "costLabel": "24k",
+          "value": 16800,
+          "valueLabel": "16.80k",
+          "image": "R8_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 32,
+          "incomeLabel": "32/s",
+          "cost": 48000,
+          "costLabel": "48k",
+          "value": 33600,
+          "valueLabel": "33.60k",
+          "image": "R8_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 48,
+          "incomeLabel": "48/s",
+          "cost": 48000,
+          "costLabel": "48k",
+          "value": 33600,
+          "valueLabel": "33.60k",
+          "image": "R8_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "R8_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "id10",
+      "name": "ID10",
+      "assetKey": "ID10",
+      "rarity": "common",
+      "type": "battle",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 4,
+          "incomeLabel": "4/s",
+          "cost": 4000,
+          "costLabel": "4k",
+          "value": 2800,
+          "valueLabel": "2.80k",
+          "image": "ID10_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 8,
+          "incomeLabel": "8/s",
+          "cost": 16000,
+          "costLabel": "16k",
+          "value": 11200,
+          "valueLabel": "11.20k",
+          "image": "ID10_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 16,
+          "incomeLabel": "16/s",
+          "cost": 32000,
+          "costLabel": "32k",
+          "value": 22400,
+          "valueLabel": "22.40k",
+          "image": "ID10_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 32,
+          "incomeLabel": "32/s",
+          "cost": 64000,
+          "costLabel": "64k",
+          "value": 44800,
+          "valueLabel": "44.80k",
+          "image": "ID10_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 48,
+          "incomeLabel": "48/s",
+          "cost": 64000,
+          "costLabel": "64k",
+          "value": 44800,
+          "valueLabel": "44.80k",
+          "image": "ID10_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "ID10_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "b1-battle",
+      "name": "B1 BATTLE",
+      "assetKey": "B1_BATTLE",
+      "rarity": "common",
+      "type": "battle",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 5,
+          "incomeLabel": "5/s",
+          "cost": 4000,
+          "costLabel": "4k",
+          "value": 2800,
+          "valueLabel": "2.80k",
+          "image": "B1_BATTLE_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 10,
+          "incomeLabel": "10/s",
+          "cost": 16000,
+          "costLabel": "16k",
+          "value": 11200,
+          "valueLabel": "11.20k",
+          "image": "B1_BATTLE_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 20,
+          "incomeLabel": "20/s",
+          "cost": 32000,
+          "costLabel": "32k",
+          "value": 22400,
+          "valueLabel": "22.40k",
+          "image": "B1_BATTLE_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 40,
+          "incomeLabel": "40/s",
+          "cost": 64000,
+          "costLabel": "64k",
+          "value": 44800,
+          "valueLabel": "44.80k",
+          "image": "B1_BATTLE_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 60,
+          "incomeLabel": "60/s",
+          "cost": 64000,
+          "costLabel": "64k",
+          "value": 44800,
+          "valueLabel": "44.80k",
+          "image": "B1_BATTLE_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "B1_BATTLE_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "imperial-probe",
+      "name": "IMPERIAL PROBE",
+      "assetKey": "IMPERIAL_PROBE",
+      "rarity": "common",
+      "type": "battle",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 6,
+          "incomeLabel": "6/s",
+          "cost": 5000,
+          "costLabel": "5k",
+          "value": 3500,
+          "valueLabel": "3.50k",
+          "image": "IMPERIAL_PROBE_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 12,
+          "incomeLabel": "12/s",
+          "cost": 20000,
+          "costLabel": "20k",
+          "value": 14000,
+          "valueLabel": "14.00k",
+          "image": "IMPERIAL_PROBE_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 24,
+          "incomeLabel": "24/s",
+          "cost": 40000,
+          "costLabel": "40k",
+          "value": 28000,
+          "valueLabel": "28.00k",
+          "image": "IMPERIAL_PROBE_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 48,
+          "incomeLabel": "48/s",
+          "cost": 80000,
+          "costLabel": "80k",
+          "value": 56000,
+          "valueLabel": "56.00k",
+          "image": "IMPERIAL_PROBE_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 72,
+          "incomeLabel": "72/s",
+          "cost": 80000,
+          "costLabel": "80k",
+          "value": 56000,
+          "valueLabel": "56.00k",
+          "image": "IMPERIAL_PROBE_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "IMPERIAL_PROBE_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "bdx-explorer",
+      "name": "BDX EXPLORER",
+      "assetKey": "BDX_EXPLORER",
+      "rarity": "rare",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 15,
+          "incomeLabel": "15/s",
+          "cost": 25000,
+          "costLabel": "25k",
+          "value": 17500,
+          "valueLabel": "17.50k",
+          "image": "BDX_EXPLORER_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 30,
+          "incomeLabel": "30/s",
+          "cost": 100000,
+          "costLabel": "100k",
+          "value": 70000,
+          "valueLabel": "70.00k",
+          "image": "BDX_EXPLORER_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 60,
+          "incomeLabel": "60/s",
+          "cost": 200000,
+          "costLabel": "200k",
+          "value": 140000,
+          "valueLabel": "140.00k",
+          "image": "BDX_EXPLORER_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 120,
+          "incomeLabel": "120/s",
+          "cost": 400000,
+          "costLabel": "400k",
+          "value": 280000,
+          "valueLabel": "280.00k",
+          "image": "BDX_EXPLORER_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 180,
+          "incomeLabel": "180/s",
+          "cost": 400000,
+          "costLabel": "400k",
+          "value": 280000,
+          "valueLabel": "280.00k",
+          "image": "BDX_EXPLORER_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "BDX_EXPLORER_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "2bb",
+      "name": "2BB",
+      "assetKey": "2BB",
+      "rarity": "rare",
+      "type": "astromech",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 17,
+          "incomeLabel": "17/s",
+          "cost": 30000,
+          "costLabel": "30k",
+          "value": 21000,
+          "valueLabel": "21.00k",
+          "image": "2BB_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 34,
+          "incomeLabel": "34/s",
+          "cost": 120000,
+          "costLabel": "120k",
+          "value": 84000,
+          "valueLabel": "84.00k",
+          "image": "2BB_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 68,
+          "incomeLabel": "68/s",
+          "cost": 240000,
+          "costLabel": "240k",
+          "value": 168000,
+          "valueLabel": "168.00k",
+          "image": "2BB_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 136,
+          "incomeLabel": "136/s",
+          "cost": 480000,
+          "costLabel": "480k",
+          "value": 336000,
+          "valueLabel": "336.00k",
+          "image": "2BB_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 204,
+          "incomeLabel": "204/s",
+          "cost": 480000,
+          "costLabel": "480k",
+          "value": 336000,
+          "valueLabel": "336.00k",
+          "image": "2BB_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "2BB_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "nav-ex",
+      "name": "NAV-EX",
+      "assetKey": "NAV-EX",
+      "rarity": "rare",
+      "type": "battle",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 18,
+          "incomeLabel": "18/s",
+          "cost": 36000,
+          "costLabel": "36k",
+          "value": 25200,
+          "valueLabel": "25.20k",
+          "image": "NAV-EX_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 36,
+          "incomeLabel": "36/s",
+          "cost": 144000,
+          "costLabel": "144k",
+          "value": 100800,
+          "valueLabel": "100.80k",
+          "image": "NAV-EX_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 72,
+          "incomeLabel": "72/s",
+          "cost": 288000,
+          "costLabel": "288k",
+          "value": 201600,
+          "valueLabel": "201.60k",
+          "image": "NAV-EX_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 144,
+          "incomeLabel": "144/s",
+          "cost": 576000,
+          "costLabel": "576k",
+          "value": 403200,
+          "valueLabel": "403.20k",
+          "image": "NAV-EX_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 216,
+          "incomeLabel": "216/s",
+          "cost": 576000,
+          "costLabel": "576k",
+          "value": 403200,
+          "valueLabel": "403.20k",
+          "image": "NAV-EX_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "NAV-EX_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "bal-core",
+      "name": "BAL-CORE",
+      "assetKey": "BAL-CORE",
+      "rarity": "rare",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 23,
+          "incomeLabel": "23/s",
+          "cost": 43000,
+          "costLabel": "43k",
+          "value": 30100,
+          "valueLabel": "30.10k",
+          "image": "BAL-CORE_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 46,
+          "incomeLabel": "46/s",
+          "cost": 172000,
+          "costLabel": "172k",
+          "value": 120400,
+          "valueLabel": "120.40k",
+          "image": "BAL-CORE_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 92,
+          "incomeLabel": "92/s",
+          "cost": 344000,
+          "costLabel": "344k",
+          "value": 240800,
+          "valueLabel": "240.80k",
+          "image": "BAL-CORE_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 184,
+          "incomeLabel": "184/s",
+          "cost": 688000,
+          "costLabel": "688k",
+          "value": 481600,
+          "valueLabel": "481.60k",
+          "image": "BAL-CORE_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 276,
+          "incomeLabel": "276/s",
+          "cost": 688000,
+          "costLabel": "688k",
+          "value": 481600,
+          "valueLabel": "481.60k",
+          "image": "BAL-CORE_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "BAL-CORE_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "vect-arm",
+      "name": "VECT-ARM",
+      "assetKey": "VECT-ARM",
+      "rarity": "rare",
+      "type": "battle",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 27,
+          "incomeLabel": "27/s",
+          "cost": 52000,
+          "costLabel": "52k",
+          "value": 36400,
+          "valueLabel": "36.40k",
+          "image": "VECT-ARM_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 54,
+          "incomeLabel": "54/s",
+          "cost": 208000,
+          "costLabel": "208k",
+          "value": 145600,
+          "valueLabel": "145.60k",
+          "image": "VECT-ARM_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 108,
+          "incomeLabel": "108/s",
+          "cost": 416000,
+          "costLabel": "416k",
+          "value": 291200,
+          "valueLabel": "291.20k",
+          "image": "VECT-ARM_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 216,
+          "incomeLabel": "216/s",
+          "cost": 832000,
+          "costLabel": "832k",
+          "value": 582400,
+          "valueLabel": "582.40k",
+          "image": "VECT-ARM_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 324,
+          "incomeLabel": "324/s",
+          "cost": 832000,
+          "costLabel": "832k",
+          "value": 582400,
+          "valueLabel": "582.40k",
+          "image": "VECT-ARM_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "VECT-ARM_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "roll-r",
+      "name": "ROLL-R",
+      "assetKey": "ROLL-R",
+      "rarity": "rare",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 31,
+          "incomeLabel": "31/s",
+          "cost": 62000,
+          "costLabel": "62k",
+          "value": 43400,
+          "valueLabel": "43.40k",
+          "image": "ROLL-R_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 62,
+          "incomeLabel": "62/s",
+          "cost": 248000,
+          "costLabel": "248k",
+          "value": 173600,
+          "valueLabel": "173.60k",
+          "image": "ROLL-R_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 124,
+          "incomeLabel": "124/s",
+          "cost": 496000,
+          "costLabel": "496k",
+          "value": 347200,
+          "valueLabel": "347.20k",
+          "image": "ROLL-R_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 248,
+          "incomeLabel": "248/s",
+          "cost": 992000,
+          "costLabel": "992k",
+          "value": 694400,
+          "valueLabel": "694.40k",
+          "image": "ROLL-R_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 372,
+          "incomeLabel": "372/s",
+          "cost": 992000,
+          "costLabel": "992k",
+          "value": 694400,
+          "valueLabel": "694.40k",
+          "image": "ROLL-R_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "ROLL-R_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "a-lt",
+      "name": "A-LT",
+      "assetKey": "A-LT",
+      "rarity": "rare",
+      "type": "astromech",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 36,
+          "incomeLabel": "36/s",
+          "cost": 74000,
+          "costLabel": "74k",
+          "value": 51800,
+          "valueLabel": "51.80k",
+          "image": "A-LT_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 72,
+          "incomeLabel": "72/s",
+          "cost": 296000,
+          "costLabel": "296k",
+          "value": 207200,
+          "valueLabel": "207.20k",
+          "image": "A-LT_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 144,
+          "incomeLabel": "144/s",
+          "cost": 592000,
+          "costLabel": "592k",
+          "value": 414400,
+          "valueLabel": "414.40k",
+          "image": "A-LT_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 288,
+          "incomeLabel": "288/s",
+          "cost": 1180000,
+          "costLabel": "1.18m",
+          "value": 828800,
+          "valueLabel": "828.80k",
+          "image": "A-LT_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 432,
+          "incomeLabel": "432/s",
+          "cost": 1180000,
+          "costLabel": "1.18m",
+          "value": 828800,
+          "valueLabel": "828.80k",
+          "image": "A-LT_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "A-LT_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "arg",
+      "name": "ARG",
+      "assetKey": "ARG",
+      "rarity": "rare",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 42,
+          "incomeLabel": "42/s",
+          "cost": 88000,
+          "costLabel": "88k",
+          "value": 61600,
+          "valueLabel": "61.60k",
+          "image": "ARG_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 84,
+          "incomeLabel": "84/s",
+          "cost": 352000,
+          "costLabel": "352k",
+          "value": 246400,
+          "valueLabel": "246.40k",
+          "image": "ARG_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 168,
+          "incomeLabel": "168/s",
+          "cost": 704000,
+          "costLabel": "704k",
+          "value": 492800,
+          "valueLabel": "492.80k",
+          "image": "ARG_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 336,
+          "incomeLabel": "336/s",
+          "cost": 1410000,
+          "costLabel": "1.41m",
+          "value": 985600,
+          "valueLabel": "985.60k",
+          "image": "ARG_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 504,
+          "incomeLabel": "504/s",
+          "cost": 1410000,
+          "costLabel": "1.41m",
+          "value": 985600,
+          "valueLabel": "985.60k",
+          "image": "ARG_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "ARG_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "senate-hovercam",
+      "name": "SENATE HOVERCAM",
+      "assetKey": "SENATE_HOVERCAM",
+      "rarity": "rare",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 46,
+          "incomeLabel": "46/s",
+          "cost": 100000,
+          "costLabel": "100k",
+          "value": 70000,
+          "valueLabel": "70.00k",
+          "image": "SENATE_HOVERCAM_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 92,
+          "incomeLabel": "92/s",
+          "cost": 400000,
+          "costLabel": "400k",
+          "value": 280000,
+          "valueLabel": "280.00k",
+          "image": "SENATE_HOVERCAM_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 184,
+          "incomeLabel": "184/s",
+          "cost": 800000,
+          "costLabel": "800k",
+          "value": 560000,
+          "valueLabel": "560.00k",
+          "image": "SENATE_HOVERCAM_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 368,
+          "incomeLabel": "368/s",
+          "cost": 1600000,
+          "costLabel": "1.60m",
+          "value": 1120000,
+          "valueLabel": "1.12m",
+          "image": "SENATE_HOVERCAM_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 552,
+          "incomeLabel": "552/s",
+          "cost": 1600000,
+          "costLabel": "1.60m",
+          "value": 1120000,
+          "valueLabel": "1.12m",
+          "image": "SENATE_HOVERCAM_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "SENATE_HOVERCAM_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "r4",
+      "name": "R4",
+      "assetKey": "R4",
+      "rarity": "rare",
+      "type": "astromech",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 50,
+          "incomeLabel": "50/s",
+          "cost": 110000,
+          "costLabel": "110k",
+          "value": 77000,
+          "valueLabel": "77.00k",
+          "image": "R4_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 100,
+          "incomeLabel": "100/s",
+          "cost": 440000,
+          "costLabel": "440k",
+          "value": 308000,
+          "valueLabel": "308.00k",
+          "image": "R4_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 200,
+          "incomeLabel": "200/s",
+          "cost": 880000,
+          "costLabel": "880k",
+          "value": 616000,
+          "valueLabel": "616.00k",
+          "image": "R4_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 400,
+          "incomeLabel": "400/s",
+          "cost": 1760000,
+          "costLabel": "1.76m",
+          "value": 1230000,
+          "valueLabel": "1.23m",
+          "image": "R4_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 600,
+          "incomeLabel": "600/s",
+          "cost": 1760000,
+          "costLabel": "1.76m",
+          "value": 1230000,
+          "valueLabel": "1.23m",
+          "image": "R4_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "R4_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "r9",
+      "name": "R9",
+      "assetKey": "R9",
+      "rarity": "rare",
+      "type": "astromech",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 54,
+          "incomeLabel": "54/s",
+          "cost": 120000,
+          "costLabel": "120k",
+          "value": 84000,
+          "valueLabel": "84.00k",
+          "image": "R9_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 108,
+          "incomeLabel": "108/s",
+          "cost": 480000,
+          "costLabel": "480k",
+          "value": 336000,
+          "valueLabel": "336.00k",
+          "image": "R9_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 216,
+          "incomeLabel": "216/s",
+          "cost": 960000,
+          "costLabel": "960k",
+          "value": 672000,
+          "valueLabel": "672.00k",
+          "image": "R9_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 432,
+          "incomeLabel": "432/s",
+          "cost": 1920000,
+          "costLabel": "1.92m",
+          "value": 1340000,
+          "valueLabel": "1.34m",
+          "image": "R9_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 648,
+          "incomeLabel": "648/s",
+          "cost": 1920000,
+          "costLabel": "1.92m",
+          "value": 1340000,
+          "valueLabel": "1.34m",
+          "image": "R9_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "R9_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "bu-4d",
+      "name": "BU-4D",
+      "assetKey": "BU-4D",
+      "rarity": "rare",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 58,
+          "incomeLabel": "58/s",
+          "cost": 130000,
+          "costLabel": "130k",
+          "value": 91000,
+          "valueLabel": "91.00k",
+          "image": "BU-4D_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 116,
+          "incomeLabel": "116/s",
+          "cost": 520000,
+          "costLabel": "520k",
+          "value": 364000,
+          "valueLabel": "364.00k",
+          "image": "BU-4D_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 232,
+          "incomeLabel": "232/s",
+          "cost": 1040000,
+          "costLabel": "1.04m",
+          "value": 728000,
+          "valueLabel": "728.00k",
+          "image": "BU-4D_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 464,
+          "incomeLabel": "464/s",
+          "cost": 2080000,
+          "costLabel": "2.08m",
+          "value": 1460000,
+          "valueLabel": "1.46m",
+          "image": "BU-4D_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 696,
+          "incomeLabel": "696/s",
+          "cost": 2080000,
+          "costLabel": "2.08m",
+          "value": 1460000,
+          "valueLabel": "1.46m",
+          "image": "BU-4D_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "BU-4D_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "hov-r",
+      "name": "HOV-R",
+      "assetKey": "HOV-R",
+      "rarity": "rare",
+      "type": "battle",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 62,
+          "incomeLabel": "62/s",
+          "cost": 140000,
+          "costLabel": "140k",
+          "value": 98000,
+          "valueLabel": "98.00k",
+          "image": "HOV-R_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 124,
+          "incomeLabel": "124/s",
+          "cost": 560000,
+          "costLabel": "560k",
+          "value": 392000,
+          "valueLabel": "392.00k",
+          "image": "HOV-R_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 248,
+          "incomeLabel": "248/s",
+          "cost": 1120000,
+          "costLabel": "1.12m",
+          "value": 784000,
+          "valueLabel": "784.00k",
+          "image": "HOV-R_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 496,
+          "incomeLabel": "496/s",
+          "cost": 2240000,
+          "costLabel": "2.24m",
+          "value": 1570000,
+          "valueLabel": "1.57m",
+          "image": "HOV-R_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 744,
+          "incomeLabel": "744/s",
+          "cost": 2240000,
+          "costLabel": "2.24m",
+          "value": 1570000,
+          "valueLabel": "1.57m",
+          "image": "HOV-R_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "HOV-R_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "b1-security",
+      "name": "B1 SECURITY",
+      "assetKey": "B1_SECURITY",
+      "rarity": "rare",
+      "type": "battle",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 66,
+          "incomeLabel": "66/s",
+          "cost": 150000,
+          "costLabel": "150k",
+          "value": 105000,
+          "valueLabel": "105k",
+          "image": "B1_SECURITY_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 132,
+          "incomeLabel": "132/s",
+          "cost": 600000,
+          "costLabel": "600k",
+          "value": 420000,
+          "valueLabel": "420.00k",
+          "image": "B1_SECURITY_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 264,
+          "incomeLabel": "264/s",
+          "cost": 1200000,
+          "costLabel": "1.20m",
+          "value": 840000,
+          "valueLabel": "840.00k",
+          "image": "B1_SECURITY_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 528,
+          "incomeLabel": "528/s",
+          "cost": 2400000,
+          "costLabel": "2.40m",
+          "value": 1680000,
+          "valueLabel": "1.68m",
+          "image": "B1_SECURITY_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 792,
+          "incomeLabel": "792/s",
+          "cost": 2400000,
+          "costLabel": "2.40m",
+          "value": 1680000,
+          "valueLabel": "1.68m",
+          "image": "B1_SECURITY_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "B1_SECURITY_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "groundmech",
+      "name": "GROUNDMECH",
+      "assetKey": "GROUNDMECH",
+      "rarity": "epic",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 120,
+          "incomeLabel": "120/s",
+          "cost": 900000,
+          "costLabel": "900k",
+          "value": 630000,
+          "valueLabel": "630.00k",
+          "image": "GROUNDMECH_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 240,
+          "incomeLabel": "240/s",
+          "cost": 3600000,
+          "costLabel": "3.60m",
+          "value": 2520000,
+          "valueLabel": "2.52m",
+          "image": "GROUNDMECH_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 480,
+          "incomeLabel": "480/s",
+          "cost": 7200000,
+          "costLabel": "7.20m",
+          "value": 5040000,
+          "valueLabel": "5.04m",
+          "image": "GROUNDMECH_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 960,
+          "incomeLabel": "960/s",
+          "cost": 14400000,
+          "costLabel": "14.40m",
+          "value": 10080000,
+          "valueLabel": "10.08m",
+          "image": "GROUNDMECH_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 4080,
+          "incomeLabel": "4.08k/s",
+          "cost": 112500000,
+          "costLabel": "112.50m",
+          "value": 78750000,
+          "valueLabel": "78.75m",
+          "image": "GROUNDMECH_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "GROUNDMECH_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "bb",
+      "name": "BB",
+      "assetKey": "BB",
+      "rarity": "epic",
+      "type": "astromech",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 150,
+          "incomeLabel": "150/s",
+          "cost": 1200000,
+          "costLabel": "1.20m",
+          "value": 840000,
+          "valueLabel": "840.00k",
+          "image": "BB_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 300,
+          "incomeLabel": "300/s",
+          "cost": 4800000,
+          "costLabel": "4.80m",
+          "value": 3360000,
+          "valueLabel": "3.36m",
+          "image": "BB_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 600,
+          "incomeLabel": "600/s",
+          "cost": 9600000,
+          "costLabel": "9.60m",
+          "value": 6720000,
+          "valueLabel": "6.72m",
+          "image": "BB_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 1200,
+          "incomeLabel": "1.20k/s",
+          "cost": 19200000,
+          "costLabel": "19.20m",
+          "value": 13440000,
+          "valueLabel": "13.44m",
+          "image": "BB_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 5100,
+          "incomeLabel": "5.10k/s",
+          "cost": 150000000,
+          "costLabel": "150m",
+          "value": 105000000,
+          "valueLabel": "105m",
+          "image": "BB_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "BB_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "orb-walker",
+      "name": "ORB-WALKER",
+      "assetKey": "ORB-WALKER",
+      "rarity": "epic",
+      "type": "astromech",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 180,
+          "incomeLabel": "180/s",
+          "cost": 1500000,
+          "costLabel": "1.50m",
+          "value": 1050000,
+          "valueLabel": "1.05m",
+          "image": "ORB-WALKER_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 360,
+          "incomeLabel": "360/s",
+          "cost": 6000000,
+          "costLabel": "6m",
+          "value": 4200000,
+          "valueLabel": "4.20m",
+          "image": "ORB-WALKER_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 720,
+          "incomeLabel": "720/s",
+          "cost": 12000000,
+          "costLabel": "12m",
+          "value": 8400000,
+          "valueLabel": "8.40m",
+          "image": "ORB-WALKER_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 1440,
+          "incomeLabel": "1.44k/s",
+          "cost": 24000000,
+          "costLabel": "24m",
+          "value": 16800000,
+          "valueLabel": "16.80m",
+          "image": "ORB-WALKER_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 6120,
+          "incomeLabel": "6.12k/s",
+          "cost": 187500000,
+          "costLabel": "187.50m",
+          "value": 131250000,
+          "valueLabel": "131.25m",
+          "image": "ORB-WALKER_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "ORB-WALKER_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "util-tec",
+      "name": "UTIL-TEC",
+      "assetKey": "UTIL-TEC",
+      "rarity": "epic",
+      "type": "astromech",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 210,
+          "incomeLabel": "210/s",
+          "cost": 1800000,
+          "costLabel": "1.80m",
+          "value": 1260000,
+          "valueLabel": "1.26m",
+          "image": "UTIL-TEC_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 420,
+          "incomeLabel": "420/s",
+          "cost": 7200000,
+          "costLabel": "7.20m",
+          "value": 5040000,
+          "valueLabel": "5.04m",
+          "image": "UTIL-TEC_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 840,
+          "incomeLabel": "840/s",
+          "cost": 14400000,
+          "costLabel": "14.40m",
+          "value": 10080000,
+          "valueLabel": "10.08m",
+          "image": "UTIL-TEC_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 1680,
+          "incomeLabel": "1.68k/s",
+          "cost": 28800000,
+          "costLabel": "28.80m",
+          "value": 20160000,
+          "valueLabel": "20.16m",
+          "image": "UTIL-TEC_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 7140,
+          "incomeLabel": "7.14k/s",
+          "cost": 225000000,
+          "costLabel": "225m",
+          "value": 157500000,
+          "valueLabel": "157.5m",
+          "image": "UTIL-TEC_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "UTIL-TEC_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "lo",
+      "name": "LO",
+      "assetKey": "LO",
+      "rarity": "epic",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 240,
+          "incomeLabel": "240/s",
+          "cost": 2100000,
+          "costLabel": "2.10m",
+          "value": 1470000,
+          "valueLabel": "1.47m",
+          "image": "LO_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 480,
+          "incomeLabel": "480/s",
+          "cost": 8400000,
+          "costLabel": "8.40m",
+          "value": 5880000,
+          "valueLabel": "5.88m",
+          "image": "LO_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 960,
+          "incomeLabel": "960/s",
+          "cost": 16800000,
+          "costLabel": "16.8m",
+          "value": 11760000,
+          "valueLabel": "11.76m",
+          "image": "LO_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 1920,
+          "incomeLabel": "1.92k/s",
+          "cost": 33600000,
+          "costLabel": "33.60m",
+          "value": 23520000,
+          "valueLabel": "23.52m",
+          "image": "LO_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 8160,
+          "incomeLabel": "8.16k/s",
+          "cost": 262500000,
+          "costLabel": "262.50m",
+          "value": 183750000,
+          "valueLabel": "183.75m",
+          "image": "LO_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "LO_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "haul-r",
+      "name": "HAUL-R",
+      "assetKey": "HAUL-R",
+      "rarity": "epic",
+      "type": "battle",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 270,
+          "incomeLabel": "270/s",
+          "cost": 2400000,
+          "costLabel": "2.40m",
+          "value": 1680000,
+          "valueLabel": "1.68m",
+          "image": "HAUL-R_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 540,
+          "incomeLabel": "540/s",
+          "cost": 9600000,
+          "costLabel": "9.60m",
+          "value": 6720000,
+          "valueLabel": "6.72m",
+          "image": "HAUL-R_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 1080,
+          "incomeLabel": "1.08k/s",
+          "cost": 19200000,
+          "costLabel": "19.20m",
+          "value": 13440000,
+          "valueLabel": "13.44m",
+          "image": "HAUL-R_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 2160,
+          "incomeLabel": "2.16k/s",
+          "cost": 38400000,
+          "costLabel": "38.40m",
+          "value": 26880000,
+          "valueLabel": "26.88m",
+          "image": "HAUL-R_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 9180,
+          "incomeLabel": "9.18k/s",
+          "cost": 300000000,
+          "costLabel": "300m",
+          "value": 210000000,
+          "valueLabel": "210.00m",
+          "image": "HAUL-R_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "HAUL-R_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "r6",
+      "name": "R6",
+      "assetKey": "R6",
+      "rarity": "epic",
+      "type": "astromech",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 300,
+          "incomeLabel": "300/s",
+          "cost": 2700000,
+          "costLabel": "2.70m",
+          "value": 1890000,
+          "valueLabel": "1.89m",
+          "image": "R6_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 600,
+          "incomeLabel": "600/s",
+          "cost": 10800000,
+          "costLabel": "10.80m",
+          "value": 7560000,
+          "valueLabel": "7.56m",
+          "image": "R6_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 1200,
+          "incomeLabel": "1.20k/s",
+          "cost": 21600000,
+          "costLabel": "21.60m",
+          "value": 15120000,
+          "valueLabel": "15.12m",
+          "image": "R6_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 2400,
+          "incomeLabel": "2.40k/s",
+          "cost": 43200000,
+          "costLabel": "43.20m",
+          "value": 30240000,
+          "valueLabel": "30.24m",
+          "image": "R6_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 10200,
+          "incomeLabel": "10.20k/s",
+          "cost": 337500000,
+          "costLabel": "337.50m",
+          "value": 236250000,
+          "valueLabel": "236.25m",
+          "image": "R6_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "R6_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "trak-r",
+      "name": "TRAK-R",
+      "assetKey": "TRAK-R",
+      "rarity": "epic",
+      "type": "astromech",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 330,
+          "incomeLabel": "330/s",
+          "cost": 3000000,
+          "costLabel": "3.00m",
+          "value": 2100000,
+          "valueLabel": "2.10m",
+          "image": "TRAK-R_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 660,
+          "incomeLabel": "660/s",
+          "cost": 12000000,
+          "costLabel": "12m",
+          "value": 8400000,
+          "valueLabel": "8.40m",
+          "image": "TRAK-R_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 1320,
+          "incomeLabel": "1.32k/s",
+          "cost": 24000000,
+          "costLabel": "24m",
+          "value": 16800000,
+          "valueLabel": "16.80m",
+          "image": "TRAK-R_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 2640,
+          "incomeLabel": "2.64k/s",
+          "cost": 48000000,
+          "costLabel": "48m",
+          "value": 33600000,
+          "valueLabel": "33.60m",
+          "image": "TRAK-R_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 11220,
+          "incomeLabel": "11.22k/s",
+          "cost": 375000000,
+          "costLabel": "375m",
+          "value": 262500000,
+          "valueLabel": "262.50m",
+          "image": "TRAK-R_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "TRAK-R_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "r2",
+      "name": "R2",
+      "assetKey": "R2",
+      "rarity": "epic",
+      "type": "astromech",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 360,
+          "incomeLabel": "360/s",
+          "cost": 3300000,
+          "costLabel": "3.30m",
+          "value": 2310000,
+          "valueLabel": "2.31m",
+          "image": "R2_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 720,
+          "incomeLabel": "720/s",
+          "cost": 13200000,
+          "costLabel": "13.20m",
+          "value": 9240000,
+          "valueLabel": "9.24m",
+          "image": "R2_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 1440,
+          "incomeLabel": "1.44k/s",
+          "cost": 26400000,
+          "costLabel": "26.40m",
+          "value": 18480000,
+          "valueLabel": "18.48m",
+          "image": "R2_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 2880,
+          "incomeLabel": "2.88k/s",
+          "cost": 52800000,
+          "costLabel": "52.80m",
+          "value": 36960000,
+          "valueLabel": "36.96m",
+          "image": "R2_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 12240,
+          "incomeLabel": "12.24k/s",
+          "cost": 412500000,
+          "costLabel": "412.50m",
+          "value": 288750000,
+          "valueLabel": "288.75m",
+          "image": "R2_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "R2_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "opti-pod",
+      "name": "OPTI-POD",
+      "assetKey": "OPTI-POD",
+      "rarity": "epic",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 390,
+          "incomeLabel": "390/s",
+          "cost": 3600000,
+          "costLabel": "3.60m",
+          "value": 2520000,
+          "valueLabel": "2.52m",
+          "image": "OPTI-POD_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 780,
+          "incomeLabel": "780/s",
+          "cost": 14400000,
+          "costLabel": "14.4m",
+          "value": 10080000,
+          "valueLabel": "10.08m",
+          "image": "OPTI-POD_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 1560,
+          "incomeLabel": "1.56k/s",
+          "cost": 28800000,
+          "costLabel": "28.80m",
+          "value": 20160000,
+          "valueLabel": "20.16m",
+          "image": "OPTI-POD_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 3120,
+          "incomeLabel": "3.12k/s",
+          "cost": 57600000,
+          "costLabel": "57.60m",
+          "value": 40320000,
+          "valueLabel": "40.32m",
+          "image": "OPTI-POD_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 13260,
+          "incomeLabel": "13.26k/s",
+          "cost": 450000000,
+          "costLabel": "450m",
+          "value": 315000000,
+          "valueLabel": "315m",
+          "image": "OPTI-POD_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "OPTI-POD_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "b2-super",
+      "name": "B2 SUPER",
+      "assetKey": "B2_SUPER",
+      "rarity": "epic",
+      "type": "battle",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 420,
+          "incomeLabel": "420/s",
+          "cost": 3900000,
+          "costLabel": "3.90m",
+          "value": 2730000,
+          "valueLabel": "2.73m",
+          "image": "B2_SUPER_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 840,
+          "incomeLabel": "840/s",
+          "cost": 15600000,
+          "costLabel": "15.60m",
+          "value": 10920000,
+          "valueLabel": "10.92m",
+          "image": "B2_SUPER_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 1680,
+          "incomeLabel": "1.68k/s",
+          "cost": 31200000,
+          "costLabel": "31.20m",
+          "value": 21840000,
+          "valueLabel": "21.84m",
+          "image": "B2_SUPER_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 3360,
+          "incomeLabel": "3.36k/s",
+          "cost": 62400000,
+          "costLabel": "62.40m",
+          "value": 43680000,
+          "valueLabel": "43.68m",
+          "image": "B2_SUPER_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 14280,
+          "incomeLabel": "14.28k/s",
+          "cost": 487500000,
+          "costLabel": "487.50m",
+          "value": 341250000,
+          "valueLabel": "341.25m",
+          "image": "B2_SUPER_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "B2_SUPER_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "lng-shot",
+      "name": "LNG-SHOT",
+      "assetKey": "LNG-SHOT",
+      "rarity": "epic",
+      "type": "battle",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 450,
+          "incomeLabel": "450/s",
+          "cost": 4200000,
+          "costLabel": "4.20m",
+          "value": 2940000,
+          "valueLabel": "2.94m",
+          "image": "LNG-SHOT_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 900,
+          "incomeLabel": "900/s",
+          "cost": 16800000,
+          "costLabel": "16.80m",
+          "value": 11760000,
+          "valueLabel": "11.76m",
+          "image": "LNG-SHOT_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 1800,
+          "incomeLabel": "1.80k/s",
+          "cost": 33600000,
+          "costLabel": "33.60m",
+          "value": 23520000,
+          "valueLabel": "23.52m",
+          "image": "LNG-SHOT_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 3600,
+          "incomeLabel": "3.60k/s",
+          "cost": 67200000,
+          "costLabel": "67.20m",
+          "value": 47040000,
+          "valueLabel": "47.04m",
+          "image": "LNG-SHOT_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 15300,
+          "incomeLabel": "15.30k/s",
+          "cost": 525000000,
+          "costLabel": "525m",
+          "value": 367500000,
+          "valueLabel": "367.50m",
+          "image": "LNG-SHOT_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "LNG-SHOT_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "b2-heavy",
+      "name": "B2 HEAVY",
+      "assetKey": "B2_HEAVY",
+      "rarity": "epic",
+      "type": "battle",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 480,
+          "incomeLabel": "480/s",
+          "cost": 4500000,
+          "costLabel": "4.50m",
+          "value": 3150000,
+          "valueLabel": "3.15m",
+          "image": "B2_HEAVY_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 960,
+          "incomeLabel": "960/s",
+          "cost": 18000000,
+          "costLabel": "18m",
+          "value": 12600000,
+          "valueLabel": "12.60m",
+          "image": "B2_HEAVY_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 1920,
+          "incomeLabel": "1.92k/s",
+          "cost": 36000000,
+          "costLabel": "36m",
+          "value": 25200000,
+          "valueLabel": "25.20m",
+          "image": "B2_HEAVY_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 3840,
+          "incomeLabel": "3.84k/s",
+          "cost": 72000000,
+          "costLabel": "72m",
+          "value": 50400000,
+          "valueLabel": "50.40m",
+          "image": "B2_HEAVY_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 16320,
+          "incomeLabel": "16.32k/s",
+          "cost": 562500000,
+          "costLabel": "562.50m",
+          "value": 393750000,
+          "valueLabel": "393.75m",
+          "image": "B2_HEAVY_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "B2_HEAVY_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "sen-tri",
+      "name": "SEN-TRI",
+      "assetKey": "SEN-TRI",
+      "rarity": "epic",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 510,
+          "incomeLabel": "510/s",
+          "cost": 4800000,
+          "costLabel": "4.80m",
+          "value": 3360000,
+          "valueLabel": "3.36m",
+          "image": "SEN-TRI_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 1020,
+          "incomeLabel": "1.02k/s",
+          "cost": 19200000,
+          "costLabel": "19.20m",
+          "value": 13440000,
+          "valueLabel": "13.44m",
+          "image": "SEN-TRI_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 2040,
+          "incomeLabel": "2.04k/s",
+          "cost": 38400000,
+          "costLabel": "38.40m",
+          "value": 26880000,
+          "valueLabel": "26.88m",
+          "image": "SEN-TRI_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 4080,
+          "incomeLabel": "4.08k/s",
+          "cost": 76800000,
+          "costLabel": "76.80m",
+          "value": 53760000,
+          "valueLabel": "53.76m",
+          "image": "SEN-TRI_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 17340,
+          "incomeLabel": "17.34k/s",
+          "cost": 600000000,
+          "costLabel": "600m",
+          "value": 420000000,
+          "valueLabel": "420m",
+          "image": "SEN-TRI_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "SEN-TRI_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "strike-orb",
+      "name": "STRIKE-ORB",
+      "assetKey": "STRIKE-ORB",
+      "rarity": "epic",
+      "type": "battle",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 540,
+          "incomeLabel": "540/s",
+          "cost": 5100000,
+          "costLabel": "5.10m",
+          "value": 3570000,
+          "valueLabel": "3.57m",
+          "image": "STRIKE-ORB_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 1080,
+          "incomeLabel": "1.08k/s",
+          "cost": 20400000,
+          "costLabel": "20.40m",
+          "value": 14280000,
+          "valueLabel": "14.28m",
+          "image": "STRIKE-ORB_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 2160,
+          "incomeLabel": "2.16k/s",
+          "cost": 40800000,
+          "costLabel": "40.80m",
+          "value": 28560000,
+          "valueLabel": "28.56m",
+          "image": "STRIKE-ORB_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 4320,
+          "incomeLabel": "4.32k/s",
+          "cost": 81600000,
+          "costLabel": "81.60m",
+          "value": 57120000,
+          "valueLabel": "57.12m",
+          "image": "STRIKE-ORB_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 18360,
+          "incomeLabel": "18.36k/s",
+          "cost": 637500000,
+          "costLabel": "637.50m",
+          "value": 446250000,
+          "valueLabel": "446.25m",
+          "image": "STRIKE-ORB_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "STRIKE-ORB_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "amp-walker",
+      "name": "AMP WALKER",
+      "assetKey": "AMP_WALKER",
+      "rarity": "epic",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 570,
+          "incomeLabel": "570/s",
+          "cost": 5400000,
+          "costLabel": "5.40m",
+          "value": 3780000,
+          "valueLabel": "3.78m",
+          "image": "AMP_WALKER_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 1140,
+          "incomeLabel": "1.14k/s",
+          "cost": 21600000,
+          "costLabel": "21.60m",
+          "value": 15120000,
+          "valueLabel": "15.12m",
+          "image": "AMP_WALKER_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 2280,
+          "incomeLabel": "2.28k/s",
+          "cost": 43200000,
+          "costLabel": "43.20m",
+          "value": 30240000,
+          "valueLabel": "30.24m",
+          "image": "AMP_WALKER_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 4560,
+          "incomeLabel": "4.56k/s",
+          "cost": 86400000,
+          "costLabel": "86.40m",
+          "value": 60480000,
+          "valueLabel": "60.48m",
+          "image": "AMP_WALKER_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 19380,
+          "incomeLabel": "19.38k/s",
+          "cost": 675000000,
+          "costLabel": "675m",
+          "value": 472500000,
+          "valueLabel": "472.50m",
+          "image": "AMP_WALKER_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "AMP_WALKER_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "b1-heavy",
+      "name": "B1 HEAVY",
+      "assetKey": "B1_HEAVY",
+      "rarity": "epic",
+      "type": "battle",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 630,
+          "incomeLabel": "630/s",
+          "cost": 6000000,
+          "costLabel": "6.00m",
+          "value": 4200000,
+          "valueLabel": "4.20m",
+          "image": "B1_HEAVY_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 1260,
+          "incomeLabel": "1.26k/s",
+          "cost": 24000000,
+          "costLabel": "24m",
+          "value": 16800000,
+          "valueLabel": "16.80m",
+          "image": "B1_HEAVY_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 2520,
+          "incomeLabel": "2.52k/s",
+          "cost": 48000000,
+          "costLabel": "48m",
+          "value": 33600000,
+          "valueLabel": "33.60m",
+          "image": "B1_HEAVY_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 5040,
+          "incomeLabel": "5.04k/s",
+          "cost": 96000000,
+          "costLabel": "96m",
+          "value": 67200000,
+          "valueLabel": "67.20m",
+          "image": "B1_HEAVY_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 20400,
+          "incomeLabel": "20.40k/s",
+          "cost": 24000000000,
+          "costLabel": "24b",
+          "value": 16800000000,
+          "valueLabel": "16.80b",
+          "image": "B1_HEAVY_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "B1_HEAVY_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "gunrunner",
+      "name": "GUNRUNNER",
+      "assetKey": "GUNRUNNER",
+      "rarity": "epic",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 660,
+          "incomeLabel": "660/s",
+          "cost": 6300000,
+          "costLabel": "6.30m",
+          "value": 4410000,
+          "valueLabel": "4.41m",
+          "image": "GUNRUNNER_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 1320,
+          "incomeLabel": "1.32k/s",
+          "cost": 25200000,
+          "costLabel": "25.20m",
+          "value": 17640000,
+          "valueLabel": "17.64m",
+          "image": "GUNRUNNER_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 2640,
+          "incomeLabel": "2.64k/s",
+          "cost": 50400000,
+          "costLabel": "50.40m",
+          "value": 35280000,
+          "valueLabel": "35.28m",
+          "image": "GUNRUNNER_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 5280,
+          "incomeLabel": "5.28k/s",
+          "cost": 100800000,
+          "costLabel": "100.80m",
+          "value": 70560000,
+          "valueLabel": "70.56m",
+          "image": "GUNRUNNER_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 22440,
+          "incomeLabel": "22.44k/s",
+          "cost": 25200000000,
+          "costLabel": "25.20b",
+          "value": 17640000000,
+          "valueLabel": "17.64b",
+          "image": "GUNRUNNER_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "GUNRUNNER_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "proto-roller",
+      "name": "PROTO-ROLLER",
+      "assetKey": "PROTO-ROLLER",
+      "rarity": "legendary",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 972,
+          "incomeLabel": "972/s",
+          "cost": 22000000,
+          "costLabel": "22m",
+          "value": 15400000,
+          "valueLabel": "15.40m",
+          "image": "PROTO-ROLLER_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 1940,
+          "incomeLabel": "1.94k/s",
+          "cost": 88000000,
+          "costLabel": "88m",
+          "value": 61600000,
+          "valueLabel": "61.60m",
+          "image": "PROTO-ROLLER_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 3890,
+          "incomeLabel": "3.89k/s",
+          "cost": 176000000,
+          "costLabel": "176m",
+          "value": 123200000,
+          "valueLabel": "123.20m",
+          "image": "PROTO-ROLLER_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 7780,
+          "incomeLabel": "7.78k/s",
+          "cost": 352000000,
+          "costLabel": "352m",
+          "value": 246400000,
+          "valueLabel": "246.40m",
+          "image": "PROTO-ROLLER_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 23330,
+          "incomeLabel": "23.33k/s",
+          "cost": 8800000000,
+          "costLabel": "8.80b",
+          "value": 6160000000,
+          "valueLabel": "6.16b",
+          "image": "PROTO-ROLLER_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "PROTO-ROLLER_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "mecha-droid",
+      "name": "MECHA-DROID",
+      "assetKey": "MECHA-DROID",
+      "rarity": "legendary",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 1240,
+          "incomeLabel": "1.24k/s",
+          "cost": 29000000,
+          "costLabel": "29m",
+          "value": 20300000,
+          "valueLabel": "20.30m",
+          "image": "MECHA-DROID_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 2490,
+          "incomeLabel": "2.49k/s",
+          "cost": 116000000,
+          "costLabel": "116m",
+          "value": 81200000,
+          "valueLabel": "81.20m",
+          "image": "MECHA-DROID_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 4970,
+          "incomeLabel": "4.97k/s",
+          "cost": 232000000,
+          "costLabel": "232m",
+          "value": 162400000,
+          "valueLabel": "162.40m",
+          "image": "MECHA-DROID_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 9950,
+          "incomeLabel": "9.95k/s",
+          "cost": 464000000,
+          "costLabel": "464m",
+          "value": 324800000,
+          "valueLabel": "324.80m",
+          "image": "MECHA-DROID_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 29850,
+          "incomeLabel": "29.85k/s",
+          "cost": 11600000000,
+          "costLabel": "11.60b",
+          "value": 8119999999.999999,
+          "valueLabel": "8.12b",
+          "image": "MECHA-DROID_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "MECHA-DROID_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "cyclo-grav",
+      "name": "CYCLO-GRAV",
+      "assetKey": "CYCLO-GRAV",
+      "rarity": "legendary",
+      "type": "battle",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 1260,
+          "incomeLabel": "1.26k/s",
+          "cost": 30000000,
+          "costLabel": "30m",
+          "value": 21000000,
+          "valueLabel": "21.00m",
+          "image": "CYCLO-GRAV_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 2520,
+          "incomeLabel": "2.52k/s",
+          "cost": 120000000,
+          "costLabel": "120m",
+          "value": 84000000,
+          "valueLabel": "84.00m",
+          "image": "CYCLO-GRAV_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 5040,
+          "incomeLabel": "5.04k/s",
+          "cost": 240000000,
+          "costLabel": "240m",
+          "value": 168000000,
+          "valueLabel": "168.00m",
+          "image": "CYCLO-GRAV_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 10080,
+          "incomeLabel": "10.08k/s",
+          "cost": 480000000,
+          "costLabel": "480m",
+          "value": 336000000,
+          "valueLabel": "336.00m",
+          "image": "CYCLO-GRAV_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 30240,
+          "incomeLabel": "30.24k/s",
+          "cost": 12000000000,
+          "costLabel": "12.00b",
+          "value": 8400000000,
+          "valueLabel": "8.40b",
+          "image": "CYCLO-GRAV_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "CYCLO-GRAV_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "bb9",
+      "name": "BB9",
+      "assetKey": "BB9",
+      "rarity": "legendary",
+      "type": "astromech",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 1300,
+          "incomeLabel": "1.30k/s",
+          "cost": 28000000,
+          "costLabel": "28m",
+          "value": 19600000,
+          "valueLabel": "19.60m",
+          "image": "BB9_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 2600,
+          "incomeLabel": "2.60k/s",
+          "cost": 112000000,
+          "costLabel": "112m",
+          "value": 78400000,
+          "valueLabel": "78.40m",
+          "image": "BB9_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 5200,
+          "incomeLabel": "5.20k/s",
+          "cost": 224000000,
+          "costLabel": "224m",
+          "value": 156800000,
+          "valueLabel": "156.80m",
+          "image": "BB9_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 10400,
+          "incomeLabel": "10.40k/s",
+          "cost": 448000000,
+          "costLabel": "448m",
+          "value": 313600000,
+          "valueLabel": "313.60m",
+          "image": "BB9_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 31200,
+          "incomeLabel": "31.20k/s",
+          "cost": 11200000000,
+          "costLabel": "11.20b",
+          "value": 7840000000,
+          "valueLabel": "7.84b",
+          "image": "BB9_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "BB9_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "b2-rp",
+      "name": "B2-RP",
+      "assetKey": "B2-RP",
+      "rarity": "legendary",
+      "type": "battle",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 1300,
+          "incomeLabel": "1.30k/s",
+          "cost": 31000000,
+          "costLabel": "31m",
+          "value": 21700000,
+          "valueLabel": "21.70m",
+          "image": "B2-RP_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 2600,
+          "incomeLabel": "2.60k/s",
+          "cost": 124000000,
+          "costLabel": "124m",
+          "value": 86800000,
+          "valueLabel": "86.80m",
+          "image": "B2-RP_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 5210,
+          "incomeLabel": "5.21k/s",
+          "cost": 248000000,
+          "costLabel": "248m",
+          "value": 173600000,
+          "valueLabel": "173.60m",
+          "image": "B2-RP_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 10430,
+          "incomeLabel": "10.43k/s",
+          "cost": 496000000,
+          "costLabel": "496m",
+          "value": 347200000,
+          "valueLabel": "347.20m",
+          "image": "B2-RP_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 31300,
+          "incomeLabel": "31.30k/s",
+          "cost": 12400000000,
+          "costLabel": "12.40b",
+          "value": 8680000000,
+          "valueLabel": "8.68b",
+          "image": "B2-RP_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "B2-RP_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "mono-walker",
+      "name": "MONO-WALKER",
+      "assetKey": "MONO-WALKER",
+      "rarity": "legendary",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 1500,
+          "incomeLabel": "1.50k/s",
+          "cost": 37000000,
+          "costLabel": "37m",
+          "value": 25900000,
+          "valueLabel": "25.90m",
+          "image": "MONO-WALKER_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 3000,
+          "incomeLabel": "3.00k/s",
+          "cost": 148000000,
+          "costLabel": "148m",
+          "value": 103600000,
+          "valueLabel": "103.60m",
+          "image": "MONO-WALKER_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 6000,
+          "incomeLabel": "6.00k/s",
+          "cost": 296000000,
+          "costLabel": "296m",
+          "value": 207200000,
+          "valueLabel": "207.20m",
+          "image": "MONO-WALKER_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 12000,
+          "incomeLabel": "12.00k/s",
+          "cost": 592000000,
+          "costLabel": "592m",
+          "value": 414400000,
+          "valueLabel": "414.40m",
+          "image": "MONO-WALKER_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 36000,
+          "incomeLabel": "36.00k/s",
+          "cost": 14800000000,
+          "costLabel": "14.80b",
+          "value": 10360000000,
+          "valueLabel": "10.36b",
+          "image": "MONO-WALKER_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "MONO-WALKER_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "r7",
+      "name": "R7",
+      "assetKey": "R7",
+      "rarity": "legendary",
+      "type": "astromech",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 1500,
+          "incomeLabel": "1.50k/s",
+          "cost": 37000000,
+          "costLabel": "37m",
+          "value": 25900000,
+          "valueLabel": "25.90m",
+          "image": "R7_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 3000,
+          "incomeLabel": "3.00k/s",
+          "cost": 148000000,
+          "costLabel": "148m",
+          "value": 103600000,
+          "valueLabel": "103.60m",
+          "image": "R7_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 6000,
+          "incomeLabel": "6.00k/s",
+          "cost": 296000000,
+          "costLabel": "296m",
+          "value": 207200000,
+          "valueLabel": "207.20m",
+          "image": "R7_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 12000,
+          "incomeLabel": "12.00k/s",
+          "cost": 592000000,
+          "costLabel": "592m",
+          "value": 414400000,
+          "valueLabel": "414.40m",
+          "image": "R7_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 36000,
+          "incomeLabel": "36.00k/s",
+          "cost": 14800000000,
+          "costLabel": "14.80b",
+          "value": 10360000000,
+          "valueLabel": "10.36b",
+          "image": "R7_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "R7_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "opti-strike",
+      "name": "OPTI-STRIKE",
+      "assetKey": "OPTI-STRIKE",
+      "rarity": "legendary",
+      "type": "battle",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": null,
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": 1500,
+          "incomeLabel": "1.50k/s",
+          "cost": 37000000,
+          "costLabel": "37m",
+          "value": 25900000,
+          "valueLabel": "25.90m",
+          "image": "OPTI-STRIKE_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 3000,
+          "incomeLabel": "3.00k/s",
+          "cost": 148000000,
+          "costLabel": "148m",
+          "value": 103600000,
+          "valueLabel": "103.60m",
+          "image": "OPTI-STRIKE_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 6000,
+          "incomeLabel": "6.00k/s",
+          "cost": 296000000,
+          "costLabel": "296m",
+          "value": 207200000,
+          "valueLabel": "207.20m",
+          "image": "OPTI-STRIKE_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 12000,
+          "incomeLabel": "12.00k/s",
+          "cost": 592000000,
+          "costLabel": "592m",
+          "value": 414400000,
+          "valueLabel": "414.40m",
+          "image": "OPTI-STRIKE_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 36000,
+          "incomeLabel": "36.00k/s",
+          "cost": 14800000000,
+          "costLabel": "14.80b",
+          "value": 10360000000,
+          "valueLabel": "10.36b",
+          "image": "OPTI-STRIKE_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "OPTI-STRIKE_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "snow-mouse",
+      "name": "SNOW MOUSE",
+      "assetKey": "SNOW_MOUSE",
+      "rarity": "mythic",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": "perk.mythicWorker",
+      "unverified": true,
+      "tiers": {
+        "DEFAULT": {
+          "income": 4400,
+          "incomeLabel": null,
+          "cost": 180000000,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "SNOW_MOUSE_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 8800,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "SNOW_MOUSE_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 17600,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "SNOW_MOUSE_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 35200,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "SNOW_MOUSE_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 70400,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "SNOW_MOUSE_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "SNOW_MOUSE_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "cyclens",
+      "name": "CYCLENS",
+      "assetKey": "CYCLENS",
+      "rarity": "mythic",
+      "type": "astromech",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": "perk.mythicAstromech",
+      "unverified": true,
+      "tiers": {
+        "DEFAULT": {
+          "income": 4400,
+          "incomeLabel": null,
+          "cost": 180000000,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "CYCLENS_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 8800,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "CYCLENS_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 17600,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "CYCLENS_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 35200,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "CYCLENS_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 70400,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "CYCLENS_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "CYCLENS_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "ric",
+      "name": "RIC",
+      "assetKey": "RIC",
+      "rarity": "mythic",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": "perk.mythicWorker",
+      "unverified": true,
+      "tiers": {
+        "DEFAULT": {
+          "income": 5100,
+          "incomeLabel": null,
+          "cost": 204000000,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "RIC_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 10200,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "RIC_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 20400,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "RIC_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 40800,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "RIC_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 81600,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "RIC_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "RIC_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "ric-1200",
+      "name": "RIC-1200",
+      "assetKey": "RIC-1200",
+      "rarity": "mythic",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": "perk.mythicWorker",
+      "unverified": true,
+      "tiers": {
+        "DEFAULT": {
+          "income": 5800,
+          "incomeLabel": null,
+          "cost": 228000000,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "RIC-1200_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 11600,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "RIC-1200_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 23200,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "RIC-1200_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 46400,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "RIC-1200_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 92800,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "RIC-1200_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "RIC-1200_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "drft-r",
+      "name": "DRFT-R",
+      "assetKey": "DRFT-R",
+      "rarity": "mythic",
+      "type": "astromech",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": "perk.mythicAstromech",
+      "unverified": true,
+      "tiers": {
+        "DEFAULT": {
+          "income": 5800,
+          "incomeLabel": null,
+          "cost": 228000000,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "DRFT-R_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 11600,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "DRFT-R_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 23200,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "DRFT-R_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 46400,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "DRFT-R_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 92800,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "DRFT-R_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "DRFT-R_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "ig",
+      "name": "IG",
+      "assetKey": "IG",
+      "rarity": "mythic",
+      "type": "battle",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": "perk.mythicBattle",
+      "unverified": true,
+      "tiers": {
+        "DEFAULT": {
+          "income": 5800,
+          "incomeLabel": null,
+          "cost": 228000000,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "IG_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 11600,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "IG_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 23200,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "IG_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 46400,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "IG_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 92800,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "IG_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "IG_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "lep",
+      "name": "LEP",
+      "assetKey": "LEP",
+      "rarity": "mythic",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": "perk.mythicWorker",
+      "unverified": true,
+      "tiers": {
+        "DEFAULT": {
+          "income": 6500,
+          "incomeLabel": null,
+          "cost": 252000000,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "LEP_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 13000,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "LEP_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 26000,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "LEP_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 52000,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "LEP_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 104000,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "LEP_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "LEP_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "tri-tek",
+      "name": "TRI-TEK",
+      "assetKey": "TRI-TEK",
+      "rarity": "mythic",
+      "type": "astromech",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": "perk.mythicAstromech",
+      "unverified": true,
+      "tiers": {
+        "DEFAULT": {
+          "income": 6500,
+          "incomeLabel": null,
+          "cost": 252000000,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "TRI-TEK_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 13000,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "TRI-TEK_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 26000,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "TRI-TEK_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 52000,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "TRI-TEK_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 104000,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "TRI-TEK_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "TRI-TEK_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "loadlifter",
+      "name": "LOADLIFTER",
+      "assetKey": "LOADLIFTER",
+      "rarity": "mythic",
+      "type": "worker",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": "perk.mythicWorker",
+      "unverified": true,
+      "tiers": {
+        "DEFAULT": {
+          "income": 7200,
+          "incomeLabel": null,
+          "cost": 300000000,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "LOADLIFTER_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 14400,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "LOADLIFTER_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 28800,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "LOADLIFTER_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 57600,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "LOADLIFTER_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 115200,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "LOADLIFTER_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "LOADLIFTER_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "mo-trak",
+      "name": "MO-TRAK",
+      "assetKey": "MO-TRAK",
+      "rarity": "mythic",
+      "type": "astromech",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": "perk.mythicAstromech",
+      "unverified": true,
+      "tiers": {
+        "DEFAULT": {
+          "income": 7200,
+          "incomeLabel": null,
+          "cost": 300000000,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "MO-TRAK_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 14400,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "MO-TRAK_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 28800,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "MO-TRAK_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 57600,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "MO-TRAK_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 115200,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "MO-TRAK_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "MO-TRAK_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "kx",
+      "name": "KX",
+      "assetKey": "KX",
+      "rarity": "mythic",
+      "type": "battle",
+      "percentIncome": false,
+      "percentValue": null,
+      "perk": "perk.mythicBattle",
+      "unverified": true,
+      "tiers": {
+        "DEFAULT": {
+          "income": 7200,
+          "incomeLabel": null,
+          "cost": 300000000,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "KX_DEFAULT.png",
+          "imageIsFallback": false
+        },
+        "GOLD": {
+          "income": 14400,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "KX_GOLD.png",
+          "imageIsFallback": false
+        },
+        "DIAMOND": {
+          "income": 28800,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "KX_DIAMOND.png",
+          "imageIsFallback": false
+        },
+        "RAINBOW": {
+          "income": 57600,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "KX_RAINBOW.png",
+          "imageIsFallback": false
+        },
+        "BESKAR": {
+          "income": 115200,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "KX_BESKAR.png",
+          "imageIsFallback": false
+        },
+        "GALACTIC": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "KX_BESKAR.png",
+          "imageIsFallback": true
+        }
+      }
+    },
+    {
+      "slug": "bb8",
+      "name": "BB8",
+      "assetKey": "BB8",
+      "rarity": "iconic",
+      "type": "astromech",
+      "percentIncome": true,
+      "percentValue": 15,
+      "perk": "perk.bb8",
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": null,
+          "incomeLabel": "5%/s",
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "BB8_DEFAULT.png",
+          "imageIsFallback": false
+        }
+      }
+    },
+    {
+      "slug": "mister-bones",
+      "name": "MISTER BONES",
+      "assetKey": "MISTER_BONES",
+      "rarity": "iconic",
+      "type": "battle",
+      "percentIncome": true,
+      "percentValue": 15,
+      "perk": "perk.misterBones",
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": null,
+          "incomeLabel": "5%/s",
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "MISTER_BONES_DEFAULT.png",
+          "imageIsFallback": false
+        }
+      }
+    },
+    {
+      "slug": "ig-11-marshal",
+      "name": "IG-11 MARSHAL",
+      "assetKey": "IG-11_MARSHAL",
+      "rarity": "iconic",
+      "type": "battle",
+      "percentIncome": true,
+      "percentValue": 15,
+      "perk": "perk.ig11",
+      "unverified": false,
+      "tiers": {
+        "DEFAULT": {
+          "income": null,
+          "incomeLabel": "5%/s",
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "IG-11_MARSHAL_DEFAULT.png",
+          "imageIsFallback": false
+        }
+      }
+    },
+    {
+      "slug": "dj-r3x",
+      "name": "DJ-R3X",
+      "assetKey": "DJ-R3X",
+      "rarity": "iconic",
+      "type": "worker",
+      "percentIncome": true,
+      "percentValue": 15,
+      "perk": "perk.djr3x",
+      "unverified": true,
+      "tiers": {
+        "DEFAULT": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "DJ-R3X_DEFAULT.png",
+          "imageIsFallback": false
+        }
+      }
+    },
+    {
+      "slug": "cb-23",
+      "name": "CB-23",
+      "assetKey": "CB-23",
+      "rarity": "iconic",
+      "type": "astromech",
+      "percentIncome": true,
+      "percentValue": 15,
+      "perk": "perk.cb23",
+      "unverified": true,
+      "tiers": {
+        "DEFAULT": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "CB-23_DEFAULT.png",
+          "imageIsFallback": false
+        }
+      }
+    },
+    {
+      "slug": "r2-d2",
+      "name": "R2-D2",
+      "assetKey": "R2-D2",
+      "rarity": "iconic",
+      "type": "astromech",
+      "percentIncome": true,
+      "percentValue": 25,
+      "perk": null,
+      "unverified": true,
+      "tiers": {
+        "DEFAULT": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "R2-D2_DEFAULT.png",
+          "imageIsFallback": false
+        }
+      }
+    },
+    {
+      "slug": "c-3p0",
+      "name": "C-3P0",
+      "assetKey": "C-3P0",
+      "rarity": "iconic",
+      "type": "worker",
+      "percentIncome": true,
+      "percentValue": 25,
+      "perk": null,
+      "unverified": true,
+      "tiers": {
+        "DEFAULT": {
+          "income": null,
+          "incomeLabel": null,
+          "cost": null,
+          "costLabel": null,
+          "value": null,
+          "valueLabel": null,
+          "image": "C-3P0_DEFAULT.png",
+          "imageIsFallback": false
+        }
+      }
+    }
+  ]
+}

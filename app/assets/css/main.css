@@ -1,0 +1,56 @@
+@import 'tailwindcss';
+
+/**
+ * Thème sombre par défaut : le Droidex in-game est sombre, et l'app se consulte
+ * souvent en second écran pendant une session de jeu.
+ */
+@theme {
+  --color-void: #07090f;
+  --color-panel: #11151f;
+  --color-panel-raised: #1a2030;
+  --color-edge: #2a3245;
+  --color-ink: #e6e9f0;
+  --color-ink-muted: #8d97ad;
+
+  /* Couleurs de rareté, alignées sur le code couleur du jeu. */
+  --color-common: #9aa4b8;
+  --color-rare: #3d8bfd;
+  --color-epic: #a855f7;
+  --color-legendary: #f59e0b;
+  --color-mythic: #ef4444;
+  --color-iconic: #22d3ee;
+
+  /* Paliers de variante. */
+  --color-tier-default: #6b7280;
+  --color-tier-gold: #eab308;
+  --color-tier-diamond: #38bdf8;
+  --color-tier-rainbow: #ec4899;
+  --color-tier-beskar: #94a3b8;
+  --color-tier-galactic: #8b5cf6;
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-ink);
+}
+
+/* Dégradé Rainbow : une couleur plate ne serait pas lisible face aux autres paliers. */
+.tier-rainbow-bg {
+  background-image: linear-gradient(
+    90deg,
+    #f87171,
+    #fbbf24,
+    #4ade80,
+    #38bdf8,
+    #a78bfa
+  );
+}
+
+/* Reflet métallique du Beskar. */
+.tier-beskar-bg {
+  background-image: linear-gradient(135deg, #64748b, #e2e8f0 45%, #64748b);
+}
+
+.tier-galactic-bg {
+  background-image: linear-gradient(135deg, #4c1d95, #8b5cf6 50%, #2563eb);
+}

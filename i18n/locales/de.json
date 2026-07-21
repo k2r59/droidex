@@ -1,0 +1,228 @@
+{
+  "app": {
+    "name": "Droidex",
+    "tagline": "Die Community-Bibel zu Star Wars: Droid Tycoon",
+    "islandCode": "Inselcode: {code}"
+  },
+  "nav": {
+    "droidex": "Droidex",
+    "rebirths": "Rebirths",
+    "shop": "Nova Shop",
+    "updates": "Neuigkeiten",
+    "guide": "Guide",
+    "profile": "Profil"
+  },
+  "auth": {
+    "signIn": "Anmelden",
+    "signOut": "Abmelden",
+    "signInWith": "Weiter mit {provider}",
+    "signInPrompt": "Melde dich an, um deine Sammlung zu speichern",
+    "signInBenefit": "Dein Fortschritt wird auf allen deinen Geräten synchronisiert.",
+    "guestNotice": "Du bist als Gast unterwegs: Hake Droids ab, um deine Sammlung zu verfolgen, aber melde dich an, um sie zu behalten.",
+    "provider": {
+      "discord": "Discord",
+      "google": "Google",
+      "twitch": "Twitch"
+    }
+  },
+  "rarity": {
+    "common": "Common",
+    "rare": "Rare",
+    "epic": "Epic",
+    "legendary": "Legendary",
+    "mythic": "Mythic",
+    "iconic": "Iconic"
+  },
+  "tier": {
+    "DEFAULT": "Default",
+    "GOLD": "Gold",
+    "DIAMOND": "Diamond",
+    "RAINBOW": "Rainbow",
+    "BESKAR": "Beskar",
+    "GALACTIC": "Galactic"
+  },
+  "type": {
+    "worker": "Worker",
+    "astromech": "Astromech",
+    "battle": "Battle"
+  },
+  "droidex": {
+    "title": "Droidex",
+    "subtitle": "{owned} / {total} Droids gesammelt",
+    "search": "Droid suchen…",
+    "filterRarity": "Seltenheit",
+    "filterType": "Typ",
+    "filterTier": "Besessene Stufe",
+    "filterAll": "Alle",
+    "filterOwned": "Im Besitz",
+    "filterMissing": "Fehlend",
+    "filterFlawless": "Flawless",
+    "sortBy": "Sortieren nach",
+    "sort": {
+      "rarity": "Seltenheit",
+      "income": "Einkommen",
+      "cost": "Kosten",
+      "name": "Name"
+    },
+    "empty": "Kein Droid passt zu diesen Filtern.",
+    "resetFilters": "Filter zurücksetzen",
+    "viewGrid": "Raster",
+    "viewTable": "Tabelle",
+    "markOwned": "Als besessen markieren",
+    "markMissing": "Als nicht besessen markieren",
+    "tierOwned": "Besessene Stufe: {tier}",
+    "notOwned": "Nicht im Besitz"
+  },
+  "droid": {
+    "income": "Einkommen",
+    "incomePerSecond": "{value}/s",
+    "percentIncome": "{value} % des Gesamteinkommens",
+    "cost": "Kaufpreis",
+    "value": "Verkaufswert",
+    "perk": "Ausrüstungsbonus",
+    "tierTable": "Werte nach Stufe",
+    "flawless": "Flawless freigeschaltet",
+    "flawlessHint": "Die Flawless-Freischaltung ist dauerhaft und überlebt den Super Rebirth.",
+    "unverified": "Ungeprüfte Angabe",
+    "unverifiedHint": "Hochgerechneter Wert oder aus einer Sekundärquelle. Im Spiel prüfen.",
+    "noData": "Nicht veröffentlicht",
+    "galacticNoData": "Für die Stufe Galactic sind bisher keine Werte veröffentlicht.",
+    "imageFallback": "Platzhalterbild (keine Galactic-Illustration veröffentlicht)",
+    "usedInRebirths": "Für Rebirths erforderlich",
+    "backToDroidex": "Zurück zum Droidex"
+  },
+  "perk": {
+    "bb8": "Verdoppelt die Upgrade Chips beim Verkauf eines Droids",
+    "misterBones": "Höhere max. LP und Credits für Eliminierungen",
+    "ig11": "Blueprint-Schild und Missionsbonus",
+    "djr3x": "Verdoppelt die Belohnungen von Weltquests",
+    "cb23": "Schaltet eine geheime Astromech-Mission frei",
+    "mythicWorker": "+30 % Herstellungsgeschwindigkeit für Droids",
+    "mythicAstromech": "+5 Spitzhacken-Level",
+    "mythicBattle": "+100 max. LP"
+  },
+  "rebirth": {
+    "title": "Rebirths",
+    "subtitle": "Rebirth {current} von {max}",
+    "current": "Aktueller Rebirth",
+    "next": "Nächster Rebirth",
+    "creditsRequired": "Benötigte Credits",
+    "droidsRequired": "Benötigte Droids",
+    "anyTier": "Beliebige Stufe",
+    "ready": "Bereit für den Rebirth",
+    "missing": "Dir fehlt noch {count} Droid | Dir fehlen noch {count} Droids",
+    "placementWarning": "Die Droids müssen tatsächlich in deiner Basis platziert sein — sie im Droidex zu besitzen reicht nicht.",
+    "keeps": "Bleibt erhalten",
+    "keepsList": "Droid-Sammlung, Blueprints, Droidex-Fortschritt",
+    "loses": "Geht verloren",
+    "losesList": "Alle Credits, auch der Überschuss oberhalb der Schwelle",
+    "grants": "Dauerhaft freigeschaltet",
+    "grantsList": "Credit- und XP-Multiplikator, Basis- und Lounge-Slots, Offline-Credits, Waffenzugang",
+    "multiplier": "+{value} % Credits pro Rebirth",
+    "cycle": "Zyklus {number}",
+    "cycleHint": "Die Anforderungen ändern sich mit jedem Super Rebirth und wiederholen sich über 4 Zyklen.",
+    "undocumented": "Für diesen Zyklus sind keine Anforderungen veröffentlicht.",
+    "setLevel": "Meinen Rebirth festlegen"
+  },
+  "superRebirth": {
+    "title": "Super Rebirths",
+    "count": "{count} Super Rebirth gemacht | {count} Super Rebirths gemacht",
+    "unlock": "Ab Rebirth {rebirth} mit einem Rainbow Legendary freigeschaltet",
+    "locked": "Noch gesperrt",
+    "unlocked": "Freigeschaltet",
+    "loses": "Basis, alle Droids, Credits, Rebirth-Rang, Spitzhacken-Level, Blueprints und Upgrade Chips",
+    "keeps": "Droidex-Meilensteine, Droidsmith-Level, Kosmetik, Flawless- und Iconic-Freischaltungen",
+    "reward": "Nova Crystals + dauerhafter Credit-Bonus",
+    "crystalTable": "Kristalle je nach erreichtem Rebirth",
+    "atRebirth": "Bei Rebirth {level}",
+    "crystals": "{count} Kristall | {count} Kristalle",
+    "doIt": "Ich habe einen Super Rebirth gemacht"
+  },
+  "shop": {
+    "title": "Nova Shop",
+    "subtitle": "Gib deine Nova Crystals aus",
+    "balance": "Mein Guthaben",
+    "setBalance": "Mein Guthaben festlegen",
+    "cost": "{count} Kristall | {count} Kristalle",
+    "perLevel": "pro Level",
+    "levels": "{count} Level | {count} Level",
+    "totalCost": "Gesamtkosten",
+    "effect": "Effekt",
+    "affordable": "Erschwinglich",
+    "tooExpensive": "Dir fehlen {count} Kristalle",
+    "category": {
+      "featured": "Empfohlen",
+      "core": "Haupt-Upgrades",
+      "workshop": "Werkstatt-Upgrades",
+      "cosmetic": "Kosmetik",
+      "iconic": "Iconic-Droids"
+    },
+    "oneTime": "Einmaliger Kauf",
+    "recommendedOrder": "Empfohlene Kaufreihenfolge",
+    "incomplete": "Der Katalog des Nova Shop ist von der Community nur teilweise dokumentiert. Fehlende Preise sind markiert.",
+    "remaining": "Noch zu kaufen",
+    "grandTotal": "Alles maximieren",
+    "maxed": "Maximum erreicht",
+    "unknownCost": "Kosten nicht veröffentlicht",
+    "confidence": {
+      "conflicting": "Die Quellen widersprechen sich bei diesem Preis.",
+      "single-source": "Preis nur von einer Quelle genannt.",
+      "unknown": "Preis unbekannt."
+    }
+  },
+  "updates": {
+    "title": "Neuigkeiten",
+    "subtitle": "Updates und Events",
+    "version": "Version {version}",
+    "event": "Event",
+    "patch": "Update",
+    "ongoing": "Läuft",
+    "ended": "Beendet",
+    "noDate": "Kein Datum bekannt"
+  },
+  "guide": {
+    "title": "Guide",
+    "subtitle": "Alles, was du wissen musst",
+    "base": "Die Basis",
+    "slots": "{count} Slots insgesamt: {worker} Worker, {astromech} Astromech, {battle} Battle",
+    "specialtyBonus": "+10 % Credits, wenn der Droid in einem Slot seines Typs steht",
+    "collectionBonus": "+25 % Credits, wenn alle 25 Slots mit unterschiedlichen Droids belegt sind",
+    "flawlessTitle": "Flawless-Droids",
+    "flawlessRate": "Erscheinungsrate je nach hergestellter Stufe",
+    "flawlessBonus": "Der erste Flawless jedes Typs bringt +0,01× auf die Basiseinnahmen, also maximal +0,51× über die 51 herstellbaren Typen.",
+    "chipsTitle": "Upgrade Chips",
+    "chipsCost": "Kosten für den Stufenaufstieg",
+    "missionsTitle": "Missionen",
+    "sandcrawlerTitle": "Sandcrawler",
+    "sandcrawlerRainbow": "Garantierter Rainbow alle 5 Minuten",
+    "sandcrawlerBeskar": "Garantierter Beskar alle 20 Minuten, einer pro Spieler in der Lobby",
+    "currenciesTitle": "Währungen"
+  },
+  "stats": {
+    "collection": "Sammlung",
+    "totalIncome": "Gesamteinkommen",
+    "byRarity": "Nach Seltenheit",
+    "completion": "{percent} % abgeschlossen",
+    "keeperScore": "Sammler-Score"
+  },
+  "common": {
+    "loading": "Wird geladen…",
+    "error": "Es ist ein Fehler aufgetreten",
+    "retry": "Erneut versuchen",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "close": "Schließen",
+    "syncing": "Wird synchronisiert…",
+    "synced": "Gespeichert",
+    "syncFailed": "Speichern nicht möglich — deine Änderungen wurden nicht gesichert.",
+    "language": "Sprache",
+    "install": "App installieren",
+    "offline": "Offline — die angezeigten Daten können veraltet sein."
+  },
+  "disclaimer": {
+    "title": "Über die Daten",
+    "community": "Alle Werte stammen aus Community-Trackern und -Wikis. Eine vollständige offizielle Quelle gibt es nicht. Prüfe die Anforderungen im Spiel, bevor du dich auf einen Rebirth festlegst.",
+    "rights": "Star Wars und Fortnite sind Marken von Epic Games und Lucasfilm. Diese Community-Seite ist weder mit ihnen verbunden noch von ihnen unterstützt.",
+    "lastUpdate": "Daten auf dem Stand vom {date}"
+  }
+}
