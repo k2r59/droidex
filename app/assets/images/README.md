@@ -24,7 +24,7 @@ qui sont référencées par nom calculé depuis le dataset.
 | `droidex-logo-horizontal.svg` | Complete Asset Pack | Logo complet |
 | `dots.svg` `grid.svg` `hex.svg` `scanlines.svg` | Complete Asset Pack | Motifs de fond |
 | `nebula-cyan.svg` `stars-deep.svg` | Complete Asset Pack | Décors spatiaux |
-| `droid-sidebar-droite.png` | — | ⏳ à déposer |
+| `nova-crystal-hero.webp` | Complete Asset Pack | Illustration du rail Supers Renaissances |
 
 ## Bannières de page
 

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import background from '~/assets/images/backgrounds/sidebar-right.webp'
+import crystal from '~/assets/images/nova-crystal-hero.webp'
 
 /**
  * Colonne de droite de la page Renaissances.
@@ -48,13 +49,10 @@ const blocs = [
         {{ $t('superRebirth.unlock', { rebirth: unlockRebirth }) }}
       </p>
 
-      <!--
-        Illustration de substitution : l'icône Nova agrandie sur un halo. Elle tient lieu
-        de visuel tant que `droid-sidebar-droite.png` n'est pas déposé.
-      -->
-      <div class="relative my-5 grid place-items-center py-4">
-        <span class="absolute size-40 rounded-full bg-accent/20 blur-3xl" />
-        <DxIcon name="resources/nova-crystal" size="9rem" class="relative text-accent" />
+      <!-- Le halo derrière l'illustration prolonge la lueur du cristal jusqu'aux bords du panneau. -->
+      <div class="relative my-4 grid place-items-center">
+        <span class="absolute size-44 rounded-full bg-accent/25 blur-3xl" />
+        <img :src="crystal" alt="" class="relative w-full max-w-56">
       </div>
 
       <p class="flex items-center gap-2 text-sm">
