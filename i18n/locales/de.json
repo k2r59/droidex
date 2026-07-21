@@ -205,7 +205,8 @@
     "totalIncome": "Gesamteinkommen",
     "byRarity": "Nach Seltenheit",
     "completion": "{percent} % abgeschlossen",
-    "keeperScore": "Sammler-Score"
+    "keeperScore": "Sammler-Score",
+    "byTier": "Nach Stufe"
   },
   "common": {
     "loading": "Wird geladen…",
@@ -271,6 +272,8 @@
       "easy": "Leicht",
       "medium": "Mittel",
       "hard": "Schwer"
-    }
+    },
+    "measured": "Gemessene Zeiten bei der {tier}-Mission",
+    "missionTier": "Stufe"
   }
 }

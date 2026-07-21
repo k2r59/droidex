@@ -18,6 +18,15 @@ const RARITY_BAR: Record<string, string> = {
   iconic: 'bg-iconic',
 }
 
+const TIER_DOT: Record<string, string> = {
+  DEFAULT: 'bg-tier-default',
+  GOLD: 'bg-tier-gold',
+  DIAMOND: 'bg-tier-diamond',
+  RAINBOW: 'tier-rainbow-bg',
+  BESKAR: 'tier-beskar-bg',
+  GALACTIC: 'tier-galactic-bg',
+}
+
 const RARITY_TEXT: Record<string, string> = {
   common: 'text-common',
   rare: 'text-rare',
@@ -64,6 +73,27 @@ const RARITY_TEXT: Record<string, string> = {
           />
         </div>
       </div>
+    </div>
+
+    <!-- Répartition par palier. Les raretés ci-dessus disent QUELS droids sont collectés,
+         celle-ci dit à QUEL niveau ils sont montés — c'est là qu'apparaissent Beskar et
+         Galactique, qui sont des paliers et non des raretés. -->
+    <div>
+      <p class="mb-1.5 text-xs uppercase tracking-wide text-ink-muted">{{ $t('stats.byTier') }}</p>
+      <!-- 6 colonnes seulement à partir de `xl` : en dessous, « Arc-en-ciel » et
+           « Galactique » se font tronquer. -->
+      <ul class="grid grid-cols-2 gap-2 sm:grid-cols-3 xl:grid-cols-6">
+        <li
+          v-for="tier in store.dataset.tiers"
+          :key="tier"
+          class="flex items-center gap-2 rounded-lg bg-panel-raised px-2 py-1.5"
+          :class="!store.countByTier[tier] && 'opacity-45'"
+        >
+          <span class="size-2.5 shrink-0 rounded-full" :class="TIER_DOT[tier]" />
+          <span class="min-w-0 flex-1 truncate text-xs">{{ $t(`tier.${tier}`) }}</span>
+          <span class="font-mono text-sm tabular-nums">{{ store.countByTier[tier] }}</span>
+        </li>
+      </ul>
     </div>
 
     <p v-if="!isAuthenticated" class="rounded-lg bg-panel-raised px-3 py-2 text-sm text-ink-muted">

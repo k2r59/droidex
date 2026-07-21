@@ -56,9 +56,15 @@ function formatDuration(seconds: number | null) {
             </span>
 
             <div>
+              <p class="text-xs text-ink-muted">{{ $t('missions.missionTier') }}</p>
+              <p class="text-sm">{{ $t(`tier.${pad.missionTier}`) }}</p>
+            </div>
+
+            <div>
               <p class="text-xs text-ink-muted">{{ $t('missions.unlockCost') }}</p>
               <p class="font-mono text-sm tabular-nums">
-                {{ pad.unlockCost ? formatNumber(pad.unlockCost, locale) : $t('missions.free') }}
+                <template v-if="pad.unlockCost">{{ formatNumber(pad.unlockCost, locale) }}</template>
+                <span v-else class="text-ink-muted">{{ $t('droid.noData') }}</span>
               </p>
             </div>
 
@@ -100,7 +106,45 @@ function formatDuration(seconds: number | null) {
       <p class="rounded-lg bg-panel px-3 py-2 text-xs text-ink-muted">
         {{ missions.pads.scalingNote }}
       </p>
+      <p class="rounded-lg bg-panel px-3 py-2 text-xs text-amber-300">
+        ⚠ {{ missions.pads.passiveIncomeDuringMission }}
+      </p>
+      <p class="rounded-lg bg-panel px-3 py-2 text-xs text-ink-muted">
+        {{ missions.pads.rewardsUnaffectedByDroid }}
+      </p>
       <p class="rounded-lg bg-panel-raised px-3 py-2 text-sm">💡 {{ missions.pads.bestCompanion }}</p>
+
+      <!-- Temps relevés par les joueurs : c'est la réponse concrète à « quel droid
+           envoyer pour aller plus vite », qu'aucune formule publiée ne donne. -->
+      <div class="rounded-xl border border-edge bg-panel p-3">
+        <h3 class="mb-2 text-sm font-medium">
+          {{ $t('missions.measured', { tier: $t(`tier.${missions.pads.measured.missionTier}`) }) }}
+        </h3>
+        <ul class="flex flex-col gap-1">
+          <li
+            v-for="row in missions.pads.measured.rows"
+            :key="row.droid"
+            class="flex items-center justify-between gap-3 rounded-lg bg-panel-raised px-2.5 py-1.5 text-sm"
+          >
+            <span class="min-w-0 flex-1">{{ row.droid }}</span>
+            <span
+              class="font-mono tabular-nums"
+              :class="row.seconds === missions.pads.measured.baseSeconds ? 'text-ink-muted' : 'text-emerald-400'"
+            >
+              {{ row.approximate ? '≈ ' : '' }}{{ formatDuration(row.seconds) }}
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="rounded-xl border border-edge bg-panel p-3">
+        <h3 class="text-sm font-medium">{{ missions.secretMission.name }}</h3>
+        <p class="mt-1 text-sm text-ink-muted">
+          {{ formatDuration(missions.secretMission.durationSeconds) }} ·
+          {{ formatDuration(missions.secretMission.withR2D2Seconds) }} avec R2-D2
+        </p>
+        <p class="mt-1 text-xs text-ink-muted">{{ missions.secretMission.note }}</p>
+      </div>
     </section>
 
     <section class="rounded-xl border border-edge bg-panel p-4">

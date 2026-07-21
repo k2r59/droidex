@@ -205,7 +205,8 @@
     "totalIncome": "Ingresos acumulados",
     "byRarity": "Por rareza",
     "completion": "{percent} % completado",
-    "keeperScore": "Puntuación de coleccionista"
+    "keeperScore": "Puntuación de coleccionista",
+    "byTier": "Por tier"
   },
   "common": {
     "loading": "Cargando…",
@@ -271,6 +272,8 @@
       "easy": "Fácil",
       "medium": "Media",
       "hard": "Difícil"
-    }
+    },
+    "measured": "Tiempos medidos en la misión {tier}",
+    "missionTier": "Tier"
   }
 }

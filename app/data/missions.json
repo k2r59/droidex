@@ -2,13 +2,13 @@
   "version": 1,
   "generatedFrom": "Fortnite Wiki (Fandom), update log communautaire et patch notes du dev (@FoadZone), juillet 2026 — état v1.22.1",
   "pads": {
-    "note": "Les « mission pads » du Shipyard et les « Astromech Missions » des patch notes sont le même système. Un droid astromech par pad, 5 pads au maximum, soit 5 missions simultanées.",
+    "note": "Les « mission pads » du Shipyard et les « Astromech Missions » des patch notes sont le même système. Il y a 5 terminaux, et chaque palier de mission s'achète séparément SUR CHAQUE terminal — débloquer la mission Diamant sur les 5 terminaux coûte 5 × 400k, pas 400k une fois. Un droid par terminal, donc 5 missions simultanées.",
     "slotLocks": true,
-    "passiveIncomeDuringMission": null,
+    "passiveIncomeDuringMission": "Non confirmé explicitement, mais les discussions de joueurs sur l'optimisation du revenu des emplacements de mission n'auraient aucun sens si le droid cessait de produire. À vérifier en jeu.",
     "entries": [
       {
         "pad": 1,
-        "unlockCost": 0,
+        "unlockCost": null,
         "baseDurationSeconds": 60,
         "rewards": [
           {
@@ -26,11 +26,13 @@
             "chance": 10
           }
         ],
-        "note": "Un wiki communautaire annonce « 1 chance sur 3 » de crédits, là où les tables de loot donnent 50 %. Divergence non tranchée."
+        "note": "Durée observée entre 1:00 et 1:20. Les coûts de déblocage des deux premiers paliers ne sont attestés par aucune source — les valeurs « gratuit » et « 15k » qui circulent sont invérifiées.",
+        "missionTier": "DEFAULT",
+        "unlockConfidence": "unknown"
       },
       {
         "pad": 2,
-        "unlockCost": 15000,
+        "unlockCost": null,
         "baseDurationSeconds": null,
         "rewards": [
           {
@@ -48,7 +50,10 @@
             "tier": "DIAMOND",
             "chance": 10
           }
-        ]
+        ],
+        "missionTier": "GOLD",
+        "unlockConfidence": "unknown",
+        "note": "Coût de déblocage et durée non attestés."
       },
       {
         "pad": 3,
@@ -70,12 +75,14 @@
             "tier": "RAINBOW",
             "chance": 10
           }
-        ]
+        ],
+        "missionTier": "DIAMOND",
+        "unlockConfidence": "confirmed"
       },
       {
         "pad": 4,
         "unlockCost": 8000000,
-        "baseDurationSeconds": null,
+        "baseDurationSeconds": 3600,
         "rewards": [
           {
             "kind": "tier",
@@ -87,7 +94,10 @@
             "tier": "RAINBOW",
             "chance": 80
           }
-        ]
+        ],
+        "missionTier": "RAINBOW",
+        "unlockConfidence": "confirmed",
+        "note": "Durée observée d'environ 1 heure."
       },
       {
         "pad": 5,
@@ -109,30 +119,43 @@
             "chance": 5
           }
         ],
-        "note": "Seule source de Beskar en mission. Les récompenses de droid sont des blueprints, pas des droids finis. Crédits augmentés d'environ 30 % en v1.16.1. La durée de 12 minutes vient des patch notes du dev ; un wiki communautaire annonce 6:00 — c'est vraisemblablement le temps observé avec un bon droid, pas le temps de base."
+        "note": "Seule source de Beskar en mission. Les récompenses de droid sont des blueprints, pas des droids finis. Crédits augmentés d'environ 30 % en v1.16.1. La durée de base de 12 minutes vient des patch notes du dev ; les 6:00 souvent cités sont le temps atteint avec un excellent astromech, pas le temps de base.",
+        "missionTier": "BESKAR",
+        "unlockConfidence": "confirmed"
       }
     ],
-    "durationNote": "Chaque pad envoie vers une planète différente : la durée varie selon la destination tirée, ce qui explique l'absence de valeurs fixes publiées pour les pads 2 à 4. Envoyer un droid de meilleure rareté raccourcit la mission — un R7 Beskar boucle le pad 5 en 6:00 contre 12:00 de base — mais aucune formule n'a été publiée.",
-    "measured": [
-      {
-        "label": "Pad 5, base",
-        "seconds": 720
-      },
-      {
-        "label": "Pad 5, R7 Beskar",
-        "seconds": 360
-      },
-      {
-        "label": "Pad 5, droid moindre",
-        "seconds": 400
-      },
-      {
-        "label": "Mission la plus courte",
-        "seconds": 60
-      }
-    ],
+    "durationNote": "Seul un droid ASTROMECH placé sur le terminal réduit la durée. Y mettre autre chose laisse la mission à son temps de base. La réduction dépend à la fois de la rareté et du palier de l'astromech, mais aucune formule n'a été publiée.",
+    "measured": {
+      "missionTier": "BESKAR",
+      "baseSeconds": 720,
+      "rows": [
+        {
+          "droid": "R7 Légendaire Beskar",
+          "seconds": 360
+        },
+        {
+          "droid": "Astromech Légendaire Arc-en-ciel",
+          "seconds": 368
+        },
+        {
+          "droid": "R7 Légendaire Arc-en-ciel",
+          "seconds": 378
+        },
+        {
+          "droid": "R2 Épique",
+          "seconds": 420,
+          "approximate": true
+        },
+        {
+          "droid": "Astromech Épique Beskar, ou tout non-astromech",
+          "seconds": 720
+        }
+      ]
+    },
     "bestCompanion": "Depuis la v1.17.1, les droids Emblématiques dépassent les Légendaires Beskar sur les missions astromech : BB-8 est le meilleur droid à envoyer.",
-    "scalingNote": "Pour les mission pads, la rareté ET le palier comptent. Pour les World Missions, seule la rareté compte depuis la v1.18 — les deux systèmes ne suivent pas la même règle."
+    "scalingNote": "Pour les mission pads, la rareté ET le palier comptent. Pour les World Missions, seule la rareté compte depuis la v1.18 — les deux systèmes ne suivent pas la même règle.",
+    "perTerminalPurchase": true,
+    "rewardsUnaffectedByDroid": "La qualité du droid envoyé ne change QUE la durée, jamais les récompenses."
   },
   "worldMissions": {
     "note": "Objectifs répartis sur Tatooine, distincts des mission pads. Il faut amener un droid de la bonne classe pour les déclencher.",
@@ -204,5 +227,11 @@
     "Endgame : garder le pad 5 actif en permanence — chaque complétion donne soit des crédits, soit un droid haute variante revendable, et c'est l'unique source de Beskar.",
     "Compagnon : ton astromech de plus haute rareté pour les pads ; un Emblématique pour les world missions depuis la v1.18 ; DJ-R3X si tu farmes les world quests, il en double les récompenses.",
     "Les événements du week-end donnent double crédits, double chips et double chance de Flawless : c'est la fenêtre à privilégier pour tout farm de missions."
-  ]
+  ],
+  "secretMission": {
+    "name": "Mission secrète CB-23",
+    "durationSeconds": 1140,
+    "withR2D2Seconds": 960,
+    "note": "Distincte des 5 terminaux. Débloquée via CB-23."
+  }
 }

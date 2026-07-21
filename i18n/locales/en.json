@@ -205,7 +205,8 @@
     "totalIncome": "Total income",
     "byRarity": "By rarity",
     "completion": "{percent}% complete",
-    "keeperScore": "Collector score"
+    "keeperScore": "Collector score",
+    "byTier": "By tier"
   },
   "common": {
     "loading": "Loading…",
@@ -271,6 +272,8 @@
       "easy": "Easy",
       "medium": "Medium",
       "hard": "Hard"
-    }
+    },
+    "measured": "Measured times on the {tier} mission",
+    "missionTier": "Tier"
   }
 }

@@ -107,6 +107,21 @@ export const useCollectionStore = defineStore('collection', () => {
   })
 
   /**
+   * Nombre de droids possédés à chaque palier, en comptage exact : un droid en Beskar
+   * compte pour Beskar et nulle part ailleurs. C'est la lecture utile pour un
+   * collectionneur — « combien de Beskar j'ai » — là où un comptage cumulatif
+   * (« au moins Or ») ne ferait que répéter le total.
+   */
+  const countByTier = computed(() => {
+    const acc = {} as Record<Tier, number>
+    for (const t of data.tiers) acc[t] = 0
+    for (const e of Object.values(entries.value)) {
+      if (e.tier) acc[e.tier] = (acc[e.tier] ?? 0) + 1
+    }
+    return acc
+  })
+
+  /**
    * Revenu total des droids possédés, au palier possédé. Les Emblématiques sont exclus :
    * ils rapportent un pourcentage du revenu global, les additionner n'aurait pas de sens.
    */
@@ -249,6 +264,7 @@ export const useCollectionStore = defineStore('collection', () => {
     ownedCount,
     totalCount,
     countByRarity,
+    countByTier,
     totalIncome,
     isEmpty,
     satisfies,

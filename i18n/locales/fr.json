@@ -205,7 +205,8 @@
     "totalIncome": "Revenu cumulé",
     "byRarity": "Par rareté",
     "completion": "{percent} % complété",
-    "keeperScore": "Score de collectionneur"
+    "keeperScore": "Score de collectionneur",
+    "byTier": "Par palier"
   },
   "common": {
     "loading": "Chargement…",
@@ -271,6 +272,8 @@
       "easy": "Facile",
       "medium": "Moyenne",
       "hard": "Difficile"
-    }
+    },
+    "measured": "Temps relevés sur la mission {tier}",
+    "missionTier": "Palier"
   }
 }
