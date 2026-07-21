@@ -17,14 +17,15 @@
     "signIn": "Sign in",
     "signOut": "Sign out",
     "signInWith": "Continue with {provider}",
-    "signInPrompt": "Sign in to save your collection",
+    "signInPrompt": "Your collection is saved on this device. Sign in to access it everywhere.",
     "signInBenefit": "Your progress syncs across all your devices.",
     "guestNotice": "You're browsing as a guest: tick droids to track your collection, but sign in to keep it.",
     "provider": {
       "discord": "Discord",
       "google": "Google",
       "twitch": "Twitch"
-    }
+    },
+    "noProvider": "No sign-in provider is configured on this server."
   },
   "rarity": {
     "common": "Common",

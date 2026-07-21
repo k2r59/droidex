@@ -25,7 +25,7 @@ type Candidate = {
   gain: number
 }
 
-const budget = useLocalStorage<number | null>('droidex:budget', null)
+const budget = useHydratedStorage<number | null>('droidex:budget', null)
 
 const candidates = computed<Candidate[]>(() => {
   const out: Candidate[] = []

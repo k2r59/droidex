@@ -11,10 +11,10 @@ useSeoMeta({
 
 const search = ref('')
 // Les filtres survivent au rechargement : on revient souvent sur la même vue en jouant.
-const rarity = useLocalStorage<Rarity | 'all'>('droidex:rarity', 'all')
-const type = useLocalStorage<DroidType | 'all'>('droidex:type', 'all')
-const ownership = useLocalStorage<'all' | 'owned' | 'missing' | 'flawless'>('droidex:ownership', 'all')
-const sort = useLocalStorage<'rarity' | 'income' | 'cost' | 'name'>('droidex:sort', 'rarity')
+const rarity = useHydratedStorage<Rarity | 'all'>('droidex:rarity', 'all')
+const type = useHydratedStorage<DroidType | 'all'>('droidex:type', 'all')
+const ownership = useHydratedStorage<'all' | 'owned' | 'missing' | 'flawless'>('droidex:ownership', 'all')
+const sort = useHydratedStorage<'rarity' | 'income' | 'cost' | 'name'>('droidex:sort', 'rarity')
 
 const RARITY_ORDER = store.dataset.rarities
 
@@ -86,7 +86,15 @@ onKeyStroke('Escape', () => {
     <CollectionStats />
 
     <div class="grid gap-3 lg:grid-cols-2">
-      <SandcrawlerTimers />
+      <!-- Horloge live : le serveur rendrait une heure différente de celle du client,
+           ce qui casse l'hydratation. Aucun intérêt en SSR, donc client uniquement. -->
+      <ClientOnly>
+        <SandcrawlerTimers />
+        <template #fallback>
+          <div class="h-48 animate-pulse rounded-xl border border-edge bg-panel" />
+        </template>
+      </ClientOnly>
+
       <NextPurchaseAdvisor />
     </div>
 

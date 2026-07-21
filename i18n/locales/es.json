@@ -17,14 +17,15 @@
     "signIn": "Iniciar sesión",
     "signOut": "Cerrar sesión",
     "signInWith": "Continuar con {provider}",
-    "signInPrompt": "Inicia sesión para guardar tu colección",
+    "signInPrompt": "Tu colección se guarda en este dispositivo. Inicia sesión para tenerla en todas partes.",
     "signInBenefit": "Tu progreso se sincroniza en todos tus dispositivos.",
     "guestNotice": "Estás navegando como invitado: marca los Droids para seguir tu colección, pero inicia sesión para conservarla.",
     "provider": {
       "discord": "Discord",
       "google": "Google",
       "twitch": "Twitch"
-    }
+    },
+    "noProvider": "No hay ningún proveedor de inicio de sesión configurado en este servidor."
   },
   "rarity": {
     "common": "Common",

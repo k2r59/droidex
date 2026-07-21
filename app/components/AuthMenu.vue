@@ -8,7 +8,10 @@ const open = ref(false)
 const root = useTemplateRef('root')
 onClickOutside(root, () => { open.value = false })
 
-const providers: SocialProvider[] = ['discord', 'google', 'twitch']
+// Récupérés côté serveur : seuls les fournisseurs dont les identifiants sont présents
+// sont proposés, pour ne jamais afficher un bouton qui mène à une page d'erreur.
+const { data: providerData } = await useFetch('/api/auth-providers')
+const providers = computed(() => (providerData.value?.providers ?? []) as SocialProvider[])
 
 const PROVIDER_CLASS: Record<SocialProvider, string> = {
   discord: 'bg-[#5865F2] hover:bg-[#4752c4]',
@@ -84,9 +87,9 @@ async function logout() {
 
       <template v-else>
         <p class="border-b border-edge px-3 py-2 text-xs text-ink-muted">
-          {{ $t('auth.signInBenefit') }}
+          {{ providers.length ? $t('auth.signInBenefit') : $t('auth.noProvider') }}
         </p>
-        <div class="flex flex-col gap-1.5 p-2">
+        <div v-if="providers.length" class="flex flex-col gap-1.5 p-2">
           <button
             v-for="p in providers"
             :key="p"

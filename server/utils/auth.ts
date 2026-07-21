@@ -11,26 +11,35 @@ async function createAuth() {
   const config = useRuntimeConfig()
   const db = await useDb()
 
+  /**
+   * On n'enregistre que les fournisseurs réellement configurés. Déclarer un provider avec
+   * des identifiants vides fait échouer l'initialisation, ce qui rendrait l'app entièrement
+   * inaccessible en développement tant que les trois OAuth ne sont pas créés — alors que
+   * tout le reste (Droidex, guide, missions) se consulte très bien sans être connecté.
+   */
+  const candidates = {
+    discord: { clientId: config.discordClientId, clientSecret: config.discordClientSecret },
+    google: { clientId: config.googleClientId, clientSecret: config.googleClientSecret },
+    twitch: { clientId: config.twitchClientId, clientSecret: config.twitchClientSecret },
+  }
+
+  const socialProviders = Object.fromEntries(
+    Object.entries(candidates).filter(([, c]) => c.clientId && c.clientSecret),
+  )
+
+  if (import.meta.dev && !Object.keys(socialProviders).length) {
+    console.warn(
+      '[auth] Aucun fournisseur OAuth configuré — la connexion est désactivée. Voir .env.example.',
+    )
+  }
+
   return betterAuth({
     database: mongodbAdapter(db),
     secret: config.betterAuthSecret,
     baseURL: config.public.baseUrl,
     // Pas de mot de passe : l'app est communautaire, on s'appuie uniquement sur l'OAuth.
     emailAndPassword: { enabled: false },
-    socialProviders: {
-      discord: {
-        clientId: config.discordClientId,
-        clientSecret: config.discordClientSecret,
-      },
-      google: {
-        clientId: config.googleClientId,
-        clientSecret: config.googleClientSecret,
-      },
-      twitch: {
-        clientId: config.twitchClientId,
-        clientSecret: config.twitchClientSecret,
-      },
-    },
+    socialProviders,
     // Un même joueur peut arriver par Discord puis par Google : on rattache les comptes
     // partageant une adresse vérifiée plutôt que de créer un doublon de progression.
     account: {

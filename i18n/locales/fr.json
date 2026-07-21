@@ -17,14 +17,15 @@
     "signIn": "Se connecter",
     "signOut": "Se déconnecter",
     "signInWith": "Continuer avec {provider}",
-    "signInPrompt": "Connecte-toi pour enregistrer ta collection",
+    "signInPrompt": "Ta collection est enregistrée sur cet appareil. Connecte-toi pour la retrouver partout.",
     "signInBenefit": "Ta progression est synchronisée sur tous tes appareils.",
     "guestNotice": "Tu consultes en visiteur : coche les droids pour suivre ta collection, mais connecte-toi pour la conserver.",
     "provider": {
       "discord": "Discord",
       "google": "Google",
       "twitch": "Twitch"
-    }
+    },
+    "noProvider": "Aucun fournisseur de connexion n'est configuré sur ce serveur."
   },
   "rarity": {
     "common": "Typique",

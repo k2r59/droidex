@@ -18,7 +18,7 @@ import mechanics from '~/data/mechanics.json'
  */
 const sandcrawler = mechanics.sandcrawler
 
-const lastBeskar = useLocalStorage<number | null>('droidex:sandcrawler-beskar', null)
+const lastBeskar = useHydratedStorage<number | null>('droidex:sandcrawler-beskar', null)
 
 const now = ref(Date.now())
 let handle: ReturnType<typeof setInterval> | undefined

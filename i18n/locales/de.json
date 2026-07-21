@@ -17,14 +17,15 @@
     "signIn": "Anmelden",
     "signOut": "Abmelden",
     "signInWith": "Weiter mit {provider}",
-    "signInPrompt": "Melde dich an, um deine Sammlung zu speichern",
+    "signInPrompt": "Deine Sammlung wird auf diesem Gerät gespeichert. Melde dich an, um sie überall zu haben.",
     "signInBenefit": "Dein Fortschritt wird auf allen deinen Geräten synchronisiert.",
     "guestNotice": "Du bist als Gast unterwegs: Hake Droids ab, um deine Sammlung zu verfolgen, aber melde dich an, um sie zu behalten.",
     "provider": {
       "discord": "Discord",
       "google": "Google",
       "twitch": "Twitch"
-    }
+    },
+    "noProvider": "Auf diesem Server ist kein Anmeldeanbieter konfiguriert."
   },
   "rarity": {
     "common": "Common",
