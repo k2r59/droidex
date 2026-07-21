@@ -1,5 +1,15 @@
 <script setup lang="ts">
 import mark from '~/assets/images/droidex-mark.svg'
+
+/*
+ * L'illustration de la carte est optionnelle : tant que le fichier n'est pas déposé,
+ * la carte s'affiche sans fond plutôt que de casser.
+ */
+const planets = import.meta.glob('~/assets/images/planet-rebirth.webp', {
+  import: 'default',
+  eager: true,
+}) as Record<string, string>
+const planet = Object.values(planets)[0]
 import rebirthData from '~/data/rebirths.json'
 
 /**
@@ -24,10 +34,10 @@ const nextRebirth = computed(() => Math.min(store.rebirth + 1, rebirthData.maxRe
 const nextBonus = computed(() => Math.round(rebirthData.creditMultiplierPerLevel * 100))
 
 const socials = [
-  { id: 'discord', label: 'Discord — Droid Tycoon', icon: 'brands/discord', href: 'https://discord.gg/droidtycoon' },
-  { id: 'foad', label: 'X — FOAD', icon: 'brands/x', href: 'https://x.com/FoadZone' },
-  { id: 'blzn', label: 'X — Blzn Studios', icon: 'brands/x', href: 'https://x.com/BlznDev' },
-  { id: 'island', label: 'Île Fortnite', icon: 'actions/external', href: 'https://www.fortnite.com/@foad/7865-8305-9184' },
+  { id: 'discord', label: 'Discord — Droid Tycoon', icon: 'brands/discord', href: 'https://discord.gg/droidtycoon', tint: 'hover:bg-[#5865F2]/20 hover:text-[#7d88ff]' },
+  { id: 'foad', label: 'X — FOAD', icon: 'brands/x', href: 'https://x.com/FoadZone', tint: 'hover:bg-white/15 hover:text-white' },
+  { id: 'blzn', label: 'X — Blzn Studios', icon: 'brands/x', href: 'https://x.com/BlznDev', tint: 'hover:bg-white/15 hover:text-white' },
+  { id: 'island', label: 'Île Fortnite', icon: 'actions/external', href: 'https://www.fortnite.com/@foad/7865-8305-9184', tint: 'hover:bg-accent/20 hover:text-accent' },
 ] as const
 </script>
 
@@ -61,24 +71,33 @@ const socials = [
     <!-- Prochaine renaissance : le palier suivant est l'objectif qui structure une session. -->
     <NuxtLink
       :to="localePath('/rebirths')"
-      class="sidebar-rebirth dx-side-panel mt-auto flex shrink-0 flex-col items-center gap-2 overflow-hidden p-4 text-center transition-colors hover:border-accent/40"
+      class="sidebar-rebirth dx-side-panel relative mt-auto flex shrink-0 flex-col items-center gap-2 overflow-hidden p-4 text-center transition-colors hover:border-accent/40"
     >
-      <p class="text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-muted">
+      <!-- Fond de carte : l'illustration occupe toute la surface, le contenu se pose dessus. -->
+      <span
+        v-if="planet"
+        class="pointer-events-none absolute inset-0 bg-cover bg-center"
+        :style="{ backgroundImage: `url(${planet})` }"
+        aria-hidden="true"
+      />
+      <span
+        class="pointer-events-none absolute inset-0"
+        style="background: linear-gradient(180deg, rgb(7 16 31 / 0.92) 0%, rgb(7 16 31 / 0.25) 34%, rgb(7 16 31 / 0.35) 62%, rgb(7 16 31 / 0.94) 100%)"
+        aria-hidden="true"
+      />
+
+      <span class="relative text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-muted">
         {{ $t('rebirth.next') }}
-      </p>
-      <p class="text-lg font-bold">{{ $t('rebirth.levelShort', { level: nextRebirth }) }}</p>
-
-      <!-- Illustration de substitution : une planète en dégradés, sans asset externe. -->
-      <span class="sidebar-planet relative my-1 grid size-24 place-items-center">
-        <span class="absolute inset-0 rounded-full bg-accent/20 blur-xl" />
-        <span
-          class="relative size-20 rounded-full"
-          style="background: radial-gradient(circle at 32% 28%, #7dd3fc, #2563eb 45%, #10203c 100%)"
-        />
       </span>
+      <span class="relative text-lg font-bold">{{ $t('rebirth.levelShort', { level: nextRebirth }) }}</span>
 
-      <p class="text-sm font-semibold text-accent">+{{ nextBonus }} % {{ $t('stats.income') }}</p>
-      <span class="dx-button dx-button--secondary dx-button--block mt-1">
+      <!-- Espace réservé à la planète : c'est lui qui donne sa hauteur à la carte. -->
+      <span class="sidebar-planet block h-28" aria-hidden="true" />
+
+      <span class="relative text-sm font-semibold text-accent">
+        +{{ nextBonus }} % {{ $t('stats.income') }}
+      </span>
+      <span class="dx-button dx-button--secondary dx-button--block relative mt-1">
         {{ $t('common.discover') }}
       </span>
     </NuxtLink>
@@ -92,7 +111,8 @@ const socials = [
           :href="s.href"
           target="_blank"
           rel="noopener noreferrer"
-          class="grid size-9 place-items-center rounded-full bg-panel-raised text-ink-muted transition-colors hover:bg-accent/15 hover:text-accent"
+          class="grid size-9 place-items-center rounded-full bg-panel-raised text-ink-muted transition-colors"
+          :class="s.tint"
           :title="s.label"
           :aria-label="s.label"
         >
