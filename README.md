@@ -23,7 +23,7 @@ Nova Shop, fil des nouveautés et guide des mécaniques. Multilingue, installabl
 ```bash
 pnpm install
 cp .env.example .env      # puis remplis les variables
-pnpm run fetch:images     # ⚠️ lis la section « Images » avant
+pnpm run images           # ⚠️ lis la section « Images » avant
 pnpm dev
 ```
 
@@ -79,7 +79,11 @@ Points connus à surveiller :
 
 ## Images
 
-`pnpm run fetch:images` télécharge environ 320 icônes (~10 Mo) dans `public/droids/`.
+```bash
+pnpm run images        # télécharge puis détoure, en une commande
+```
+
+`fetch:images` télécharge 317 icônes dans `public/droids/`, `cutout:images` les détoure.
 
 > ⚠️ **Ces images sont des assets propriétaires d'Epic Games et de Lucasfilm**, extraits de
 > l'interface du jeu. Le dépôt qui les héberge n'a aucune licence déclarée. Usage réaliste :
@@ -91,6 +95,21 @@ proprement sur les initiales du droid — rien ne casse.
 
 Chaque palier a sa propre illustration (`MOUSE_GOLD.png`, `MOUSE_BESKAR.png`…). Le palier
 Galactique réutilise le visuel Beskar, signalé par une pastille violette.
+
+### Détourage
+
+Les fichiers d'origine sont des captures de l'interface du jeu, en RVB **opaque** : chacun
+embarque le fond de sa carte (noir pour la plupart des paliers, gris pour le Beskar). Sans
+canal alpha, le champ d'étoiles placé derrière resterait invisible.
+
+`cutout:images` applique un **remplissage par diffusion depuis les bords** plutôt qu'un
+seuil de luminosité : seul le fond connecté au pourtour devient transparent, donc les
+ombres et contours sombres *à l'intérieur* du droid sont préservés. Un seuil global les
+aurait troués. Les bords sont adoucis sur une bande de tolérance, sans quoi le détourage
+laisse un liseré noir très visible sur fond étoilé.
+
+Le script est idempotent et se fonde sur la transparence réelle d'un coin, pas sur le type
+de fichier — les icônes Beskar sont déjà encodées en RVBA tout en étant opaques.
 
 ## Architecture
 
@@ -128,7 +147,9 @@ tactiles de 44 px et les zones sûres (`env(safe-area-inset-bottom)`).
 | `pnpm dev` | Serveur de développement |
 | `pnpm build` / `pnpm preview` | Build de production |
 | `pnpm run build:data` | Régénère droids et rebirths |
-| `pnpm run fetch:images` | Télécharge les icônes (`--force` pour réécrire) |
+| `pnpm run images` | Télécharge puis détoure les icônes |
+| `pnpm run fetch:images` | Télécharge seulement (`--force` pour réécrire) |
+| `pnpm run cutout:images` | Détoure seulement |
 | `pnpm run typecheck` | Vérification TypeScript |
 
 ## Mentions

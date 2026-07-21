@@ -12,7 +12,9 @@
     "build:rebirths": "node scripts/build-rebirths.mjs",
     "build:data": "pnpm run build:droids && pnpm run build:rebirths",
     "fetch:images": "node scripts/fetch-droid-images.mjs",
-    "typecheck": "nuxt typecheck"
+    "typecheck": "nuxt typecheck",
+    "cutout:images": "node scripts/cutout-droid-images.mjs",
+    "images": "pnpm run fetch:images && pnpm run cutout:images"
   },
   "dependencies": {
     "@nuxtjs/i18n": "^10.4.1",
