@@ -19,7 +19,7 @@ const base = mechanics.base
       <p class="text-sm text-ink-muted">{{ $t('guide.subtitle') }}</p>
     </header>
 
-    <section class="rounded-xl border border-edge bg-panel p-4">
+    <section class="rounded-card border border-edge bg-panel p-6">
       <h2 class="mb-3 font-semibold">{{ $t('guide.base') }}</h2>
       <p class="text-sm">
         {{ $t('guide.slots', {
@@ -35,7 +35,7 @@ const base = mechanics.base
       </ul>
     </section>
 
-    <section class="rounded-xl border border-edge bg-panel p-4">
+    <section class="rounded-card border border-edge bg-panel p-6">
       <h2 class="mb-3 font-semibold">{{ $t('guide.flawlessTitle') }}</h2>
       <p class="mb-3 text-sm text-ink-muted">{{ $t('guide.flawlessBonus') }}</p>
 
@@ -54,7 +54,7 @@ const base = mechanics.base
       </ul>
     </section>
 
-    <section class="overflow-x-auto rounded-xl border border-edge bg-panel p-4">
+    <section class="overflow-x-auto rounded-card border border-edge bg-panel p-6">
       <h2 class="mb-3 font-semibold">{{ $t('guide.chipsTitle') }}</h2>
       <h3 class="mb-2 text-xs uppercase text-ink-muted">{{ $t('guide.chipsCost') }}</h3>
 
@@ -72,7 +72,7 @@ const base = mechanics.base
           <tr v-for="row in mechanics.chipCosts" :key="row.rarity" class="border-t border-edge/50">
             <td class="py-1.5">
               <RarityBadge :rarity="row.rarity as any" />
-              <span v-if="row.conflicting" class="ml-1 cursor-help text-xs text-amber-500" title="Une source donne 5 / 25 / 40 / 80">⚠</span>
+              <span v-if="row.conflicting" class="ml-1 cursor-help text-xs text-warn" title="Une source donne 5 / 25 / 40 / 80">⚠</span>
             </td>
             <td class="py-1.5 text-right font-mono tabular-nums">{{ formatExact(row.gold, locale) }}</td>
             <td class="py-1.5 text-right font-mono tabular-nums">{{ formatExact(row.diamond, locale) }}</td>
@@ -85,7 +85,7 @@ const base = mechanics.base
 
     <NuxtLink
       :to="localePath('/missions')"
-      class="flex items-center justify-between rounded-xl border border-edge bg-panel p-4 transition-colors hover:bg-panel-raised"
+      class="flex items-center justify-between rounded-card border border-edge bg-panel p-6 transition-colors hover:bg-panel-raised"
     >
       <span>
         <span class="block font-semibold">{{ $t('missions.title') }}</span>
@@ -94,7 +94,7 @@ const base = mechanics.base
       <span class="text-ink-muted" aria-hidden="true">→</span>
     </NuxtLink>
 
-    <section class="rounded-xl border border-edge bg-panel p-4">
+    <section class="rounded-card border border-edge bg-panel p-6">
       <h2 class="mb-3 font-semibold">{{ $t('guide.sandcrawlerTitle') }}</h2>
       <ul class="flex flex-col gap-1 text-sm text-ink-muted">
         <li>• {{ $t('guide.sandcrawlerBeskar', { minutes: mechanics.sandcrawler.beskarIntervalMinutes }) }}</li>
@@ -103,7 +103,7 @@ const base = mechanics.base
       <p class="mt-2 text-sm text-ink-muted">{{ mechanics.sandcrawler.notes }}</p>
     </section>
 
-    <section class="rounded-xl border border-edge bg-panel p-4">
+    <section class="rounded-card border border-edge bg-panel p-6">
       <h2 class="mb-3 font-semibold">{{ $t('guide.currenciesTitle') }}</h2>
       <ul class="grid gap-2 sm:grid-cols-3">
         <li v-for="c in mechanics.currencies" :key="c.id" class="rounded-lg bg-panel-raised p-3 text-sm">
@@ -114,7 +114,7 @@ const base = mechanics.base
       </ul>
     </section>
 
-    <section class="rounded-xl border border-edge bg-panel p-4">
+    <section class="rounded-card border border-edge bg-panel p-6">
       <h2 class="mb-3 font-semibold">💡</h2>
       <ul class="flex flex-col gap-2 text-sm text-ink-muted">
         <li v-for="tip in mechanics.tips" :key="tip">• {{ tip }}</li>

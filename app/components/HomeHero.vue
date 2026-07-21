@@ -29,7 +29,7 @@ const RARITY_TEXT: Record<string, string> = {
 </script>
 
 <template>
-  <section class="hero-gradient relative overflow-hidden rounded-2xl border border-edge">
+  <section class="hero-gradient relative overflow-hidden rounded-card border border-edge">
     <!-- Décor de substitution, purement décoratif. -->
     <div class="pointer-events-none absolute inset-0" aria-hidden="true">
       <div class="droid-starfield nebula-default absolute inset-0 opacity-60" />
@@ -89,7 +89,7 @@ const RARITY_TEXT: Record<string, string> = {
 
     <p
       v-if="!isAuthenticated"
-      class="relative mx-6 mb-6 flex items-center gap-2 rounded-xl border border-edge bg-void/60 px-4 py-3 text-sm text-ink-muted backdrop-blur lg:mx-8"
+      class="relative mx-6 mb-6 flex items-center gap-2 rounded-card border border-edge bg-void/60 px-4 py-3 text-sm text-ink-muted backdrop-blur lg:mx-8"
     >
       <span aria-hidden="true">🔒</span>
       {{ $t('auth.signInPrompt') }}

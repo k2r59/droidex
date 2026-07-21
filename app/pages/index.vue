@@ -91,7 +91,7 @@ onKeyStroke('Escape', () => {
       <ClientOnly>
         <SandcrawlerTimers />
         <template #fallback>
-          <div class="h-48 animate-pulse rounded-xl border border-edge bg-panel" />
+          <div class="h-48 animate-pulse rounded-card border border-edge bg-panel" />
         </template>
       </ClientOnly>
 
@@ -112,22 +112,22 @@ onKeyStroke('Escape', () => {
             v-model="search"
             type="search"
             :placeholder="$t('droidex.search')"
-            class="w-full rounded-xl border border-edge bg-panel py-2.5 pl-9 pr-3 text-sm placeholder:text-ink-muted focus:border-accent focus:outline-none"
+            class="w-full rounded-card border border-edge bg-panel py-2.5 pl-9 pr-3 text-sm placeholder:text-ink-muted focus:border-accent focus:outline-none"
           >
           <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted">⌕</span>
         </div>
 
-        <select v-model="rarity" class="rounded-xl border border-edge bg-panel px-3 py-2.5 text-sm">
+        <select v-model="rarity" class="rounded-card border border-edge bg-panel px-3 py-2.5 text-sm">
           <option value="all">{{ $t('droidex.filterRarity') }} — {{ $t('droidex.filterAll') }}</option>
           <option v-for="r in store.dataset.rarities" :key="r" :value="r">{{ $t(`rarity.${r}`) }}</option>
         </select>
 
-        <select v-model="type" class="rounded-xl border border-edge bg-panel px-3 py-2.5 text-sm">
+        <select v-model="type" class="rounded-card border border-edge bg-panel px-3 py-2.5 text-sm">
           <option value="all">{{ $t('droidex.filterType') }} — {{ $t('droidex.filterAll') }}</option>
           <option v-for="ty in store.dataset.types" :key="ty" :value="ty">{{ $t(`type.${ty}`) }}</option>
         </select>
 
-        <select v-model="sort" class="rounded-xl border border-edge bg-panel px-3 py-2.5 text-sm">
+        <select v-model="sort" class="rounded-card border border-edge bg-panel px-3 py-2.5 text-sm">
           <option v-for="s in (['rarity', 'income', 'cost', 'name'] as const)" :key="s" :value="s">
             {{ $t('droidex.sortBy') }} : {{ $t(`droidex.sort.${s}`) }}
           </option>

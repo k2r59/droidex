@@ -22,7 +22,7 @@ watch(
 
       <p
         v-if="store.syncError"
-        class="sticky top-0 z-40 bg-amber-950 px-4 py-2 text-center text-sm text-amber-200"
+        class="sticky top-0 z-40 bg-warn/15 px-4 py-2 text-center text-sm text-warn"
         role="status"
       >
         {{ $t('common.syncFailed') }}

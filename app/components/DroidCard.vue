@@ -33,7 +33,7 @@ const RARITY_RING: Record<string, string> = {
 
 <template>
   <article
-    class="droid-card group relative flex flex-col gap-3 rounded-xl border bg-panel p-3 transition-colors"
+    class="droid-card group relative flex flex-col gap-3 rounded-card border bg-panel p-3 transition-colors"
     :class="[
       RARITY_RING[droid.rarity],
       owned ? 'bg-panel-raised' : 'hover:bg-panel-raised',
@@ -42,7 +42,7 @@ const RARITY_RING: Record<string, string> = {
     <!-- Pastille de possession, lisible d'un coup d'œil sur une grille dense. -->
     <span
       v-if="owned"
-      class="absolute right-2 top-2 grid size-5 place-items-center rounded-full bg-emerald-500 text-xs font-bold text-void"
+      class="absolute right-2 top-2 grid size-5 place-items-center rounded-full bg-valid text-xs font-bold text-void"
       :title="$t('droidex.tierOwned', { tier: $t(`tier.${entry.tier}`) })"
       aria-hidden="true"
     >✓</span>
@@ -88,7 +88,7 @@ const RARITY_RING: Record<string, string> = {
       <div class="flex items-center gap-1.5">
         <span
           v-if="droid.unverified"
-          class="cursor-help text-xs text-amber-500"
+          class="cursor-help text-xs text-warn"
           :title="$t('droid.unverifiedHint')"
         >⚠</span>
 

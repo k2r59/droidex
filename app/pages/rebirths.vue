@@ -53,7 +53,7 @@ watchEffect(() => { expanded.value = store.rebirth + 1 })
 
 <template>
   <div class="flex flex-col gap-5">
-    <section class="flex flex-col gap-4 rounded-xl border border-edge bg-panel p-4">
+    <section class="flex flex-col gap-4 rounded-card border border-edge bg-panel p-6">
       <div class="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 class="text-xl font-bold">{{ $t('rebirth.title') }}</h1>
@@ -87,7 +87,7 @@ watchEffect(() => { expanded.value = store.rebirth + 1 })
         />
       </div>
 
-      <p class="rounded-lg bg-panel-raised px-3 py-2 text-sm text-amber-200">
+      <p class="rounded-lg bg-panel-raised px-3 py-2 text-sm text-warn">
         ⚠ {{ $t('rebirth.placementWarning') }}
       </p>
     </section>
@@ -95,8 +95,8 @@ watchEffect(() => { expanded.value = store.rebirth + 1 })
     <!-- Prochaine renaissance mise en avant : c'est l'écran qu'on ouvre en jouant. -->
     <section
       v-if="nextLevel"
-      class="rounded-xl border p-4"
-      :class="isReady ? 'border-emerald-600 bg-emerald-950/20' : 'border-edge bg-panel'"
+      class="rounded-card border p-4"
+      :class="isReady ? 'border-valid bg-valid/10' : 'border-edge bg-panel'"
     >
       <div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
         <h2 class="font-semibold">
@@ -118,7 +118,7 @@ watchEffect(() => { expanded.value = store.rebirth + 1 })
             v-for="req in nextLevel.droids"
             :key="`${req.slug}-${req.tier}`"
             class="flex items-center gap-2 rounded-lg bg-panel-raised p-2"
-            :class="met(req) ? 'ring-1 ring-emerald-600' : ''"
+            :class="met(req) ? 'ring-1 ring-valid' : ''"
           >
             <DroidImage
               v-if="droidBySlug[req.slug]"
@@ -133,13 +133,13 @@ watchEffect(() => { expanded.value = store.rebirth + 1 })
                 {{ req.tier ? $t(`tier.${req.tier}`) : $t('rebirth.anyTier') }}
               </p>
             </div>
-            <span :class="met(req) ? 'text-emerald-500' : 'text-ink-muted'">
+            <span :class="met(req) ? 'text-valid' : 'text-ink-muted'">
               {{ met(req) ? '✓' : '○' }}
             </span>
           </li>
         </ul>
 
-        <p class="mt-3 text-sm" :class="isReady ? 'text-emerald-400' : 'text-ink-muted'">
+        <p class="mt-3 text-sm" :class="isReady ? 'text-valid' : 'text-ink-muted'">
           {{ isReady ? $t('rebirth.ready') : $t('rebirth.missing', missingCount, { named: { count: missingCount } }) }}
         </p>
       </template>
@@ -170,7 +170,7 @@ watchEffect(() => { expanded.value = store.rebirth + 1 })
           >
             <span
               class="grid size-7 shrink-0 place-items-center rounded-full text-xs font-bold"
-              :class="lvl.level <= store.rebirth ? 'bg-emerald-600 text-void' : 'bg-panel-raised text-ink-muted'"
+              :class="lvl.level <= store.rebirth ? 'bg-valid text-void' : 'bg-panel-raised text-ink-muted'"
             >{{ lvl.level }}</span>
 
             <span class="flex-1 font-mono text-sm tabular-nums">{{ formatNumber(lvl.credits, locale) }}</span>
@@ -183,7 +183,7 @@ watchEffect(() => { expanded.value = store.rebirth + 1 })
                 v-for="req in lvl.droids"
                 :key="`${req.slug}-${req.tier}`"
                 class="size-2 rounded-full"
-                :class="met(req) ? 'bg-emerald-500' : 'bg-edge'"
+                :class="met(req) ? 'bg-valid' : 'bg-edge'"
               />
             </span>
           </button>
@@ -195,7 +195,7 @@ watchEffect(() => { expanded.value = store.rebirth + 1 })
                 :key="`${req.slug}-${req.tier}`"
                 class="flex items-center gap-1.5 rounded bg-panel-raised px-2 py-1 text-xs"
               >
-                <span :class="met(req) ? 'text-emerald-500' : 'text-ink-muted'">{{ met(req) ? '✓' : '○' }}</span>
+                <span :class="met(req) ? 'text-valid' : 'text-ink-muted'">{{ met(req) ? '✓' : '○' }}</span>
                 {{ droidBySlug[req.slug]?.name ?? req.slug }}
                 <span class="text-ink-muted">{{ req.tier ? $t(`tier.${req.tier}`) : $t('rebirth.anyTier') }}</span>
               </li>

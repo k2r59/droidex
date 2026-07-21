@@ -17,25 +17,41 @@
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  /* Bleu nuit plutôt que gris neutre : c'est ce qui donne le ton « espace ». */
-  --color-void: #070b14;
-  --color-panel: #0d1424;
-  --color-panel-raised: #141d32;
-  --color-edge: #1e2a42;
-  --color-ink: #e8edf7;
-  --color-ink-muted: #8494ae;
+  /* Palette du design system. */
+  --color-void: #080d19; /* arrière-plan */
+  --color-panel: #11192d; /* cartes */
+  --color-edge: #263149; /* bordures */
+  --color-ink: #cfd9e7; /* texte courant */
+  --color-ink-strong: #ffffff; /* titres */
 
-  /* Accent cyan, utilisé pour l'état actif, les liens et les actions principales. */
-  --color-accent: #38bdf8;
-  --color-accent-soft: #22d3ee;
+  /*
+   * Deux valeurs absentes du design system, dérivées de la palette : un cran au-dessus
+   * du fond des cartes pour les surfaces imbriquées, et un gris de la même famille
+   * bleutée pour le texte de second plan.
+   */
+  --color-panel-raised: #18223a;
+  --color-ink-muted: #7d8ba6;
+
+  --color-accent: #26d8ff; /* cyan — accent */
+  --color-glow: #45bfff; /* bleu — halos */
+  --color-warn: #ffb347; /* orange — avertissement */
+  --color-nova: #9b5cff; /* violet — Nova Crystal */
+  --color-valid: #2ecc71; /* vert — validation */
+
+  /* Conservé comme alias : de nombreux composants s'y réfèrent déjà. */
+  --color-accent-soft: #26d8ff;
+
+  /* Rayons : 18 px pour les cartes, 14 px pour la navigation. */
+  --radius-card: 18px;
+  --radius-nav: 14px;
 
   /* Couleurs de rareté, alignées sur le code couleur du jeu. */
   --color-common: #9aa4b8;
-  --color-rare: #3d8bfd;
-  --color-epic: #a855f7;
-  --color-legendary: #f59e0b;
+  --color-rare: #45bfff;
+  --color-epic: #9b5cff;
+  --color-legendary: #ffb347;
   --color-mythic: #ef4444;
-  --color-iconic: #22d3ee;
+  --color-iconic: #26d8ff;
 
   /* Paliers de variante. */
   --color-tier-default: #6b7280;
@@ -67,6 +83,7 @@
     font-family: var(--font-display);
     font-weight: 700;
     letter-spacing: -0.01em;
+    color: var(--color-ink-strong);
   }
 
   /* Texte suivi : Rajdhani est trop condensée pour être confortable sur plusieurs lignes. */
@@ -98,64 +115,90 @@
  * répétées, parce qu'ils combinent plusieurs propriétés qui doivent rester solidaires.
  */
 
-/* Panneau standard : fond sourd, liseré discret, léger relief interne. */
+/*
+ * Le glow cyan est le motif signature du design system : très léger, flou de 18 à
+ * 24 px. Il est défini une fois et réutilisé, pour que tous les éléments lumineux
+ * rayonnent exactement de la même façon.
+ */
+:root {
+  --glow-soft: 0 0 18px rgb(38 216 255 / 0.25);
+  --glow-strong: 0 0 24px rgb(38 216 255 / 0.35);
+  --ease: 250ms ease;
+}
+
+/* Panneau standard : fond des cartes, liseré, rayon 18 px. */
 .panel {
   background-color: var(--color-panel);
   border: 1px solid var(--color-edge);
-  border-radius: 0.875rem;
+  border-radius: var(--radius-card);
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.03);
+  transition: border-color var(--ease), box-shadow var(--ease);
 }
 
-/* Halo cyan de l'élément de navigation actif. */
+/* Halo cyan de l'élément de navigation actif, sur un rayon de 14 px. */
 .nav-active {
-  background: linear-gradient(90deg, rgb(56 189 248 / 0.16), rgb(56 189 248 / 0.04));
-  border-color: rgb(56 189 248 / 0.45);
+  background: linear-gradient(90deg, rgb(38 216 255 / 0.16), rgb(38 216 255 / 0.04));
+  border-color: rgb(38 216 255 / 0.45);
+  border-radius: var(--radius-nav);
   color: var(--color-accent);
-  box-shadow: 0 0 20px -6px rgb(56 189 248 / 0.5);
+  box-shadow: var(--glow-soft);
 }
 
-/* Bannière d'accueil : dégradé de nuit + lueur cyan côté droit. */
+/* Bannière d'accueil : nuit bleutée, lueur cyan à droite, ambiance désert spatial. */
 .hero-gradient {
   background:
-    radial-gradient(80% 120% at 78% 40%, rgb(56 189 248 / 0.16), transparent 60%),
-    radial-gradient(60% 100% at 20% 30%, rgb(99 102 241 / 0.12), transparent 65%),
-    linear-gradient(115deg, #0a1120 10%, #101c33 55%, #0c1526 100%);
+    radial-gradient(80% 120% at 78% 40%, rgb(38 216 255 / 0.16), transparent 60%),
+    radial-gradient(60% 100% at 20% 30%, rgb(155 92 255 / 0.12), transparent 65%),
+    linear-gradient(115deg, #0a1226 10%, #131e38 55%, #0b1223 100%);
 }
 
-/* Carte de droid emblématique : dégradé turquoise et liseré lumineux. */
+/* Carte de droid emblématique : dégradé cyan et liseré lumineux. */
 .iconic-card {
   background:
-    radial-gradient(120% 90% at 50% 0%, rgb(34 211 238 / 0.14), transparent 70%),
-    linear-gradient(160deg, #10243a 0%, #0c1526 100%);
-  border: 1px solid rgb(34 211 238 / 0.28);
-  box-shadow: 0 0 24px -12px rgb(34 211 238 / 0.6);
+    radial-gradient(120% 90% at 50% 0%, rgb(38 216 255 / 0.14), transparent 70%),
+    linear-gradient(160deg, #12263f 0%, #0c1526 100%);
+  border: 1px solid rgb(38 216 255 / 0.28);
+  border-radius: var(--radius-card);
+  box-shadow: var(--glow-strong);
+  transition: transform var(--ease), box-shadow var(--ease);
 }
 
-/* Bouton principal plein. */
+/*
+ * Bouton principal. Le design system décrit « un dégradé bleu sombre avec glow cyan »,
+ * mais la maquette montre un bouton plein et lumineux pour l'action principale. J'ai
+ * suivi la maquette ici — c'est la référence visuelle — et réservé le dégradé sombre
+ * au bouton secondaire ci-dessous, où il fonctionne mieux.
+ */
 .btn-primary {
-  background: linear-gradient(180deg, #4cc3f5, #2ea3e0);
+  background: linear-gradient(180deg, var(--color-accent), var(--color-glow));
   color: #04121d;
   font-family: var(--font-display);
   font-weight: 500;
-  box-shadow: 0 6px 18px -8px rgb(56 189 248 / 0.8);
+  border-radius: var(--radius-nav);
+  box-shadow: var(--glow-soft);
+  transition: filter var(--ease), box-shadow var(--ease);
 }
 
 .btn-primary:hover {
   filter: brightness(1.08);
+  box-shadow: var(--glow-strong);
 }
 
-/* Bouton secondaire, cerclé. */
+/* Bouton secondaire : dégradé bleu sombre, glow cyan au survol. */
 .btn-ghost {
   font-family: var(--font-display);
   font-weight: 500;
-  background-color: var(--color-panel-raised);
+  background: linear-gradient(180deg, #16203a, #101829);
   border: 1px solid var(--color-edge);
+  border-radius: var(--radius-nav);
   color: var(--color-ink);
+  transition: border-color var(--ease), color var(--ease), box-shadow var(--ease);
 }
 
 .btn-ghost:hover {
-  border-color: rgb(56 189 248 / 0.5);
+  border-color: rgb(38 216 255 / 0.5);
   color: var(--color-accent);
+  box-shadow: var(--glow-soft);
 }
 
 /**

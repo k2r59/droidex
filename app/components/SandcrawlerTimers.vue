@@ -56,7 +56,7 @@ const isImminent = (s: number | null) => s !== null && s <= 30
 </script>
 
 <template>
-  <section class="rounded-xl border border-edge bg-panel p-4">
+  <section class="rounded-card border border-edge bg-panel p-6">
     <h2 class="mb-3 flex flex-wrap items-baseline gap-2 font-semibold">
       {{ $t('timers.title') }}
       <span class="text-xs font-normal text-ink-muted">{{ $t('timers.hint') }}</span>
@@ -65,7 +65,7 @@ const isImminent = (s: number | null) => s !== null && s <= 30
     <ul class="flex flex-col gap-2">
       <li
         class="flex items-center gap-3 rounded-lg bg-panel-raised p-3 transition-colors"
-        :class="isImminent(beskarRemaining) && 'ring-1 ring-amber-500'"
+        :class="isImminent(beskarRemaining) && 'ring-1 ring-warn'"
       >
         <span class="size-3 shrink-0 rounded-full tier-beskar-bg" />
 
@@ -78,7 +78,7 @@ const isImminent = (s: number | null) => s !== null && s <= 30
 
         <p
           class="font-mono text-xl tabular-nums"
-          :class="isImminent(beskarRemaining) ? 'text-amber-400' : 'text-ink'"
+          :class="isImminent(beskarRemaining) ? 'text-warn' : 'text-ink'"
         >
           {{ beskarRemaining !== null ? format(beskarRemaining) : '—:—' }}
         </p>
@@ -105,7 +105,7 @@ const isImminent = (s: number | null) => s !== null && s <= 30
       <!-- Mythic : calé sur l'horloge, donc toujours affiché, sans bouton. -->
       <li
         class="flex items-center gap-3 rounded-lg bg-panel-raised p-3 transition-colors"
-        :class="isImminent(mythicRemaining) && 'ring-1 ring-amber-500'"
+        :class="isImminent(mythicRemaining) && 'ring-1 ring-warn'"
       >
         <span class="size-3 shrink-0 rounded-full bg-mythic" />
 
@@ -116,7 +116,7 @@ const isImminent = (s: number | null) => s !== null && s <= 30
 
         <p
           class="font-mono text-xl tabular-nums"
-          :class="isImminent(mythicRemaining) ? 'text-amber-400' : 'text-ink'"
+          :class="isImminent(mythicRemaining) ? 'text-warn' : 'text-ink'"
         >
           {{ format(mythicRemaining) }}
         </p>

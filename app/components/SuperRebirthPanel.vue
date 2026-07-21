@@ -22,12 +22,12 @@ const table = computed(() =>
 </script>
 
 <template>
-  <section class="flex flex-col gap-3 rounded-xl border border-edge bg-panel p-4">
+  <section class="flex flex-col gap-3 rounded-card border border-edge bg-panel p-6">
     <div class="flex flex-wrap items-baseline justify-between gap-2">
       <h2 class="font-semibold">{{ $t('superRebirth.title') }}</h2>
       <span
         class="rounded px-2 py-0.5 text-xs"
-        :class="unlocked ? 'bg-emerald-950 text-emerald-400' : 'bg-panel-raised text-ink-muted'"
+        :class="unlocked ? 'bg-valid/15 text-valid' : 'bg-panel-raised text-ink-muted'"
       >
         {{ unlocked ? $t('superRebirth.unlocked') : $t('superRebirth.locked') }}
       </span>
@@ -62,7 +62,7 @@ const table = computed(() =>
         <dd class="text-xs text-ink-muted">{{ $t('superRebirth.loses') }}</dd>
       </div>
       <div class="rounded-lg bg-panel-raised p-2">
-        <dt class="text-xs font-medium text-emerald-400">{{ $t('rebirth.keeps') }}</dt>
+        <dt class="text-xs font-medium text-valid">{{ $t('rebirth.keeps') }}</dt>
         <dd class="text-xs text-ink-muted">{{ $t('superRebirth.keeps') }}</dd>
       </div>
       <div class="rounded-lg bg-panel-raised p-2">

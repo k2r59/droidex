@@ -50,7 +50,7 @@ const usedInRebirths = computed(() => {
       ← {{ $t('droid.backToDroidex') }}
     </NuxtLink>
 
-    <section class="flex flex-col gap-5 rounded-xl border border-edge bg-panel p-5 md:flex-row">
+    <section class="flex flex-col gap-5 rounded-card border border-edge bg-panel p-5 md:flex-row">
       <div class="flex flex-col items-center gap-3">
         <DroidImage :droid="droid" :tier="focusTier" size="lg" />
 
@@ -82,7 +82,7 @@ const usedInRebirths = computed(() => {
           <span class="text-sm text-ink-muted">{{ $t(`type.${droid.type}`) }}</span>
           <span
             v-if="droid.unverified"
-            class="rounded bg-amber-950 px-1.5 py-0.5 text-xs text-amber-400"
+            class="rounded bg-warn/15 px-1.5 py-0.5 text-xs text-warn"
             :title="$t('droid.unverifiedHint')"
           >{{ $t('droid.unverified') }}</span>
         </div>
@@ -123,7 +123,7 @@ const usedInRebirths = computed(() => {
       </div>
     </section>
 
-    <section v-if="!droid.percentIncome" class="overflow-x-auto rounded-xl border border-edge bg-panel">
+    <section v-if="!droid.percentIncome" class="overflow-x-auto rounded-card border border-edge bg-panel">
       <h2 class="px-4 pt-4 font-semibold">{{ $t('droid.tierTable') }}</h2>
 
       <table class="mt-3 w-full text-sm">
@@ -164,7 +164,7 @@ const usedInRebirths = computed(() => {
       <p class="px-4 py-3 text-xs text-ink-muted">{{ $t('droid.galacticNoData') }}</p>
     </section>
 
-    <section v-if="usedInRebirths.length" class="rounded-xl border border-edge bg-panel p-4">
+    <section v-if="usedInRebirths.length" class="rounded-card border border-edge bg-panel p-4">
       <h2 class="mb-2 font-semibold">{{ $t('droid.usedInRebirths') }}</h2>
       <ul class="flex flex-wrap gap-2 text-sm">
         <li

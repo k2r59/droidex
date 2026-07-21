@@ -46,9 +46,9 @@ const grandTotal = computed(() =>
 )
 
 const CONFIDENCE_CLASS: Record<string, string> = {
-  confirmed: 'text-emerald-500',
-  conflicting: 'text-amber-500',
-  'single-source': 'text-amber-500',
+  confirmed: 'text-valid',
+  conflicting: 'text-warn',
+  'single-source': 'text-warn',
   unknown: 'text-ink-muted',
 }
 
@@ -65,7 +65,7 @@ watchEffect(() => { balanceInput.value = store.novaCrystals })
 
 <template>
   <div class="flex flex-col gap-5">
-    <section class="flex flex-wrap items-end justify-between gap-4 rounded-xl border border-edge bg-panel p-4">
+    <section class="flex flex-wrap items-end justify-between gap-4 rounded-card border border-edge bg-panel p-6">
       <div>
         <h1 class="text-xl font-bold">{{ $t('shop.title') }}</h1>
         <p class="text-sm text-ink-muted">{{ $t('shop.subtitle') }}</p>
@@ -97,12 +97,12 @@ watchEffect(() => { balanceInput.value = store.novaCrystals })
       </dl>
     </section>
 
-    <p class="rounded-lg border border-amber-900/50 bg-amber-950/30 px-3 py-2 text-sm text-amber-200">
+    <p class="rounded-lg border border-warn/30 bg-warn/10 px-3 py-2 text-sm text-warn">
       {{ $t('shop.incomplete') }}
     </p>
 
     <!-- L'ordre d'achat est la question n°1 des joueurs : on la traite avant le catalogue. -->
-    <section class="rounded-xl border border-edge bg-panel p-4">
+    <section class="rounded-card border border-edge bg-panel p-6">
       <h2 class="mb-3 font-semibold">{{ $t('shop.recommendedOrder') }}</h2>
       <ol class="flex flex-wrap items-center gap-2 text-sm">
         <li
@@ -129,7 +129,7 @@ watchEffect(() => { balanceInput.value = store.novaCrystals })
         <li
           v-for="item in section.items"
           :key="item.id"
-          class="flex flex-col gap-2 rounded-xl border border-edge bg-panel p-3"
+          class="flex flex-col gap-2 rounded-card border border-edge bg-panel p-5"
         >
           <div class="flex items-start justify-between gap-3">
             <div class="min-w-0">
@@ -183,7 +183,7 @@ watchEffect(() => { balanceInput.value = store.novaCrystals })
               <template v-if="nextCost(item) !== null">
                 <span
                   class="font-mono tabular-nums"
-                  :class="nextCost(item)! <= store.novaCrystals ? 'text-emerald-400' : 'text-ink-muted'"
+                  :class="nextCost(item)! <= store.novaCrystals ? 'text-valid' : 'text-ink-muted'"
                 >
                   ✦ {{ formatExact(nextCost(item), locale) }}
                 </span>
@@ -191,7 +191,7 @@ watchEffect(() => { balanceInput.value = store.novaCrystals })
                   {{ $t('shop.remaining') }} : {{ formatExact(remainingCost(item), locale) }}
                 </span>
               </template>
-              <span v-else class="text-xs text-emerald-400">{{ $t('shop.maxed') }}</span>
+              <span v-else class="text-xs text-valid">{{ $t('shop.maxed') }}</span>
             </p>
           </div>
         </li>

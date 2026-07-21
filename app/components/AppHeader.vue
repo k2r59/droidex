@@ -31,7 +31,7 @@ const completion = computed(() =>
           v-for="link in links"
           :key="link.to"
           :to="localePath(link.to)"
-          class="rounded-xl border border-transparent px-3.5 py-2 text-sm text-ink-muted transition-colors hover:bg-panel hover:text-ink"
+          class="rounded-nav border border-transparent px-3.5 py-2 text-sm text-ink-muted transition-colors hover:bg-panel hover:text-ink"
           active-class="nav-active"
         >
           {{ $t(`nav.${link.key}`) }}
@@ -42,15 +42,15 @@ const completion = computed(() =>
         <!-- Solde de cristaux : monnaie du Nova Shop, donc raccourci vers la boutique. -->
         <NuxtLink
           :to="localePath('/shop')"
-          class="hidden items-center gap-2 rounded-xl border border-edge bg-panel px-3 py-2 text-sm transition-colors hover:border-accent/40 sm:flex"
+          class="hidden items-center gap-2 rounded-nav border border-edge bg-panel px-3 py-2 text-sm transition-colors hover:border-accent/40 sm:flex"
           :title="$t('shop.balance')"
         >
-          <span class="text-tier-galactic">✦</span>
+          <span class="text-nova">✦</span>
           <span class="font-mono tabular-nums">{{ formatExact(store.novaCrystals, locale) }}</span>
         </NuxtLink>
 
         <div
-          class="hidden items-center gap-2 rounded-xl border border-edge bg-panel px-3 py-2 text-sm sm:flex"
+          class="hidden items-center gap-2 rounded-card border border-edge bg-panel px-3 py-2 text-sm sm:flex"
           :title="$t('stats.completion', { percent: completion })"
         >
           <span class="font-mono tabular-nums">{{ store.ownedCount }} / {{ store.totalCount }}</span>

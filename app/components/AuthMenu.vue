@@ -62,7 +62,7 @@ async function logout() {
 
     <div
       v-if="open"
-      class="absolute right-0 z-50 mt-1 w-60 overflow-hidden rounded-xl border border-edge bg-panel-raised shadow-xl"
+      class="absolute right-0 z-50 mt-1 w-60 overflow-hidden rounded-card border border-edge bg-panel-raised shadow-xl"
     >
       <template v-if="user">
         <div class="border-b border-edge px-3 py-2">

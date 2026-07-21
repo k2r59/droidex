@@ -80,7 +80,7 @@ function formatPayback(seconds: number) {
 </script>
 
 <template>
-  <section class="rounded-xl border border-edge bg-panel p-4">
+  <section class="rounded-card border border-edge bg-panel p-6">
     <div class="mb-3 flex flex-wrap items-center justify-between gap-3">
       <div>
         <h2 class="font-semibold">{{ $t('advisor.title') }}</h2>
@@ -124,7 +124,7 @@ function formatPayback(seconds: number) {
         </div>
 
         <div class="text-right text-xs">
-          <p class="font-mono tabular-nums text-emerald-400">
+          <p class="font-mono tabular-nums text-valid">
             +{{ formatIncome(c.gain, locale) }}
           </p>
           <p class="font-mono tabular-nums text-ink-muted">

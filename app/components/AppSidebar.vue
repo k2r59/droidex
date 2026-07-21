@@ -33,7 +33,7 @@ const socials = [
 <template>
   <aside class="sticky top-0 hidden h-dvh w-60 shrink-0 flex-col gap-5 overflow-hidden border-r border-edge bg-panel px-4 py-5 xl:flex">
     <NuxtLink :to="localePath('/')" class="flex items-center gap-2.5">
-      <span class="grid size-9 place-items-center rounded-xl bg-accent/15 text-lg text-accent">◈</span>
+      <span class="grid size-9 place-items-center rounded-card bg-accent/15 text-lg text-accent">◈</span>
       <span class="text-xl font-bold tracking-tight">DROIDEX</span>
     </NuxtLink>
 
@@ -46,7 +46,7 @@ const socials = [
         v-for="link in links"
         :key="link.to"
         :to="localePath(link.to)"
-        class="flex items-center gap-3 rounded-xl border border-transparent px-3 py-2.5 text-sm text-ink-muted transition-colors hover:bg-panel-raised hover:text-ink"
+        class="flex items-center gap-3 rounded-nav border border-transparent px-3 py-2.5 text-sm text-ink-muted transition-colors hover:bg-panel-raised hover:text-ink"
         active-class="nav-active"
       >
         <span class="w-4 text-center" aria-hidden="true">{{ link.icon }}</span>

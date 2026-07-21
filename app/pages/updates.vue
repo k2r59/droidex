@@ -49,7 +49,7 @@ function formatDate(iso: string) {
       <li
         v-for="entry in entries"
         :key="`${entry.date}-${entry.title}`"
-        class="relative rounded-xl border border-edge bg-panel p-4"
+        class="relative rounded-card border border-edge bg-panel p-6"
       >
         <span
           class="absolute -left-[26px] top-5 size-2.5 rounded-full ring-4 ring-void"

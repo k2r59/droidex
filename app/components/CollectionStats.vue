@@ -38,7 +38,7 @@ const RARITY_TEXT: Record<string, string> = {
 </script>
 
 <template>
-  <section class="flex flex-col gap-4 rounded-xl border border-edge bg-panel p-4">
+  <section class="flex flex-col gap-4 rounded-card border border-edge bg-panel p-6">
     <div class="flex flex-wrap items-baseline justify-between gap-2">
       <div>
         <h1 class="text-xl font-bold">{{ $t('droidex.title') }}</h1>

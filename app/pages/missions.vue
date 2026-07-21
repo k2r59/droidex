@@ -21,7 +21,7 @@ const TIER_BAR: Record<Tier, string> = {
 }
 
 const rewardLabel = (r: Reward) => (r.kind === 'credits' ? t('missions.credits') : t(`tier.${r.tier}`))
-const rewardClass = (r: Reward) => (r.kind === 'credits' ? 'bg-emerald-600' : TIER_BAR[r.tier!])
+const rewardClass = (r: Reward) => (r.kind === 'credits' ? 'bg-valid' : TIER_BAR[r.tier!])
 
 function formatDuration(seconds: number | null) {
   if (seconds === null) return t('droid.noData')
@@ -48,7 +48,7 @@ function formatDuration(seconds: number | null) {
         <li
           v-for="pad in missions.pads.entries"
           :key="pad.pad"
-          class="rounded-xl border border-edge bg-panel p-3"
+          class="rounded-card border border-edge bg-panel p-5"
         >
           <div class="flex flex-wrap items-center gap-3">
             <span class="grid size-8 shrink-0 place-items-center rounded-lg bg-panel-raised font-bold">
@@ -96,7 +96,7 @@ function formatDuration(seconds: number | null) {
             </ul>
           </div>
 
-          <p v-if="pad.note" class="mt-2 text-xs text-amber-300">{{ pad.note }}</p>
+          <p v-if="pad.note" class="mt-2 text-xs text-warn">{{ pad.note }}</p>
         </li>
       </ul>
 
@@ -106,7 +106,7 @@ function formatDuration(seconds: number | null) {
       <p class="rounded-lg bg-panel px-3 py-2 text-xs text-ink-muted">
         {{ missions.pads.scalingNote }}
       </p>
-      <p class="rounded-lg bg-panel px-3 py-2 text-xs text-amber-300">
+      <p class="rounded-lg bg-panel px-3 py-2 text-xs text-warn">
         ⚠ {{ missions.pads.passiveIncomeDuringMission }}
       </p>
       <p class="rounded-lg bg-panel px-3 py-2 text-xs text-ink-muted">
@@ -116,7 +116,7 @@ function formatDuration(seconds: number | null) {
 
       <!-- Temps relevés par les joueurs : c'est la réponse concrète à « quel droid
            envoyer pour aller plus vite », qu'aucune formule publiée ne donne. -->
-      <div class="rounded-xl border border-edge bg-panel p-3">
+      <div class="rounded-card border border-edge bg-panel p-5">
         <h3 class="mb-2 text-sm font-medium">
           {{ $t('missions.measured', { tier: $t(`tier.${missions.pads.measured.missionTier}`) }) }}
         </h3>
@@ -129,7 +129,7 @@ function formatDuration(seconds: number | null) {
             <span class="min-w-0 flex-1">{{ row.droid }}</span>
             <span
               class="font-mono tabular-nums"
-              :class="row.seconds === missions.pads.measured.baseSeconds ? 'text-ink-muted' : 'text-emerald-400'"
+              :class="row.seconds === missions.pads.measured.baseSeconds ? 'text-ink-muted' : 'text-valid'"
             >
               {{ row.approximate ? '≈ ' : '' }}{{ formatDuration(row.seconds) }}
             </span>
@@ -137,7 +137,7 @@ function formatDuration(seconds: number | null) {
         </ul>
       </div>
 
-      <div class="rounded-xl border border-edge bg-panel p-3">
+      <div class="rounded-card border border-edge bg-panel p-5">
         <h3 class="text-sm font-medium">{{ missions.secretMission.name }}</h3>
         <p class="mt-1 text-sm text-ink-muted">
           {{ formatDuration(missions.secretMission.durationSeconds) }} ·
@@ -147,7 +147,7 @@ function formatDuration(seconds: number | null) {
       </div>
     </section>
 
-    <section class="rounded-xl border border-edge bg-panel p-4">
+    <section class="rounded-card border border-edge bg-panel p-6">
       <h2 class="mb-2 font-semibold">{{ $t('missions.world') }}</h2>
       <p class="text-sm text-ink-muted">{{ missions.worldMissions.note }}</p>
 
@@ -179,7 +179,7 @@ function formatDuration(seconds: number | null) {
       </ul>
     </section>
 
-    <section class="rounded-xl border border-edge bg-panel p-4">
+    <section class="rounded-card border border-edge bg-panel p-6">
       <h2 class="mb-2 font-semibold">{{ $t('missions.cantina') }}</h2>
       <p class="text-sm">{{ missions.cantina.mechanic }}</p>
 
@@ -190,7 +190,7 @@ function formatDuration(seconds: number | null) {
         </div>
         <div class="rounded-lg bg-panel-raised p-2.5">
           <p class="text-xs text-ink-muted">{{ $t('missions.cooldown') }}</p>
-          <p class="text-lg text-emerald-400">{{ $t('missions.noCooldown') }}</p>
+          <p class="text-lg text-valid">{{ $t('missions.noCooldown') }}</p>
         </div>
         <div class="rounded-lg bg-panel-raised p-2.5">
           <p class="text-xs text-ink-muted">{{ $t('missions.rewards') }}</p>
@@ -202,7 +202,7 @@ function formatDuration(seconds: number | null) {
       <p class="mt-2 rounded-lg bg-panel-raised px-3 py-2 text-sm">💡 {{ missions.cantina.tip }}</p>
     </section>
 
-    <section class="rounded-xl border border-edge bg-panel p-4">
+    <section class="rounded-card border border-edge bg-panel p-6">
       <h2 class="mb-2 font-semibold">{{ $t('missions.dailies') }}</h2>
       <p class="text-sm text-ink-muted">
         {{ $t('missions.dailyReset', { count: missions.dailies.perDay, hours: missions.dailies.resetHours }) }}
@@ -235,11 +235,11 @@ function formatDuration(seconds: number | null) {
           <span class="font-mono text-iconic">✦ {{ missions.dailies.doubleDaily.cost }}</span>
         </p>
         <p class="mt-1 text-sm text-ink-muted">{{ missions.dailies.doubleDaily.effect }}</p>
-        <p class="mt-1 text-xs text-amber-300">⚠ {{ missions.dailies.doubleDaily.uncertainty }}</p>
+        <p class="mt-1 text-xs text-warn">⚠ {{ missions.dailies.doubleDaily.uncertainty }}</p>
       </div>
     </section>
 
-    <section class="rounded-xl border border-edge bg-panel p-4">
+    <section class="rounded-card border border-edge bg-panel p-6">
       <h2 class="mb-3 font-semibold">{{ $t('missions.strategies') }}</h2>
       <ol class="flex flex-col gap-2 text-sm text-ink-muted">
         <li v-for="(s, i) in missions.strategies" :key="s" class="flex gap-2">
