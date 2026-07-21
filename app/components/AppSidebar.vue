@@ -34,7 +34,7 @@ const socials = [
   <aside class="sticky top-0 hidden h-dvh w-60 shrink-0 flex-col gap-5 overflow-hidden border-r border-edge bg-panel px-4 py-5 xl:flex">
     <NuxtLink :to="localePath('/')" class="flex items-center gap-2.5">
       <span class="grid size-9 place-items-center rounded-xl bg-accent/15 text-lg text-accent">◈</span>
-      <span class="text-xl font-extrabold tracking-tight">DROIDEX</span>
+      <span class="text-xl font-bold tracking-tight">DROIDEX</span>
     </NuxtLink>
 
     <div class="flex flex-col gap-1">

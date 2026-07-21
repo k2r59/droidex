@@ -21,7 +21,7 @@ const completion = computed(() =>
   <header class="sticky top-0 z-50 border-b border-edge bg-void/85 backdrop-blur">
     <div class="flex items-center gap-3 px-4 py-3">
       <!-- Le logo n'apparaît ici que si la colonne de gauche est masquée. -->
-      <NuxtLink :to="localePath('/')" class="flex items-center gap-2 font-extrabold tracking-tight xl:hidden">
+      <NuxtLink :to="localePath('/')" class="flex items-center gap-2 font-bold tracking-tight xl:hidden">
         <span class="grid size-8 place-items-center rounded-lg bg-accent/15 text-accent">◈</span>
         <span class="hidden sm:inline">DROIDEX</span>
       </NuxtLink>

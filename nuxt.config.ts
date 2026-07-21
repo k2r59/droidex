@@ -9,6 +9,19 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  /**
+   * Polices téléchargées et servies depuis notre domaine au build : pas de requête vers
+   * un tiers au chargement, et pas de saut de mise en page grâce aux métriques de repli
+   * calculées par le module.
+   */
+  fonts: {
+    families: [
+      { name: 'Rajdhani', provider: 'google', weights: [500, 600, 700] },
+      { name: 'Inter', provider: 'google', weights: [400, 500, 600] },
+      { name: 'JetBrains Mono', provider: 'google', weights: [400, 500, 700] },
+    ],
+  },
+
   vite: {
     plugins: [tailwindcss()],
   },

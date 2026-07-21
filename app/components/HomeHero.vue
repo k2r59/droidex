@@ -43,8 +43,9 @@ const RARITY_TEXT: Record<string, string> = {
 
     <div class="relative flex flex-col gap-5 p-6 lg:flex-row lg:items-center lg:p-8">
       <div class="flex-1">
-        <h1 class="text-4xl font-extrabold tracking-tight lg:text-5xl">DROIDEX</h1>
-        <p class="mt-1 text-lg font-semibold">{{ $t('home.subtitle') }}</p>
+        <h1 class="text-4xl font-bold tracking-tight lg:text-5xl">DROIDEX</h1>
+        <!-- Sous-titre traité comme un titre : Rajdhani, pas Inter. -->
+        <p class="mt-1 font-display text-lg font-semibold">{{ $t('home.subtitle') }}</p>
         <p class="mt-2 max-w-sm text-sm text-ink-muted">{{ $t('home.tagline') }}</p>
       </div>
 
