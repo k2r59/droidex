@@ -2,7 +2,8 @@
   "app": {
     "name": "Droidex",
     "tagline": "The community bible for Star Wars: Droid Tycoon",
-    "islandCode": "Island code: {code}"
+    "islandCode": "Island code: {code}",
+    "islandVersion": "Island v{version}"
   },
   "nav": {
     "droidex": "Droidex",
@@ -18,7 +19,7 @@
     "signIn": "Sign in",
     "signOut": "Sign out",
     "signInWith": "Continue with {provider}",
-    "signInPrompt": "Your collection is saved on this device. Sign in to access it everywhere.",
+    "signInPrompt": "Sign in to sync your collection and keep your progress everywhere!",
     "signInBenefit": "Your progress syncs across all your devices.",
     "guestNotice": "You're browsing as a guest: tick droids to track your collection, but sign in to keep it.",
     "provider": {
@@ -85,6 +86,7 @@
     "perk": "Equip perk",
     "tierTable": "Stats by tier",
     "flawless": "Flawless unlocked",
+    "owned": "Owned",
     "flawlessHint": "The Flawless unlock is permanent and survives Super Rebirth.",
     "unverified": "Unverified data",
     "unverifiedHint": "Extrapolated figure or from a secondary source. Confirm in game.",
@@ -106,6 +108,7 @@
   },
   "rebirth": {
     "title": "Rebirths",
+    "tagline": "Progress through the tiers and unlock new possibilities.",
     "subtitle": "Rebirth {current} of {max}",
     "current": "Current rebirth",
     "next": "Next rebirth",
@@ -139,7 +142,8 @@
   "superRebirth": {
     "title": "Super Rebirths",
     "count": "{count} Super Rebirth done | {count} Super Rebirths done",
-    "unlock": "Unlocked at Rebirth {rebirth} with a Rainbow Legendary",
+    "unlock": "Unlocked at Rebirth {rebirth} with a",
+    "unlockItem": "Rainbow Legendary",
     "locked": "Still locked",
     "unlocked": "Unlocked",
     "loses": "Base, all droids, credits, rebirth rank, pickaxe level, blueprints and Upgrade Chips",
@@ -184,9 +188,6 @@
       "single-source": "Price reported by a single source.",
       "unknown": "Price unknown."
     },
-    "cart": "Your cart",
-    "cartEmpty": "No item selected",
-    "addItems": "Add items",
     "seeAllDroids": "See all droids",
     "redeemable": "Redeemable Iconic droid",
     "noteLevels": "Costs are PER LEVEL, not cumulative: going from level 2 to level 5 costs the sum of levels 3, 4 and 5.",
@@ -219,7 +220,13 @@
     "sandcrawlerTitle": "Sandcrawler",
     "sandcrawlerBeskar": "Guaranteed Beskar every {minutes} minutes, one per player in the lobby",
     "currenciesTitle": "Currencies",
-    "sandcrawlerMythic": "Guaranteed Mythic blueprint every hour at XX:{minute}, one per player"
+    "tipsTitle": "Tips",
+    "sandcrawlerMythic": "Guaranteed Mythic blueprint every hour at XX:{minute}, one per player",
+    "currency": {
+      "credits": "Credits",
+      "chips": "Chips",
+      "nova": "Nova"
+    }
   },
   "stats": {
     "collection": "Collection",
@@ -229,7 +236,7 @@
     "keeperScore": "Collector score",
     "byTier": "By tier",
     "income": "income",
-    "droidsCollected": "droids collected"
+    "droidsCollected": "variants collected"
   },
   "common": {
     "loading": "Loading…",
@@ -245,7 +252,10 @@
     "install": "Install the app",
     "offline": "Offline — the data shown may be out of date.",
     "discover": "Discover",
-    "joinCommunity": "Join the community"
+    "joinCommunity": "Join the community",
+    "exportJson": "Export as JSON",
+    "previous": "Previous",
+    "next": "Next"
   },
   "disclaimer": {
     "title": "About the data",
@@ -255,19 +265,20 @@
   },
   "timers": {
     "title": "Sandcrawler timers",
-    "hint": "tap when you see a spawn",
-    "every": "every {minutes} min",
+    "hint": "Tap when you see a spawn",
+    "every": "Every {minutes} min",
     "sawIt": "Now",
     "reset": "Clear",
     "beskarPerPlayer": "Beskar spawns once per player in the lobby.",
     "beskarLabel": "Beskar blueprint",
     "mythicLabel": "Mythic blueprint",
-    "mythicAuto": "at XX:55, automatic",
+    "mythicAuto": "At XX:55, automatic",
     "rainbowRemoved": "The 5-minute Rainbow timer was removed in v1.22."
   },
   "advisor": {
     "title": "Best next purchase",
     "hint": "Ranked by income gained per credit spent.",
+    "creditsOnly": "Tier upgrades are paid in Upgrade Chips, not credits — they are not listed here.",
     "budget": "Budget",
     "noBudget": "unlimited",
     "payback": "Pays back in",
@@ -280,12 +291,14 @@
     "pad": "Pad {number}",
     "unlockCost": "Unlock",
     "rewards": "Rewards",
+    "padNumber": "Terminal {number}",
     "duration": "Duration",
     "free": "Free",
     "pads": "Mission pads",
     "world": "World Missions",
     "cantina": "Cantina quests",
     "dailies": "Daily quests",
+    "doubleDailyTitle": "Double Daily Quests",
     "strategies": "Farming strategies",
     "credits": "Credits",
     "traders": "Traders",

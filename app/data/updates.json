@@ -12,8 +12,8 @@
       "date": "2026-05-06",
       "kind": "patch",
       "version": "1.06",
-      "title": "Farm d'Upgrade Chips assoupli",
-      "body": "Les pickups donnent 1 à 3 chips au lieu de 1. Ventes Gold/Diamond/Rainbow bien plus rémunératrices. Missions astromech Légendaire/Mythique raccourcies, récompenses augmentées. Stats de plusieurs Légendaires relevées."
+      "title": "Farm de puces assoupli",
+      "body": "Les pickups donnent 1 à 3 puces au lieu de 1. Ventes Gold/Diamond/Rainbow bien plus rémunératrices. Missions astromech Légendaire/Mythique raccourcies, récompenses augmentées. Stats de plusieurs Légendaires relevées."
     },
     {
       "date": "2026-05-09",
@@ -57,7 +57,7 @@
       "kind": "patch",
       "version": "1.13",
       "title": "Trois paliers de renaissance supplémentaires",
-      "body": "Ajout du Changing Booth. Les quêtes de la Cantina donnent plus de crédits, ne donnent plus de droids et n'ont plus de temps de recharge. Les Upgrade Chips conservent le statut Flawless. Compagnons astromech renforcés."
+      "body": "Ajout du Changing Booth. Les quêtes de la Cantina donnent plus de crédits, ne donnent plus de droids et n'ont plus de temps de recharge. Les Puces d'amélioration conservent le statut Flawless. Compagnons astromech renforcés."
     },
     {
       "date": "2026-06-01",
@@ -71,7 +71,7 @@
       "kind": "patch",
       "version": "1.14",
       "title": "Le pad 5 devient la mission Beskar",
-      "body": "La mission Astromech « Upgrade Chip » devient la mission « Beskar » : 80 % crédits, 15 % Rainbow, 5 % Beskar, 12 minutes de base. Les récompenses de droid sont des blueprints. Réinitialisation des quêtes journalières ramenée à 22 h, et le blueprint offert est pondéré selon les besoins de renaissance."
+      "body": "La mission Astromech « Puces » devient la mission « Beskar » : 80 % crédits, 15 % Rainbow, 5 % Beskar, 12 minutes de base. Les récompenses de droid sont des blueprints. Réinitialisation des quêtes journalières ramenée à 22 h, et le blueprint offert est pondéré selon les besoins de renaissance."
     },
     {
       "date": "2026-06-06",
@@ -84,7 +84,7 @@
       "kind": "patch",
       "version": "1.16",
       "title": "Super Rebirth, Nova Crystals et Nova Shop",
-      "body": "Introduction du Super Rebirth, des Nova Crystals et de la Nova Shop en 4 catégories. Les droids d'événement deviennent des Emblématiques rachetables. Les exigences de renaissance bouclent désormais sur 4 cycles. Ajout de CB-23."
+      "body": "Introduction du Super Rebirth, des Nova Crystals et de la Nova Shop en 4 catégories. Les droids d'événement deviennent des Iconiques rachetables. Les exigences de renaissance bouclent désormais sur 4 cycles. Ajout de CB-23."
     },
     {
       "date": "2026-06-13",
@@ -98,7 +98,7 @@
       "kind": "patch",
       "version": "1.18",
       "title": "Les World Missions passent à la rareté",
-      "body": "Les récompenses des World Missions dépendent désormais de la rareté du compagnon et non de son palier, ce qui rend les Emblématiques meilleurs sur ces missions. Rééquilibrage des quêtes journalières : fabriquer 75 → 40 droids, vendre 50 → 40, éliminer 5 → 3 joueurs."
+      "body": "Les récompenses des World Missions dépendent désormais de la rareté du compagnon et non de son palier, ce qui rend les Iconiques meilleurs sur ces missions. Rééquilibrage des quêtes journalières : fabriquer 75 → 40 droids, vendre 50 → 40, éliminer 5 → 3 joueurs."
     },
     {
       "date": "2026-06-27",
@@ -110,8 +110,8 @@
     {
       "date": "2026-07-01",
       "kind": "patch",
-      "title": "Renforcement des Emblématiques et du Beskar",
-      "body": "Les droids Emblématiques passent au-dessus des Légendaires Beskar pour les missions. Gains Beskar augmentés. Notifications de renaissance plus intelligentes. Quatre slots de lounge ajoutés aux récompenses des paliers 17 à 20. Le multiplicateur de crédits par palier passe de 10 % à 20 %."
+      "title": "Renforcement des Iconiques et du Beskar",
+      "body": "Les droids Iconiques passent au-dessus des Légendaires Beskar pour les missions. Gains Beskar augmentés. Notifications de renaissance plus intelligentes. Quatre slots de lounge ajoutés aux récompenses des paliers 17 à 20. Le multiplicateur de crédits par palier passe de 10 % à 20 %."
     },
     {
       "date": "2026-07-05",

@@ -1,31 +1,32 @@
 /**
  * Les montants du jeu vont de 950 à 45 000 000 000 000. On les abrège plutôt que
  * d'aligner 14 chiffres dans une cellule de tableau.
+ *
+ * L'abrègement est délégué à `Intl` en notation compacte. Une table de suffixes écrite à
+ * la main ne traduisait que les milliards — le reste sortait en « k / M / T » quelle que
+ * soit la langue — et surtout `toFixed` imposait le point décimal, donc « 1.4Md » en
+ * français au lieu de « 1,4 Md ». `Intl` gère le séparateur, l'espace insécable et les
+ * suffixes propres à chaque langue : « 21 Md » en français, « 21B » en anglais,
+ * « 21 mil M » en espagnol, « 21 Mrd. » en allemand.
+ *
+ * Une décimale au plus : « 1,4 M » est utile, « 340,2 M » ne l'est pas.
  */
-const UNITS = [
-  { threshold: 1e12, suffix: 'T' },
-  { threshold: 1e9, suffix: 'Md' },
-  { threshold: 1e6, suffix: 'M' },
-  { threshold: 1e3, suffix: 'k' },
-] as const
+const compact = new Map<string, Intl.NumberFormat>()
 
-/** Suffixes par langue — « Md » n'existe qu'en français. */
-const LOCALIZED_BILLION: Record<string, string> = { fr: 'Md', en: 'B', es: 'MM', de: 'Mrd' }
+function formatteur(locale: string): Intl.NumberFormat {
+  let f = compact.get(locale)
+  if (!f) {
+    f = new Intl.NumberFormat(locale, { notation: 'compact', maximumFractionDigits: 1 })
+    compact.set(locale, f)
+  }
+  return f
+}
 
 export function formatNumber(value: number | null | undefined, locale = 'fr'): string {
   if (value == null) return '—'
+  // Sous mille, l'abrègement n'apporte rien et ferait perdre l'unité exacte.
   if (value < 1000) return String(Math.round(value))
-
-  for (const { threshold, suffix } of UNITS) {
-    if (value >= threshold) {
-      const n = value / threshold
-      // Une décimale sous 100, aucune au-delà : « 1.4M » est utile, « 340.2M » ne l'est pas.
-      const digits = n < 100 ? 1 : 0
-      const label = suffix === 'Md' ? (LOCALIZED_BILLION[locale] ?? 'B') : suffix
-      return `${n.toFixed(digits).replace(/\.0$/, '')}${label}`
-    }
-  }
-  return String(value)
+  return formatteur(locale).format(value)
 }
 
 /** Montant complet avec séparateurs, pour les infobulles. */

@@ -2,7 +2,8 @@
   "app": {
     "name": "Droidex",
     "tagline": "Die Community-Bibel zu Star Wars: Droid Tycoon",
-    "islandCode": "Inselcode: {code}"
+    "islandCode": "Inselcode: {code}",
+    "islandVersion": "Insel v{version}"
   },
   "nav": {
     "droidex": "Droidex",
@@ -18,7 +19,7 @@
     "signIn": "Anmelden",
     "signOut": "Abmelden",
     "signInWith": "Weiter mit {provider}",
-    "signInPrompt": "Deine Sammlung wird auf diesem Gerät gespeichert. Melde dich an, um sie überall zu haben.",
+    "signInPrompt": "Melde dich an, um deine Sammlung zu synchronisieren und deinen Fortschritt überall zu behalten!",
     "signInBenefit": "Dein Fortschritt wird auf allen deinen Geräten synchronisiert.",
     "guestNotice": "Du bist als Gast unterwegs: Hake Droids ab, um deine Sammlung zu verfolgen, aber melde dich an, um sie zu behalten.",
     "provider": {
@@ -85,6 +86,7 @@
     "perk": "Ausrüstungsbonus",
     "tierTable": "Werte nach Stufe",
     "flawless": "Flawless freigeschaltet",
+    "owned": "Im Besitz",
     "flawlessHint": "Die Flawless-Freischaltung ist dauerhaft und überlebt den Super Rebirth.",
     "unverified": "Ungeprüfte Angabe",
     "unverifiedHint": "Hochgerechneter Wert oder aus einer Sekundärquelle. Im Spiel prüfen.",
@@ -106,6 +108,7 @@
   },
   "rebirth": {
     "title": "Rebirths",
+    "tagline": "Steige durch die Stufen auf und schalte neue Möglichkeiten frei.",
     "subtitle": "Rebirth {current} von {max}",
     "current": "Aktueller Rebirth",
     "next": "Nächster Rebirth",
@@ -139,7 +142,8 @@
   "superRebirth": {
     "title": "Super Rebirths",
     "count": "{count} Super Rebirth gemacht | {count} Super Rebirths gemacht",
-    "unlock": "Ab Rebirth {rebirth} mit einem Rainbow Legendary freigeschaltet",
+    "unlock": "Ab Rebirth {rebirth} freigeschaltet, mit einem",
+    "unlockItem": "Rainbow Legendary",
     "locked": "Noch gesperrt",
     "unlocked": "Freigeschaltet",
     "loses": "Basis, alle Droids, Credits, Rebirth-Rang, Spitzhacken-Level, Blueprints und Upgrade Chips",
@@ -184,9 +188,6 @@
       "single-source": "Preis nur von einer Quelle genannt.",
       "unknown": "Preis unbekannt."
     },
-    "cart": "Dein Warenkorb",
-    "cartEmpty": "Kein Objekt ausgewählt",
-    "addItems": "Objekte hinzufügen",
     "seeAllDroids": "Alle Droiden ansehen",
     "redeemable": "Einlösbarer Iconic-Droide",
     "noteLevels": "Die Kosten gelten PRO STUFE und sind nicht kumulativ: von Stufe 2 auf 5 kostet die Summe der Stufen 3, 4 und 5.",
@@ -219,7 +220,13 @@
     "sandcrawlerTitle": "Sandcrawler",
     "sandcrawlerBeskar": "Garantiertes Beskar alle {minutes} Minuten, eines pro Spieler in der Lobby",
     "currenciesTitle": "Währungen",
-    "sandcrawlerMythic": "Garantierter Mythic-Blueprint jede Stunde um XX:{minute}, einer pro Spieler"
+    "tipsTitle": "Tipps",
+    "sandcrawlerMythic": "Garantierter Mythic-Blueprint jede Stunde um XX:{minute}, einer pro Spieler",
+    "currency": {
+      "credits": "Credits",
+      "chips": "Chips",
+      "nova": "Nova"
+    }
   },
   "stats": {
     "collection": "Sammlung",
@@ -229,7 +236,7 @@
     "keeperScore": "Sammler-Score",
     "byTier": "Nach Stufe",
     "income": "Einkommen",
-    "droidsCollected": "Droiden gesammelt"
+    "droidsCollected": "Varianten gesammelt"
   },
   "common": {
     "loading": "Wird geladen…",
@@ -245,7 +252,10 @@
     "install": "App installieren",
     "offline": "Offline — die angezeigten Daten können veraltet sein.",
     "discover": "Entdecken",
-    "joinCommunity": "Tritt der Community bei"
+    "joinCommunity": "Tritt der Community bei",
+    "exportJson": "Als JSON exportieren",
+    "previous": "Zurück",
+    "next": "Weiter"
   },
   "disclaimer": {
     "title": "Über die Daten",
@@ -255,19 +265,20 @@
   },
   "timers": {
     "title": "Sandcrawler-Timer",
-    "hint": "tippe, wenn du einen Spawn siehst",
-    "every": "alle {minutes} Min.",
+    "hint": "Tippe, wenn du einen Spawn siehst",
+    "every": "Alle {minutes} Min.",
     "sawIt": "Jetzt",
     "reset": "Löschen",
     "beskarPerPlayer": "Beskar erscheint einmal pro Spieler in der Lobby.",
     "beskarLabel": "Beskar-Blueprint",
     "mythicLabel": "Mythic-Blueprint",
-    "mythicAuto": "um XX:55, automatisch",
+    "mythicAuto": "Um XX:55, automatisch",
     "rainbowRemoved": "Der 5-Minuten-Rainbow-Timer wurde in v1.22 entfernt."
   },
   "advisor": {
     "title": "Bester nächster Kauf",
     "hint": "Sortiert nach Einkommen pro ausgegebenem Credit.",
+    "creditsOnly": "Stufen-Upgrades werden mit Upgrade-Chips bezahlt, nicht mit Credits — sie stehen hier nicht.",
     "budget": "Budget",
     "noBudget": "unbegrenzt",
     "payback": "Amortisiert in",
@@ -280,12 +291,14 @@
     "pad": "Pad {number}",
     "unlockCost": "Freischaltung",
     "rewards": "Belohnungen",
+    "padNumber": "Terminal {number}",
     "duration": "Dauer",
     "free": "Kostenlos",
     "pads": "Mission-Pads",
     "world": "World Missions",
     "cantina": "Cantina-Quests",
     "dailies": "Tägliche Quests",
+    "doubleDailyTitle": "Double Daily Quests",
     "strategies": "Farm-Strategien",
     "credits": "Credits",
     "traders": "Händler",
