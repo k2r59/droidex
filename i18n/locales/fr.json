@@ -218,6 +218,7 @@
     "flawlessBonus": "Le premier Parfait de chaque type ajoute +0,01× aux gains de base, soit +0,51× au maximum sur les 51 types fabricables.",
     "chipsTitle": "Puces d'amélioration",
     "chipsCost": "Coût de montée de palier",
+    "chipsConflict": "Une source donne 5 / 25 / 40 / 80",
     "missionsTitle": "Missions",
     "sandcrawlerTitle": "Sandcrawler",
     "sandcrawlerBeskar": "Beskar garanti toutes les {minutes} minutes, un par joueur du lobby",
@@ -335,5 +336,15 @@
     "subtitle": "Multiplicateurs de revenus puissants",
     "ofTotalIncome": "du revenu total",
     "seeAll": "Voir tous les iconiques"
+  },
+  "profile": {
+    "importJson": "Importer un fichier",
+    "dangerZone": "Zone de danger",
+    "clearAll": "Effacer ma progression",
+    "clearWarning": "Efface définitivement ta collection, ton palier de renaissance et tes achats — sur cet appareil et sur ton compte.",
+    "clearConfirm": "Confirmer l'effacement",
+    "cancel": "Annuler",
+    "importDone": "Progression importée.",
+    "importFailed": "Fichier illisible ou format inattendu."
   }
 }

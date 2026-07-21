@@ -61,7 +61,9 @@ const socials = [
         <DxIcon :name="link.icon" :size="20" />
         <span class="flex-1">{{ $t(`nav.${link.key}`) }}</span>
         <span v-if="link.key === 'droidex'" class="side-nav-item__count font-mono text-xs tabular-nums">
-          {{ store.ownedCount }} / {{ store.totalCount }}
+          <span v-if="store.hydrated">{{ store.ownedCount }}</span>
+          <span v-else class="inline-block w-5 animate-pulse rounded bg-panel-high align-middle">&nbsp;</span>
+          / {{ store.totalCount }}
         </span>
       </NuxtLink>
     </div>

@@ -1,0 +1,359 @@
+{
+  "missions": {
+    "pads": {
+      "entries": {
+        "0": {
+          "note": "Beobachtete Dauer zwischen 1:00 und 1:20. Die Freischaltkosten der ersten beiden Stufen sind durch keine Quelle belegt — die kursierenden Werte „gratis“ und „15k“ sind unbestätigt."
+        },
+        "1": {
+          "note": "Freischaltkosten und Dauer nicht belegt."
+        },
+        "3": {
+          "note": "Beobachtete Dauer von etwa 1 Stunde."
+        },
+        "4": {
+          "note": "Einzige Beskar-Quelle in Missionen. Die Droid-Belohnungen sind Blueprints, keine fertigen Droids. Credits in v1.16.1 um etwa 30 % erhöht. Die Basisdauer von 12 Minuten stammt aus den Patch Notes des Entwicklers; die oft genannten 6:00 sind die Zeit mit einem exzellenten Astromech, nicht die Basiszeit."
+        }
+      },
+      "measured": {
+        "rows": {
+          "0": {
+            "droid": "R7 Legendary Beskar"
+          },
+          "1": {
+            "droid": "Astromech Legendary Rainbow"
+          },
+          "2": {
+            "droid": "R7 Legendary Rainbow"
+          },
+          "3": {
+            "droid": "R2 Epic"
+          },
+          "4": {
+            "droid": "Astromech Epic Beskar oder jeder Nicht-Astromech"
+          }
+        }
+      },
+      "note": "Die „Mission-Pads“ der Shipyard und die „Astromech Missions“ der Patch Notes sind dasselbe System. Es gibt 5 Terminals, und jede Missionsstufe wird AN JEDEM Terminal einzeln gekauft — die Diamond-Mission an allen 5 Terminals freizuschalten kostet 5 × 400k, nicht einmalig 400k. Ein Droid pro Terminal, also 5 gleichzeitige Missionen.",
+      "passiveIncomeDuringMission": "Nicht ausdrücklich bestätigt, aber die Diskussionen der Spieler über die Optimierung der Einnahmen von Missionsplätzen ergäben keinen Sinn, wenn der Droid die Produktion einstellen würde. Im Spiel zu prüfen.",
+      "durationNote": "Nur ein ASTROMECH-Droid auf dem Terminal verkürzt die Dauer. Etwas anderes darauf zu setzen belässt die Mission bei ihrer Basiszeit. Die Verkürzung hängt sowohl von der Rarität als auch von der Stufe des Astromechs ab, eine Formel wurde jedoch nie veröffentlicht.",
+      "bestCompanion": "Seit v1.17.1 übertreffen Iconic-Droids die Legendary Beskar bei Astromech-Missionen: BB-8 ist der beste Droid zum Losschicken.",
+      "scalingNote": "Bei Mission-Pads zählen Rarität UND Stufe. Bei World Missions zählt seit v1.18 nur noch die Rarität — die beiden Systeme folgen nicht derselben Regel.",
+      "rewardsUnaffectedByDroid": "Die Qualität des losgeschickten Droids ändert NUR die Dauer, niemals die Belohnungen."
+    },
+    "worldMissions": {
+      "examples": {
+        "0": "Feuchtigkeitsvaporatoren reparieren (erfordert bestimmte Droids)",
+        "1": "Feindliche Stormtroopers ausschalten (allein mit dem Blaster machbar)",
+        "2": "Droids reparieren"
+      },
+      "note": "Über Tatooine verteilte Ziele, getrennt von den Mission-Pads. Man muss einen Droid der passenden Klasse mitbringen, um sie auszulösen.",
+      "rewards": "Credits oder Upgrade Chips, über Belohnungskisten",
+      "scaling": "Seit v1.18 hängen die Belohnungen von der RARITÄT des Begleiters ab und nicht von seiner Stufe — Iconic-Droids sind damit die besten Begleiter für diese Missionen.",
+      "tip": "Worker-World-Missions sind am schnellsten zum Farmen von Chips; die Astromech-Missionen dauern am längsten."
+    },
+    "cantina": {
+      "cooldownNote": "Der Cooldown wurde in v1.13 entfernt — bei jedem Besuch konsequent leeren.",
+      "rewards": "Viele Credits und Upgrade Chips. Seit v1.13 keine Droids mehr.",
+      "mechanic": "Jeder Trader verlangt einen bestimmten Droid oder eine Version dieses Droids mit höherer Rarität. Eine höhere Stufe erfüllt eine Anfrage niedrigerer Stufe.",
+      "tip": "Die Trader verlangen oft Common-Droids: ein sehr zugängliches Farmen."
+    },
+    "dailies": {
+      "tiers": {
+        "0": {
+          "examples": {
+            "0": "5 Droids einer Klasse zur Arbeit einteilen",
+            "1": "Von einem Spieler eliminiert werden"
+          },
+          "reward": "Zufälliger Blueprint + Upgrade Chips"
+        },
+        "1": {
+          "examples": {
+            "0": "15 Common herstellen",
+            "1": "10 Rare herstellen",
+            "2": "2 Diamond herstellen",
+            "3": "Einen Diamond-Blueprint verkaufen"
+          },
+          "reward": "Zufälliger Blueprint + Upgrade Chips"
+        },
+        "2": {
+          "examples": {
+            "0": "15 Gold herstellen",
+            "1": "10 Diamond herstellen",
+            "2": "100 Mio. Credits überschreiten"
+          },
+          "reward": "Zufälliger Blueprint + 1 Nova Crystal"
+        }
+      },
+      "doubleDaily": {
+        "effect": "Nach Abschluss der 3 Tagesquests erscheinen 3 weitere Quests — also 6 pro Tag, und keine Verdopplung der Belohnungen.",
+        "uncertainty": "Nichts bestätigt, dass die zweite Serie eine schwere Quest enthält. Wenn ja, ist der Perk 2 Nova Crystals pro Tag statt 1 wert."
+      },
+      "blueprintWeighting": "Der vergebene Blueprint wird nach deinen aktuellen Rebirth-Anforderungen gewichtet."
+    },
+    "strategies": {
+      "0": "Credits farmen: die 1-Minuten-Mission von Pad 1 auf allen 5 Pads hintereinander zu fahren lohnt sich mehr als die 6-Minuten-Beskar-Missionen. Nutze die Wartezeit für World Missions.",
+      "1": "Chips farmen: Upgrade Chips kommen seit v1.14 nicht mehr aus Missionen. Die aktuelle Schleife läuft über Worker-World-Missions, die schnellsten, und über das Herstellen und Weiterverkaufen von Droids — mit BB-8 als Begleiter, der die Chips beim Verkauf verdoppelt.",
+      "2": "Endgame: Pad 5 dauerhaft aktiv halten — jeder Abschluss bringt entweder Credits oder einen verkäuflichen Droid hoher Variante, und es ist die einzige Beskar-Quelle.",
+      "3": "Begleiter: dein Astromech mit der höchsten Rarität für die Pads; seit v1.18 ein Iconic für die World Missions; DJ-R3X, wenn du World Quests farmst, er verdoppelt deren Belohnungen.",
+      "4": "Die Wochenend-Events geben doppelte Credits, doppelte Chips und doppelte Flawless-Chance: das ist das Zeitfenster, das man für jedes Missionsfarmen bevorzugen sollte."
+    },
+    "secretMission": {
+      "name": "Geheimmission CB-23",
+      "note": "Getrennt von den 5 Terminals. Wird über CB-23 freigeschaltet."
+    }
+  },
+  "updates": {
+    "entries": {
+      "0": {
+        "title": "Star Wars: Droid Tycoon erschienen",
+        "body": "Start der Insel mit dem Event Unleash the Force. Lobby für bis zu 6 Spieler, 25 Basis-Slots."
+      },
+      "1": {
+        "title": "Chip-Farmen entschärft",
+        "body": "Pickups geben 1 bis 3 Chips statt 1. Gold-/Diamond-/Rainbow-Verkäufe deutlich einträglicher. Legendary-/Mythic-Astromech-Missionen verkürzt, Belohnungen erhöht. Werte mehrerer Legendary angehoben."
+      },
+      "2": {
+        "title": "BB-8-Event",
+        "body": "10 BB-Einheiten an Poe Dameron übergeben, um BB-8 freizuschalten."
+      },
+      "3": {
+        "title": "Rebirth-Rebalancing",
+        "body": "Anforderungen ab Stufe 11 angepasst. Einnahmen der Legendary erhöht (die Basis von Stufe 7 steigt von etwa 1,19k/s auf 1,50k/s)."
+      },
+      "4": {
+        "title": "Mister-Bones-Event",
+        "body": "Ihn in einem Zeitfenster von 24 Stunden beim zerstörten AT-AT finden."
+      },
+      "5": {
+        "title": "Mandalorianer-Event",
+        "body": "15 Beskar-Container in 3 Zeitfenstern von je 6 Stunden an den Mandalorianer liefern, um IG-11 Marshal freizuschalten."
+      },
+      "6": {
+        "title": "Beskar Event",
+        "body": "Garantierter Beskar-Drop alle 5 Minuten am Sandcrawler, etwa 5× die normale Rate. Wiederholung unter der Woche am 3. und 4. Juni."
+      },
+      "7": {
+        "title": "Drei zusätzliche Rebirth-Stufen",
+        "body": "Changing Booth hinzugefügt. Die Cantina-Quests geben mehr Credits, keine Droids mehr und haben keinen Cooldown mehr. Upgrade Chips erhalten den Flawless-Status. Astromech-Begleiter gestärkt."
+      },
+      "8": {
+        "title": "Die Flawless-Droids kommen",
+        "body": "Einführung der Flawless-Varianten. Gunrunner zum Shop des Sandcrawlers hinzugefügt. Lokalisierungskorrekturen und Optimierungen."
+      },
+      "9": {
+        "title": "Pad 5 wird zur Beskar-Mission",
+        "body": "Die Astromech-Mission „Chips“ wird zur Mission „Beskar“: 80 % Credits, 15 % Rainbow, 5 % Beskar, 12 Minuten Basiszeit. Die Droid-Belohnungen sind Blueprints. Der Reset der Tagesquests wurde auf 22:00 Uhr zurückgesetzt, und der vergebene Blueprint wird nach den Rebirth-Anforderungen gewichtet."
+      },
+      "10": {
+        "title": "Klarstellung zu Flawless",
+        "body": "Der erste Flawless jedes Typs bringt +0,01× auf die Basiseinnahmen, also höchstens +0,51× über die 51 herstellbaren Typen. Die Chancen hängen von der hergestellten Stufe ab."
+      },
+      "11": {
+        "title": "Super Rebirth, Nova Crystals und Nova Shop",
+        "body": "Einführung von Super Rebirth, der Nova Crystals und des Nova Shop mit 4 Kategorien. Event-Droids werden zu einlösbaren Iconics. Die Rebirth-Anforderungen laufen nun in 4 Zyklen. CB-23 hinzugefügt."
+      },
+      "12": {
+        "title": "DJ-R-3X-Event",
+        "body": "Kisten mit dem Begleiter öffnen; 30 gelieferte Kisten schalten den Color Rush frei (Spawns in Gold, Diamond und Rainbow)."
+      },
+      "13": {
+        "title": "World Missions richten sich nach der Rarität",
+        "body": "Die Belohnungen der World Missions hängen jetzt von der Rarität des Begleiters ab und nicht mehr von seiner Stufe, was Iconics für diese Missionen besser macht. Rebalancing der Tagesquests: 75 → 40 Droids herstellen, 50 → 40 verkaufen, 5 → 3 Spieler eliminieren."
+      },
+      "14": {
+        "title": "Update 1.19",
+        "body": "Existenz bestätigt, ausführliche Notizen nicht erfasst."
+      },
+      "15": {
+        "title": "Iconics und Beskar gestärkt",
+        "body": "Iconic-Droids ziehen bei Missionen an den Legendary Beskar vorbei. Beskar-Einnahmen erhöht. Intelligentere Rebirth-Benachrichtigungen. Vier Lounge-Slots zu den Belohnungen der Stufen 17 bis 20 hinzugefügt. Der Credit-Multiplikator pro Stufe steigt von 10 % auf 20 %."
+      },
+      "16": {
+        "title": "Beskar aus Tagesquests",
+        "body": "Beskar-Droids können jetzt über die Tagesquests fallen."
+      },
+      "17": {
+        "title": "C-3PO-Event",
+        "body": "Schaltet C-3P0 frei, danach im Nova Shop verfügbar."
+      },
+      "18": {
+        "title": "Korrekturen an Double Daily Quests",
+        "body": "Double Daily Quests wird nach einem Super Rebirth korrekt zurückgesetzt."
+      }
+    }
+  },
+  "novaShop": {
+    "sections": {
+      "0": {
+        "items": {
+          "0": {
+            "name": "Critical Chance",
+            "effect": "Chance auf kritischen Treffer",
+            "note": "tycoon-tools listet nur 4 Stufen (insgesamt 550); das Google Sheet listet 5 (insgesamt 660). Das Sheet wirkt aktueller."
+          },
+          "1": {
+            "name": "Critical Amount",
+            "effect": "Schaden des kritischen Treffers"
+          },
+          "2": {
+            "name": "Companion Slot",
+            "effect": "Zusätzlicher Slot für einen Begleit-Droid",
+            "note": "Als Spalte in den Spieldaten vorhanden, aber vollständig leer. Weder Stufen noch Kosten veröffentlicht."
+          }
+        }
+      },
+      "1": {
+        "items": {
+          "0": {
+            "name": "Max Health",
+            "effect": "Maximale LP des Spielers"
+          },
+          "1": {
+            "name": "Damage",
+            "effect": "Verursachter Schaden"
+          },
+          "2": {
+            "name": "Credits",
+            "effect": "Multiplikator für Credit-Einnahmen"
+          },
+          "3": {
+            "name": "Movement Speed",
+            "effect": "Bewegungsgeschwindigkeit"
+          },
+          "4": {
+            "name": "Pickaxe Mastery",
+            "effect": "Dauerhafte Spitzhacken-Stufen"
+          },
+          "5": {
+            "name": "Jawa Bartering",
+            "effect": "Bessere Verkaufspreise bei den Jawas"
+          },
+          "6": {
+            "name": "Super Crates",
+            "effect": "Wirkung nicht dokumentiert.",
+            "note": "Kosten bestätigt, tatsächliche Wirkung nicht dokumentiert."
+          },
+          "7": {
+            "name": "Flawless Charm",
+            "effect": "Erhöht die Chance auf einen Flawless-Droid"
+          },
+          "8": {
+            "name": "Double Daily Quests",
+            "effect": "Verdoppelt die Tagesquests"
+          }
+        }
+      },
+      "2": {
+        "items": {
+          "0": {
+            "name": "Lounge Slot",
+            "effect": "Zusätzliche Lounge-Slots"
+          },
+          "1": {
+            "name": "Upgrade Chip Scrap",
+            "effect": "Upgrade Chips aus dem Zerlegen von Schrott"
+          },
+          "2": {
+            "name": "Scrap Value",
+            "effect": "Credits, die Schrott einbringt"
+          },
+          "3": {
+            "name": "Blueprint Scrap",
+            "effect": "Blueprint-Chance aus Schrott"
+          },
+          "4": {
+            "name": "Crafting Speed",
+            "effect": "Herstellungsgeschwindigkeit von Droids"
+          },
+          "5": {
+            "name": "Blueprint Storage",
+            "effect": "Lagerkapazität für Blueprints"
+          },
+          "6": {
+            "name": "Collect All",
+            "effect": "Sammelt die Einnahmen aller Droids auf einmal ein"
+          },
+          "7": {
+            "name": "Rebirth Droid Alert",
+            "effect": "Hinweis, wenn ein für den Rebirth benötigter Droid erscheint"
+          },
+          "8": {
+            "name": "Blueprint Vendor",
+            "effect": "Schaltet den Blueprint-Händler frei"
+          }
+        }
+      },
+      "3": {
+        "items": {
+          "0": {
+            "name": "Nova Crystal Base Paint",
+            "effect": "Basislackierung „Nova Crystal“, 3 aufeinander aufbauende Stufen",
+            "note": "Das einzige Kosmetikum, das mit Nova Crystals gekauft werden kann. Die übrigen 27 Lackierungen und 26 Hüte gibt es über Credits, über Events, über Rebirth-Stufen oder über Droidsmith-Level."
+          }
+        }
+      },
+      "4": {
+        "items": {
+          "0": {
+            "name": "BB-8",
+            "effect": "Einlösbarer Iconic-Droid"
+          },
+          "1": {
+            "name": "Mister Bones",
+            "effect": "Einlösbarer Iconic-Droid"
+          },
+          "2": {
+            "name": "IG-11 Marshal",
+            "effect": "Einlösbarer Iconic-Droid"
+          },
+          "3": {
+            "name": "CB-23",
+            "effect": "Einlösbarer Iconic-Droid",
+            "note": "Das Feld „75“ des Trackers enthält bei allen anderen Droids Credits — dieser Preis ist womöglich ein Artefakt."
+          },
+          "4": {
+            "name": "DJ-R3X",
+            "effect": "Einlösbarer Iconic-Droid"
+          },
+          "5": {
+            "name": "R2-D2",
+            "effect": "Einlösbarer Iconic-Droid"
+          },
+          "6": {
+            "name": "C-3P0",
+            "effect": "Einlösbarer Iconic-Droid"
+          }
+        }
+      }
+    },
+    "note": "Die Kosten gelten PRO STUFE und sind nicht kumulativ: von Stufe 2 auf Stufe 5 zu gehen kostet die Summe der Stufen 3, 4 und 5."
+  },
+  "mechanics": {
+    "sandcrawler": {
+      "notes": "Timer auf dem Stand von v1.22: Beskar ist von 20 auf 15 Minuten gefallen und der Rainbow-Timer von 5 Minuten wurde entfernt. In v1.20 kam ein garantierter Mythic-Blueprint dazu, jede Stunde um XX:55, einer pro Spieler. Während der Beskar Events gibt es zusätzlich alle 5 Minuten einen garantierten Drop. Die Beskar-Varianten lassen sich nur in der Trade Row kaufen."
+    },
+    "currencies": {
+      "0": {
+        "sources": "Passives Einkommen, Verkäufe, Missionen, Cantina-Quests",
+        "uses": "Blueprints, Rebirths"
+      },
+      "1": {
+        "sources": "Verkauf von Droids ab Gold, Pickups (1 bis 3)",
+        "uses": "Stufenaufstieg"
+      },
+      "2": {
+        "sources": "Super Rebirth (11 bis 191), 1 pro Tag über eine schwere Quest",
+        "uses": "Nova Shop, Iconic-Droids"
+      }
+    },
+    "tips": {
+      "0": "BB-8 als Begleiter auszurüsten verdoppelt die Upgrade Chips beim Verkauf eines Droids.",
+      "1": "Einen rohen Blueprint zu verkaufen bringt immer weniger, als den Droid herzustellen und ihn dann zu verkaufen.",
+      "2": "Einen im Bau befindlichen Droid mit der Spitzhacke zu schlagen verkürzt seine Herstellungszeit.",
+      "3": "Ein Gratis-Roll alle 24 Stunden in der Cantina: rüste deinen seltensten Droid aus, bevor du rollst.",
+      "4": "Der Gunrunner ist der beste Slot-Füller im Spiel, auch außerhalb seines Spezialslots.",
+      "5": "Halte immer eine Credit-Reserve bereit: Mythic-Blueprints erscheinen zufällig am Sandcrawler und verschwinden wieder aus dem Zyklus."
+    }
+  }
+}

@@ -2,9 +2,7 @@
   "version": 1,
   "generatedFrom": "Fortnite Wiki (Fandom), update log communautaire et patch notes du dev (@FoadZone), juillet 2026 — état v1.22.1",
   "pads": {
-    "note": "Les « mission pads » du Shipyard et les « Astromech Missions » des patch notes sont le même système. Il y a 5 terminaux, et chaque palier de mission s'achète séparément SUR CHAQUE terminal — débloquer la mission Diamant sur les 5 terminaux coûte 5 × 400k, pas 400k une fois. Un droid par terminal, donc 5 missions simultanées.",
     "slotLocks": true,
-    "passiveIncomeDuringMission": "Non confirmé explicitement, mais les discussions de joueurs sur l'optimisation du revenu des emplacements de mission n'auraient aucun sens si le droid cessait de produire. À vérifier en jeu.",
     "entries": [
       {
         "pad": 1,
@@ -26,7 +24,6 @@
             "chance": 10
           }
         ],
-        "note": "Durée observée entre 1:00 et 1:20. Les coûts de déblocage des deux premiers paliers ne sont attestés par aucune source — les valeurs « gratuit » et « 15k » qui circulent sont invérifiées.",
         "missionTier": "DEFAULT",
         "unlockConfidence": "unknown"
       },
@@ -52,8 +49,7 @@
           }
         ],
         "missionTier": "GOLD",
-        "unlockConfidence": "unknown",
-        "note": "Coût de déblocage et durée non attestés."
+        "unlockConfidence": "unknown"
       },
       {
         "pad": 3,
@@ -96,8 +92,7 @@
           }
         ],
         "missionTier": "RAINBOW",
-        "unlockConfidence": "confirmed",
-        "note": "Durée observée d'environ 1 heure."
+        "unlockConfidence": "confirmed"
       },
       {
         "pad": 5,
@@ -119,119 +114,66 @@
             "chance": 5
           }
         ],
-        "note": "Seule source de Beskar en mission. Les récompenses de droid sont des blueprints, pas des droids finis. Crédits augmentés d'environ 30 % en v1.16.1. La durée de base de 12 minutes vient des patch notes du dev ; les 6:00 souvent cités sont le temps atteint avec un excellent astromech, pas le temps de base.",
         "missionTier": "BESKAR",
         "unlockConfidence": "confirmed"
       }
     ],
-    "durationNote": "Seul un droid ASTROMECH placé sur le terminal réduit la durée. Y mettre autre chose laisse la mission à son temps de base. La réduction dépend à la fois de la rareté et du palier de l'astromech, mais aucune formule n'a été publiée.",
     "measured": {
       "missionTier": "BESKAR",
       "baseSeconds": 720,
       "rows": [
         {
-          "droid": "R7 Légendaire Beskar",
           "seconds": 360
         },
         {
-          "droid": "Astromech Légendaire Arc-en-ciel",
           "seconds": 368
         },
         {
-          "droid": "R7 Légendaire Arc-en-ciel",
           "seconds": 378
         },
         {
-          "droid": "R2 Épique",
           "seconds": 420,
           "approximate": true
         },
         {
-          "droid": "Astromech Épique Beskar, ou tout non-astromech",
           "seconds": 720
         }
       ]
     },
-    "bestCompanion": "Depuis la v1.17.1, les droids Iconiques dépassent les Légendaires Beskar sur les missions astromech : BB-8 est le meilleur droid à envoyer.",
-    "scalingNote": "Pour les mission pads, la rareté ET le palier comptent. Pour les World Missions, seule la rareté compte depuis la v1.18 — les deux systèmes ne suivent pas la même règle.",
-    "perTerminalPurchase": true,
-    "rewardsUnaffectedByDroid": "La qualité du droid envoyé ne change QUE la durée, jamais les récompenses."
+    "perTerminalPurchase": true
   },
   "worldMissions": {
-    "note": "Objectifs répartis sur Tatooine, distincts des mission pads. Il faut amener un droid de la bonne classe pour les déclencher.",
     "types": [
       "worker",
       "astromech",
       "battle"
     ],
-    "rewards": "Crédits ou Puces d'amélioration, via des caisses de récompense",
-    "scaling": "Depuis la v1.18, les récompenses dépendent de la RARETÉ du compagnon et non de son palier — les droids Iconiques sont donc les meilleurs compagnons pour ces missions.",
-    "examples": [
-      "Réparer des évaporateurs d'humidité (nécessite des droids précis)",
-      "Nettoyer des Stormtroopers hostiles (faisable au blaster seul)",
-      "Réparer des droids"
-    ],
-    "cooldown": null,
-    "tip": "Les world missions Worker sont les plus rapides pour farmer les puces ; celles d'Astromech sont les plus longues."
+    "cooldown": null
   },
   "cantina": {
     "traders": 2,
-    "cooldown": 0,
-    "cooldownNote": "Le temps de recharge a été supprimé en v1.13 — à vider systématiquement à chaque passage.",
-    "rewards": "Beaucoup de crédits et des Puces d'amélioration. Ne donnent plus de droids depuis la v1.13.",
-    "mechanic": "Chaque trader demande un droid précis, ou une version de rareté supérieure de ce droid. Un palier supérieur satisfait une demande de palier inférieur.",
-    "tip": "Les traders demandent souvent des droids Typiques : c'est un farm très accessible."
+    "cooldown": 0
   },
   "dailies": {
     "perDay": 3,
     "resetHours": 22,
     "tiers": [
       {
-        "difficulty": "easy",
-        "reward": "Blueprint aléatoire + Puces d'amélioration",
-        "examples": [
-          "Assigner 5 droids d'une classe au travail",
-          "Se faire éliminer par un joueur"
-        ]
+        "difficulty": "easy"
       },
       {
-        "difficulty": "medium",
-        "reward": "Blueprint aléatoire + Puces d'amélioration",
-        "examples": [
-          "Fabriquer 15 Typiques",
-          "Fabriquer 10 Rares",
-          "Fabriquer 2 Diamants",
-          "Vendre un blueprint Diamant"
-        ]
+        "difficulty": "medium"
       },
       {
-        "difficulty": "hard",
-        "reward": "Blueprint aléatoire + 1 Nova Crystal",
-        "examples": [
-          "Fabriquer 15 Or",
-          "Fabriquer 10 Diamants",
-          "Dépasser 100 M de crédits"
-        ]
+        "difficulty": "hard"
       }
     ],
-    "blueprintWeighting": "Le blueprint offert est pondéré selon tes besoins de renaissance en cours.",
     "doubleDaily": {
-      "cost": 75,
-      "effect": "Après avoir terminé les 3 quêtes du jour, 3 quêtes supplémentaires apparaissent — soit 6 par jour, et non un doublement des récompenses.",
-      "uncertainty": "Rien ne confirme que la seconde série contienne une quête difficile. Si c'est le cas, le perk vaut 2 Nova Crystals par jour au lieu d'1."
+      "cost": 75
     }
   },
-  "strategies": [
-    "Farm crédits : enchaîner la mission d'1 minute du pad 1 sur les 5 pads est plus rentable que les missions Beskar de 6 minutes. Occupe le temps d'attente avec des world missions.",
-    "Farm puces : les Puces d'amélioration ne viennent plus des missions depuis la v1.14. La boucle actuelle passe par les world missions Worker, les plus rapides, et par la fabrication puis revente de droids — avec BB-8 en compagnon, qui double les puces à la vente.",
-    "Endgame : garder le pad 5 actif en permanence — chaque complétion donne soit des crédits, soit un droid haute variante revendable, et c'est l'unique source de Beskar.",
-    "Compagnon : ton astromech de plus haute rareté pour les pads ; un Iconique pour les world missions depuis la v1.18 ; DJ-R3X si tu farmes les world quests, il en double les récompenses.",
-    "Les événements du week-end donnent double crédits, double puces et double chance de Flawless : c'est la fenêtre à privilégier pour tout farm de missions."
-  ],
   "secretMission": {
-    "name": "Mission secrète CB-23",
     "durationSeconds": 1140,
-    "withR2D2Seconds": 960,
-    "note": "Distincte des 5 terminaux. Débloquée via CB-23."
+    "withR2D2Seconds": 960
   }
 }

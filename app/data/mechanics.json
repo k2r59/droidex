@@ -121,32 +121,17 @@
     "beskarPerPlayer": true,
     "mythicHourlyMinute": 55,
     "mythicPerPlayer": true,
-    "rainbowRemoved": true,
-    "notes": "Timers à jour en v1.22 : le Beskar est passé de 20 à 15 minutes et le timer Rainbow de 5 minutes a été supprimé. Un blueprint Mythique garanti a été ajouté en v1.20, chaque heure à XX:55, un par joueur. Pendant les Beskar Events, un drop garanti supplémentaire toutes les 5 minutes. Les variantes Beskar ne s'achètent que sur la trade row."
+    "rainbowRemoved": true
   },
   "currencies": [
     {
-      "id": "credits",
-      "sources": "Revenu passif, ventes, missions, quêtes de la Cantina",
-      "uses": "Blueprints, renaissances"
+      "id": "credits"
     },
     {
-      "id": "chips",
-      "sources": "Vente de droids Or et plus, pickups (1 à 3)",
-      "uses": "Montée de palier"
+      "id": "chips"
     },
     {
-      "id": "nova",
-      "sources": "Super Rebirth (11 à 191), 1 par jour en quête difficile",
-      "uses": "Nova Shop, droids Iconiques"
+      "id": "nova"
     }
-  ],
-  "tips": [
-    "Équiper BB-8 comme compagnon double les Puces d'amélioration obtenues à la vente d'un droid.",
-    "Vendre un blueprint brut rapporte toujours moins que de fabriquer le droid puis de le vendre.",
-    "Frapper un droid en cours de construction avec la pioche réduit son temps de fabrication.",
-    "Un roll gratuit par 24 h à la Cantina : équipe ton droid le plus rare avant de rouler.",
-    "Le Gunrunner est le meilleur remplisseur de slot du jeu, même hors de son slot de spécialité.",
-    "Garde toujours une réserve de crédits : les blueprints Mythique apparaissent aléatoirement au Sandcrawler et disparaissent du cycle."
   ]
 }

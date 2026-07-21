@@ -75,7 +75,10 @@ const RARITY_CHIP: Record<string, string> = {
             />
           </svg>
           <!-- `relative` obligatoire : le SVG est positionné, il passerait sinon par-dessus. -->
-          <span class="relative font-mono text-3xl font-bold tabular-nums text-ink-strong">{{ completion }}%</span>
+          <span
+            class="relative font-mono text-3xl font-bold tabular-nums text-ink-strong transition-opacity"
+            :class="!store.hydrated && 'opacity-30'"
+          >{{ completion }}%</span>
         </div>
         <p class="text-xs text-ink-muted">{{ $t('stats.totalIncome') }}</p>
         <p class="font-mono text-lg tabular-nums text-accent">{{ formatIncome(store.totalIncome, locale) }}</p>

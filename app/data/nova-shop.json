@@ -2,14 +2,12 @@
   "version": 1,
   "generatedFrom": "Google Sheet communautaire (onglet Nova Crystals + Shop Reference) et DATA.nova de tycoon-tools, juillet 2026",
   "currency": "novaCrystals",
-  "note": "Les coûts sont PAR NIVEAU et non cumulatifs : passer du niveau 2 au niveau 5 coûte la somme des niveaux 3, 4 et 5.",
   "sections": [
     {
       "id": "featured",
       "items": [
         {
           "id": "critical-chance",
-          "name": "Critical Chance",
           "costs": [
             60,
             90,
@@ -17,13 +15,10 @@
             180,
             210
           ],
-          "effect": "Chance de coup critique",
-          "confidence": "conflicting",
-          "note": "tycoon-tools ne liste que 4 niveaux (total 550) ; le Google Sheet en liste 5 (total 660). Le sheet semble plus récent."
+          "confidence": "conflicting"
         },
         {
           "id": "critical-amount",
-          "name": "Critical Amount",
           "costs": [
             30,
             90,
@@ -31,16 +26,12 @@
             210,
             330
           ],
-          "effect": "Dégâts du coup critique",
           "confidence": "confirmed"
         },
         {
           "id": "companion-slot",
-          "name": "Companion Slot",
           "costs": [],
-          "effect": "Slot de droid compagnon supplémentaire",
-          "confidence": "unknown",
-          "note": "Présent comme colonne dans les données du jeu, mais entièrement vide. Ni niveaux ni coûts publiés."
+          "confidence": "unknown"
         }
       ]
     },
@@ -49,7 +40,6 @@
       "items": [
         {
           "id": "max-health",
-          "name": "Max Health",
           "costs": [
             1,
             6,
@@ -60,12 +50,10 @@
             37,
             43
           ],
-          "effect": "PV maximum du joueur",
           "confidence": "confirmed"
         },
         {
           "id": "damage",
-          "name": "Damage",
           "costs": [
             1,
             13,
@@ -76,12 +64,10 @@
             73,
             85
           ],
-          "effect": "Dégâts infligés",
           "confidence": "confirmed"
         },
         {
           "id": "credits",
-          "name": "Credits",
           "costs": [
             2,
             6,
@@ -102,12 +88,10 @@
             66,
             70
           ],
-          "effect": "Multiplicateur de gains de crédits",
           "confidence": "confirmed"
         },
         {
           "id": "movement-speed",
-          "name": "Movement Speed",
           "costs": [
             1,
             2,
@@ -128,12 +112,10 @@
             32,
             34
           ],
-          "effect": "Vitesse de déplacement",
           "confidence": "confirmed"
         },
         {
           "id": "pickaxe-mastery",
-          "name": "Pickaxe Mastery",
           "costs": [
             5,
             10,
@@ -147,12 +129,10 @@
             50,
             55
           ],
-          "effect": "Niveaux de pioche permanents",
           "confidence": "confirmed"
         },
         {
           "id": "jawa-bartering",
-          "name": "Jawa Bartering",
           "costs": [
             5,
             15,
@@ -160,39 +140,31 @@
             45,
             60
           ],
-          "effect": "Meilleurs prix de vente chez les Jawas",
           "confidence": "confirmed"
         },
         {
           "id": "super-crates",
-          "name": "Super Crates",
           "costs": [
             10,
             25,
             50
           ],
-          "effect": null,
-          "confidence": "confirmed",
-          "note": "Coûts confirmés, effet réel non documenté."
+          "confidence": "confirmed"
         },
         {
           "id": "flawless-charm",
-          "name": "Flawless Charm",
           "costs": [
             500
           ],
           "oneTime": true,
-          "effect": "Améliore les chances d'obtenir un droid Flawless",
           "confidence": "confirmed"
         },
         {
           "id": "double-daily-quests",
-          "name": "Double Daily Quests",
           "costs": [
             75
           ],
           "oneTime": true,
-          "effect": "Double les quêtes journalières",
           "confidence": "confirmed"
         }
       ]
@@ -202,19 +174,16 @@
       "items": [
         {
           "id": "lounge-slot",
-          "name": "Lounge Slot",
           "costs": [
             1,
             30,
             60,
             90
           ],
-          "effect": "Slots de salon supplémentaires",
           "confidence": "confirmed"
         },
         {
           "id": "upgrade-chip-scrap",
-          "name": "Puces via le scrap",
           "costs": [
             2,
             5,
@@ -227,12 +196,10 @@
             40,
             45
           ],
-          "effect": "Puces d'amélioration obtenues en cassant du scrap",
           "confidence": "confirmed"
         },
         {
           "id": "scrap-value",
-          "name": "Scrap Value",
           "costs": [
             25,
             55,
@@ -248,24 +215,20 @@
             355,
             385
           ],
-          "effect": "Crédits rapportés par le scrap",
           "confidence": "confirmed"
         },
         {
           "id": "blueprint-scrap",
-          "name": "Blueprint Scrap",
           "costs": [
             1,
             12,
             24,
             36
           ],
-          "effect": "Chance de blueprint depuis le scrap",
           "confidence": "confirmed"
         },
         {
           "id": "crafting-speed",
-          "name": "Crafting Speed",
           "costs": [
             3,
             18,
@@ -278,49 +241,40 @@
             123,
             138
           ],
-          "effect": "Vitesse de fabrication des droids",
           "confidence": "confirmed"
         },
         {
           "id": "blueprint-storage",
-          "name": "Blueprint Storage",
           "costs": [
             10,
             75,
             150
           ],
-          "effect": "Capacité de stockage des blueprints",
           "confidence": "confirmed"
         },
         {
           "id": "collect-all",
-          "name": "Collect All",
           "costs": [
             3,
             25,
             100
           ],
-          "effect": "Collecte les gains de tous les droids d'un coup",
           "confidence": "confirmed"
         },
         {
           "id": "rebirth-droid-alert",
-          "name": "Rebirth Droid Alert",
           "costs": [
             10
           ],
           "oneTime": true,
-          "effect": "Alerte quand un droid requis pour la renaissance apparaît",
           "confidence": "confirmed"
         },
         {
           "id": "blueprint-vendor",
-          "name": "Blueprint Vendor",
           "costs": [
             10
           ],
           "oneTime": true,
-          "effect": "Débloque le vendeur de blueprints",
           "confidence": "confirmed"
         }
       ]
@@ -330,15 +284,12 @@
       "items": [
         {
           "id": "nova-crystal-base-paint",
-          "name": "Nova Crystal Base Paint",
           "costs": [
             30,
             120,
             400
           ],
-          "effect": "Peinture de base « Nova Crystal », 3 stades progressifs",
-          "confidence": "confirmed",
-          "note": "Seul cosmétique achetable en Nova Crystals. Les 27 autres peintures et 26 chapeaux s'obtiennent en crédits, par événement, par palier de renaissance ou par niveau Droidsmith."
+          "confidence": "confirmed"
         }
       ]
     },
@@ -347,74 +298,59 @@
       "items": [
         {
           "id": "iconic-bb8",
-          "name": "BB-8",
           "droidSlug": "bb8",
           "costs": [
             30
           ],
           "oneTime": true,
-          "effect": "Droid Iconique rachetable",
           "confidence": "single-source"
         },
         {
           "id": "iconic-mister-bones",
-          "name": "Mister Bones",
           "droidSlug": "mister-bones",
           "costs": [
             30
           ],
           "oneTime": true,
-          "effect": "Droid Iconique rachetable",
           "confidence": "single-source"
         },
         {
           "id": "iconic-ig-11-marshal",
-          "name": "IG-11 Marshal",
           "droidSlug": "ig-11-marshal",
           "costs": [
             30
           ],
           "oneTime": true,
-          "effect": "Droid Iconique rachetable",
           "confidence": "single-source"
         },
         {
           "id": "iconic-cb-23",
-          "name": "CB-23",
           "droidSlug": "cb-23",
           "costs": [
             75
           ],
           "oneTime": true,
-          "effect": "Droid Iconique rachetable",
-          "confidence": "single-source",
-          "note": "Le champ « 75 » du tracker contient des crédits pour tous les autres droids — ce prix est peut-être un artefact."
+          "confidence": "single-source"
         },
         {
           "id": "iconic-dj-r3x",
-          "name": "DJ-R3X",
           "droidSlug": "dj-r3x",
           "costs": [],
           "oneTime": true,
-          "effect": "Droid Iconique rachetable",
           "confidence": "unknown"
         },
         {
           "id": "iconic-r2-d2",
-          "name": "R2-D2",
           "droidSlug": "r2-d2",
           "costs": [],
           "oneTime": true,
-          "effect": "Droid Iconique rachetable",
           "confidence": "unknown"
         },
         {
           "id": "iconic-c-3p0",
-          "name": "C-3P0",
           "droidSlug": "c-3p0",
           "costs": [],
           "oneTime": true,
-          "effect": "Droid Iconique rachetable",
           "confidence": "unknown"
         }
       ]

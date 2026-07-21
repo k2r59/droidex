@@ -72,7 +72,11 @@ const completion = computed(() =>
           class="hidden items-center gap-2.5 rounded-nav border border-edge bg-panel px-3.5 py-2.5 sm:flex"
           :title="$t('stats.completion', { percent: completion })"
         >
-          <span class="font-mono tabular-nums">{{ store.ownedCount }} / {{ store.totalCount }}</span>
+          <span class="font-mono tabular-nums">
+            <span v-if="store.hydrated">{{ store.ownedCount }}</span>
+            <span v-else class="inline-block w-6 animate-pulse rounded bg-panel-high align-middle">&nbsp;</span>
+            / {{ store.totalCount }}
+          </span>
           <!-- Jauge du design system : 10 px de haut, dégradé bleu vers cyan, halo léger. -->
           <span
             class="dx-progress w-16"

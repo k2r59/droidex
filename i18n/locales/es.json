@@ -218,6 +218,7 @@
     "flawlessBonus": "El primer Flawless de cada tipo suma +0,01× a las ganancias base, hasta un máximo de +0,51× con los 51 tipos fabricables.",
     "chipsTitle": "Upgrade Chips",
     "chipsCost": "Coste de subida de tier",
+    "chipsConflict": "Una fuente da 5 / 25 / 40 / 80",
     "missionsTitle": "Misiones",
     "sandcrawlerTitle": "Sandcrawler",
     "sandcrawlerBeskar": "Beskar garantizado cada {minutes} minutos, uno por jugador de la sala",
@@ -335,5 +336,15 @@
     "subtitle": "Multiplicadores de ingresos potentes",
     "ofTotalIncome": "de los ingresos totales",
     "seeAll": "Ver todos los Iconic"
+  },
+  "profile": {
+    "importJson": "Importar un archivo",
+    "dangerZone": "Zona de peligro",
+    "clearAll": "Borrar mi progreso",
+    "clearWarning": "Borra definitivamente tu colección, tu nivel de renacimiento y tus compras — en este dispositivo y en tu cuenta.",
+    "clearConfirm": "Confirmar el borrado",
+    "cancel": "Cancelar",
+    "importDone": "Progreso importado.",
+    "importFailed": "Archivo ilegible o formato inesperado."
   }
 }

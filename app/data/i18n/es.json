@@ -1,0 +1,359 @@
+{
+  "missions": {
+    "pads": {
+      "entries": {
+        "0": {
+          "note": "Duración observada entre 1:00 y 1:20. Los costes de desbloqueo de los dos primeros tiers no están respaldados por ninguna fuente: los valores «gratis» y «15k» que circulan no se han podido verificar."
+        },
+        "1": {
+          "note": "Coste de desbloqueo y duración sin confirmar."
+        },
+        "3": {
+          "note": "Duración observada de alrededor de 1 hora."
+        },
+        "4": {
+          "note": "Única fuente de Beskar en misiones. Las recompensas de droide son blueprints, no droides terminados. Créditos aumentados en torno a un 30 % en la v1.16.1. La duración base de 12 minutos procede de las patch notes del desarrollador; los 6:00 que se citan a menudo son el tiempo alcanzado con un excelente Astromech, no el tiempo base."
+        }
+      },
+      "measured": {
+        "rows": {
+          "0": {
+            "droid": "R7 Legendary Beskar"
+          },
+          "1": {
+            "droid": "Astromech Legendary Rainbow"
+          },
+          "2": {
+            "droid": "R7 Legendary Rainbow"
+          },
+          "3": {
+            "droid": "R2 Epic"
+          },
+          "4": {
+            "droid": "Astromech Epic Beskar, o cualquier droide que no sea Astromech"
+          }
+        }
+      },
+      "note": "Los «mission pads» del Shipyard y las «Astromech Missions» de las patch notes son el mismo sistema. Hay 5 terminales, y cada tier de misión se compra por separado EN CADA terminal: desbloquear la misión Diamond en los 5 terminales cuesta 5 × 400k, no 400k una sola vez. Un droide por terminal, así que 5 misiones simultáneas.",
+      "passiveIncomeDuringMission": "No confirmado de forma explícita, pero las conversaciones de jugadores sobre optimizar los ingresos de las ranuras de misión no tendrían sentido si el droide dejara de producir. Queda por comprobar en el juego.",
+      "durationNote": "Solo un droide ASTROMECH colocado en el terminal reduce la duración. Poner cualquier otra cosa deja la misión en su tiempo base. La reducción depende tanto de la rareza como del tier del Astromech, pero no se ha publicado ninguna fórmula.",
+      "bestCompanion": "Desde la v1.17.1, los droides Iconic superan a los Legendary Beskar en las misiones Astromech: BB-8 es el mejor droide para enviar.",
+      "scalingNote": "En los mission pads cuentan la rareza Y el tier. En las World Missions solo cuenta la rareza desde la v1.18: los dos sistemas no siguen la misma regla.",
+      "rewardsUnaffectedByDroid": "La calidad del droide enviado cambia SOLO la duración, nunca las recompensas."
+    },
+    "worldMissions": {
+      "examples": {
+        "0": "Reparar vaporadores de humedad (requiere droides concretos)",
+        "1": "Despejar Stormtroopers hostiles (se puede hacer solo con el bláster)",
+        "2": "Reparar droides"
+      },
+      "note": "Objetivos repartidos por Tatooine, distintos de los mission pads. Hay que llevar un droide de la clase correcta para activarlos.",
+      "rewards": "Créditos o Upgrade Chips, mediante cajas de recompensa",
+      "scaling": "Desde la v1.18, las recompensas dependen de la RAREZA del compañero y no de su tier: los droides Iconic son por tanto los mejores compañeros para estas misiones.",
+      "tip": "Las world missions de Worker son las más rápidas para farmear chips; las de Astromech son las más largas."
+    },
+    "cantina": {
+      "cooldownNote": "El tiempo de recarga se eliminó en la v1.13: conviene vaciarlas siempre en cada visita.",
+      "rewards": "Muchos créditos y Upgrade Chips. Ya no dan droides desde la v1.13.",
+      "mechanic": "Cada trader pide un droide concreto, o una versión de rareza superior de ese droide. Un tier superior satisface una petición de tier inferior.",
+      "tip": "Los traders piden a menudo droides Common: es un farmeo muy accesible."
+    },
+    "dailies": {
+      "tiers": {
+        "0": {
+          "examples": {
+            "0": "Asignar 5 droides de una clase al trabajo",
+            "1": "Que te elimine un jugador"
+          },
+          "reward": "Blueprint aleatorio + Upgrade Chips"
+        },
+        "1": {
+          "examples": {
+            "0": "Fabricar 15 Common",
+            "1": "Fabricar 10 Rare",
+            "2": "Fabricar 2 Diamond",
+            "3": "Vender un blueprint Diamond"
+          },
+          "reward": "Blueprint aleatorio + Upgrade Chips"
+        },
+        "2": {
+          "examples": {
+            "0": "Fabricar 15 Gold",
+            "1": "Fabricar 10 Diamond",
+            "2": "Superar los 100 M de créditos"
+          },
+          "reward": "Blueprint aleatorio + 1 Nova Crystal"
+        }
+      },
+      "doubleDaily": {
+        "effect": "Tras completar las 3 misiones del día aparecen 3 misiones adicionales: son 6 al día, no una duplicación de las recompensas.",
+        "uncertainty": "Nada confirma que la segunda tanda incluya una misión difícil. Si así fuera, la ventaja valdría 2 Nova Crystals al día en lugar de 1."
+      },
+      "blueprintWeighting": "El blueprint que se otorga se pondera según tus necesidades de rebirth actuales."
+    },
+    "strategies": {
+      "0": "Farmeo de créditos: encadenar la misión de 1 minuto del pad 1 en los 5 pads es más rentable que las misiones Beskar de 6 minutos. Ocupa la espera con world missions.",
+      "1": "Farmeo de chips: los Upgrade Chips ya no salen de las misiones desde la v1.14. El bucle actual pasa por las world missions de Worker, las más rápidas, y por fabricar y revender droides, con BB-8 de compañero, que duplica los chips en la venta.",
+      "2": "Endgame: mantener el pad 5 activo en todo momento; cada finalización da créditos o un droide de variante alta revendible, y es la única fuente de Beskar.",
+      "3": "Compañero: tu Astromech de mayor rareza para los pads; un Iconic para las world missions desde la v1.18; DJ-R3X si farmeas world quests, ya que duplica sus recompensas.",
+      "4": "Los eventos de fin de semana dan créditos dobles, chips dobles y el doble de probabilidad de Flawless: es la ventana que conviene aprovechar para cualquier farmeo de misiones."
+    },
+    "secretMission": {
+      "name": "Misión secreta CB-23",
+      "note": "Distinta de los 5 terminales. Se desbloquea a través de CB-23."
+    }
+  },
+  "updates": {
+    "entries": {
+      "0": {
+        "title": "Lanzamiento de Star Wars: Droid Tycoon",
+        "body": "Lanzamiento de la isla con el evento Unleash the Force. Lobby de hasta 6 jugadores, 25 ranuras base."
+      },
+      "1": {
+        "title": "Farmeo de chips más llevadero",
+        "body": "Los pickups dan de 1 a 3 chips en lugar de 1. Las ventas Gold/Diamond/Rainbow son mucho más rentables. Misiones Astromech Legendary/Mythic acortadas y con más recompensas. Estadísticas subidas en varios Legendary."
+      },
+      "2": {
+        "title": "Evento BB-8",
+        "body": "Entregar 10 unidades BB a Poe Dameron para desbloquear BB-8."
+      },
+      "3": {
+        "title": "Reajuste de los rebirths",
+        "body": "Requisitos ajustados a partir del tier 11. Ganancias de los Legendary aumentadas (la base del tier 7 pasa de unos 1,19k/s a 1,50k/s)."
+      },
+      "4": {
+        "title": "Evento Mister Bones",
+        "body": "Encontrarlo cerca del AT-AT destruido, en una ventana de 24 horas."
+      },
+      "5": {
+        "title": "Evento Mandaloriano",
+        "body": "Entregar 15 contenedores de Beskar al Mandaloriano en 3 ventanas de 6 horas para desbloquear IG-11 Marshal."
+      },
+      "6": {
+        "title": "Beskar Event",
+        "body": "Drop de Beskar garantizado cada 5 minutos en el Sandcrawler, alrededor de 5× la tasa normal. Repetición a mitad de semana los días 3 y 4 de junio."
+      },
+      "7": {
+        "title": "Tres tiers de rebirth adicionales",
+        "body": "Se añade el Changing Booth. Las misiones de la Cantina dan más créditos, ya no dan droides y no tienen tiempo de recarga. Los Upgrade Chips conservan el estado Flawless. Compañeros Astromech reforzados."
+      },
+      "8": {
+        "title": "Llegan los droides Flawless",
+        "body": "Introducción de las variantes Flawless. Se añade el Gunrunner a la tienda del Sandcrawler. Correcciones de localización y optimizaciones."
+      },
+      "9": {
+        "title": "El pad 5 pasa a ser la misión Beskar",
+        "body": "La misión Astromech de «Chips» se convierte en la misión «Beskar»: 80 % créditos, 15 % Rainbow, 5 % Beskar, 12 minutos de base. Las recompensas de droide son blueprints. El reinicio de las misiones diarias vuelve a las 22:00, y el blueprint otorgado se pondera según las necesidades de rebirth."
+      },
+      "10": {
+        "title": "Aclaración sobre los Flawless",
+        "body": "El primer Flawless de cada tipo suma +0,01× a las ganancias base, es decir +0,51× como máximo con los 51 tipos fabricables. Las probabilidades dependen del tier fabricado."
+      },
+      "11": {
+        "title": "Super Rebirth, Nova Crystals y Nova Shop",
+        "body": "Introducción del Super Rebirth, de los Nova Crystals y de la Nova Shop en 4 categorías. Los droides de evento pasan a ser Iconic canjeables. Los requisitos de rebirth ahora se repiten en 4 ciclos. Se añade CB-23."
+      },
+      "12": {
+        "title": "Evento DJ R-3X",
+        "body": "Abrir cajas con el compañero; 30 entregas desbloquean el Color Rush (apariciones en Gold, Diamond y Rainbow)."
+      },
+      "13": {
+        "title": "Las World Missions pasan a depender de la rareza",
+        "body": "Las recompensas de las World Missions dependen ahora de la rareza del compañero y no de su tier, lo que hace que los Iconic sean mejores en estas misiones. Reajuste de las misiones diarias: fabricar 75 → 40 droides, vender 50 → 40, eliminar 5 → 3 jugadores."
+      },
+      "14": {
+        "title": "Actualización 1.19",
+        "body": "Existencia confirmada, notas detalladas sin indexar."
+      },
+      "15": {
+        "title": "Refuerzo de los Iconic y del Beskar",
+        "body": "Los droides Iconic se sitúan por encima de los Legendary Beskar en las misiones. Ganancias de Beskar aumentadas. Notificaciones de rebirth más inteligentes. Cuatro ranuras de lounge añadidas a las recompensas de los tiers 17 a 20. El multiplicador de créditos por tier pasa del 10 % al 20 %."
+      },
+      "16": {
+        "title": "Beskar en las misiones diarias",
+        "body": "Los droides Beskar ya pueden caer a través de las misiones diarias."
+      },
+      "17": {
+        "title": "Evento C-3PO",
+        "body": "Desbloquea C-3P0, disponible después en la Nova Shop."
+      },
+      "18": {
+        "title": "Correcciones de Double Daily Quests",
+        "body": "Double Daily Quests se reinicia correctamente tras un Super Rebirth."
+      }
+    }
+  },
+  "novaShop": {
+    "sections": {
+      "0": {
+        "items": {
+          "0": {
+            "name": "Critical Chance",
+            "effect": "Probabilidad de golpe crítico",
+            "note": "tycoon-tools solo lista 4 niveles (total 550); el Google Sheet lista 5 (total 660). La hoja parece más reciente."
+          },
+          "1": {
+            "name": "Critical Amount",
+            "effect": "Daño del golpe crítico"
+          },
+          "2": {
+            "name": "Companion Slot",
+            "effect": "Ranura adicional de droide compañero",
+            "note": "Presente como columna en los datos del juego, pero completamente vacía. Ni niveles ni costes publicados."
+          }
+        }
+      },
+      "1": {
+        "items": {
+          "0": {
+            "name": "Max Health",
+            "effect": "PV máximos del jugador"
+          },
+          "1": {
+            "name": "Damage",
+            "effect": "Daño infligido"
+          },
+          "2": {
+            "name": "Credits",
+            "effect": "Multiplicador de ganancias de créditos"
+          },
+          "3": {
+            "name": "Movement Speed",
+            "effect": "Velocidad de movimiento"
+          },
+          "4": {
+            "name": "Pickaxe Mastery",
+            "effect": "Niveles de pico permanentes"
+          },
+          "5": {
+            "name": "Jawa Bartering",
+            "effect": "Mejores precios de venta con los Jawas"
+          },
+          "6": {
+            "name": "Super Crates",
+            "effect": "Efecto no documentado.",
+            "note": "Costes confirmados, efecto real no documentado."
+          },
+          "7": {
+            "name": "Flawless Charm",
+            "effect": "Mejora las probabilidades de obtener un droide Flawless"
+          },
+          "8": {
+            "name": "Double Daily Quests",
+            "effect": "Duplica las misiones diarias"
+          }
+        }
+      },
+      "2": {
+        "items": {
+          "0": {
+            "name": "Lounge Slot",
+            "effect": "Ranuras de lounge adicionales"
+          },
+          "1": {
+            "name": "Upgrade Chip Scrap",
+            "effect": "Upgrade Chips obtenidos al romper chatarra"
+          },
+          "2": {
+            "name": "Scrap Value",
+            "effect": "Créditos que aporta la chatarra"
+          },
+          "3": {
+            "name": "Blueprint Scrap",
+            "effect": "Probabilidad de blueprint a partir de la chatarra"
+          },
+          "4": {
+            "name": "Crafting Speed",
+            "effect": "Velocidad de fabricación de droides"
+          },
+          "5": {
+            "name": "Blueprint Storage",
+            "effect": "Capacidad de almacenamiento de blueprints"
+          },
+          "6": {
+            "name": "Collect All",
+            "effect": "Recoge de una vez las ganancias de todos los droides"
+          },
+          "7": {
+            "name": "Rebirth Droid Alert",
+            "effect": "Aviso cuando aparece un droide necesario para el rebirth"
+          },
+          "8": {
+            "name": "Blueprint Vendor",
+            "effect": "Desbloquea al vendedor de blueprints"
+          }
+        }
+      },
+      "3": {
+        "items": {
+          "0": {
+            "name": "Nova Crystal Base Paint",
+            "effect": "Pintura de base «Nova Crystal», 3 fases progresivas",
+            "note": "Único cosmético que se compra con Nova Crystals. Las otras 27 pinturas y 26 sombreros se obtienen con créditos, por evento, por tier de rebirth o por nivel de Droidsmith."
+          }
+        }
+      },
+      "4": {
+        "items": {
+          "0": {
+            "name": "BB-8",
+            "effect": "Droide Iconic canjeable"
+          },
+          "1": {
+            "name": "Mister Bones",
+            "effect": "Droide Iconic canjeable"
+          },
+          "2": {
+            "name": "IG-11 Marshal",
+            "effect": "Droide Iconic canjeable"
+          },
+          "3": {
+            "name": "CB-23",
+            "effect": "Droide Iconic canjeable",
+            "note": "El campo «75» del tracker contiene créditos para todos los demás droides: este precio podría ser un artefacto."
+          },
+          "4": {
+            "name": "DJ-R3X",
+            "effect": "Droide Iconic canjeable"
+          },
+          "5": {
+            "name": "R2-D2",
+            "effect": "Droide Iconic canjeable"
+          },
+          "6": {
+            "name": "C-3P0",
+            "effect": "Droide Iconic canjeable"
+          }
+        }
+      }
+    },
+    "note": "Los costes son POR NIVEL y no acumulativos: pasar del nivel 2 al nivel 5 cuesta la suma de los niveles 3, 4 y 5."
+  },
+  "mechanics": {
+    "sandcrawler": {
+      "notes": "Temporizadores actualizados a la v1.22: el Beskar ha pasado de 20 a 15 minutos y se ha eliminado el temporizador Rainbow de 5 minutos. En la v1.20 se añadió un blueprint Mythic garantizado cada hora a las XX:55, uno por jugador. Durante los Beskar Events hay un drop garantizado adicional cada 5 minutos. Las variantes Beskar solo se compran en la trade row."
+    },
+    "currencies": {
+      "0": {
+        "sources": "Ingresos pasivos, ventas, misiones, misiones de la Cantina",
+        "uses": "Blueprints, rebirths"
+      },
+      "1": {
+        "sources": "Venta de droides Gold o superiores, pickups (1 a 3)",
+        "uses": "Subida de tier"
+      },
+      "2": {
+        "sources": "Super Rebirth (11 a 191), 1 al día en misión difícil",
+        "uses": "Nova Shop, droides Iconic"
+      }
+    },
+    "tips": {
+      "0": "Equipar a BB-8 como compañero duplica los Upgrade Chips obtenidos al vender un droide.",
+      "1": "Vender un blueprint en bruto siempre rinde menos que fabricar el droide y venderlo después.",
+      "2": "Golpear con el pico un droide en construcción reduce su tiempo de fabricación.",
+      "3": "Una tirada gratis cada 24 h en la Cantina: equipa tu droide más raro antes de tirar.",
+      "4": "El Gunrunner es el mejor relleno de ranura del juego, incluso fuera de su ranura de especialidad.",
+      "5": "Guarda siempre una reserva de créditos: los blueprints Mythic aparecen de forma aleatoria en el Sandcrawler y desaparecen del ciclo."
+    }
+  }
+}

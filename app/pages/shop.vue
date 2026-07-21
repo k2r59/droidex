@@ -3,6 +3,7 @@ import shopData from '~/data/nova-shop.json'
 
 const store = useCollectionStore()
 const { t, locale } = useI18n()
+const { gameText } = useGameText()
 const localePath = useLocalePath()
 
 useSeoMeta({
@@ -10,20 +11,33 @@ useSeoMeta({
   description: () => t('shop.subtitle'),
 })
 
-type Item = {
+type RawItem = {
   id: string
-  name: string
   costs: number[]
   oneTime?: boolean
-  effect: string | null
   confidence: string
-  note?: string
   droidSlug?: string
 }
+type RawSection = { id: string; items: RawItem[] }
+
+/**
+ * Les libellés d'article vivent maintenant dans `app/data/i18n/*.json`. On calcule une
+ * fois le chemin de traduction de chaque article — `novaShop.sections.1.items.4` — et on
+ * l'attache à l'objet : les gabarits n'ont plus à jongler avec deux index imbriqués.
+ */
+type Item = RawItem & { path: string }
 type Section = { id: string; items: Item[] }
 
-const sections = shopData.sections as Section[]
+const sections: Section[] = (shopData.sections as RawSection[]).map((section, s) => ({
+  ...section,
+  items: section.items.map((item, i) => ({ ...item, path: `novaShop.sections.${s}.items.${i}` })),
+}))
 const allItems = computed(() => sections.flatMap((s) => s.items))
+
+/** Raccourcis de lecture : le nom et l'effet d'un article sont demandés à plusieurs endroits. */
+const itemName = (item: Item) => gameText(`${item.path}.name`)
+const itemEffect = (item: Item) => gameText(`${item.path}.effect`)
+const itemNote = (item: Item) => gameText(`${item.path}.note`)
 
 const level = (id: string) => store.shopLevels[id] ?? 0
 
@@ -167,7 +181,7 @@ const notes = [
           <li v-for="(item, i) in recommended" :key="item.id" class="flex items-center gap-2">
             <span class="flex items-center gap-2 rounded-md border border-edge-soft bg-panel-raised px-2.5 py-1.5">
               <DxIcon :name="iconOf(item.id)" :size="16" class="text-accent" />
-              {{ item.name }}
+              {{ itemName(item) }}
             </span>
             <DxIcon v-if="i < recommended.length - 1" name="actions/arrow-right" :size="14" class="text-ink-muted" />
           </li>
@@ -186,18 +200,18 @@ const notes = [
             <div class="min-w-0">
               <div class="flex flex-wrap items-start justify-between gap-2">
                 <h3 class="text-base">
-                  {{ item.name }}
+                  {{ itemName(item) }}
                   <span
                     v-if="item.confidence !== 'confirmed'"
                     class="cursor-help align-super text-xs"
                     :class="CONFIDENCE_CLASS[item.confidence]"
-                    :title="item.note ?? $t(`shop.confidence.${item.confidence}`)"
+                    :title="itemNote(item) || $t(`shop.confidence.${item.confidence}`)"
                   >⚠</span>
                 </h3>
                 <span v-if="item.oneTime" class="dx-badge dx-badge--epic">{{ $t('shop.oneTime') }}</span>
               </div>
 
-              <p class="text-xs text-ink-muted">{{ item.effect ?? $t('droid.noData') }}</p>
+              <p class="text-xs text-ink-muted">{{ itemEffect(item) || $t('droid.noData') }}</p>
 
               <p v-if="!item.costs.length" class="mt-3 text-sm text-ink-muted">
                 {{ $t('shop.unknownCost') }}
@@ -205,9 +219,9 @@ const notes = [
 
               <div v-else class="mt-3 flex flex-wrap items-center justify-between gap-3">
                 <div class="dx-stepper">
-                  <button type="button" :disabled="level(item.id) === 0" :aria-label="`−1 ${item.name}`" @click="store.setShopLevel(item.id, level(item.id) - 1)">−</button>
+                  <button type="button" :disabled="level(item.id) === 0" :aria-label="`−1 ${itemName(item)}`" @click="store.setShopLevel(item.id, level(item.id) - 1)">−</button>
                   <output>{{ level(item.id) }} / {{ item.costs.length }}</output>
-                  <button type="button" :disabled="level(item.id) >= item.costs.length" :aria-label="`+1 ${item.name}`" @click="store.setShopLevel(item.id, level(item.id) + 1)">+</button>
+                  <button type="button" :disabled="level(item.id) >= item.costs.length" :aria-label="`+1 ${itemName(item)}`" @click="store.setShopLevel(item.id, level(item.id) + 1)">+</button>
                 </div>
 
                 <p class="text-right">
@@ -238,7 +252,7 @@ const notes = [
         </li>
       </ul>
 
-      <p class="text-xs text-ink-muted">{{ shopData.note }}</p>
+      <p class="text-xs text-ink-muted">{{ gameText('novaShop.note') }}</p>
     </div>
 
     <aside class="flex flex-col gap-4">
@@ -258,7 +272,7 @@ const notes = [
               size="sm"
             />
             <div class="min-w-0 flex-1">
-              <p class="truncate font-display font-semibold">{{ item.name }}</p>
+              <p class="truncate font-display font-semibold">{{ itemName(item) }}</p>
               <p class="truncate text-[11px] text-ink-muted">{{ $t('shop.redeemable') }}</p>
             </div>
             <span v-if="item.costs.length" class="flex shrink-0 items-center gap-1 font-mono text-sm text-nova">

@@ -2,6 +2,7 @@
 import mechanics from '~/data/mechanics.json'
 
 const { t, locale } = useI18n()
+const { gameText, gameTextList } = useGameText()
 const localePath = useLocalePath()
 
 useSeoMeta({
@@ -72,7 +73,7 @@ const base = mechanics.base
           <tr v-for="row in mechanics.chipCosts" :key="row.rarity" class="border-t border-edge-soft">
             <td class="py-1.5">
               <RarityBadge :rarity="row.rarity as any" />
-              <span v-if="row.conflicting" class="ml-1 cursor-help text-xs text-warn" title="Une source donne 5 / 25 / 40 / 80">⚠</span>
+              <span v-if="row.conflicting" class="ml-1 cursor-help text-xs text-warn" :title="$t('guide.chipsConflict')">⚠</span>
             </td>
             <td class="py-1.5 text-right font-mono tabular-nums">{{ formatExact(row.gold, locale) }}</td>
             <td class="py-1.5 text-right font-mono tabular-nums">{{ formatExact(row.diamond, locale) }}</td>
@@ -100,16 +101,16 @@ const base = mechanics.base
         <li>• {{ $t('guide.sandcrawlerBeskar', { minutes: mechanics.sandcrawler.beskarIntervalMinutes }) }}</li>
         <li>• {{ $t('guide.sandcrawlerMythic', { minute: mechanics.sandcrawler.mythicHourlyMinute }) }}</li>
       </ul>
-      <p class="mt-2 text-sm text-ink-muted">{{ mechanics.sandcrawler.notes }}</p>
+      <p class="mt-2 text-sm text-ink-muted">{{ gameText('mechanics.sandcrawler.notes') }}</p>
     </section>
 
     <section class="panel p-6">
       <h2 class="mb-3 font-semibold">{{ $t('guide.currenciesTitle') }}</h2>
       <ul class="grid gap-2 sm:grid-cols-3">
-        <li v-for="c in mechanics.currencies" :key="c.id" class="rounded-lg bg-panel-raised p-3 text-sm">
+        <li v-for="(c, i) in mechanics.currencies" :key="c.id" class="rounded-lg bg-panel-raised p-3 text-sm">
           <p class="font-medium">{{ $t(`guide.currency.${c.id}`) }}</p>
-          <p class="mt-1 text-xs text-ink-muted">{{ c.sources }}</p>
-          <p class="mt-1 text-xs text-ink-muted">→ {{ c.uses }}</p>
+          <p class="mt-1 text-xs text-ink-muted">{{ gameText(`mechanics.currencies.${i}.sources`) }}</p>
+          <p class="mt-1 text-xs text-ink-muted">→ {{ gameText(`mechanics.currencies.${i}.uses`) }}</p>
         </li>
       </ul>
     </section>
@@ -120,7 +121,7 @@ const base = mechanics.base
         {{ $t('guide.tipsTitle') }}
       </h2>
       <ul class="flex flex-col gap-2 text-sm text-ink-muted">
-        <li v-for="tip in mechanics.tips" :key="tip">• {{ tip }}</li>
+        <li v-for="(tip, i) in gameTextList('mechanics.tips')" :key="i">• {{ tip }}</li>
       </ul>
     </section>
   </div>

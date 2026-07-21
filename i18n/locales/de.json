@@ -218,6 +218,7 @@
     "flawlessBonus": "Der erste Flawless jedes Typs bringt +0,01× auf die Basiseinnahmen, also maximal +0,51× über die 51 herstellbaren Typen.",
     "chipsTitle": "Upgrade Chips",
     "chipsCost": "Kosten für den Stufenaufstieg",
+    "chipsConflict": "Eine Quelle nennt 5 / 25 / 40 / 80",
     "missionsTitle": "Missionen",
     "sandcrawlerTitle": "Sandcrawler",
     "sandcrawlerBeskar": "Garantiertes Beskar alle {minutes} Minuten, eines pro Spieler in der Lobby",
@@ -335,5 +336,15 @@
     "subtitle": "Starke Einkommens-Multiplikatoren",
     "ofTotalIncome": "des Gesamteinkommens",
     "seeAll": "Alle Iconic-Droiden ansehen"
+  },
+  "profile": {
+    "importJson": "Datei importieren",
+    "dangerZone": "Gefahrenzone",
+    "clearAll": "Meinen Fortschritt löschen",
+    "clearWarning": "Löscht endgültig deine Sammlung, deine Rebirth-Stufe und deine Käufe — auf diesem Gerät und in deinem Konto.",
+    "clearConfirm": "Löschen bestätigen",
+    "cancel": "Abbrechen",
+    "importDone": "Fortschritt importiert.",
+    "importFailed": "Datei nicht lesbar oder unerwartetes Format."
   }
 }

@@ -3,6 +3,7 @@ import updatesData from '~/data/updates.json'
 
 const store = useCollectionStore()
 const { t, locale } = useI18n()
+const { gameText } = useGameText()
 const localePath = useLocalePath()
 
 useSeoMeta({
@@ -14,14 +15,19 @@ type Entry = {
   date: string
   kind: 'release' | 'patch' | 'event'
   version?: string
-  title: string
-  body: string
   endDate?: string
   droidSlug?: string
 }
 
+/**
+ * Le tri chronologique change l'ordre d'affichage mais pas les chemins de traduction :
+ * ceux-ci sont calés sur la position d'origine dans `updates.json`. On transporte donc
+ * l'index source avec chaque entrée plutôt que de le recalculer après tri.
+ */
 const entries = computed(() =>
-  [...(updatesData.entries as Entry[])].sort((a, b) => b.date.localeCompare(a.date)),
+  (updatesData.entries as Entry[])
+    .map((entry, index) => ({ ...entry, index }))
+    .sort((a, b) => b.date.localeCompare(a.date)),
 )
 
 const droidBySlug = computed(() => Object.fromEntries(store.droids.map((d) => [d.slug, d])))
@@ -50,7 +56,7 @@ function formatDate(iso: string) {
     <ol class="relative flex flex-col gap-3 border-l border-edge-soft pl-5">
       <li
         v-for="entry in entries"
-        :key="`${entry.date}-${entry.title}`"
+        :key="entry.index"
         class="panel relative p-6"
       >
         <span
@@ -71,8 +77,8 @@ function formatDate(iso: string) {
           </time>
         </div>
 
-        <h2 class="mt-1.5 font-semibold">{{ entry.title }}</h2>
-        <p class="mt-1 text-sm text-ink-muted">{{ entry.body }}</p>
+        <h2 class="mt-1.5 font-semibold">{{ gameText(`updates.entries.${entry.index}.title`) }}</h2>
+        <p class="mt-1 text-sm text-ink-muted">{{ gameText(`updates.entries.${entry.index}.body`) }}</p>
 
         <NuxtLink
           v-if="entry.droidSlug && droidBySlug[entry.droidSlug]"

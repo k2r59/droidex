@@ -75,6 +75,15 @@ export const useCollectionStore = defineStore('collection', () => {
   const novaCrystals = ref(0)
   const shopLevels = ref<Record<string, number>>({})
 
+  /**
+   * `true` une fois la progression locale lue.
+   *
+   * IndexedDB étant asynchrone, le premier rendu se fait sans données : sans ce drapeau,
+   * les compteurs affichaient « 0 / 379 » pendant une image ou deux avant de sauter à la
+   * vraie valeur. Un zéro faux est plus trompeur qu'une absence assumée.
+   */
+  const hydrated = ref(false)
+
   /** `true` dès qu'une session est active : conditionne la réplication serveur. */
   const remoteEnabled = ref(false)
   const loading = ref(false)
@@ -102,23 +111,41 @@ export const useCollectionStore = defineStore('collection', () => {
     shopLevels.value = s.shopLevels ?? {}
   }
 
-  function readLocal(): Snapshot | null {
+  /**
+   * Lit la progression locale, en reprenant au passage l'ancien emplacement.
+   *
+   * La progression vivait dans `localStorage`. Elle est désormais dans IndexedDB, mais
+   * les joueurs existants ont encore la leur dans l'ancien magasin : on la récupère à la
+   * première lecture, on la réécrit dans le nouveau, puis on retire la copie devenue
+   * trompeuse — deux sources de vérité finiraient par diverger.
+   */
+  async function readLocal(): Promise<Snapshot | null> {
     if (import.meta.server) return null
+
+    const depuisIdb = await idbGet<Snapshot>(STORAGE_KEY)
+    if (depuisIdb) return depuisIdb
+
     try {
       const raw = localStorage.getItem(STORAGE_KEY)
-      return raw ? (JSON.parse(raw) as Snapshot) : null
+      if (!raw) return null
+
+      const migre = JSON.parse(raw) as Snapshot
+      await idbSet(STORAGE_KEY, migre)
+      localStorage.removeItem(STORAGE_KEY)
+      return migre
     } catch {
       return null
     }
   }
 
+  /**
+   * Écriture volontairement non attendue par les actions : cocher une case doit rester
+   * instantané à l'écran. Un échec est silencieux — la session reste utilisable, sans
+   * persistance — exactement comme avec l'ancien magasin.
+   */
   function writeLocal() {
     if (import.meta.server) return
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(snapshot()))
-    } catch {
-      // Stockage indisponible : la session reste utilisable, sans persistance.
-    }
+    void idbSet(STORAGE_KEY, snapshot())
   }
 
   function entry(slug: string): CollectionEntry {
@@ -223,10 +250,19 @@ export const useCollectionStore = defineStore('collection', () => {
       !Object.keys(shopLevels.value).length,
   )
 
-  /** Charge le local. Appelé au montage, avant même de savoir si une session existe. */
-  function loadLocal() {
-    const local = readLocal()
-    if (local) apply(local)
+  /**
+   * Charge le local. Appelé au montage, avant même de savoir si une session existe.
+   * Asynchrone depuis le passage à IndexedDB : l'appelant doit attendre, sinon un écran
+   * peut se peindre avec une collection vide avant que la vraie n'arrive.
+   */
+  async function loadLocal() {
+    try {
+      const local = await readLocal()
+      if (local) apply(local)
+    } finally {
+      // Même si la lecture échoue, on est fixé : l'interface doit cesser d'attendre.
+      hydrated.value = true
+    }
   }
 
   /**
@@ -295,6 +331,16 @@ export const useCollectionStore = defineStore('collection', () => {
     await push({ collection: { [slug]: next } })
   }
 
+  /**
+   * Remplace toute la progression d'un coup — import de fichier. On passe par `apply`
+   * pour bénéficier de la migration de forme, puis on pousse l'ensemble au serveur.
+   */
+  async function replaceAll(next: Snapshot) {
+    apply(next)
+    writeLocal()
+    await push(next)
+  }
+
   /** Consigne ou retire un droid en bloc — utilisé par les Iconiques, qui n'ont qu'un palier. */
   async function setOwned(slug: string, owned: boolean, tier: Tier = 'DEFAULT') {
     const next: CollectionEntry = { ...entry(slug), tiers: owned ? [tier] : [] }
@@ -345,7 +391,7 @@ export const useCollectionStore = defineStore('collection', () => {
    */
   async function clear() {
     apply({})
-    writeLocal()
+    await idbDel(STORAGE_KEY)
     if (!remoteEnabled.value) return
 
     syncing.value = true
@@ -368,6 +414,7 @@ export const useCollectionStore = defineStore('collection', () => {
     cycle,
     novaCrystals,
     shopLevels,
+    hydrated,
     remoteEnabled,
     loading,
     syncing,
@@ -383,6 +430,7 @@ export const useCollectionStore = defineStore('collection', () => {
     isEmpty,
     satisfies,
     loadLocal,
+    replaceAll,
     enableRemote,
     disableRemote,
     toggleTier,

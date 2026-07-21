@@ -10,7 +10,7 @@ const route = useRoute()
  */
 const showIconicRail = computed(() => /^index(___[a-z]{2})?$/.test(String(route.name ?? '')))
 
-onMounted(() => store.loadLocal())
+onMounted(() => { void store.loadLocal() })
 
 watch(
   () => user.value?.id,

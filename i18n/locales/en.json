@@ -218,6 +218,7 @@
     "flawlessBonus": "Your first Flawless of each type adds +0.01× to base earnings, up to +0.51× across the 51 craftable types.",
     "chipsTitle": "Upgrade Chips",
     "chipsCost": "Tier upgrade cost",
+    "chipsConflict": "One source gives 5 / 25 / 40 / 80",
     "missionsTitle": "Missions",
     "sandcrawlerTitle": "Sandcrawler",
     "sandcrawlerBeskar": "Guaranteed Beskar every {minutes} minutes, one per player in the lobby",
@@ -335,5 +336,15 @@
     "subtitle": "Powerful income multipliers",
     "ofTotalIncome": "of total income",
     "seeAll": "See all iconic droids"
+  },
+  "profile": {
+    "importJson": "Import a file",
+    "dangerZone": "Danger zone",
+    "clearAll": "Erase my progress",
+    "clearWarning": "Permanently erases your collection, rebirth level and purchases — on this device and on your account.",
+    "clearConfirm": "Confirm erasure",
+    "cancel": "Cancel",
+    "importDone": "Progress imported.",
+    "importFailed": "Unreadable file or unexpected format."
   }
 }
