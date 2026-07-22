@@ -127,7 +127,9 @@
     "searchTier": "Rebirth suchen…",
     "tierLocked": "Anforderungen nicht veröffentlicht",
     "sameAsCycles": "Anforderungen identisch mit Zyklus {cycles} — vermutlich ein Kopierfehler der Quelle, im Spiel prüfen.",
-    "singleSource": "Die Anforderungen aller vier Zyklen stammen aus einer einzigen Community-Quelle, ohne unabhängige Bestätigung. Vor dem Einsatz von Ressourcen im Spiel prüfen."
+    "singleSource": "Die Anforderungen aller vier Zyklen stammen aus einer einzigen Community-Quelle, ohne unabhängige Bestätigung. Vor dem Einsatz von Ressourcen im Spiel prüfen.",
+    "chooseCycle": "Anzuzeigenden Zyklus wählen",
+    "currentCycle": "aktueller Zyklus"
   },
   "superRebirth": {
     "title": "Super Rebirths",

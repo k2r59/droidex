@@ -16,6 +16,9 @@ type Level = { level: number, credits: number, droids: Requirement[], sourceUniq
 const cycles = rebirthData.cycles as Record<string, Level[]>
 const levels = computed<Level[]>(() => cycles[String(store.cycle)] ?? cycles['1']!)
 
+/** Cycle correspondant à la progression réelle, pour le distinguer d'un cycle simplement consulté. */
+const realCycle = computed(() => (store.superRebirth % 4) + 1)
+
 const droidBySlug = computed(() => Object.fromEntries(store.droids.map((d) => [d.slug, d])))
 
 /** Une exigence sans palier précisé est satisfaite dès qu'une variante figure au journal. */
@@ -231,9 +234,33 @@ const shown = computed(() => {
             </p>
             <div class="mt-1 flex flex-wrap items-center gap-2">
               <span class="text-xs text-ink-muted">{{ $t('rebirth.creditsPerTier') }}</span>
-              <span class="rounded-md border border-edge-soft bg-void/60 px-2 py-0.5 text-xs text-ink">
-                {{ $t('rebirth.cycle', { number: store.cycle }) }}
-              </span>
+              <!--
+                Sélecteur de cycle. Il ne modifie que le cycle affiché, pas le nombre de
+                Super Rebirths : consulter les exigences d'un autre cycle ne doit pas
+                réécrire la progression. Le cycle correspondant à la progression réelle
+                (`(superRebirth % 4) + 1`) est repéré d'une pastille dans la liste.
+              -->
+              <label class="relative inline-flex items-center">
+                <span class="sr-only">{{ $t('rebirth.chooseCycle') }}</span>
+                <select
+                  :value="store.cycle"
+                  class="cursor-pointer appearance-none rounded-md border border-edge-soft bg-void/60 py-0.5 pl-2 pr-7 text-xs text-ink transition-colors hover:border-accent/60 focus:border-accent focus:outline-none"
+                  @change="store.setCycle(Number(($event.target as HTMLSelectElement).value))"
+                >
+                  <option
+                    v-for="n in 4"
+                    :key="n"
+                    :value="n"
+                  >
+                    {{ $t('rebirth.cycle', { number: n }) }}{{ n === realCycle ? ` · ${$t('rebirth.currentCycle')}` : '' }}
+                  </option>
+                </select>
+                <DxIcon
+                  name="actions/chevron-down"
+                  :size="13"
+                  class="pointer-events-none absolute right-2 text-ink-muted"
+                />
+              </label>
             </div>
           </div>
         </div>

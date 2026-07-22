@@ -390,6 +390,21 @@ export const useCollectionStore = defineStore('collection', () => {
   }
 
   /**
+   * Choisit directement le cycle d'exigences affiché, sans passer par un Super Rebirth.
+   *
+   * En jeu, le cycle se déduit du nombre de Super Rebirths (`(n % 4) + 1`) ; c'est ce que
+   * fait `setSuperRebirth`. Mais un joueur veut aussi pouvoir consulter un autre cycle que
+   * le sien — anticiper ce qu'exigera le prochain, comparer. Ce réglage sert cette
+   * consultation : il fixe le cycle montré, indépendamment du compteur de Super Rebirths,
+   * qu'il ne touche pas. Les deux peuvent donc diverger, et c'est voulu.
+   */
+  async function setCycle(value: number) {
+    cycle.value = value
+    writeLocal()
+    await push({ cycle: value })
+  }
+
+  /**
    * Remet tout à zéro, local **et** serveur.
    *
    * L'effacement distant n'était pas fait : la progression revenait à la reconnexion
@@ -449,6 +464,7 @@ export const useCollectionStore = defineStore('collection', () => {
     setNovaCrystals,
     setRebirth,
     setSuperRebirth,
+    setCycle,
     clear,
   }
 })

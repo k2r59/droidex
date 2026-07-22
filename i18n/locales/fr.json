@@ -127,7 +127,9 @@
     "searchTier": "Rechercher un palier…",
     "tierLocked": "Exigences non publiées",
     "sameAsCycles": "Exigences identiques à celles du cycle {cycles} — probable erreur de recopie de la source, à vérifier en jeu.",
-    "singleSource": "Les exigences des quatre cycles proviennent d'une seule source communautaire, sans recoupement indépendant. Vérifie en jeu avant d'engager des ressources."
+    "singleSource": "Les exigences des quatre cycles proviennent d'une seule source communautaire, sans recoupement indépendant. Vérifie en jeu avant d'engager des ressources.",
+    "chooseCycle": "Choisir le cycle à afficher",
+    "currentCycle": "cycle actuel"
   },
   "superRebirth": {
     "title": "Supers Renaissances",

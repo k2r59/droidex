@@ -127,7 +127,9 @@
     "searchTier": "Search a rebirth…",
     "tierLocked": "Requirements not published",
     "sameAsCycles": "Requirements identical to cycle {cycles} — likely a copy error in the source, check in game.",
-    "singleSource": "The requirements for all four cycles come from a single community source, with no independent corroboration. Check in game before committing resources."
+    "singleSource": "The requirements for all four cycles come from a single community source, with no independent corroboration. Check in game before committing resources.",
+    "chooseCycle": "Choose the cycle to display",
+    "currentCycle": "current cycle"
   },
   "superRebirth": {
     "title": "Super Rebirths",
