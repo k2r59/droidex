@@ -121,6 +121,22 @@ const completion = computed(() =>
           class="text-xs text-ink-muted"
         >{{ $t('common.syncing') }}</span>
 
+        <!--
+          Accès au Profil (export/import, synchronisation, effacement). Séparé de la
+          navigation principale — c'est un espace de réglages, pas une section de contenu —
+          mais il lui faut un point d'entrée visible, sans quoi la page reste orpheline.
+        -->
+        <NuxtLink
+          :to="localePath('/profile')"
+          class="dx-icon-button size-9"
+          :aria-label="$t('nav.profile')"
+        >
+          <DxIcon
+            name="navigation/profile"
+            :size="16"
+          />
+        </NuxtLink>
+
         <LocaleSwitcher />
         <ResetButton />
       </div>
