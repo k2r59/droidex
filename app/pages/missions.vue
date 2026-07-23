@@ -258,10 +258,10 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
               <span
                 v-for="r in (pad.rewards as Reward[])"
                 :key="`${r.kind}-${r.tier ?? ''}`"
+                v-tippy="{ content: `${rewardLabel(r)} — ${r.chance} %` }"
                 class="grid place-items-center text-[11px] font-bold text-white [text-shadow:0_1px_2px_rgb(0_0_0/0.5)]"
                 :class="rewardClass(r)"
                 :style="{ width: `${r.chance}%` }"
-                :title="`${rewardLabel(r)} — ${r.chance} %`"
               >{{ r.chance >= 15 ? `${r.chance}%` : '' }}</span>
             </div>
           </div>

@@ -82,17 +82,17 @@ const containerClass = computed(() => {
     <!-- Sans asset local, on affiche l'initiale plutôt qu'une icône cassée. -->
     <div
       v-else
+      v-tippy="{ content: $t('droid.noData') }"
       class="size-full grid place-items-center rounded-lg bg-panel-raised border border-edge text-ink-muted font-bold"
       :class="size === 'sm' ? 'text-sm' : 'text-xl'"
-      :title="$t('droid.noData')"
     >
       {{ droid.name.slice(0, 2) }}
     </div>
 
     <span
       v-if="isFallback && !failed && src"
+      v-tippy="{ content: $t('droid.imageFallback') }"
       class="absolute bottom-0.5 right-0.5 size-2 rounded-full bg-tier-galactic ring-1 ring-void"
-      :title="$t('droid.imageFallback')"
     />
   </div>
 </template>

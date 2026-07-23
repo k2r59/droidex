@@ -142,12 +142,12 @@ const socials = [
         <a
           v-for="s in socials"
           :key="s.id"
+          v-tippy="{ content: s.label }"
           :href="s.href"
           target="_blank"
           rel="noopener noreferrer"
           class="grid size-8 place-items-center rounded-md opacity-80 transition hover:scale-110 hover:opacity-100"
           :class="s.tint"
-          :title="s.label"
           :aria-label="s.label"
         >
           <DxIcon

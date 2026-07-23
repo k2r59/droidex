@@ -42,8 +42,8 @@ const RARITY_RING: Record<string, string> = {
     <!-- Pastille de possession, lisible d'un coup d'œil sur une grille dense. -->
     <span
       v-if="owned"
+      v-tippy="{ content: $t('droidex.tierCount', { count: entry.tiers.length }) }"
       class="absolute right-2 top-2 grid size-5 place-items-center rounded-full bg-valid text-xs font-bold text-void"
-      :title="$t('droidex.tierCount', { count: entry.tiers.length })"
       aria-hidden="true"
     >✓</span>
 
@@ -105,8 +105,8 @@ const RARITY_RING: Record<string, string> = {
       <div class="flex items-center gap-1.5">
         <span
           v-if="droid.unverified"
+          v-tippy="{ content: $t('droid.unverifiedHint') }"
           class="cursor-help text-xs text-warn"
-          :title="$t('droid.unverifiedHint')"
         >⚠</span>
 
         <!--
@@ -115,10 +115,10 @@ const RARITY_RING: Record<string, string> = {
           une marge négative pour ne pas déformer l'en-tête de la carte.
         -->
         <button
+          v-tippy="{ content: $t('droid.flawless') }"
           type="button"
           class="grid place-items-center text-sm transition-transform hover:scale-125 pointer-coarse:-m-3 pointer-coarse:size-11"
           :class="entry.flawless ? 'opacity-100' : 'opacity-25 hover:opacity-60'"
-          :title="$t('droid.flawless')"
           :aria-pressed="entry.flawless"
           @click="store.toggleFlawless(droid.slug)"
         >
@@ -140,8 +140,8 @@ const RARITY_RING: Record<string, string> = {
 
       <span
         v-if="droid.unverified"
+        v-tippy="{ content: $t('droid.unverifiedHint') }"
         class="cursor-help text-xs text-warn"
-        :title="$t('droid.unverifiedHint')"
       >⚠</span>
     </div>
   </article>

@@ -52,14 +52,14 @@ const dotSize = computed(() => (props.size === 'sm' ? 'size-6' : 'size-8'))
     <button
       v-for="tier in tiers"
       :key="tier"
-      type="button"
-      role="checkbox"
-      :aria-checked="owns(tier)"
-      :title="[
+      v-tippy="{ content: [
         $t(`tier.${tier}`),
         droid.tiers[tier]?.income ? formatIncome(droid.tiers[tier]!.income) : null,
         owns(tier) ? $t('droidex.tierClickToRemove') : null,
-      ].filter(Boolean).join(' — ')"
+      ].filter(Boolean).join(' — ') }"
+      type="button"
+      role="checkbox"
+      :aria-checked="owns(tier)"
       class="group grid shrink-0 place-items-center rounded-full transition-transform hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-ink pointer-coarse:size-11"
       @click="emit('toggle', tier)"
       @mouseenter="emit('preview', tier)"

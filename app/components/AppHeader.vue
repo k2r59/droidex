@@ -80,9 +80,9 @@ const completion = computed(() =>
       <div class="ml-auto flex shrink-0 items-center gap-2">
         <!-- Solde de cristaux : monnaie du Nova Shop, donc raccourci vers la boutique. -->
         <NuxtLink
+          v-tippy="{ content: $t('shop.balance') }"
           :to="localePath('/shop')"
           class="hidden items-center gap-2.5 rounded-nav border border-edge bg-panel px-3.5 py-2.5 transition-colors hover:border-nova/50 sm:flex"
-          :title="$t('shop.balance')"
         >
           <DxIcon
             name="resources/nova-crystal"
@@ -93,8 +93,8 @@ const completion = computed(() =>
         </NuxtLink>
 
         <div
+          v-tippy="{ content: $t('stats.completion', { percent: completion }) }"
           class="hidden items-center gap-2.5 rounded-nav border border-edge bg-panel px-3.5 py-2.5 sm:flex"
-          :title="$t('stats.completion', { percent: completion })"
         >
           <span class="font-mono tabular-nums">
             <span v-if="store.hydrated">{{ store.ownedCount }}</span>

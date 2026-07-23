@@ -255,9 +255,9 @@ const notes = [
                   {{ itemName(item) }}
                   <span
                     v-if="item.confidence !== 'confirmed'"
+                    v-tippy="{ content: itemNote(item) || $t(`shop.confidence.${item.confidence}`) }"
                     class="cursor-help align-super text-xs"
                     :class="CONFIDENCE_CLASS[item.confidence]"
-                    :title="itemNote(item) || $t(`shop.confidence.${item.confidence}`)"
                   >⚠</span>
                 </h3>
                 <span

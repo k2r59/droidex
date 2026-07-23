@@ -105,8 +105,8 @@ const base = mechanics.base
               <RarityBadge :rarity="row.rarity as any" />
               <span
                 v-if="row.conflicting"
+                v-tippy="{ content: $t('guide.chipsConflict') }"
                 class="ml-1 cursor-help text-xs text-warn"
-                :title="$t('guide.chipsConflict')"
               >⚠</span>
             </td>
             <td class="py-1.5 text-right font-mono tabular-nums">

@@ -436,17 +436,17 @@ const shown = computed(() => {
                 >{{ lvl.level }}</span>
                 <DxIcon
                   v-if="lvl.superUnlock"
+                  v-tippy="{ content: $t('superRebirth.title') }"
                   name="resources/star"
                   :size="14"
                   class="text-warn"
-                  :title="$t('superRebirth.title')"
                 />
                 <DxIcon
                   v-else-if="lvl.locked"
+                  v-tippy="{ content: $t('rebirth.tierLocked') }"
                   name="status/locked"
                   :size="14"
                   class="text-ink-muted"
-                  :title="$t('rebirth.tierLocked')"
                 />
               </div>
 
@@ -459,8 +459,8 @@ const shown = computed(() => {
                 <span class="font-mono text-sm">{{ formatNumber(lvl.credits, locale) }}</span>
                 <span
                   v-if="lvl.identiqueAuxCycles"
+                  v-tippy="{ content: $t('rebirth.sameAsCycles', { cycles: lvl.identiqueAuxCycles.join(', ') }) }"
                   class="cursor-help text-xs text-warn"
-                  :title="$t('rebirth.sameAsCycles', { cycles: lvl.identiqueAuxCycles.join(', ') })"
                 >⚠</span>
               </p>
             </button>
