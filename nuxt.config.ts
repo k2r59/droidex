@@ -6,6 +6,26 @@ export default defineNuxtConfig({
   modules: ['@pinia/nuxt', '@nuxtjs/i18n', '@vueuse/nuxt', '@vite-pwa/nuxt', '@nuxt/fonts', '@nuxt/eslint'],
   devtools: { enabled: true },
 
+  app: {
+    head: {
+      /*
+       * Viewport verrouillé, pour une sensation d'app native : pas de pinch-to-zoom ni de
+       * double-tap qui agrandit. `viewport-fit=cover` laisse le contenu passer sous les
+       * encoches, en tandem avec les marges `env(safe-area-inset-*)` déjà en place.
+       *
+       * Le zoom navigateur reste possible dans un onglet iOS (WebKit ignore volontairement
+       * `user-scalable=no` pour l'accessibilité), mais il est bien supprimé une fois l'app
+       * installée sur l'écran d'accueil — le cas qui nous intéresse.
+       */
+      meta: [
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover',
+        },
+      ],
+    },
+  },
+
   css: ['~/assets/css/main.css'],
 
   runtimeConfig: {

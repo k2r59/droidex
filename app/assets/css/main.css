@@ -106,6 +106,17 @@
    * Ne restent ici que les règles qu'il ne traite pas.
    */
 
+  /*
+   * Sensation d'app : `manipulation` coupe le double-tap-pour-zoomer sur tactile (le
+   * viewport verrouillé dans nuxt.config bloque déjà le pinch en mode installé), et on
+   * empêche iOS de gonfler le texte à la rotation de l'écran.
+   */
+  html {
+    touch-action: manipulation;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
   /* Le kit s'arrête à h4 ; on prolonge pour rester cohérent. */
   h5, h6 {
     font-family: var(--font-display);
