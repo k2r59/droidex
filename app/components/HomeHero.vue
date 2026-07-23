@@ -113,7 +113,7 @@ const RARITY_CHIP: Record<string, string> = {
       </div>
     </div>
 
-    <div class="flex flex-wrap gap-2">
+    <div class="flex flex-wrap justify-center gap-2 lg:justify-start">
       <div
         v-for="r in store.dataset.rarities"
         :key="r"

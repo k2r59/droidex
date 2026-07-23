@@ -43,7 +43,7 @@ const completion = computed(() =>
           alt=""
           class="size-8"
         >
-        <span class="hidden sm:inline">DROIDEX</span>
+        <span>DROIDEX</span>
       </NuxtLink>
 
       <!--
