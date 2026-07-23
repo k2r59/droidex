@@ -2,6 +2,8 @@ import de from '~/data/i18n/de.json'
 import en from '~/data/i18n/en.json'
 import es from '~/data/i18n/es.json'
 import fr from '~/data/i18n/fr.json'
+import it from '~/data/i18n/it.json'
+import pt from '~/data/i18n/pt.json'
 
 /**
  * Prose des fichiers de données du jeu (`app/data/*.json`), séparée de la donnée
@@ -13,14 +15,14 @@ import fr from '~/data/i18n/fr.json'
  * rythmes différents et à partir de sources différentes (le contenu suit les patch notes
  * du jeu), les garder séparés évite de mélanger les deux dans un même fichier de 400 clés.
  *
- * **Pourquoi des imports statiques.** Les quatre dictionnaires pèsent une quinzaine de
+ * **Pourquoi des imports statiques.** Les six dictionnaires pèsent une quinzaine de
  * kilo-octets chacun. Les charger tous évite un `await` dans le rendu — donc pas de
  * Suspense, pas d'écart d'hydratation, et la langue change sans requête réseau. Un
  * chargement paresseux coûterait plus cher en complexité qu'il ne ferait gagner d'octets.
  */
 type GameTextNode = string | { [key: string]: GameTextNode }
 
-const DICTIONARIES: Record<string, GameTextNode> = { fr, en, es, de }
+const DICTIONARIES: Record<string, GameTextNode> = { fr, en, es, de, pt, it }
 
 /** Langue source : c'est en français qu'un texte est rédigé avant d'être traduit. */
 const FALLBACK_LOCALE = 'fr'
