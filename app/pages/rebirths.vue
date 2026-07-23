@@ -137,7 +137,7 @@ const shown = computed(() => {
         min-height="17rem"
       >
         <div>
-          <h1 class="text-3xl uppercase tracking-tight sm:text-4xl lg:text-5xl">
+          <h1 class="text-2xl uppercase tracking-tight sm:text-4xl lg:text-5xl">
             {{ $t('rebirth.title') }}
           </h1>
           <p class="mt-1 max-w-md text-sm text-ink-muted">
@@ -361,7 +361,8 @@ const shown = computed(() => {
               :size="20"
               class="text-accent"
             />
-            {{ $t('rebirth.next') }} — {{ nextLevel.level }}
+            <span>{{ $t('rebirth.next') }}</span>
+            <span class="grid size-7 shrink-0 place-items-center rounded-full border border-accent/50 bg-accent/10 font-mono text-sm text-accent">{{ nextLevel.level }}</span>
           </h2>
           <p class="text-sm">
             <span class="font-mono text-lg font-bold text-nova">{{ formatNumber(nextLevel.credits, locale) }}</span>
