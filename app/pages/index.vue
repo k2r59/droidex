@@ -318,9 +318,11 @@ onKeyStroke('Escape', () => {
       class="grid grid-cols-1 gap-3 @lg:grid-cols-2 @3xl:grid-cols-3 @6xl:grid-cols-4"
     >
       <DroidCard
-        v-for="droid in filtered"
+        v-for="(droid, i) in filtered"
         :key="droid.slug"
         :droid="droid"
+        class="droid-enter"
+        :style="{ animationDelay: `${Math.min(i, 12) * 35}ms` }"
       />
     </div>
 
@@ -534,6 +536,41 @@ onKeyStroke('Escape', () => {
 @media (prefers-reduced-motion: reduce) {
   .filter-sheet,
   .filter-fade {
+    animation: none;
+  }
+}
+
+/*
+ * Entrée en cascade des cartes de droids : un léger glissement alterné — les impaires
+ * arrivent de la gauche, les paires de la droite — avec un décalage progressif plafonné.
+ * Comme Vue réutilise le DOM par `key`, seules les cartes nouvellement affichées s'animent :
+ * changer de rareté fait « couler » la nouvelle liste, sans rejouer les cartes conservées.
+ */
+.droid-enter {
+  animation-duration: 380ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+}
+.droid-enter:nth-child(odd) {
+  animation-name: droid-in-left;
+}
+.droid-enter:nth-child(even) {
+  animation-name: droid-in-right;
+}
+@keyframes droid-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+}
+@keyframes droid-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .droid-enter {
     animation: none;
   }
 }
