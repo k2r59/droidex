@@ -72,13 +72,14 @@ const mobile = computed(() => src('mobile'))
     </picture>
 
     <!--
-      Voile de lecture : presque opaque à gauche, ouvert à droite. Sans lui, un titre
-      blanc passerait sur les zones claires de l'illustration.
+      Voile de lecture : presque opaque à gauche (là où passe le titre blanc), et bien plus
+      ouvert à droite pour laisser voir l'illustration. Le fondu se referme vers 55 % puis
+      s'éclaircit franchement, la droite ne portant aucun texte.
     -->
     <div
       v-if="desktop"
       class="pointer-events-none absolute inset-0 -z-10"
-      style="background: linear-gradient(90deg, rgb(4 13 27 / 0.94) 0%, rgb(4 13 27 / 0.78) 45%, rgb(4 13 27 / 0.30) 100%)"
+      style="background: linear-gradient(90deg, rgb(4 13 27 / 0.94) 0%, rgb(4 13 27 / 0.72) 45%, rgb(4 13 27 / 0.10) 100%)"
       aria-hidden="true"
     />
 

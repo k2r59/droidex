@@ -261,7 +261,7 @@ async function clearAll() {
         {{ $t('sync.subtitle') }}
       </p>
 
-      <div class="mt-4 grid gap-4 sm:grid-cols-2">
+      <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
         <!-- Envoyer : générer un code depuis cet appareil. -->
         <div class="rounded-card border border-edge-soft bg-void/40 p-4">
           <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
@@ -320,7 +320,7 @@ async function clearAll() {
               autocapitalize="characters"
               spellcheck="false"
               :placeholder="$t('sync.codePlaceholder')"
-              class="dx-search min-w-0 flex-1 font-mono uppercase tracking-widest"
+              class="min-w-0 flex-1 rounded-md border border-edge bg-void/60 px-3 py-2 font-mono uppercase tracking-widest outline-none transition-colors placeholder:tracking-normal placeholder:text-ink-muted focus:border-accent"
             >
             <button
               type="submit"

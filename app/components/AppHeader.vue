@@ -138,7 +138,6 @@ const completion = computed(() =>
         </NuxtLink>
 
         <LocaleSwitcher />
-        <ResetButton />
       </div>
     </div>
   </header>
