@@ -229,14 +229,24 @@ function paliersDupliques() {
 const dupes = paliersDupliques()
 
 /**
- * Nova Crystals gagnés au Super Rebirth, selon le niveau de rebirth atteint. Table
- * incomplète : les sources ne publient que ces paliers, et rien pour 24-26 ni 28-30.
- * On préfère les laisser absents plutôt que les extrapoler.
+ * Nova Crystals gagnés au Super Rebirth, selon le niveau de rebirth atteint.
+ *
+ * Les paliers 12→23 et 27 sont documentés (srbcontrol, droidtycoonguide.com) : 11, 16, 22,
+ * 29, 37, 46, 56, 67, 79, 92, 106, 121 … puis 191 au palier 27. Les guides décrivent en outre
+ * la courbe explicitement — « chaque niveau vaut plus que le précédent : +5 au 13, croissant
+ * jusqu'à +15 au 23 » : l'écart entre deux paliers augmente de +1 à chaque niveau, ce qui
+ * donne la forme close `cristaux(n) = 1 + (n − 8)(n − 7) / 2`.
+ *
+ * Cette formule reproduit **exactement** les treize valeurs documentées — dont le 27 = 191,
+ * isolé après le trou 24-26, ce qui la valide de deux côtés (données + source). On comble donc
+ * les paliers manquants 24-26 et 28-30 par la même loi : 137, 154, 172, (191), 211, 232, 254.
  */
-const NOVA_BY_REBIRTH = {
-  12: 11, 13: 16, 14: 22, 15: 29, 16: 37, 17: 46, 18: 56,
-  19: 67, 20: 79, 21: 92, 22: 106, 23: 121, 27: 191,
-}
+const NOVA_BY_REBIRTH = Object.fromEntries(
+  Array.from({ length: 30 - 12 + 1 }, (_, k) => {
+    const n = k + 12
+    return [n, 1 + ((n - 8) * (n - 7)) / 2]
+  }),
+)
 
 const errors = []
 
