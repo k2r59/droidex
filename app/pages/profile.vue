@@ -2,7 +2,7 @@
 import { migrateCollection } from '~/stores/collection'
 
 const store = useCollectionStore()
-const { t, locale } = useI18n()
+const { t } = useI18n()
 const { user } = useAuthSession()
 
 useSeoMeta({ title: () => t('nav.profile') })
@@ -188,7 +188,7 @@ async function clearAll() {
       </div>
     </section>
 
-    <section class="grid gap-3 sm:grid-cols-3">
+    <section class="grid grid-cols-2 gap-3">
       <div class="panel p-4 sm:p-6">
         <p class="text-xs text-ink-muted">
           {{ $t('stats.collection') }}
@@ -205,47 +205,41 @@ async function clearAll() {
           {{ store.rebirth }}
         </p>
       </div>
-      <div class="panel p-4 sm:p-6">
-        <p class="text-xs text-ink-muted">
-          {{ $t('stats.totalIncome') }}
-        </p>
-        <p class="font-mono text-2xl tabular-nums">
-          {{ formatIncome(store.totalIncome, locale) }}
-        </p>
-      </div>
     </section>
 
-    <section class="panel flex flex-wrap items-center gap-3 p-4 sm:p-6">
-      <button
-        type="button"
-        class="flex items-center gap-2 rounded-lg bg-panel-raised px-3 py-2 text-sm transition-colors hover:bg-panel-high"
-        @click="exportProgress"
-      >
-        <DxIcon
-          name="actions/download"
-          :size="15"
-        />
-        {{ $t('common.exportJson') }}
-      </button>
-
-      <label class="flex cursor-pointer items-center gap-2 rounded-lg bg-panel-raised px-3 py-2 text-sm transition-colors hover:bg-panel-high">
-        <DxIcon
-          name="actions/upload"
-          :size="15"
-        />
-        {{ $t('profile.importJson') }}
-        <input
-          ref="fileInput"
-          type="file"
-          accept="application/json"
-          class="sr-only"
-          @change="importProgress"
+    <section class="panel p-4 sm:p-6">
+      <div class="flex items-center justify-between gap-3">
+        <button
+          type="button"
+          class="flex items-center gap-2 rounded-lg bg-panel-raised px-3 py-2 text-sm transition-colors hover:bg-panel-high"
+          @click="exportProgress"
         >
-      </label>
+          <DxIcon
+            name="actions/download"
+            :size="15"
+          />
+          {{ $t('common.exportJson') }}
+        </button>
+
+        <label class="flex cursor-pointer items-center gap-2 rounded-lg bg-panel-raised px-3 py-2 text-sm transition-colors hover:bg-panel-high">
+          <DxIcon
+            name="actions/upload"
+            :size="15"
+          />
+          {{ $t('profile.importJson') }}
+          <input
+            ref="fileInput"
+            type="file"
+            accept="application/json"
+            class="sr-only"
+            @change="importProgress"
+          >
+        </label>
+      </div>
 
       <p
         v-if="importMessage"
-        class="text-[0.8125rem]"
+        class="mt-3 text-[0.8125rem]"
         :class="importMessage.ok ? 'text-valid' : 'text-danger'"
       >
         {{ importMessage.text }}

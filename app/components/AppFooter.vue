@@ -20,7 +20,7 @@ const router = useRouter()
  * bascule sur la page d'explications plutôt que de rester sans effet. Le bouton « iPhone /
  * iPad » y mène toujours : iOS n'expose aucune API, le geste s'explique.
  */
-const { promptInstall } = useInstallPrompt()
+const { promptInstall, isStandalone } = useInstallPrompt()
 
 async function installAndroid() {
   const issue = await promptInstall()
@@ -142,39 +142,48 @@ async function copyCode() {
             iOS renvoie vers les instructions (Safari n'a pas d'API d'installation). Elles
             se répartissent sur une ligne quand la colonne est large et s'empilent sur
             mobile grâce à `flex-wrap` + `basis-32`.
-          -->
-          <div class="mt-4 flex max-w-xs flex-wrap gap-2.5">
-            <button
-              type="button"
-              :class="STORE_BADGE"
-              @click="installAndroid"
-            >
-              <DxIcon
-                name="brands/google-play"
-                :size="21"
-                class="shrink-0 text-accent"
-              />
-              <span class="min-w-0 leading-tight">
-                <span class="block text-[0.625rem] uppercase tracking-wide text-ink-muted">{{ $t('install.badgePrefix') }}</span>
-                <span class="block truncate text-sm font-semibold">{{ $t('install.badgeAndroid') }}</span>
-              </span>
-            </button>
 
-            <NuxtLink
-              :to="{ path: localePath('/install'), hash: '#ios' }"
-              :class="STORE_BADGE"
+            Masquées quand l'app tourne déjà en mode installé (`isStandalone`) : proposer
+            d'installer ce qui l'est déjà n'a pas de sens. `ClientOnly` évite une différence
+            d'hydratation, l'état autonome n'étant connu que côté client.
+          -->
+          <ClientOnly>
+            <div
+              v-if="!isStandalone"
+              class="mt-4 flex max-w-xs flex-wrap gap-2.5"
             >
-              <DxIcon
-                name="brands/apple"
-                :size="21"
-                class="shrink-0"
-              />
-              <span class="min-w-0 leading-tight">
-                <span class="block text-[0.625rem] uppercase tracking-wide text-ink-muted">{{ $t('install.badgePrefix') }}</span>
-                <span class="block truncate text-sm font-semibold">{{ $t('install.badgeIos') }}</span>
-              </span>
-            </NuxtLink>
-          </div>
+              <button
+                type="button"
+                :class="STORE_BADGE"
+                @click="installAndroid"
+              >
+                <DxIcon
+                  name="brands/google-play"
+                  :size="21"
+                  class="shrink-0 text-accent"
+                />
+                <span class="min-w-0 leading-tight">
+                  <span class="block text-[0.625rem] uppercase tracking-wide text-ink-muted">{{ $t('install.badgePrefix') }}</span>
+                  <span class="block truncate text-sm font-semibold">{{ $t('install.badgeAndroid') }}</span>
+                </span>
+              </button>
+
+              <NuxtLink
+                :to="{ path: localePath('/install'), hash: '#ios' }"
+                :class="STORE_BADGE"
+              >
+                <DxIcon
+                  name="brands/apple"
+                  :size="21"
+                  class="shrink-0"
+                />
+                <span class="min-w-0 leading-tight">
+                  <span class="block text-[0.625rem] uppercase tracking-wide text-ink-muted">{{ $t('install.badgePrefix') }}</span>
+                  <span class="block truncate text-sm font-semibold">{{ $t('install.badgeIos') }}</span>
+                </span>
+              </NuxtLink>
+            </div>
+          </ClientOnly>
         </div>
 
         <!-- À propos des données -->

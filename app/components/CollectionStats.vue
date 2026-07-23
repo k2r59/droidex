@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const store = useCollectionStore()
-const { locale } = useI18n()
 
 const completion = computed(() =>
   store.totalCount ? Math.round((store.ownedCount / store.totalCount) * 100) : 0,
@@ -51,9 +50,6 @@ const RARITY_TEXT: Record<string, string> = {
       <div class="text-right">
         <p class="font-mono text-2xl font-bold tabular-nums text-iconic">
           {{ completion }}%
-        </p>
-        <p class="text-xs text-ink-muted">
-          {{ $t('stats.totalIncome') }} : {{ formatIncome(store.totalIncome, locale) }}
         </p>
       </div>
     </div>

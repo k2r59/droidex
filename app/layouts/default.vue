@@ -25,7 +25,12 @@ watch(
   <div class="flex min-h-dvh items-start bg-void text-ink">
     <AppSidebar />
 
-    <div class="flex min-w-0 flex-1 flex-col">
+    <!--
+      Le dégagement de `MobileNav` (barre fixe en bas, jusqu'à `lg`) est porté ici, sous le
+      footer : c'est le dernier bloc, c'est donc lui qui doit passer au-dessus de la barre.
+      Le mettre sur `<main>` créait un grand vide entre le contenu et le footer.
+    -->
+    <div class="flex min-w-0 flex-1 flex-col pb-24 lg:pb-0">
       <AppHeader />
 
       <p
@@ -42,12 +47,7 @@ watch(
         </button>
       </p>
 
-      <!--
-        `pb-24` réserve la hauteur de `MobileNav`, fixée en bas. Sa levée doit suivre le
-        point de bascule de cette nav (`lg`) : calée sur `md`, elle laissait le dernier
-        bloc passer sous la barre entre 768 et 1024 px.
-      -->
-      <main class="@container mx-auto w-full max-w-[1440px] flex-1 px-3 py-4 pb-24 sm:px-4 sm:py-5 lg:pb-6">
+      <main class="@container mx-auto w-full max-w-[1440px] flex-1 px-3 py-4 sm:px-4 sm:py-5">
         <slot />
       </main>
 
