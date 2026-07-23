@@ -70,7 +70,11 @@
     "empty": "Ningún Droid coincide con estos filtros.",
     "resetFilters": "Restablecer filtros",
     "tierClickToRemove": "clic para bajar un nivel",
-    "tierCount": "{count} variante(s) en el Droidex"
+    "tierCount": "{count} variante(s) en el Droidex",
+    "markAll": "Marcar todos",
+    "unmarkAll": "Quitar todos",
+    "filterOwnership": "Posesión",
+    "filters": "Filtros"
   },
   "droid": {
     "income": "Ingresos",
@@ -228,7 +232,8 @@
     "exportJson": "Exportar en JSON",
     "previous": "Anterior",
     "next": "Siguiente",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "apply": "Aplicar"
   },
   "disclaimer": {
     "title": "Sobre los datos",

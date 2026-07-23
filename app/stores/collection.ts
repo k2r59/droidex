@@ -371,6 +371,27 @@ export const useCollectionStore = defineStore('collection', () => {
     await push({ collection: { [slug]: next } })
   }
 
+  /**
+   * Marque en bloc une liste de droids comme **entièrement possédés** (tous leurs paliers) ou
+   * remis à zéro. Cocher soixante Typiques un par un n'a aucun sens quand on les a déjà tous :
+   * le « Tout posséder » du filtre passe par ici, en une écriture.
+   */
+  async function setOwnedBulk(slugs: string[], owned: boolean) {
+    const bySlug = new Map(data.droids.map((d) => [d.slug, d]))
+    const next = { ...entries.value }
+    const delta: Record<string, CollectionEntry> = {}
+    for (const slug of slugs) {
+      const d = bySlug.get(slug)
+      if (!d) continue
+      const e: CollectionEntry = { ...(next[slug] ?? emptyEntry()), tiers: owned ? tiersOf(d) : [] }
+      next[slug] = e
+      delta[slug] = e
+    }
+    entries.value = next
+    writeLocal()
+    await push({ collection: delta })
+  }
+
   /** `true` si l'exigence de renaissance identifiée par `key` est cochée. */
   const isRebirthChecked = (key: string) => rebirthChecks.value[key] === true
 
@@ -499,6 +520,7 @@ export const useCollectionStore = defineStore('collection', () => {
     disableRemote,
     toggleTier,
     setOwned,
+    setOwnedBulk,
     toggleFlawless,
     setShopLevel,
     setNovaCrystals,

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Droid, DroidType, Rarity } from '~~/shared/types/droid'
+import type { Droid, DroidType, Rarity, Tier } from '~~/shared/types/droid'
 
 const store = useCollectionStore()
 const { t, locale } = useI18n()
@@ -11,10 +11,51 @@ useSeoMeta({
 
 const search = ref('')
 // Les filtres survivent au rechargement : on revient souvent sur la même vue en jouant.
-const rarity = useHydratedStorage<Rarity | 'all'>('droidex:rarity', 'all')
+// Par défaut, on ouvre sur les Typiques : on collectionne rareté par rareté, et la vue
+// « tout » (379 cartes) est écrasante à l'arrivée.
+const rarity = useHydratedStorage<Rarity | 'all'>('droidex:rarity', 'common')
 const type = useHydratedStorage<DroidType | 'all'>('droidex:type', 'all')
+// Palier possédé : filtre sur les droids dont on détient telle variante (Or, Diamant…).
+const tier = useHydratedStorage<Tier | 'all'>('droidex:tier', 'all')
 const ownership = useHydratedStorage<'all' | 'owned' | 'missing' | 'flawless'>('droidex:ownership', 'all')
 const sort = useHydratedStorage<'rarity' | 'income' | 'cost' | 'name'>('droidex:sort', 'rarity')
+
+/** Un filtre avancé est actif : une pastille le signale sur le bouton « Filtres ». */
+const advancedActive = computed(() =>
+  type.value !== 'all' || tier.value !== 'all' || ownership.value !== 'all',
+)
+
+/**
+ * Filtres avancés (type, palier, possession, tri) dans une modale. On y édite un **brouillon**
+ * appliqué seulement à la validation : ouvrir recopie l'état courant, « Valider » le pousse,
+ * fermer sans valider l'abandonne. C'est le comportement attendu d'un « popup + Valider ».
+ */
+const filterOpen = ref(false)
+const draft = reactive({ type: type.value, tier: tier.value, ownership: ownership.value, sort: sort.value })
+
+function openFilters() {
+  draft.type = type.value
+  draft.tier = tier.value
+  draft.ownership = ownership.value
+  draft.sort = sort.value
+  filterOpen.value = true
+}
+function applyFilters() {
+  type.value = draft.type
+  tier.value = draft.tier
+  ownership.value = draft.ownership
+  sort.value = draft.sort
+  filterOpen.value = false
+}
+function resetDraft() {
+  draft.type = 'all'
+  draft.tier = 'all'
+  draft.ownership = 'all'
+}
+
+const filterDialog = useTemplateRef<HTMLElement>('filterDialog')
+useFocusTrap(filterDialog, filterOpen)
+onKeyStroke('Escape', () => { if (filterOpen.value) filterOpen.value = false })
 
 const RARITY_ORDER = store.dataset.rarities
 
@@ -43,6 +84,7 @@ const filtered = computed(() => {
     if (type.value !== 'all' && d.type !== type.value) return false
 
     const entry = store.entry(d.slug)
+    if (tier.value !== 'all' && !entry.tiers.includes(tier.value)) return false
     if (ownership.value === 'owned' && !entry.tiers.length) return false
     if (ownership.value === 'missing' && entry.tiers.length) return false
     if (ownership.value === 'flawless' && !entry.flawless) return false
@@ -71,19 +113,50 @@ const filtered = computed(() => {
   })
 })
 
-const hasFilters = computed(
-  () =>
-    Boolean(search.value)
-    || rarity.value !== 'all'
-    || type.value !== 'all'
-    || ownership.value !== 'all',
-)
+/**
+ * Clic sur une pastille de rareté du bandeau d'accueil : on applique le filtre puis on défile
+ * jusqu'à la liste. On vise la section par son `id` (plus sûr qu'une ref de template ici), et
+ * on attend un `requestAnimationFrame` après le `nextTick` pour que la liste re-filtrée soit
+ * mise en page avant de mesurer la position. Le `scroll-mt` de l'ancre dégage l'en-tête.
+ */
+function focusRarity(r: string) {
+  rarity.value = r as Rarity
+  nextTick(() => requestAnimationFrame(() =>
+    document.getElementById('all-droids')?.scrollIntoView({ behavior: 'smooth', block: 'start' }),
+  ))
+}
 
-function resetFilters() {
-  search.value = ''
-  rarity.value = 'all'
-  type.value = 'all'
-  ownership.value = 'all'
+/**
+ * Couleurs par rareté, en toutes lettres — Tailwind ne génère que ce qu'il trouve dans les
+ * sources. `active` habille le badge de filtre sélectionné ; `ring`/`bar` la barre d'action.
+ */
+const RARITY_STYLE: Record<string, { text: string, bar: string, ring: string, active: string }> = {
+  common: { text: 'text-common', bar: 'bg-common', ring: 'border-common/40 bg-common/10', active: 'border-common bg-common/15 text-common' },
+  rare: { text: 'text-rare', bar: 'bg-rare', ring: 'border-rare/40 bg-rare/10', active: 'border-rare bg-rare/15 text-rare' },
+  epic: { text: 'text-epic', bar: 'bg-epic', ring: 'border-epic/40 bg-epic/10', active: 'border-epic bg-epic/15 text-epic' },
+  legendary: { text: 'text-legendary', bar: 'bg-legendary', ring: 'border-legendary/40 bg-legendary/10', active: 'border-legendary bg-legendary/15 text-legendary' },
+  mythic: { text: 'text-mythic', bar: 'bg-mythic', ring: 'border-mythic/40 bg-mythic/10', active: 'border-mythic bg-mythic/15 text-mythic' },
+  iconic: { text: 'text-iconic', bar: 'bg-iconic', ring: 'border-iconic/40 bg-iconic/10', active: 'border-iconic bg-iconic/15 text-iconic' },
+}
+const FILTER_CHIP = 'rounded-full border px-3 py-1 text-xs font-semibold transition-colors'
+
+/**
+ * Barre d'action contextuelle : quand une rareté précise est filtrée, on montre sa
+ * progression et un « tout posséder / tout retirer » qui marque d'un coup tous ses droids.
+ */
+const rarityStat = computed(() =>
+  rarity.value !== 'all' ? store.countByRarity[rarity.value] : null,
+)
+const rarityPct = computed(() =>
+  rarityStat.value?.total ? Math.round((rarityStat.value.owned / rarityStat.value.total) * 100) : 0,
+)
+const rarityComplete = computed(() =>
+  Boolean(rarityStat.value) && rarityStat.value!.owned >= rarityStat.value!.total,
+)
+function toggleRarityOwned() {
+  if (rarity.value === 'all') return
+  const slugs = store.droids.filter((d) => d.rarity === rarity.value).map((d) => d.slug)
+  store.setOwnedBulk(slugs, !rarityComplete.value)
 }
 
 // « / » pour chercher, « Échap » pour effacer : raccourcis attendus sur ce type d'outil.
@@ -100,7 +173,7 @@ onKeyStroke('Escape', () => {
 
 <template>
   <div class="flex flex-col gap-5">
-    <HomeHero />
+    <HomeHero @select="focusRarity" />
 
     <div class="grid gap-3 @4xl:grid-cols-2">
       <!-- Horloge live : le serveur rendrait une heure différente de celle du client,
@@ -117,21 +190,21 @@ onKeyStroke('Escape', () => {
 
     <IconicPanel variant="strip" />
 
-    <h2 class="text-sm font-bold uppercase tracking-wide">
+    <h2
+      id="all-droids"
+      class="scroll-mt-24 text-sm font-bold uppercase tracking-wide"
+    >
       {{ $t('home.allDroids') }}
     </h2>
 
-    <!-- Barre de filtres collante : sur une grille de 69 cartes, la perdre au scroll
-         obligerait à remonter à chaque changement de filtre. -->
     <!--
-      La marge négative étend le fond de la barre jusqu'aux bords de l'écran, sinon le
-      contenu défilant apparaît dans les gouttières en la traversant. Elle doit suivre le
-      padding réel de `main` — `px-3`, puis `px-4` à partir de `sm` — sans quoi elle
-      dépasse de 4 px sur mobile et fait défiler toute la page horizontalement.
+      Barre de filtres principale : recherche, bouton « Filtres » (ouvre la modale des filtres
+      avancés), et la rareté en badges — le sélecteur qu'on utilise le plus, toujours à vue.
     -->
-    <div class="sticky top-14 z-30 -mx-3 flex flex-col gap-3 bg-void/95 px-3 py-3 backdrop-blur sm:top-[68px] sm:-mx-4 sm:px-4">
-      <div class="flex flex-wrap items-center gap-2">
-        <div class="relative min-w-48 flex-1">
+    <div class="flex flex-col gap-3.5 rounded-card border border-edge-soft bg-panel/30 p-3 sm:p-4">
+      <!-- Recherche + bouton d'ouverture des filtres avancés. -->
+      <div class="flex items-center gap-2">
+        <div class="relative flex-1">
           <input
             ref="searchInput"
             v-model="search"
@@ -141,81 +214,94 @@ onKeyStroke('Escape', () => {
           >
           <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted">⌕</span>
         </div>
-
-        <select
-          v-model="rarity"
-          class="rounded-card border border-edge bg-panel px-3 py-2.5 text-sm"
+        <button
+          type="button"
+          class="relative flex shrink-0 items-center gap-2 rounded-card border px-3 py-2.5 text-sm font-medium transition-colors"
+          :class="filterOpen || advancedActive ? 'border-accent bg-accent/10 text-accent' : 'border-edge bg-panel text-ink-muted hover:text-ink'"
+          aria-haspopup="dialog"
+          @click="openFilters"
         >
-          <option value="all">
-            {{ $t('droidex.filterRarity') }} — {{ $t('droidex.filterAll') }}
-          </option>
-          <option
+          <DxIcon
+            name="ui/filter"
+            :size="16"
+          />
+          <span class="hidden sm:inline">{{ $t('droidex.filters') }}</span>
+          <!-- Pastille : des filtres avancés sont actifs même panneau replié. -->
+          <span
+            v-if="advancedActive"
+            class="absolute -right-1 -top-1 size-2 rounded-full bg-accent ring-2 ring-void"
+          />
+        </button>
+      </div>
+
+      <!-- Rareté en badges segmentés, chacun teinté de sa couleur. -->
+      <div>
+        <p class="filter-label">
+          {{ $t('droidex.filterRarity') }}
+        </p>
+        <div class="mt-1.5 flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            :class="[FILTER_CHIP, rarity === 'all' ? 'border-accent bg-accent/15 text-accent' : 'border-edge bg-panel text-ink-muted hover:text-ink']"
+            @click="rarity = 'all'"
+          >
+            {{ $t('droidex.filterAll') }}
+          </button>
+          <button
             v-for="r in store.dataset.rarities"
             :key="r"
-            :value="r"
+            type="button"
+            :class="[FILTER_CHIP, rarity === r ? RARITY_STYLE[r]!.active : 'border-edge bg-panel text-ink-muted hover:text-ink']"
+            @click="rarity = r"
           >
             {{ $t(`rarity.${r}`) }}
-          </option>
-        </select>
-
-        <select
-          v-model="type"
-          class="rounded-card border border-edge bg-panel px-3 py-2.5 text-sm"
-        >
-          <option value="all">
-            {{ $t('droidex.filterType') }} — {{ $t('droidex.filterAll') }}
-          </option>
-          <option
-            v-for="ty in store.dataset.types"
-            :key="ty"
-            :value="ty"
-          >
-            {{ $t(`type.${ty}`) }}
-          </option>
-        </select>
-
-        <select
-          v-model="sort"
-          class="rounded-card border border-edge bg-panel px-3 py-2.5 text-sm"
-        >
-          <option
-            v-for="s in (['rarity', 'income', 'cost', 'name'] as const)"
-            :key="s"
-            :value="s"
-          >
-            {{ $t('droidex.sortBy') }} : {{ $t(`droidex.sort.${s}`) }}
-          </option>
-        </select>
+          </button>
+        </div>
       </div>
+    </div>
 
-      <!--
-        Le style des pastilles est écrit ici plutôt qu'emprunté à `dx-button` : celui-ci
-        impose une hauteur minimale de 42 px, qui gonflait la pastille active en ovale à
-        côté des autres, hautes de 26 px.
-      -->
-      <div class="flex flex-wrap items-center gap-2">
-        <button
-          v-for="o in (['all', 'owned', 'missing', 'flawless'] as const)"
-          :key="o"
-          type="button"
-          class="rounded-full border px-3 py-1 text-xs font-medium transition-colors"
-          :class="ownership === o
-            ? 'border-[#69ecff] bg-gradient-to-b from-[#54e7ff] to-[#17badc] text-[#00131b]'
-            : 'border-transparent bg-panel text-ink-muted hover:text-ink'"
-          @click="ownership = o"
+    <!--
+      Barre d'action contextuelle : dès qu'une rareté précise est filtrée, on montre sa
+      progression (barre teintée) et un bouton qui marque — ou retire — d'un coup tous ses
+      droids. Marquer soixante Typiques un par un quand on les a déjà tous n'a aucun sens.
+    -->
+    <div
+      v-if="rarityStat"
+      class="flex flex-wrap items-center gap-3 rounded-card border p-3"
+      :class="RARITY_STYLE[rarity]!.ring"
+    >
+      <div class="min-w-40 flex-1">
+        <p
+          class="flex items-center gap-2 text-sm font-semibold"
+          :class="RARITY_STYLE[rarity]!.text"
         >
-          {{ $t(o === 'all' ? 'droidex.filterAll' : `droidex.filter${o.charAt(0).toUpperCase()}${o.slice(1)}`) }}
-        </button>
-
-        <button
-          v-if="hasFilters"
-          type="button"
-          class="ml-auto text-xs text-ink-muted underline hover:text-ink"
-          @click="resetFilters"
-        >
-          {{ $t('droidex.resetFilters') }}
-        </button>
+          <span>{{ $t(`rarity.${rarity}`) }}</span>
+          <span class="font-mono tabular-nums">{{ rarityStat.owned }}/{{ rarityStat.total }}</span>
+          <DxIcon
+            v-if="rarityComplete"
+            name="actions/check"
+            :size="14"
+          />
+        </p>
+        <span class="mt-2 block h-1.5 overflow-hidden rounded-full bg-void/60">
+          <span
+            class="block h-full rounded-full transition-[width] duration-500"
+            :class="RARITY_STYLE[rarity]!.bar"
+            :style="{ width: `${rarityPct}%` }"
+          />
+        </span>
       </div>
+      <button
+        type="button"
+        class="dx-button dx-button--secondary shrink-0"
+        @click="toggleRarityOwned"
+      >
+        <DxIcon
+          :name="rarityComplete ? 'actions/close' : 'actions/check'"
+          :size="15"
+        />
+        {{ rarityComplete ? $t('droidex.unmarkAll') : $t('droidex.markAll') }}
+      </button>
     </div>
 
     <p
@@ -235,5 +321,206 @@ onKeyStroke('Escape', () => {
         :droid="droid"
       />
     </div>
+
+    <!--
+      Modale des filtres avancés (type, palier, possession, tri). On y édite un brouillon
+      appliqué seulement au clic sur « Valider ». Sur mobile elle monte du bas comme une
+      feuille, sur desktop elle se centre. Le fond et Échap la ferment sans appliquer.
+    -->
+    <Teleport to="body">
+      <div
+        v-if="filterOpen"
+        class="fixed inset-0 z-[100] grid place-items-end sm:place-items-center"
+      >
+        <div
+          class="filter-fade absolute inset-0 bg-black/60 backdrop-blur-sm"
+          @click="filterOpen = false"
+        />
+        <div
+          ref="filterDialog"
+          class="filter-sheet panel relative z-10 flex max-h-[88dvh] w-full flex-col gap-4 overflow-y-auto rounded-b-none rounded-t-2xl p-5 sm:max-w-md sm:rounded-2xl"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="filters-title"
+        >
+          <div class="flex items-center justify-between">
+            <h2
+              id="filters-title"
+              class="flex items-center gap-2 text-lg font-bold"
+            >
+              <DxIcon
+                name="ui/filter"
+                :size="18"
+                class="text-accent"
+              />
+              {{ $t('droidex.filters') }}
+            </h2>
+            <button
+              type="button"
+              class="dx-icon-button size-8"
+              :aria-label="$t('common.close')"
+              @click="filterOpen = false"
+            >
+              <DxIcon
+                name="actions/close"
+                :size="15"
+              />
+            </button>
+          </div>
+
+          <!-- Type -->
+          <div>
+            <p class="filter-label">
+              {{ $t('droidex.filterType') }}
+            </p>
+            <div class="mt-1.5 flex flex-wrap gap-2">
+              <button
+                type="button"
+                :class="[FILTER_CHIP, draft.type === 'all' ? 'border-accent bg-accent/15 text-accent' : 'border-edge bg-panel text-ink-muted hover:text-ink']"
+                @click="draft.type = 'all'"
+              >
+                {{ $t('droidex.filterAll') }}
+              </button>
+              <button
+                v-for="ty in store.dataset.types"
+                :key="ty"
+                type="button"
+                :class="[FILTER_CHIP, draft.type === ty ? 'border-accent bg-accent/15 text-accent' : 'border-edge bg-panel text-ink-muted hover:text-ink']"
+                @click="draft.type = ty"
+              >
+                {{ $t(`type.${ty}`) }}
+              </button>
+            </div>
+          </div>
+
+          <!-- Palier possédé (Or, Diamant, Arc-en-ciel, Beskar…). -->
+          <div>
+            <p class="filter-label">
+              {{ $t('droidex.filterTier') }}
+            </p>
+            <div class="mt-1.5 flex flex-wrap gap-2">
+              <button
+                type="button"
+                :class="[FILTER_CHIP, draft.tier === 'all' ? 'border-accent bg-accent/15 text-accent' : 'border-edge bg-panel text-ink-muted hover:text-ink']"
+                @click="draft.tier = 'all'"
+              >
+                {{ $t('droidex.filterAll') }}
+              </button>
+              <button
+                v-for="tr in store.dataset.tiers"
+                :key="tr"
+                type="button"
+                :class="[FILTER_CHIP, draft.tier === tr ? 'border-accent bg-accent/15 text-accent' : 'border-edge bg-panel text-ink-muted hover:text-ink']"
+                @click="draft.tier = tr"
+              >
+                {{ $t(`tier.${tr}`) }}
+              </button>
+            </div>
+          </div>
+
+          <!-- Possession -->
+          <div>
+            <p class="filter-label">
+              {{ $t('droidex.filterOwnership') }}
+            </p>
+            <div class="mt-1.5 flex flex-wrap gap-2">
+              <button
+                v-for="o in (['all', 'owned', 'missing', 'flawless'] as const)"
+                :key="o"
+                type="button"
+                class="rounded-full border px-3 py-1 text-xs font-semibold transition-colors"
+                :class="draft.ownership === o
+                  ? 'border-[#69ecff] bg-gradient-to-b from-[#54e7ff] to-[#17badc] text-[#00131b]'
+                  : 'border-edge bg-panel text-ink-muted hover:text-ink'"
+                @click="draft.ownership = o"
+              >
+                {{ $t(o === 'all' ? 'droidex.filterAll' : `droidex.filter${o.charAt(0).toUpperCase()}${o.slice(1)}`) }}
+              </button>
+            </div>
+          </div>
+
+          <!-- Tri -->
+          <div>
+            <p class="filter-label">
+              {{ $t('droidex.sortBy') }}
+            </p>
+            <select
+              v-model="draft.sort"
+              class="mt-1.5 block w-full rounded-card border border-edge bg-panel px-3 py-2 text-sm"
+            >
+              <option
+                v-for="s in (['rarity', 'income', 'cost', 'name'] as const)"
+                :key="s"
+                :value="s"
+              >
+                {{ $t(`droidex.sort.${s}`) }}
+              </option>
+            </select>
+          </div>
+
+          <!-- Réinitialiser (le brouillon) + valider. -->
+          <div class="mt-1 flex items-center justify-between gap-3 border-t border-edge-soft pt-4">
+            <button
+              type="button"
+              class="text-sm text-ink-muted underline hover:text-ink"
+              @click="resetDraft"
+            >
+              {{ $t('droidex.resetFilters') }}
+            </button>
+            <button
+              type="button"
+              class="dx-button dx-button--primary"
+              @click="applyFilters"
+            >
+              <DxIcon
+                name="actions/check"
+                :size="15"
+              />
+              {{ $t('common.apply') }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </Teleport>
   </div>
 </template>
+
+<style scoped>
+/* Intitulé de groupe de filtres : minuscule, en capitales espacées, sobre. */
+.filter-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-ink-muted);
+}
+
+/*
+ * Ouverture de la feuille de filtres : un glissement vers le haut, franc et sans rebond
+ * (l'animation modale à ressort donnait un à-coup sur un grand panneau). Le fond se fond
+ * en même temps. `prefers-reduced-motion` coupe les deux.
+ */
+.filter-sheet {
+  animation: filter-sheet-in 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.filter-fade {
+  animation: filter-fade-in 240ms ease both;
+}
+@keyframes filter-sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+}
+@keyframes filter-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .filter-sheet,
+  .filter-fade {
+    animation: none;
+  }
+}
+</style>

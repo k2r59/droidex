@@ -10,6 +10,9 @@
 
 const store = useCollectionStore()
 
+/** Cliquer une pastille remonte la rareté au parent, qui filtre la liste et y défile. */
+const emit = defineEmits<{ select: [rarity: string] }>()
+
 const completion = computed(() =>
   store.totalCount ? Math.round((store.ownedCount / store.totalCount) * 100) : 0,
 )
@@ -107,24 +110,31 @@ const RARITY_CHIP: Record<string, string> = {
     </div>
 
     <div class="flex flex-wrap justify-center gap-2 lg:justify-start">
-      <div
+      <button
         v-for="r in store.dataset.rarities"
         :key="r"
-        class="flex min-w-[9rem] items-center justify-between gap-4 rounded-md border bg-gradient-to-r to-transparent bg-void/55 px-3.5 py-1.5 backdrop-blur"
+        type="button"
+        class="flex min-w-[9rem] items-center justify-between gap-4 rounded-md border bg-gradient-to-r to-transparent bg-void/55 px-3.5 py-1.5 text-left backdrop-blur transition-transform hover:-translate-y-px hover:brightness-125"
         :class="RARITY_CHIP[r]"
+        @click="emit('select', r)"
       >
         <span
           class="text-[0.8125rem] font-semibold"
           :class="RARITY_TEXT[r]"
         >{{ $t(`rarity.${r}`) }}</span>
-        <!-- Compteur dans la couleur de la rareté, comme le libellé. -->
+        <!-- Compteur dans la couleur de la rareté ; une coche quand la rareté est complète. -->
         <span
-          class="font-mono text-[0.8125rem] font-bold tabular-nums"
+          class="flex items-center gap-1 font-mono text-[0.8125rem] font-bold tabular-nums"
           :class="RARITY_TEXT[r]"
         >
+          <DxIcon
+            v-if="store.countByRarity[r].total && store.countByRarity[r].owned >= store.countByRarity[r].total"
+            name="actions/check"
+            :size="13"
+          />
           {{ store.countByRarity[r].owned }}/{{ store.countByRarity[r].total }}
         </span>
-      </div>
+      </button>
     </div>
   </PageBanner>
 </template>
