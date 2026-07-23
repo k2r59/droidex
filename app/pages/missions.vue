@@ -193,8 +193,12 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
         :key="pad.pad"
         class="panel p-3 sm:p-4"
       >
+        <!--
+          En-tête compact : numéro cerclé, illustration du terminal, titre + coût/durée, et le
+          chevron d'ouverture. Récompenses et barre passent en dessous, en pleine largeur —
+          les entasser sur cette ligne écrasait tout sur mobile.
+        -->
         <div class="flex items-center gap-3 sm:gap-4">
-          <!-- Le numéro est cerclé de la couleur du palier, comme la maquette. -->
           <span
             class="grid size-9 shrink-0 place-items-center rounded-full border-2 bg-void/40 font-mono text-sm"
             :class="TIER_RING[pad.missionTier as Tier]"
@@ -202,68 +206,22 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
             {{ pad.pad }}
           </span>
 
-          <!--
-            L'illustration du terminal porte déjà la couleur du palier et son halo.
-            Réduite sur mobile : à pleine taille elle laissait moins de 200 px au titre.
-          -->
           <img
             :src="PAD_IMAGE[pad.missionTier as Tier]"
             alt=""
-            class="size-16 shrink-0 object-contain sm:size-24"
+            class="size-14 shrink-0 object-contain sm:size-20"
             loading="lazy"
           >
 
-          <!--
-            Colonne de contenu : titre et récompenses sur une ligne, barre en dessous.
-            La barre appartient à cette colonne et non à la carte entière — elle démarre
-            après le terminal et s'arrête avant le chevron, comme sur la maquette.
-          -->
           <div class="min-w-0 flex-1">
-            <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
-              <div class="min-w-0">
-                <h3 class="text-lg">
-                  {{ $t(`tier.${pad.missionTier}`) }}
-                  <span
-                    v-if="pad.unlockCost"
-                    class="text-ink-muted"
-                  >{{ formatNumber(pad.unlockCost, locale) }}</span>
-                </h3>
-                <p class="text-xs text-ink-muted">
-                  {{ pad.unlockCost ? formatNumber(pad.unlockCost, locale) : $t('droid.noData') }}
-                  ·
-                  {{ formatDuration(pad.baseDurationSeconds) }}
-                </p>
-              </div>
-
-              <div class="flex flex-wrap items-center gap-3">
-                <span class="text-[10px] font-semibold uppercase tracking-wide text-rare">
-                  {{ $t('missions.rewards') }}
-                </span>
-                <span
-                  v-for="r in (pad.rewards as Reward[])"
-                  :key="`lbl-${r.kind}-${r.tier ?? ''}`"
-                  class="flex items-center gap-1.5 text-sm font-semibold"
-                >
-                  <span
-                    class="size-3 rounded-full"
-                    :class="rewardClass(r)"
-                  />
-                  {{ r.chance }} %
-                </span>
-              </div>
-            </div>
-
-            <!-- Texte blanc ombré : lisible aussi bien sur l'or que sur le gris. -->
-            <div class="mt-2.5 flex h-6 overflow-hidden rounded-md">
-              <span
-                v-for="r in (pad.rewards as Reward[])"
-                :key="`${r.kind}-${r.tier ?? ''}`"
-                :title="`${rewardLabel(r)} — ${r.chance} %`"
-                class="grid place-items-center text-[11px] font-bold text-white [text-shadow:0_1px_2px_rgb(0_0_0/0.5)]"
-                :class="rewardClass(r)"
-                :style="{ width: `${r.chance}%` }"
-              >{{ r.chance >= 15 ? `${r.chance}%` : '' }}</span>
-            </div>
+            <h3 class="text-base sm:text-lg">
+              {{ $t(`tier.${pad.missionTier}`) }}
+            </h3>
+            <p class="text-xs text-ink-muted">
+              {{ pad.unlockCost ? formatNumber(pad.unlockCost, locale) : $t('droid.noData') }}
+              ·
+              {{ formatDuration(pad.baseDurationSeconds) }}
+            </p>
           </div>
 
           <button
@@ -278,6 +236,38 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
               :size="18"
             />
           </button>
+        </div>
+
+        <!-- Récompenses puis barre de probabilités, en pleine largeur sous l'en-tête. -->
+        <div class="mt-3">
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+            <span class="text-[10px] font-semibold uppercase tracking-wide text-rare">
+              {{ $t('missions.rewards') }}
+            </span>
+            <span
+              v-for="r in (pad.rewards as Reward[])"
+              :key="`lbl-${r.kind}-${r.tier ?? ''}`"
+              class="flex items-center gap-1.5 text-sm font-semibold"
+            >
+              <span
+                class="size-3 rounded-full"
+                :class="rewardClass(r)"
+              />
+              {{ r.chance }} %
+            </span>
+          </div>
+
+          <!-- Texte blanc ombré : lisible aussi bien sur l'or que sur le gris. -->
+          <div class="mt-2 flex h-6 overflow-hidden rounded-md">
+            <span
+              v-for="r in (pad.rewards as Reward[])"
+              :key="`${r.kind}-${r.tier ?? ''}`"
+              :title="`${rewardLabel(r)} — ${r.chance} %`"
+              class="grid place-items-center text-[11px] font-bold text-white [text-shadow:0_1px_2px_rgb(0_0_0/0.5)]"
+              :class="rewardClass(r)"
+              :style="{ width: `${r.chance}%` }"
+            >{{ r.chance >= 15 ? `${r.chance}%` : '' }}</span>
+          </div>
         </div>
 
         <p
