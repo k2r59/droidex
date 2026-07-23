@@ -75,8 +75,6 @@ function setLevel(value: number) {
   store.setRebirth(Math.min(rebirthData.maxRebirth, Math.max(0, value)))
 }
 
-const search = ref('')
-
 /**
  * Palier ouvert dans la fenêtre de détail. Cliquer une tuile n'change plus directement la
  * progression : on montre d'abord ce que le palier demande, et le joueur décide ensuite —
@@ -114,18 +112,15 @@ onKeyStroke('Escape', () => { if (selected.value) closeLevel() })
  * cas de presque tout le cycle 2 et du cycle 3. Le cadenas dit donc « donnée manquante »
  * et non « progression insuffisante » : mentir sur ce point induirait le joueur en erreur.
  */
-const shown = computed(() => {
-  const q = search.value.trim()
-  return levels.value
-    .filter((l) => !q || String(l.level).includes(q) || formatNumber(l.credits, locale.value).includes(q))
-    .map((l) => ({
-      ...l,
-      locked: l.droids.length === 0,
-      done: l.level <= store.rebirth,
-      current: l.level === store.rebirth + 1,
-      superUnlock: l.level === rebirthData.superRebirthUnlock.rebirth,
-    }))
-})
+const shown = computed(() =>
+  levels.value.map((l) => ({
+    ...l,
+    locked: l.droids.length === 0,
+    done: l.level <= store.rebirth,
+    current: l.level === store.rebirth + 1,
+    superUnlock: l.level === rebirthData.superRebirthUnlock.rebirth,
+  })),
+)
 </script>
 
 <template>
@@ -463,26 +458,9 @@ const shown = computed(() => {
 
       <!-- Table complète : utile pour planifier plusieurs paliers à l'avance. -->
       <section class="panel p-4 sm:p-5">
-        <!-- Titre puis recherche, accolés à gauche : la maquette ne les sépare pas. -->
-        <div class="mb-4 flex flex-wrap items-center gap-4">
-          <h2 class="text-lg uppercase tracking-wide">
-            {{ $t('rebirth.allTiers') }}
-          </h2>
-          <label class="dx-search w-full sm:w-72">
-            <DxIcon
-              name="actions/search"
-              :size="16"
-              class="text-ink-muted"
-            />
-            <input
-              v-model="search"
-              type="search"
-              :placeholder="$t('rebirth.searchTier')"
-              class="border-0 bg-transparent outline-none"
-            >
-            <span />
-          </label>
-        </div>
+        <h2 class="mb-4 text-lg uppercase tracking-wide">
+          {{ $t('rebirth.allTiers') }}
+        </h2>
 
         <ul class="grid grid-cols-2 gap-2 sm:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8">
           <li
@@ -525,9 +503,9 @@ const shown = computed(() => {
 
               <p class="flex items-center gap-1.5">
                 <DxIcon
-                  name="resources/diamond"
+                  name="resources/credit-bar"
                   :size="14"
-                  class="shrink-0 text-nova"
+                  class="shrink-0"
                 />
                 <span class="font-mono text-sm">{{ formatNumber(lvl.credits, locale) }}</span>
                 <InfoPop
@@ -596,9 +574,9 @@ const shown = computed(() => {
               </h2>
               <p class="mt-1 flex items-center gap-1.5">
                 <DxIcon
-                  name="resources/diamond"
+                  name="resources/credit-bar"
                   :size="15"
-                  class="shrink-0 text-nova"
+                  class="shrink-0"
                 />
                 <span class="font-mono font-bold text-nova">{{ formatNumber(selected.credits, locale) }}</span>
                 <span class="text-sm text-ink-muted">{{ $t('rebirth.creditsRequired') }}</span>
