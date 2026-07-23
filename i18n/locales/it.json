@@ -402,5 +402,19 @@
     "roleNova": "Guida ai Nova Crystals",
     "roleCommunity": "Discussioni, patch notes ed eventi",
     "roleOfficial": "Annunci ufficiali dell'isola"
+  },
+  "sync": {
+    "title": "Sincronizzazione",
+    "subtitle": "Trasferisci i tuoi progressi su un altro dispositivo con un codice — senza account né email.",
+    "sendTitle": "Invia da questo dispositivo",
+    "generate": "Genera un codice",
+    "codeHint": "Valido 30 giorni. Inserisci questo codice sull'altro dispositivo.",
+    "receiveTitle": "Recupera su questo dispositivo",
+    "codePlaceholder": "AB3K-9FMQ",
+    "recover": "Recupera",
+    "receiveWarning": "Sostituisce i progressi di questo dispositivo.",
+    "recoverDone": "Progressi recuperati.",
+    "recoverFailed": "Codice non valido o scaduto.",
+    "genFailed": "Generazione del codice non riuscita. Riprova."
   }
 }

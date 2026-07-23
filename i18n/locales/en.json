@@ -402,5 +402,19 @@
     "roleNova": "Nova Crystals guide",
     "roleCommunity": "Discussion, patch notes and events",
     "roleOfficial": "Official island announcements"
+  },
+  "sync": {
+    "title": "Sync",
+    "subtitle": "Transfer your progress to another device with a code — no account, no email.",
+    "sendTitle": "Send from this device",
+    "generate": "Generate a code",
+    "codeHint": "Valid for 30 days. Enter this code on your other device.",
+    "receiveTitle": "Receive on this device",
+    "codePlaceholder": "AB3K-9FMQ",
+    "recover": "Recover",
+    "receiveWarning": "Replaces this device's progress.",
+    "recoverDone": "Progress recovered.",
+    "recoverFailed": "Invalid or expired code.",
+    "genFailed": "Code generation failed. Try again."
   }
 }

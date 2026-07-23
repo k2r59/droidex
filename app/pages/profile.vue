@@ -63,6 +63,94 @@ async function importProgress(event: Event) {
   }
 }
 
+/**
+ * Synchronisation par code anonyme.
+ *
+ * On dépose un instantané de la progression sur le serveur (stockage Netlify Blobs) et on
+ * reçoit un code court. L'autre appareil saisit ce code pour récupérer la progression.
+ * Aucun compte, aucune donnée personnelle — seulement la progression de jeu, sous un code
+ * aléatoire qui expire après 30 jours.
+ */
+const syncCode = ref<string | null>(null)
+const syncBusy = ref(false)
+const syncError = ref<string | null>(null)
+const copiedCode = ref(false)
+
+async function generateCode() {
+  syncBusy.value = true
+  syncError.value = null
+  syncCode.value = null
+  try {
+    const res = await $fetch<{ code: string }>('/api/sync', {
+      method: 'POST',
+      body: {
+        collection: store.entries,
+        rebirth: store.rebirth,
+        superRebirth: store.superRebirth,
+        cycle: store.cycle,
+        novaCrystals: store.novaCrystals,
+        shopLevels: store.shopLevels,
+      },
+    })
+    syncCode.value = res.code
+  }
+  catch {
+    syncError.value = t('sync.genFailed')
+  }
+  finally {
+    syncBusy.value = false
+  }
+}
+
+async function copyCode() {
+  if (!syncCode.value) return
+  try {
+    await navigator.clipboard.writeText(syncCode.value)
+    copiedCode.value = true
+    setTimeout(() => { copiedCode.value = false }, 1500)
+  }
+  catch {
+    // Presse-papiers indisponible : le code reste lisible à l'écran, on n'affiche rien.
+  }
+}
+
+/** Récupération : remplace la progression de CET appareil par celle du code. */
+const recoverInput = ref('')
+const recoverMessage = ref<{ ok: boolean, text: string } | null>(null)
+
+async function recoverFromCode() {
+  const code = recoverInput.value.trim()
+  if (!code) return
+  syncBusy.value = true
+  recoverMessage.value = null
+  try {
+    const { snapshot } = await $fetch<{ snapshot: {
+      collection: unknown
+      rebirth?: number
+      superRebirth?: number
+      cycle?: number
+      novaCrystals?: number
+      shopLevels?: Record<string, number>
+    } }>(`/api/sync/${encodeURIComponent(code)}`)
+    await store.replaceAll({
+      collection: migrateCollection(snapshot.collection as never),
+      rebirth: Number(snapshot.rebirth) || 0,
+      superRebirth: Number(snapshot.superRebirth) || 0,
+      cycle: Number(snapshot.cycle) || 1,
+      novaCrystals: Number(snapshot.novaCrystals) || 0,
+      shopLevels: snapshot.shopLevels ?? {},
+    })
+    recoverMessage.value = { ok: true, text: t('sync.recoverDone') }
+    recoverInput.value = ''
+  }
+  catch {
+    recoverMessage.value = { ok: false, text: t('sync.recoverFailed') }
+  }
+  finally {
+    syncBusy.value = false
+  }
+}
+
 /** L'effacement est irréversible : il demande une confirmation explicite, jamais un seul clic. */
 const confirmingClear = ref(false)
 
@@ -157,6 +245,104 @@ async function clearAll() {
       >
         {{ importMessage.text }}
       </p>
+    </section>
+
+    <!-- Synchronisation par code anonyme entre appareils. -->
+    <section class="panel p-6">
+      <h2 class="flex items-center gap-2 font-semibold">
+        <DxIcon
+          name="actions/refresh"
+          :size="18"
+          class="text-accent"
+        />
+        {{ $t('sync.title') }}
+      </h2>
+      <p class="mt-1 text-[0.8125rem] text-ink-muted">
+        {{ $t('sync.subtitle') }}
+      </p>
+
+      <div class="mt-4 grid gap-4 sm:grid-cols-2">
+        <!-- Envoyer : générer un code depuis cet appareil. -->
+        <div class="rounded-card border border-edge-soft bg-void/40 p-4">
+          <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
+            {{ $t('sync.sendTitle') }}
+          </p>
+
+          <button
+            v-if="!syncCode"
+            type="button"
+            class="dx-button dx-button--primary dx-button--block mt-3"
+            :disabled="syncBusy"
+            @click="generateCode"
+          >
+            {{ $t('sync.generate') }}
+          </button>
+
+          <template v-else>
+            <button
+              type="button"
+              class="mt-3 flex w-full items-center justify-center gap-2 rounded-lg border border-accent/40 bg-accent/10 px-3 py-3 font-mono text-xl font-bold tracking-widest text-accent transition-colors hover:border-accent"
+              @click="copyCode"
+            >
+              {{ syncCode }}
+              <DxIcon
+                :name="copiedCode ? 'actions/check' : 'actions/copy'"
+                :size="16"
+                :class="copiedCode ? 'text-valid' : 'text-accent'"
+              />
+            </button>
+            <p class="mt-2 text-xs text-ink-muted">
+              {{ $t('sync.codeHint') }}
+            </p>
+          </template>
+
+          <p
+            v-if="syncError"
+            class="mt-2 text-[0.8125rem] text-danger"
+          >
+            {{ syncError }}
+          </p>
+        </div>
+
+        <!-- Récupérer : saisir un code sur cet appareil. -->
+        <div class="rounded-card border border-edge-soft bg-void/40 p-4">
+          <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
+            {{ $t('sync.receiveTitle') }}
+          </p>
+
+          <form
+            class="mt-3 flex gap-2"
+            @submit.prevent="recoverFromCode"
+          >
+            <input
+              v-model="recoverInput"
+              type="text"
+              autocapitalize="characters"
+              spellcheck="false"
+              :placeholder="$t('sync.codePlaceholder')"
+              class="dx-search min-w-0 flex-1 font-mono uppercase tracking-widest"
+            >
+            <button
+              type="submit"
+              class="dx-button dx-button--secondary shrink-0"
+              :disabled="syncBusy || !recoverInput.trim()"
+            >
+              {{ $t('sync.recover') }}
+            </button>
+          </form>
+
+          <p class="mt-2 text-xs text-warn">
+            {{ $t('sync.receiveWarning') }}
+          </p>
+          <p
+            v-if="recoverMessage"
+            class="mt-1 text-[0.8125rem]"
+            :class="recoverMessage.ok ? 'text-valid' : 'text-danger'"
+          >
+            {{ recoverMessage.text }}
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- Effacement : séparé du reste et cerclé de rouge, pour qu'on ne le déclenche pas par mégarde. -->

@@ -28,6 +28,23 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2025-07-15',
 
+  /**
+   * Stockage des instantanés de synchronisation (codes de partage anonymes).
+   *
+   * En production, on s'appuie sur **Netlify Blobs** : un magasin clé-valeur intégré à la
+   * plateforme, sans base de données ni connexion à provisionner — l'instantané d'une
+   * progression n'a besoin de rien de plus. En développement, un simple dossier `.data/`
+   * (pilote `fs`) rend la même API disponible sans dépendre de Netlify.
+   */
+  nitro: {
+    storage: {
+      sync: { driver: 'netlify-blobs', name: 'droidex-sync' },
+    },
+    devStorage: {
+      sync: { driver: 'fs', base: './.data/sync' },
+    },
+  },
+
   vite: {
     plugins: [tailwindcss()],
   },

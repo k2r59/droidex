@@ -402,5 +402,19 @@
     "roleNova": "Guide des Nova Crystals",
     "roleCommunity": "Discussions, patch notes et événements",
     "roleOfficial": "Annonces officielles de l'île"
+  },
+  "sync": {
+    "title": "Synchronisation",
+    "subtitle": "Transfère ta progression vers un autre appareil avec un code — sans compte ni email.",
+    "sendTitle": "Envoyer depuis cet appareil",
+    "generate": "Générer un code",
+    "codeHint": "Valable 30 jours. Saisis ce code sur ton autre appareil.",
+    "receiveTitle": "Récupérer sur cet appareil",
+    "codePlaceholder": "AB3K-9FMQ",
+    "recover": "Récupérer",
+    "receiveWarning": "Remplace la progression de cet appareil.",
+    "recoverDone": "Progression récupérée.",
+    "recoverFailed": "Code invalide ou expiré.",
+    "genFailed": "La génération du code a échoué. Réessaie."
   }
 }

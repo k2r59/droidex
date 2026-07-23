@@ -402,5 +402,19 @@
     "roleNova": "Nova-Kristalle-Guide",
     "roleCommunity": "Diskussionen, Patchnotes und Events",
     "roleOfficial": "Offizielle Insel-Ankündigungen"
+  },
+  "sync": {
+    "title": "Synchronisierung",
+    "subtitle": "Übertrage deinen Fortschritt mit einem Code auf ein anderes Gerät — ohne Konto, ohne E-Mail.",
+    "sendTitle": "Von diesem Gerät senden",
+    "generate": "Code erzeugen",
+    "codeHint": "30 Tage gültig. Gib diesen Code auf deinem anderen Gerät ein.",
+    "receiveTitle": "Auf diesem Gerät empfangen",
+    "codePlaceholder": "AB3K-9FMQ",
+    "recover": "Wiederherstellen",
+    "receiveWarning": "Ersetzt den Fortschritt dieses Geräts.",
+    "recoverDone": "Fortschritt wiederhergestellt.",
+    "recoverFailed": "Ungültiger oder abgelaufener Code.",
+    "genFailed": "Code-Erzeugung fehlgeschlagen. Versuch es erneut."
   }
 }
