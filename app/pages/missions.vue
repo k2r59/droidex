@@ -99,6 +99,11 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
       name="missions"
       min-height="16rem"
     >
+      <!-- Fond spatial animé à la place de l'illustration : dégradé bleu nuit + étoiles. -->
+      <template #backdrop>
+        <SpaceBackdrop />
+      </template>
+
       <div class="flex items-start gap-3">
         <span class="grid size-11 shrink-0 place-items-center rounded-md bg-accent/15 text-accent">
           <DxIcon

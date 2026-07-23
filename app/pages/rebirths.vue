@@ -133,6 +133,11 @@ const shown = computed(() =>
         name="renaissances"
         min-height="17rem"
       >
+        <!-- Fond spatial animé à la place de l'illustration : dégradé bleu nuit + étoiles. -->
+        <template #backdrop>
+          <SpaceBackdrop />
+        </template>
+
         <div>
           <h1 class="text-2xl uppercase tracking-tight sm:text-4xl lg:text-5xl">
             {{ $t('rebirth.title') }}
