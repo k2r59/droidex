@@ -349,5 +349,36 @@
     "lastCall": "Alles wird sofort gelöscht, ohne Weg zurück.",
     "keep": "Nein, Fortschritt behalten",
     "confirm": "Ja, alles löschen"
+  },
+  "footer": {
+    "tagline": "Interaktive Community-Datenbank für die Droiden aus Star Wars und Fortnite.",
+    "communityActive": "Aktive Community",
+    "usefulLinks": "Nützliche Links",
+    "infoCredits": "Infos & Credits",
+    "guideComplete": "Vollständiger Guide",
+    "joinCommunity": "Der Community beitreten",
+    "islandCode": "Insel-Code",
+    "versionLabel": "Version",
+    "lastUpdate": "Zuletzt aktualisiert",
+    "communityGuides": "Community-Guides",
+    "warning": "Hinweis",
+    "copyCode": "Insel-Code kopieren",
+    "copied": "Kopiert",
+    "proudlyCommunity": "Stolz von der Community",
+    "allRights": "Alle Rechte vorbehalten",
+    "copyright": "© {year} Droidex",
+    "feat": {
+      "communityTitle": "100% Community",
+      "communityDesc": "Von der Community erstellt und gepflegt",
+      "verifiedTitle": "Geprüfte Daten",
+      "verifiedDesc": "Geprüft und mit mehreren Quellen abgeglichen",
+      "updatesTitle": "Regelmäßige Updates",
+      "updatesDesc": "Laufend neue Infos und Statistiken",
+      "supportTitle": "Unterstütze das Projekt",
+      "supportDesc": "Teilen, Feedback und Beiträge willkommen"
+    },
+    "sources": "Quellen",
+    "sourcesValue": "Community, mehrere Quellen",
+    "subreddit": "r/StarWarsDroidTycoon"
   }
 }
