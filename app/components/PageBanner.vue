@@ -45,9 +45,14 @@ const mobile = computed(() => src('mobile'))
 </script>
 
 <template>
+  <!--
+    La hauteur minimale (calée sur le cadrage de l'illustration) ne s'applique qu'à partir de
+    `sm` : sur mobile, la bannière épouse son contenu, sans réserver de vide sous une carte
+    compacte. En dessous, un plancher discret garde une présence à l'image.
+  -->
   <section
-    class="panel relative isolate overflow-hidden"
-    :style="{ minHeight }"
+    class="panel relative isolate min-h-[9rem] overflow-hidden sm:min-h-[var(--dx-banner-h)]"
+    :style="{ '--dx-banner-h': minHeight }"
   >
     <picture
       v-if="desktop"

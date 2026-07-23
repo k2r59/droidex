@@ -151,7 +151,76 @@ const shown = computed(() => {
           s'arrête avant les droids de l'illustration : au-delà, le texte passerait sur
           le corps clair de R2-D2.
         -->
-        <div class="grid max-w-4xl rounded-card border border-edge-soft bg-void/55 backdrop-blur sm:grid-cols-3 sm:divide-x sm:divide-edge">
+        <!--
+          Résumé compact sur mobile (<sm) : le tableau de bord du CYCLE en cours — palier,
+          bonus, réglage et sélecteur de cycle réunis, sans l'anneau ni les longues étiquettes.
+          Il remplace la grille empilée pour que les droïds requis remontent sans scroller.
+          La grille détaillée reprend la main dès `sm`.
+        -->
+        <div class="rounded-card border border-edge-soft bg-void/55 p-3.5 backdrop-blur sm:hidden">
+          <div class="flex items-start justify-between gap-3">
+            <div class="min-w-0">
+              <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
+                {{ $t('rebirth.yourProgress') }}
+              </p>
+              <p class="font-mono text-2xl font-bold leading-tight">
+                <span class="text-accent">{{ store.rebirth }}</span><span class="text-ink-strong">/{{ rebirthData.maxRebirth }}</span>
+                <span class="ml-1 align-middle text-xs text-ink-muted">· {{ progress }}%</span>
+              </p>
+            </div>
+            <div class="shrink-0 text-right">
+              <p class="text-[10px] font-semibold uppercase tracking-[0.14em]">
+                <span class="text-ink-strong">{{ bonusLabel[0] }}</span>
+                <span class="ml-1 text-ink-muted">{{ bonusLabel[1] }}</span>
+              </p>
+              <p class="font-mono text-xl font-bold text-accent">
+                +{{ creditMultiplier }}%
+              </p>
+            </div>
+          </div>
+          <div class="mt-3 flex items-center gap-2">
+            <div class="dx-stepper flex-1">
+              <button
+                type="button"
+                :aria-label="`−1 ${$t('rebirth.title')}`"
+                @click="setLevel(store.rebirth - 1)"
+              >
+                −
+              </button>
+              <output>{{ store.rebirth }}</output>
+              <button
+                type="button"
+                :aria-label="`+1 ${$t('rebirth.title')}`"
+                @click="setLevel(store.rebirth + 1)"
+              >
+                +
+              </button>
+            </div>
+            <label class="relative inline-flex shrink-0 items-center">
+              <span class="sr-only">{{ $t('rebirth.chooseCycle') }}</span>
+              <select
+                :value="store.cycle"
+                class="cursor-pointer appearance-none rounded-md border border-edge-soft bg-void/60 py-1.5 pl-2.5 pr-7 text-xs text-ink transition-colors focus:border-accent focus:outline-none"
+                @change="store.setCycle(Number(($event.target as HTMLSelectElement).value))"
+              >
+                <option
+                  v-for="n in 4"
+                  :key="n"
+                  :value="n"
+                >
+                  {{ $t('rebirth.cycle', { number: n }) }}{{ n === realCycle ? ` · ${$t('rebirth.currentCycle')}` : '' }}
+                </option>
+              </select>
+              <DxIcon
+                name="actions/chevron-down"
+                :size="13"
+                class="pointer-events-none absolute right-2 text-ink-muted"
+              />
+            </label>
+          </div>
+        </div>
+
+        <div class="hidden max-w-4xl rounded-card border border-edge-soft bg-void/55 backdrop-blur sm:grid sm:grid-cols-3 sm:divide-x sm:divide-edge">
           <div class="flex items-center gap-5 p-4">
             <div class="min-w-0">
               <p class="whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
@@ -274,16 +343,6 @@ const shown = computed(() => {
         </div>
       </PageBanner>
 
-      <!-- Sans contour et en petit corps : c'est un rappel, pas une alerte bloquante. -->
-      <p class="dx-alert dx-alert--warning border-0 text-[0.8125rem]">
-        <DxIcon
-          name="status/warning"
-          :size="17"
-          class="mt-px shrink-0"
-        />
-        <span>{{ $t('rebirth.placementWarning') }}</span>
-      </p>
-
       <!-- Prochaine renaissance : c'est l'écran qu'on ouvre en jouant. -->
       <section
         v-if="nextLevel"
@@ -320,7 +379,7 @@ const shown = computed(() => {
             >
               <button
                 type="button"
-                class="rebirth-req flex min-h-[5.5rem] w-full items-center gap-4 rounded-lg border px-5 py-4 text-left transition-colors hover:border-accent"
+                class="rebirth-req flex min-h-[4.5rem] w-full items-center gap-3 rounded-lg border px-4 py-3 text-left transition-colors hover:border-accent sm:min-h-[5.5rem] sm:gap-4 sm:px-5 sm:py-4"
                 :class="met(nextLevel.level, req) ? 'border-valid/60' : 'border-edge-soft'"
                 :aria-pressed="met(nextLevel.level, req)"
                 @click="toggleRequirement(nextLevel.level, req)"
@@ -342,7 +401,7 @@ const shown = computed(() => {
                     prendre un Mythique au palier de base pour un droid « Typique » (les deux
                     partageaient ce mot en français) ; le palier reste l'exigence réelle.
                   -->
-                  <div class="mt-1.5 flex flex-col items-start gap-1">
+                  <div class="mt-1.5 flex flex-wrap items-center gap-1.5 sm:flex-col sm:items-start sm:gap-1">
                     <RarityBadge
                       v-if="droidBySlug[req.slug]"
                       :rarity="droidBySlug[req.slug]!.rarity"
@@ -383,6 +442,19 @@ const shown = computed(() => {
         </template>
       </section>
 
+      <!--
+        Rappel placé après les droïds requis : c'est en les cochant qu'on se demande si les
+        posséder suffit. Sans contour et en petit corps — un rappel, pas une alerte bloquante.
+      -->
+      <p class="dx-alert dx-alert--warning border-0 text-[0.8125rem]">
+        <DxIcon
+          name="status/warning"
+          :size="17"
+          class="mt-px shrink-0"
+        />
+        <span>{{ $t('rebirth.placementWarning') }}</span>
+      </p>
+
       <!-- Table complète : utile pour planifier plusieurs paliers à l'avance. -->
       <section class="panel p-5">
         <!-- Titre puis recherche, accolés à gauche : la maquette ne les sépare pas. -->
@@ -405,20 +477,6 @@ const shown = computed(() => {
             <span />
           </label>
         </div>
-
-        <!--
-          La provenance est dite une fois pour toute la grille plutôt que répétée sur
-          chaque tuile : elle vaut pour l'ensemble des exigences des quatre cycles, et un
-          avertissement répété cent douze fois cesse d'être lu.
-        -->
-        <p class="dx-alert dx-alert--warning mb-3 border-0 text-[0.8125rem]">
-          <DxIcon
-            name="status/info"
-            :size="17"
-            class="mt-px shrink-0"
-          />
-          <span>{{ $t('rebirth.singleSource') }}</span>
-        </p>
 
         <ul class="grid grid-cols-2 gap-2 sm:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8">
           <li
@@ -474,6 +532,20 @@ const shown = computed(() => {
             </button>
           </li>
         </ul>
+
+        <!--
+          Provenance dite une fois pour toute la grille, sous les tuiles : elle vaut pour
+          l'ensemble des exigences des quatre cycles, et un avertissement répété cent douze
+          fois cesse d'être lu.
+        -->
+        <p class="dx-alert dx-alert--warning mt-3 border-0 text-[0.8125rem]">
+          <DxIcon
+            name="status/info"
+            :size="17"
+            class="mt-px shrink-0"
+          />
+          <span>{{ $t('rebirth.singleSource') }}</span>
+        </p>
       </section>
     </div>
 
