@@ -9,7 +9,6 @@
  */
 import { generatedFrom } from '~/data/droids.json'
 import updates from '~/data/updates.json'
-import planet from '~/assets/images/planet-rebirth.webp'
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
@@ -32,7 +31,8 @@ const islandVersion = computed(() => {
  * (forme `…/droidex@2026-06-02 + guides communautaires juillet 2026`). On les lit plutôt
  * que de les saisir en dur, pour qu'ils suivent la régénération des données. L'auteur du
  * dépôt d'origine n'est **pas** affiché : le projet agrège plusieurs sources
- * communautaires, en créditer une seule serait trompeur (voir la ligne « Sources »).
+ * communautaires, en créditer une seule comme « auteur » serait trompeur. La ligne « Créateur » du
+ * pied crédite l'auteur de l'île (FOAD), pas la source des données.
  */
 const credits = computed(() => {
   const m = generatedFrom.match(/@(\d{4}-\d{2}-\d{2})(?:.*?guides communautaires\s+(.+))?$/)
@@ -61,6 +61,18 @@ const features = [
   { icon: 'resources/energy', tone: 'text-rare', ring: 'border-rare/40', key: 'updates' },
   { icon: 'actions/heart', tone: 'text-legendary', ring: 'border-legendary/40', key: 'support' },
 ] as const
+
+/**
+ * Ayants droit cités dans l'avertissement, chacun lié vers son site officiel (nouvel
+ * onglet). Les noms sont des marques déposées, identiques dans toutes les langues ; seul
+ * l'ordre dans la phrase change, ce que gère `<i18n-t>` par ses emplacements nommés.
+ */
+const brands = {
+  starWars: { name: 'Star Wars', url: 'https://www.starwars.com' },
+  fortnite: { name: 'Fortnite', url: 'https://www.fortnite.com' },
+  epicGames: { name: 'Epic Games', url: 'https://www.epicgames.com' },
+  lucasfilm: { name: 'Lucasfilm', url: 'https://www.lucasfilm.com' },
+} as const
 
 /** Réseaux et lien officiel, repris de la colonne de gauche. */
 const socials = [
@@ -109,13 +121,6 @@ async function copyCode() {
             <span class="size-1.5 rounded-full bg-valid shadow-[0_0_6px_rgba(34,212,154,0.9)]" />
             {{ $t('footer.communityActive') }}
           </span>
-          <img
-            :src="planet"
-            alt=""
-            class="mt-5 h-28 w-auto opacity-90"
-            loading="lazy"
-            decoding="async"
-          >
         </div>
 
         <!-- À propos des données -->
@@ -139,9 +144,29 @@ async function copyCode() {
               />
               {{ $t('footer.warning') }}
             </p>
-            <p class="mt-1.5 text-[0.8125rem] leading-relaxed text-ink-muted">
-              {{ $t('disclaimer.rights') }}
-            </p>
+            <!--
+              Marques cliquables vers leur site officiel, en nouvel onglet. `<i18n-t>`
+              insère les liens à la bonne place dans la phrase traduite via les
+              emplacements nommés, sans avoir à découper la chaîne à la main par langue.
+            -->
+            <i18n-t
+              keypath="disclaimer.rights"
+              tag="p"
+              class="mt-1.5 text-[0.8125rem] leading-relaxed text-ink-muted"
+            >
+              <template
+                v-for="(brand, key) in brands"
+                :key="key"
+                #[key]
+              >
+                <a
+                  :href="brand.url"
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  class="text-ink underline decoration-dotted underline-offset-2 transition-colors hover:text-accent"
+                >{{ brand.name }}</a>
+              </template>
+            </i18n-t>
           </div>
         </div>
 
@@ -254,10 +279,21 @@ async function copyCode() {
 
             <div class="flex items-center justify-between gap-3">
               <dt class="text-ink-muted">
-                {{ $t('footer.sources') }}
+                {{ $t('footer.creator') }}
               </dt>
-              <dd class="text-right text-ink">
-                {{ $t('footer.sourcesValue') }}
+              <dd>
+                <a
+                  href="https://x.com/FoadZone"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 text-accent transition-colors hover:text-ink"
+                >
+                  FOAD
+                  <DxIcon
+                    name="actions/external-link"
+                    :size="12"
+                  />
+                </a>
               </dd>
             </div>
 

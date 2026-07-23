@@ -232,7 +232,7 @@
   "disclaimer": {
     "title": "Über die Daten",
     "community": "Alle Werte stammen aus Community-Trackern und -Wikis. Eine vollständige offizielle Quelle gibt es nicht. Prüfe die Anforderungen im Spiel, bevor du dich auf einen Rebirth festlegst.",
-    "rights": "Star Wars und Fortnite sind Marken von Epic Games und Lucasfilm. Diese Community-Seite ist weder mit ihnen verbunden noch von ihnen unterstützt."
+    "rights": "{starWars} und {fortnite} sind Marken von {epicGames} und {lucasfilm}. Diese Community-Seite ist weder mit ihnen verbunden noch von ihnen genehmigt."
   },
   "timers": {
     "title": "Sandcrawler-Timer",
@@ -369,16 +369,15 @@
     "copyright": "© {year} Droidex",
     "feat": {
       "communityTitle": "100% Community",
-      "communityDesc": "Von der Community erstellt und gepflegt",
-      "verifiedTitle": "Geprüfte Daten",
-      "verifiedDesc": "Geprüft und mit mehreren Quellen abgeglichen",
+      "communityDesc": "Für die Community erstellt und gepflegt",
+      "verifiedTitle": "Abgeglichene Daten",
+      "verifiedDesc": "Mit mehreren Quellen abgeglichen; ohne offizielle Quelle bleiben Fehler möglich.",
       "updatesTitle": "Regelmäßige Updates",
       "updatesDesc": "Laufend neue Infos und Statistiken",
       "supportTitle": "Unterstütze das Projekt",
       "supportDesc": "Teilen, Feedback und Beiträge willkommen"
     },
-    "sources": "Quellen",
-    "sourcesValue": "Community, mehrere Quellen",
-    "subreddit": "r/StarWarsDroidTycoon"
+    "subreddit": "r/StarWarsDroidTycoon",
+    "creator": "Ersteller"
   }
 }

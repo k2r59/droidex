@@ -232,7 +232,7 @@
   "disclaimer": {
     "title": "Sobre los datos",
     "community": "Todas las estadísticas proceden de trackers y wikis comunitarios. No existe ninguna fuente oficial exhaustiva. Comprueba los requisitos en el juego antes de lanzarte a un Rebirth.",
-    "rights": "Star Wars y Fortnite son marcas de Epic Games y Lucasfilm. Este sitio comunitario no está afiliado ni respaldado por ellos."
+    "rights": "{starWars} y {fortnite} son marcas de {epicGames} y {lucasfilm}. Este sitio comunitario no está afiliado ni aprobado por ellos."
   },
   "timers": {
     "title": "Temporizadores del Sandcrawler",
@@ -369,16 +369,15 @@
     "copyright": "© {year} Droidex",
     "feat": {
       "communityTitle": "100% Comunitario",
-      "communityDesc": "Construido y mantenido por la comunidad",
-      "verifiedTitle": "Datos verificados",
-      "verifiedDesc": "Verificados y contrastados con varias fuentes",
+      "communityDesc": "Construido y mantenido para la comunidad",
+      "verifiedTitle": "Datos contrastados",
+      "verifiedDesc": "Contrastados con varias fuentes; sin fuente oficial, pueden producirse errores.",
       "updatesTitle": "Actualizaciones periódicas",
       "updatesDesc": "Nueva información y estadísticas añadidas de forma continua",
       "supportTitle": "Apoya el proyecto",
       "supportDesc": "Se agradecen difusión, comentarios y contribuciones"
     },
-    "sources": "Fuentes",
-    "sourcesValue": "Multifuente comunitaria",
-    "subreddit": "r/StarWarsDroidTycoon"
+    "subreddit": "r/StarWarsDroidTycoon",
+    "creator": "Creador"
   }
 }

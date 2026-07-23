@@ -76,6 +76,21 @@ const RARITY_RING: Record<string, string> = {
             {{ formatIncome(stats.income, locale) }}
             <span class="ml-1 text-xs text-ink-muted">{{ $t(`tier.${shownTier}`) }}</span>
           </template>
+          <!--
+            Palier Galactique possédé : ses stats ne sont pas publiées, mais afficher un
+            « Non publié » nu laissait croire à une donnée manquante alors que c'est le
+            palier le plus haut. On montre le nom du palier, avec l'explication au clic.
+          -->
+          <span
+            v-else-if="shownTier === 'GALACTIC'"
+            class="inline-flex items-center gap-1 text-tier-galactic"
+          >
+            {{ $t('tier.GALACTIC') }}
+            <InfoPop
+              variant="info"
+              :content="$t('droid.galacticNoData')"
+            />
+          </span>
           <span
             v-else
             class="text-ink-muted"
