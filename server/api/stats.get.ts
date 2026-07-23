@@ -20,18 +20,7 @@ function last30Dates(): string[] {
   return days
 }
 
-export default defineEventHandler(async (event) => {
-  // Lecture privée : il faut présenter le jeton. La page /stats n'est pas listée, mais
-  // l'obscurité ne suffit pas — on exige le secret, comparé à celui du serveur.
-  const expected = useRuntimeConfig().statsToken
-  if (!expected) {
-    throw createError({ statusCode: 503, statusMessage: 'Statistiques non configurées' })
-  }
-  const provided = getHeader(event, 'x-stats-token') ?? getQuery(event).token
-  if (provided !== expected) {
-    throw createError({ statusCode: 401, statusMessage: 'Jeton invalide' })
-  }
-
+export default defineEventHandler(async () => {
   const store = useStorage('stats')
 
   const totals = (await store.getItem<Totals>('totals')) ?? { pageviews: 0, visits: 0, pages: {} }

@@ -455,11 +455,6 @@
     "labelInstall": "Installation",
     "labelDroid": "Droid-Seiten",
     "labelOther": "Sonstige",
-    "lockedTitle": "Privater Zugang",
-    "lockedIntro": "Diese Seite ist geschützt. Gib das Zugangs-Token ein, um die Statistiken zu sehen.",
-    "tokenPlaceholder": "Zugangs-Token",
-    "unlock": "Entsperren",
-    "wrongToken": "Ungültiges Token.",
-    "lock": "Sperren"
+    "loadError": "Statistiken können momentan nicht geladen werden."
   }
 }

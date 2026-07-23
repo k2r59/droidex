@@ -18,10 +18,6 @@ export default defineNuxtConfig({
     googleClientSecret: '', // NUXT_GOOGLE_CLIENT_SECRET
     twitchClientId: '', // NUXT_TWITCH_CLIENT_ID
     twitchClientSecret: '', // NUXT_TWITCH_CLIENT_SECRET
-    // Jeton privé qui déverrouille la page de statistiques (lecture seule). La page reste
-    // non listée ; sans ce jeton, /api/stats refuse la lecture. Le comptage (écriture) reste
-    // public. À définir en production via NUXT_STATS_TOKEN.
-    statsToken: '', // NUXT_STATS_TOKEN
     public: {
       // URL publique de l'app, utilisée par BetterAuth pour les callbacks OAuth.
       baseUrl: 'http://localhost:3000', // NUXT_PUBLIC_BASE_URL

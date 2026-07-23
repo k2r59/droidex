@@ -455,11 +455,6 @@
     "labelInstall": "Install",
     "labelDroid": "Droid pages",
     "labelOther": "Other",
-    "lockedTitle": "Private access",
-    "lockedIntro": "This page is restricted. Enter the access token to view the statistics.",
-    "tokenPlaceholder": "Access token",
-    "unlock": "Unlock",
-    "wrongToken": "Invalid token.",
-    "lock": "Lock"
+    "loadError": "Statistics can't be loaded right now."
   }
 }

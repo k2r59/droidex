@@ -1,19 +1,17 @@
 <script setup lang="ts">
 /**
- * Page de fréquentation — **privée**.
+ * Page de fréquentation.
  *
- * Elle n'est listée nulle part et son API de lecture exige un jeton (voir
- * `server/api/stats.get.ts`). On saisit ce jeton une fois ; il est gardé en local et renvoyé
- * en en-tête à chaque lecture. Le comptage (écriture) reste public, lui.
- *
- * Récupération côté client uniquement : le jeton vit dans le navigateur, jamais dans un rendu
- * serveur. La page n'est donc pas indexée et ne fuite aucun chiffre sans le secret.
+ * Non listée et en `noindex` : accessible par son URL directe, mais on ne la met en avant
+ * nulle part et on la tient hors des moteurs de recherche. Elle affiche les compteurs
+ * agrégés servis par `/api/stats` — tout est anonyme (ni cookie, ni identifiant), il n'y a
+ * donc rien à protéger derrière un mot de passe.
  */
 const { t, locale } = useI18n()
 
 useSeoMeta({
   title: () => t('statsPage.title'),
-  // Non listée et sans intérêt pour l'index : on décourage l'exploration.
+  // Non listée et sans intérêt pour l'index : on la tient hors des moteurs.
   robots: 'noindex, nofollow',
 })
 
@@ -24,62 +22,7 @@ type StatsResponse = {
   updatedAt: string
 }
 
-const STORE_KEY = 'droidex:stats-token'
-
-const token = ref('')
-const data = ref<StatsResponse | null>(null)
-const loading = ref(false)
-const wrong = ref(false)
-
-async function load(secret: string) {
-  loading.value = true
-  wrong.value = false
-  try {
-    data.value = await $fetch<StatsResponse>('/api/stats', {
-      headers: { 'x-stats-token': secret },
-    })
-    try {
-      localStorage.setItem(STORE_KEY, secret)
-    }
-    catch {
-      // Sans stockage, il faudra ressaisir le jeton à la prochaine visite. Sans gravité.
-    }
-  }
-  catch {
-    data.value = null
-    wrong.value = true
-    try {
-      localStorage.removeItem(STORE_KEY)
-    }
-    catch { /* ignoré */ }
-  }
-  finally {
-    loading.value = false
-  }
-}
-
-function unlock() {
-  const secret = token.value.trim()
-  if (secret) load(secret)
-}
-
-function lock() {
-  data.value = null
-  token.value = ''
-  try {
-    localStorage.removeItem(STORE_KEY)
-  }
-  catch { /* ignoré */ }
-}
-
-onMounted(() => {
-  let saved: string | null = null
-  try {
-    saved = localStorage.getItem(STORE_KEY)
-  }
-  catch { /* ignoré */ }
-  if (saved) load(saved)
-})
+const { data, pending, error } = await useFetch<StatsResponse>('/api/stats')
 
 /** Libellés des pages : on réutilise la navigation, avec quelques ajouts propres aux stats. */
 const PAGE_LABEL: Record<string, string> = {
@@ -112,71 +55,21 @@ function dayTitle(iso: string, views: number) {
 
 <template>
   <div class="mx-auto flex max-w-3xl flex-col gap-6">
-    <header class="flex items-start justify-between gap-4">
-      <div>
-        <h1 class="text-2xl font-bold uppercase tracking-tight sm:text-3xl">
-          {{ $t('statsPage.title') }}
-        </h1>
-        <p class="mt-2 text-sm leading-relaxed text-ink-muted">
-          {{ $t('statsPage.intro') }}
-        </p>
-      </div>
-      <button
-        v-if="data"
-        type="button"
-        class="dx-button dx-button--ghost shrink-0"
-        @click="lock"
-      >
-        <DxIcon
-          name="status/locked"
-          :size="15"
-        />
-        {{ $t('statsPage.lock') }}
-      </button>
+    <header>
+      <h1 class="text-2xl font-bold uppercase tracking-tight sm:text-3xl">
+        {{ $t('statsPage.title') }}
+      </h1>
+      <p class="mt-2 text-sm leading-relaxed text-ink-muted">
+        {{ $t('statsPage.intro') }}
+      </p>
     </header>
 
-    <!-- Porte d'accès : tant que les données ne sont pas chargées, on demande le jeton. -->
-    <section
-      v-if="!data"
-      class="panel p-6"
+    <p
+      v-if="error"
+      class="panel p-6 text-sm text-danger"
     >
-      <h2 class="flex items-center gap-2 font-semibold">
-        <DxIcon
-          name="status/locked"
-          :size="18"
-          class="text-accent"
-        />
-        {{ $t('statsPage.lockedTitle') }}
-      </h2>
-      <p class="mt-1 text-sm text-ink-muted">
-        {{ $t('statsPage.lockedIntro') }}
-      </p>
-      <form
-        class="mt-4 flex flex-col gap-2 sm:flex-row"
-        @submit.prevent="unlock"
-      >
-        <input
-          v-model="token"
-          type="password"
-          autocomplete="off"
-          :placeholder="$t('statsPage.tokenPlaceholder')"
-          class="min-w-0 flex-1 rounded-md border border-edge bg-void/60 px-3 py-2 font-mono outline-none transition-colors placeholder:font-sans placeholder:text-ink-muted focus:border-accent"
-        >
-        <button
-          type="submit"
-          class="dx-button dx-button--primary shrink-0"
-          :disabled="loading || !token.trim()"
-        >
-          {{ $t('statsPage.unlock') }}
-        </button>
-      </form>
-      <p
-        v-if="wrong"
-        class="mt-2 text-sm text-danger"
-      >
-        {{ $t('statsPage.wrongToken') }}
-      </p>
-    </section>
+      {{ $t('statsPage.loadError') }}
+    </p>
 
     <template v-else>
       <!-- Deux grands compteurs. -->
@@ -186,7 +79,8 @@ function dayTitle(iso: string, views: number) {
             {{ $t('statsPage.visits') }}
           </p>
           <p class="mt-1 font-mono text-3xl font-bold tabular-nums text-accent">
-            {{ formatExact(data.totals.visits, locale) }}
+            <span v-if="pending">—</span>
+            <span v-else>{{ formatExact(data?.totals.visits ?? 0, locale) }}</span>
           </p>
         </div>
         <div class="panel p-6">
@@ -194,7 +88,8 @@ function dayTitle(iso: string, views: number) {
             {{ $t('statsPage.pageviews') }}
           </p>
           <p class="mt-1 font-mono text-3xl font-bold tabular-nums">
-            {{ formatExact(data.totals.pageviews, locale) }}
+            <span v-if="pending">—</span>
+            <span v-else>{{ formatExact(data?.totals.pageviews ?? 0, locale) }}</span>
           </p>
         </div>
       </section>
@@ -224,7 +119,7 @@ function dayTitle(iso: string, views: number) {
 
       <!-- Répartition par page. -->
       <section
-        v-if="data.pages.length"
+        v-if="data?.pages.length"
         class="panel p-6"
       >
         <h2 class="text-sm font-semibold uppercase tracking-[0.14em] text-ink">

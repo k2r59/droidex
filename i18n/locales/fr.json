@@ -455,11 +455,6 @@
     "labelInstall": "Installation",
     "labelDroid": "Fiches de droid",
     "labelOther": "Autre",
-    "lockedTitle": "Accès privé",
-    "lockedIntro": "Cette page est réservée. Saisis le jeton d'accès pour afficher les statistiques.",
-    "tokenPlaceholder": "Jeton d'accès",
-    "unlock": "Déverrouiller",
-    "wrongToken": "Jeton invalide.",
-    "lock": "Verrouiller"
+    "loadError": "Impossible de charger les statistiques pour le moment."
   }
 }

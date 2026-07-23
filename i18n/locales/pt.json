@@ -455,11 +455,6 @@
     "labelInstall": "Instalação",
     "labelDroid": "Fichas de droide",
     "labelOther": "Outro",
-    "lockedTitle": "Acesso privado",
-    "lockedIntro": "Esta página é reservada. Introduz o token de acesso para ver as estatísticas.",
-    "tokenPlaceholder": "Token de acesso",
-    "unlock": "Desbloquear",
-    "wrongToken": "Token inválido.",
-    "lock": "Bloquear"
+    "loadError": "Não é possível carregar as estatísticas neste momento."
   }
 }
