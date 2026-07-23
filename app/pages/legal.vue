@@ -55,7 +55,7 @@ const sections = [
     </header>
 
     <!-- Éditeur / responsable. -->
-    <section class="panel p-6">
+    <section class="panel p-4 sm:p-6">
       <h2 class="text-sm font-semibold uppercase tracking-[0.14em] text-ink">
         {{ $t('legalPage.editorTitle') }}
       </h2>
@@ -77,7 +77,7 @@ const sections = [
     <section
       v-for="s in sections"
       :key="s.title"
-      class="panel p-6"
+      class="panel p-4 sm:p-6"
     >
       <h2 class="text-sm font-semibold uppercase tracking-[0.14em] text-ink">
         {{ $t(s.title) }}
@@ -92,7 +92,7 @@ const sections = [
     </section>
 
     <!-- Sources — le cœur de la page. -->
-    <section class="panel p-6">
+    <section class="panel p-4 sm:p-6">
       <h2 class="text-sm font-semibold uppercase tracking-[0.14em] text-ink">
         {{ $t('legalPage.sourcesTitle') }}
       </h2>
@@ -123,7 +123,7 @@ const sections = [
     </section>
 
     <!-- Confidentialité. -->
-    <section class="panel p-6">
+    <section class="panel p-4 sm:p-6">
       <h2 class="text-sm font-semibold uppercase tracking-[0.14em] text-ink">
         {{ $t('legalPage.privacyTitle') }}
       </h2>
@@ -133,7 +133,7 @@ const sections = [
     </section>
 
     <!-- Contact et retrait. -->
-    <section class="panel border-warn/40 p-6">
+    <section class="panel border-warn/40 p-4 sm:p-6">
       <h2 class="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-warn">
         <DxIcon
           name="game/shield"

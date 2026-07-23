@@ -169,7 +169,7 @@ async function clearAll() {
   <div class="flex flex-col gap-5">
     <section
       v-if="user"
-      class="panel flex items-center gap-4 p-6"
+      class="panel flex items-center gap-4 p-4 sm:p-6"
     >
       <img
         v-if="user.image"
@@ -189,7 +189,7 @@ async function clearAll() {
     </section>
 
     <section class="grid gap-3 sm:grid-cols-3">
-      <div class="panel p-6">
+      <div class="panel p-4 sm:p-6">
         <p class="text-xs text-ink-muted">
           {{ $t('stats.collection') }}
         </p>
@@ -197,7 +197,7 @@ async function clearAll() {
           {{ store.ownedCount }}/{{ store.totalCount }}
         </p>
       </div>
-      <div class="panel p-6">
+      <div class="panel p-4 sm:p-6">
         <p class="text-xs text-ink-muted">
           {{ $t('rebirth.current') }}
         </p>
@@ -205,7 +205,7 @@ async function clearAll() {
           {{ store.rebirth }}
         </p>
       </div>
-      <div class="panel p-6">
+      <div class="panel p-4 sm:p-6">
         <p class="text-xs text-ink-muted">
           {{ $t('stats.totalIncome') }}
         </p>
@@ -215,7 +215,7 @@ async function clearAll() {
       </div>
     </section>
 
-    <section class="panel flex flex-wrap items-center gap-3 p-6">
+    <section class="panel flex flex-wrap items-center gap-3 p-4 sm:p-6">
       <button
         type="button"
         class="flex items-center gap-2 rounded-lg bg-panel-raised px-3 py-2 text-sm transition-colors hover:bg-panel-high"
@@ -253,7 +253,7 @@ async function clearAll() {
     </section>
 
     <!-- Synchronisation par code anonyme entre appareils. -->
-    <section class="panel p-6">
+    <section class="panel p-4 sm:p-6">
       <h2 class="flex items-center gap-2 font-semibold">
         <DxIcon
           name="actions/refresh"
@@ -351,7 +351,7 @@ async function clearAll() {
     </section>
 
     <!-- Effacement : séparé du reste et cerclé de rouge, pour qu'on ne le déclenche pas par mégarde. -->
-    <section class="panel border-danger/40 p-6">
+    <section class="panel border-danger/40 p-4 sm:p-6">
       <h2 class="flex items-center gap-2 font-semibold text-danger">
         <DxIcon
           name="status/warning"

@@ -321,7 +321,7 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
 
     <div class="grid gap-3 lg:grid-cols-[minmax(0,1fr)_380px]">
       <!-- Temps relevés : la réponse concrète à « quel droid envoyer pour aller plus vite ». -->
-      <section class="panel p-5">
+      <section class="panel p-4 sm:p-5">
         <h2 class="mb-3 text-lg uppercase tracking-wide">
           {{ $t('missions.measured', { tier: $t(`tier.${missions.pads.measured.missionTier}`) }) }}
         </h2>
@@ -343,7 +343,7 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
         </ul>
       </section>
 
-      <section class="panel relative overflow-hidden p-5">
+      <section class="panel relative overflow-hidden p-4 sm:p-5">
         <h2 class="text-lg uppercase tracking-wide">
           {{ gameText('missions.secretMission.name') }}
         </h2>
@@ -366,7 +366,7 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
     </div>
 
     <div class="grid gap-3 lg:grid-cols-2">
-      <section class="panel p-5">
+      <section class="panel p-4 sm:p-5">
         <h2 class="mb-2 flex items-center gap-2 text-lg uppercase tracking-wide">
           <DxIcon
             name="game/planet"
@@ -425,7 +425,7 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
         </dl>
       </section>
 
-      <section class="panel p-5">
+      <section class="panel p-4 sm:p-5">
         <h2 class="mb-1 flex items-center gap-2 text-lg uppercase tracking-wide">
           <DxIcon
             name="resources/timer"
@@ -463,7 +463,7 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
     </div>
 
     <div class="grid gap-3 lg:grid-cols-[minmax(0,1fr)_380px]">
-      <section class="panel p-5">
+      <section class="panel p-4 sm:p-5">
         <h2 class="mb-2 text-lg uppercase tracking-wide">
           {{ $t('missions.cantina') }}
         </h2>
@@ -511,7 +511,7 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
         </p>
       </section>
 
-      <section class="panel relative overflow-hidden p-5">
+      <section class="panel relative overflow-hidden p-4 sm:p-5">
         <h2 class="flex flex-wrap items-center gap-2 text-lg">
           <DxIcon
             name="resources/nova-crystal"
@@ -572,7 +572,7 @@ onKeyStroke('Escape', () => { if (selectedPad.value) closePad() })
           @click="closePad"
         />
 
-        <section class="dx-modal-panel panel relative z-10 w-full max-w-lg p-6">
+        <section class="dx-modal-panel panel relative z-10 w-full max-w-lg p-4 sm:p-6">
           <div class="mb-5 flex items-start gap-4">
             <img
               :src="PAD_IMAGE[selectedPad.missionTier as Tier]"

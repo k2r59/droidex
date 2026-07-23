@@ -94,7 +94,7 @@ onUnmounted(() => {
         aria-modal="true"
         aria-labelledby="reset-title"
         tabindex="-1"
-        class="panel dx-modal-in my-auto w-full max-w-md border-danger/40 p-6"
+        class="panel dx-modal-in my-auto w-full max-w-md border-danger/40 p-4 sm:p-6"
       >
         <h2
           id="reset-title"

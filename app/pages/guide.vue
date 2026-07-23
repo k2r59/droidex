@@ -24,7 +24,7 @@ const base = mechanics.base
       </p>
     </header>
 
-    <section class="panel p-6">
+    <section class="panel p-4 sm:p-6">
       <h2 class="mb-3 font-semibold">
         {{ $t('guide.base') }}
       </h2>
@@ -42,7 +42,7 @@ const base = mechanics.base
       </ul>
     </section>
 
-    <section class="panel p-6">
+    <section class="panel p-4 sm:p-6">
       <h2 class="mb-3 font-semibold">
         {{ $t('guide.flawlessTitle') }}
       </h2>
@@ -67,7 +67,7 @@ const base = mechanics.base
       </ul>
     </section>
 
-    <section class="panel overflow-x-auto p-6">
+    <section class="panel overflow-x-auto p-4 sm:p-6">
       <h2 class="mb-3 font-semibold">
         {{ $t('guide.chipsTitle') }}
       </h2>
@@ -128,7 +128,7 @@ const base = mechanics.base
 
     <NuxtLink
       :to="localePath('/missions')"
-      class="panel flex items-center justify-between p-6 transition-colors hover:bg-panel-raised"
+      class="panel flex items-center justify-between p-4 sm:p-6 transition-colors hover:bg-panel-raised"
     >
       <span>
         <span class="block font-semibold">{{ $t('missions.title') }}</span>
@@ -140,7 +140,7 @@ const base = mechanics.base
       >→</span>
     </NuxtLink>
 
-    <section class="panel p-6">
+    <section class="panel p-4 sm:p-6">
       <h2 class="mb-3 font-semibold">
         {{ $t('guide.sandcrawlerTitle') }}
       </h2>
@@ -153,7 +153,7 @@ const base = mechanics.base
       </p>
     </section>
 
-    <section class="panel p-6">
+    <section class="panel p-4 sm:p-6">
       <h2 class="mb-3 font-semibold">
         {{ $t('guide.currenciesTitle') }}
       </h2>
@@ -176,7 +176,7 @@ const base = mechanics.base
       </ul>
     </section>
 
-    <section class="panel p-6">
+    <section class="panel p-4 sm:p-6">
       <h2 class="mb-3 flex items-center gap-2 font-semibold">
         <DxIcon
           name="resources/star"

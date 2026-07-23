@@ -66,7 +66,7 @@ function dayTitle(iso: string, views: number) {
 
     <p
       v-if="error"
-      class="panel p-6 text-sm text-danger"
+      class="panel p-4 sm:p-6 text-sm text-danger"
     >
       {{ $t('statsPage.loadError') }}
     </p>
@@ -74,7 +74,7 @@ function dayTitle(iso: string, views: number) {
     <template v-else>
       <!-- Deux grands compteurs. -->
       <section class="grid gap-3 sm:grid-cols-2">
-        <div class="panel p-6">
+        <div class="panel p-4 sm:p-6">
           <p class="text-xs uppercase tracking-wide text-ink-muted">
             {{ $t('statsPage.visits') }}
           </p>
@@ -83,7 +83,7 @@ function dayTitle(iso: string, views: number) {
             <span v-else>{{ formatExact(data?.totals.visits ?? 0, locale) }}</span>
           </p>
         </div>
-        <div class="panel p-6">
+        <div class="panel p-4 sm:p-6">
           <p class="text-xs uppercase tracking-wide text-ink-muted">
             {{ $t('statsPage.pageviews') }}
           </p>
@@ -95,7 +95,7 @@ function dayTitle(iso: string, views: number) {
       </section>
 
       <!-- 30 derniers jours : barres de pages vues. -->
-      <section class="panel p-6">
+      <section class="panel p-4 sm:p-6">
         <h2 class="text-sm font-semibold uppercase tracking-[0.14em] text-ink">
           {{ $t('statsPage.last30') }}
         </h2>
@@ -120,7 +120,7 @@ function dayTitle(iso: string, views: number) {
       <!-- Répartition par page. -->
       <section
         v-if="data?.pages.length"
-        class="panel p-6"
+        class="panel p-4 sm:p-6"
       >
         <h2 class="text-sm font-semibold uppercase tracking-[0.14em] text-ink">
           {{ $t('statsPage.byPage') }}

@@ -61,7 +61,7 @@ function formatDate(iso: string) {
       <li
         v-for="entry in entries"
         :key="entry.index"
-        class="panel relative p-6"
+        class="panel relative p-4 sm:p-6"
       >
         <span
           class="absolute -left-[26px] top-5 size-2.5 rounded-full ring-4 ring-void"

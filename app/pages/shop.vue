@@ -192,7 +192,7 @@ const notes = [
       </p>
 
       <!-- L'ordre d'achat est la question n°1 des joueurs : on la traite avant le catalogue. -->
-      <section class="panel p-5">
+      <section class="panel p-4 sm:p-5">
         <h2 class="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-ink-muted">
           {{ $t('shop.recommendedOrder') }}
         </h2>

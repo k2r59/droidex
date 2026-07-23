@@ -79,7 +79,7 @@ async function install() {
     <!-- iOS / iPad — atteignable via l'ancre #ios. `scroll-mt` dégage l'en-tête collant. -->
     <section
       id="ios"
-      class="panel scroll-mt-24 p-6"
+      class="panel scroll-mt-24 p-4 sm:p-6"
     >
       <h2 class="flex items-center gap-2.5 text-lg font-semibold">
         <DxIcon
@@ -113,7 +113,7 @@ async function install() {
     <!-- Android / Chrome — atteignable via l'ancre #android. -->
     <section
       id="android"
-      class="panel scroll-mt-24 p-6"
+      class="panel scroll-mt-24 p-4 sm:p-6"
     >
       <h2 class="flex items-center gap-2.5 text-lg font-semibold">
         <DxIcon

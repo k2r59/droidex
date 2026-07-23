@@ -60,7 +60,7 @@ const usedInRebirths = computed(() => {
       ← {{ $t('droid.backToDroidex') }}
     </NuxtLink>
 
-    <section class="panel flex flex-col gap-5 p-5 md:flex-row">
+    <section class="panel flex flex-col gap-5 p-4 sm:p-5 md:flex-row">
       <div class="flex shrink-0 flex-col items-center gap-2">
         <DroidImage
           :droid="droid"

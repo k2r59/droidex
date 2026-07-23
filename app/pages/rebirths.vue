@@ -351,7 +351,7 @@ const shown = computed(() => {
       <!-- Prochaine renaissance : c'est l'écran qu'on ouvre en jouant. -->
       <section
         v-if="nextLevel"
-        class="panel p-5"
+        class="panel p-4 sm:p-5"
         :class="isReady && 'border-valid/60'"
       >
         <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
@@ -461,7 +461,7 @@ const shown = computed(() => {
       </p>
 
       <!-- Table complète : utile pour planifier plusieurs paliers à l'avance. -->
-      <section class="panel p-5">
+      <section class="panel p-4 sm:p-5">
         <!-- Titre puis recherche, accolés à gauche : la maquette ne les sépare pas. -->
         <div class="mb-4 flex flex-wrap items-center gap-4">
           <h2 class="text-lg uppercase tracking-wide">
@@ -582,7 +582,7 @@ const shown = computed(() => {
           @click="closeLevel"
         />
 
-        <section class="dx-modal-panel panel relative z-10 w-full max-w-xl p-6">
+        <section class="dx-modal-panel panel relative z-10 w-full max-w-xl p-4 sm:p-6">
           <div class="mb-5 flex items-start justify-between gap-4">
             <div>
               <h2 class="flex items-center gap-2 text-xl uppercase tracking-wide">
