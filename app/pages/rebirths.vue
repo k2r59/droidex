@@ -119,6 +119,8 @@ const shown = computed(() =>
     done: l.level <= store.rebirth,
     current: l.level === store.rebirth + 1,
     superUnlock: l.level === rebirthData.superRebirthUnlock.rebirth,
+    // Cristaux Nova accordés à ce palier (à partir du 12), ou `null` si aucun.
+    crystals: (rebirthData.novaByRebirth as Record<string, number>)[String(l.level)] ?? null,
   })),
 )
 </script>
@@ -483,7 +485,7 @@ const shown = computed(() =>
                 <!-- Numéro dans une pastille sombre, centré, comme la maquette. -->
                 <span
                   class="mx-auto rounded-full bg-void/55 px-2.5 py-0.5 font-mono text-sm"
-                  :class="lvl.done ? 'text-valid' : lvl.current ? 'text-accent' : 'text-ink'"
+                  :class="lvl.level <= 11 ? 'text-accent' : 'text-valid'"
                 >{{ lvl.level }}</span>
                 <DxIcon
                   v-if="lvl.superUnlock"
@@ -512,6 +514,19 @@ const shown = computed(() =>
                   v-if="lvl.identiqueAuxCycles"
                   :content="$t('rebirth.sameAsCycles', { cycles: lvl.identiqueAuxCycles.join(', ') })"
                 />
+              </p>
+
+              <!-- Cristaux Nova gagnés à ce palier (paliers 12+). -->
+              <p
+                v-if="lvl.crystals"
+                class="mt-1 flex items-center gap-1.5 text-nova"
+              >
+                <DxIcon
+                  name="resources/nova-crystal"
+                  :size="14"
+                  class="shrink-0"
+                />
+                <span class="font-mono text-sm">+{{ formatNumber(lvl.crystals, locale) }}</span>
               </p>
             </button>
           </li>
