@@ -178,7 +178,7 @@ const shown = computed(() => {
               </p>
             </div>
           </div>
-          <div class="mt-3 flex items-center gap-2">
+          <div class="mt-3 flex items-center justify-between gap-2">
             <div class="dx-stepper">
               <button
                 type="button"
