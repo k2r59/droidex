@@ -206,16 +206,17 @@ const peutAvancer = computed(() => index.value < shown.value.length - 1)
       class="flex justify-center gap-1.5"
     >
       <!--
-        La puce mesure 6 px : c'est la bonne taille à l'œil et une cible impossible au
-        doigt. Le bouton porte donc une zone tactile de 44 px sur écran tactile — même
-        séparation que dans `TierSelector` — et la puce reste un `span` à l'intérieur.
-        Les marges négatives absorbent cette zone pour que la rangée garde sa hauteur.
+        La puce mesure 6 px : bonne taille à l'œil, cible impossible au doigt. Le bouton porte
+        donc une zone tactile de 44 px de **haut** sur écran tactile, mais volontairement
+        étroite (28 px) : à 44 px de large, sept puces s'étalaient sur toute la largeur du
+        téléphone au lieu de rester groupées et centrées. Les marges négatives absorbent la
+        hauteur pour que la rangée reste fine.
       -->
       <button
         v-for="(droid, i) in shown"
         :key="`p-${droid.slug}`"
         type="button"
-        class="grid place-items-center rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-ink pointer-coarse:-my-5 pointer-coarse:size-11"
+        class="grid place-items-center rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-ink pointer-coarse:-my-5 pointer-coarse:h-11 pointer-coarse:w-7"
         :aria-label="droid.name"
         :aria-current="i === index ? 'true' : undefined"
         @click="versCarte(i)"
