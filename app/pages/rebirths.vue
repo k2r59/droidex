@@ -196,11 +196,16 @@ const shown = computed(() => {
                 +
               </button>
             </div>
+            <!--
+              Sélecteur de cycle réduit à l'essentiel : « CYCLE 1 »… « CYCLE 4 », rien
+              d'autre. Dimensionné à son contenu (`w-auto`) pour laisser toute la place au
+              stepper. L'indicateur de cycle courant reste sur la grille desktop, plus large.
+            -->
             <label class="relative inline-flex shrink-0 items-center">
               <span class="sr-only">{{ $t('rebirth.chooseCycle') }}</span>
               <select
                 :value="store.cycle"
-                class="cursor-pointer appearance-none rounded-md border border-edge-soft bg-void/60 py-1.5 pl-2.5 pr-7 text-xs text-ink transition-colors focus:border-accent focus:outline-none"
+                class="h-10 w-auto cursor-pointer appearance-none rounded-md border border-edge-soft bg-void/60 pl-2.5 pr-6 text-xs font-semibold uppercase tracking-wide text-ink transition-colors focus:border-accent focus:outline-none"
                 @change="store.setCycle(Number(($event.target as HTMLSelectElement).value))"
               >
                 <option
@@ -208,13 +213,13 @@ const shown = computed(() => {
                   :key="n"
                   :value="n"
                 >
-                  {{ $t('rebirth.cycle', { number: n }) }}{{ n === realCycle ? ` · ${$t('rebirth.currentCycle')}` : '' }}
+                  {{ $t('rebirth.cycle', { number: n }).toUpperCase() }}
                 </option>
               </select>
               <DxIcon
                 name="actions/chevron-down"
                 :size="13"
-                class="pointer-events-none absolute right-2 text-ink-muted"
+                class="pointer-events-none absolute right-1.5 text-ink-muted"
               />
             </label>
           </div>

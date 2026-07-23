@@ -88,7 +88,9 @@ const mobile = computed(() => src('mobile'))
       aria-hidden="true"
     />
 
-    <div class="relative flex h-full flex-col justify-center gap-4 p-6 lg:p-8">
+    <!-- Marges réduites sur mobile : chaque pixel de largeur compte sur un téléphone, et le
+         contenu (cartes compactes) doit s'étendre au plus près des bords. -->
+    <div class="relative flex h-full flex-col justify-center gap-4 p-4 sm:p-6 lg:p-8">
       <slot />
     </div>
   </section>
