@@ -178,8 +178,16 @@
         "body": "Débloque C-3P0, ensuite disponible à la Nova Shop."
       },
       "18": {
-        "title": "Correctifs Double Daily Quests",
-        "body": "Le Double Daily Quests se réinitialise correctement après un Super Rebirth."
+        "title": "Ajustements visuels des blueprints",
+        "body": "Changements visuels temporaires des blueprints tenus en main, le temps qu'Epic corrige un bug du « Carryable Device ». La portée et l'arc des lancers sont inchangés : l'impact est purement visuel."
+      },
+      "19": {
+        "title": "Frappe Critique et refonte du Droidex",
+        "body": "On peut désormais réussir une Frappe Critique en fabriquant un droid, avec des améliorations dédiées à la boutique de Cristaux Nova. Le Droidex est refondu et gagne des raccourcis. Le minuteur Beskar passe de 20 à 15 minutes. Le Double Daily Quests se réinitialise correctement après un Super Rebirth. Côté event C-3PO : points de Scrap gagnés sur les blueprints, Sarlacc moins agressif, et Blueprints Galactiques pêchables."
+      },
+      "20": {
+        "title": "Galactic Event — week-end galactique",
+        "body": "Du samedi 25 juillet 16:00 au dimanche 26 juillet 16:00 (UTC). Spawn accru de Blueprints Galactiques au Sandcrawler, ×2 niveau de pioche, ×2 vitesse de fabrication, et Cristaux Nova. Un prochain événement Iconique est teasé pour la fin du week-end."
       }
     }
   },

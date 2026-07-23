@@ -94,7 +94,17 @@
     {
       "date": "2026-07-15",
       "kind": "patch",
-      "version": "1.22.1"
+      "version": "1.21.2"
+    },
+    {
+      "date": "2026-07-16",
+      "kind": "patch",
+      "version": "1.22.0"
+    },
+    {
+      "date": "2026-07-25",
+      "endDate": "2026-07-26",
+      "kind": "event"
     }
   ]
 }

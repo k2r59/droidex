@@ -178,8 +178,16 @@
         "body": "Unlocks C-3P0, available in the Nova Shop afterwards."
       },
       "18": {
-        "title": "Double Daily Quests fixes",
-        "body": "Double Daily Quests now resets correctly after a Super Rebirth."
+        "title": "Blueprint visual adjustments",
+        "body": "Temporary visual changes to blueprints held in hand, while Epic fixes a Carryable Device bug. Throw distance and arc are unchanged — the impact is purely visual."
+      },
+      "19": {
+        "title": "Critical Strike and Droidex overhaul",
+        "body": "You can now land a Critical Strike while crafting a droid, with dedicated upgrades in the Nova Crystal Shop. The Droidex gets a visual overhaul and shortcuts. The Beskar timer drops from 20 to 15 minutes. The Double Daily Quest perk now refreshes after a Super Rebirth. C-3PO event: Scrap Points from blueprints, a less aggressive Sarlacc, and Galactic Blueprints from fishing."
+      },
+      "20": {
+        "title": "Galactic Event — galactic weekend",
+        "body": "From Saturday July 25 at 16:00 to Sunday July 26 at 16:00 (UTC). Increased Galactic Blueprint spawns at the Sandcrawler, 2× pickaxe level, 2× crafting speed, and Nova Crystals. An upcoming Iconic event is teased for the end of the weekend."
       }
     }
   },

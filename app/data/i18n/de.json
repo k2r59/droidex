@@ -178,8 +178,16 @@
         "body": "Schaltet C-3P0 frei, danach im Nova Shop verfügbar."
       },
       "18": {
-        "title": "Korrekturen an Double Daily Quests",
-        "body": "Double Daily Quests wird nach einem Super Rebirth korrekt zurückgesetzt."
+        "title": "Visuelle Anpassungen der Blueprints",
+        "body": "Vorübergehende visuelle Änderungen an in der Hand gehaltenen Blueprints, während Epic einen Fehler des „Carryable Device“ behebt. Wurfweite und -bogen bleiben gleich – die Auswirkung ist rein visuell."
+      },
+      "19": {
+        "title": "Kritischer Treffer und Droidex-Überarbeitung",
+        "body": "Beim Bau eines Droiden ist jetzt ein Kritischer Treffer möglich, mit eigenen Verbesserungen im Nova-Kristall-Shop. Der Droidex wird überarbeitet und erhält Tastenkürzel. Der Beskar-Timer sinkt von 20 auf 15 Minuten. Die Doppelte Tagesquest wird nach einer Super-Wiedergeburt korrekt zurückgesetzt. C-3PO-Event: Schrottpunkte aus Blueprints, weniger aggressiver Sarlacc und angelbare Galaktische Blueprints."
+      },
+      "20": {
+        "title": "Galactic Event — galaktisches Wochenende",
+        "body": "Von Samstag, 25. Juli, 16:00 bis Sonntag, 26. Juli, 16:00 (UTC). Erhöhtes Aufkommen Galaktischer Blueprints am Sandcrawler, 2× Spitzhacken-Level, 2× Baugeschwindigkeit und Nova-Kristalle. Ein kommendes Iconic-Event wird zum Ende des Wochenendes angeteasert."
       }
     }
   },
