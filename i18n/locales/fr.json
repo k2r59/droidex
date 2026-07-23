@@ -36,7 +36,7 @@
     "iconic": "Iconique"
   },
   "tier": {
-    "DEFAULT": "Typique",
+    "DEFAULT": "Base",
     "GOLD": "Or",
     "DIAMOND": "Diamant",
     "RAINBOW": "Arc-en-ciel",

@@ -330,16 +330,17 @@ const shown = computed(() => {
                     {{ droidBySlug[req.slug]?.name ?? req.slug }}
                   </p>
                   <!--
-                  Le palier est un badge sur la maquette, pas un simple libellé.
-
-                  Une exigence sans palier vaut exactement une exigence « Typique » :
-                  `satisfies()` compare des rangs, et DEFAULT valant 0, tout palier possédé
-                  la remplit. On affiche donc le palier réel plutôt qu'un « tout palier »
-                  qui désignait la même chose sans le dire.
-                -->
-                  <span class="dx-badge dx-badge--common mt-1.5">
-                    {{ $t(`tier.${req.tier ?? 'DEFAULT'}`) }}
-                  </span>
+                    Rareté du droid ET palier requis, tous deux teintés. La rareté évite de
+                    prendre un Mythique au palier de base pour un droid « Typique » (les deux
+                    partageaient ce mot en français) ; le palier reste l'exigence réelle.
+                  -->
+                  <div class="mt-1.5 flex flex-wrap items-center gap-1.5">
+                    <RarityBadge
+                      v-if="droidBySlug[req.slug]"
+                      :rarity="droidBySlug[req.slug]!.rarity"
+                    />
+                    <TierBadge :tier="req.tier ?? 'DEFAULT'" />
+                  </div>
                 </div>
                 <!--
                 Exigence non satisfaite : un cercle vide, comme la maquette. Une coche
@@ -602,7 +603,13 @@ const shown = computed(() => {
                     <p class="truncate font-display font-bold">
                       {{ droidBySlug[req.slug]?.name ?? req.slug }}
                     </p>
-                    <span class="dx-badge dx-badge--common mt-1">{{ $t(`tier.${req.tier ?? 'DEFAULT'}`) }}</span>
+                    <div class="mt-1 flex flex-wrap items-center gap-1.5">
+                      <RarityBadge
+                        v-if="droidBySlug[req.slug]"
+                        :rarity="droidBySlug[req.slug]!.rarity"
+                      />
+                      <TierBadge :tier="req.tier ?? 'DEFAULT'" />
+                    </div>
                   </div>
                   <DxIcon
                     v-if="met(req)"
