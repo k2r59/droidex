@@ -4,9 +4,16 @@ import type { Droid, Tier } from '~~/shared/types/droid'
 /**
  * Répond à « j'ai N crédits, qu'est-ce que j'achète ? ».
  *
- * On classe par rentabilité — revenu par seconde obtenu pour un crédit dépensé — et non
- * par revenu brut : le droid le plus cher est presque toujours celui qui rapporte le plus,
- * ce qui ne dit rien d'utile. Le ratio, lui, désigne le meilleur achat à budget donné.
+ * On classe par **revenu absolu, parmi ce que le budget permet d'acheter**. Un classement
+ * par rentabilité (revenu par crédit) semblait plus fin, mais il est dégénéré : le meilleur
+ * ratio revient toujours au droid le moins cher — MOUSE à 950 crédits bat tout — si bien
+ * que la liste montrait les mêmes communs quel que soit le budget, de 10 k à 100 M. Le
+ * curseur de budget ne servait à rien.
+ *
+ * Filtrer par prix puis trier par revenu rend le budget utile : à 10 k on voit des communs,
+ * à 100 M des mythiques. C'est la question que le joueur se pose vraiment — « avec ce que
+ * j'ai, qu'est-ce qui rapporte le plus ? » —, l'amortissement restant affiché à droite pour
+ * qui veut arbitrer sur l'efficacité.
  *
  * ---
  *
@@ -130,7 +137,10 @@ const candidates = computed<Candidate[]>(() => {
     })
   }
 
-  return out.sort((a, b) => b.ratio - a.ratio)
+  // Revenu décroissant : le budget filtre ensuite, si bien qu'à budget donné on voit
+  // toujours les droids les plus rentables qu'on peut s'offrir. À revenu égal, le moins
+  // cher d'abord (meilleur amortissement).
+  return out.sort((a, b) => b.income - a.income || a.cost - b.cost)
 })
 
 /**

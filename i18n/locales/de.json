@@ -248,7 +248,7 @@
   },
   "advisor": {
     "title": "Bester nächster Kauf",
-    "hint": "Sortiert nach Einkommen pro ausgegebenem Credit.",
+    "hint": "Die ertragreichsten Droiden, die dein Budget erlaubt.",
     "creditsOnly": "Stufen-Upgrades werden mit Upgrade-Chips bezahlt, nicht mit Credits — sie stehen hier nicht.",
     "budget": "Budget",
     "noBudget": "unbegrenzt",

@@ -248,7 +248,7 @@
   },
   "advisor": {
     "title": "Best next purchase",
-    "hint": "Ranked by income gained per credit spent.",
+    "hint": "The highest-earning droids your budget allows.",
     "creditsOnly": "Tier upgrades are paid in Upgrade Chips, not credits — they are not listed here.",
     "budget": "Budget",
     "noBudget": "unlimited",

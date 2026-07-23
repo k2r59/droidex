@@ -248,7 +248,7 @@
   },
   "advisor": {
     "title": "Mejor compra siguiente",
-    "hint": "Ordenado por ingresos ganados por crédito gastado.",
+    "hint": "Los droides más rentables que permite tu presupuesto.",
     "creditsOnly": "Las mejoras de nivel se pagan con Upgrade Chips, no con créditos: no aparecen aquí.",
     "budget": "Presupuesto",
     "noBudget": "ilimitado",

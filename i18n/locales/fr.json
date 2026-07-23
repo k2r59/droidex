@@ -248,7 +248,7 @@
   },
   "advisor": {
     "title": "Prochain achat conseillé",
-    "hint": "Classé par revenu gagné pour un crédit dépensé.",
+    "hint": "Les droids les plus rentables que ton budget permet.",
     "creditsOnly": "Les montées de palier se paient en Puces d'amélioration, pas en crédits : elles ne figurent pas ici.",
     "budget": "Budget",
     "noBudget": "illimité",
