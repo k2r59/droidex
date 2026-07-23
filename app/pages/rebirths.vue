@@ -334,7 +334,7 @@ const shown = computed(() => {
                     prendre un Mythique au palier de base pour un droid « Typique » (les deux
                     partageaient ce mot en français) ; le palier reste l'exigence réelle.
                   -->
-                  <div class="mt-1.5 flex flex-wrap items-center gap-1.5">
+                  <div class="mt-1.5 flex flex-col items-start gap-1">
                     <RarityBadge
                       v-if="droidBySlug[req.slug]"
                       :rarity="droidBySlug[req.slug]!.rarity"
@@ -603,7 +603,7 @@ const shown = computed(() => {
                     <p class="truncate font-display font-bold">
                       {{ droidBySlug[req.slug]?.name ?? req.slug }}
                     </p>
-                    <div class="mt-1 flex flex-wrap items-center gap-1.5">
+                    <div class="mt-1 flex flex-col items-start gap-1">
                       <RarityBadge
                         v-if="droidBySlug[req.slug]"
                         :rarity="droidBySlug[req.slug]!.rarity"
