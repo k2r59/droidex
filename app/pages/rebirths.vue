@@ -354,7 +354,7 @@ const shown = computed(() => {
         class="panel p-4 sm:p-5"
         :class="isReady && 'border-valid/60'"
       >
-        <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <div class="mb-3 flex flex-wrap items-center justify-between gap-x-3 gap-y-0.5 sm:mb-4 sm:gap-y-3">
           <h2 class="flex items-center gap-2 text-lg uppercase tracking-wide">
             <DxIcon
               name="resources/star"
@@ -364,9 +364,9 @@ const shown = computed(() => {
             <span>{{ $t('rebirth.next') }}</span>
             <span class="grid size-7 shrink-0 place-items-center rounded-full border border-accent/50 bg-accent/10 font-mono text-sm text-accent">{{ nextLevel.level }}</span>
           </h2>
-          <p class="text-sm">
-            <span class="font-mono text-lg font-bold text-nova">{{ formatNumber(nextLevel.credits, locale) }}</span>
-            <span class="ml-1 text-ink-muted">{{ $t('rebirth.creditsRequired') }}</span>
+          <p class="text-xs uppercase text-nova sm:text-sm">
+            <span class="font-mono text-base font-bold sm:text-lg">{{ formatNumber(nextLevel.credits, locale) }}</span>
+            <span class="ml-1">{{ $t('rebirth.creditsRequired') }}</span>
           </p>
         </div>
 
