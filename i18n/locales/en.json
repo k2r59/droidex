@@ -13,7 +13,8 @@
     "guide": "Guide",
     "profile": "Profile",
     "missions": "Missions",
-    "collection": "Collection"
+    "collection": "Collection",
+    "legal": "Legal"
   },
   "auth": {
     "signIn": "Sign in",
@@ -318,7 +319,7 @@
     "images": "Droid artwork consists of captures from the game interface. It belongs to its rights holders; we hold neither the rights nor a licence. It is reproduced for identification only, in a community, strictly non-commercial context.",
     "data": "The figures come from player measurements and community wikis that sometimes contradict each other. They are not official data: they may be wrong or out of date. Always check in game before committing a resource.",
     "holders": "Rights holders",
-    "takedown": "Any rights holder who wants content removed may simply ask: it will be taken down, no argument.",
+    "takedown": "Created and shared as a non-commercial hobby by {email}. Any rights holder who wants content removed may request it at this address: it will be taken down, no argument.",
     "accept": "I have read and understand"
   },
   "onboarding": {
@@ -378,6 +379,28 @@
       "supportDesc": "Sharing, feedback and contributions welcome"
     },
     "subreddit": "r/StarWarsDroidTycoon",
-    "creator": "Creator"
+    "creator": "Creator",
+    "maintainedBy": "Created and shared as a hobby by"
+  },
+  "legalPage": {
+    "title": "Legal notice",
+    "intro": "The following sets out what this site is, where its data comes from, and how it is shared.",
+    "editorTitle": "Publisher",
+    "editorBody": "This site is created and shared as a non-commercial hobby by {email}.",
+    "natureTitle": "Nature of the project",
+    "ipTitle": "Intellectual property",
+    "dataTitle": "Data reliability",
+    "sourcesTitle": "Sources",
+    "sourcesIntro": "This site's data is aggregated from community sources — no exhaustive official source exists. Thanks to their authors. Here are the ones used:",
+    "privacyTitle": "Personal data",
+    "privacyBody": "Your progress is stored only in your browser. No account is required, no personal data is collected or transmitted, and there is no advertising tracking.",
+    "contactTitle": "Contact and takedown",
+    "roleImages": "Droid images and base stats",
+    "roleRebirth": "Rebirth cycle requirements",
+    "roleTracker": "Community data tracker",
+    "roleGuides": "Guides and events",
+    "roleNova": "Nova Crystals guide",
+    "roleCommunity": "Discussion, patch notes and events",
+    "roleOfficial": "Official island announcements"
   }
 }

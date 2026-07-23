@@ -13,7 +13,8 @@
     "guide": "Guida",
     "profile": "Profilo",
     "missions": "Missioni",
-    "collection": "Collezione"
+    "collection": "Collezione",
+    "legal": "Note legali"
   },
   "auth": {
     "signIn": "Accedi",
@@ -318,7 +319,7 @@
     "images": "Le illustrazioni dei droidi sono catture dell'interfaccia del gioco. Appartengono ai rispettivi titolari dei diritti; non ne deteniamo né i diritti né una licenza. Sono riprodotte a solo scopo identificativo, in un contesto comunitario e rigorosamente non commerciale.",
     "data": "Le cifre provengono da rilevamenti dei giocatori e da wiki della community che a volte si contraddicono. Non sono dati ufficiali: possono essere errati o obsoleti. Verifica sempre nel gioco prima di investire una risorsa.",
     "holders": "Titolari dei diritti",
-    "takedown": "Qualsiasi titolare dei diritti che desideri la rimozione di un contenuto può richiederla: sarà eliminato senza discussioni.",
+    "takedown": "Creato e diffuso per hobby, senza scopo di lucro, da {email}. Qualsiasi titolare di diritti che desideri la rimozione di un contenuto può richiederla a questo indirizzo: verrà rimosso senza discussioni.",
     "accept": "Ho letto e capisco"
   },
   "onboarding": {
@@ -378,6 +379,28 @@
       "supportDesc": "Condivisione, feedback e contributi sono benvenuti"
     },
     "subreddit": "r/StarWarsDroidTycoon",
-    "creator": "Creatore"
+    "creator": "Creatore",
+    "maintainedBy": "Creato e diffuso per hobby da"
+  },
+  "legalPage": {
+    "title": "Note legali",
+    "intro": "Quanto segue chiarisce cos'è questo sito, da dove provengono i suoi dati e in quale ambito viene diffuso.",
+    "editorTitle": "Editore",
+    "editorBody": "Questo sito è creato e diffuso per hobby, senza scopo di lucro, da {email}.",
+    "natureTitle": "Natura del progetto",
+    "ipTitle": "Proprietà intellettuale",
+    "dataTitle": "Affidabilità dei dati",
+    "sourcesTitle": "Fonti",
+    "sourcesIntro": "I dati di questo sito sono aggregati da fonti comunitarie — non esiste alcuna fonte ufficiale esaustiva. Grazie ai loro autori. Ecco quelle utilizzate:",
+    "privacyTitle": "Dati personali",
+    "privacyBody": "I tuoi progressi sono salvati solo nel tuo browser. Non è richiesto alcun account, non viene raccolto né trasmesso alcun dato personale e non c'è alcun tracciamento pubblicitario.",
+    "contactTitle": "Contatto e rimozione",
+    "roleImages": "Immagini dei droidi e statistiche base",
+    "roleRebirth": "Requisiti dei cicli di rebirth",
+    "roleTracker": "Tracker di dati comunitario",
+    "roleGuides": "Guide ed eventi",
+    "roleNova": "Guida ai Nova Crystals",
+    "roleCommunity": "Discussioni, patch notes ed eventi",
+    "roleOfficial": "Annunci ufficiali dell'isola"
   }
 }

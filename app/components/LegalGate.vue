@@ -23,6 +23,9 @@
  */
 const CLE = 'droidex:legal-seen:v1'
 
+/** Contact du responsable — créateur et diffuseur à titre de loisir, non commercial. */
+const EMAIL = 'droidtycoon@proton.me'
+
 /**
  * Les ayants droit, nommés et liés vers leur propre site.
  *
@@ -164,9 +167,18 @@ onUnmounted(() => {
             </ul>
           </div>
 
-          <p class="text-ink-muted">
-            {{ $t('legal.takedown') }}
-          </p>
+          <i18n-t
+            keypath="legal.takedown"
+            tag="p"
+            class="text-ink-muted"
+          >
+            <template #email>
+              <a
+                :href="`mailto:${EMAIL}`"
+                class="text-accent underline decoration-dotted underline-offset-2 hover:text-ink"
+              >{{ EMAIL }}</a>
+            </template>
+          </i18n-t>
         </div>
 
         <button

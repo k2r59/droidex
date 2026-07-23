@@ -15,6 +15,9 @@ const localePath = useLocalePath()
 
 const ISLAND_CODE = '7865-8305-9184'
 
+/** Contact du responsable — créateur et diffuseur à titre de loisir, non commercial. */
+const EMAIL = 'droidtycoon@proton.me'
+
 /**
  * Version courante de l'île : la plus récente des notes qui en portent une. Dérivée du fil
  * des nouveautés plutôt que saisie en dur, pour ne pas diverger de la page Nouveautés.
@@ -52,6 +55,7 @@ const links = [
   { key: 'nav.updates', icon: 'ui/notification', to: '/updates' },
   { key: 'footer.subreddit', icon: 'brands/reddit', href: 'https://www.reddit.com/r/StarWarsDroidTycoon/' },
   { key: 'footer.joinCommunity', icon: 'game/community', href: 'https://discord.gg/droidtycoon' },
+  { key: 'nav.legal', icon: 'status/info', to: '/legal' },
 ] as const
 
 /** Bandeau de garanties : quatre repères sur la nature du projet. */
@@ -351,6 +355,19 @@ async function copyCode() {
           </span>
           <span aria-hidden="true">·</span>
           <span>{{ $t('footer.allRights') }}</span>
+        </p>
+
+        <!--
+          Responsable de la diffusion, non commercial, avec un contact. Cette mention
+          identifie l'auteur du site (distinct de FOAD, créateur de l'île) et donne une
+          adresse pour toute demande — notamment de retrait.
+        -->
+        <p class="mt-2 flex flex-wrap items-center justify-center gap-x-1.5 text-center text-xs text-ink-muted">
+          <span>{{ $t('footer.maintainedBy') }}</span>
+          <a
+            :href="`mailto:${EMAIL}`"
+            class="text-accent underline decoration-dotted underline-offset-2 hover:text-ink"
+          >{{ EMAIL }}</a>
         </p>
       </div>
     </div>

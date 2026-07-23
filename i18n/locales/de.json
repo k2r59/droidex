@@ -13,7 +13,8 @@
     "guide": "Guide",
     "profile": "Profil",
     "missions": "Missionen",
-    "collection": "Sammlung"
+    "collection": "Sammlung",
+    "legal": "Impressum"
   },
   "auth": {
     "signIn": "Anmelden",
@@ -318,7 +319,7 @@
     "images": "Die Droiden-Abbildungen sind Aufnahmen aus der Spieloberfläche. Sie gehören ihren Rechteinhabern; wir besitzen weder die Rechte noch eine Lizenz. Sie werden allein zur Identifikation wiedergegeben, in einem gemeinschaftlichen und strikt nicht-kommerziellen Rahmen.",
     "data": "Die Zahlen stammen aus Messungen von Spielern und aus Community-Wikis, die einander mitunter widersprechen. Es sind keine offiziellen Daten: Sie können falsch oder veraltet sein. Prüfe stets im Spiel, bevor du Ressourcen einsetzt.",
     "holders": "Rechteinhaber",
-    "takedown": "Jeder Rechteinhaber, der die Entfernung eines Inhalts wünscht, kann dies verlangen: Er wird ohne Diskussion gelöscht.",
+    "takedown": "Als nicht-kommerzielles Hobby erstellt und verbreitet von {email}. Jeder Rechteinhaber, der die Entfernung eines Inhalts wünscht, kann dies an diese Adresse richten: Er wird ohne Diskussion gelöscht.",
     "accept": "Gelesen und verstanden"
   },
   "onboarding": {
@@ -378,6 +379,28 @@
       "supportDesc": "Teilen, Feedback und Beiträge willkommen"
     },
     "subreddit": "r/StarWarsDroidTycoon",
-    "creator": "Ersteller"
+    "creator": "Ersteller",
+    "maintainedBy": "Als Hobby erstellt und verbreitet von"
+  },
+  "legalPage": {
+    "title": "Impressum",
+    "intro": "Im Folgenden wird erläutert, was diese Seite ist, woher ihre Daten stammen und in welchem Rahmen sie verbreitet wird.",
+    "editorTitle": "Herausgeber",
+    "editorBody": "Diese Seite wird als nicht-kommerzielles Hobby von {email} erstellt und verbreitet.",
+    "natureTitle": "Art des Projekts",
+    "ipTitle": "Geistiges Eigentum",
+    "dataTitle": "Zuverlässigkeit der Daten",
+    "sourcesTitle": "Quellen",
+    "sourcesIntro": "Die Daten dieser Seite werden aus Community-Quellen zusammengetragen — eine vollständige offizielle Quelle gibt es nicht. Dank an ihre Autoren. Hier die verwendeten:",
+    "privacyTitle": "Personenbezogene Daten",
+    "privacyBody": "Dein Fortschritt wird ausschließlich in deinem Browser gespeichert. Es ist kein Konto erforderlich, es werden keine personenbezogenen Daten erhoben oder übertragen, und es gibt kein Werbe-Tracking.",
+    "contactTitle": "Kontakt und Entfernung",
+    "roleImages": "Droiden-Bilder und Basiswerte",
+    "roleRebirth": "Anforderungen der Wiedergeburtszyklen",
+    "roleTracker": "Community-Daten-Tracker",
+    "roleGuides": "Guides und Events",
+    "roleNova": "Nova-Kristalle-Guide",
+    "roleCommunity": "Diskussionen, Patchnotes und Events",
+    "roleOfficial": "Offizielle Insel-Ankündigungen"
   }
 }

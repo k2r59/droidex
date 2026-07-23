@@ -13,7 +13,8 @@
     "guide": "Guide",
     "profile": "Profil",
     "missions": "Missions",
-    "collection": "Collection"
+    "collection": "Collection",
+    "legal": "Mentions légales"
   },
   "auth": {
     "signIn": "Se connecter",
@@ -318,7 +319,7 @@
     "images": "Les illustrations de droids sont des captures de l'interface du jeu. Elles appartiennent à leurs ayants droit ; nous n'en détenons ni les droits ni une licence. Elles sont reproduites à titre d'identification, dans un cadre communautaire et strictement non commercial.",
     "data": "Les chiffres proviennent de relevés de joueurs et de wikis communautaires qui se contredisent parfois. Ce ne sont pas des données officielles : elles peuvent être fausses ou périmées. Vérifie toujours en jeu avant d'engager une ressource.",
     "holders": "Ayants droit",
-    "takedown": "Tout ayant droit qui souhaite le retrait d'un contenu peut le demander : il sera supprimé sans discussion.",
+    "takedown": "Créé et diffusé à titre de loisir, sans but lucratif, par {email}. Tout ayant droit qui souhaite le retrait d'un contenu peut le demander à cette adresse : il sera supprimé sans discussion.",
     "accept": "J'ai lu et je comprends"
   },
   "onboarding": {
@@ -378,6 +379,28 @@
       "supportDesc": "Partage, feedback et contributions bienvenus"
     },
     "subreddit": "r/StarWarsDroidTycoon",
-    "creator": "Créateur"
+    "creator": "Créateur",
+    "maintainedBy": "Créé et diffusé à titre de loisir par"
+  },
+  "legalPage": {
+    "title": "Mentions légales",
+    "intro": "Ce qui suit précise la nature du site, ses sources et le cadre dans lequel il est diffusé.",
+    "editorTitle": "Éditeur",
+    "editorBody": "Ce site est créé et diffusé à titre de loisir, sans but lucratif, par {email}.",
+    "natureTitle": "Nature du projet",
+    "ipTitle": "Propriété intellectuelle",
+    "dataTitle": "Fiabilité des données",
+    "sourcesTitle": "Sources",
+    "sourcesIntro": "Les données de ce site sont agrégées depuis des sources communautaires — aucune source officielle exhaustive n'existe. Merci à leurs auteurs. Voici celles utilisées :",
+    "privacyTitle": "Données personnelles",
+    "privacyBody": "Ta progression est stockée uniquement dans ton navigateur. Aucun compte n'est requis, aucune donnée personnelle n'est collectée ni transmise, et il n'y a aucun traçage publicitaire.",
+    "contactTitle": "Contact et retrait",
+    "roleImages": "Images des droids et statistiques de base",
+    "roleRebirth": "Exigences des cycles de renaissance",
+    "roleTracker": "Traqueur de données communautaire",
+    "roleGuides": "Guides et événements",
+    "roleNova": "Guide des Nova Crystals",
+    "roleCommunity": "Discussions, patch notes et événements",
+    "roleOfficial": "Annonces officielles de l'île"
   }
 }

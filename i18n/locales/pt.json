@@ -13,7 +13,8 @@
     "guide": "Guia",
     "profile": "Perfil",
     "missions": "Missões",
-    "collection": "Coleção"
+    "collection": "Coleção",
+    "legal": "Aviso legal"
   },
   "auth": {
     "signIn": "Iniciar sessão",
@@ -318,7 +319,7 @@
     "images": "As ilustrações de droids são capturas da interface do jogo. Pertencem aos seus titulares de direitos; não detemos nem os direitos nem uma licença. São reproduzidas apenas para fins de identificação, num contexto comunitário e estritamente não comercial.",
     "data": "Os números provêm de medições de jogadores e wikis comunitários que por vezes se contradizem. Não são dados oficiais: podem estar errados ou desatualizados. Verifica sempre no jogo antes de investir um recurso.",
     "holders": "Titulares de direitos",
-    "takedown": "Qualquer titular de direitos que deseje a remoção de um conteúdo pode solicitá-lo: será removido sem discussão.",
+    "takedown": "Criado e divulgado como passatempo sem fins lucrativos por {email}. Qualquer titular de direitos que deseje a remoção de um conteúdo pode solicitá-la neste endereço: será removido sem discussão.",
     "accept": "Li e compreendo"
   },
   "onboarding": {
@@ -378,6 +379,28 @@
       "supportDesc": "Partilha, feedback e contribuições são bem-vindos"
     },
     "subreddit": "r/StarWarsDroidTycoon",
-    "creator": "Criador"
+    "creator": "Criador",
+    "maintainedBy": "Criado e divulgado como passatempo por"
+  },
+  "legalPage": {
+    "title": "Aviso legal",
+    "intro": "O que se segue esclarece o que é este site, de onde vêm os seus dados e o âmbito em que é divulgado.",
+    "editorTitle": "Editor",
+    "editorBody": "Este site é criado e divulgado como passatempo, sem fins lucrativos, por {email}.",
+    "natureTitle": "Natureza do projeto",
+    "ipTitle": "Propriedade intelectual",
+    "dataTitle": "Fiabilidade dos dados",
+    "sourcesTitle": "Fontes",
+    "sourcesIntro": "Os dados deste site são agregados a partir de fontes comunitárias — não existe qualquer fonte oficial exaustiva. Obrigado aos seus autores. Estas são as utilizadas:",
+    "privacyTitle": "Dados pessoais",
+    "privacyBody": "O teu progresso é guardado apenas no teu navegador. Não é necessária conta, não é recolhido nem transmitido qualquer dado pessoal, e não há rastreio publicitário.",
+    "contactTitle": "Contacto e remoção",
+    "roleImages": "Imagens dos droids e estatísticas base",
+    "roleRebirth": "Requisitos dos ciclos de rebirth",
+    "roleTracker": "Rastreador de dados comunitário",
+    "roleGuides": "Guias e eventos",
+    "roleNova": "Guia dos Nova Crystals",
+    "roleCommunity": "Debates, patch notes e eventos",
+    "roleOfficial": "Anúncios oficiais da ilha"
   }
 }
