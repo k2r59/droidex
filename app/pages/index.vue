@@ -267,12 +267,12 @@ onKeyStroke('Escape', () => {
     -->
     <div
       v-if="rarityStat"
-      class="flex flex-wrap items-center gap-3 rounded-card border p-3"
+      class="flex items-center gap-3 rounded-card border p-2.5"
       :class="RARITY_STYLE[rarity]!.ring"
     >
-      <div class="min-w-40 flex-1">
+      <div class="min-w-0 flex-1">
         <p
-          class="flex items-center gap-2 text-sm font-semibold"
+          class="flex items-center gap-1.5 text-xs font-semibold"
           :class="RARITY_STYLE[rarity]!.text"
         >
           <span>{{ $t(`rarity.${rarity}`) }}</span>
@@ -280,10 +280,10 @@ onKeyStroke('Escape', () => {
           <DxIcon
             v-if="rarityComplete"
             name="actions/check"
-            :size="14"
+            :size="13"
           />
         </p>
-        <span class="mt-2 block h-1.5 overflow-hidden rounded-full bg-void/60">
+        <span class="mt-1.5 block h-1 overflow-hidden rounded-full bg-void/60">
           <span
             class="block h-full rounded-full transition-[width] duration-500"
             :class="RARITY_STYLE[rarity]!.bar"
@@ -293,12 +293,12 @@ onKeyStroke('Escape', () => {
       </div>
       <button
         type="button"
-        class="dx-button dx-button--secondary shrink-0"
+        class="flex shrink-0 items-center gap-1.5 rounded-lg border border-edge bg-panel px-3 py-1.5 text-xs font-semibold text-ink transition-colors hover:border-accent"
         @click="toggleRarityOwned"
       >
         <DxIcon
           :name="rarityComplete ? 'actions/close' : 'actions/check'"
-          :size="15"
+          :size="14"
         />
         {{ rarityComplete ? $t('droidex.unmarkAll') : $t('droidex.markAll') }}
       </button>
