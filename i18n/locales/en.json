@@ -439,6 +439,8 @@
     "androidLead": "From Chrome, installation is a single tap.",
     "androidManual": "Or manually",
     "androidS1": "Open the browser menu (the three dots, top right).",
-    "androidS2": "Choose “Install app” or “Add to Home screen”."
+    "androidS2": "Choose “Install app” or “Add to Home screen”.",
+    "androidReady": "One-tap install is available: press the button.",
+    "androidUnavailable": "Automatic install isn't offered here (already installed, unsupported browser, or criteria not yet met). Follow the steps below."
   }
 }

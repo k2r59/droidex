@@ -439,6 +439,8 @@
     "androidLead": "In Chrome geht die Installation mit einem Tipp.",
     "androidManual": "Oder manuell",
     "androidS1": "Öffne das Browsermenü (die drei Punkte oben rechts).",
-    "androidS2": "Wähle „App installieren“ oder „Zum Startbildschirm hinzufügen“."
+    "androidS2": "Wähle „App installieren“ oder „Zum Startbildschirm hinzufügen“.",
+    "androidReady": "Die Ein-Klick-Installation ist verfügbar: Tippe auf die Schaltfläche.",
+    "androidUnavailable": "Die automatische Installation wird hier nicht angeboten (bereits installiert, nicht unterstützter Browser oder Kriterien noch nicht erfüllt). Folge den Schritten unten."
   }
 }

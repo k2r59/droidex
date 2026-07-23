@@ -24,11 +24,20 @@ const benefits = [
 const iosSteps = ['iosS1', 'iosS2', 'iosS3'] as const
 const androidSteps = ['androidS1', 'androidS2'] as const
 
+/**
+ * Installation Android. Le bouton reste toujours affiché — l'utilisateur veut un point
+ * d'entrée visible. Mais le navigateur n'autorise l'installation programmatique que si
+ * `beforeinstallprompt` a été capté (critères d'installabilité réunis : HTTPS, manifeste,
+ * service worker) ; sinon `promptInstall` renvoie `'unavailable'` et on invite à passer par
+ * le menu du navigateur, détaillé juste en dessous.
+ */
 const installing = ref(false)
+const promptUnavailable = ref(false)
 async function install() {
   installing.value = true
-  await promptInstall()
+  const issue = await promptInstall()
   installing.value = false
+  promptUnavailable.value = issue === 'unavailable'
 }
 </script>
 
@@ -118,9 +127,12 @@ async function install() {
         {{ $t('installPage.androidLead') }}
       </p>
 
-      <!-- Chemin rapide : le bouton natif, présent seulement quand Chrome l'a autorisé. -->
+      <!--
+        Bouton d'installation automatique, toujours présent. `canInstall` ne le masque plus :
+        il ne fait que colorer le message. S'il n'y a pas d'invite captée, le clic le dit et
+        renvoie vers les étapes manuelles ci-dessous.
+      -->
       <button
-        v-if="canInstall"
         type="button"
         class="dx-button dx-button--primary mt-4 w-full sm:w-auto"
         :disabled="installing"
@@ -132,6 +144,18 @@ async function install() {
         />
         {{ $t('install.action') }}
       </button>
+      <p
+        v-if="canInstall"
+        class="mt-2 text-xs text-valid"
+      >
+        {{ $t('installPage.androidReady') }}
+      </p>
+      <p
+        v-else-if="promptUnavailable"
+        class="mt-2 text-xs text-warn"
+      >
+        {{ $t('installPage.androidUnavailable') }}
+      </p>
 
       <!-- Repli manuel : le menu du navigateur, toujours affiché. -->
       <p class="mt-4 text-xs font-semibold uppercase tracking-wide text-ink-muted">

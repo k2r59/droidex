@@ -439,6 +439,8 @@
     "androidLead": "No Chrome, a instalação faz-se com um só toque.",
     "androidManual": "Ou manualmente",
     "androidS1": "Abre o menu do navegador (os três pontos, no canto superior direito).",
-    "androidS2": "Escolhe «Instalar aplicação» ou «Adicionar ao ecrã principal»."
+    "androidS2": "Escolhe «Instalar aplicação» ou «Adicionar ao ecrã principal».",
+    "androidReady": "A instalação num toque está disponível: toca no botão.",
+    "androidUnavailable": "A instalação automática não está disponível aqui (já instalada, navegador não compatível ou critérios ainda não cumpridos). Segue os passos abaixo."
   }
 }

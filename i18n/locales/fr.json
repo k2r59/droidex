@@ -439,6 +439,8 @@
     "androidLead": "Depuis Chrome, l'installation se fait en un clic.",
     "androidManual": "Ou à la main",
     "androidS1": "Ouvre le menu du navigateur (les trois points, en haut à droite).",
-    "androidS2": "Choisis « Installer l’application » ou « Ajouter à l’écran d’accueil »."
+    "androidS2": "Choisis « Installer l’application » ou « Ajouter à l’écran d’accueil ».",
+    "androidReady": "L'installation en un clic est disponible : appuie sur le bouton.",
+    "androidUnavailable": "L'installation automatique n'est pas proposée ici (app déjà installée, navigateur non compatible, ou critères pas encore réunis). Suis les étapes ci-dessous."
   }
 }
