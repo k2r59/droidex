@@ -111,11 +111,15 @@ export default defineNuxtConfig({
     strategy: 'prefix_except_default',
     // Requis pour générer des balises hreflang et canonical absolues.
     baseUrl: process.env.NUXT_PUBLIC_BASE_URL || 'http://localhost:3000',
-    // Mémorise la langue choisie sans redirection surprise au premier chargement.
+    // Charge la langue du navigateur au premier passage, puis mémorise un éventuel choix
+    // manuel via le cookie. Si la langue détectée n'est pas parmi les six proposées, on
+    // retombe sur l'anglais (et non le français). `redirectOn: 'no prefix'` applique cette
+    // détection quelle que soit la page d'entrée, pas seulement la racine.
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'droidex_locale',
-      redirectOn: 'root',
+      redirectOn: 'no prefix',
+      fallbackLocale: 'en',
     },
     locales: [
       { code: 'fr', language: 'fr-FR', name: 'Français', file: 'fr.json' },
