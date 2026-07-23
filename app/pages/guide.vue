@@ -103,11 +103,11 @@ const base = mechanics.base
           >
             <td class="py-1.5">
               <RarityBadge :rarity="row.rarity as any" />
-              <span
+              <InfoPop
                 v-if="row.conflicting"
-                v-tippy="{ content: $t('guide.chipsConflict') }"
-                class="ml-1 cursor-help text-xs text-warn"
-              >⚠</span>
+                :content="$t('guide.chipsConflict')"
+                class="ml-1"
+              />
             </td>
             <td class="py-1.5 text-right font-mono tabular-nums">
               {{ formatExact(row.gold, locale) }}

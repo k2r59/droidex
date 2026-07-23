@@ -86,13 +86,6 @@ const ICONS: Record<string, string> = {
 }
 const iconOf = (id: string) => ICONS[id] ?? 'resources/nova-crystal'
 
-const CONFIDENCE_CLASS: Record<string, string> = {
-  'confirmed': 'text-valid',
-  'conflicting': 'text-warn',
-  'single-source': 'text-warn',
-  'unknown': 'text-ink-muted',
-}
-
 const recommended = computed(() =>
   shopData.recommendedOrder.map((id) => allItems.value.find((i) => i.id === id)).filter(Boolean) as Item[],
 )
@@ -253,12 +246,11 @@ const notes = [
               <div class="flex flex-wrap items-start justify-between gap-2">
                 <h3 class="text-base">
                   {{ itemName(item) }}
-                  <span
+                  <InfoPop
                     v-if="item.confidence !== 'confirmed'"
-                    v-tippy="{ content: itemNote(item) || $t(`shop.confidence.${item.confidence}`) }"
-                    class="cursor-help align-super text-xs"
-                    :class="CONFIDENCE_CLASS[item.confidence]"
-                  >⚠</span>
+                    :content="itemNote(item) || $t(`shop.confidence.${item.confidence}`)"
+                    class="align-super"
+                  />
                 </h3>
                 <span
                   v-if="item.oneTime"

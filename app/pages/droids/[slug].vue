@@ -85,11 +85,12 @@ const usedInRebirths = computed(() => {
           </h1>
           <RarityBadge :rarity="droid.rarity" />
           <span class="text-sm text-ink-muted">{{ $t(`type.${droid.type}`) }}</span>
-          <span
+          <InfoPop
             v-if="droid.unverified"
-            v-tippy="{ content: $t('droid.unverifiedHint') }"
-            class="rounded bg-warn/15 px-1.5 py-0.5 text-xs text-warn"
-          >{{ $t('droid.unverified') }}</span>
+            :content="$t('droid.unverifiedHint')"
+          >
+            <span class="rounded bg-warn/15 px-1.5 py-0.5 text-xs text-warn">{{ $t('droid.unverified') }}</span>
+          </InfoPop>
         </div>
 
         <p
@@ -142,7 +143,7 @@ const usedInRebirths = computed(() => {
           <button
             v-for="tier in tiers"
             :key="tier"
-            v-tippy="{ content: $t(`tier.${tier}`) }"
+            :title="$t(`tier.${tier}`)"
             type="button"
             class="rounded-lg border p-1 transition-colors"
             :class="focusTier === tier ? 'border-iconic bg-panel-raised' : 'border-edge-soft hover:border-edge-strong'"
@@ -218,19 +219,19 @@ const usedInRebirths = computed(() => {
               </button>
             </td>
             <td
-              v-tippy="{ content: formatExact(droid.tiers[tier]?.income, locale) }"
+              :title="formatExact(droid.tiers[tier]?.income, locale)"
               class="px-4 py-2 text-right font-mono tabular-nums"
             >
               {{ formatIncome(droid.tiers[tier]?.income, locale) }}
             </td>
             <td
-              v-tippy="{ content: formatExact(droid.tiers[tier]?.cost, locale) }"
+              :title="formatExact(droid.tiers[tier]?.cost, locale)"
               class="px-4 py-2 text-right font-mono tabular-nums text-ink-muted"
             >
               {{ formatNumber(droid.tiers[tier]?.cost, locale) }}
             </td>
             <td
-              v-tippy="{ content: formatExact(droid.tiers[tier]?.value, locale) }"
+              :title="formatExact(droid.tiers[tier]?.value, locale)"
               class="px-4 py-2 text-right font-mono tabular-nums text-ink-muted"
             >
               {{ formatNumber(droid.tiers[tier]?.value, locale) }}

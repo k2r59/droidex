@@ -48,7 +48,7 @@
           "costLabel": "950",
           "value": 665,
           "valueLabel": "665",
-          "image": "MOUSE_DEFAULT.png",
+          "image": "MOUSE_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -58,7 +58,7 @@
           "costLabel": "3.8k",
           "value": 2660,
           "valueLabel": "2.66k",
-          "image": "MOUSE_GOLD.png",
+          "image": "MOUSE_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -68,7 +68,7 @@
           "costLabel": "7.6k",
           "value": 5320,
           "valueLabel": "5.32k",
-          "image": "MOUSE_DIAMOND.png",
+          "image": "MOUSE_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -78,7 +78,7 @@
           "costLabel": "15.20k",
           "value": 10640,
           "valueLabel": "10.64k",
-          "image": "MOUSE_RAINBOW.png",
+          "image": "MOUSE_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -88,7 +88,7 @@
           "costLabel": "15.20k",
           "value": 10640,
           "valueLabel": "10.64k",
-          "image": "MOUSE_BESKAR.png",
+          "image": "MOUSE_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -98,7 +98,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "MOUSE_BESKAR.png",
+          "image": "MOUSE_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -121,7 +121,7 @@
           "costLabel": "1.1k",
           "value": 770,
           "valueLabel": "770",
-          "image": "PIT_DEFAULT.png",
+          "image": "PIT_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -131,7 +131,7 @@
           "costLabel": "4.4k",
           "value": 3080,
           "valueLabel": "3.08k",
-          "image": "PIT_GOLD.png",
+          "image": "PIT_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -141,7 +141,7 @@
           "costLabel": "8.8k",
           "value": 6160,
           "valueLabel": "6.16k",
-          "image": "PIT_DIAMOND.png",
+          "image": "PIT_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -151,7 +151,7 @@
           "costLabel": "17.60k",
           "value": 12320,
           "valueLabel": "12.32k",
-          "image": "PIT_RAINBOW.png",
+          "image": "PIT_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -161,7 +161,7 @@
           "costLabel": "17.60k",
           "value": 12320,
           "valueLabel": "12.32k",
-          "image": "PIT_BESKAR.png",
+          "image": "PIT_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -171,7 +171,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "PIT_BESKAR.png",
+          "image": "PIT_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -194,7 +194,7 @@
           "costLabel": "2k",
           "value": 1400,
           "valueLabel": "1.40k",
-          "image": "CB_DEFAULT.png",
+          "image": "CB_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -204,7 +204,7 @@
           "costLabel": "8k",
           "value": 5600,
           "valueLabel": "5.60k",
-          "image": "CB_GOLD.png",
+          "image": "CB_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -214,7 +214,7 @@
           "costLabel": "16k",
           "value": 11200,
           "valueLabel": "11.20k",
-          "image": "CB_DIAMOND.png",
+          "image": "CB_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -224,7 +224,7 @@
           "costLabel": "32k",
           "value": 22400,
           "valueLabel": "22.40k",
-          "image": "CB_RAINBOW.png",
+          "image": "CB_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -234,7 +234,7 @@
           "costLabel": "32k",
           "value": 22400,
           "valueLabel": "22.40k",
-          "image": "CB_BESKAR.png",
+          "image": "CB_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -244,7 +244,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "CB_BESKAR.png",
+          "image": "CB_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -267,7 +267,7 @@
           "costLabel": "2k",
           "value": 1400,
           "valueLabel": "1.40k",
-          "image": "R3_DEFAULT.png",
+          "image": "R3_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -277,7 +277,7 @@
           "costLabel": "8k",
           "value": 5600,
           "valueLabel": "5.60k",
-          "image": "R3_GOLD.png",
+          "image": "R3_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -287,7 +287,7 @@
           "costLabel": "16k",
           "value": 11200,
           "valueLabel": "11.20k",
-          "image": "R3_DIAMOND.png",
+          "image": "R3_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -297,7 +297,7 @@
           "costLabel": "32k",
           "value": 22400,
           "valueLabel": "22.40k",
-          "image": "R3_RAINBOW.png",
+          "image": "R3_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -307,7 +307,7 @@
           "costLabel": "32k",
           "value": 22400,
           "valueLabel": "22.40k",
-          "image": "R3_BESKAR.png",
+          "image": "R3_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -317,7 +317,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "R3_BESKAR.png",
+          "image": "R3_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -340,7 +340,7 @@
           "costLabel": "2k",
           "value": 1400,
           "valueLabel": "1.40k",
-          "image": "R5_DEFAULT.png",
+          "image": "R5_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -350,7 +350,7 @@
           "costLabel": "8k",
           "value": 5600,
           "valueLabel": "5.60k",
-          "image": "R5_GOLD.png",
+          "image": "R5_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -360,7 +360,7 @@
           "costLabel": "16k",
           "value": 11200,
           "valueLabel": "11.20k",
-          "image": "R5_DIAMOND.png",
+          "image": "R5_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -370,7 +370,7 @@
           "costLabel": "32k",
           "value": 22400,
           "valueLabel": "22.40k",
-          "image": "R5_RAINBOW.png",
+          "image": "R5_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -380,7 +380,7 @@
           "costLabel": "32k",
           "value": 22400,
           "valueLabel": "22.40k",
-          "image": "R5_BESKAR.png",
+          "image": "R5_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -390,7 +390,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "R5_BESKAR.png",
+          "image": "R5_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -413,7 +413,7 @@
           "costLabel": "3k",
           "value": 2100,
           "valueLabel": "2.10k",
-          "image": "DRK-1_PROBE_DEFAULT.png",
+          "image": "DRK-1_PROBE_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -423,7 +423,7 @@
           "costLabel": "12k",
           "value": 8400,
           "valueLabel": "8.40k",
-          "image": "DRK-1_PROBE_GOLD.png",
+          "image": "DRK-1_PROBE_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -433,7 +433,7 @@
           "costLabel": "24k",
           "value": 16800,
           "valueLabel": "16.80k",
-          "image": "DRK-1_PROBE_DIAMOND.png",
+          "image": "DRK-1_PROBE_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -443,7 +443,7 @@
           "costLabel": "48k",
           "value": 33600,
           "valueLabel": "33.60k",
-          "image": "DRK-1_PROBE_RAINBOW.png",
+          "image": "DRK-1_PROBE_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -453,7 +453,7 @@
           "costLabel": "48k",
           "value": 33600,
           "valueLabel": "33.60k",
-          "image": "DRK-1_PROBE_BESKAR.png",
+          "image": "DRK-1_PROBE_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -463,7 +463,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "DRK-1_PROBE_BESKAR.png",
+          "image": "DRK-1_PROBE_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -486,7 +486,7 @@
           "costLabel": "3k",
           "value": 2100,
           "valueLabel": "2.10k",
-          "image": "GONK_DEFAULT.png",
+          "image": "GONK_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -496,7 +496,7 @@
           "costLabel": "12k",
           "value": 8400,
           "valueLabel": "8.40k",
-          "image": "GONK_GOLD.png",
+          "image": "GONK_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -506,7 +506,7 @@
           "costLabel": "24k",
           "value": 16800,
           "valueLabel": "16.80k",
-          "image": "GONK_DIAMOND.png",
+          "image": "GONK_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -516,7 +516,7 @@
           "costLabel": "48k",
           "value": 33600,
           "valueLabel": "33.60k",
-          "image": "GONK_RAINBOW.png",
+          "image": "GONK_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -526,7 +526,7 @@
           "costLabel": "48k",
           "value": 33600,
           "valueLabel": "33.60k",
-          "image": "GONK_BESKAR.png",
+          "image": "GONK_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -536,7 +536,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "GONK_BESKAR.png",
+          "image": "GONK_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -559,7 +559,7 @@
           "costLabel": "3k",
           "value": 2100,
           "valueLabel": "2.10k",
-          "image": "R8_DEFAULT.png",
+          "image": "R8_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -569,7 +569,7 @@
           "costLabel": "12k",
           "value": 8400,
           "valueLabel": "8.40k",
-          "image": "R8_GOLD.png",
+          "image": "R8_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -579,7 +579,7 @@
           "costLabel": "24k",
           "value": 16800,
           "valueLabel": "16.80k",
-          "image": "R8_DIAMOND.png",
+          "image": "R8_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -589,7 +589,7 @@
           "costLabel": "48k",
           "value": 33600,
           "valueLabel": "33.60k",
-          "image": "R8_RAINBOW.png",
+          "image": "R8_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -599,7 +599,7 @@
           "costLabel": "48k",
           "value": 33600,
           "valueLabel": "33.60k",
-          "image": "R8_BESKAR.png",
+          "image": "R8_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -609,7 +609,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "R8_BESKAR.png",
+          "image": "R8_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -632,7 +632,7 @@
           "costLabel": "4k",
           "value": 2800,
           "valueLabel": "2.80k",
-          "image": "ID10_DEFAULT.png",
+          "image": "ID10_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -642,7 +642,7 @@
           "costLabel": "16k",
           "value": 11200,
           "valueLabel": "11.20k",
-          "image": "ID10_GOLD.png",
+          "image": "ID10_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -652,7 +652,7 @@
           "costLabel": "32k",
           "value": 22400,
           "valueLabel": "22.40k",
-          "image": "ID10_DIAMOND.png",
+          "image": "ID10_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -662,7 +662,7 @@
           "costLabel": "64k",
           "value": 44800,
           "valueLabel": "44.80k",
-          "image": "ID10_RAINBOW.png",
+          "image": "ID10_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -672,7 +672,7 @@
           "costLabel": "64k",
           "value": 44800,
           "valueLabel": "44.80k",
-          "image": "ID10_BESKAR.png",
+          "image": "ID10_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -682,7 +682,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "ID10_BESKAR.png",
+          "image": "ID10_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -705,7 +705,7 @@
           "costLabel": "4k",
           "value": 2800,
           "valueLabel": "2.80k",
-          "image": "B1_BATTLE_DEFAULT.png",
+          "image": "B1_BATTLE_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -715,7 +715,7 @@
           "costLabel": "16k",
           "value": 11200,
           "valueLabel": "11.20k",
-          "image": "B1_BATTLE_GOLD.png",
+          "image": "B1_BATTLE_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -725,7 +725,7 @@
           "costLabel": "32k",
           "value": 22400,
           "valueLabel": "22.40k",
-          "image": "B1_BATTLE_DIAMOND.png",
+          "image": "B1_BATTLE_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -735,7 +735,7 @@
           "costLabel": "64k",
           "value": 44800,
           "valueLabel": "44.80k",
-          "image": "B1_BATTLE_RAINBOW.png",
+          "image": "B1_BATTLE_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -745,7 +745,7 @@
           "costLabel": "64k",
           "value": 44800,
           "valueLabel": "44.80k",
-          "image": "B1_BATTLE_BESKAR.png",
+          "image": "B1_BATTLE_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -755,7 +755,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "B1_BATTLE_BESKAR.png",
+          "image": "B1_BATTLE_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -778,7 +778,7 @@
           "costLabel": "5k",
           "value": 3500,
           "valueLabel": "3.50k",
-          "image": "IMPERIAL_PROBE_DEFAULT.png",
+          "image": "IMPERIAL_PROBE_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -788,7 +788,7 @@
           "costLabel": "20k",
           "value": 14000,
           "valueLabel": "14.00k",
-          "image": "IMPERIAL_PROBE_GOLD.png",
+          "image": "IMPERIAL_PROBE_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -798,7 +798,7 @@
           "costLabel": "40k",
           "value": 28000,
           "valueLabel": "28.00k",
-          "image": "IMPERIAL_PROBE_DIAMOND.png",
+          "image": "IMPERIAL_PROBE_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -808,7 +808,7 @@
           "costLabel": "80k",
           "value": 56000,
           "valueLabel": "56.00k",
-          "image": "IMPERIAL_PROBE_RAINBOW.png",
+          "image": "IMPERIAL_PROBE_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -818,7 +818,7 @@
           "costLabel": "80k",
           "value": 56000,
           "valueLabel": "56.00k",
-          "image": "IMPERIAL_PROBE_BESKAR.png",
+          "image": "IMPERIAL_PROBE_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -828,7 +828,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "IMPERIAL_PROBE_BESKAR.png",
+          "image": "IMPERIAL_PROBE_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -851,7 +851,7 @@
           "costLabel": "25k",
           "value": 17500,
           "valueLabel": "17.50k",
-          "image": "BDX_EXPLORER_DEFAULT.png",
+          "image": "BDX_EXPLORER_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -861,7 +861,7 @@
           "costLabel": "100k",
           "value": 70000,
           "valueLabel": "70.00k",
-          "image": "BDX_EXPLORER_GOLD.png",
+          "image": "BDX_EXPLORER_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -871,7 +871,7 @@
           "costLabel": "200k",
           "value": 140000,
           "valueLabel": "140.00k",
-          "image": "BDX_EXPLORER_DIAMOND.png",
+          "image": "BDX_EXPLORER_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -881,7 +881,7 @@
           "costLabel": "400k",
           "value": 280000,
           "valueLabel": "280.00k",
-          "image": "BDX_EXPLORER_RAINBOW.png",
+          "image": "BDX_EXPLORER_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -891,7 +891,7 @@
           "costLabel": "400k",
           "value": 280000,
           "valueLabel": "280.00k",
-          "image": "BDX_EXPLORER_BESKAR.png",
+          "image": "BDX_EXPLORER_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -901,7 +901,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "BDX_EXPLORER_BESKAR.png",
+          "image": "BDX_EXPLORER_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -924,7 +924,7 @@
           "costLabel": "30k",
           "value": 21000,
           "valueLabel": "21.00k",
-          "image": "2BB_DEFAULT.png",
+          "image": "2BB_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -934,7 +934,7 @@
           "costLabel": "120k",
           "value": 84000,
           "valueLabel": "84.00k",
-          "image": "2BB_GOLD.png",
+          "image": "2BB_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -944,7 +944,7 @@
           "costLabel": "240k",
           "value": 168000,
           "valueLabel": "168.00k",
-          "image": "2BB_DIAMOND.png",
+          "image": "2BB_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -954,7 +954,7 @@
           "costLabel": "480k",
           "value": 336000,
           "valueLabel": "336.00k",
-          "image": "2BB_RAINBOW.png",
+          "image": "2BB_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -964,7 +964,7 @@
           "costLabel": "480k",
           "value": 336000,
           "valueLabel": "336.00k",
-          "image": "2BB_BESKAR.png",
+          "image": "2BB_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -974,7 +974,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "2BB_BESKAR.png",
+          "image": "2BB_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -997,7 +997,7 @@
           "costLabel": "36k",
           "value": 25200,
           "valueLabel": "25.20k",
-          "image": "NAV-EX_DEFAULT.png",
+          "image": "NAV-EX_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -1007,7 +1007,7 @@
           "costLabel": "144k",
           "value": 100800,
           "valueLabel": "100.80k",
-          "image": "NAV-EX_GOLD.png",
+          "image": "NAV-EX_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -1017,7 +1017,7 @@
           "costLabel": "288k",
           "value": 201600,
           "valueLabel": "201.60k",
-          "image": "NAV-EX_DIAMOND.png",
+          "image": "NAV-EX_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -1027,7 +1027,7 @@
           "costLabel": "576k",
           "value": 403200,
           "valueLabel": "403.20k",
-          "image": "NAV-EX_RAINBOW.png",
+          "image": "NAV-EX_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -1037,7 +1037,7 @@
           "costLabel": "576k",
           "value": 403200,
           "valueLabel": "403.20k",
-          "image": "NAV-EX_BESKAR.png",
+          "image": "NAV-EX_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -1047,7 +1047,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "NAV-EX_BESKAR.png",
+          "image": "NAV-EX_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -1070,7 +1070,7 @@
           "costLabel": "43k",
           "value": 30100,
           "valueLabel": "30.10k",
-          "image": "BAL-CORE_DEFAULT.png",
+          "image": "BAL-CORE_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -1080,7 +1080,7 @@
           "costLabel": "172k",
           "value": 120400,
           "valueLabel": "120.40k",
-          "image": "BAL-CORE_GOLD.png",
+          "image": "BAL-CORE_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -1090,7 +1090,7 @@
           "costLabel": "344k",
           "value": 240800,
           "valueLabel": "240.80k",
-          "image": "BAL-CORE_DIAMOND.png",
+          "image": "BAL-CORE_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -1100,7 +1100,7 @@
           "costLabel": "688k",
           "value": 481600,
           "valueLabel": "481.60k",
-          "image": "BAL-CORE_RAINBOW.png",
+          "image": "BAL-CORE_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -1110,7 +1110,7 @@
           "costLabel": "688k",
           "value": 481600,
           "valueLabel": "481.60k",
-          "image": "BAL-CORE_BESKAR.png",
+          "image": "BAL-CORE_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -1120,7 +1120,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "BAL-CORE_BESKAR.png",
+          "image": "BAL-CORE_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -1143,7 +1143,7 @@
           "costLabel": "52k",
           "value": 36400,
           "valueLabel": "36.40k",
-          "image": "VECT-ARM_DEFAULT.png",
+          "image": "VECT-ARM_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -1153,7 +1153,7 @@
           "costLabel": "208k",
           "value": 145600,
           "valueLabel": "145.60k",
-          "image": "VECT-ARM_GOLD.png",
+          "image": "VECT-ARM_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -1163,7 +1163,7 @@
           "costLabel": "416k",
           "value": 291200,
           "valueLabel": "291.20k",
-          "image": "VECT-ARM_DIAMOND.png",
+          "image": "VECT-ARM_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -1173,7 +1173,7 @@
           "costLabel": "832k",
           "value": 582400,
           "valueLabel": "582.40k",
-          "image": "VECT-ARM_RAINBOW.png",
+          "image": "VECT-ARM_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -1183,7 +1183,7 @@
           "costLabel": "832k",
           "value": 582400,
           "valueLabel": "582.40k",
-          "image": "VECT-ARM_BESKAR.png",
+          "image": "VECT-ARM_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -1193,7 +1193,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "VECT-ARM_BESKAR.png",
+          "image": "VECT-ARM_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -1216,7 +1216,7 @@
           "costLabel": "62k",
           "value": 43400,
           "valueLabel": "43.40k",
-          "image": "ROLL-R_DEFAULT.png",
+          "image": "ROLL-R_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -1226,7 +1226,7 @@
           "costLabel": "248k",
           "value": 173600,
           "valueLabel": "173.60k",
-          "image": "ROLL-R_GOLD.png",
+          "image": "ROLL-R_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -1236,7 +1236,7 @@
           "costLabel": "496k",
           "value": 347200,
           "valueLabel": "347.20k",
-          "image": "ROLL-R_DIAMOND.png",
+          "image": "ROLL-R_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -1246,7 +1246,7 @@
           "costLabel": "992k",
           "value": 694400,
           "valueLabel": "694.40k",
-          "image": "ROLL-R_RAINBOW.png",
+          "image": "ROLL-R_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -1256,7 +1256,7 @@
           "costLabel": "992k",
           "value": 694400,
           "valueLabel": "694.40k",
-          "image": "ROLL-R_BESKAR.png",
+          "image": "ROLL-R_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -1266,7 +1266,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "ROLL-R_BESKAR.png",
+          "image": "ROLL-R_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -1289,7 +1289,7 @@
           "costLabel": "74k",
           "value": 51800,
           "valueLabel": "51.80k",
-          "image": "A-LT_DEFAULT.png",
+          "image": "A-LT_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -1299,7 +1299,7 @@
           "costLabel": "296k",
           "value": 207200,
           "valueLabel": "207.20k",
-          "image": "A-LT_GOLD.png",
+          "image": "A-LT_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -1309,7 +1309,7 @@
           "costLabel": "592k",
           "value": 414400,
           "valueLabel": "414.40k",
-          "image": "A-LT_DIAMOND.png",
+          "image": "A-LT_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -1319,7 +1319,7 @@
           "costLabel": "1.18m",
           "value": 828800,
           "valueLabel": "828.80k",
-          "image": "A-LT_RAINBOW.png",
+          "image": "A-LT_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -1329,7 +1329,7 @@
           "costLabel": "1.18m",
           "value": 828800,
           "valueLabel": "828.80k",
-          "image": "A-LT_BESKAR.png",
+          "image": "A-LT_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -1339,7 +1339,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "A-LT_BESKAR.png",
+          "image": "A-LT_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -1362,7 +1362,7 @@
           "costLabel": "88k",
           "value": 61600,
           "valueLabel": "61.60k",
-          "image": "ARG_DEFAULT.png",
+          "image": "ARG_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -1372,7 +1372,7 @@
           "costLabel": "352k",
           "value": 246400,
           "valueLabel": "246.40k",
-          "image": "ARG_GOLD.png",
+          "image": "ARG_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -1382,7 +1382,7 @@
           "costLabel": "704k",
           "value": 492800,
           "valueLabel": "492.80k",
-          "image": "ARG_DIAMOND.png",
+          "image": "ARG_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -1392,7 +1392,7 @@
           "costLabel": "1.41m",
           "value": 985600,
           "valueLabel": "985.60k",
-          "image": "ARG_RAINBOW.png",
+          "image": "ARG_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -1402,7 +1402,7 @@
           "costLabel": "1.41m",
           "value": 985600,
           "valueLabel": "985.60k",
-          "image": "ARG_BESKAR.png",
+          "image": "ARG_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -1412,7 +1412,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "ARG_BESKAR.png",
+          "image": "ARG_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -1435,7 +1435,7 @@
           "costLabel": "100k",
           "value": 70000,
           "valueLabel": "70.00k",
-          "image": "SENATE_HOVERCAM_DEFAULT.png",
+          "image": "SENATE_HOVERCAM_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -1445,7 +1445,7 @@
           "costLabel": "400k",
           "value": 280000,
           "valueLabel": "280.00k",
-          "image": "SENATE_HOVERCAM_GOLD.png",
+          "image": "SENATE_HOVERCAM_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -1455,7 +1455,7 @@
           "costLabel": "800k",
           "value": 560000,
           "valueLabel": "560.00k",
-          "image": "SENATE_HOVERCAM_DIAMOND.png",
+          "image": "SENATE_HOVERCAM_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -1465,7 +1465,7 @@
           "costLabel": "1.60m",
           "value": 1120000,
           "valueLabel": "1.12m",
-          "image": "SENATE_HOVERCAM_RAINBOW.png",
+          "image": "SENATE_HOVERCAM_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -1475,7 +1475,7 @@
           "costLabel": "1.60m",
           "value": 1120000,
           "valueLabel": "1.12m",
-          "image": "SENATE_HOVERCAM_BESKAR.png",
+          "image": "SENATE_HOVERCAM_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -1485,7 +1485,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "SENATE_HOVERCAM_BESKAR.png",
+          "image": "SENATE_HOVERCAM_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -1508,7 +1508,7 @@
           "costLabel": "110k",
           "value": 77000,
           "valueLabel": "77.00k",
-          "image": "R4_DEFAULT.png",
+          "image": "R4_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -1518,7 +1518,7 @@
           "costLabel": "440k",
           "value": 308000,
           "valueLabel": "308.00k",
-          "image": "R4_GOLD.png",
+          "image": "R4_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -1528,7 +1528,7 @@
           "costLabel": "880k",
           "value": 616000,
           "valueLabel": "616.00k",
-          "image": "R4_DIAMOND.png",
+          "image": "R4_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -1538,7 +1538,7 @@
           "costLabel": "1.76m",
           "value": 1230000,
           "valueLabel": "1.23m",
-          "image": "R4_RAINBOW.png",
+          "image": "R4_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -1548,7 +1548,7 @@
           "costLabel": "1.76m",
           "value": 1230000,
           "valueLabel": "1.23m",
-          "image": "R4_BESKAR.png",
+          "image": "R4_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -1558,7 +1558,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "R4_BESKAR.png",
+          "image": "R4_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -1581,7 +1581,7 @@
           "costLabel": "120k",
           "value": 84000,
           "valueLabel": "84.00k",
-          "image": "R9_DEFAULT.png",
+          "image": "R9_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -1591,7 +1591,7 @@
           "costLabel": "480k",
           "value": 336000,
           "valueLabel": "336.00k",
-          "image": "R9_GOLD.png",
+          "image": "R9_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -1601,7 +1601,7 @@
           "costLabel": "960k",
           "value": 672000,
           "valueLabel": "672.00k",
-          "image": "R9_DIAMOND.png",
+          "image": "R9_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -1611,7 +1611,7 @@
           "costLabel": "1.92m",
           "value": 1340000,
           "valueLabel": "1.34m",
-          "image": "R9_RAINBOW.png",
+          "image": "R9_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -1621,7 +1621,7 @@
           "costLabel": "1.92m",
           "value": 1340000,
           "valueLabel": "1.34m",
-          "image": "R9_BESKAR.png",
+          "image": "R9_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -1631,7 +1631,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "R9_BESKAR.png",
+          "image": "R9_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -1654,7 +1654,7 @@
           "costLabel": "130k",
           "value": 91000,
           "valueLabel": "91.00k",
-          "image": "BU-4D_DEFAULT.png",
+          "image": "BU-4D_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -1664,7 +1664,7 @@
           "costLabel": "520k",
           "value": 364000,
           "valueLabel": "364.00k",
-          "image": "BU-4D_GOLD.png",
+          "image": "BU-4D_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -1674,7 +1674,7 @@
           "costLabel": "1.04m",
           "value": 728000,
           "valueLabel": "728.00k",
-          "image": "BU-4D_DIAMOND.png",
+          "image": "BU-4D_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -1684,7 +1684,7 @@
           "costLabel": "2.08m",
           "value": 1460000,
           "valueLabel": "1.46m",
-          "image": "BU-4D_RAINBOW.png",
+          "image": "BU-4D_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -1694,7 +1694,7 @@
           "costLabel": "2.08m",
           "value": 1460000,
           "valueLabel": "1.46m",
-          "image": "BU-4D_BESKAR.png",
+          "image": "BU-4D_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -1704,7 +1704,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "BU-4D_BESKAR.png",
+          "image": "BU-4D_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -1727,7 +1727,7 @@
           "costLabel": "140k",
           "value": 98000,
           "valueLabel": "98.00k",
-          "image": "HOV-R_DEFAULT.png",
+          "image": "HOV-R_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -1737,7 +1737,7 @@
           "costLabel": "560k",
           "value": 392000,
           "valueLabel": "392.00k",
-          "image": "HOV-R_GOLD.png",
+          "image": "HOV-R_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -1747,7 +1747,7 @@
           "costLabel": "1.12m",
           "value": 784000,
           "valueLabel": "784.00k",
-          "image": "HOV-R_DIAMOND.png",
+          "image": "HOV-R_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -1757,7 +1757,7 @@
           "costLabel": "2.24m",
           "value": 1570000,
           "valueLabel": "1.57m",
-          "image": "HOV-R_RAINBOW.png",
+          "image": "HOV-R_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -1767,7 +1767,7 @@
           "costLabel": "2.24m",
           "value": 1570000,
           "valueLabel": "1.57m",
-          "image": "HOV-R_BESKAR.png",
+          "image": "HOV-R_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -1777,7 +1777,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "HOV-R_BESKAR.png",
+          "image": "HOV-R_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -1800,7 +1800,7 @@
           "costLabel": "150k",
           "value": 105000,
           "valueLabel": "105k",
-          "image": "B1_SECURITY_DEFAULT.png",
+          "image": "B1_SECURITY_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -1810,7 +1810,7 @@
           "costLabel": "600k",
           "value": 420000,
           "valueLabel": "420.00k",
-          "image": "B1_SECURITY_GOLD.png",
+          "image": "B1_SECURITY_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -1820,7 +1820,7 @@
           "costLabel": "1.20m",
           "value": 840000,
           "valueLabel": "840.00k",
-          "image": "B1_SECURITY_DIAMOND.png",
+          "image": "B1_SECURITY_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -1830,7 +1830,7 @@
           "costLabel": "2.40m",
           "value": 1680000,
           "valueLabel": "1.68m",
-          "image": "B1_SECURITY_RAINBOW.png",
+          "image": "B1_SECURITY_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -1840,7 +1840,7 @@
           "costLabel": "2.40m",
           "value": 1680000,
           "valueLabel": "1.68m",
-          "image": "B1_SECURITY_BESKAR.png",
+          "image": "B1_SECURITY_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -1850,7 +1850,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "B1_SECURITY_BESKAR.png",
+          "image": "B1_SECURITY_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -1873,7 +1873,7 @@
           "costLabel": "900k",
           "value": 630000,
           "valueLabel": "630.00k",
-          "image": "GROUNDMECH_DEFAULT.png",
+          "image": "GROUNDMECH_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -1883,7 +1883,7 @@
           "costLabel": "3.60m",
           "value": 2520000,
           "valueLabel": "2.52m",
-          "image": "GROUNDMECH_GOLD.png",
+          "image": "GROUNDMECH_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -1893,7 +1893,7 @@
           "costLabel": "7.20m",
           "value": 5040000,
           "valueLabel": "5.04m",
-          "image": "GROUNDMECH_DIAMOND.png",
+          "image": "GROUNDMECH_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -1903,7 +1903,7 @@
           "costLabel": "14.40m",
           "value": 10080000,
           "valueLabel": "10.08m",
-          "image": "GROUNDMECH_RAINBOW.png",
+          "image": "GROUNDMECH_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -1913,7 +1913,7 @@
           "costLabel": "112.50m",
           "value": 78750000,
           "valueLabel": "78.75m",
-          "image": "GROUNDMECH_BESKAR.png",
+          "image": "GROUNDMECH_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -1923,7 +1923,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "GROUNDMECH_BESKAR.png",
+          "image": "GROUNDMECH_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -1946,7 +1946,7 @@
           "costLabel": "1.20m",
           "value": 840000,
           "valueLabel": "840.00k",
-          "image": "BB_DEFAULT.png",
+          "image": "BB_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -1956,7 +1956,7 @@
           "costLabel": "4.80m",
           "value": 3360000,
           "valueLabel": "3.36m",
-          "image": "BB_GOLD.png",
+          "image": "BB_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -1966,7 +1966,7 @@
           "costLabel": "9.60m",
           "value": 6720000,
           "valueLabel": "6.72m",
-          "image": "BB_DIAMOND.png",
+          "image": "BB_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -1976,7 +1976,7 @@
           "costLabel": "19.20m",
           "value": 13440000,
           "valueLabel": "13.44m",
-          "image": "BB_RAINBOW.png",
+          "image": "BB_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -1986,7 +1986,7 @@
           "costLabel": "150m",
           "value": 105000000,
           "valueLabel": "105m",
-          "image": "BB_BESKAR.png",
+          "image": "BB_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -1996,7 +1996,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "BB_BESKAR.png",
+          "image": "BB_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -2019,7 +2019,7 @@
           "costLabel": "1.50m",
           "value": 1050000,
           "valueLabel": "1.05m",
-          "image": "ORB-WALKER_DEFAULT.png",
+          "image": "ORB-WALKER_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -2029,7 +2029,7 @@
           "costLabel": "6m",
           "value": 4200000,
           "valueLabel": "4.20m",
-          "image": "ORB-WALKER_GOLD.png",
+          "image": "ORB-WALKER_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -2039,7 +2039,7 @@
           "costLabel": "12m",
           "value": 8400000,
           "valueLabel": "8.40m",
-          "image": "ORB-WALKER_DIAMOND.png",
+          "image": "ORB-WALKER_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -2049,7 +2049,7 @@
           "costLabel": "24m",
           "value": 16800000,
           "valueLabel": "16.80m",
-          "image": "ORB-WALKER_RAINBOW.png",
+          "image": "ORB-WALKER_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -2059,7 +2059,7 @@
           "costLabel": "187.50m",
           "value": 131250000,
           "valueLabel": "131.25m",
-          "image": "ORB-WALKER_BESKAR.png",
+          "image": "ORB-WALKER_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -2069,7 +2069,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "ORB-WALKER_BESKAR.png",
+          "image": "ORB-WALKER_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -2092,7 +2092,7 @@
           "costLabel": "1.80m",
           "value": 1260000,
           "valueLabel": "1.26m",
-          "image": "UTIL-TEC_DEFAULT.png",
+          "image": "UTIL-TEC_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -2102,7 +2102,7 @@
           "costLabel": "7.20m",
           "value": 5040000,
           "valueLabel": "5.04m",
-          "image": "UTIL-TEC_GOLD.png",
+          "image": "UTIL-TEC_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -2112,7 +2112,7 @@
           "costLabel": "14.40m",
           "value": 10080000,
           "valueLabel": "10.08m",
-          "image": "UTIL-TEC_DIAMOND.png",
+          "image": "UTIL-TEC_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -2122,7 +2122,7 @@
           "costLabel": "28.80m",
           "value": 20160000,
           "valueLabel": "20.16m",
-          "image": "UTIL-TEC_RAINBOW.png",
+          "image": "UTIL-TEC_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -2132,7 +2132,7 @@
           "costLabel": "225m",
           "value": 157500000,
           "valueLabel": "157.5m",
-          "image": "UTIL-TEC_BESKAR.png",
+          "image": "UTIL-TEC_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -2142,7 +2142,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "UTIL-TEC_BESKAR.png",
+          "image": "UTIL-TEC_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -2165,7 +2165,7 @@
           "costLabel": "2.10m",
           "value": 1470000,
           "valueLabel": "1.47m",
-          "image": "LO_DEFAULT.png",
+          "image": "LO_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -2175,7 +2175,7 @@
           "costLabel": "8.40m",
           "value": 5880000,
           "valueLabel": "5.88m",
-          "image": "LO_GOLD.png",
+          "image": "LO_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -2185,7 +2185,7 @@
           "costLabel": "16.8m",
           "value": 11760000,
           "valueLabel": "11.76m",
-          "image": "LO_DIAMOND.png",
+          "image": "LO_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -2195,7 +2195,7 @@
           "costLabel": "33.60m",
           "value": 23520000,
           "valueLabel": "23.52m",
-          "image": "LO_RAINBOW.png",
+          "image": "LO_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -2205,7 +2205,7 @@
           "costLabel": "262.50m",
           "value": 183750000,
           "valueLabel": "183.75m",
-          "image": "LO_BESKAR.png",
+          "image": "LO_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -2215,7 +2215,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "LO_BESKAR.png",
+          "image": "LO_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -2238,7 +2238,7 @@
           "costLabel": "2.40m",
           "value": 1680000,
           "valueLabel": "1.68m",
-          "image": "HAUL-R_DEFAULT.png",
+          "image": "HAUL-R_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -2248,7 +2248,7 @@
           "costLabel": "9.60m",
           "value": 6720000,
           "valueLabel": "6.72m",
-          "image": "HAUL-R_GOLD.png",
+          "image": "HAUL-R_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -2258,7 +2258,7 @@
           "costLabel": "19.20m",
           "value": 13440000,
           "valueLabel": "13.44m",
-          "image": "HAUL-R_DIAMOND.png",
+          "image": "HAUL-R_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -2268,7 +2268,7 @@
           "costLabel": "38.40m",
           "value": 26880000,
           "valueLabel": "26.88m",
-          "image": "HAUL-R_RAINBOW.png",
+          "image": "HAUL-R_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -2278,7 +2278,7 @@
           "costLabel": "300m",
           "value": 210000000,
           "valueLabel": "210.00m",
-          "image": "HAUL-R_BESKAR.png",
+          "image": "HAUL-R_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -2288,7 +2288,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "HAUL-R_BESKAR.png",
+          "image": "HAUL-R_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -2311,7 +2311,7 @@
           "costLabel": "2.70m",
           "value": 1890000,
           "valueLabel": "1.89m",
-          "image": "R6_DEFAULT.png",
+          "image": "R6_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -2321,7 +2321,7 @@
           "costLabel": "10.80m",
           "value": 7560000,
           "valueLabel": "7.56m",
-          "image": "R6_GOLD.png",
+          "image": "R6_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -2331,7 +2331,7 @@
           "costLabel": "21.60m",
           "value": 15120000,
           "valueLabel": "15.12m",
-          "image": "R6_DIAMOND.png",
+          "image": "R6_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -2341,7 +2341,7 @@
           "costLabel": "43.20m",
           "value": 30240000,
           "valueLabel": "30.24m",
-          "image": "R6_RAINBOW.png",
+          "image": "R6_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -2351,7 +2351,7 @@
           "costLabel": "337.50m",
           "value": 236250000,
           "valueLabel": "236.25m",
-          "image": "R6_BESKAR.png",
+          "image": "R6_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -2361,7 +2361,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "R6_BESKAR.png",
+          "image": "R6_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -2384,7 +2384,7 @@
           "costLabel": "3.00m",
           "value": 2100000,
           "valueLabel": "2.10m",
-          "image": "TRAK-R_DEFAULT.png",
+          "image": "TRAK-R_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -2394,7 +2394,7 @@
           "costLabel": "12m",
           "value": 8400000,
           "valueLabel": "8.40m",
-          "image": "TRAK-R_GOLD.png",
+          "image": "TRAK-R_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -2404,7 +2404,7 @@
           "costLabel": "24m",
           "value": 16800000,
           "valueLabel": "16.80m",
-          "image": "TRAK-R_DIAMOND.png",
+          "image": "TRAK-R_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -2414,7 +2414,7 @@
           "costLabel": "48m",
           "value": 33600000,
           "valueLabel": "33.60m",
-          "image": "TRAK-R_RAINBOW.png",
+          "image": "TRAK-R_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -2424,7 +2424,7 @@
           "costLabel": "375m",
           "value": 262500000,
           "valueLabel": "262.50m",
-          "image": "TRAK-R_BESKAR.png",
+          "image": "TRAK-R_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -2434,7 +2434,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "TRAK-R_BESKAR.png",
+          "image": "TRAK-R_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -2457,7 +2457,7 @@
           "costLabel": "3.30m",
           "value": 2310000,
           "valueLabel": "2.31m",
-          "image": "R2_DEFAULT.png",
+          "image": "R2_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -2467,7 +2467,7 @@
           "costLabel": "13.20m",
           "value": 9240000,
           "valueLabel": "9.24m",
-          "image": "R2_GOLD.png",
+          "image": "R2_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -2477,7 +2477,7 @@
           "costLabel": "26.40m",
           "value": 18480000,
           "valueLabel": "18.48m",
-          "image": "R2_DIAMOND.png",
+          "image": "R2_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -2487,7 +2487,7 @@
           "costLabel": "52.80m",
           "value": 36960000,
           "valueLabel": "36.96m",
-          "image": "R2_RAINBOW.png",
+          "image": "R2_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -2497,7 +2497,7 @@
           "costLabel": "412.50m",
           "value": 288750000,
           "valueLabel": "288.75m",
-          "image": "R2_BESKAR.png",
+          "image": "R2_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -2507,7 +2507,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "R2_BESKAR.png",
+          "image": "R2_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -2530,7 +2530,7 @@
           "costLabel": "3.60m",
           "value": 2520000,
           "valueLabel": "2.52m",
-          "image": "OPTI-POD_DEFAULT.png",
+          "image": "OPTI-POD_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -2540,7 +2540,7 @@
           "costLabel": "14.4m",
           "value": 10080000,
           "valueLabel": "10.08m",
-          "image": "OPTI-POD_GOLD.png",
+          "image": "OPTI-POD_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -2550,7 +2550,7 @@
           "costLabel": "28.80m",
           "value": 20160000,
           "valueLabel": "20.16m",
-          "image": "OPTI-POD_DIAMOND.png",
+          "image": "OPTI-POD_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -2560,7 +2560,7 @@
           "costLabel": "57.60m",
           "value": 40320000,
           "valueLabel": "40.32m",
-          "image": "OPTI-POD_RAINBOW.png",
+          "image": "OPTI-POD_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -2570,7 +2570,7 @@
           "costLabel": "450m",
           "value": 315000000,
           "valueLabel": "315m",
-          "image": "OPTI-POD_BESKAR.png",
+          "image": "OPTI-POD_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -2580,7 +2580,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "OPTI-POD_BESKAR.png",
+          "image": "OPTI-POD_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -2603,7 +2603,7 @@
           "costLabel": "3.90m",
           "value": 2730000,
           "valueLabel": "2.73m",
-          "image": "B2_SUPER_DEFAULT.png",
+          "image": "B2_SUPER_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -2613,7 +2613,7 @@
           "costLabel": "15.60m",
           "value": 10920000,
           "valueLabel": "10.92m",
-          "image": "B2_SUPER_GOLD.png",
+          "image": "B2_SUPER_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -2623,7 +2623,7 @@
           "costLabel": "31.20m",
           "value": 21840000,
           "valueLabel": "21.84m",
-          "image": "B2_SUPER_DIAMOND.png",
+          "image": "B2_SUPER_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -2633,7 +2633,7 @@
           "costLabel": "62.40m",
           "value": 43680000,
           "valueLabel": "43.68m",
-          "image": "B2_SUPER_RAINBOW.png",
+          "image": "B2_SUPER_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -2643,7 +2643,7 @@
           "costLabel": "487.50m",
           "value": 341250000,
           "valueLabel": "341.25m",
-          "image": "B2_SUPER_BESKAR.png",
+          "image": "B2_SUPER_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -2653,7 +2653,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "B2_SUPER_BESKAR.png",
+          "image": "B2_SUPER_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -2676,7 +2676,7 @@
           "costLabel": "4.20m",
           "value": 2940000,
           "valueLabel": "2.94m",
-          "image": "LNG-SHOT_DEFAULT.png",
+          "image": "LNG-SHOT_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -2686,7 +2686,7 @@
           "costLabel": "16.80m",
           "value": 11760000,
           "valueLabel": "11.76m",
-          "image": "LNG-SHOT_GOLD.png",
+          "image": "LNG-SHOT_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -2696,7 +2696,7 @@
           "costLabel": "33.60m",
           "value": 23520000,
           "valueLabel": "23.52m",
-          "image": "LNG-SHOT_DIAMOND.png",
+          "image": "LNG-SHOT_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -2706,7 +2706,7 @@
           "costLabel": "67.20m",
           "value": 47040000,
           "valueLabel": "47.04m",
-          "image": "LNG-SHOT_RAINBOW.png",
+          "image": "LNG-SHOT_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -2716,7 +2716,7 @@
           "costLabel": "525m",
           "value": 367500000,
           "valueLabel": "367.50m",
-          "image": "LNG-SHOT_BESKAR.png",
+          "image": "LNG-SHOT_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -2726,7 +2726,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "LNG-SHOT_BESKAR.png",
+          "image": "LNG-SHOT_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -2749,7 +2749,7 @@
           "costLabel": "4.50m",
           "value": 3150000,
           "valueLabel": "3.15m",
-          "image": "B2_HEAVY_DEFAULT.png",
+          "image": "B2_HEAVY_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -2759,7 +2759,7 @@
           "costLabel": "18m",
           "value": 12600000,
           "valueLabel": "12.60m",
-          "image": "B2_HEAVY_GOLD.png",
+          "image": "B2_HEAVY_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -2769,7 +2769,7 @@
           "costLabel": "36m",
           "value": 25200000,
           "valueLabel": "25.20m",
-          "image": "B2_HEAVY_DIAMOND.png",
+          "image": "B2_HEAVY_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -2779,7 +2779,7 @@
           "costLabel": "72m",
           "value": 50400000,
           "valueLabel": "50.40m",
-          "image": "B2_HEAVY_RAINBOW.png",
+          "image": "B2_HEAVY_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -2789,7 +2789,7 @@
           "costLabel": "562.50m",
           "value": 393750000,
           "valueLabel": "393.75m",
-          "image": "B2_HEAVY_BESKAR.png",
+          "image": "B2_HEAVY_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -2799,7 +2799,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "B2_HEAVY_BESKAR.png",
+          "image": "B2_HEAVY_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -2822,7 +2822,7 @@
           "costLabel": "4.80m",
           "value": 3360000,
           "valueLabel": "3.36m",
-          "image": "SEN-TRI_DEFAULT.png",
+          "image": "SEN-TRI_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -2832,7 +2832,7 @@
           "costLabel": "19.20m",
           "value": 13440000,
           "valueLabel": "13.44m",
-          "image": "SEN-TRI_GOLD.png",
+          "image": "SEN-TRI_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -2842,7 +2842,7 @@
           "costLabel": "38.40m",
           "value": 26880000,
           "valueLabel": "26.88m",
-          "image": "SEN-TRI_DIAMOND.png",
+          "image": "SEN-TRI_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -2852,7 +2852,7 @@
           "costLabel": "76.80m",
           "value": 53760000,
           "valueLabel": "53.76m",
-          "image": "SEN-TRI_RAINBOW.png",
+          "image": "SEN-TRI_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -2862,7 +2862,7 @@
           "costLabel": "600m",
           "value": 420000000,
           "valueLabel": "420m",
-          "image": "SEN-TRI_BESKAR.png",
+          "image": "SEN-TRI_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -2872,7 +2872,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "SEN-TRI_BESKAR.png",
+          "image": "SEN-TRI_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -2895,7 +2895,7 @@
           "costLabel": "5.10m",
           "value": 3570000,
           "valueLabel": "3.57m",
-          "image": "STRIKE-ORB_DEFAULT.png",
+          "image": "STRIKE-ORB_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -2905,7 +2905,7 @@
           "costLabel": "20.40m",
           "value": 14280000,
           "valueLabel": "14.28m",
-          "image": "STRIKE-ORB_GOLD.png",
+          "image": "STRIKE-ORB_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -2915,7 +2915,7 @@
           "costLabel": "40.80m",
           "value": 28560000,
           "valueLabel": "28.56m",
-          "image": "STRIKE-ORB_DIAMOND.png",
+          "image": "STRIKE-ORB_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -2925,7 +2925,7 @@
           "costLabel": "81.60m",
           "value": 57120000,
           "valueLabel": "57.12m",
-          "image": "STRIKE-ORB_RAINBOW.png",
+          "image": "STRIKE-ORB_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -2935,7 +2935,7 @@
           "costLabel": "637.50m",
           "value": 446250000,
           "valueLabel": "446.25m",
-          "image": "STRIKE-ORB_BESKAR.png",
+          "image": "STRIKE-ORB_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -2945,7 +2945,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "STRIKE-ORB_BESKAR.png",
+          "image": "STRIKE-ORB_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -2968,7 +2968,7 @@
           "costLabel": "5.40m",
           "value": 3780000,
           "valueLabel": "3.78m",
-          "image": "AMP_WALKER_DEFAULT.png",
+          "image": "AMP_WALKER_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -2978,7 +2978,7 @@
           "costLabel": "21.60m",
           "value": 15120000,
           "valueLabel": "15.12m",
-          "image": "AMP_WALKER_GOLD.png",
+          "image": "AMP_WALKER_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -2988,7 +2988,7 @@
           "costLabel": "43.20m",
           "value": 30240000,
           "valueLabel": "30.24m",
-          "image": "AMP_WALKER_DIAMOND.png",
+          "image": "AMP_WALKER_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -2998,7 +2998,7 @@
           "costLabel": "86.40m",
           "value": 60480000,
           "valueLabel": "60.48m",
-          "image": "AMP_WALKER_RAINBOW.png",
+          "image": "AMP_WALKER_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -3008,7 +3008,7 @@
           "costLabel": "675m",
           "value": 472500000,
           "valueLabel": "472.50m",
-          "image": "AMP_WALKER_BESKAR.png",
+          "image": "AMP_WALKER_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -3018,7 +3018,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "AMP_WALKER_BESKAR.png",
+          "image": "AMP_WALKER_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -3041,7 +3041,7 @@
           "costLabel": "6.00m",
           "value": 4200000,
           "valueLabel": "4.20m",
-          "image": "B1_HEAVY_DEFAULT.png",
+          "image": "B1_HEAVY_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -3051,7 +3051,7 @@
           "costLabel": "24m",
           "value": 16800000,
           "valueLabel": "16.80m",
-          "image": "B1_HEAVY_GOLD.png",
+          "image": "B1_HEAVY_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -3061,7 +3061,7 @@
           "costLabel": "48m",
           "value": 33600000,
           "valueLabel": "33.60m",
-          "image": "B1_HEAVY_DIAMOND.png",
+          "image": "B1_HEAVY_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -3071,7 +3071,7 @@
           "costLabel": "96m",
           "value": 67200000,
           "valueLabel": "67.20m",
-          "image": "B1_HEAVY_RAINBOW.png",
+          "image": "B1_HEAVY_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -3081,7 +3081,7 @@
           "costLabel": "24b",
           "value": 16800000000,
           "valueLabel": "16.80b",
-          "image": "B1_HEAVY_BESKAR.png",
+          "image": "B1_HEAVY_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -3091,7 +3091,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "B1_HEAVY_BESKAR.png",
+          "image": "B1_HEAVY_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -3114,7 +3114,7 @@
           "costLabel": "6.30m",
           "value": 4410000,
           "valueLabel": "4.41m",
-          "image": "GUNRUNNER_DEFAULT.png",
+          "image": "GUNRUNNER_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -3124,7 +3124,7 @@
           "costLabel": "25.20m",
           "value": 17640000,
           "valueLabel": "17.64m",
-          "image": "GUNRUNNER_GOLD.png",
+          "image": "GUNRUNNER_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -3134,7 +3134,7 @@
           "costLabel": "50.40m",
           "value": 35280000,
           "valueLabel": "35.28m",
-          "image": "GUNRUNNER_DIAMOND.png",
+          "image": "GUNRUNNER_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -3144,7 +3144,7 @@
           "costLabel": "100.80m",
           "value": 70560000,
           "valueLabel": "70.56m",
-          "image": "GUNRUNNER_RAINBOW.png",
+          "image": "GUNRUNNER_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -3154,7 +3154,7 @@
           "costLabel": "25.20b",
           "value": 17640000000,
           "valueLabel": "17.64b",
-          "image": "GUNRUNNER_BESKAR.png",
+          "image": "GUNRUNNER_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -3164,7 +3164,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "GUNRUNNER_BESKAR.png",
+          "image": "GUNRUNNER_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -3187,7 +3187,7 @@
           "costLabel": "22m",
           "value": 15400000,
           "valueLabel": "15.40m",
-          "image": "PROTO-ROLLER_DEFAULT.png",
+          "image": "PROTO-ROLLER_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -3197,7 +3197,7 @@
           "costLabel": "88m",
           "value": 61600000,
           "valueLabel": "61.60m",
-          "image": "PROTO-ROLLER_GOLD.png",
+          "image": "PROTO-ROLLER_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -3207,7 +3207,7 @@
           "costLabel": "176m",
           "value": 123200000,
           "valueLabel": "123.20m",
-          "image": "PROTO-ROLLER_DIAMOND.png",
+          "image": "PROTO-ROLLER_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -3217,7 +3217,7 @@
           "costLabel": "352m",
           "value": 246400000,
           "valueLabel": "246.40m",
-          "image": "PROTO-ROLLER_RAINBOW.png",
+          "image": "PROTO-ROLLER_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -3227,7 +3227,7 @@
           "costLabel": "8.80b",
           "value": 6160000000,
           "valueLabel": "6.16b",
-          "image": "PROTO-ROLLER_BESKAR.png",
+          "image": "PROTO-ROLLER_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -3237,7 +3237,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "PROTO-ROLLER_BESKAR.png",
+          "image": "PROTO-ROLLER_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -3260,7 +3260,7 @@
           "costLabel": "29m",
           "value": 20300000,
           "valueLabel": "20.30m",
-          "image": "MECHA-DROID_DEFAULT.png",
+          "image": "MECHA-DROID_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -3270,7 +3270,7 @@
           "costLabel": "116m",
           "value": 81200000,
           "valueLabel": "81.20m",
-          "image": "MECHA-DROID_GOLD.png",
+          "image": "MECHA-DROID_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -3280,7 +3280,7 @@
           "costLabel": "232m",
           "value": 162400000,
           "valueLabel": "162.40m",
-          "image": "MECHA-DROID_DIAMOND.png",
+          "image": "MECHA-DROID_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -3290,7 +3290,7 @@
           "costLabel": "464m",
           "value": 324800000,
           "valueLabel": "324.80m",
-          "image": "MECHA-DROID_RAINBOW.png",
+          "image": "MECHA-DROID_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -3300,7 +3300,7 @@
           "costLabel": "11.60b",
           "value": 8119999999.999999,
           "valueLabel": "8.12b",
-          "image": "MECHA-DROID_BESKAR.png",
+          "image": "MECHA-DROID_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -3310,7 +3310,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "MECHA-DROID_BESKAR.png",
+          "image": "MECHA-DROID_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -3333,7 +3333,7 @@
           "costLabel": "30m",
           "value": 21000000,
           "valueLabel": "21.00m",
-          "image": "CYCLO-GRAV_DEFAULT.png",
+          "image": "CYCLO-GRAV_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -3343,7 +3343,7 @@
           "costLabel": "120m",
           "value": 84000000,
           "valueLabel": "84.00m",
-          "image": "CYCLO-GRAV_GOLD.png",
+          "image": "CYCLO-GRAV_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -3353,7 +3353,7 @@
           "costLabel": "240m",
           "value": 168000000,
           "valueLabel": "168.00m",
-          "image": "CYCLO-GRAV_DIAMOND.png",
+          "image": "CYCLO-GRAV_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -3363,7 +3363,7 @@
           "costLabel": "480m",
           "value": 336000000,
           "valueLabel": "336.00m",
-          "image": "CYCLO-GRAV_RAINBOW.png",
+          "image": "CYCLO-GRAV_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -3373,7 +3373,7 @@
           "costLabel": "12.00b",
           "value": 8400000000,
           "valueLabel": "8.40b",
-          "image": "CYCLO-GRAV_BESKAR.png",
+          "image": "CYCLO-GRAV_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -3383,7 +3383,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "CYCLO-GRAV_BESKAR.png",
+          "image": "CYCLO-GRAV_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -3406,7 +3406,7 @@
           "costLabel": "28m",
           "value": 19600000,
           "valueLabel": "19.60m",
-          "image": "BB9_DEFAULT.png",
+          "image": "BB9_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -3416,7 +3416,7 @@
           "costLabel": "112m",
           "value": 78400000,
           "valueLabel": "78.40m",
-          "image": "BB9_GOLD.png",
+          "image": "BB9_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -3426,7 +3426,7 @@
           "costLabel": "224m",
           "value": 156800000,
           "valueLabel": "156.80m",
-          "image": "BB9_DIAMOND.png",
+          "image": "BB9_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -3436,7 +3436,7 @@
           "costLabel": "448m",
           "value": 313600000,
           "valueLabel": "313.60m",
-          "image": "BB9_RAINBOW.png",
+          "image": "BB9_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -3446,7 +3446,7 @@
           "costLabel": "11.20b",
           "value": 7840000000,
           "valueLabel": "7.84b",
-          "image": "BB9_BESKAR.png",
+          "image": "BB9_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -3456,7 +3456,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "BB9_BESKAR.png",
+          "image": "BB9_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -3479,7 +3479,7 @@
           "costLabel": "31m",
           "value": 21700000,
           "valueLabel": "21.70m",
-          "image": "B2-RP_DEFAULT.png",
+          "image": "B2-RP_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -3489,7 +3489,7 @@
           "costLabel": "124m",
           "value": 86800000,
           "valueLabel": "86.80m",
-          "image": "B2-RP_GOLD.png",
+          "image": "B2-RP_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -3499,7 +3499,7 @@
           "costLabel": "248m",
           "value": 173600000,
           "valueLabel": "173.60m",
-          "image": "B2-RP_DIAMOND.png",
+          "image": "B2-RP_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -3509,7 +3509,7 @@
           "costLabel": "496m",
           "value": 347200000,
           "valueLabel": "347.20m",
-          "image": "B2-RP_RAINBOW.png",
+          "image": "B2-RP_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -3519,7 +3519,7 @@
           "costLabel": "12.40b",
           "value": 8680000000,
           "valueLabel": "8.68b",
-          "image": "B2-RP_BESKAR.png",
+          "image": "B2-RP_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -3529,7 +3529,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "B2-RP_BESKAR.png",
+          "image": "B2-RP_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -3552,7 +3552,7 @@
           "costLabel": "37m",
           "value": 25900000,
           "valueLabel": "25.90m",
-          "image": "MONO-WALKER_DEFAULT.png",
+          "image": "MONO-WALKER_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -3562,7 +3562,7 @@
           "costLabel": "148m",
           "value": 103600000,
           "valueLabel": "103.60m",
-          "image": "MONO-WALKER_GOLD.png",
+          "image": "MONO-WALKER_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -3572,7 +3572,7 @@
           "costLabel": "296m",
           "value": 207200000,
           "valueLabel": "207.20m",
-          "image": "MONO-WALKER_DIAMOND.png",
+          "image": "MONO-WALKER_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -3582,7 +3582,7 @@
           "costLabel": "592m",
           "value": 414400000,
           "valueLabel": "414.40m",
-          "image": "MONO-WALKER_RAINBOW.png",
+          "image": "MONO-WALKER_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -3592,7 +3592,7 @@
           "costLabel": "14.80b",
           "value": 10360000000,
           "valueLabel": "10.36b",
-          "image": "MONO-WALKER_BESKAR.png",
+          "image": "MONO-WALKER_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -3602,7 +3602,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "MONO-WALKER_BESKAR.png",
+          "image": "MONO-WALKER_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -3625,7 +3625,7 @@
           "costLabel": "37m",
           "value": 25900000,
           "valueLabel": "25.90m",
-          "image": "R7_DEFAULT.png",
+          "image": "R7_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -3635,7 +3635,7 @@
           "costLabel": "148m",
           "value": 103600000,
           "valueLabel": "103.60m",
-          "image": "R7_GOLD.png",
+          "image": "R7_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -3645,7 +3645,7 @@
           "costLabel": "296m",
           "value": 207200000,
           "valueLabel": "207.20m",
-          "image": "R7_DIAMOND.png",
+          "image": "R7_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -3655,7 +3655,7 @@
           "costLabel": "592m",
           "value": 414400000,
           "valueLabel": "414.40m",
-          "image": "R7_RAINBOW.png",
+          "image": "R7_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -3665,7 +3665,7 @@
           "costLabel": "14.80b",
           "value": 10360000000,
           "valueLabel": "10.36b",
-          "image": "R7_BESKAR.png",
+          "image": "R7_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -3675,7 +3675,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "R7_BESKAR.png",
+          "image": "R7_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -3698,7 +3698,7 @@
           "costLabel": "37m",
           "value": 25900000,
           "valueLabel": "25.90m",
-          "image": "OPTI-STRIKE_DEFAULT.png",
+          "image": "OPTI-STRIKE_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -3708,7 +3708,7 @@
           "costLabel": "148m",
           "value": 103600000,
           "valueLabel": "103.60m",
-          "image": "OPTI-STRIKE_GOLD.png",
+          "image": "OPTI-STRIKE_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -3718,7 +3718,7 @@
           "costLabel": "296m",
           "value": 207200000,
           "valueLabel": "207.20m",
-          "image": "OPTI-STRIKE_DIAMOND.png",
+          "image": "OPTI-STRIKE_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -3728,7 +3728,7 @@
           "costLabel": "592m",
           "value": 414400000,
           "valueLabel": "414.40m",
-          "image": "OPTI-STRIKE_RAINBOW.png",
+          "image": "OPTI-STRIKE_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -3738,7 +3738,7 @@
           "costLabel": "14.80b",
           "value": 10360000000,
           "valueLabel": "10.36b",
-          "image": "OPTI-STRIKE_BESKAR.png",
+          "image": "OPTI-STRIKE_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -3748,7 +3748,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "OPTI-STRIKE_BESKAR.png",
+          "image": "OPTI-STRIKE_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -3771,7 +3771,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "SNOW_MOUSE_DEFAULT.png",
+          "image": "SNOW_MOUSE_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -3781,7 +3781,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "SNOW_MOUSE_GOLD.png",
+          "image": "SNOW_MOUSE_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -3791,7 +3791,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "SNOW_MOUSE_DIAMOND.png",
+          "image": "SNOW_MOUSE_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -3801,7 +3801,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "SNOW_MOUSE_RAINBOW.png",
+          "image": "SNOW_MOUSE_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -3811,7 +3811,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "SNOW_MOUSE_BESKAR.png",
+          "image": "SNOW_MOUSE_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -3821,7 +3821,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "SNOW_MOUSE_BESKAR.png",
+          "image": "SNOW_MOUSE_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -3844,7 +3844,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "CYCLENS_DEFAULT.png",
+          "image": "CYCLENS_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -3854,7 +3854,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "CYCLENS_GOLD.png",
+          "image": "CYCLENS_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -3864,7 +3864,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "CYCLENS_DIAMOND.png",
+          "image": "CYCLENS_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -3874,7 +3874,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "CYCLENS_RAINBOW.png",
+          "image": "CYCLENS_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -3884,7 +3884,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "CYCLENS_BESKAR.png",
+          "image": "CYCLENS_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -3894,7 +3894,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "CYCLENS_BESKAR.png",
+          "image": "CYCLENS_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -3917,7 +3917,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "RIC_DEFAULT.png",
+          "image": "RIC_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -3927,7 +3927,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "RIC_GOLD.png",
+          "image": "RIC_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -3937,7 +3937,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "RIC_DIAMOND.png",
+          "image": "RIC_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -3947,7 +3947,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "RIC_RAINBOW.png",
+          "image": "RIC_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -3957,7 +3957,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "RIC_BESKAR.png",
+          "image": "RIC_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -3967,7 +3967,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "RIC_BESKAR.png",
+          "image": "RIC_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -3990,7 +3990,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "RIC-1200_DEFAULT.png",
+          "image": "RIC-1200_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -4000,7 +4000,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "RIC-1200_GOLD.png",
+          "image": "RIC-1200_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -4010,7 +4010,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "RIC-1200_DIAMOND.png",
+          "image": "RIC-1200_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -4020,7 +4020,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "RIC-1200_RAINBOW.png",
+          "image": "RIC-1200_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -4030,7 +4030,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "RIC-1200_BESKAR.png",
+          "image": "RIC-1200_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -4040,7 +4040,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "RIC-1200_BESKAR.png",
+          "image": "RIC-1200_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -4063,7 +4063,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "DRFT-R_DEFAULT.png",
+          "image": "DRFT-R_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -4073,7 +4073,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "DRFT-R_GOLD.png",
+          "image": "DRFT-R_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -4083,7 +4083,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "DRFT-R_DIAMOND.png",
+          "image": "DRFT-R_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -4093,7 +4093,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "DRFT-R_RAINBOW.png",
+          "image": "DRFT-R_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -4103,7 +4103,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "DRFT-R_BESKAR.png",
+          "image": "DRFT-R_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -4113,7 +4113,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "DRFT-R_BESKAR.png",
+          "image": "DRFT-R_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -4136,7 +4136,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "IG_DEFAULT.png",
+          "image": "IG_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -4146,7 +4146,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "IG_GOLD.png",
+          "image": "IG_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -4156,7 +4156,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "IG_DIAMOND.png",
+          "image": "IG_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -4166,7 +4166,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "IG_RAINBOW.png",
+          "image": "IG_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -4176,7 +4176,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "IG_BESKAR.png",
+          "image": "IG_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -4186,7 +4186,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "IG_BESKAR.png",
+          "image": "IG_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -4209,7 +4209,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "LEP_DEFAULT.png",
+          "image": "LEP_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -4219,7 +4219,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "LEP_GOLD.png",
+          "image": "LEP_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -4229,7 +4229,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "LEP_DIAMOND.png",
+          "image": "LEP_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -4239,7 +4239,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "LEP_RAINBOW.png",
+          "image": "LEP_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -4249,7 +4249,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "LEP_BESKAR.png",
+          "image": "LEP_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -4259,7 +4259,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "LEP_BESKAR.png",
+          "image": "LEP_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -4282,7 +4282,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "TRI-TEK_DEFAULT.png",
+          "image": "TRI-TEK_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -4292,7 +4292,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "TRI-TEK_GOLD.png",
+          "image": "TRI-TEK_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -4302,7 +4302,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "TRI-TEK_DIAMOND.png",
+          "image": "TRI-TEK_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -4312,7 +4312,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "TRI-TEK_RAINBOW.png",
+          "image": "TRI-TEK_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -4322,7 +4322,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "TRI-TEK_BESKAR.png",
+          "image": "TRI-TEK_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -4332,7 +4332,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "TRI-TEK_BESKAR.png",
+          "image": "TRI-TEK_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -4355,7 +4355,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "LOADLIFTER_DEFAULT.png",
+          "image": "LOADLIFTER_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -4365,7 +4365,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "LOADLIFTER_GOLD.png",
+          "image": "LOADLIFTER_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -4375,7 +4375,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "LOADLIFTER_DIAMOND.png",
+          "image": "LOADLIFTER_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -4385,7 +4385,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "LOADLIFTER_RAINBOW.png",
+          "image": "LOADLIFTER_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -4395,7 +4395,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "LOADLIFTER_BESKAR.png",
+          "image": "LOADLIFTER_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -4405,7 +4405,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "LOADLIFTER_BESKAR.png",
+          "image": "LOADLIFTER_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -4428,7 +4428,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "MO-TRAK_DEFAULT.png",
+          "image": "MO-TRAK_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -4438,7 +4438,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "MO-TRAK_GOLD.png",
+          "image": "MO-TRAK_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -4448,7 +4448,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "MO-TRAK_DIAMOND.png",
+          "image": "MO-TRAK_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -4458,7 +4458,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "MO-TRAK_RAINBOW.png",
+          "image": "MO-TRAK_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -4468,7 +4468,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "MO-TRAK_BESKAR.png",
+          "image": "MO-TRAK_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -4478,7 +4478,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "MO-TRAK_BESKAR.png",
+          "image": "MO-TRAK_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -4501,7 +4501,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "KX_DEFAULT.png",
+          "image": "KX_DEFAULT.webp",
           "imageIsFallback": false
         },
         "GOLD": {
@@ -4511,7 +4511,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "KX_GOLD.png",
+          "image": "KX_GOLD.webp",
           "imageIsFallback": false
         },
         "DIAMOND": {
@@ -4521,7 +4521,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "KX_DIAMOND.png",
+          "image": "KX_DIAMOND.webp",
           "imageIsFallback": false
         },
         "RAINBOW": {
@@ -4531,7 +4531,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "KX_RAINBOW.png",
+          "image": "KX_RAINBOW.webp",
           "imageIsFallback": false
         },
         "BESKAR": {
@@ -4541,7 +4541,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "KX_BESKAR.png",
+          "image": "KX_BESKAR.webp",
           "imageIsFallback": false
         },
         "GALACTIC": {
@@ -4551,7 +4551,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "KX_BESKAR.png",
+          "image": "KX_BESKAR.webp",
           "imageIsFallback": true
         }
       }
@@ -4574,7 +4574,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "BB8_DEFAULT.png",
+          "image": "BB8_DEFAULT.webp",
           "imageIsFallback": false
         }
       }
@@ -4597,7 +4597,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "MISTER_BONES_DEFAULT.png",
+          "image": "MISTER_BONES_DEFAULT.webp",
           "imageIsFallback": false
         }
       }
@@ -4620,7 +4620,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "IG-11_MARSHAL_DEFAULT.png",
+          "image": "IG-11_MARSHAL_DEFAULT.webp",
           "imageIsFallback": false
         }
       }
@@ -4643,7 +4643,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "DJ-R3X_DEFAULT.png",
+          "image": "DJ-R3X_DEFAULT.webp",
           "imageIsFallback": false
         }
       }
@@ -4666,7 +4666,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "CB-23_DEFAULT.png",
+          "image": "CB-23_DEFAULT.webp",
           "imageIsFallback": false
         }
       }
@@ -4689,7 +4689,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "R2-D2_DEFAULT.png",
+          "image": "R2-D2_DEFAULT.webp",
           "imageIsFallback": false
         }
       }
@@ -4712,7 +4712,7 @@
           "costLabel": null,
           "value": null,
           "valueLabel": null,
-          "image": "C-3P0_DEFAULT.png",
+          "image": "C-3P0_DEFAULT.webp",
           "imageIsFallback": false
         }
       }

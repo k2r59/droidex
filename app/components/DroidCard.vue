@@ -42,7 +42,7 @@ const RARITY_RING: Record<string, string> = {
     <!-- Pastille de possession, lisible d'un coup d'œil sur une grille dense. -->
     <span
       v-if="owned"
-      v-tippy="{ content: $t('droidex.tierCount', { count: entry.tiers.length }) }"
+      :title="$t('droidex.tierCount', { count: entry.tiers.length })"
       class="absolute right-2 top-2 grid size-5 place-items-center rounded-full bg-valid text-xs font-bold text-void"
       aria-hidden="true"
     >✓</span>
@@ -103,11 +103,10 @@ const RARITY_RING: Record<string, string> = {
       />
 
       <div class="flex items-center gap-1.5">
-        <span
+        <InfoPop
           v-if="droid.unverified"
-          v-tippy="{ content: $t('droid.unverifiedHint') }"
-          class="cursor-help text-xs text-warn"
-        >⚠</span>
+          :content="$t('droid.unverifiedHint')"
+        />
 
         <!--
           L'étoile fait 18 px : lisible, mais impossible à viser au doigt à côté de la
@@ -115,7 +114,7 @@ const RARITY_RING: Record<string, string> = {
           une marge négative pour ne pas déformer l'en-tête de la carte.
         -->
         <button
-          v-tippy="{ content: $t('droid.flawless') }"
+          :title="$t('droid.flawless')"
           type="button"
           class="grid place-items-center text-sm transition-transform hover:scale-125 pointer-coarse:-m-3 pointer-coarse:size-11"
           :class="entry.flawless ? 'opacity-100' : 'opacity-25 hover:opacity-60'"
@@ -138,11 +137,10 @@ const RARITY_RING: Record<string, string> = {
         @update:model-value="store.setOwned(droid.slug, $event)"
       />
 
-      <span
+      <InfoPop
         v-if="droid.unverified"
-        v-tippy="{ content: $t('droid.unverifiedHint') }"
-        class="cursor-help text-xs text-warn"
-      >⚠</span>
+        :content="$t('droid.unverifiedHint')"
+      />
     </div>
   </article>
 </template>

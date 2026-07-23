@@ -147,15 +147,16 @@ const MYTHIC_PERKS = {
 }
 
 /**
- * Chaque palier a sa propre illustration : `{assetKey}_{TIER}.png`.
+ * Chaque palier a sa propre illustration : `{assetKey}_{TIER}.webp`.
+ * Les assets sont servis en WebP (≈ 84 % plus léger que le PNG dont ils sont issus).
  * GALACTIC n'a aucun asset publié (palier trop récent) → on retombe sur le visuel Beskar
  * en marquant le fallback, pour que l'UI puisse afficher un liseré « visuel provisoire ».
  */
 function imageFor(assetKey, tier) {
   if (tier === 'GALACTIC') {
-    return { file: `${assetKey}_BESKAR.png`, isFallback: true }
+    return { file: `${assetKey}_BESKAR.webp`, isFallback: true }
   }
-  return { file: `${assetKey}_${tier}.png`, isFallback: false }
+  return { file: `${assetKey}_${tier}.webp`, isFallback: false }
 }
 
 /** "15.20k" → 15200 · "1.41m" → 1410000 · "2/s" → 2 · "24b" → 24e9 */

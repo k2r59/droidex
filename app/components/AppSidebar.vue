@@ -142,7 +142,7 @@ const socials = [
         <a
           v-for="s in socials"
           :key="s.id"
-          v-tippy="{ content: s.label }"
+          :title="s.label"
           :href="s.href"
           target="_blank"
           rel="noopener noreferrer"

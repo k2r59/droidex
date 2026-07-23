@@ -618,37 +618,3 @@
 .tier-galactic-bg {
   background-image: linear-gradient(135deg, #4c1d95, #8b5cf6 50%, #2563eb);
 }
-
-/*
- * Thème Tippy accordé au fond sombre du site (voir app/plugins/tippy.ts).
- * `data-theme~='droidex'` : sélecteur d'attribut par mot, la forme qu'attend Tippy pour
- * composer plusieurs thèmes. On reprend les jetons de surface et de bordure du reste de
- * l'interface pour que l'info-bulle ait l'air d'en faire partie.
- */
-.tippy-box[data-theme~='droidex'] {
-  background: var(--color-panel-high);
-  color: var(--color-ink);
-  border: 1px solid var(--color-edge-strong);
-  border-radius: 0.5rem;
-  font-size: 0.8125rem;
-  line-height: 1.35;
-  box-shadow: 0 10px 30px rgb(0 0 0 / 0.45);
-}
-
-.tippy-box[data-theme~='droidex'] .tippy-content {
-  padding: 0.5rem 0.7rem;
-}
-
-/* La flèche emprunte le fond du cadre, y compris sur ses quatre orientations. */
-.tippy-box[data-theme~='droidex'][data-placement^='top'] > .tippy-arrow::before {
-  border-top-color: var(--color-panel-high);
-}
-.tippy-box[data-theme~='droidex'][data-placement^='bottom'] > .tippy-arrow::before {
-  border-bottom-color: var(--color-panel-high);
-}
-.tippy-box[data-theme~='droidex'][data-placement^='left'] > .tippy-arrow::before {
-  border-left-color: var(--color-panel-high);
-}
-.tippy-box[data-theme~='droidex'][data-placement^='right'] > .tippy-arrow::before {
-  border-right-color: var(--color-panel-high);
-}

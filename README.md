@@ -106,14 +106,14 @@ Points connus à surveiller :
 pnpm run images        # télécharge puis détoure, en une commande
 ```
 
-`fetch:images` télécharge 317 icônes dans `public/droids/`, `cutout:images` les détoure.
+`fetch:images` télécharge 317 icônes dans `public/droids/`, `cutout:images` les détoure **et les convertit en WebP** (≈ 84 % plus léger que le PNG source, pour un rendu identique).
 
 > ⚠️ **Ces images sont des assets propriétaires d'Epic Games et de Lucasfilm**, extraits de
 > l'interface du jeu. Le dépôt qui les héberge n'a aucune licence déclarée. Usage réaliste :
 > outil communautaire non commercial, sans branding Star Wars ni Fortnite, avec mention des
 > ayants droit. Toute redistribution ou usage commercial demanderait une autorisation.
 
-`public/droids/` **est versionné** — les 317 icônes sont dans le dépôt pour que le
+`public/droids/` **est versionné** — les 317 icônes WebP (≈ 2 Mo au total, contre ≈ 13 Mo en PNG) sont dans le dépôt pour que le
 déploiement n'ait pas à les retélécharger. C'est un choix assumé malgré l'avertissement
 ci-dessus : le dépôt redistribue donc des assets dont il ne détient pas les droits.
 Les retirer plus tard demanderait de réécrire l'historique git, pas un simple `git rm`.
@@ -121,7 +121,7 @@ Les retirer plus tard demanderait de réécrire l'historique git, pas un simple 
 Si une icône manque, `DroidImage` retombe proprement sur les initiales du droid — rien
 ne casse.
 
-Chaque palier a sa propre illustration (`MOUSE_GOLD.png`, `MOUSE_BESKAR.png`…). Le palier
+Chaque palier a sa propre illustration (`MOUSE_GOLD.webp`, `MOUSE_BESKAR.webp`…). Le palier
 Galactique réutilise le visuel Beskar, signalé par une pastille violette.
 
 ### Détourage
