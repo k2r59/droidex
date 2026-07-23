@@ -74,14 +74,6 @@ const brands = {
   lucasfilm: { name: 'Lucasfilm', url: 'https://www.lucasfilm.com' },
 } as const
 
-/** Réseaux et lien officiel, repris de la colonne de gauche. */
-const socials = [
-  { icon: 'brands/discord', href: 'https://discord.gg/droidtycoon', tint: 'text-[#5865F2]', label: 'Discord' },
-  { icon: 'brands/x', href: 'https://x.com/FoadZone', tint: 'text-[#1d9bf0]', label: 'X — FOAD' },
-  { icon: 'brands/x', href: 'https://x.com/BlznDev', tint: 'text-[#e0245e]', label: 'X — Blzn Studios' },
-  { icon: 'actions/external-link', href: `https://www.fortnite.com/island?code=${ISLAND_CODE}`, tint: 'text-accent', label: 'Fortnite' },
-] as const
-
 /** Année du copyright, figée au montage : `new Date()` est indisponible au rendu serveur. */
 const year = ref(2026)
 onMounted(() => { year.value = new Date().getFullYear() })
@@ -342,26 +334,11 @@ async function copyCode() {
         </li>
       </ul>
 
-      <!-- Barre basse : réseaux à gauche, copyright à droite. Volontairement basse. -->
-      <div class="mt-5 flex flex-col items-center gap-3 border-t border-edge-soft pt-3 sm:flex-row sm:justify-between sm:gap-2">
-        <div class="flex items-center gap-1.5">
-          <a
-            v-for="social in socials"
-            :key="social.label"
-            :href="social.href"
-            target="_blank"
-            rel="noopener noreferrer"
-            :aria-label="social.label"
-            class="grid size-8 place-items-center rounded-md text-ink-muted transition-colors hover:bg-panel-raised"
-            :class="social.tint"
-          >
-            <DxIcon
-              :name="social.icon"
-              :size="15"
-            />
-          </a>
-        </div>
-
+      <!--
+        Barre basse : uniquement le copyright, centré. Les réseaux ne sont pas répétés ici —
+        ils figurent déjà dans la colonne « Rejoins la communauté » de la barre latérale.
+      -->
+      <div class="mt-5 border-t border-edge-soft pt-3">
         <p class="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-xs text-ink-muted">
           <span>{{ $t('footer.copyright', { year }) }}</span>
           <span aria-hidden="true">·</span>
