@@ -336,7 +336,10 @@
     "title": "Droidex installieren",
     "body": "Füge Droidex zu deinem Startbildschirm hinzu: sofortiger Start, Vollbild und Offline-Zugriff.",
     "iosSteps": "Tippe auf Teilen und dann auf „Zum Home-Bildschirm\".",
-    "action": "Installieren"
+    "action": "Installieren",
+    "badgePrefix": "Installieren auf",
+    "badgeAndroid": "Android",
+    "badgeIos": "iPhone & iPad"
   },
   "reset": {
     "action": "Löschen",
@@ -416,5 +419,26 @@
     "recoverDone": "Fortschritt wiederhergestellt.",
     "recoverFailed": "Ungültiger oder abgelaufener Code.",
     "genFailed": "Code-Erzeugung fehlgeschlagen. Versuch es erneut."
+  },
+  "installPage": {
+    "title": "App installieren",
+    "intro": "Füge Droidex zu deinem Startbildschirm hinzu, um es wie eine echte App zu öffnen: Vollbild, sofortiger Start und Zugriff auch offline. Nichts aus einem Store herunterzuladen – alles geschieht in deinem Browser.",
+    "instantTitle": "Sofortiger Start",
+    "instantDesc": "Ein Symbol auf dem Startbildschirm, die App öffnet mit einem Tipp.",
+    "offlineTitle": "Offline-Zugriff",
+    "offlineDesc": "Deine Sammlung bleibt ohne Netz verfügbar.",
+    "fullscreenTitle": "Vollbild",
+    "fullscreenDesc": "Ohne Browserleiste, wie eine native App.",
+    "iosTitle": "iPhone & iPad",
+    "iosLead": "In Safari, in drei Schritten:",
+    "iosS1": "Tippe auf die Teilen-Schaltfläche (das Quadrat mit dem Pfeil nach oben) unten am Bildschirm.",
+    "iosS2": "Scrolle nach unten und wähle „Zum Home-Bildschirm“.",
+    "iosS3": "Bestätige mit „Hinzufügen“: Das Droidex-Symbol erscheint auf deinem Startbildschirm.",
+    "iosNote": "Die Installation funktioniert nur in Safari. Öffne diese Seite unter Chrome oder Firefox für iOS zuerst in Safari.",
+    "androidTitle": "Android",
+    "androidLead": "In Chrome geht die Installation mit einem Tipp.",
+    "androidManual": "Oder manuell",
+    "androidS1": "Öffne das Browsermenü (die drei Punkte oben rechts).",
+    "androidS2": "Wähle „App installieren“ oder „Zum Startbildschirm hinzufügen“."
   }
 }

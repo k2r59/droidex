@@ -336,7 +336,10 @@
     "title": "Installer Droidex",
     "body": "Ajoute Droidex à ton écran d'accueil : ouverture immédiate, plein écran, et consultation hors ligne.",
     "iosSteps": "Appuie sur Partager, puis sur « Sur l'écran d'accueil ».",
-    "action": "Installer"
+    "action": "Installer",
+    "badgePrefix": "Installer sur",
+    "badgeAndroid": "Android",
+    "badgeIos": "iPhone & iPad"
   },
   "reset": {
     "action": "Effacer",
@@ -416,5 +419,26 @@
     "recoverDone": "Progression récupérée.",
     "recoverFailed": "Code invalide ou expiré.",
     "genFailed": "La génération du code a échoué. Réessaie."
+  },
+  "installPage": {
+    "title": "Installer l'application",
+    "intro": "Ajoute Droidex à ton écran d'accueil pour l'ouvrir comme une vraie app : plein écran, démarrage instantané et consultation même hors connexion. Rien à télécharger sur une boutique — tout se fait depuis ton navigateur.",
+    "instantTitle": "Démarrage instantané",
+    "instantDesc": "Une icône sur l'écran d'accueil, l'app s'ouvre en un geste.",
+    "offlineTitle": "Hors connexion",
+    "offlineDesc": "Ta collection reste consultable sans réseau.",
+    "fullscreenTitle": "Plein écran",
+    "fullscreenDesc": "Sans la barre du navigateur, comme une app native.",
+    "iosTitle": "iPhone & iPad",
+    "iosLead": "Depuis Safari, en trois gestes :",
+    "iosS1": "Appuie sur le bouton Partager (le carré avec une flèche vers le haut), en bas de l’écran.",
+    "iosS2": "Fais défiler, puis choisis « Sur l’écran d’accueil ».",
+    "iosS3": "Confirme avec « Ajouter » : l’icône Droidex apparaît sur ton écran d’accueil.",
+    "iosNote": "L'installation n'est possible que depuis Safari. Sur Chrome ou Firefox iOS, ouvre d'abord cette page dans Safari.",
+    "androidTitle": "Android",
+    "androidLead": "Depuis Chrome, l'installation se fait en un clic.",
+    "androidManual": "Ou à la main",
+    "androidS1": "Ouvre le menu du navigateur (les trois points, en haut à droite).",
+    "androidS2": "Choisis « Installer l’application » ou « Ajouter à l’écran d’accueil »."
   }
 }

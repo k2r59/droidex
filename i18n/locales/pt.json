@@ -336,7 +336,10 @@
     "title": "Instalar Droidex",
     "body": "Adiciona o Droidex ao teu ecrã inicial: abertura imediata, ecrã inteiro e consulta offline.",
     "iosSteps": "Toca em Partilhar e depois em «Adicionar ao ecrã principal».",
-    "action": "Instalar"
+    "action": "Instalar",
+    "badgePrefix": "Instalar em",
+    "badgeAndroid": "Android",
+    "badgeIos": "iPhone & iPad"
   },
   "reset": {
     "action": "Apagar",
@@ -416,5 +419,26 @@
     "recoverDone": "Progresso recuperado.",
     "recoverFailed": "Código inválido ou expirado.",
     "genFailed": "A geração do código falhou. Tenta de novo."
+  },
+  "installPage": {
+    "title": "Instalar a aplicação",
+    "intro": "Adiciona o Droidex ao teu ecrã inicial para o abrir como uma verdadeira app: ecrã inteiro, arranque instantâneo e acesso mesmo offline. Não há nada para descarregar de uma loja — tudo se faz a partir do teu navegador.",
+    "instantTitle": "Arranque instantâneo",
+    "instantDesc": "Um ícone no ecrã inicial e a app abre com um toque.",
+    "offlineTitle": "Offline",
+    "offlineDesc": "A tua coleção continua acessível sem rede.",
+    "fullscreenTitle": "Ecrã inteiro",
+    "fullscreenDesc": "Sem a barra do navegador, como uma app nativa.",
+    "iosTitle": "iPhone & iPad",
+    "iosLead": "No Safari, em três passos:",
+    "iosS1": "Toca no botão Partilhar (o quadrado com uma seta para cima), em baixo no ecrã.",
+    "iosS2": "Desliza para baixo e escolhe «Adicionar ao ecrã principal».",
+    "iosS3": "Confirma com «Adicionar»: o ícone do Droidex aparece no teu ecrã inicial.",
+    "iosNote": "A instalação só funciona a partir do Safari. No Chrome ou Firefox para iOS, abre primeiro esta página no Safari.",
+    "androidTitle": "Android",
+    "androidLead": "No Chrome, a instalação faz-se com um só toque.",
+    "androidManual": "Ou manualmente",
+    "androidS1": "Abre o menu do navegador (os três pontos, no canto superior direito).",
+    "androidS2": "Escolhe «Instalar aplicação» ou «Adicionar ao ecrã principal»."
   }
 }

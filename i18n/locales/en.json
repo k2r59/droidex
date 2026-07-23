@@ -336,7 +336,10 @@
     "title": "Install Droidex",
     "body": "Add Droidex to your home screen: instant launch, full screen, and offline access.",
     "iosSteps": "Tap Share, then “Add to Home Screen”.",
-    "action": "Install"
+    "action": "Install",
+    "badgePrefix": "Install on",
+    "badgeAndroid": "Android",
+    "badgeIos": "iPhone & iPad"
   },
   "reset": {
     "action": "Reset",
@@ -416,5 +419,26 @@
     "recoverDone": "Progress recovered.",
     "recoverFailed": "Invalid or expired code.",
     "genFailed": "Code generation failed. Try again."
+  },
+  "installPage": {
+    "title": "Install the app",
+    "intro": "Add Droidex to your home screen to open it like a real app: full screen, instant launch, and access even offline. Nothing to download from a store — it all happens from your browser.",
+    "instantTitle": "Instant launch",
+    "instantDesc": "One icon on your home screen, the app opens in a tap.",
+    "offlineTitle": "Offline access",
+    "offlineDesc": "Your collection stays available without a connection.",
+    "fullscreenTitle": "Full screen",
+    "fullscreenDesc": "No browser bar, just like a native app.",
+    "iosTitle": "iPhone & iPad",
+    "iosLead": "From Safari, in three steps:",
+    "iosS1": "Tap the Share button (the square with an upward arrow) at the bottom of the screen.",
+    "iosS2": "Scroll down, then choose “Add to Home Screen”.",
+    "iosS3": "Confirm with “Add”: the Droidex icon appears on your home screen.",
+    "iosNote": "Installation only works from Safari. On Chrome or Firefox for iOS, open this page in Safari first.",
+    "androidTitle": "Android",
+    "androidLead": "From Chrome, installation is a single tap.",
+    "androidManual": "Or manually",
+    "androidS1": "Open the browser menu (the three dots, top right).",
+    "androidS2": "Choose “Install app” or “Add to Home screen”."
   }
 }

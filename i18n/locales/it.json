@@ -336,7 +336,10 @@
     "title": "Installa Droidex",
     "body": "Aggiungi Droidex alla tua schermata Home: apertura immediata, schermo intero e consultazione offline.",
     "iosSteps": "Tocca Condividi, poi «Aggiungi a Home».",
-    "action": "Installa"
+    "action": "Installa",
+    "badgePrefix": "Installa su",
+    "badgeAndroid": "Android",
+    "badgeIos": "iPhone & iPad"
   },
   "reset": {
     "action": "Cancella",
@@ -416,5 +419,26 @@
     "recoverDone": "Progressi recuperati.",
     "recoverFailed": "Codice non valido o scaduto.",
     "genFailed": "Generazione del codice non riuscita. Riprova."
+  },
+  "installPage": {
+    "title": "Installa l'app",
+    "intro": "Aggiungi Droidex alla tua schermata Home per aprirlo come una vera app: schermo intero, avvio istantaneo e accesso anche offline. Non c'è nulla da scaricare da uno store: tutto avviene dal tuo browser.",
+    "instantTitle": "Avvio istantaneo",
+    "instantDesc": "Un'icona sulla schermata Home e l'app si apre con un tocco.",
+    "offlineTitle": "Offline",
+    "offlineDesc": "La tua collezione resta consultabile senza rete.",
+    "fullscreenTitle": "Schermo intero",
+    "fullscreenDesc": "Senza la barra del browser, come un’app nativa.",
+    "iosTitle": "iPhone & iPad",
+    "iosLead": "Da Safari, in tre passaggi:",
+    "iosS1": "Tocca il pulsante Condividi (il quadrato con la freccia verso l’alto), in basso sullo schermo.",
+    "iosS2": "Scorri e scegli «Aggiungi a Home».",
+    "iosS3": "Conferma con «Aggiungi»: l’icona di Droidex compare sulla tua schermata Home.",
+    "iosNote": "L'installazione funziona solo da Safari. Su Chrome o Firefox per iOS, apri prima questa pagina in Safari.",
+    "androidTitle": "Android",
+    "androidLead": "Da Chrome, l'installazione si fa con un solo tocco.",
+    "androidManual": "Oppure manualmente",
+    "androidS1": "Apri il menu del browser (i tre puntini, in alto a destra).",
+    "androidS2": "Scegli «Installa app» o «Aggiungi a schermata Home»."
   }
 }

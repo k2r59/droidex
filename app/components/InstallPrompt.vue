@@ -1,43 +1,24 @@
 <script setup lang="ts">
 /**
- * Invitation à installer l'app sur mobile.
+ * Invitation basse à installer l'app sur mobile.
  *
- * Deux chemins, parce que les deux plateformes n'offrent pas la même chose :
+ * L'état d'installation (événement `beforeinstallprompt` capté, détection iOS/Safari, mode
+ * autonome) vient de `useInstallPrompt`, partagé avec le bouton « Android » du pied de page.
+ * Ce composant ne gère que **quand** proposer : un délai pour laisser voir le site, un rejet
+ * mémorisé, et le geste iOS qui n'a pas d'API et se raconte à la main.
  *
- * — Android / Chrome émet `beforeinstallprompt`. On le capte, on empêche la bannière
- *   native (qui apparaît là où le navigateur veut, quand il veut) et on rend la main au
- *   joueur via un bouton qui déclenche la vraie invite système.
- * — iOS / Safari n'émet rien et n'expose aucune API d'installation. Le seul recours est
- *   d'expliquer le geste : Partager, puis « Sur l'écran d'accueil ». D'où la détection
- *   explicite du couple iOS + Safari, et un texte plutôt qu'un bouton.
- *
- * Rien ne s'affiche si l'app tourne déjà en mode autonome : proposer d'installer ce qui
- * est installé est le genre de détail qui fait passer une app pour négligée.
+ * Rien ne s'affiche si l'app tourne déjà en mode autonome : proposer d'installer ce qui est
+ * installé est le genre de détail qui fait passer une app pour négligée.
  */
-
-/** Type non standard, absent de la lib DOM. */
-type BeforeInstallPromptEvent = Event & {
-  prompt: () => Promise<void>
-  userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>
-}
+const { canInstall, promptInstall, iosSafari, isStandalone } = useInstallPrompt()
 
 const CLE = 'droidex:install-dismissed:v1'
 
 /** Délai avant apparition : laisser le joueur voir le site avant de lui proposer autre chose. */
 const DELAI_MS = 20_000
 
-const differe = ref<BeforeInstallPromptEvent | null>(null)
-const iosSafari = ref(false)
 const visible = ref(false)
-
 let minuteur: ReturnType<typeof setTimeout> | undefined
-
-/** `true` si l'app est déjà lancée depuis l'écran d'accueil. */
-function dejaInstallee(): boolean {
-  return window.matchMedia('(display-mode: standalone)').matches
-    // Propriété propre à iOS, non standard, absente du typage.
-    || (navigator as unknown as { standalone?: boolean }).standalone === true
-}
 
 function refuseParLePasse(): boolean {
   try {
@@ -49,45 +30,22 @@ function refuseParLePasse(): boolean {
 }
 
 function programmer() {
-  if (dejaInstallee() || refuseParLePasse()) return
+  if (isStandalone.value || refuseParLePasse() || minuteur) return
   minuteur = setTimeout(() => { visible.value = true }, DELAI_MS)
 }
 
 onMounted(() => {
-  const ua = navigator.userAgent
-  /*
-   * `iPad` a disparu de l'UA d'iPadOS 13+, qui se déclare « Macintosh ». On complète donc
-   * par le test tactile, sans quoi les iPad n'auraient jamais vu l'explication.
-   */
-  const estIOS = /iPad|iPhone|iPod/.test(ua)
-    || (ua.includes('Macintosh') && navigator.maxTouchPoints > 1)
-  // Chrome et Firefox sur iOS embarquent WebKit et se signalent par CriOS / FxiOS.
-  const estSafari = !/CriOS|FxiOS|EdgiOS|OPiOS/.test(ua)
-
-  iosSafari.value = estIOS && estSafari
+  // iOS : rien à attendre d'un événement, on programme d'emblée l'explication.
   if (iosSafari.value) programmer()
-
-  window.addEventListener('beforeinstallprompt', onBeforeInstall)
-  window.addEventListener('appinstalled', onInstalled)
 })
 
-onUnmounted(() => {
-  clearTimeout(minuteur)
-  window.removeEventListener('beforeinstallprompt', onBeforeInstall)
-  window.removeEventListener('appinstalled', onInstalled)
-})
+/*
+ * Android : `beforeinstallprompt` peut arriver après le montage. On surveille donc
+ * `canInstall` pour lancer le minuteur au moment où l'invite devient réellement proposable.
+ */
+watch(canInstall, (ok) => { if (ok) programmer() }, { immediate: true })
 
-function onBeforeInstall(e: Event) {
-  // Sans ça, le navigateur affiche sa propre bannière et notre invite ferait doublon.
-  e.preventDefault()
-  differe.value = e as BeforeInstallPromptEvent
-  programmer()
-}
-
-function onInstalled() {
-  visible.value = false
-  fermerDefinitivement()
-}
+onUnmounted(() => clearTimeout(minuteur))
 
 function fermerDefinitivement() {
   try {
@@ -104,13 +62,8 @@ function refuser() {
 }
 
 async function installer() {
-  const e = differe.value
-  if (!e) return
   visible.value = false
-  await e.prompt()
-  await e.userChoice
-  // L'invite système ne se rejoue pas : on relâche l'événement dans tous les cas.
-  differe.value = null
+  await promptInstall()
   fermerDefinitivement()
 }
 </script>

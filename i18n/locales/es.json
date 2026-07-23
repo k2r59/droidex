@@ -336,7 +336,10 @@
     "title": "Instalar Droidex",
     "body": "Añade Droidex a tu pantalla de inicio: apertura inmediata, pantalla completa y consulta sin conexión.",
     "iosSteps": "Pulsa Compartir y luego «Añadir a pantalla de inicio».",
-    "action": "Instalar"
+    "action": "Instalar",
+    "badgePrefix": "Instalar en",
+    "badgeAndroid": "Android",
+    "badgeIos": "iPhone & iPad"
   },
   "reset": {
     "action": "Borrar",
@@ -416,5 +419,26 @@
     "recoverDone": "Progreso recuperado.",
     "recoverFailed": "Código no válido o caducado.",
     "genFailed": "La generación del código falló. Inténtalo de nuevo."
+  },
+  "installPage": {
+    "title": "Instalar la aplicación",
+    "intro": "Añade Droidex a tu pantalla de inicio para abrirlo como una app de verdad: pantalla completa, inicio instantáneo y acceso incluso sin conexión. No hay nada que descargar de una tienda: todo se hace desde tu navegador.",
+    "instantTitle": "Inicio instantáneo",
+    "instantDesc": "Un icono en la pantalla de inicio y la app se abre con un toque.",
+    "offlineTitle": "Sin conexión",
+    "offlineDesc": "Tu colección sigue disponible sin red.",
+    "fullscreenTitle": "Pantalla completa",
+    "fullscreenDesc": "Sin la barra del navegador, como una app nativa.",
+    "iosTitle": "iPhone & iPad",
+    "iosLead": "Desde Safari, en tres pasos:",
+    "iosS1": "Pulsa el botón Compartir (el cuadrado con una flecha hacia arriba), abajo en la pantalla.",
+    "iosS2": "Desplázate y elige «Añadir a pantalla de inicio».",
+    "iosS3": "Confirma con «Añadir»: el icono de Droidex aparece en tu pantalla de inicio.",
+    "iosNote": "La instalación solo funciona desde Safari. En Chrome o Firefox para iOS, abre antes esta página en Safari.",
+    "androidTitle": "Android",
+    "androidLead": "Desde Chrome, la instalación se hace con un solo toque.",
+    "androidManual": "O manualmente",
+    "androidS1": "Abre el menú del navegador (los tres puntos, arriba a la derecha).",
+    "androidS2": "Elige «Instalar aplicación» o «Añadir a pantalla de inicio»."
   }
 }

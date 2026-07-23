@@ -12,6 +12,25 @@ import updates from '~/data/updates.json'
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
+const router = useRouter()
+
+/**
+ * Installation de l'app. Le bouton « Android » déclenche l'invite native quand Chrome l'a
+ * proposée ; sinon (déjà installée, navigateur sans support, ordinateur de bureau) il
+ * bascule sur la page d'explications plutôt que de rester sans effet. Le bouton « iPhone /
+ * iPad » y mène toujours : iOS n'expose aucune API, le geste s'explique.
+ */
+const { promptInstall } = useInstallPrompt()
+
+async function installAndroid() {
+  const issue = await promptInstall()
+  if (issue === 'unavailable') {
+    router.push({ path: localePath('/install'), hash: '#android' })
+  }
+}
+
+/** Classe commune aux deux pastilles de téléchargement, l'une étant un bouton, l'autre un lien. */
+const STORE_BADGE = 'group flex flex-1 basis-32 items-center gap-2.5 rounded-xl border border-edge bg-void/60 px-3.5 py-2 text-left transition-colors hover:border-accent/50 hover:bg-panel-raised'
 
 const ISLAND_CODE = '7865-8305-9184'
 
@@ -117,6 +136,45 @@ async function copyCode() {
             <span class="size-1.5 rounded-full bg-valid shadow-[0_0_6px_rgba(34,212,154,0.9)]" />
             {{ $t('footer.communityActive') }}
           </span>
+
+          <!--
+            Pastilles d'installation façon boutique. Android déclenche l'invite PWA native ;
+            iOS renvoie vers les instructions (Safari n'a pas d'API d'installation). Elles
+            se répartissent sur une ligne quand la colonne est large et s'empilent sur
+            mobile grâce à `flex-wrap` + `basis-32`.
+          -->
+          <div class="mt-4 flex max-w-xs flex-wrap gap-2.5">
+            <button
+              type="button"
+              :class="STORE_BADGE"
+              @click="installAndroid"
+            >
+              <DxIcon
+                name="brands/google-play"
+                :size="21"
+                class="shrink-0 text-accent"
+              />
+              <span class="min-w-0 leading-tight">
+                <span class="block text-[0.625rem] uppercase tracking-wide text-ink-muted">{{ $t('install.badgePrefix') }}</span>
+                <span class="block truncate text-sm font-semibold">{{ $t('install.badgeAndroid') }}</span>
+              </span>
+            </button>
+
+            <NuxtLink
+              :to="{ path: localePath('/install'), hash: '#ios' }"
+              :class="STORE_BADGE"
+            >
+              <DxIcon
+                name="brands/apple"
+                :size="21"
+                class="shrink-0"
+              />
+              <span class="min-w-0 leading-tight">
+                <span class="block text-[0.625rem] uppercase tracking-wide text-ink-muted">{{ $t('install.badgePrefix') }}</span>
+                <span class="block truncate text-sm font-semibold">{{ $t('install.badgeIos') }}</span>
+              </span>
+            </NuxtLink>
+          </div>
         </div>
 
         <!-- À propos des données -->
