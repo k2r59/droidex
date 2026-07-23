@@ -330,7 +330,7 @@ onKeyStroke('Escape', () => {
     <Teleport to="body">
       <div
         v-if="filterOpen"
-        class="fixed inset-0 z-[100] grid place-items-end sm:place-items-center"
+        class="fixed inset-0 z-[100] grid place-items-end lg:place-items-center"
       >
         <div
           class="filter-fade absolute inset-0 bg-black/60 backdrop-blur-sm"
@@ -338,7 +338,7 @@ onKeyStroke('Escape', () => {
         />
         <div
           ref="filterDialog"
-          class="filter-sheet panel relative z-10 flex max-h-[88dvh] w-full flex-col gap-4 overflow-y-auto rounded-b-none rounded-t-2xl p-5 sm:max-w-md sm:rounded-2xl"
+          class="filter-sheet panel relative z-10 flex max-h-[88dvh] w-full flex-col gap-4 overflow-y-auto rounded-b-none rounded-t-2xl p-5 lg:max-w-md lg:rounded-2xl"
           role="dialog"
           aria-modal="true"
           aria-labelledby="filters-title"
@@ -496,9 +496,10 @@ onKeyStroke('Escape', () => {
 }
 
 /*
- * Ouverture de la feuille de filtres : un glissement vers le haut, franc et sans rebond
- * (l'animation modale à ressort donnait un à-coup sur un grand panneau). Le fond se fond
- * en même temps. `prefers-reduced-motion` coupe les deux.
+ * Ouverture des filtres. Mobile et tablette : une feuille qui monte du bas (glissement franc,
+ * sans rebond — l'animation modale à ressort donnait un à-coup). Desktop (`lg`+) : un simple
+ * popup centré qui apparaît en fondu, sans glissement. Le fond se fond dans les deux cas, et
+ * `prefers-reduced-motion` coupe tout.
  */
 .filter-sheet {
   animation: filter-sheet-in 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -515,6 +516,17 @@ onKeyStroke('Escape', () => {
 @keyframes filter-fade-in {
   from {
     opacity: 0;
+  }
+}
+@media (min-width: 1024px) {
+  .filter-sheet {
+    animation: filter-pop-in 160ms ease both;
+  }
+  @keyframes filter-pop-in {
+    from {
+      opacity: 0;
+      transform: scale(0.97);
+    }
   }
 }
 @media (prefers-reduced-motion: reduce) {
