@@ -88,15 +88,17 @@ const isImminent = (s: number | null) => s !== null && s <= 30
         <!-- Tant que le joueur n'a rien signalé, il n'y a pas de compte à rebours à montrer. -->
         <p
           v-if="beskarRemaining !== null"
-          class="font-mono text-2xl font-bold tabular-nums"
+          class="font-mono text-xl font-bold tabular-nums sm:text-2xl"
           :class="isImminent(beskarRemaining) ? 'text-warn' : 'text-ink-strong'"
         >
           {{ format(beskarRemaining) }}
         </p>
 
+        <!-- Bouton icône seule sur mobile (le libellé écrasait le titre), texte dès `sm`. -->
         <button
           type="button"
-          class="flex shrink-0 items-center gap-2.5 rounded-lg border border-edge-strong bg-panel-raised px-4 py-2.5 text-[0.8125rem] font-medium transition-colors hover:border-accent/50"
+          class="flex shrink-0 items-center gap-2.5 rounded-lg border border-edge-strong bg-panel-raised px-2.5 py-2.5 text-[0.8125rem] font-medium transition-colors hover:border-accent/50 sm:px-4"
+          :aria-label="$t('timers.sawIt')"
           @click="lastBeskar = Date.now()"
         >
           <DxIcon
@@ -104,7 +106,7 @@ const isImminent = (s: number | null) => s !== null && s <= 30
             :size="18"
             class="text-ink-strong"
           />
-          {{ $t('timers.sawIt') }}
+          <span class="hidden sm:inline">{{ $t('timers.sawIt') }}</span>
         </button>
         <button
           v-if="lastBeskar"
@@ -132,7 +134,7 @@ const isImminent = (s: number | null) => s !== null && s <= 30
           </p>
         </div>
 
-        <p class="font-mono text-2xl font-bold tabular-nums text-mythic">
+        <p class="font-mono text-xl font-bold tabular-nums text-mythic sm:text-2xl">
           {{ format(mythicRemaining) }}
         </p>
       </li>

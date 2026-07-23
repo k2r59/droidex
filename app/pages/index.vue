@@ -199,9 +199,11 @@ onKeyStroke('Escape', () => {
 
     <!--
       Barre de filtres principale : recherche, bouton « Filtres » (ouvre la modale des filtres
-      avancés), et la rareté en badges — le sélecteur qu'on utilise le plus, toujours à vue.
+      avancés), et la rareté en badges — le sélecteur qu'on utilise le plus. Collante sous
+      l'en-tête pour rester à portée pendant qu'on parcourt la grille ; fond opaque + flou
+      pour que le contenu ne transparaisse pas au travers.
     -->
-    <div class="flex flex-col gap-3.5 rounded-card border border-edge-soft bg-panel/30 p-3 sm:p-4">
+    <div class="sticky top-14 z-30 flex flex-col gap-3 rounded-card border border-edge-soft bg-void/95 p-3 backdrop-blur sm:top-[68px] sm:p-4">
       <!-- Recherche + bouton d'ouverture des filtres avancés. -->
       <div class="flex items-center gap-2">
         <div class="relative flex-1">
