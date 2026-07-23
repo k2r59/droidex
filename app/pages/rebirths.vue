@@ -472,7 +472,7 @@ const shown = computed(() =>
             <!-- Cliquer une tuile ouvre le détail du palier ; la progression se règle depuis là. -->
             <button
               type="button"
-              class="flex w-full flex-col gap-1.5 rounded-md border p-3 transition-colors hover:border-accent"
+              class="flex h-full w-full flex-col gap-1.5 rounded-md border p-3 transition-colors hover:border-accent"
               :class="[
                 lvl.current ? 'border-accent bg-accent/10' : 'rebirth-tile border-edge-soft',
                 lvl.locked && 'opacity-45',
@@ -516,17 +516,21 @@ const shown = computed(() =>
                 />
               </p>
 
-              <!-- Cristaux Nova gagnés à ce palier (paliers 12+). -->
+              <!--
+                Cristaux Nova gagnés au palier (12+). La ligne est toujours présente, mais
+                masquée (`invisible`, l'espace est conservé) quand le palier n'en donne pas :
+                toutes les tuiles gardent la même hauteur, sans trous entre voisines.
+              -->
               <p
-                v-if="lvl.crystals"
                 class="mt-1 flex items-center gap-1.5 text-nova"
+                :class="{ invisible: !lvl.crystals }"
               >
                 <DxIcon
                   name="resources/nova-crystal"
                   :size="14"
                   class="shrink-0"
                 />
-                <span class="font-mono text-sm">+{{ formatNumber(lvl.crystals, locale) }}</span>
+                <span class="font-mono text-sm">+{{ formatNumber(lvl.crystals ?? 0, locale) }}</span>
               </p>
             </button>
           </li>
