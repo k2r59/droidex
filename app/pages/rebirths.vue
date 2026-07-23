@@ -179,7 +179,7 @@ const shown = computed(() => {
             </div>
           </div>
           <div class="mt-3 flex items-center gap-2">
-            <div class="dx-stepper flex-1">
+            <div class="dx-stepper">
               <button
                 type="button"
                 :aria-label="`−1 ${$t('rebirth.title')}`"
