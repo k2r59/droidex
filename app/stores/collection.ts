@@ -54,7 +54,17 @@ export function migrateCollection(
 type Snapshot = Pick<
   UserProgress,
   'collection' | 'rebirth' | 'superRebirth' | 'cycle' | 'novaCrystals' | 'shopLevels'
->
+> & {
+  /**
+   * Exigences de renaissance cochées, **indépendantes de la collection**.
+   *
+   * Cocher une exigence ne signifie plus « je possède ce droid » (ce serait toucher au
+   * Droidex) mais « pour cette renaissance, j'ai ce qu'il faut ». Chaque clé identifie une
+   * exigence précise : `cycle:niveau:slug:palier`. Décorréler les deux évite qu'un suivi de
+   * renaissance ne gonfle la complétion de la collection, et inversement.
+   */
+  rebirthChecks?: Record<string, true>
+}
 
 /**
  * Suivi de collection **local-first**.
@@ -74,6 +84,8 @@ export const useCollectionStore = defineStore('collection', () => {
   const cycle = ref(1)
   const novaCrystals = ref(0)
   const shopLevels = ref<Record<string, number>>({})
+  /** Exigences de renaissance cochées, séparées de la collection. Voir `Snapshot`. */
+  const rebirthChecks = ref<Record<string, true>>({})
 
   /**
    * `true` une fois la progression locale lue.
@@ -99,6 +111,7 @@ export const useCollectionStore = defineStore('collection', () => {
       cycle: cycle.value,
       novaCrystals: novaCrystals.value,
       shopLevels: shopLevels.value,
+      rebirthChecks: rebirthChecks.value,
     }
   }
 
@@ -109,6 +122,7 @@ export const useCollectionStore = defineStore('collection', () => {
     cycle.value = s.cycle ?? 1
     novaCrystals.value = s.novaCrystals ?? 0
     shopLevels.value = s.shopLevels ?? {}
+    rebirthChecks.value = s.rebirthChecks ?? {}
   }
 
   /**
@@ -248,7 +262,8 @@ export const useCollectionStore = defineStore('collection', () => {
       && rebirth.value === 0
       && superRebirth.value === 0
       && novaCrystals.value === 0
-      && !Object.keys(shopLevels.value).length,
+      && !Object.keys(shopLevels.value).length
+      && !Object.keys(rebirthChecks.value).length,
   )
 
   /**
@@ -356,6 +371,28 @@ export const useCollectionStore = defineStore('collection', () => {
     await push({ collection: { [slug]: next } })
   }
 
+  /** `true` si l'exigence de renaissance identifiée par `key` est cochée. */
+  const isRebirthChecked = (key: string) => rebirthChecks.value[key] === true
+
+  /**
+   * Coche ou décoche une exigence de renaissance, **sans jamais toucher la collection**.
+   *
+   * C'est un suivi propre à la vue Renaissances : chaque exigence (`cycle:niveau:slug:palier`)
+   * s'active ou se désactive pour elle-même. Purement local — la progression de renaissance
+   * n'a pas à voyager par la réplication de compte ; le code de synchro, lui, l'emporte.
+   */
+  function toggleRebirthCheck(key: string) {
+    if (rebirthChecks.value[key]) {
+      // Retrait sans `delete` dynamique : on reconstruit l'objet sans la clé visée.
+      const { [key]: _retire, ...reste } = rebirthChecks.value
+      rebirthChecks.value = reste
+    }
+    else {
+      rebirthChecks.value = { ...rebirthChecks.value, [key]: true }
+    }
+    writeLocal()
+  }
+
   async function toggleFlawless(slug: string) {
     const previous = entry(slug)
     const next: CollectionEntry = { ...previous, flawless: !previous.flawless }
@@ -438,6 +475,7 @@ export const useCollectionStore = defineStore('collection', () => {
     cycle,
     novaCrystals,
     shopLevels,
+    rebirthChecks,
     hydrated,
     remoteEnabled,
     loading,
@@ -453,6 +491,8 @@ export const useCollectionStore = defineStore('collection', () => {
     totalIncome,
     isEmpty,
     satisfies,
+    isRebirthChecked,
+    toggleRebirthCheck,
     loadLocal,
     replaceAll,
     enableRemote,

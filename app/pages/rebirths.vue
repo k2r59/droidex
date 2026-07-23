@@ -21,14 +21,23 @@ const realCycle = computed(() => (store.superRebirth % 4) + 1)
 
 const droidBySlug = computed(() => Object.fromEntries(store.droids.map((d) => [d.slug, d])))
 
-/** Une exigence sans palier précisé est satisfaite dès qu'une variante figure au journal. */
-function met(req: Requirement): boolean {
-  return req.tier ? store.satisfies(req.slug, req.tier) : store.owns(req.slug)
+/**
+ * Clé d'une exigence, propre à la vue Renaissances et **indépendante de la collection**.
+ * On y met le cycle affiché, le niveau, le droid et le palier : chaque exigence se coche
+ * pour elle-même, sans rien changer au Droidex.
+ */
+function reqKey(level: number, req: Requirement): string {
+  return `${store.cycle}:${level}:${req.slug}:${req.tier ?? 'DEFAULT'}`
+}
+
+/** Une exigence est « faite » quand elle a été cochée dans le suivi de renaissance. */
+function met(level: number, req: Requirement): boolean {
+  return store.isRebirthChecked(reqKey(level, req))
 }
 
 const nextLevel = computed(() => levels.value.find((l) => l.level === store.rebirth + 1) ?? null)
 const missingCount = computed(() =>
-  nextLevel.value ? nextLevel.value.droids.filter((r) => !met(r)).length : 0,
+  nextLevel.value ? nextLevel.value.droids.filter((r) => !met(nextLevel.value!.level, r)).length : 0,
 )
 const isReady = computed(() => Boolean(nextLevel.value?.droids.length) && missingCount.value === 0)
 
@@ -53,14 +62,13 @@ const bonusLabel = computed<[string, string]>(() => {
 })
 
 /**
- * Coche ou décoche l'exigence depuis la carte.
+ * Coche ou décoche l'exigence depuis la carte — dans le suivi de renaissance uniquement.
  *
- * `toggleTier` n'agit que sur le palier visé et laisse les autres variantes du journal
- * intactes — cocher l'Or exigé ne touche pas au Beskar déjà consigné. L'écriture locale
- * puis la poussée serveur sont faites par le store, sans action supplémentaire ici.
+ * Volontairement séparé de la collection : marquer une exigence « faite » ne consigne pas le
+ * droid au Droidex et n'affecte pas la complétion. Les deux suivis sont indépendants.
  */
-function toggleRequirement(req: Requirement) {
-  store.toggleTier(req.slug, req.tier ?? 'DEFAULT')
+function toggleRequirement(level: number, req: Requirement) {
+  store.toggleRebirthCheck(reqKey(level, req))
 }
 
 function setLevel(value: number) {
@@ -313,9 +321,9 @@ const shown = computed(() => {
               <button
                 type="button"
                 class="rebirth-req flex min-h-[5.5rem] w-full items-center gap-4 rounded-lg border px-5 py-4 text-left transition-colors hover:border-accent"
-                :class="met(req) ? 'border-valid/60' : 'border-edge-soft'"
-                :aria-pressed="met(req)"
-                @click="toggleRequirement(req)"
+                :class="met(nextLevel.level, req) ? 'border-valid/60' : 'border-edge-soft'"
+                :aria-pressed="met(nextLevel.level, req)"
+                @click="toggleRequirement(nextLevel.level, req)"
               >
                 <!-- Illustration jamais désaturée : la maquette montre les droids en couleur,
                    qu'ils soient déjà possédés ou non. Le cercle vide porte l'information. -->
@@ -347,7 +355,7 @@ const shown = computed(() => {
                 grisée se lit trop facilement comme « déjà validé ».
               -->
                 <DxIcon
-                  v-if="met(req)"
+                  v-if="met(nextLevel.level, req)"
                   name="status/success"
                   :size="20"
                   class="shrink-0 text-valid"
@@ -589,9 +597,9 @@ const shown = computed(() => {
                 <button
                   type="button"
                   class="rebirth-req flex w-full items-center gap-4 rounded-lg border px-4 py-3 text-left transition-colors hover:border-accent"
-                  :class="met(req) ? 'border-valid/60' : 'border-edge-soft'"
-                  :aria-pressed="met(req)"
-                  @click="toggleRequirement(req)"
+                  :class="met(selected.level, req) ? 'border-valid/60' : 'border-edge-soft'"
+                  :aria-pressed="met(selected.level, req)"
+                  @click="toggleRequirement(selected.level, req)"
                 >
                   <DroidImage
                     v-if="droidBySlug[req.slug]"
@@ -612,7 +620,7 @@ const shown = computed(() => {
                     </div>
                   </div>
                   <DxIcon
-                    v-if="met(req)"
+                    v-if="met(selected.level, req)"
                     name="status/success"
                     :size="20"
                     class="shrink-0 text-valid"

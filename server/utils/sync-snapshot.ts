@@ -26,6 +26,13 @@ export const snapshotSchema = z.object({
   cycle: z.number().int().min(1).max(4),
   novaCrystals: z.number().int().min(0).max(MAX_NOVA),
   shopLevels: z.record(z.string().max(64), z.number().int().min(0).max(MAX_SHOP_LEVEL)),
+  // Suivi de renaissance (clés `cycle:niveau:slug:palier`). Optionnel : les codes émis avant
+  // cette fonctionnalité n'en ont pas. Nombre de clés borné, comme le reste, pour qu'un corps
+  // hostile ne puisse pas gonfler l'instantané.
+  rebirthChecks: z.record(z.string().max(128), z.literal(true))
+    .refine((r) => Object.keys(r).length <= 500, 'trop d’exigences')
+    .optional()
+    .default({}),
 })
 
 export type SyncSnapshot = z.infer<typeof snapshotSchema>

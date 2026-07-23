@@ -20,6 +20,7 @@ function exportProgress() {
     cycle: store.cycle,
     novaCrystals: store.novaCrystals,
     shopLevels: store.shopLevels,
+    rebirthChecks: store.rebirthChecks,
   }
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' })
   const url = URL.createObjectURL(blob)
@@ -51,6 +52,7 @@ async function importProgress(event: Event) {
       cycle: Number(parsed.cycle) || 1,
       novaCrystals: Number(parsed.novaCrystals) || 0,
       shopLevels: parsed.shopLevels ?? {},
+      rebirthChecks: parsed.rebirthChecks ?? {},
     })
     importMessage.value = { ok: true, text: t('profile.importDone') }
   }
@@ -90,6 +92,7 @@ async function generateCode() {
         cycle: store.cycle,
         novaCrystals: store.novaCrystals,
         shopLevels: store.shopLevels,
+        rebirthChecks: store.rebirthChecks,
       },
     })
     syncCode.value = res.code
@@ -131,6 +134,7 @@ async function recoverFromCode() {
       cycle?: number
       novaCrystals?: number
       shopLevels?: Record<string, number>
+      rebirthChecks?: Record<string, true>
     } }>(`/api/sync/${encodeURIComponent(code)}`)
     await store.replaceAll({
       collection: migrateCollection(snapshot.collection as never),
@@ -139,6 +143,7 @@ async function recoverFromCode() {
       cycle: Number(snapshot.cycle) || 1,
       novaCrystals: Number(snapshot.novaCrystals) || 0,
       shopLevels: snapshot.shopLevels ?? {},
+      rebirthChecks: snapshot.rebirthChecks ?? {},
     })
     recoverMessage.value = { ok: true, text: t('sync.recoverDone') }
     recoverInput.value = ''
