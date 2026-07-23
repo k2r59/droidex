@@ -442,5 +442,24 @@
     "androidS2": "Choose “Install app” or “Add to Home screen”.",
     "androidReady": "One-tap install is available: press the button.",
     "androidUnavailable": "Automatic install isn't offered here (already installed, unsupported browser, or criteria not yet met). Follow the steps below."
+  },
+  "statsPage": {
+    "title": "Statistics",
+    "intro": "The site's traffic, in full transparency. No personal data, no cookies: just anonymous counts of page views and visits.",
+    "visits": "Visits",
+    "pageviews": "Page views",
+    "last30": "Last 30 days",
+    "last30Note": "Page views per day.",
+    "byPage": "By page",
+    "privacyNote": "Anonymous, cookie-free measurement: no IP address, no identifier, no tracker. Only aggregate counters are kept.",
+    "labelInstall": "Install",
+    "labelDroid": "Droid pages",
+    "labelOther": "Other",
+    "lockedTitle": "Private access",
+    "lockedIntro": "This page is restricted. Enter the access token to view the statistics.",
+    "tokenPlaceholder": "Access token",
+    "unlock": "Unlock",
+    "wrongToken": "Invalid token.",
+    "lock": "Lock"
   }
 }

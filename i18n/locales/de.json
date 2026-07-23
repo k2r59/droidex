@@ -442,5 +442,24 @@
     "androidS2": "Wähle „App installieren“ oder „Zum Startbildschirm hinzufügen“.",
     "androidReady": "Die Ein-Klick-Installation ist verfügbar: Tippe auf die Schaltfläche.",
     "androidUnavailable": "Die automatische Installation wird hier nicht angeboten (bereits installiert, nicht unterstützter Browser oder Kriterien noch nicht erfüllt). Folge den Schritten unten."
+  },
+  "statsPage": {
+    "title": "Statistiken",
+    "intro": "Der Traffic der Website, völlig transparent. Keine personenbezogenen Daten, keine Cookies: nur anonyme Zähler für Seitenaufrufe und Besuche.",
+    "visits": "Besuche",
+    "pageviews": "Seitenaufrufe",
+    "last30": "Letzte 30 Tage",
+    "last30Note": "Seitenaufrufe pro Tag.",
+    "byPage": "Nach Seite",
+    "privacyNote": "Anonyme, cookiefreie Messung: keine IP-Adresse, keine Kennung, kein Tracker. Es werden nur aggregierte Zähler gespeichert.",
+    "labelInstall": "Installation",
+    "labelDroid": "Droid-Seiten",
+    "labelOther": "Sonstige",
+    "lockedTitle": "Privater Zugang",
+    "lockedIntro": "Diese Seite ist geschützt. Gib das Zugangs-Token ein, um die Statistiken zu sehen.",
+    "tokenPlaceholder": "Zugangs-Token",
+    "unlock": "Entsperren",
+    "wrongToken": "Ungültiges Token.",
+    "lock": "Sperren"
   }
 }

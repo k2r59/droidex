@@ -442,5 +442,24 @@
     "androidS2": "Escolhe «Instalar aplicação» ou «Adicionar ao ecrã principal».",
     "androidReady": "A instalação num toque está disponível: toca no botão.",
     "androidUnavailable": "A instalação automática não está disponível aqui (já instalada, navegador não compatível ou critérios ainda não cumpridos). Segue os passos abaixo."
+  },
+  "statsPage": {
+    "title": "Estatísticas",
+    "intro": "O tráfego do site, com total transparência. Sem dados pessoais nem cookies: apenas contagens anónimas de páginas vistas e visitas.",
+    "visits": "Visitas",
+    "pageviews": "Páginas vistas",
+    "last30": "Últimos 30 dias",
+    "last30Note": "Páginas vistas por dia.",
+    "byPage": "Por página",
+    "privacyNote": "Medição anónima e sem cookies: sem endereço IP, sem identificador, sem rastreador. Apenas contadores agregados são guardados.",
+    "labelInstall": "Instalação",
+    "labelDroid": "Fichas de droide",
+    "labelOther": "Outro",
+    "lockedTitle": "Acesso privado",
+    "lockedIntro": "Esta página é reservada. Introduz o token de acesso para ver as estatísticas.",
+    "tokenPlaceholder": "Token de acesso",
+    "unlock": "Desbloquear",
+    "wrongToken": "Token inválido.",
+    "lock": "Bloquear"
   }
 }

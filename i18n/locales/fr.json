@@ -442,5 +442,24 @@
     "androidS2": "Choisis « Installer l’application » ou « Ajouter à l’écran d’accueil ».",
     "androidReady": "L'installation en un clic est disponible : appuie sur le bouton.",
     "androidUnavailable": "L'installation automatique n'est pas proposée ici (app déjà installée, navigateur non compatible, ou critères pas encore réunis). Suis les étapes ci-dessous."
+  },
+  "statsPage": {
+    "title": "Statistiques",
+    "intro": "La fréquentation du site, en toute transparence. Aucune donnée personnelle, aucun cookie : seulement des compteurs anonymes de pages vues et de visites.",
+    "visits": "Visites",
+    "pageviews": "Pages vues",
+    "last30": "30 derniers jours",
+    "last30Note": "Pages vues par jour.",
+    "byPage": "Répartition par page",
+    "privacyNote": "Mesure anonyme et sans cookie : ni adresse IP, ni identifiant, ni traceur. Seuls des compteurs agrégés sont conservés.",
+    "labelInstall": "Installation",
+    "labelDroid": "Fiches de droid",
+    "labelOther": "Autre",
+    "lockedTitle": "Accès privé",
+    "lockedIntro": "Cette page est réservée. Saisis le jeton d'accès pour afficher les statistiques.",
+    "tokenPlaceholder": "Jeton d'accès",
+    "unlock": "Déverrouiller",
+    "wrongToken": "Jeton invalide.",
+    "lock": "Verrouiller"
   }
 }

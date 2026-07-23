@@ -442,5 +442,24 @@
     "androidS2": "Scegli «Installa app» o «Aggiungi a schermata Home».",
     "androidReady": "L'installazione con un tocco è disponibile: premi il pulsante.",
     "androidUnavailable": "L'installazione automatica non è disponibile qui (già installata, browser non compatibile o criteri non ancora soddisfatti). Segui i passaggi qui sotto."
+  },
+  "statsPage": {
+    "title": "Statistiche",
+    "intro": "Il traffico del sito, in piena trasparenza. Nessun dato personale, nessun cookie: solo conteggi anonimi di pagine viste e visite.",
+    "visits": "Visite",
+    "pageviews": "Pagine viste",
+    "last30": "Ultimi 30 giorni",
+    "last30Note": "Pagine viste al giorno.",
+    "byPage": "Per pagina",
+    "privacyNote": "Misurazione anonima e senza cookie: nessun indirizzo IP, nessun identificatore, nessun tracker. Vengono conservati solo contatori aggregati.",
+    "labelInstall": "Installazione",
+    "labelDroid": "Schede droide",
+    "labelOther": "Altro",
+    "lockedTitle": "Accesso privato",
+    "lockedIntro": "Questa pagina è riservata. Inserisci il token di accesso per vedere le statistiche.",
+    "tokenPlaceholder": "Token di accesso",
+    "unlock": "Sblocca",
+    "wrongToken": "Token non valido.",
+    "lock": "Blocca"
   }
 }
