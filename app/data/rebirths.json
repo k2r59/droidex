@@ -1,5 +1,5 @@
 {
-  "maxRebirth": 28,
+  "maxRebirth": 30,
   "superRebirthUnlock": {
     "rebirth": 12,
     "requires": "legendaryRainbow"
@@ -27,11 +27,11 @@
         "credits": 10000,
         "droids": [
           {
-            "slug": "cb",
+            "slug": "pit",
             "tier": "DEFAULT"
           },
           {
-            "slug": "pit",
+            "slug": "cb",
             "tier": "DEFAULT"
           },
           {
@@ -50,11 +50,11 @@
             "tier": "DEFAULT"
           },
           {
-            "slug": "2bb",
+            "slug": "bal-core",
             "tier": "DEFAULT"
           },
           {
-            "slug": "bal-core",
+            "slug": "2bb",
             "tier": "DEFAULT"
           }
         ],
@@ -122,16 +122,16 @@
         "credits": 9850000,
         "droids": [
           {
-            "slug": "a-lt",
-            "tier": "DIAMOND"
+            "slug": "groundmech",
+            "tier": "GOLD"
           },
           {
             "slug": "arg",
             "tier": "DIAMOND"
           },
           {
-            "slug": "groundmech",
-            "tier": "GOLD"
+            "slug": "a-lt",
+            "tier": "DIAMOND"
           }
         ],
         "sourceUnique": true
@@ -141,16 +141,16 @@
         "credits": 14500000,
         "droids": [
           {
-            "slug": "bu-4d",
-            "tier": "DIAMOND"
+            "slug": "bb",
+            "tier": "GOLD"
           },
           {
             "slug": "b1-security",
             "tier": "DIAMOND"
           },
           {
-            "slug": "bb",
-            "tier": "GOLD"
+            "slug": "bu-4d",
+            "tier": "DIAMOND"
           }
         ],
         "sourceUnique": true
@@ -160,16 +160,16 @@
         "credits": 36000000,
         "droids": [
           {
-            "slug": "hov-r",
-            "tier": "DIAMOND"
+            "slug": "util-tec",
+            "tier": "GOLD"
           },
           {
             "slug": "lo",
             "tier": "GOLD"
           },
           {
-            "slug": "util-tec",
-            "tier": "GOLD"
+            "slug": "hov-r",
+            "tier": "DIAMOND"
           }
         ],
         "sourceUnique": true
@@ -179,16 +179,16 @@
         "credits": 89000000,
         "droids": [
           {
-            "slug": "trak-r",
-            "tier": "GOLD"
+            "slug": "groundmech",
+            "tier": "RAINBOW"
           },
           {
             "slug": "r6",
             "tier": "GOLD"
           },
           {
-            "slug": "groundmech",
-            "tier": "RAINBOW"
+            "slug": "trak-r",
+            "tier": "GOLD"
           }
         ],
         "sourceUnique": true
@@ -198,16 +198,16 @@
         "credits": 220000000,
         "droids": [
           {
-            "slug": "strike-orb",
-            "tier": "GOLD"
+            "slug": "lo",
+            "tier": "RAINBOW"
           },
           {
             "slug": "haul-r",
             "tier": "RAINBOW"
           },
           {
-            "slug": "lo",
-            "tier": "RAINBOW"
+            "slug": "strike-orb",
+            "tier": "GOLD"
           }
         ],
         "sourceUnique": true
@@ -240,11 +240,11 @@
             "tier": "GOLD"
           },
           {
-            "slug": "mecha-droid",
+            "slug": "mono-walker",
             "tier": "DEFAULT"
           },
           {
-            "slug": "mono-walker",
+            "slug": "mecha-droid",
             "tier": "DEFAULT"
           }
         ],
@@ -335,11 +335,11 @@
             "tier": "DIAMOND"
           },
           {
-            "slug": "cyclo-grav",
+            "slug": "mecha-droid",
             "tier": "DIAMOND"
           },
           {
-            "slug": "mecha-droid",
+            "slug": "cyclo-grav",
             "tier": "DIAMOND"
           }
         ],
@@ -540,16 +540,54 @@
         "credits": 45000000000000,
         "droids": [
           {
-            "slug": "proto-roller",
-            "tier": "GALACTIC"
-          },
-          {
             "slug": "mo-trak",
             "tier": "RAINBOW"
           },
           {
             "slug": "drft-r",
             "tier": "BESKAR"
+          },
+          {
+            "slug": "proto-roller",
+            "tier": "GALACTIC"
+          }
+        ],
+        "sourceUnique": true
+      },
+      {
+        "level": 29,
+        "credits": 68000000000000,
+        "droids": [
+          {
+            "slug": "ig",
+            "tier": "BESKAR"
+          },
+          {
+            "slug": "mono-walker",
+            "tier": "GALACTIC"
+          },
+          {
+            "slug": "mecha-droid",
+            "tier": "GALACTIC"
+          }
+        ],
+        "sourceUnique": true
+      },
+      {
+        "level": 30,
+        "credits": 100000000000000,
+        "droids": [
+          {
+            "slug": "b2-rp",
+            "tier": "GALACTIC"
+          },
+          {
+            "slug": "cyclens",
+            "tier": "BESKAR"
+          },
+          {
+            "slug": "loadlifter",
+            "tier": "GALACTIC"
           }
         ],
         "sourceUnique": true
@@ -561,15 +599,15 @@
         "credits": 10000,
         "droids": [
           {
-            "slug": "id10",
-            "tier": "DEFAULT"
-          },
-          {
             "slug": "mouse",
             "tier": "DEFAULT"
           },
           {
             "slug": "gonk",
+            "tier": "DEFAULT"
+          },
+          {
+            "slug": "id10",
             "tier": "DEFAULT"
           }
         ],
@@ -584,11 +622,11 @@
             "tier": "DEFAULT"
           },
           {
-            "slug": "senate-hovercam",
+            "slug": "nav-ex",
             "tier": "DEFAULT"
           },
           {
-            "slug": "nav-ex",
+            "slug": "senate-hovercam",
             "tier": "DEFAULT"
           }
         ],
@@ -717,11 +755,11 @@
             "tier": "RAINBOW"
           },
           {
-            "slug": "strike-orb",
+            "slug": "amp-walker",
             "tier": "GOLD"
           },
           {
-            "slug": "amp-walker",
+            "slug": "strike-orb",
             "tier": "GOLD"
           }
         ],
@@ -751,16 +789,16 @@
         "credits": 550000000,
         "droids": [
           {
-            "slug": "bal-core",
-            "tier": "RAINBOW"
-          },
-          {
             "slug": "strike-orb",
             "tier": "DIAMOND"
           },
           {
             "slug": "b2-heavy",
             "tier": "DIAMOND"
+          },
+          {
+            "slug": "bal-core",
+            "tier": "RAINBOW"
           }
         ],
         "sourceUnique": true
@@ -817,17 +855,14 @@
           },
           {
             "slug": "b2-rp",
-            "tier": "DEFAULT"
+            "tier": "GOLD"
           },
           {
             "slug": "r7",
             "tier": "GOLD"
           }
         ],
-        "sourceUnique": true,
-        "identiqueAuxCycles": [
-          3
-        ]
+        "sourceUnique": true
       },
       {
         "level": 15,
@@ -856,16 +891,16 @@
         "credits": 52000000000,
         "droids": [
           {
+            "slug": "b2-rp",
+            "tier": "DIAMOND"
+          },
+          {
             "slug": "amp-walker",
             "tier": "RAINBOW"
           },
           {
             "slug": "mecha-droid",
             "tier": "GOLD"
-          },
-          {
-            "slug": "b2-rp",
-            "tier": "DIAMOND"
           }
         ],
         "sourceUnique": true,
@@ -882,12 +917,12 @@
             "tier": "RAINBOW"
           },
           {
-            "slug": "mono-walker",
-            "tier": "GOLD"
-          },
-          {
             "slug": "r7",
             "tier": "DIAMOND"
+          },
+          {
+            "slug": "mono-walker",
+            "tier": "GOLD"
           }
         ],
         "sourceUnique": true,
@@ -1101,16 +1136,54 @@
         "credits": 45000000000000,
         "droids": [
           {
-            "slug": "mecha-droid",
-            "tier": "GALACTIC"
-          },
-          {
             "slug": "snow-mouse",
             "tier": "RAINBOW"
           },
           {
             "slug": "tri-tek",
             "tier": "BESKAR"
+          },
+          {
+            "slug": "mecha-droid",
+            "tier": "GALACTIC"
+          }
+        ],
+        "sourceUnique": true
+      },
+      {
+        "level": 29,
+        "credits": 68000000000000,
+        "droids": [
+          {
+            "slug": "ric",
+            "tier": "BESKAR"
+          },
+          {
+            "slug": "cyclo-grav",
+            "tier": "GALACTIC"
+          },
+          {
+            "slug": "r7",
+            "tier": "GALACTIC"
+          }
+        ],
+        "sourceUnique": true
+      },
+      {
+        "level": 30,
+        "credits": 100000000000000,
+        "droids": [
+          {
+            "slug": "opti-strike",
+            "tier": "GALACTIC"
+          },
+          {
+            "slug": "kx",
+            "tier": "BESKAR"
+          },
+          {
+            "slug": "drft-r",
+            "tier": "GALACTIC"
           }
         ],
         "sourceUnique": true
@@ -1141,11 +1214,11 @@
         "credits": 150000,
         "droids": [
           {
-            "slug": "r3",
+            "slug": "2bb",
             "tier": "DEFAULT"
           },
           {
-            "slug": "2bb",
+            "slug": "r3",
             "tier": "DEFAULT"
           },
           {
@@ -1163,7 +1236,7 @@
         "credits": 975000,
         "droids": [
           {
-            "slug": "r8",
+            "slug": "r4",
             "tier": "DEFAULT"
           },
           {
@@ -1171,7 +1244,7 @@
             "tier": "DEFAULT"
           },
           {
-            "slug": "r4",
+            "slug": "r8",
             "tier": "DEFAULT"
           }
         ],
@@ -1182,11 +1255,11 @@
         "credits": 2950000,
         "droids": [
           {
-            "slug": "b1-battle",
+            "slug": "r9",
             "tier": "GOLD"
           },
           {
-            "slug": "r9",
+            "slug": "b1-battle",
             "tier": "GOLD"
           },
           {
@@ -1204,11 +1277,11 @@
         "credits": 5350000,
         "droids": [
           {
-            "slug": "r3",
+            "slug": "2bb",
             "tier": "GOLD"
           },
           {
-            "slug": "2bb",
+            "slug": "r3",
             "tier": "GOLD"
           },
           {
@@ -1226,7 +1299,7 @@
         "credits": 9850000,
         "droids": [
           {
-            "slug": "r5",
+            "slug": "bdx-explorer",
             "tier": "DIAMOND"
           },
           {
@@ -1234,7 +1307,7 @@
             "tier": "DIAMOND"
           },
           {
-            "slug": "bdx-explorer",
+            "slug": "r5",
             "tier": "DIAMOND"
           }
         ],
@@ -1252,11 +1325,11 @@
             "tier": "DIAMOND"
           },
           {
-            "slug": "b1-battle",
+            "slug": "r9",
             "tier": "DIAMOND"
           },
           {
-            "slug": "r9",
+            "slug": "b1-battle",
             "tier": "DIAMOND"
           }
         ],
@@ -1270,15 +1343,15 @@
         "credits": 36000000,
         "droids": [
           {
+            "slug": "b1-security",
+            "tier": "RAINBOW"
+          },
+          {
             "slug": "r3",
             "tier": "RAINBOW"
           },
           {
             "slug": "2bb",
-            "tier": "RAINBOW"
-          },
-          {
-            "slug": "b1-security",
             "tier": "RAINBOW"
           }
         ],
@@ -1292,7 +1365,7 @@
         "credits": 89000000,
         "droids": [
           {
-            "slug": "r5",
+            "slug": "bdx-explorer",
             "tier": "RAINBOW"
           },
           {
@@ -1300,7 +1373,7 @@
             "tier": "RAINBOW"
           },
           {
-            "slug": "bdx-explorer",
+            "slug": "r5",
             "tier": "RAINBOW"
           }
         ],
@@ -1314,16 +1387,16 @@
         "credits": 220000000,
         "droids": [
           {
-            "slug": "senate-hovercam",
-            "tier": "RAINBOW"
+            "slug": "trak-r",
+            "tier": "DEFAULT"
           },
           {
             "slug": "groundmech",
             "tier": "DEFAULT"
           },
           {
-            "slug": "trak-r",
-            "tier": "DEFAULT"
+            "slug": "senate-hovercam",
+            "tier": "RAINBOW"
           }
         ],
         "sourceUnique": true,
@@ -1358,16 +1431,16 @@
         "credits": 1360000000,
         "droids": [
           {
-            "slug": "bal-core",
-            "tier": "RAINBOW"
+            "slug": "trak-r",
+            "tier": "GOLD"
           },
           {
             "slug": "groundmech",
             "tier": "GOLD"
           },
           {
-            "slug": "trak-r",
-            "tier": "GOLD"
+            "slug": "bal-core",
+            "tier": "RAINBOW"
           }
         ],
         "sourceUnique": true,
@@ -1415,10 +1488,7 @@
             "tier": "GOLD"
           }
         ],
-        "sourceUnique": true,
-        "identiqueAuxCycles": [
-          2
-        ]
+        "sourceUnique": true
       },
       {
         "level": 15,
@@ -1447,16 +1517,16 @@
         "credits": 52000000000,
         "droids": [
           {
+            "slug": "b2-rp",
+            "tier": "DIAMOND"
+          },
+          {
             "slug": "amp-walker",
             "tier": "RAINBOW"
           },
           {
             "slug": "mecha-droid",
             "tier": "GOLD"
-          },
-          {
-            "slug": "b2-rp",
-            "tier": "DIAMOND"
           }
         ],
         "sourceUnique": true,
@@ -1473,12 +1543,12 @@
             "tier": "RAINBOW"
           },
           {
-            "slug": "mono-walker",
-            "tier": "GOLD"
-          },
-          {
             "slug": "r7",
             "tier": "DIAMOND"
+          },
+          {
+            "slug": "mono-walker",
+            "tier": "GOLD"
           }
         ],
         "sourceUnique": true,
@@ -1601,11 +1671,11 @@
             "tier": "BESKAR"
           },
           {
-            "slug": "cyclo-grav",
+            "slug": "mecha-droid",
             "tier": "BESKAR"
           },
           {
-            "slug": "mecha-droid",
+            "slug": "cyclo-grav",
             "tier": "BESKAR"
           }
         ],
@@ -1692,16 +1762,54 @@
         "credits": 45000000000000,
         "droids": [
           {
-            "slug": "bb9",
-            "tier": "GALACTIC"
-          },
-          {
             "slug": "ric",
             "tier": "RAINBOW"
           },
           {
             "slug": "mo-trak",
             "tier": "BESKAR"
+          },
+          {
+            "slug": "bb9",
+            "tier": "GALACTIC"
+          }
+        ],
+        "sourceUnique": true
+      },
+      {
+        "level": 29,
+        "credits": 68000000000000,
+        "droids": [
+          {
+            "slug": "ig",
+            "tier": "BESKAR"
+          },
+          {
+            "slug": "mecha-droid",
+            "tier": "GALACTIC"
+          },
+          {
+            "slug": "opti-strike",
+            "tier": "GALACTIC"
+          }
+        ],
+        "sourceUnique": true
+      },
+      {
+        "level": 30,
+        "credits": 100000000000000,
+        "droids": [
+          {
+            "slug": "r7",
+            "tier": "GALACTIC"
+          },
+          {
+            "slug": "lep",
+            "tier": "BESKAR"
+          },
+          {
+            "slug": "drft-r",
+            "tier": "GALACTIC"
           }
         ],
         "sourceUnique": true
@@ -1732,11 +1840,11 @@
         "credits": 150000,
         "droids": [
           {
-            "slug": "r3",
+            "slug": "2bb",
             "tier": "DEFAULT"
           },
           {
-            "slug": "2bb",
+            "slug": "r3",
             "tier": "DEFAULT"
           },
           {
@@ -1754,16 +1862,16 @@
         "credits": 975000,
         "droids": [
           {
+            "slug": "r4",
+            "tier": "DEFAULT"
+          },
+          {
             "slug": "r5",
             "tier": "GOLD"
           },
           {
             "slug": "r8",
             "tier": "GOLD"
-          },
-          {
-            "slug": "r4",
-            "tier": "DEFAULT"
           }
         ],
         "sourceUnique": true
@@ -1773,11 +1881,11 @@
         "credits": 2950000,
         "droids": [
           {
-            "slug": "b1-battle",
+            "slug": "r9",
             "tier": "GOLD"
           },
           {
-            "slug": "r9",
+            "slug": "b1-battle",
             "tier": "GOLD"
           },
           {
@@ -1795,11 +1903,11 @@
         "credits": 5350000,
         "droids": [
           {
-            "slug": "r3",
+            "slug": "2bb",
             "tier": "GOLD"
           },
           {
-            "slug": "2bb",
+            "slug": "r3",
             "tier": "GOLD"
           },
           {
@@ -1817,7 +1925,7 @@
         "credits": 9850000,
         "droids": [
           {
-            "slug": "r5",
+            "slug": "bdx-explorer",
             "tier": "DIAMOND"
           },
           {
@@ -1825,7 +1933,7 @@
             "tier": "DIAMOND"
           },
           {
-            "slug": "bdx-explorer",
+            "slug": "r5",
             "tier": "DIAMOND"
           }
         ],
@@ -1843,11 +1951,11 @@
             "tier": "DIAMOND"
           },
           {
-            "slug": "b1-battle",
+            "slug": "r9",
             "tier": "DIAMOND"
           },
           {
-            "slug": "r9",
+            "slug": "b1-battle",
             "tier": "DIAMOND"
           }
         ],
@@ -1861,11 +1969,11 @@
         "credits": 36000000,
         "droids": [
           {
-            "slug": "r3",
+            "slug": "b1-security",
             "tier": "RAINBOW"
           },
           {
-            "slug": "b1-security",
+            "slug": "r3",
             "tier": "RAINBOW"
           },
           {
@@ -1883,7 +1991,7 @@
         "credits": 89000000,
         "droids": [
           {
-            "slug": "r5",
+            "slug": "bdx-explorer",
             "tier": "RAINBOW"
           },
           {
@@ -1891,7 +1999,7 @@
             "tier": "RAINBOW"
           },
           {
-            "slug": "bdx-explorer",
+            "slug": "r5",
             "tier": "RAINBOW"
           }
         ],
@@ -1905,16 +2013,16 @@
         "credits": 220000000,
         "droids": [
           {
-            "slug": "senate-hovercam",
-            "tier": "RAINBOW"
+            "slug": "trak-r",
+            "tier": "DEFAULT"
           },
           {
             "slug": "groundmech",
             "tier": "DEFAULT"
           },
           {
-            "slug": "trak-r",
-            "tier": "DEFAULT"
+            "slug": "senate-hovercam",
+            "tier": "RAINBOW"
           }
         ],
         "sourceUnique": true,
@@ -1949,16 +2057,16 @@
         "credits": 1360000000,
         "droids": [
           {
-            "slug": "bal-core",
-            "tier": "RAINBOW"
+            "slug": "trak-r",
+            "tier": "GOLD"
           },
           {
             "slug": "groundmech",
             "tier": "GOLD"
           },
           {
-            "slug": "trak-r",
-            "tier": "GOLD"
+            "slug": "bal-core",
+            "tier": "RAINBOW"
           }
         ],
         "sourceUnique": true,
@@ -2089,12 +2197,12 @@
         "credits": 810000000000,
         "droids": [
           {
-            "slug": "mecha-droid",
-            "tier": "DIAMOND"
-          },
-          {
             "slug": "r7",
             "tier": "RAINBOW"
+          },
+          {
+            "slug": "mecha-droid",
+            "tier": "DIAMOND"
           },
           {
             "slug": "b2-rp",
@@ -2177,11 +2285,11 @@
             "tier": "BESKAR"
           },
           {
-            "slug": "cyclo-grav",
+            "slug": "b2-rp",
             "tier": "BESKAR"
           },
           {
-            "slug": "b2-rp",
+            "slug": "cyclo-grav",
             "tier": "BESKAR"
           }
         ],
@@ -2268,16 +2376,54 @@
         "credits": 45000000000000,
         "droids": [
           {
-            "slug": "opti-strike",
-            "tier": "GALACTIC"
-          },
-          {
             "slug": "ig",
             "tier": "RAINBOW"
           },
           {
             "slug": "kx",
             "tier": "BESKAR"
+          },
+          {
+            "slug": "opti-strike",
+            "tier": "GALACTIC"
+          }
+        ],
+        "sourceUnique": true
+      },
+      {
+        "level": 29,
+        "credits": 68000000000000,
+        "droids": [
+          {
+            "slug": "tri-tek",
+            "tier": "BESKAR"
+          },
+          {
+            "slug": "r7",
+            "tier": "GALACTIC"
+          },
+          {
+            "slug": "bb9",
+            "tier": "GALACTIC"
+          }
+        ],
+        "sourceUnique": true
+      },
+      {
+        "level": 30,
+        "credits": 100000000000000,
+        "droids": [
+          {
+            "slug": "mono-walker",
+            "tier": "GALACTIC"
+          },
+          {
+            "slug": "cyclens",
+            "tier": "BESKAR"
+          },
+          {
+            "slug": "ig",
+            "tier": "GALACTIC"
           }
         ],
         "sourceUnique": true

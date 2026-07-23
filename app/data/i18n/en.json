@@ -188,6 +188,10 @@
       "20": {
         "title": "Galactic Event — galactic weekend",
         "body": "From Saturday July 25 at 16:00 to Sunday July 26 at 16:00 (UTC). Increased Galactic Blueprint spawns at the Sandcrawler, 2× pickaxe level, 2× crafting speed, and Nova Crystals. An upcoming Iconic event is teased for the end of the weekend."
+      },
+      "21": {
+        "title": "Silent update v1.22.2",
+        "body": "Current island version, shipped with no patch notes. Players report two changes, to confirm in game: the rebirth cap rises to 30, and a new gamble lets you try to bump a droid up a variant (Rainbow to Galactic, Mythic to Beskar or Galactic)."
       }
     }
   },

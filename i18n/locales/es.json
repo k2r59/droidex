@@ -126,8 +126,8 @@
     "allTiers": "Todos los rebirths",
     "searchTier": "Buscar un rebirth…",
     "tierLocked": "Requisitos no publicados",
-    "sameAsCycles": "Requisitos idénticos a los del ciclo {cycles} — probable error de copia en la fuente, compruébalo en el juego.",
-    "singleSource": "Los requisitos de los cuatro ciclos proceden de una única fuente comunitaria, sin corroboración independiente. Compruébalo en el juego antes de invertir recursos.",
+    "sameAsCycles": "Requisitos idénticos a los del ciclo {cycles} — es lo que muestran nuestras fuentes; confírmalo en el juego.",
+    "singleSource": "Los requisitos de los cuatro ciclos provienen de registros comunitarios (srbcontrol, contrastado con otras dos fuentes), sin confirmación oficial. Compruébalo en el juego antes de invertir recursos.",
     "chooseCycle": "Elegir el ciclo a mostrar",
     "currentCycle": "ciclo actual"
   },

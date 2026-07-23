@@ -126,8 +126,8 @@
     "allTiers": "Tous les paliers",
     "searchTier": "Rechercher un palier…",
     "tierLocked": "Exigences non publiées",
-    "sameAsCycles": "Exigences identiques à celles du cycle {cycles} — probable erreur de recopie de la source, à vérifier en jeu.",
-    "singleSource": "Les exigences des quatre cycles proviennent d'une seule source communautaire, sans recoupement indépendant. Vérifie en jeu avant d'engager des ressources.",
+    "sameAsCycles": "Exigences identiques à celles du cycle {cycles} — c'est ce qu'affichent nos sources, à confirmer en jeu.",
+    "singleSource": "Les exigences des quatre cycles proviennent de relevés communautaires (srbcontrol, recoupé avec deux autres sources), sans confirmation officielle. Vérifie en jeu avant d'engager des ressources.",
     "chooseCycle": "Choisir le cycle à afficher",
     "currentCycle": "cycle actuel"
   },

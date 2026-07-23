@@ -126,8 +126,8 @@
     "allTiers": "All rebirths",
     "searchTier": "Search a rebirth…",
     "tierLocked": "Requirements not published",
-    "sameAsCycles": "Requirements identical to cycle {cycles} — likely a copy error in the source, check in game.",
-    "singleSource": "The requirements for all four cycles come from a single community source, with no independent corroboration. Check in game before committing resources.",
+    "sameAsCycles": "Requirements identical to cycle {cycles} — that is what our sources show; confirm in game.",
+    "singleSource": "The requirements for all four cycles come from community trackers (srbcontrol, cross-checked with two other sources), without official confirmation. Check in game before committing resources.",
     "chooseCycle": "Choose the cycle to display",
     "currentCycle": "current cycle"
   },

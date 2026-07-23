@@ -39,8 +39,8 @@ const entrySchema = z.object({
 const bodySchema = z
   .object({
     collection: z.record(z.string(), entrySchema).optional(),
-    // 28 rebirths par cycle (cf. exigences 27→28 documentées).
-    rebirth: z.number().int().min(0).max(28).optional(),
+    // 30 rebirths par cycle (cf. exigences 29→30 documentées depuis srbcontrol).
+    rebirth: z.number().int().min(0).max(30).optional(),
     superRebirth: z.number().int().min(0).max(MAX_SUPER_REBIRTH).optional(),
     cycle: z.number().int().min(1).max(4).optional(),
     novaCrystals: z.number().int().min(0).max(MAX_NOVA).optional(),

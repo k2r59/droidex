@@ -188,6 +188,10 @@
       "20": {
         "title": "Galactic Event — fin de semana galáctico",
         "body": "Del sábado 25 de julio a las 16:00 al domingo 26 de julio a las 16:00 (UTC). Mayor aparición de Blueprints Galácticos en el Sandcrawler, ×2 nivel de pico, ×2 velocidad de fabricación y Cristales Nova. Se adelanta un próximo evento Icónico para el final del fin de semana."
+      },
+      "21": {
+        "title": "Actualización silenciosa v1.22.2",
+        "body": "Versión actual de la isla, publicada sin notas de parche. Los jugadores reportan dos cambios, por confirmar en el juego: el tope de renacimiento sube a 30 y una nueva apuesta permite intentar subir un droide de variante (Arcoíris a Galáctico, Mítico a Beskar o Galáctico)."
       }
     }
   },

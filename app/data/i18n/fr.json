@@ -188,6 +188,10 @@
       "20": {
         "title": "Galactic Event — week-end galactique",
         "body": "Du samedi 25 juillet 16:00 au dimanche 26 juillet 16:00 (UTC). Spawn accru de Blueprints Galactiques au Sandcrawler, ×2 niveau de pioche, ×2 vitesse de fabrication, et Cristaux Nova. Un prochain événement Iconique est teasé pour la fin du week-end."
+      },
+      "21": {
+        "title": "Mise à jour silencieuse v1.22.2",
+        "body": "Version actuelle de l'île, déployée sans notes de version. Les joueurs rapportent deux changements, à confirmer en jeu : le plafond de renaissance monte à 30, et un nouveau pari permet de tenter de faire monter un droid d'une variante (Arc-en-ciel vers Galactique, Mythique vers Beskar ou Galactique)."
       }
     }
   },

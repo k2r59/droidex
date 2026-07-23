@@ -86,21 +86,19 @@ Points connus à surveiller :
   Legendary, ×16 Mythic). La « règle du ×2 par palier » relayée par les guides est fausse.
 - **Coûts Mythic** : les sources divergent d'un facteur ~800 selon qu'elles indiquent le
   coût de base ou celui du palier maximum.
-- **Les quatre cycles viennent d'une source unique**, `tycoon-tools.com`. Aucune
-  corroboration indépendante n'existe : les autres sites communautaires consultés semblent
-  dériver du même tracker amont. Le cycle 1 y correspond à 26 paliers sur 28 aux données
-  que nous tenions d'ailleurs — ce qui a motivé la confiance, mais indique aussi que nos
-  données d'origine venaient de là, donc que le recoupement n'en est pas un. Toutes les
-  exigences portent `sourceUnique` et la page l'affiche.
-- **Coûts en crédits identiques sur les quatre cycles** : la source l'énonce, et la courbe
-  le corrobore (×2,5 par palier du 8 au 20, ×1,5 jusqu'au 28 — une régularité qui décrit
-  une propriété du palier, pas du cycle).
-- **Blocs dupliqués entre cycles** : les cycles 2 et 3 sont identiques aux paliers 13-20,
-  les cycles 3 et 4 aux paliers 4-13. Des cycles dont la raison d'être est d'exiger des
-  droids différents ne devraient pas l'être, et le motif contigu est la signature d'un
-  copier-coller côté source. Le champ `identiqueAuxCycles` est **calculé** par le
-  générateur, pas codé en dur : si la source se corrige, le signalement disparaît seul.
-- **`maxRebirth: 28`** : contesté. Des sources récentes annoncent 23 ou 27.
+- **Les quatre cycles, sur 30 paliers, viennent de srbcontrol.com** (« SRB Tracker »), un
+  outil communautaire. Ils ont été recoupés avec deux autres sources — nos données
+  antérieures (tycoon-tools, qui s'arrêtait à 28) et des captures d'un tableau communautaire :
+  les trois concordent sur 111 des 112 premiers paliers, ce qui a fait passer le plafond de
+  28 à 30. Ces sources ne sont pas indépendantes (même relevé amont probable), d'où
+  `sourceUnique: true` sur chaque exigence, signalé par l'UI.
+- **Coûts en crédits identiques sur les quatre cycles**, jusqu'à 100 T au palier 30.
+- **Blocs dupliqués entre cycles** : certains paliers sont partagés à l'identique entre
+  cycles. Les trois sources l'affichent — c'est donc soit un trait réel du jeu, soit une
+  erreur commune à leur ancêtre. Le champ `identiqueAuxCycles` est **calculé** par le
+  générateur et le signale sans trancher.
+- **`maxRebirth: 30`** : établi par recoupement, sans note de patch officielle (les montées
+  à 28+ sont apparues via une mise à jour silencieuse, cf. v1.22.2 dans les Nouveautés).
 
 ## Images
 

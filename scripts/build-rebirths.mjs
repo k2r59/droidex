@@ -11,15 +11,20 @@
  *
  * PROVENANCE — à lire avant de toucher aux tableaux.
  *
- * Les quatre cycles viennent d'une **source unique**, tycoon-tools.com/droid-tycoon/
- * rebirth-requirements/. Aucune corroboration indépendante n'a été trouvée : les autres
- * sites communautaires consultés semblent dériver du même tracker amont. Le cycle 1 y
- * correspond à 26 paliers sur 28 aux données que nous tenions d'ailleurs, ce qui a motivé
- * de lui faire confiance pour les trois autres — mais confirme aussi que nos données
- * d'origine venaient probablement de là, donc que le recoupement n'en est pas vraiment un.
+ * Les quatre cycles, sur 30 paliers, viennent de srbcontrol.com (« SRB Tracker »), un
+ * outil communautaire. Ils ont été recoupés avec deux autres sources : nos données
+ * antérieures (tycoon-tools, qui s'arrêtait à 28 paliers) et des captures d'un tableau
+ * communautaire — les trois concordent sur 111 des 112 premiers paliers, ce qui a établi
+ * la confiance et fait passer le plafond de 28 à 30. Restent deux réserves, portées dans
+ * la donnée elle-même plutôt que tues :
  *
- * Chaque exigence porte donc `sourceUnique: true`, et l'app le signale. C'est le même
- * principe que `unverified` sur les droids : montrer la donnée, dire d'où elle vient.
+ *   - `sourceUnique: true` sur chaque exigence. Ces sources ne sont pas indépendantes :
+ *     elles dérivent vraisemblablement d'un même relevé communautaire. Montrer la donnée,
+ *     dire d'où elle vient — le même principe que `unverified` sur les droids.
+ *   - `identiqueAuxCycles` sur les paliers qu'un cycle partage à l'identique avec un autre.
+ *     Le fait est calculé, pas asséné : des cycles censés exiger des droids différents en
+ *     partagent des blocs entiers. Les trois sources l'affichent, donc c'est soit un trait
+ *     réel du jeu, soit une erreur commune à leur ancêtre. On le signale sans trancher.
  *
  * Usage : pnpm run build:rebirths
  */
@@ -36,10 +41,10 @@ const TIER = { B: 'DEFAULT', G: 'GOLD', D: 'DIAMOND', R: 'RAINBOW', K: 'BESKAR',
 
 /**
  * La source nomme les droids comme le jeu les affiche ; nous les indexons par slug.
- * La conversion est mécanique (minuscules, espaces en tirets) sauf pour deux abréviations
- * de l'interface, que cette table rattrape.
+ * La conversion est mécanique (minuscules, espaces en tirets) sauf « Util-Tech », que la
+ * source orthographie avec un h final absent de notre catalogue (`util-tec`).
  */
-const ALIAS = { 'MONO-WLKR': 'mono-walker', 'OPTI-STRK': 'opti-strike' }
+const ALIAS = { 'UTIL-TECH': 'util-tec' }
 
 const versSlug = (nom) => ALIAS[nom] ?? nom.toLowerCase().replace(/\s+/g, '-')
 
@@ -52,147 +57,150 @@ function req(entree) {
 }
 
 /**
- * Coûts en crédits, paliers 1 à 28. Identiques sur les quatre cycles — c'est la source qui
- * l'énonce, et la courbe le corrobore : ×2,5 par palier du 8 au 20, puis ×1,5 jusqu'au 28,
+ * Coûts en crédits, paliers 1 à 30. Identiques sur les quatre cycles — c'est la source qui
+ * l'énonce, et la courbe le corrobore : ×2,5 par palier du 8 au 20, puis ×1,5 jusqu'au 30,
  * une régularité qui décrit une propriété du palier, pas du cycle.
  */
 const CREDITS = [
   10e3, 150e3, 975e3, 2.95e6, 5.35e6, 9.85e6, 14.5e6, 36e6, 89e6, 220e6,
   550e6, 1.36e9, 3.4e9, 8.45e9, 21e9, 52e9, 130e9, 325e9, 810e9, 2e12,
-  3e12, 4.5e12, 6e12, 9e12, 13.5e12, 21e12, 32e12, 45e12,
+  3e12, 4.5e12, 6e12, 9e12, 13.5e12, 21e12, 32e12, 45e12, 68e12, 100e12,
 ]
 
-/** Exigences par cycle, paliers 1 à 28, trois droids chacun. */
+/** Exigences par cycle, paliers 1 à 30, trois droids chacun. */
 const CYCLES = {
   1: [
-    ['B CB', 'B PIT', 'B DRK-1 PROBE'],
-    ['B BDX EXPLORER', 'B 2BB', 'B BAL-CORE'],
+    ['B PIT', 'B CB', 'B DRK-1 PROBE'],
+    ['B BDX EXPLORER', 'B BAL-CORE', 'B 2BB'],
     ['B A-LT', 'B BU-4D', 'G R9'],
     ['G ARG', 'G B1 SECURITY', 'B GROUNDMECH'],
     ['G BU-4D', 'G HOV-R', 'D R9'],
-    ['D A-LT', 'D ARG', 'G GROUNDMECH'],
-    ['D BU-4D', 'D B1 SECURITY', 'G BB'],
-    ['D HOV-R', 'G LO', 'G UTIL-TEC'],
-    ['G TRAK-R', 'G R6', 'R GROUNDMECH'],
-    ['G STRIKE-ORB', 'R HAUL-R', 'R LO'],
+    ['G GROUNDMECH', 'D ARG', 'D A-LT'],
+    ['G BB', 'D B1 SECURITY', 'D BU-4D'],
+    ['G UTIL-TECH', 'G LO', 'D HOV-R'],
+    ['R GROUNDMECH', 'G R6', 'G TRAK-R'],
+    ['R LO', 'R HAUL-R', 'G STRIKE-ORB'],
     ['R AMP WALKER', 'R B1 HEAVY', 'B BB9'],
-    ['G PROTO-ROLLER', 'B MECHA-DROID', 'B MONO-WLKR'],
+    ['G PROTO-ROLLER', 'B MONO-WALKER', 'B MECHA-DROID'],
     ['B R7', 'B CYCLO-GRAV', 'B B2-RP'],
-    ['B OPTI-STRK', 'G MONO-WLKR', 'G MECHA-DROID'],
+    ['B OPTI-STRIKE', 'G MONO-WALKER', 'G MECHA-DROID'],
     ['G B2-RP', 'G BB9', 'G R7'],
-    ['G OPTI-STRK', 'D MONO-WLKR', 'D PROTO-ROLLER'],
-    ['D B2-RP', 'D CYCLO-GRAV', 'D MECHA-DROID'],
-    ['D BB9', 'D R7', 'R MONO-WLKR'],
+    ['G OPTI-STRIKE', 'D MONO-WALKER', 'D PROTO-ROLLER'],
+    ['D B2-RP', 'D MECHA-DROID', 'D CYCLO-GRAV'],
+    ['D BB9', 'D R7', 'R MONO-WALKER'],
     ['R B2-RP', 'R CYCLO-GRAV', 'R PROTO-ROLLER'],
-    ['R R7', 'R OPTI-STRK', 'R MECHA-DROID'],
+    ['R R7', 'R OPTI-STRIKE', 'R MECHA-DROID'],
     ['K BB', 'K ORB-WALKER', 'K GROUNDMECH'],
     ['K AMP WALKER', 'K B1 HEAVY', 'K PROTO-ROLLER'],
-    ['K OPTI-STRK', 'K MONO-WLKR', 'K R7'],
+    ['K OPTI-STRIKE', 'K MONO-WALKER', 'K R7'],
     ['K BB9', 'K CYCLO-GRAV', 'B MO-TRAK'],
     ['K B2-RP', 'B IG', 'G DRFT-R'],
     ['G CYCLENS', 'D LOADLIFTER', 'R RIC-1200'],
     ['D KX', 'R TRI-TEK', 'K SNOW MOUSE'],
-    ['X PROTO-ROLLER', 'R MO-TRAK', 'K DRFT-R'],
+    ['R MO-TRAK', 'K DRFT-R', 'X PROTO-ROLLER'],
+    ['K IG', 'X MONO-WALKER', 'X MECHA-DROID'],
+    ['X B2-RP', 'K CYCLENS', 'X LOADLIFTER'],
   ],
   2: [
-    ['B ID10', 'B MOUSE', 'B GONK'],
-    ['B ROLL-R', 'B SENATE HOVERCAM', 'B NAV-EX'],
+    ['B MOUSE', 'B GONK', 'B ID10'],
+    ['B ROLL-R', 'B NAV-EX', 'B SENATE HOVERCAM'],
     ['B R4', 'B VECT-ARM', 'G BDX EXPLORER'],
     ['G 2BB', 'G BAL-CORE', 'B ORB-WALKER'],
     ['G R4', 'G VECT-ARM', 'G NAV-EX'],
     ['B GUNRUNNER', 'D 2BB', 'D BAL-CORE'],
     ['D ROLL-R', 'D BDX EXPLORER', 'G R2'],
     ['D R4', 'G B2 SUPER', 'G GUNRUNNER'],
-    ['R NAV-EX', 'G STRIKE-ORB', 'G AMP WALKER'],
+    ['R NAV-EX', 'G AMP WALKER', 'G STRIKE-ORB'],
     ['R VECT-ARM', 'D R2', 'D B2 SUPER'],
-    ['R BAL-CORE', 'D STRIKE-ORB', 'D B2 HEAVY'],
+    ['D STRIKE-ORB', 'D B2 HEAVY', 'R BAL-CORE'],
     ['R ORB-WALKER', 'R R2', 'B BB9'],
     ['R B2 SUPER', 'B MECHA-DROID', 'B PROTO-ROLLER'],
-    ['R B2 HEAVY', 'B B2-RP', 'G R7'],
+    ['R B2 HEAVY', 'G B2-RP', 'G R7'],
     ['R STRIKE-ORB', 'G BB9', 'G PROTO-ROLLER'],
-    ['R AMP WALKER', 'G MECHA-DROID', 'D B2-RP'],
-    ['R OPTI-POD', 'G MONO-WLKR', 'D R7'],
-    ['R UTIL-TEC', 'D BB9', 'D PROTO-ROLLER'],
+    ['D B2-RP', 'R AMP WALKER', 'G MECHA-DROID'],
+    ['R OPTI-POD', 'D R7', 'G MONO-WALKER'],
+    ['R UTIL-TECH', 'D BB9', 'D PROTO-ROLLER'],
     ['D MECHA-DROID', 'R R7', 'R B2-RP'],
-    ['R MONO-WLKR', 'R OPTI-STRK', 'R CYCLO-GRAV'],
+    ['R MONO-WALKER', 'R OPTI-STRIKE', 'R CYCLO-GRAV'],
     ['K LO', 'K R6', 'K HAUL-R'],
     ['K SEN-TRI', 'K STRIKE-ORB', 'K PROTO-ROLLER'],
     ['K BB9', 'K CYCLO-GRAV', 'K B2-RP'],
-    ['K OPTI-STRK', 'K B2-RP', 'B SNOW MOUSE'],
-    ['K MONO-WLKR', 'G TRI-TEK', 'B RIC-1200'],
+    ['K OPTI-STRIKE', 'K B2-RP', 'B SNOW MOUSE'],
+    ['K MONO-WALKER', 'G TRI-TEK', 'B RIC-1200'],
     ['G KX', 'D DRFT-R', 'R IG'],
     ['D LEP', 'R LOADLIFTER', 'K MO-TRAK'],
-    ['X MECHA-DROID', 'R SNOW MOUSE', 'K TRI-TEK'],
+    ['R SNOW MOUSE', 'K TRI-TEK', 'X MECHA-DROID'],
+    ['K RIC', 'X CYCLO-GRAV', 'X R7'],
+    ['X OPTI-STRIKE', 'K KX', 'X DRFT-R'],
   ],
   3: [
     ['B MOUSE', 'B PIT', 'B GONK'],
-    ['B R3', 'B 2BB', 'B SENATE HOVERCAM'],
-    ['B R8', 'B R5', 'B R4'],
-    ['G B1 BATTLE', 'G R9', 'G B1 SECURITY'],
-    ['G R3', 'G 2BB', 'G SENATE HOVERCAM'],
-    ['D R5', 'D R4', 'D BDX EXPLORER'],
-    ['D R8', 'D B1 BATTLE', 'D R9'],
-    ['R R3', 'R 2BB', 'R B1 SECURITY'],
-    ['R R5', 'R R4', 'R BDX EXPLORER'],
-    ['R SENATE HOVERCAM', 'B GROUNDMECH', 'B TRAK-R'],
-    ['B B2 HEAVY', 'B B2 SUPER', 'B UTIL-TEC'],
-    ['R BAL-CORE', 'G GROUNDMECH', 'G TRAK-R'],
+    ['B 2BB', 'B R3', 'B SENATE HOVERCAM'],
+    ['B R4', 'B R5', 'B R8'],
+    ['G R9', 'G B1 BATTLE', 'G B1 SECURITY'],
+    ['G 2BB', 'G R3', 'G SENATE HOVERCAM'],
+    ['D BDX EXPLORER', 'D R4', 'D R5'],
+    ['D R8', 'D R9', 'D B1 BATTLE'],
+    ['R B1 SECURITY', 'R R3', 'R 2BB'],
+    ['R BDX EXPLORER', 'R R4', 'R R5'],
+    ['B TRAK-R', 'B GROUNDMECH', 'R SENATE HOVERCAM'],
+    ['B B2 HEAVY', 'B B2 SUPER', 'B UTIL-TECH'],
+    ['G TRAK-R', 'G GROUNDMECH', 'R BAL-CORE'],
     ['R B2 SUPER', 'B MECHA-DROID', 'B PROTO-ROLLER'],
     ['R B2 HEAVY', 'B B2-RP', 'G R7'],
     ['R STRIKE-ORB', 'G BB9', 'G PROTO-ROLLER'],
-    ['R AMP WALKER', 'G MECHA-DROID', 'D B2-RP'],
-    ['R OPTI-POD', 'G MONO-WLKR', 'D R7'],
-    ['R UTIL-TEC', 'D BB9', 'D PROTO-ROLLER'],
+    ['D B2-RP', 'R AMP WALKER', 'G MECHA-DROID'],
+    ['R OPTI-POD', 'D R7', 'G MONO-WALKER'],
+    ['R UTIL-TECH', 'D BB9', 'D PROTO-ROLLER'],
     ['D MECHA-DROID', 'R R7', 'R B2-RP'],
-    ['R MONO-WLKR', 'R OPTI-STRK', 'R CYCLO-GRAV'],
+    ['R MONO-WALKER', 'R OPTI-STRIKE', 'R CYCLO-GRAV'],
     ['K B2 SUPER', 'K OPTI-POD', 'K R2'],
     ['K GUNRUNNER', 'K LNG-SHOT', 'K B2-RP'],
-    ['K MONO-WLKR', 'K CYCLO-GRAV', 'K MECHA-DROID'],
+    ['K MONO-WALKER', 'K MECHA-DROID', 'K CYCLO-GRAV'],
     ['K BB9', 'K B2-RP', 'B RIC'],
     ['K PROTO-ROLLER', 'B LOADLIFTER', 'G MO-TRAK'],
     ['G LEP', 'D TRI-TEK', 'R SNOW MOUSE'],
     ['D RIC-1200', 'R IG', 'K DRFT-R'],
-    ['X BB9', 'R RIC', 'K MO-TRAK'],
+    ['R RIC', 'K MO-TRAK', 'X BB9'],
+    ['K IG', 'X MECHA-DROID', 'X OPTI-STRIKE'],
+    ['X R7', 'K LEP', 'X DRFT-R'],
   ],
   4: [
     ['B ID10', 'B PIT', 'B DRK-1 PROBE'],
-    ['B R3', 'B 2BB', 'B SENATE HOVERCAM'],
-    ['G R5', 'G R8', 'B R4'],
-    ['G B1 BATTLE', 'G R9', 'G B1 SECURITY'],
-    ['G R3', 'G 2BB', 'G SENATE HOVERCAM'],
-    ['D R5', 'D R4', 'D BDX EXPLORER'],
-    ['D R8', 'D B1 BATTLE', 'D R9'],
-    ['R R3', 'R B1 SECURITY', 'R 2BB'],
-    ['R R5', 'R R4', 'R BDX EXPLORER'],
-    ['R SENATE HOVERCAM', 'B GROUNDMECH', 'B TRAK-R'],
-    ['B B2 HEAVY', 'B B2 SUPER', 'B UTIL-TEC'],
-    ['R BAL-CORE', 'G GROUNDMECH', 'G TRAK-R'],
+    ['B 2BB', 'B R3', 'B SENATE HOVERCAM'],
+    ['B R4', 'G R5', 'G R8'],
+    ['G R9', 'G B1 BATTLE', 'G B1 SECURITY'],
+    ['G 2BB', 'G R3', 'G SENATE HOVERCAM'],
+    ['D BDX EXPLORER', 'D R4', 'D R5'],
+    ['D R8', 'D R9', 'D B1 BATTLE'],
+    ['R B1 SECURITY', 'R R3', 'R 2BB'],
+    ['R BDX EXPLORER', 'R R4', 'R R5'],
+    ['B TRAK-R', 'B GROUNDMECH', 'R SENATE HOVERCAM'],
+    ['B B2 HEAVY', 'B B2 SUPER', 'B UTIL-TECH'],
+    ['G TRAK-R', 'G GROUNDMECH', 'R BAL-CORE'],
     ['R B2 SUPER', 'B MECHA-DROID', 'B PROTO-ROLLER'],
     ['D BAL-CORE', 'D GROUNDMECH', 'R TRAK-R'],
     ['D B2 HEAVY', 'R B2 SUPER', 'B B2-RP'],
-    ['R UTIL-TEC', 'B BB9', 'G R7'],
-    ['B OPTI-STRK', 'G CYCLO-GRAV', 'G MECHA-DROID'],
+    ['R UTIL-TECH', 'B BB9', 'G R7'],
+    ['B OPTI-STRIKE', 'G CYCLO-GRAV', 'G MECHA-DROID'],
     ['G B2-RP', 'G BB9', 'D R7'],
-    ['D MECHA-DROID', 'R R7', 'R B2-RP'],
-    ['R MONO-WLKR', 'R OPTI-STRK', 'R CYCLO-GRAV'],
+    ['R R7', 'D MECHA-DROID', 'R B2-RP'],
+    ['R MONO-WALKER', 'R OPTI-STRIKE', 'R CYCLO-GRAV'],
     ['K AMP WALKER', 'K GROUNDMECH', 'K HAUL-R'],
     ['K GUNRUNNER', 'K STRIKE-ORB', 'K B2 SUPER'],
-    ['K MONO-WLKR', 'K CYCLO-GRAV', 'K B2-RP'],
+    ['K MONO-WALKER', 'K B2-RP', 'K CYCLO-GRAV'],
     ['K MECHA-DROID', 'K PROTO-ROLLER', 'B MO-TRAK'],
-    ['K OPTI-STRK', 'B TRI-TEK', 'G DRFT-R'],
+    ['K OPTI-STRIKE', 'B TRI-TEK', 'G DRFT-R'],
     ['G CYCLENS', 'D LEP', 'R MO-TRAK'],
     ['D RIC-1200', 'R SNOW MOUSE', 'K LOADLIFTER'],
-    ['X OPTI-STRK', 'R IG', 'K KX'],
+    ['R IG', 'K KX', 'X OPTI-STRIKE'],
+    ['K TRI-TEK', 'X R7', 'X BB9'],
+    ['X MONO-WALKER', 'K CYCLENS', 'X IG'],
   ],
 }
 
 /**
  * Repère les paliers rigoureusement identiques entre deux cycles.
- *
- * Des cycles dont la raison d'être est d'exiger des droids *différents* ne devraient pas
- * l'être. Or la source en présente deux blocs contigus — cycles 2 et 3 aux paliers 13-20,
- * cycles 3 et 4 aux paliers 4-13 — un motif contigu qui est la signature d'un copier-coller
- * côté source bien plus que d'un choix de conception.
  *
  * Le calcul est fait ici plutôt que codé en dur : si la source se corrige un jour, le
  * signalement disparaîtra de lui-même au lieu de mentir en sens inverse.
@@ -220,7 +228,11 @@ function paliersDupliques() {
 
 const dupes = paliersDupliques()
 
-/** Nova Crystals gagnés au Super Rebirth, selon le niveau de rebirth atteint. */
+/**
+ * Nova Crystals gagnés au Super Rebirth, selon le niveau de rebirth atteint. Table
+ * incomplète : les sources ne publient que ces paliers, et rien pour 24-26 ni 28-30.
+ * On préfère les laisser absents plutôt que les extrapoler.
+ */
 const NOVA_BY_REBIRTH = {
   12: 11, 13: 16, 14: 22, 15: 29, 16: 37, 17: 46, 18: 56,
   19: 67, 20: 79, 21: 92, 22: 106, 23: 121, 27: 191,
@@ -260,12 +272,11 @@ if (errors.length) {
 
 const out = {
   /**
-   * Plafond CONTESTÉ. La source annonce 28 paliers par cycle, mais sa propre table de
-   * cristaux Nova s'arrête à 27, et d'autres pages communautaires parlent de 23. Aucune
-   * note de patch officielle n'a été retrouvée. On retient 28, seule valeur cohérente avec
-   * les tableaux d'exigences eux-mêmes, en sachant qu'elle n'est pas établie.
+   * 30 paliers par cycle. Passé de 28 à 30 après recoupement de trois sources
+   * communautaires concordantes (srbcontrol, tycoon-tools, captures). Aucune note de patch
+   * officielle ne le confirme, mais les trois relevés s'accordent.
    */
-  maxRebirth: 28,
+  maxRebirth: 30,
   /** Rebirth minimum requis pour débloquer le Super Rebirth. */
   superRebirthUnlock: { rebirth: 12, requires: 'legendaryRainbow' },
   /** Multiplicateur de crédits accordé par niveau de rebirth (relevé de 10 % à 20 %). */
@@ -280,4 +291,4 @@ const nbDupes = Object.values(dupes).reduce((n, m) => n + Object.keys(m).length,
 console.log(`✅ 4 cycles × ${CREDITS.length} paliers → app/data/rebirths.json`)
 console.log('   coûts identiques sur les 4 cycles, tous les paliers renseignés')
 console.log(`   ⚠ ${nbDupes} paliers identiques entre cycles, marqués identiqueAuxCycles`)
-console.log('   ⚠ source unique (tycoon-tools) : toutes les exigences portent sourceUnique')
+console.log('   ⚠ source unique (srbcontrol) : toutes les exigences portent sourceUnique')
