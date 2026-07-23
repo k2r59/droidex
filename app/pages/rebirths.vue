@@ -137,7 +137,7 @@ const shown = computed(() => {
         min-height="17rem"
       >
         <div>
-          <h1 class="text-4xl uppercase tracking-tight lg:text-5xl">
+          <h1 class="text-3xl uppercase tracking-tight sm:text-4xl lg:text-5xl">
             {{ $t('rebirth.title') }}
           </h1>
           <p class="mt-1 max-w-md text-sm text-ink-muted">

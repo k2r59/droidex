@@ -17,7 +17,7 @@ const current = computed(() => locales.value.find((l) => l.code === locale.value
   >
     <button
       type="button"
-      class="rounded-nav border border-edge bg-panel px-3.5 py-2.5 font-display font-semibold text-ink transition-colors hover:border-accent/40"
+      class="grid size-9 place-items-center rounded-nav border border-edge bg-panel text-sm font-display font-semibold text-ink transition-colors hover:border-accent/40"
       :aria-label="$t('common.language')"
       :aria-expanded="open"
       @click="open = !open"

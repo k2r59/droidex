@@ -129,7 +129,7 @@ onKeyStroke('Escape', () => {
       padding réel de `main` — `px-3`, puis `px-4` à partir de `sm` — sans quoi elle
       dépasse de 4 px sur mobile et fait défiler toute la page horizontalement.
     -->
-    <div class="sticky top-[68px] z-30 -mx-3 flex flex-col gap-3 bg-void/95 px-3 py-3 backdrop-blur sm:-mx-4 sm:px-4">
+    <div class="sticky top-14 z-30 -mx-3 flex flex-col gap-3 bg-void/95 px-3 py-3 backdrop-blur sm:top-[68px] sm:-mx-4 sm:px-4">
       <div class="flex flex-wrap items-center gap-2">
         <div class="relative min-w-48 flex-1">
           <input

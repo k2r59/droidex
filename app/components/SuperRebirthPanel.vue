@@ -101,7 +101,7 @@ const blocs = [
           visible entre les deux, sans voile qui l'assombrirait sur toute la hauteur.
         -->
         <div class="rounded-lg border border-edge-soft bg-void/60 p-4 backdrop-blur-sm">
-          <h2 class="text-xl font-bold uppercase tracking-[0.03em]">
+          <h2 class="text-lg font-bold uppercase tracking-[0.03em] sm:text-xl">
             {{ $t('superRebirth.title') }}
           </h2>
           <p class="mt-1 text-sm text-ink-muted">

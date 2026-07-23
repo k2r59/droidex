@@ -32,7 +32,7 @@ const completion = computed(() =>
 
 <template>
   <header class="sticky top-0 z-50 border-b border-edge bg-void/85 backdrop-blur">
-    <div class="flex h-[68px] items-center gap-3 px-4">
+    <div class="flex h-14 items-center gap-3 px-4 sm:h-[68px]">
       <!-- Le logo n'apparaît ici que si la colonne de gauche est masquée. -->
       <NuxtLink
         :to="localePath('/')"
