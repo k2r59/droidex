@@ -595,8 +595,15 @@ export const useCollectionStore = defineStore('collection', () => {
   async function clear() {
     apply({})
     await idbDel(STORAGE_KEY)
-    // On CONSERVE le code de sauvegarde : c'est l'identité de l'appareil, jamais régénérée. La
-    // progression vidée est répliquée sous le même code pour que le serveur reflète l'effacement.
+    // On vide TOUT le storage local — progression (IndexedDB) et préférences (`droidex:*` en
+    // localStorage : filtres, budget, onboarding). Seul survit le code de sauvegarde, rangé à
+    // part dans IndexedDB : il reste l'identité de l'appareil pour la synchronisation à venir.
+    if (!import.meta.server) {
+      for (const k of Object.keys(localStorage)) {
+        if (k.startsWith('droidex:')) localStorage.removeItem(k)
+      }
+    }
+    // La progression vidée est répliquée sous le même code pour que le serveur reflète l'effacement.
     if (!remoteEnabled.value) {
       void pushCode()
       return

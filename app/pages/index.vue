@@ -141,12 +141,44 @@ const shownVariants = computed(() => variants.value.slice(0, visibleCount.value)
 watch([search, rarity, type, tier, ownership, sort], () => { visibleCount.value = PAGE_SIZE })
 
 /**
+ * Nombre de variantes que donnerait le **brouillon** de filtres avancés — affiché sur le bouton
+ * « Valider » pour qu'on sache, avant d'appliquer, combien de droids on va obtenir. On réutilise
+ * la même logique que `variants`, mais avec les valeurs du brouillon (rareté, type, possession)
+ * et le palier/recherche courants (qui, eux, s'appliquent en direct).
+ */
+const draftMatchCount = computed(() => {
+  const q = search.value.trim().toLowerCase()
+  let n = 0
+  for (const d of store.droids) {
+    if (q && !d.name.toLowerCase().includes(q)) continue
+    if (draft.rarity !== 'all' && d.rarity !== draft.rarity) continue
+    if (draft.type !== 'all' && d.type !== draft.type) continue
+    const entry = store.entry(d.slug)
+    if (draft.ownership === 'flawless' && !entry.flawless) continue
+    for (const tr of Object.keys(d.tiers) as Tier[]) {
+      if (tier.value !== 'all' && tr !== tier.value) continue
+      const owned = entry.tiers.includes(tr)
+      if (draft.ownership === 'owned' && !owned) continue
+      if (draft.ownership === 'missing' && owned) continue
+      n++
+    }
+  }
+  return n
+})
+
+/**
  * Clic sur une pastille de palier du bandeau d'accueil : on applique le filtre puis on défile
  * jusqu'à la liste. On vise la section par son `id` (plus sûr qu'une ref de template ici), et
  * on attend un `requestAnimationFrame` après le `nextTick` pour que la liste re-filtrée soit
  * mise en page avant de mesurer la position. Le `scroll-mt` de l'ancre dégage l'en-tête.
  */
 function focusTier(tr: string) {
+  // Cliquer un palier du bandeau repart d'une vue propre : on réinitialise les autres filtres
+  // (rareté, type, possession, recherche) pour n'appliquer que ce palier.
+  rarity.value = 'all'
+  type.value = 'all'
+  ownership.value = 'all'
+  search.value = ''
   tier.value = tr as Tier
   nextTick(() => requestAnimationFrame(() =>
     document.getElementById('all-droids')?.scrollIntoView({ behavior: 'smooth', block: 'start' }),
@@ -254,7 +286,7 @@ onKeyStroke('Escape', () => {
             name="ui/filter"
             :size="16"
           />
-          <span class="hidden sm:inline">{{ $t('droidex.filters') }}</span>
+          <span>{{ $t('droidex.filters') }}</span>
           <!-- Pastille : des filtres avancés sont actifs même panneau replié. -->
           <span
             v-if="advancedActive"
@@ -362,7 +394,7 @@ onKeyStroke('Escape', () => {
       @click="visibleCount += PAGE_SIZE"
     >
       {{ $t('droidex.showMore') }}
-      <span class="font-mono tabular-nums text-ink-muted">{{ variants.length - visibleCount }}</span>
+      <span class="font-mono tabular-nums text-ink-muted">{{ shownVariants.length }}/{{ variants.length }}</span>
     </button>
 
     <!--
@@ -520,6 +552,7 @@ onKeyStroke('Escape', () => {
                 :size="15"
               />
               {{ $t('common.apply') }}
+              <span class="font-mono tabular-nums opacity-80">{{ draftMatchCount }}</span>
             </button>
           </div>
         </div>
