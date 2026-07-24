@@ -131,6 +131,16 @@ const variants = computed<Variant[]>(() => {
 })
 
 /**
+ * Affichage par tranches : on révèle 20 variantes à la fois via « Voir plus » plutôt que de
+ * peindre les 379 d'un coup — la grille reste légère sur mobile, et la liste ne « saute » plus.
+ */
+const PAGE_SIZE = 20
+const visibleCount = ref(PAGE_SIZE)
+const shownVariants = computed(() => variants.value.slice(0, visibleCount.value))
+// Tout changement de filtre, de recherche ou de tri repart de la première tranche.
+watch([search, rarity, type, tier, ownership, sort], () => { visibleCount.value = PAGE_SIZE })
+
+/**
  * Clic sur une pastille de palier du bandeau d'accueil : on applique le filtre puis on défile
  * jusqu'à la liste. On vise la section par son `id` (plus sûr qu'une ref de template ici), et
  * on attend un `requestAnimationFrame` après le `nextTick` pour que la liste re-filtrée soit
@@ -335,14 +345,25 @@ onKeyStroke('Escape', () => {
       class="grid grid-cols-1 gap-3 @md:grid-cols-2 @2xl:grid-cols-3 @4xl:grid-cols-4 @6xl:grid-cols-5"
     >
       <DroidVariantCard
-        v-for="(v, i) in variants"
+        v-for="(v, i) in shownVariants"
         :key="`${v.droid.slug}:${v.tier}`"
         :droid="v.droid"
         :tier="v.tier"
         class="droid-enter"
-        :style="{ animationDelay: `${Math.min(i, 12) * 35}ms` }"
+        :style="{ animationDelay: `${Math.min(i % PAGE_SIZE, 12) * 35}ms` }"
       />
     </div>
+
+    <!-- Révèle la tranche suivante. Le compteur dit ce qu'il reste, pour situer l'ampleur. -->
+    <button
+      v-if="variants.length > visibleCount"
+      type="button"
+      class="mx-auto mt-1 flex items-center gap-2 rounded-card border border-edge bg-panel px-5 py-2.5 text-sm font-semibold text-ink-muted transition-colors hover:border-accent hover:text-ink"
+      @click="visibleCount += PAGE_SIZE"
+    >
+      {{ $t('droidex.showMore') }}
+      <span class="font-mono tabular-nums text-ink-muted">{{ variants.length - visibleCount }}</span>
+    </button>
 
     <!--
       Modale des filtres avancés (type, palier, possession, tri). On y édite un brouillon

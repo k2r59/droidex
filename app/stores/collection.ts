@@ -19,6 +19,8 @@ const TIER_RANK: Record<Tier, number> = {
 const TIER_ORDER = (Object.keys(TIER_RANK) as Tier[]).sort((a, b) => TIER_RANK[a] - TIER_RANK[b])
 
 const STORAGE_KEY = 'droidex:progress'
+/** Code de sauvegarde anonyme, auto-généré au premier passage. Stable, jamais régénéré. */
+const SYNC_CODE_KEY = 'droidex:syncCode'
 
 const emptyEntry = (): CollectionEntry => ({ tiers: [], flawless: false })
 
@@ -86,6 +88,9 @@ export const useCollectionStore = defineStore('collection', () => {
   const shopLevels = ref<Record<string, number>>({})
   /** Exigences de renaissance cochées, séparées de la collection. Voir `Snapshot`. */
   const rebirthChecks = ref<Record<string, true>>({})
+
+  /** Code de sauvegarde anonyme (`ABCD-EFGH`), auto-généré au 1ᵉʳ passage. `null` avant création. */
+  const syncCode = ref<string | null>(null)
 
   /**
    * `true` une fois la progression locale lue.
@@ -161,6 +166,59 @@ export const useCollectionStore = defineStore('collection', () => {
   function writeLocal() {
     if (import.meta.server) return
     void idbSet(STORAGE_KEY, snapshot())
+    scheduleCodePush()
+  }
+
+  /*
+   * Sauvegarde « transparente » anonyme.
+   *
+   * Tant qu'aucune session n'est active, la progression est répliquée sur le serveur sous un
+   * code auto-généré (voir `ensureSyncCode`). Ce code EST la sauvegarde : le joueur n'a rien à
+   * faire, et peut le saisir sur un autre appareil pour tout récupérer. Le compte connecté, s'il
+   * existe, prime — le code n'est alors qu'un vestige inoffensif.
+   */
+  let codePushTimer: ReturnType<typeof setTimeout> | null = null
+
+  /** Écrit l'instantané sous le code courant (upsert, échéance glissante). Silencieux si échec. */
+  async function pushCode() {
+    if (import.meta.server) return
+    const code = syncCode.value
+    if (!code || remoteEnabled.value) return
+    try {
+      await ofetch(`/api/sync/${encodeURIComponent(code)}`, { method: 'PUT', body: snapshot() })
+    }
+    catch { /* le local reste la vérité ; on réessaiera au prochain changement */ }
+  }
+
+  /** Regroupe les écritures rapprochées : cocher dix paliers d'affilée = une seule requête. */
+  function scheduleCodePush() {
+    if (import.meta.server || remoteEnabled.value || !syncCode.value) return
+    if (codePushTimer) clearTimeout(codePushTimer)
+    codePushTimer = setTimeout(() => { void pushCode() }, 1500)
+  }
+
+  /**
+   * Génère le code au tout premier passage (visiteur anonyme, aucun code encore). On réutilise
+   * `POST /api/sync`, qui garantit l'unicité côté serveur, puis on le conserve en local — il ne
+   * changera plus jamais, y compris après un effacement de la progression.
+   */
+  async function ensureSyncCode() {
+    if (import.meta.server || remoteEnabled.value || syncCode.value) return
+    try {
+      const res = await ofetch<{ code: string }>('/api/sync', { method: 'POST', body: snapshot() })
+      syncCode.value = res.code
+      await idbSet(SYNC_CODE_KEY, res.code)
+    }
+    catch { /* pas de code cette fois : on réessaiera au prochain chargement */ }
+  }
+
+  /**
+   * Adopte un code existant (saisi par l'utilisateur) : la progression suivra désormais ce code.
+   * L'appelant a déjà chargé l'instantané associé ; ici on ne fait que retenir le code.
+   */
+  async function setSyncCode(code: string) {
+    syncCode.value = code
+    await idbSet(SYNC_CODE_KEY, code)
   }
 
   function entry(slug: string): CollectionEntry {
@@ -295,11 +353,16 @@ export const useCollectionStore = defineStore('collection', () => {
     try {
       const local = await readLocal()
       if (local) apply(local)
+      syncCode.value = (await idbGet<string>(SYNC_CODE_KEY)) ?? null
     }
     finally {
       // Même si la lecture échoue, on est fixé : l'interface doit cesser d'attendre.
       hydrated.value = true
     }
+    // Crée le code au premier passage, puis pousse à chaque visite : cela rafraîchit l'échéance
+    // glissante, si bien qu'un code régulièrement ouvert ne périme jamais.
+    await ensureSyncCode()
+    void pushCode()
   }
 
   /**
@@ -363,9 +426,17 @@ export const useCollectionStore = defineStore('collection', () => {
    */
   async function toggleTier(slug: string, tier: Tier) {
     const previous = entry(slug)
-    const tiers = previous.tiers.includes(tier)
-      ? previous.tiers.filter((t) => t !== tier)
-      : [...previous.tiers, tier].sort((a, b) => TIER_RANK[a] - TIER_RANK[b])
+    let tiers: Tier[]
+    if (previous.tiers.includes(tier)) {
+      tiers = previous.tiers.filter((t) => t !== tier)
+    }
+    else {
+      tiers = [...previous.tiers, tier]
+      // Cascade : posséder une variante haute implique d'avoir eu le droid, donc son Défaut.
+      // On ne coche jamais l'inverse — retirer l'Or ne retire pas le Défaut.
+      if (tier !== 'DEFAULT' && !tiers.includes('DEFAULT')) tiers.push('DEFAULT')
+      tiers.sort((a, b) => TIER_RANK[a] - TIER_RANK[b])
+    }
 
     const next: CollectionEntry = { ...previous, tiers }
     entries.value = { ...entries.value, [slug]: next }
@@ -425,9 +496,16 @@ export const useCollectionStore = defineStore('collection', () => {
       if (!d.tiers[tier]) continue
       const previous = next[d.slug] ?? emptyEntry()
       if (previous.tiers.includes(tier) === owned) continue
-      const tiers = owned
-        ? [...previous.tiers, tier].sort((a, b) => TIER_RANK[a] - TIER_RANK[b])
-        : previous.tiers.filter((t) => t !== tier)
+      let tiers: Tier[]
+      if (owned) {
+        tiers = [...previous.tiers, tier]
+        // Même cascade que `toggleTier` : cocher un palier coche aussi le Défaut du droid.
+        if (tier !== 'DEFAULT' && !tiers.includes('DEFAULT') && d.tiers.DEFAULT) tiers.push('DEFAULT')
+        tiers.sort((a, b) => TIER_RANK[a] - TIER_RANK[b])
+      }
+      else {
+        tiers = previous.tiers.filter((t) => t !== tier)
+      }
       const e: CollectionEntry = { ...previous, tiers }
       next[d.slug] = e
       delta[d.slug] = e
@@ -517,7 +595,12 @@ export const useCollectionStore = defineStore('collection', () => {
   async function clear() {
     apply({})
     await idbDel(STORAGE_KEY)
-    if (!remoteEnabled.value) return
+    // On CONSERVE le code de sauvegarde : c'est l'identité de l'appareil, jamais régénérée. La
+    // progression vidée est répliquée sous le même code pour que le serveur reflète l'effacement.
+    if (!remoteEnabled.value) {
+      void pushCode()
+      return
+    }
 
     syncing.value = true
     syncError.value = null
@@ -542,6 +625,7 @@ export const useCollectionStore = defineStore('collection', () => {
     novaCrystals,
     shopLevels,
     rebirthChecks,
+    syncCode,
     hydrated,
     remoteEnabled,
     loading,
@@ -568,6 +652,7 @@ export const useCollectionStore = defineStore('collection', () => {
     setOwned,
     setOwnedBulk,
     setTierOwnedBulk,
+    setSyncCode,
     toggleFlawless,
     setShopLevel,
     setNovaCrystals,

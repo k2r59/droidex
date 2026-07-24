@@ -74,7 +74,8 @@
     "markAll": "Mark all owned",
     "unmarkAll": "Unmark all",
     "filterOwnership": "Ownership",
-    "filters": "Filters"
+    "filters": "Filters",
+    "showMore": "Show more"
   },
   "droid": {
     "income": "Income",
@@ -423,7 +424,10 @@
     "receiveWarning": "Replaces this device's progress.",
     "recoverDone": "Progress recovered.",
     "recoverFailed": "Invalid or expired code.",
-    "genFailed": "Code generation failed. Try again."
+    "genFailed": "Code generation failed. Try again.",
+    "myCodeTitle": "My save code",
+    "changeCode": "Change code",
+    "autoHint": "Your progress is saved automatically under this code. Note it to restore on another device."
   },
   "installPage": {
     "title": "Install the app",

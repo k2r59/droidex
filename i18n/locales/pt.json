@@ -74,7 +74,8 @@
     "markAll": "Marcar todos",
     "unmarkAll": "Remover todos",
     "filterOwnership": "Posse",
-    "filters": "Filtros"
+    "filters": "Filtros",
+    "showMore": "Ver mais"
   },
   "droid": {
     "income": "Rendimento",
@@ -423,7 +424,10 @@
     "receiveWarning": "Substitui o progresso deste dispositivo.",
     "recoverDone": "Progresso recuperado.",
     "recoverFailed": "Código inválido ou expirado.",
-    "genFailed": "A geração do código falhou. Tenta de novo."
+    "genFailed": "A geração do código falhou. Tenta de novo.",
+    "myCodeTitle": "Meu código de salvamento",
+    "changeCode": "Alterar código",
+    "autoHint": "Teu progresso é salvo automaticamente com este código. Anota-o para recuperar noutro dispositivo."
   },
   "installPage": {
     "title": "Instalar a aplicação",

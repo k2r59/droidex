@@ -173,10 +173,6 @@ function toggle() {
  */
 .vcard {
   position: relative;
-  /* Les cartes hors écran ne sont ni peintes ni animées : sur une grille qui peut animer des
-     centaines de champs d'étoiles, seules les visibles consomment du GPU. */
-  content-visibility: auto;
-  contain-intrinsic-size: auto 280px;
   padding: 0.7rem;
   border-radius: var(--radius-card);
   border: 1px solid color-mix(in srgb, var(--tier) 22%, var(--color-edge));
@@ -232,6 +228,18 @@ function toggle() {
   overflow: hidden;
   padding: 0.25rem;
   border-radius: 0.6rem;
+}
+
+/*
+ * Champ d'étoiles FIGÉ sur les cartes. `droid-starfield` anime en continu deux couches par
+ * carte (dérive + scintillement) : sur une grille, des dizaines de ciels animés en parallèle
+ * saturent le GPU et font ramer, voire planter, le navigateur. On garde le rendu — étoiles et
+ * nébuleuse teintée — mais on coupe l'animation. La dérive reste réservée à la page détail,
+ * où le ciel n'existe qu'en un seul exemplaire.
+ */
+.vcard__media::before,
+.vcard__media::after {
+  animation: none;
 }
 
 /*

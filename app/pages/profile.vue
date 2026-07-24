@@ -66,49 +66,17 @@ async function importProgress(event: Event) {
 }
 
 /**
- * Synchronisation par code anonyme.
- *
- * On dépose un instantané de la progression sur le serveur (stockage Netlify Blobs) et on
- * reçoit un code court. L'autre appareil saisit ce code pour récupérer la progression.
- * Aucun compte, aucune donnée personnelle — seulement la progression de jeu, sous un code
- * aléatoire qui expire après 30 jours.
+ * Sauvegarde par code anonyme, désormais **transparente** : le store génère un code au premier
+ * passage et y réplique la progression en continu (voir `useCollectionStore`). Ici on ne fait
+ * plus que l'AFFICHER (avec copie) et permettre d'en **changer** — saisir le code d'un autre
+ * appareil pour reprendre sa progression et poursuivre les sauvegardes sous ce code.
  */
-const syncCode = ref<string | null>(null)
-const syncBusy = ref(false)
-const syncError = ref<string | null>(null)
 const copiedCode = ref(false)
 
-async function generateCode() {
-  syncBusy.value = true
-  syncError.value = null
-  syncCode.value = null
-  try {
-    const res = await $fetch<{ code: string }>('/api/sync', {
-      method: 'POST',
-      body: {
-        collection: store.entries,
-        rebirth: store.rebirth,
-        superRebirth: store.superRebirth,
-        cycle: store.cycle,
-        novaCrystals: store.novaCrystals,
-        shopLevels: store.shopLevels,
-        rebirthChecks: store.rebirthChecks,
-      },
-    })
-    syncCode.value = res.code
-  }
-  catch {
-    syncError.value = t('sync.genFailed')
-  }
-  finally {
-    syncBusy.value = false
-  }
-}
-
 async function copyCode() {
-  if (!syncCode.value) return
+  if (!store.syncCode) return
   try {
-    await navigator.clipboard.writeText(syncCode.value)
+    await navigator.clipboard.writeText(store.syncCode)
     copiedCode.value = true
     setTimeout(() => { copiedCode.value = false }, 1500)
   }
@@ -117,14 +85,22 @@ async function copyCode() {
   }
 }
 
-/** Récupération : remplace la progression de CET appareil par celle du code. */
+/** Popup de changement de code : on récupère la progression du code saisi, puis on l'adopte. */
+const editingCode = ref(false)
 const recoverInput = ref('')
+const recoverBusy = ref(false)
 const recoverMessage = ref<{ ok: boolean, text: string } | null>(null)
 
-async function recoverFromCode() {
-  const code = recoverInput.value.trim()
-  if (!code) return
-  syncBusy.value = true
+function openEditCode() {
+  recoverInput.value = ''
+  recoverMessage.value = null
+  editingCode.value = true
+}
+
+async function adoptCode() {
+  const raw = recoverInput.value.trim()
+  if (!raw) return
+  recoverBusy.value = true
   recoverMessage.value = null
   try {
     const { snapshot } = await $fetch<{ snapshot: {
@@ -135,7 +111,7 @@ async function recoverFromCode() {
       novaCrystals?: number
       shopLevels?: Record<string, number>
       rebirthChecks?: Record<string, true>
-    } }>(`/api/sync/${encodeURIComponent(code)}`)
+    } }>(`/api/sync/${encodeURIComponent(raw)}`)
     await store.replaceAll({
       collection: migrateCollection(snapshot.collection as never),
       rebirth: Number(snapshot.rebirth) || 0,
@@ -145,14 +121,16 @@ async function recoverFromCode() {
       shopLevels: snapshot.shopLevels ?? {},
       rebirthChecks: snapshot.rebirthChecks ?? {},
     })
-    recoverMessage.value = { ok: true, text: t('sync.recoverDone') }
-    recoverInput.value = ''
+    // On adopte le code : les sauvegardes suivantes iront sous lui. Forme d'affichage canonique.
+    const clean = raw.toUpperCase().replace(/[^A-Z0-9]/g, '')
+    await store.setSyncCode(clean.length === 8 ? `${clean.slice(0, 4)}-${clean.slice(4)}` : clean)
+    editingCode.value = false
   }
   catch {
     recoverMessage.value = { ok: false, text: t('sync.recoverFailed') }
   }
   finally {
-    syncBusy.value = false
+    recoverBusy.value = false
   }
 }
 
@@ -260,87 +238,44 @@ async function clearAll() {
         {{ $t('sync.subtitle') }}
       </p>
 
-      <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <!-- Envoyer : générer un code depuis cet appareil. -->
-        <div class="rounded-card border border-edge-soft bg-void/40 p-4">
-          <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
-            {{ $t('sync.sendTitle') }}
-          </p>
+      <!-- Code auto-généré, affiché en permanence : copie d'un côté, changement de l'autre. -->
+      <div class="mt-4 rounded-card border border-edge-soft bg-void/40 p-4">
+        <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
+          {{ $t('sync.myCodeTitle') }}
+        </p>
 
+        <div class="mt-3 flex items-center gap-2">
           <button
-            v-if="!syncCode"
             type="button"
-            class="dx-button dx-button--primary dx-button--block mt-3"
-            :disabled="syncBusy"
-            @click="generateCode"
+            class="flex flex-1 items-center justify-center gap-2 rounded-lg border border-accent/40 bg-accent/10 px-3 py-3 font-mono text-xl font-bold tracking-widest text-accent transition-colors hover:border-accent disabled:opacity-40"
+            :disabled="!store.syncCode"
+            @click="copyCode"
           >
-            {{ $t('sync.generate') }}
+            {{ store.syncCode ?? '••••-••••' }}
+            <DxIcon
+              :name="copiedCode ? 'actions/check' : 'actions/copy'"
+              :size="16"
+              :class="copiedCode ? 'text-valid' : 'text-accent'"
+            />
           </button>
 
-          <template v-else>
-            <button
-              type="button"
-              class="mt-3 flex w-full items-center justify-center gap-2 rounded-lg border border-accent/40 bg-accent/10 px-3 py-3 font-mono text-xl font-bold tracking-widest text-accent transition-colors hover:border-accent"
-              @click="copyCode"
-            >
-              {{ syncCode }}
-              <DxIcon
-                :name="copiedCode ? 'actions/check' : 'actions/copy'"
-                :size="16"
-                :class="copiedCode ? 'text-valid' : 'text-accent'"
-              />
-            </button>
-            <p class="mt-2 text-xs text-ink-muted">
-              {{ $t('sync.codeHint') }}
-            </p>
-          </template>
-
-          <p
-            v-if="syncError"
-            class="mt-2 text-[0.8125rem] text-danger"
+          <button
+            type="button"
+            class="dx-icon-button size-11 shrink-0 border border-edge bg-panel"
+            :title="$t('sync.changeCode')"
+            :aria-label="$t('sync.changeCode')"
+            @click="openEditCode"
           >
-            {{ syncError }}
-          </p>
+            <DxIcon
+              name="actions/edit"
+              :size="17"
+            />
+          </button>
         </div>
 
-        <!-- Récupérer : saisir un code sur cet appareil. -->
-        <div class="rounded-card border border-edge-soft bg-void/40 p-4">
-          <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
-            {{ $t('sync.receiveTitle') }}
-          </p>
-
-          <form
-            class="mt-3 flex gap-2"
-            @submit.prevent="recoverFromCode"
-          >
-            <input
-              v-model="recoverInput"
-              type="text"
-              autocapitalize="characters"
-              spellcheck="false"
-              :placeholder="$t('sync.codePlaceholder')"
-              class="min-w-0 flex-1 rounded-md border border-edge bg-void/60 px-3 py-2 font-mono uppercase tracking-widest outline-none transition-colors placeholder:tracking-normal placeholder:text-ink-muted focus:border-accent"
-            >
-            <button
-              type="submit"
-              class="dx-button dx-button--secondary shrink-0"
-              :disabled="syncBusy || !recoverInput.trim()"
-            >
-              {{ $t('sync.recover') }}
-            </button>
-          </form>
-
-          <p class="mt-2 text-xs text-warn">
-            {{ $t('sync.receiveWarning') }}
-          </p>
-          <p
-            v-if="recoverMessage"
-            class="mt-1 text-[0.8125rem]"
-            :class="recoverMessage.ok ? 'text-valid' : 'text-danger'"
-          >
-            {{ recoverMessage.text }}
-          </p>
-        </div>
+        <p class="mt-2 text-xs text-ink-muted">
+          {{ $t('sync.autoHint') }}
+        </p>
       </div>
     </section>
 
@@ -385,5 +320,82 @@ async function clearAll() {
         </template>
       </div>
     </section>
+
+    <!-- Popup : changer de code — reprendre la sauvegarde d'un autre appareil. -->
+    <Teleport to="body">
+      <div
+        v-if="editingCode"
+        class="fixed inset-0 z-[100] grid place-items-center p-4"
+      >
+        <div
+          class="absolute inset-0 bg-black/60 backdrop-blur-sm"
+          @click="editingCode = false"
+        />
+        <div
+          class="panel relative z-10 flex w-full max-w-sm flex-col gap-4 p-5"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="change-code-title"
+        >
+          <div class="flex items-center justify-between">
+            <h2
+              id="change-code-title"
+              class="flex items-center gap-2 font-bold"
+            >
+              <DxIcon
+                name="actions/edit"
+                :size="17"
+                class="text-accent"
+              />
+              {{ $t('sync.changeCode') }}
+            </h2>
+            <button
+              type="button"
+              class="dx-icon-button size-8"
+              :aria-label="$t('common.close')"
+              @click="editingCode = false"
+            >
+              <DxIcon
+                name="actions/close"
+                :size="15"
+              />
+            </button>
+          </div>
+
+          <p class="text-sm text-warn">
+            {{ $t('sync.receiveWarning') }}
+          </p>
+
+          <form
+            class="flex gap-2"
+            @submit.prevent="adoptCode"
+          >
+            <input
+              v-model="recoverInput"
+              type="text"
+              autocapitalize="characters"
+              spellcheck="false"
+              :placeholder="$t('sync.codePlaceholder')"
+              class="min-w-0 flex-1 rounded-md border border-edge bg-void/60 px-3 py-2 font-mono uppercase tracking-widest outline-none transition-colors placeholder:tracking-normal placeholder:text-ink-muted focus:border-accent"
+            >
+            <button
+              type="submit"
+              class="dx-button dx-button--primary shrink-0"
+              :disabled="recoverBusy || !recoverInput.trim()"
+            >
+              {{ $t('sync.recover') }}
+            </button>
+          </form>
+
+          <p
+            v-if="recoverMessage"
+            class="text-[0.8125rem]"
+            :class="recoverMessage.ok ? 'text-valid' : 'text-danger'"
+          >
+            {{ recoverMessage.text }}
+          </p>
+        </div>
+      </div>
+    </Teleport>
   </div>
 </template>

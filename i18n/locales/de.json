@@ -74,7 +74,8 @@
     "markAll": "Alle als besessen",
     "unmarkAll": "Alle entfernen",
     "filterOwnership": "Besitz",
-    "filters": "Filter"
+    "filters": "Filter",
+    "showMore": "Mehr anzeigen"
   },
   "droid": {
     "income": "Einkommen",
@@ -423,7 +424,10 @@
     "receiveWarning": "Ersetzt den Fortschritt dieses Geräts.",
     "recoverDone": "Fortschritt wiederhergestellt.",
     "recoverFailed": "Ungültiger oder abgelaufener Code.",
-    "genFailed": "Code-Erzeugung fehlgeschlagen. Versuch es erneut."
+    "genFailed": "Code-Erzeugung fehlgeschlagen. Versuch es erneut.",
+    "myCodeTitle": "Mein Speichercode",
+    "changeCode": "Code ändern",
+    "autoHint": "Dein Fortschritt wird automatisch unter diesem Code gespeichert. Notiere ihn, um ihn auf einem anderen Gerät wiederherzustellen."
   },
   "installPage": {
     "title": "App installieren",

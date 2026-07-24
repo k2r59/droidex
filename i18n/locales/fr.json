@@ -74,7 +74,8 @@
     "markAll": "Tout posséder",
     "unmarkAll": "Tout retirer",
     "filterOwnership": "Possession",
-    "filters": "Filtres"
+    "filters": "Filtres",
+    "showMore": "Voir plus"
   },
   "droid": {
     "income": "Revenu",
@@ -423,7 +424,10 @@
     "receiveWarning": "Remplace la progression de cet appareil.",
     "recoverDone": "Progression récupérée.",
     "recoverFailed": "Code invalide ou expiré.",
-    "genFailed": "La génération du code a échoué. Réessaie."
+    "genFailed": "La génération du code a échoué. Réessaie.",
+    "myCodeTitle": "Mon code de sauvegarde",
+    "changeCode": "Changer de code",
+    "autoHint": "Ta progression est sauvegardée automatiquement sous ce code. Note-le pour la retrouver sur un autre appareil."
   },
   "installPage": {
     "title": "Installer l'application",
