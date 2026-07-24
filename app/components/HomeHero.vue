@@ -10,8 +10,8 @@
 
 const store = useCollectionStore()
 
-/** Cliquer une pastille remonte la rareté au parent, qui filtre la liste et y défile. */
-const emit = defineEmits<{ select: [rarity: string] }>()
+/** Cliquer une pastille remonte le palier au parent, qui filtre la liste et y défile. */
+const emit = defineEmits<{ select: [tier: string] }>()
 
 const completion = computed(() =>
   store.totalCount ? Math.round((store.ownedCount / store.totalCount) * 100) : 0,
@@ -21,27 +21,27 @@ const completion = computed(() =>
 const RADIUS = 42
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS
 
-const RARITY_TEXT: Record<string, string> = {
-  common: 'text-common',
-  rare: 'text-rare',
-  epic: 'text-epic',
-  legendary: 'text-legendary',
-  mythic: 'text-mythic',
-  iconic: 'text-iconic',
+const TIER_TEXT: Record<string, string> = {
+  DEFAULT: 'text-tier-default',
+  GOLD: 'text-tier-gold',
+  DIAMOND: 'text-tier-diamond',
+  RAINBOW: 'text-tier-rainbow',
+  BESKAR: 'text-tier-beskar',
+  GALACTIC: 'text-tier-galactic',
 }
 
 /**
- * Pastille de rareté : contour teinté et lavis dégradé qui s'éteint vers la droite, pour
+ * Pastille de palier : contour teinté et lavis dégradé qui s'éteint vers la droite, pour
  * que le compteur reste lisible par-dessus l'illustration. Les classes sont écrites en
  * toutes lettres — Tailwind ne génère que ce qu'il trouve littéralement dans les sources.
  */
-const RARITY_CHIP: Record<string, string> = {
-  common: 'border-common/45 from-common/12',
-  rare: 'border-rare/45 from-rare/20',
-  epic: 'border-epic/45 from-epic/20',
-  legendary: 'border-legendary/45 from-legendary/22',
-  mythic: 'border-mythic/45 from-mythic/22',
-  iconic: 'border-iconic/45 from-iconic/20',
+const TIER_CHIP: Record<string, string> = {
+  DEFAULT: 'border-tier-default/45 from-tier-default/15',
+  GOLD: 'border-tier-gold/45 from-tier-gold/20',
+  DIAMOND: 'border-tier-diamond/45 from-tier-diamond/20',
+  RAINBOW: 'border-tier-rainbow/45 from-tier-rainbow/22',
+  BESKAR: 'border-tier-beskar/45 from-tier-beskar/20',
+  GALACTIC: 'border-tier-galactic/45 from-tier-galactic/22',
 }
 </script>
 
@@ -111,28 +111,28 @@ const RARITY_CHIP: Record<string, string> = {
 
     <div class="flex flex-wrap justify-center gap-2 lg:justify-start">
       <button
-        v-for="r in store.dataset.rarities"
-        :key="r"
+        v-for="tr in store.dataset.tiers"
+        :key="tr"
         type="button"
         class="flex min-w-[9rem] items-center justify-between gap-4 rounded-md border bg-gradient-to-r to-transparent bg-void/55 px-3.5 py-1.5 text-left backdrop-blur transition-transform hover:-translate-y-px hover:brightness-125"
-        :class="RARITY_CHIP[r]"
-        @click="emit('select', r)"
+        :class="TIER_CHIP[tr]"
+        @click="emit('select', tr)"
       >
         <span
           class="text-[0.8125rem] font-semibold"
-          :class="RARITY_TEXT[r]"
-        >{{ $t(`rarity.${r}`) }}</span>
-        <!-- Compteur dans la couleur de la rareté ; une coche quand la rareté est complète. -->
+          :class="TIER_TEXT[tr]"
+        >{{ $t(`tier.${tr}`) }}</span>
+        <!-- Compteur dans la couleur du palier ; une coche quand le palier est complet. -->
         <span
           class="flex items-center gap-1 font-mono text-[0.8125rem] font-bold tabular-nums"
-          :class="RARITY_TEXT[r]"
+          :class="TIER_TEXT[tr]"
         >
           <DxIcon
-            v-if="store.countByRarity[r].total && store.countByRarity[r].owned >= store.countByRarity[r].total"
+            v-if="store.tierProgress[tr].total && store.tierProgress[tr].owned >= store.tierProgress[tr].total"
             name="actions/check"
             :size="13"
           />
-          {{ store.countByRarity[r].owned }}/{{ store.countByRarity[r].total }}
+          {{ store.tierProgress[tr].owned }}/{{ store.tierProgress[tr].total }}
         </span>
       </button>
     </div>

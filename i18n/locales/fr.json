@@ -79,8 +79,8 @@
   "droid": {
     "income": "Revenu",
     "percentIncome": "{value} % du revenu total",
-    "cost": "Coût d'achat",
-    "value": "Valeur de revente",
+    "cost": "Coût",
+    "value": "Revente",
     "perk": "Bonus d'équipement",
     "tierTable": "Statistiques par palier",
     "flawless": "Parfait débloqué",

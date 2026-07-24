@@ -230,6 +230,26 @@ export const useCollectionStore = defineStore('collection', () => {
   })
 
   /**
+   * Progression par palier, en possédé/total — pendant de `countByRarity` côté paliers.
+   * Le total d'un palier est le nombre de droids qui *décrivent* ce palier : tous l'ont en
+   * Défaut, mais les Emblématiques s'arrêtent là, donc le dénominateur décroît vers le haut.
+   * On restreint le comptage aux paliers réellement décrits (`tiersOf`), pour qu'une donnée
+   * périmée au journal ne gonfle ni le possédé ni le total.
+   */
+  const tierProgress = computed(() => {
+    const acc = {} as Record<Tier, { owned: number, total: number }>
+    for (const t of data.tiers) acc[t] = { owned: 0, total: 0 }
+    for (const d of droids.value) {
+      const owned = entry(d.slug).tiers
+      for (const t of tiersOf(d)) {
+        acc[t].total++
+        if (owned.includes(t)) acc[t].owned++
+      }
+    }
+    return acc
+  })
+
+  /**
    * Revenu total des droids possédés, au palier possédé. Les Emblématiques sont exclus :
    * ils rapportent un pourcentage du revenu global, les additionner n'aurait pas de sens.
    */
@@ -392,6 +412,31 @@ export const useCollectionStore = defineStore('collection', () => {
     await push({ collection: delta })
   }
 
+  /**
+   * Coche ou retire **un palier précis pour tous les droids qui le possèdent** — le pendant
+   * de `setOwnedBulk` côté palier, utilisé par le « tout posséder » du filtre de palier. On
+   * ignore les droids qui ne décrivent pas ce palier (un Emblématique n'a pas de Beskar), et
+   * les entrées déjà dans l'état voulu, pour n'envoyer qu'un delta minimal au serveur.
+   */
+  async function setTierOwnedBulk(tier: Tier, owned: boolean) {
+    const next = { ...entries.value }
+    const delta: Record<string, CollectionEntry> = {}
+    for (const d of data.droids) {
+      if (!d.tiers[tier]) continue
+      const previous = next[d.slug] ?? emptyEntry()
+      if (previous.tiers.includes(tier) === owned) continue
+      const tiers = owned
+        ? [...previous.tiers, tier].sort((a, b) => TIER_RANK[a] - TIER_RANK[b])
+        : previous.tiers.filter((t) => t !== tier)
+      const e: CollectionEntry = { ...previous, tiers }
+      next[d.slug] = e
+      delta[d.slug] = e
+    }
+    entries.value = next
+    writeLocal()
+    await push({ collection: delta })
+  }
+
   /** `true` si l'exigence de renaissance identifiée par `key` est cochée. */
   const isRebirthChecked = (key: string) => rebirthChecks.value[key] === true
 
@@ -509,6 +554,7 @@ export const useCollectionStore = defineStore('collection', () => {
     totalCount,
     countByRarity,
     countByTier,
+    tierProgress,
     totalIncome,
     isEmpty,
     satisfies,
@@ -521,6 +567,7 @@ export const useCollectionStore = defineStore('collection', () => {
     toggleTier,
     setOwned,
     setOwnedBulk,
+    setTierOwnedBulk,
     toggleFlawless,
     setShopLevel,
     setNovaCrystals,
