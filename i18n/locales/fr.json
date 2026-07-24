@@ -234,7 +234,8 @@
     "previous": "Précédent",
     "next": "Suivant",
     "cancel": "Annuler",
-    "apply": "Valider"
+    "apply": "Valider",
+    "loading": "Chargement"
   },
   "disclaimer": {
     "title": "À propos des données",

@@ -56,5 +56,87 @@ watch(
 
     <IconicPanel v-if="showIconicRail" />
     <MobileNav />
+
+    <!--
+      Voile de chargement : présent dès le rendu serveur (`hydrated` est faux avant que la
+      progression locale ne soit lue), il floute toute la page et s'efface en fondu une fois
+      prête. `hydrated` ne se réarme qu'au chargement/rechargement complet — pas en navigation
+      SPA —, si bien que le voile n'apparaît qu'au bon moment.
+    -->
+    <Transition name="dx-boot">
+      <div
+        v-if="!store.hydrated"
+        class="dx-boot"
+        role="status"
+        aria-live="polite"
+        aria-busy="true"
+      >
+        <div class="dx-boot__inner">
+          <span
+            class="dx-boot__spinner"
+            aria-hidden="true"
+          />
+          <span class="dx-boot__label">{{ $t('common.loading') }}</span>
+        </div>
+      </div>
+    </Transition>
   </div>
 </template>
+
+<style scoped>
+/* Voile plein écran qui floute le contenu ; le contenu reste dessous, juste dépoli. */
+.dx-boot {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--color-void) 55%, transparent);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+}
+
+.dx-boot__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dx-boot__spinner {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: 3px solid color-mix(in srgb, var(--color-accent) 22%, transparent);
+  border-top-color: var(--color-accent);
+  animation: dx-boot-spin 0.8s linear infinite;
+}
+
+.dx-boot__label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink-strong, #fff);
+}
+
+@keyframes dx-boot-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Sortie en fondu ; l'entrée est immédiate (le voile est là dès la première peinture). */
+.dx-boot-leave-active {
+  transition: opacity 0.35s ease;
+}
+.dx-boot-leave-to {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dx-boot__spinner {
+    animation: none;
+  }
+}
+</style>

@@ -234,7 +234,8 @@
     "previous": "Previous",
     "next": "Next",
     "cancel": "Cancel",
-    "apply": "Apply"
+    "apply": "Apply",
+    "loading": "Loading"
   },
   "disclaimer": {
     "title": "About the data",
