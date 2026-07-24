@@ -315,7 +315,8 @@
     "clearConfirm": "Conferma la cancellazione",
     "cancel": "Annulla",
     "importDone": "Progressi importati.",
-    "importFailed": "File illeggibile o formato imprevisto."
+    "importFailed": "File illeggibile o formato imprevisto.",
+    "clearDone": "Progressi cancellati."
   },
   "legal": {
     "title": "Avviso legale",

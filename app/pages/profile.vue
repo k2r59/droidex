@@ -8,6 +8,19 @@ const { user } = useAuthSession()
 useSeoMeta({ title: () => t('nav.profile') })
 
 /**
+ * Toast de confirmation éphémère : les actions serveur (effacement, échange de code) se
+ * faisaient sans retour visible, on ne savait pas si elles avaient abouti. Un message court
+ * apparaît puis s'efface tout seul.
+ */
+const confirmToast = ref<string | null>(null)
+let toastTimer: ReturnType<typeof setTimeout> | null = null
+function notify(text: string) {
+  confirmToast.value = text
+  if (toastTimer) clearTimeout(toastTimer)
+  toastTimer = setTimeout(() => { confirmToast.value = null }, 3000)
+}
+
+/**
  * Export local de la progression. Utile pour repartir d'un compte à l'autre, et
  * indispensable le jour où l'app mobile devra reprendre une collection existante.
  */
@@ -125,6 +138,7 @@ async function adoptCode() {
     const clean = raw.toUpperCase().replace(/[^A-Z0-9]/g, '')
     await store.setSyncCode(clean.length === 8 ? `${clean.slice(0, 4)}-${clean.slice(4)}` : clean)
     editingCode.value = false
+    notify(t('sync.recoverDone'))
   }
   catch {
     recoverMessage.value = { ok: false, text: t('sync.recoverFailed') }
@@ -140,6 +154,7 @@ const confirmingClear = ref(false)
 async function clearAll() {
   await store.clear()
   confirmingClear.value = false
+  notify(t('profile.clearDone'))
 }
 </script>
 
@@ -397,5 +412,58 @@ async function clearAll() {
         </div>
       </div>
     </Teleport>
+
+    <!-- Toast de confirmation éphémère (effacement, échange de code). -->
+    <Teleport to="body">
+      <Transition name="dx-toast">
+        <div
+          v-if="confirmToast"
+          class="dx-toast"
+          role="status"
+          aria-live="polite"
+        >
+          <DxIcon
+            name="actions/check"
+            :size="16"
+            class="text-valid"
+          />
+          {{ confirmToast }}
+        </div>
+      </Transition>
+    </Teleport>
   </div>
 </template>
+
+<style scoped>
+/* Toast centré sous l'en-tête (haut plutôt que bas, pour ne pas passer sous la barre mobile). */
+.dx-toast {
+  position: fixed;
+  left: 50%;
+  top: calc(var(--header-height, 68px) + 0.75rem);
+  transform: translateX(-50%);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--color-ink-strong, #fff);
+  background: color-mix(in srgb, var(--color-panel-raised) 94%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-valid) 45%, var(--color-edge));
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+}
+
+.dx-toast-enter-active,
+.dx-toast-leave-active {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.dx-toast-enter-from,
+.dx-toast-leave-to {
+  opacity: 0;
+  transform: translate(-50%, -12px);
+}
+</style>

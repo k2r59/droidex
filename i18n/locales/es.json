@@ -315,7 +315,8 @@
     "clearConfirm": "Confirmar el borrado",
     "cancel": "Cancelar",
     "importDone": "Progreso importado.",
-    "importFailed": "Archivo ilegible o formato inesperado."
+    "importFailed": "Archivo ilegible o formato inesperado.",
+    "clearDone": "Progreso borrado."
   },
   "legal": {
     "title": "Aviso legal",

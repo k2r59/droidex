@@ -186,6 +186,17 @@ function focusTier(tr: string) {
 }
 
 /**
+ * Changement de palier depuis la barre de filtres : on remet la vue en haut, au niveau du
+ * moteur de recherche — sinon, sur mobile, on reste perdu au milieu de la nouvelle liste.
+ */
+function selectTier(tr: Tier | 'all') {
+  tier.value = tr
+  nextTick(() => requestAnimationFrame(() =>
+    document.getElementById('all-droids')?.scrollIntoView({ behavior: 'smooth', block: 'start' }),
+  ))
+}
+
+/**
  * Couleurs par palier, en toutes lettres — Tailwind ne génère que ce qu'il trouve dans les
  * sources. `active` habille la puce de filtre sélectionnée ; `ring`/`bar` la barre d'action.
  */
@@ -304,7 +315,7 @@ onKeyStroke('Escape', () => {
           <button
             type="button"
             :class="[FILTER_CHIP, tier === 'all' ? 'border-accent bg-accent/15 text-accent' : 'border-edge bg-panel text-ink-muted hover:text-ink']"
-            @click="tier = 'all'"
+            @click="selectTier('all')"
           >
             {{ $t('droidex.filterAll') }}
           </button>
@@ -313,7 +324,7 @@ onKeyStroke('Escape', () => {
             :key="tr"
             type="button"
             :class="[FILTER_CHIP, tier === tr ? TIER_STYLE[tr]!.active : 'border-edge bg-panel text-ink-muted hover:text-ink']"
-            @click="tier = tr"
+            @click="selectTier(tr)"
           >
             {{ $t(`tier.${tr}`) }}
           </button>

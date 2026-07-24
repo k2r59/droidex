@@ -76,6 +76,19 @@ function toggle() {
     </button>
 
     <!--
+      Mobile : moitié DROITE de la tuile = grande cible pour cocher (au doigt, viser la petite
+      pastille est pénible et ouvrait la fiche par erreur). La moitié gauche reste couverte par
+      le lien étiré, donc ouvre la fiche. En carte verticale (desktop), cette zone disparaît.
+    -->
+    <button
+      type="button"
+      class="vcard__tap-own @md:hidden"
+      :aria-label="$t('droid.owned')"
+      tabindex="-1"
+      @click="toggle"
+    />
+
+    <!--
       Bandeau : le champ d'étoiles (classes globales `droid-starfield` + `nebula-*`) porté par
       le média lui-même, pour qu'il occupe tout le bandeau. L'illustration, en `no-starfield`,
       se pose par-dessus à sa taille d'origine — c'est le ciel qui grandit, pas le droid.
@@ -216,7 +229,27 @@ function toggle() {
   content: '';
   position: absolute;
   inset: 0;
+  /* Mobile : le lien ne couvre que la moitié GAUCHE ; la droite sert à cocher. */
+  right: 50%;
   z-index: 1;
+}
+
+/* Zone tactile de possession, moitié droite (mobile uniquement). */
+.vcard__tap-own {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: 1;
+  cursor: pointer;
+}
+
+/* Desktop (carte verticale) : le lien reprend toute la carte, la zone tactile disparaît. */
+@container (min-width: 28rem) {
+  .vcard__link::after {
+    right: 0;
+  }
 }
 
 /* Vignette (rangée) : image posée sur le champ d'étoiles ; le fond vient de `droid-starfield`. */

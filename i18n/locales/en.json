@@ -315,7 +315,8 @@
     "clearConfirm": "Confirm erasure",
     "cancel": "Cancel",
     "importDone": "Progress imported.",
-    "importFailed": "Unreadable file or unexpected format."
+    "importFailed": "Unreadable file or unexpected format.",
+    "clearDone": "Progress erased."
   },
   "legal": {
     "title": "Legal notice",

@@ -359,10 +359,13 @@ export const useCollectionStore = defineStore('collection', () => {
       // Même si la lecture échoue, on est fixé : l'interface doit cesser d'attendre.
       hydrated.value = true
     }
-    // Crée le code au premier passage, puis pousse à chaque visite : cela rafraîchit l'échéance
-    // glissante, si bien qu'un code régulièrement ouvert ne périme jamais.
+    // Crée le code au premier passage, puis rafraîchit l'échéance glissante à chaque visite —
+    // MAIS seulement si le local n'est pas vide. Un local vide (première visite, ou lecture
+    // IndexedDB ratée) ne doit jamais écraser une bonne sauvegarde serveur : sinon le code
+    // perdrait justement les données qu'il est censé garder. L'effacement volontaire, lui,
+    // pousse le vide de façon explicite (voir `clear`).
     await ensureSyncCode()
-    void pushCode()
+    if (!isEmpty.value) void pushCode()
   }
 
   /**

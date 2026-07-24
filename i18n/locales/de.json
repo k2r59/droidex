@@ -315,7 +315,8 @@
     "clearConfirm": "Löschen bestätigen",
     "cancel": "Abbrechen",
     "importDone": "Fortschritt importiert.",
-    "importFailed": "Datei nicht lesbar oder unerwartetes Format."
+    "importFailed": "Datei nicht lesbar oder unerwartetes Format.",
+    "clearDone": "Fortschritt gelöscht."
   },
   "legal": {
     "title": "Rechtlicher Hinweis",
