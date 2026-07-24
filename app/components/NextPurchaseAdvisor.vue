@@ -87,8 +87,12 @@ function parseBudget(raw: string): number | null {
   return n * (m[2] ? SUFFIXES[m[2]]! : 1)
 }
 
-/** Paliers usuels : un clic vaut mieux qu'une saisie à huit chiffres. */
-const PRESETS = [10e3, 100e3, 1e6, 10e6, 100e6]
+/**
+ * Paliers usuels : un clic vaut mieux qu'une saisie à huit chiffres. On monte jusqu'au
+ * milliard : en fin de partie, tout ce qui est ≤ 100M est déjà possédé, si bien que la liste
+ * paraissait vide et cassée. Au-delà, le champ accepte la saisie libre (« 5b », « 1t »).
+ */
+const PRESETS = [10e3, 100e3, 1e6, 10e6, 100e6, 1e9, 10e9, 100e9]
 
 function applyBudget(value: number | null) {
   budget.value = value
